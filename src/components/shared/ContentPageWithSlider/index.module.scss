@@ -1,0 +1,132 @@
+$min-width: 490px;
+$max-width: 855px;
+$min-viewport: 1440px;
+$max-viewport: 2560px;
+
+.image {
+  position: relative !important;
+  display: block;
+  height: 100vh !important;
+  max-height: 100%;
+  margin-top: -1px;
+
+  @media screen and (min-width: 992px) {
+    height: 100vh;
+  }
+
+  @media (max-width: 992px) {
+    height: 320px !important;
+  }
+}
+
+.active::before {
+  width: 112px !important;
+}
+
+.wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: #11627d;
+
+  @media (max-width: 992px) {
+    height: 100vh;
+  }
+
+  .img {
+    min-width: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+  }
+
+  .text {
+    width: calc(490px + (855 - 490) * ((100vw - 1440px) / (2560 - 1440)));
+    min-width: 490px;
+    max-width: 855px;
+    height: 100%;
+    flex-shrink: 0;
+    overflow-y: scroll;
+
+    @media (max-width: 992px) {
+      width: 100%;
+      min-width: unset;
+      max-width: none;
+      flex-shrink: unset;
+    }
+
+    .text_content {
+      .textBlock {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 140px 25px 25px 56px;
+        background-color: #11627d;
+        color: #fff;
+
+        @media (max-width: 992px) {
+          padding: 25px 24px 31px;
+        }
+
+        .arrows {
+          margin-top: 40px;
+
+          @media (max-width: 504px) {
+            margin-top: 0;
+          }
+        }
+
+        h1 {
+          position: relative;
+          margin-bottom: 36px;
+          color: #fdf1cd;
+          font-family: $font-accent;
+          font-size: 32px;
+          font-weight: 400;
+          text-transform: uppercase;
+
+          @media (max-width: 504px) {
+            font-size: 20px;
+          }
+
+          &::before {
+            position: absolute;
+            bottom: -42px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #fdf1cd;
+            content: '';
+            transition: width 0.5s ease-out 0.2s;
+          }
+        }
+
+        .content {
+          margin-top: 71px;
+          margin-bottom: 20px;
+          color: #fff;
+          font-size: 14px;
+          font-weight: 300;
+          line-height: 175%;
+
+          @media (max-width: 504px) {
+            margin-bottom: 30px;
+            font-size: 12px;
+            line-height: 150%;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    height: 100vh;
+  }
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+  }
+}

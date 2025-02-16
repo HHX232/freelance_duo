@@ -1,0 +1,237 @@
+.create {
+  display: flex;
+  justify-content: center;
+  padding-right: 44px;
+  padding-left: 160px;
+  margin-top: 78px;
+  color: #555;
+  font-family: $font-primary;
+
+  @media (max-width: 1199px) {
+    padding: 0 42px 47px;
+  }
+
+  @media (max-width: 504px) {
+    padding: 0 24px 46px;
+    margin-top: 31px;
+  }
+
+  .grid {
+    position: relative;
+    top: -15px;
+    width: 100%;
+  }
+
+  .form {
+    width: 100%;
+
+    .form_grid {
+      display: grid;
+      width: 100%;
+      max-width: 1076px;
+      margin-top: 78px;
+      grid-gap: 42px 13px;
+      grid-template-areas:
+        'name name surname surname middle_name'
+        'born city passport_series passport_series code'
+        'date_of_issue issued_by issued_by issued_by issued_by'
+        'address_register address_register address_location address_location address_location';
+      grid-template-columns: 132px 193px 78px 263px 350px;
+
+      @media (max-width: 1264px) {
+        grid-template-columns: minmax(100px, 132px) minmax(150px, auto) auto;
+      }
+
+      @media (max-width: 966px) {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 22px 9px;
+      }
+
+      .passport_series_number {
+        position: relative;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        grid-area: passport_series;
+
+        .error {
+          position: absolute;
+          top: 100%;
+          margin-top: 5px;
+          color: $error-color;
+          font-family: $font-primary;
+          font-size: 10px;
+          font-weight: 400;
+        }
+
+        .title {
+          color: #555;
+          font-family: $font-primary;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 14px;
+        }
+
+        .group_title {
+          display: flex;
+          align-items: center;
+          grid-gap: 13px;
+        }
+
+        .passport_series {
+          flex: 0 0 94px;
+        }
+
+        .passport_number {
+          flex: 1;
+
+          input {
+            width: 100%;
+          }
+        }
+      }
+
+      .address_location,
+      .address_register,
+      .name,
+      .surname,
+      .patronymic,
+      .city,
+      .issued_by,
+      .passport_number,
+      .code,
+      .date_of_issue {
+        @media (max-width: 504px) {
+          max-width: 100% !important;
+        }
+      }
+
+      .passport_series {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        @media (max-width: 504px) {
+          max-width: 94px !important;
+        }
+      }
+
+      .code {
+        @media (max-width: 320px) {
+          max-width: 146px !important;
+        }
+      }
+
+      .born {
+        @media (max-width: 320px) {
+          max-width: 117px !important;
+        }
+      }
+    }
+
+    .submit {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      margin-top: 137px;
+      grid-gap: 10px;
+
+      @media (max-width: 504px) {
+        flex-direction: column;
+        margin-top: 47px;
+      }
+
+      button {
+        max-width: 284px;
+
+        @media (max-width: 504px) {
+          max-width: 100%;
+        }
+      }
+    }
+
+    .msg {
+      color: $error-color;
+      font-family: $font-primary;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 14px;
+      text-align: center;
+    }
+  }
+
+  .name {
+    grid-area: name;
+  }
+
+  .surname {
+    grid-area: surname;
+  }
+
+  .middle_name {
+    grid-area: middle_name;
+  }
+
+  .born {
+    grid-area: born;
+  }
+
+  .city {
+    grid-area: city;
+  }
+
+  .code {
+    grid-area: code;
+  }
+
+  .date_of_issue {
+    grid-area: date_of_issue;
+  }
+
+  .issued_by {
+    grid-area: issued_by;
+  }
+
+  .address_register {
+    grid-area: address_register;
+  }
+
+  .address_location {
+    grid-area: address_location;
+  }
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 92px;
+  grid-gap: 99px;
+
+  @media (max-width: 504px) {
+    margin-top: 33px;
+    grid-gap: 86px;
+  }
+
+  .text {
+    max-width: 472px;
+    color: #555;
+    font-family: $font-primary;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 133%;
+    text-align: center;
+
+    @media (max-width: 504px) {
+      display: flex;
+      flex-direction: column;
+      font-size: 18px;
+      grid-gap: 10px;
+      line-height: 111%;
+    }
+  }
+}

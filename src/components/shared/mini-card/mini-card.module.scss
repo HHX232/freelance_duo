@@ -1,0 +1,151 @@
+.mini_card {
+  position: relative;
+  max-width: 700px;
+  height: 360px !important;
+  padding: 24px 12px 57px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 0 4px 0 rgb(89 121 148 / 25%);
+
+  @media (max-width: 1199px) {
+    max-width: 100%;
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 2px #d38f6d;
+
+    .buttonWrap {
+      z-index: 1;
+      bottom: -40px;
+      box-shadow:
+        0 -2px 0 0 #fff,
+        0 0 0 2px #d38f6d;
+      opacity: 1;
+      transition:
+        box-shadow 0.3s ease,
+        bottom 0.3s ease-out;
+
+      @media (max-width: 1199px) {
+        bottom: -60px;
+      }
+    }
+
+    .button {
+      opacity: 1;
+      transition: opacity 0.5s 0.3s ease-out;
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    grid-gap: 15px;
+
+    .action {
+      display: flex;
+      height: 15px;
+    }
+  }
+
+  .img {
+    position: relative;
+    width: 159px;
+    min-width: 159px;
+    height: 124px;
+    min-height: 124px;
+    margin: 0 auto;
+    margin-top: 21px;
+  }
+
+  .name {
+    display: flex;
+    flex-direction: column;
+    margin-top: 44px;
+    grid-gap: 19px;
+
+    @media (max-width: 1199px) {
+      margin-top: 0;
+      grid-gap: 15px;
+    }
+
+    .detail {
+      position: relative;
+      z-index: 3;
+      display: none;
+      align-items: center;
+      padding-bottom: 0;
+      background-color: #fff;
+      color: #555;
+      gap: 0 35px;
+      grid-template-columns: auto 1fr;
+      list-style: none;
+
+      @media (max-width: 1199px) {
+        display: grid;
+      }
+    }
+
+    .listItem {
+      display: contents;
+
+      span {
+        color: #555;
+        font-size: 14px;
+        font-weight: 400;
+        word-break: break-word;
+
+        @media (max-width: 504px) {
+          font-size: 12px;
+        }
+      }
+
+      @media (max-width: 504px) {
+        font-size: 12px;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 11px;
+      }
+    }
+
+    .line {
+      height: 1px;
+      background: #bed0db;
+    }
+
+    p {
+      padding-left: 12px;
+      color: #555;
+      font-family: $font-primary;
+      font-size: 20px;
+      font-weight: 400;
+
+      @media (max-width: 1264px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .reservation {
+    margin-top: 36px;
+  }
+}
+
+.buttonWrap {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 12px;
+  border-radius: 0 0 10px 10px;
+  border-top: 0;
+  background-color: #fff;
+  box-shadow: 0 -2px 0 0 #fff;
+  grid-gap: 4px;
+  opacity: 0;
+  transition: bottom 0.3s ease-out;
+}

@@ -1,0 +1,26 @@
+.agree {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 8px;
+
+  * {
+    color: #555 !important;
+  }
+
+  p {
+    color: #555;
+    font-family: $font-primary;
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 7.66px;
+    text-align: center;
+
+    a {
+      span {
+        color: #555 !important;
+        text-decoration: underline;
+      }
+    }
+  }
+}

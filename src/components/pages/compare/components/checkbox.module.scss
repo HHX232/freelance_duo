@@ -1,0 +1,46 @@
+.checkbox_container {
+  display: flex;
+  align-items: center;
+  grid-gap: 7px;
+
+  span {
+    color: #555;
+    font-family: $font-primary;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .checkbox {
+    position: relative;
+    width: 34px;
+    height: 20px;
+    border-radius: 50px;
+    background: #dcebf1;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 4px;
+      width: 13px;
+      height: 13px;
+      border-radius: 100%;
+      margin: auto;
+      background: #d38f6d;
+      content: '';
+      transition: left 0.3s ease;
+    }
+  }
+
+  .dashboard {
+    &::before {
+      background: #d38f6d;
+    }
+  }
+
+  .active {
+    &::before {
+      left: 15px;
+    }
+  }
+}

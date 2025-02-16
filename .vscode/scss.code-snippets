@@ -1,0 +1,17 @@
+{
+  "Include @mobile mixin": {
+    "prefix": "im",
+    "body": ["@include mobile {", "\t$0", "}"],
+    "description": "Use @include mobile scss mixins"
+  },
+  "Include @desktop mixin": {
+    "prefix": "id",
+    "body": ["@include desktop {", "\t$0", "}"],
+    "description": "Use @include desktop scss mixins"
+  },
+  "Include @font mixin": {
+    "prefix": "if",
+    "body": ["@include font($0);"],
+    "description": "Use @include font scss mixins"
+  }
+}

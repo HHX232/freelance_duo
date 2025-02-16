@@ -1,0 +1,19 @@
+.light {
+  display: flex;
+  overflow: hidden;
+  width: 109px;
+  height: 518px;
+  align-items: center;
+  justify-content: center;
+
+  .circle {
+    position: relative;
+    left: 60px;
+    width: 48px;
+    height: 100%;
+    max-height: 448px;
+    border-radius: 100%;
+    background: #fff;
+    filter: blur(30px);
+  }
+}

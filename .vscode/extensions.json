@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "stylelint.vscode-stylelint",
+    "esbenp.prettier-vscode",
+    "styled-components.vscode-styled-components",
+    "mrmlnc.vscode-scss",
+    "esbenp.prettier-vscode",
+    "yoavbls.pretty-ts-errors",
+    "dbaeumer.vscode-eslint",
+    "clinyong.vscode-css-modules",
+    "Huuums.vscode-fast-folder-structure"
+  ]
+}

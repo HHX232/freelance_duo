@@ -1,0 +1,139 @@
+.latest {
+  position: relative;
+
+  &::before {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: overlay 1s forwards;
+    backdrop-filter: blur(20px);
+    background: transparent;
+    content: '';
+  }
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
+}
+
+.latest_mob {
+  position: relative;
+  display: none;
+  background: #fff;
+
+  @media (max-width: 1199px) {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.items {
+  max-height: 400px;
+
+  .carousel {
+    max-height: 400px;
+
+    .cardWrapper {
+      max-height: 400px;
+
+      &:hover {
+        height: 400px;
+
+        .carousel {
+          height: 400px;
+        }
+
+        .items {
+          height: 400px;
+        }
+      }
+    }
+  }
+}
+
+.items_mob {
+  max-height: 400px;
+
+  .carousel {
+    max-height: 400px;
+
+    .cardWrapper {
+      max-height: 400px;
+
+      &:hover {
+        height: 400px;
+
+        .carousel {
+          height: 400px;
+        }
+
+        .items {
+          height: 400px;
+        }
+      }
+    }
+  }
+}
+
+.prevArrow {
+  position: absolute;
+  z-index: 2;
+  top: 157px;
+  left: -10px;
+}
+
+.nextArrow {
+  position: absolute;
+  z-index: 2;
+  top: 157px;
+  right: -10px;
+}
+
+@keyframes overlay {
+  0% {
+    background: transparent;
+  }
+
+  100% {
+    background: rgb(17 98 125 / 75%);
+  }
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #1f6080;
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+}
+
+.latest_btn {
+  display: flex;
+  width: 100%;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 33px;
+  border: 1px solid #d38f6d;
+  border-radius: 4px;
+  margin-bottom: 54px;
+  color: #37393b;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "liveServer.settings.root": "/dist/client",
+  "scss.validate": false,
+  "stylelint.validate": ["scss"],
+  "editor.codeActionsOnSave": ["source.fixAll.stylelint"],
+  "editor.formatOnSave": true,
+  "[svg]": {
+    "editor.formatOnSave": false
+  }
+}

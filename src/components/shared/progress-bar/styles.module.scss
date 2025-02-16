@@ -1,0 +1,53 @@
+@keyframes progress-animation {
+	0% {
+		left: 0;
+		width: var(--progress-min-width);
+	}
+
+	25% {
+		width: var(--progress-max-width);
+	}
+
+	50% {
+		left: var(--progress-left);
+		width: var(--progress-min-width);
+	}
+
+	75% {
+		width: var(--progress-max-width);
+	}
+
+	100% {
+		left: 0;
+		width: var(--progress-min-width);
+	}
+}
+
+.progress-bar {
+	overflow: hidden;
+	width: 100%;
+	height: 4px;
+
+	& .line {
+		width: calc(var(--progress-percent) * 1%);
+		height: 100%;
+
+		&.default {
+			@apply bg-layouts-primary;
+		}
+
+		&.secondary {
+			@apply bg-overlays-dark400;
+		}
+
+		@apply relative transition-all;
+	}
+
+	&.default {
+		@apply bg-overlays-light300;
+	}
+
+	&.secondary {
+		@apply bg-layouts-secondary;
+	}
+}

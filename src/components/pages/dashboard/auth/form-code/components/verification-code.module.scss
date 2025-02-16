@@ -1,0 +1,30 @@
+.code_container {
+  display: flex;
+  gap: 7px;
+
+  @media (max-width: 450px) {
+    grid-gap: 6px;
+  }
+
+  .code_item {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: 1px solid rgb(92 124 149 / 25%);
+    border-radius: 5px;
+    color: #555;
+    font-size: 20px;
+    font-weight: 400;
+    outline: 0;
+    text-align: center;
+    transition: box-shadow 0.2s ease-out;
+
+    @media (max-width: 450px) {
+      width: 46px;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 1px #f27322;
+    }
+  }
+}

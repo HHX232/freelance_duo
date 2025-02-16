@@ -1,0 +1,90 @@
+@layer base, xs, sm, md, lg, xl, xxl, xxxl;
+
+@mixin mobile {
+  @media only screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @layer xs {
+    @media only screen and (min-width: 320px) {
+      @content;
+    }
+  }
+}
+
+@mixin sm {
+  @layer sm {
+    @media only screen and (min-width: 480px) {
+      @content;
+    }
+  }
+}
+
+@mixin md {
+  @layer md {
+    @media only screen and (min-width: 768px) {
+      @content;
+    }
+  }
+}
+
+@mixin lg {
+  @layer lg {
+    @media only screen and (min-width: 1024px) {
+      @content;
+    }
+  }
+}
+
+@mixin xl {
+  @layer xl {
+    @media only screen and (min-width: 1280px) {
+      @content;
+    }
+  }
+}
+
+@mixin xxl {
+  @layer xxl {
+    @media only screen and (min-width: 1600px) {
+      @content;
+    }
+  }
+}
+
+@mixin xxxl {
+  @layer xxxl {
+    @media only screen and (min-width: 1920px) {
+      @content;
+    }
+  }
+}
+
+
+@mixin custom($min-width: false, $max-width: false) {
+  @if $min-width and not $max-width {
+    @media screen and (min-width: $min-width) {
+      @content;
+    }
+  }
+
+  @if $max-width and not $min-width {
+    @media screen and (max-width: $max-width) {
+      @content;
+    }
+  }
+
+  @if $max-width and $min-width {
+    @media screen and (min-width: $min-width) and (max-width: $max-width) {
+      @content;
+    }
+  }
+}

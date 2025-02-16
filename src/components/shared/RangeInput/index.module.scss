@@ -1,0 +1,58 @@
+.rangeInput {
+  border: none !important;
+  margin: 0 !important;
+
+  * {
+    border: none !important;
+  }
+
+  input {
+    @include font(1, 14, 16);
+
+    width: 35px;
+    height: 28px;
+    border: none !important;
+    background-color: #f0f8fc !important;
+    color: #555;
+    text-align: center !important;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.rangeInputWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.rangeSlider {
+  width: 100%;
+  margin-left: 20px !important;
+}
+
+.rangeTitle {
+  @include font(1, 14, 14);
+
+  margin-bottom: 10px;
+  color: #555;
+  font-weight: 600;
+
+  p {
+    color: #555;
+    font-size: 12px;
+    font-weight: 500;
+
+    span {
+      font-weight: 400;
+    }
+  }
+}
+
+.rangeFilter {
+  width: 100%;
+}

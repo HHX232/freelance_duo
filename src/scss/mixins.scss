@@ -1,0 +1,52 @@
+@mixin has($classname) {
+  &:is(&:has(.#{$classname}), .has-#{$classname}) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin focus {
+  &:focus-within,
+  &:active {
+    @content;
+  }
+}
+
+@mixin content-container {
+  @layer base {
+    padding-right: 196px;
+    padding-left: 196px;
+  }
+  
+  @include xxl {
+    padding-right: 170px;
+    padding-left: 170px;
+  }
+
+  @include xl {
+    padding-right: 142px;
+    padding-left: 142px;
+  }
+
+  @include lg {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  @include sm {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  @include xs {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}

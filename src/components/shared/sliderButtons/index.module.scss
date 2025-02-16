@@ -1,0 +1,10 @@
+.prevButton,
+.nextButton {
+  all: unset;
+  cursor: pointer;
+}
+
+.nextButton {
+ transform: scaleX(-1);
+  margin-right: 8px;
+}

@@ -1,0 +1,122 @@
+/* stylelint-disable scss/function-no-unknown */
+/* stylelint-disable scss/no-global-function-names */
+@function parse-unit($value) {
+  $units: ('px', 'cm', 'mm', '%', 'ch', 'pc', 'in', 'em', 'rem', 'pt', 'ex', 'vw', 'vh', 'vmin', 'vmax');
+  $result-unit: 0;
+
+  @for $unit from 1 through length($units) {
+    @if str-index(#{$value}, nth($units, $unit)) {
+      $result-unit: nth($units, $unit);
+    }
+  }
+
+  @if $result-unit == 0 {
+    $result-unit: 'px';
+
+    @return #{$value + $result-unit};
+  } @else {
+    @return #{$value};
+  }
+}
+
+@function parse-integer($string) {
+  $strings: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
+  $numbers: 0 1 2 3 4 5 6 7 8 9;
+  $result: 0;
+
+  @for $i from 1 through str-length($string) {
+    $character: str-slice($string, $i, $i);
+    $index: index($strings, $character);
+
+    @if not $index {
+      @warn "Unknown character `#{$character}`.";
+      @return false;
+    }
+
+    $number: nth($numbers, $index);
+    $result: $result * 10 + $number;
+  }
+
+  @return $result;
+}
+
+@function str-split($string, $separator) {
+  $string: #{$string};
+  $string: quote($string);
+  $split-arr: ();
+  $index: str-index($string, $separator);
+
+  @while $index != null {
+    $item: str-slice($string, 1, $index - 1);
+    $split-arr: append($split-arr, $item);
+    $string: str-slice($string, $index + str-length($separator));
+    $index: str-index($string, $separator);
+  }
+
+  $split-arr: append($split-arr, $string);
+
+  @return $split-arr;
+}
+
+@mixin font($font-family, $font-size, $line-height, $font-weight: 400) {
+  $font-size-list: str-split($font-size, ' ');
+  $font-size-list-string: str-split($font-size, '--');
+  $line-height-list: str-split($line-height, ' ');
+  $line-height-list-string: str-split($line-height, '--');
+  $font-weight-list: str-split($font-weight, ' ');
+
+  // Gotham Pro = 1, Montserrat = 2, RomulC = 3
+  @if $font-family == 1 {
+    font-family: $font-primary;
+  } @else if $font-family == 2 {
+    font-family: $font-secondary;
+  } @else if $font-family == 3 {
+    font-family: $font-accent;
+  }
+
+  @if length($font-size-list) > 1 or length($font-size-list-string) > 1 {
+    @if length($font-size-list) > 1 {
+      font-size: parse-unit(nth($font-size-list, 1));
+
+      @include mobile {
+        font-size: parse-unit(nth(str-split(nth($font-size-list, 2), '--'), 2));
+      }
+    } @else {
+      font-size: parse-unit(nth($font-size-list-string, 1));
+
+      @include mobile {
+        font-size: parse-unit(nth($font-size-list-string, 2));
+      }
+    }
+  } @else {
+    font-size: parse-unit($font-size);
+  }
+
+  @if length($line-height-list) > 1 or length($line-height-list-string) > 1 {
+    @if length($line-height-list) > 1 {
+      line-height: parse-unit(nth($line-height-list, 1));
+
+      @include mobile {
+        line-height: parse-unit(nth(str-split(nth($line-height-list, 2), '--'), 2));
+      }
+    } @else {
+      line-height: parse-unit(nth($line-height-list-string, 1));
+
+      @include mobile {
+        line-height: parse-unit(nth($line-height-list-string, 2));
+      }
+    }
+  } @else {
+    line-height: parse-unit($line-height);
+  }
+
+  @if length($font-weight-list) > 1 {
+    font-weight: parse-integer(nth($font-weight-list, 1));
+
+    @include mobile {
+      font-weight: parse-integer(nth(str-split(nth($font-weight-list, 2), '--'), 2));
+    }
+  } @else {
+    font-weight: $font-weight;
+  }
+}

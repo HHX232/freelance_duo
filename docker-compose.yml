@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: .
+    image: registry.gitlab.com/labab-dev/kronfort/frontend:${TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8015:3000"
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450

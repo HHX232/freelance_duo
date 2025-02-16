@@ -1,0 +1,48 @@
+.favorites {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 40px 24px 50px;
+  margin: 50px auto 0;
+  color: #555;
+}
+
+.pageTop {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 140px;
+  padding-right: 44px;
+  padding-left: 160px;
+
+  .title_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .route {
+    color: #11627d;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 180%;
+
+    @media (max-width: 624px) {
+      color: #11627d;
+      font-size: 8px;
+      font-weight: 400;
+      line-height: 180%;
+    }
+  }
+}
+
+.title {
+  @include font(3, 32, 42);
+
+  color: #555;
+}
+
+.grid {
+  position: relative;
+  top: -15px;
+  width: 100%;
+}

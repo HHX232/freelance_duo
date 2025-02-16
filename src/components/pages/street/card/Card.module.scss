@@ -1,0 +1,95 @@
+$transition: all 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+.wrapper {
+  color: white;
+}
+
+.icon {
+  position: absolute;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  color: $accent-color;
+  cursor: pointer;
+  transition: $transition;
+
+  @include hover {
+    transform: scale(1.33);
+
+    & ~ .text {
+      opacity: 1;
+    }
+
+    & ~ .line {
+      width: 100%;
+    }
+
+    & ~ .content {
+      opacity: 1;
+
+      .image {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+.line {
+  position: absolute;
+  z-index: 3;
+  width: 0;
+  max-width: 0;
+  height: 1px;
+  background-color: $accent-color;
+  transform-origin: left bottom;
+  transition: $transition;
+}
+
+.text {
+  @include font(3, 30, 38);
+
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  max-width: 280px;
+  align-items: baseline;
+  opacity: 0;
+
+  // pointer-events: none;
+  text-transform: uppercase;
+  transition: $transition;
+
+  p {
+    display: block;
+  }
+}
+
+.content {
+  @include font(3, 20, 24);
+
+  position: absolute;
+  z-index: 3;
+  display: block;
+  width: 225px;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+  transition: $transition;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 25px 50px 25px 25px;
+  background-color: $accent-color;
+  border-top-right-radius: 110px;
+  transition: $transition;
+}
+
+.image {
+  width: 100%;
+  height: 231px;
+  transform: translateY(98px);
+  transition: $transition;
+}

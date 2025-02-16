@@ -1,0 +1,194 @@
+.dashboard {
+  width: 100%;
+
+  .squares {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(240px, 1fr));
+
+    @media (max-width: 1339px) {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(3, minmax(106px, 1fr));
+    }
+
+    .square {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      background-size: cover;
+
+      @media (max-width: 506px) {
+        min-height: 106px;
+        padding-top: 0;
+      }
+    }
+
+    .withContent {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      padding-top: 0;
+
+      .content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .withoutContent {
+      @media (max-width: 506px) {
+        display: none;
+      }
+    }
+  }
+}
+
+.reservation {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-family: $font-primary;
+  font-size: 13px;
+  font-weight: 400;
+  grid-gap: 10px;
+
+  @media (max-width: 504px) {
+    color: #555;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+  }
+}
+
+.new {
+  position: absolute;
+  bottom: 0;
+  display: none;
+  width: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 19px;
+  background: #11627d;
+  font-family: $font-primary;
+
+  @media (max-width: 506px) {
+    position: relative;
+    padding: 33px 24px;
+  }
+
+  .date {
+    .day {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+
+  .content {
+    min-height: 288px;
+    margin-top: 53px;
+
+    @media (max-width: 506px) {
+      margin-top: 44px;
+    }
+
+    .news_text {
+      color: #fff;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 150%;
+    }
+  }
+
+  .arrows {
+    display: flex;
+    align-items: center;
+    margin-top: 51px;
+    grid-gap: 7px;
+
+    @media (max-width: 506px) {
+      margin-top: 65px;
+    }
+  }
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 479px;
+  background: url('/dashboard/dashboard-hero.jpg') no-repeat center / cover;
+
+  @media (max-width: 1199px) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 74px;
+  }
+
+  .text {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    max-width: 518px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 158px;
+    margin-left: 347px;
+    grid-gap: 106px;
+
+    @media (max-width: 1199px) {
+      margin: 0;
+    }
+
+    h2 {
+      width: 100%;
+      color: #555;
+      font-family: $font-primary;
+      font-size: 36px;
+      font-weight: 400;
+      text-align: center;
+
+      @media (max-width: 504px) {
+        max-width: 262px;
+        font-size: 18px;
+      }
+    }
+
+    button {
+      max-width: 284px;
+    }
+  }
+}
+
+.pageTop {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 140px;
+  padding-right: 44px;
+  padding-left: 160px;
+
+  .title_container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.title {
+  @include font(3, 32, 42);
+
+  color: #555;
+}

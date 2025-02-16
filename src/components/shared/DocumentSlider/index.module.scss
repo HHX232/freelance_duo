@@ -1,0 +1,99 @@
+.title {
+  @include font(3, 24, 32);
+
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  animation: myAnim 1s ease-out;
+  color: #fdf1cd;
+  transform: translateX(-50%);
+
+  @media screen and (min-width: 768px) {
+    @include font(3, 32, 100);
+
+    top: 28px;
+    left: 60px;
+    transform: none;
+  }
+}
+
+.docsSection {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #11627d;
+
+  & > div {
+    max-width: 1440px;
+    min-height: 450px;
+    flex-grow: 1;
+  }
+}
+
+.slideWrap {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1220px;
+  justify-content: center;
+  margin: 0 auto !important;
+  animation: myAnim 1s ease;
+}
+
+.itemTitle {
+  @include font(3, 24, 100);
+
+  position: relative;
+  color: #fdf1cd;
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 112px;
+    height: 2px;
+    background-color: #f47422;
+    content: '';
+    transform: translateX(-50%);
+  }
+}
+
+.itemSubtitle {
+  @include font(2, 20, 20);
+
+  padding-top: 25px;
+  color: #fff;
+}
+
+.slide {
+  display: flex;
+  max-width: 298px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    max-width: 320px;
+  }
+}
+
+.slider-infrastructure {
+  @media (max-width: 1199px) {
+    flex-direction: column;
+  }
+}
+
+.docIcon {
+  width: 82px;
+  height: 111px;
+}
+
+.mobileSection {
+  display: flex;
+  justify-content: center;
+  padding-top: 146px;
+}

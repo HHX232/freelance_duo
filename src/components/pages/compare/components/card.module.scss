@@ -1,0 +1,246 @@
+.carousel_container {
+  @media (max-width: 518px) {
+    padding: 0;
+    margin: 0;
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+    padding: 33px 29px 124px;
+
+    @media (max-width: 614px) {
+      padding: 43px 24px 124px;
+    }
+
+    .actions_filter {
+      position: absolute;
+      top: 15px;
+      left: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      grid-gap: 32px;
+
+      @media (min-width: 615px) {
+        display: none;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        grid-gap: 6px;
+
+        span {
+          color: #555;
+          font-family: $font-primary;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .arrows {
+      position: absolute;
+      top: 101px;
+      left: 0;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+
+      @media (max-width: 518px) {
+        display: none;
+      }
+
+      button {
+        .arrow {
+          circle {
+            fill: #d38f6d;
+          }
+        }
+      }
+    }
+
+    .list_title {
+      position: absolute;
+      z-index: 1;
+      top: 240px;
+      display: flex;
+      flex-direction: column;
+      color: #555;
+      font-family: $font-primary;
+      font-size: 12px;
+      font-weight: 500;
+      grid-gap: 38px;
+
+      @media (max-width: 614px) {
+        top: 250px;
+      }
+
+      @media (max-width: 519px) {
+        top: 270px;
+        font-size: 8px;
+        grid-gap: 30px;
+      }
+    }
+  }
+}
+
+.card {
+  @include font(1, 14--14, 13--13);
+
+  position: relative;
+  width: 100%;
+  min-width: 180px;
+  max-width: 180px;
+  border-radius: 10px;
+  background-color: #fff;
+
+  @media (max-width: 518px) {
+    min-width: 126px;
+    max-width: 126px;
+  }
+
+  @media (min-width: 491px) {
+    &:hover {
+      .reservation {
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (max-width: 614px) {
+    .reservation {
+      height: 40px;
+      background: #fff;
+      color: #555;
+      font-size: 10px;
+      font-weight: 500;
+      opacity: 1;
+      text-align: center;
+    }
+  }
+}
+
+.image {
+  position: relative !important;
+  display: flex;
+  width: 100%;
+  max-width: 93px;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  margin: 12px auto 0;
+
+  img {
+    object-fit: contain !important;
+  }
+}
+
+.title {
+  color: #555;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+
+  &:hover {
+    color: #555;
+  }
+
+  @media (max-width: 519px) {
+    font-size: 12px;
+    text-align: left;
+  }
+}
+
+.reservation {
+  position: absolute;
+  top: 155px;
+  left: 0;
+  display: flex;
+  width: 100%;
+  max-width: 180px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f47422;
+  border-radius: 4px;
+  background: #f47422;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  opacity: 0;
+  text-align: center;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+
+  @media (max-width: 616px) {
+    background: transparent !important;
+  }
+
+  @media (max-width: 519px) {
+    margin-top: 20px;
+  }
+}
+
+.list {
+  position: relative;
+  z-index: 3;
+  top: 77px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 19px;
+  background-color: #fff;
+  color: #555;
+  grid-template-columns: auto 1fr;
+  list-style: none;
+  row-gap: 28px;
+
+  @media (max-width: 519px) {
+    top: 78px;
+    row-gap: 14px;
+  }
+}
+
+.listItem {
+  width: 200vw;
+  height: 25.5px;
+  border-bottom: 1px solid #bed0db;
+
+  &:last-child {
+    border-bottom: unset;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    grid-gap: 11px;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0;
+    }
+  }
+
+  span {
+    color: #555;
+    font-size: 14px;
+    font-weight: 400;
+    word-break: break-word;
+
+    @media (max-width: 512px) {
+      font-size: 10px;
+    }
+  }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px auto;
+}

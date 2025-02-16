@@ -1,0 +1,37 @@
+export interface IObj {
+  id: string
+  Building: string
+  building_object_id: number
+  flat_plan: string
+  flat_plan_m: string
+  section_plan: string
+  floor_plan: string
+  Floor: string
+  Num: string
+  Type: string
+  Naxis: string
+  Laxis: string
+  Tsquare: string
+  R1square: string
+  Kitchensquare: string
+  Toiletsquare: string
+  Balconysquare: string
+  Lsquare: string
+  Fprice: string
+  Rvalue: string
+  Fvalue: string
+  Dvalue: string
+  State: string
+  numpib: string
+  pibtsquare: string
+  Plandate: string
+  tipvalue: string
+  attributes: string[]
+  action: string
+  finish: string
+  ext_guid: string
+  euro: string
+  Mvalue: string
+  created_at: string
+  updated_at: string
+}

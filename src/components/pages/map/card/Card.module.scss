@@ -1,0 +1,261 @@
+@keyframes mymove {
+  from {
+    opacity: 1;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+@keyframes mymove2 {
+  from {
+    opacity: 1;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+.compassLink {
+  .compass {
+    position: absolute;
+    width: 134px;
+    height: 134px;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.405, 1.49);
+
+    @include mobile {
+      width: 50px;
+    }
+  }
+
+  @include hover {
+    .compass {
+      transform: scale(1.5);
+    }
+
+    .pulse {
+      animation: mymove2 1.6s ease-in-out infinite;
+    }
+  }
+
+  .pulse {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 134px;
+    height: 134px;
+    animation: mymove 1.6s ease-in-out infinite;
+    opacity: 0;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.405, 1.49);
+
+    @include hover {
+      transform: scale(1.5);
+    }
+
+    @include mobile {
+      width: 50px;
+    }
+  }
+
+  .pulse:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .pulse:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .pulse:nth-child(3) {
+    animation-delay: 0.9s;
+  }
+}
+
+.activeCardZindex {
+  z-index: 3;
+}
+
+.cardWrapper {
+  position: absolute;
+  width: 607px;
+  height: 430px;
+
+  @include mobile {
+    width: 0;
+    height: 0;
+  }
+}
+
+.wrapper {
+  // временно
+
+  // a {
+  //   pointer-events: none !important;
+  // }
+
+  position: absolute;
+  box-shadow: 50px 50px 28px 1px rgb(0 0 0 / 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+
+  &-visible {
+    opacity: 1;
+  }
+}
+
+.content {
+  @include font(1, 14--14, 21--21, 200);
+
+  z-index: 10;
+  display: flex;
+  width: 607px;
+  height: auto;
+  justify-content: space-between;
+  background: #fff url('/map/main-pattern.svg') 100% 100%;
+  gap: 40px;
+
+  @layer base {
+    padding: 40px 46px;
+  }
+
+  @include mobile {
+    padding-top: 56px!important;
+  }
+
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(255 255 255);
+    background: linear-gradient(133deg, rgb(255 255 255 / 100%) 33%, rgb(255 255 255 / 97%) 100%);
+    content: '';
+
+    // @include mobile {
+    //   border-radius: 10px;
+    // }
+  }
+
+  @include mobile {
+    position: fixed;
+    z-index: 9;
+    height: fit-content;
+    padding: 24px;
+    margin: auto;
+    inset: 0;
+  }
+}
+
+.leftSide {
+  z-index: 1;
+  display: flex;
+  height: 224px;
+  flex-direction: column;
+  gap: 10px;
+
+  .leftSvg {
+    height: 224px;
+  }
+
+  // @include mobile {
+  //   display: flex;
+  //   width: 44px;
+  //   height: 110px;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   justify-content: flex-start;
+  //   gap: 0;
+  //   text-align: left;
+
+  //   svg {
+  //     width: 44px;
+  //     height: 110px;
+  //   }
+
+  //   span {
+  //     font-size: 5px;
+  //     text-align: center;
+  //   }
+  // }
+}
+
+.title {
+  @include font(1, 12--12, 21--21, 500);
+
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.rightSide {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  p {
+    margin-top: 35px;
+    color: #000;
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 150%;
+    text-align: left;
+
+    @media (max-width: 990px) {
+      margin-top: 0;
+      color: #555;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 150%;
+    }
+  }
+
+  .text {
+    margin-top: 31px;
+    color: #555;
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.naberejnaya {
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  p {
+    margin-top: 0;
+  }
+}
+
+.button {
+  max-width: 284px;
+  margin: 0;
+  margin-top: 17px;
+
+  @include mobile {
+    max-width: 100%;
+    background-color: $accent-color;
+    color: #fff;
+  }
+}
+
+.close {
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  right: 15px;
+  width: 28px;
+}

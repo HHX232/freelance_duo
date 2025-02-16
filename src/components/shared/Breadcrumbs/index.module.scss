@@ -1,0 +1,41 @@
+.breadcrumbs {
+  display: none;
+  align-items: center;
+  gap: 10px;
+
+  li span {
+    @include font(2, 12, 12);
+
+    color: #555;
+  }
+
+  li a {
+    &:hover {
+      background-color: transparent;
+      color: #555;
+    }
+  }
+
+  @media screen and (min-width: 656px) {
+    display: flex;
+  }
+}
+
+.backButton {
+  all: unset;
+  position: relative;
+  left: 3px;
+  cursor: pointer;
+}
+
+.dashboard {
+  svg {
+    path {
+      fill: $korichneviy;
+    }
+  }
+}
+
+.dark * {
+  color: #fff !important;
+}

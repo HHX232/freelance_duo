@@ -1,0 +1,28 @@
+.title {
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding-right: 41px;
+  margin-top: 33px;
+  margin-left: 163px;
+
+  @media (max-width: 504px) {
+    padding-right: 24px;
+    margin-top: 8px;
+    margin-left: 77px;
+  }
+
+  .main_title, h1 {
+    color: #555;
+    font-family: $font-accent;
+    font-size: 32px;
+    font-weight: 400;
+
+    @media (max-width: 504px) {
+      color: #555;
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+}

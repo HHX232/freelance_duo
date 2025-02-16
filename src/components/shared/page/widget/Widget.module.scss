@@ -1,0 +1,31 @@
+.wrapper {
+  position: fixed;
+  z-index: 1;
+  bottom: 35px;
+  left: 42px;
+  height: 42px;
+
+  @media (max-width: 504px) {
+    left: 24px;
+  }
+
+  svg {
+    width: 51px;
+    height: 51px;
+  }
+
+  @include mobile {
+    svg {
+      width: 42px;
+      height: 42px;
+    }
+  }
+}
+
+.accentColor {
+  color: $accent-color;
+}
+
+.korichneviyColor {
+  color: $korichneviy;
+}

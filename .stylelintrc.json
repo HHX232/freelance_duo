@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-css-modules",
+    "stylelint-config-idiomatic-order"
+  ],
+  "plugins": ["stylelint-scss"],
+  "ignoreFiles": [".fttemplates/**/*.scss"],
+  "rules": {
+    "no-empty-source": null,
+    "selector-class-pattern": null,
+    "keyframes-name-pattern": null,
+    "media-feature-range-notation": null,
+    "scss/operator-no-unspaced": null,
+    "no-descending-specificity": null,
+    "order/order": [
+      "custom-properties",
+      "dollar-variables",
+      {
+        "type": "at-rule",
+        "name": "include",
+        "parameter": "font"
+      },
+      "declarations",
+      {
+        "type": "at-rule",
+        "name": "include",
+        "parameter": "desktop",
+        "hasBlock": true
+      },
+      {
+        "type": "at-rule",
+        "name": "include",
+        "parameter": "mobile",
+        "hasBlock": true
+      }
+    ]
+  }
+}

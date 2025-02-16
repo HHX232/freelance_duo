@@ -1,0 +1,108 @@
+.section {
+  position: relative;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+
+  @layer base {
+    background-image: linear-gradient(120.6deg, rgb(255 255 255 / 40%) 18.87%, rgb(255 255 255 / 0%) 66.38%), url("/content/ymap.png");
+  }
+
+  @include md {
+    background-image: linear-gradient(120.6deg, rgb(255 255 255 / 40%) 18.87%, rgb(255 255 255 / 0%) 66.38%), url("/content/ymap.png");
+
+  }
+
+  @include lg {
+    background: linear-gradient(120.6deg, rgb(255 255 255 / 40%) 18.87%, rgb(255 255 255 / 0%) 66.38%), url("/content/ymap.png");
+
+  }
+}
+
+.captions {
+  @layer base {
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    transform: translateY(-50%);
+  }
+
+  @include sm {
+    gap: 60px;
+  }
+
+  @include md {
+    top: 50%;
+    bottom: initial;
+    gap: 366px;
+  }
+
+  @include lg {
+    gap: 60px;
+  }
+
+  &-title {
+    @include font(3, 42, 54, 400);
+
+    color: $sireneviy;
+  }
+
+  @include content-container;
+}
+
+.caption-items {
+  @layer base {
+    display: flex;
+    gap: 60px;
+  }
+
+  @include md {
+    flex-direction: column;
+    gap: 48px;
+  }
+}
+
+.caption {
+  position: relative;
+  max-width: 355px;
+
+  & svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__title {
+    @include font(3, 64, 80);
+
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    color: $sireneviy;
+    gap: 8px;
+
+    & span {
+      @include font(3, 32, 44);
+    }
+  }
+
+  &__divider {
+    width: 83px;
+    height: 2px;
+    border: 0;
+    margin-top: 18px;
+    margin-left: 0;
+    background-color: $orange-bg-500;
+  }
+
+  &__description {
+    @include font(1, 16, 22, 200);
+
+    margin-top: 16px;
+    color: $sireneviy;
+    
+  }
+}

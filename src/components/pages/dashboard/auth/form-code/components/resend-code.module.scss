@@ -1,0 +1,18 @@
+.resend {
+  margin-top: 10px;
+  cursor: pointer;
+
+  span {
+    color: #555;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+
+    @media (max-width: 450px) {
+      display: flex;
+      max-width: 178px;
+      height: 22px;
+      text-align: center;
+    }
+  }
+}

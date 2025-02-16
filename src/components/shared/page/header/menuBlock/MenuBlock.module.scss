@@ -1,0 +1,12 @@
+.list {
+  margin-top: 20px;
+}
+
+.topMenuItem {
+  span {
+    @include font(1, 16, 15, 200);
+  }
+
+  color: #fdf1cd;
+  list-style-type: none;
+}

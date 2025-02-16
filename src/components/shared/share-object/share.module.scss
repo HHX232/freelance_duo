@@ -1,0 +1,29 @@
+.share {
+  position: absolute;
+  z-index: 3;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 21px 25px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 0 10px 0 rgb(89 121 148 / 25%);
+
+  @media (max-width: 504px) {
+    right: 0;
+  }
+
+  .items {
+    display: flex;
+    align-items: center;
+    grid-gap: 13px;
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 8px;
+  }
+}

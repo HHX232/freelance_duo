@@ -1,0 +1,187 @@
+$animation-delay: 0.3s;
+$animation-delay-fast: 0.3s;
+
+@keyframes zoomIn {
+  from {
+    scale: 1.5;
+  }
+
+  to {
+    scale: 1;
+  }
+}
+
+.pointsWrapper {
+  &::before {
+    position: absolute;
+    z-index: 1;
+    top: 70vh;
+    right: -36vw;
+    display: none;
+    height: 100vh;
+    aspect-ratio: 2.1152;
+    background: linear-gradient(180deg, #1e3849 0%, rgb(30 56 73 / 0%) 100%);
+    content: '';
+    transform: rotate(105deg);
+  }
+
+  @include mobile {
+    overflow: hidden;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &::after {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 390px;
+    content: '';
+    pointer-events: none;
+
+    @layer base {
+      background: linear-gradient(180deg, rgb(30 56 73 / 100%) 5%, rgb(30 56 73 / 0%) 100%);
+    }
+  }
+}
+
+.mapImage {
+  position: absolute !important;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  contain: paint;
+}
+
+.wrapper {
+  @media (max-width: 504px) {
+    min-height: 100vh;
+  }
+}
+
+.inner {
+  animation: zoomIn 2s cubic-bezier(0.075, 0.82, 0.165, 1) $animation-delay forwards;
+  scale: 1.5;
+
+  @include mobile {
+    animation: unset;
+    scale: 1;
+  }
+}
+
+.delay {
+  animation: unset;
+  scale: 1;
+}
+
+.mobileImage {
+  overflow: hidden;
+}
+
+.direction-hint {
+  @include font(1, 16, 22, 700);
+
+  color: #fff;
+  text-shadow: 0 4px 13.5px rgb(0 0 0 / 100%);
+
+
+  &-wrapper {
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.captions {
+  @layer base {
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    transform: translateY(-50%);
+  }
+
+  @include sm {
+    gap: 60px;
+  }
+
+  @include md {
+    top: 50%;
+    bottom: initial;
+    gap: 366px;
+  }
+
+  @include lg {
+    gap: 60px;
+  }
+
+  &-title {
+    @include font(3, 42, 54, 400);
+
+    color: $yellow-text;
+  }
+
+  @include content-container;
+}
+
+.caption-items {
+  @layer base {
+    display: flex;
+    gap: 60px;
+  }
+
+  @include md {
+    flex-direction: column;
+    gap: 48px;
+  }
+}
+
+.caption {
+  position: relative;
+  max-width: 245px;
+
+  & svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__title {
+    @include font(3, 64, 80);
+  
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    color: $yellow-text;
+    gap: 8px;
+
+    & span {
+      @include font(3, 32, 44);
+    }
+  }
+
+  &__divider {
+    width: 83px;
+    height: 2px;
+    border: 0;
+    margin-top: 18px;
+    margin-left: 0;
+    background-color: $orange-bg-500;
+  }
+
+  &__description {
+    @include font(1, 16, 22, 200);
+
+    margin-top: 16px;
+    color: $yellow-text;
+    
+  }
+}

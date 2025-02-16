@@ -1,0 +1,8 @@
+.container {
+  position: relative;
+  padding-top: 84px;
+
+  @media (max-width: 504px) {
+    padding-top: 39px;
+  }
+}

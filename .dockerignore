@@ -1,0 +1,8 @@
+node_modules/
+.git
+.husky
+.idea
+.vscode
+Dockerfile
+docker-compose.yml
+.gitlab-ci.yml

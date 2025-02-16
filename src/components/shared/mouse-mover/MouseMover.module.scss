@@ -1,0 +1,14 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner {
+  position: absolute;
+  overflow: hidden;
+  transition: all 0.15s ease 0s;
+}

@@ -1,0 +1,40 @@
+.no_objects {
+  display: flex;
+  min-height: 900px;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 504px) {
+    min-height: 680px;
+  }
+
+  .no_objects_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 45px;
+    grid-gap: 50px;
+
+    @media (max-width: 444px) {
+      grid-gap: 30px;
+    }
+
+    p {
+      max-width: 603px;
+      color: #555;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 131%;
+      text-align: center;
+
+      @media (max-width: 444px) {
+        color: #555;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 100%;
+        text-align: center;
+      }
+    }
+  }
+}

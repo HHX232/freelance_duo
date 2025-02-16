@@ -1,0 +1,112 @@
+.section {
+  position: relative;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+
+  @layer base {
+    background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%), linear-gradient(180deg, rgb(38 57 69 / 0%) 18.3%, rgb(38 57 69 / 47%) 49.35%, #263945 100%),
+linear-gradient(47.64deg, rgb(30 56 73 / 50%) 6.94%, rgb(30 56 73 / 0%) 83.47%), url("/content/cluster.png");
+  }
+
+  @include md {
+    background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
+linear-gradient(37.52deg, rgb(30 56 73 / 70%) 25.4%, rgb(30 56 73 / 0%) 65.67%), url("/content/cluster.png");
+
+  }
+
+  @include lg {
+    background: linear-gradient(90.01deg, rgb(30 56 73 / 70%) 0.01%, rgb(0 0 0 / 0%) 35.63%),
+linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%), url("/content/cluster.png");
+
+  }
+}
+
+.captions {
+  @layer base {
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    transform: translateY(-50%);
+  }
+
+  @include sm {
+    gap: 60px;
+  }
+
+  @include md {
+    top: 50%;
+    bottom: initial;
+    gap: 245px;
+  }
+
+  @include lg {
+    gap: 60px;
+  }
+
+  &-title {
+    @include font(3, 42, 54, 400);
+
+    max-width: 650px;
+    color: $yellow-text;
+  }
+
+  @include content-container;
+}
+
+.caption-items {
+  @layer base {
+    display: flex;
+    gap: 60px;
+  }
+
+  @include md {
+    flex-direction: column;
+    gap: 48px;
+  }
+}
+
+.caption {
+  position: relative;
+  max-width: 350px;
+
+  & svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__title {
+    @include font(3, 64, 80);
+
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    color: $yellow-text;
+    gap: 8px;
+
+    & span {
+      @include font(3, 32, 44);
+    }
+  }
+
+  &__divider {
+    width: 83px;
+    height: 2px;
+    border: 0;
+    margin-top: 18px;
+    margin-left: 0;
+    background-color: $orange-bg-500;
+  }
+
+  &__description {
+    @include font(1, 16, 22, 200);
+
+    margin-top: 16px;
+    color: $yellow-text;
+    
+  }
+}

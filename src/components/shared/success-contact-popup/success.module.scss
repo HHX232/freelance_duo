@@ -1,0 +1,39 @@
+.success_wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 102px 40px 99px;
+
+    @media (max-width: 990px) {
+      padding: 23px 36px 73px;
+    }
+
+    p {
+      color: #555;
+      font-family: $font-primary;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 114%;
+      text-align: center;
+
+      @media (max-width: 990px) {
+        max-width: 200px;
+        color: #555;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 111%;
+        text-align: center;
+      }
+    }
+  }
+
+  button {
+    max-width: 271px;
+    margin: 0 auto;
+  }
+}
