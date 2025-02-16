@@ -1,0 +1,56 @@
+stages:
+  - build
+  - up
+
+before_script:
+  - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin registry.gitlab.com
+
+after_script:
+  - docker logout registry.gitlab.com
+
+variables:
+  TAG: $CI_COMMIT_REF_NAME
+
+build_prod:
+  stage: build
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  script:
+    - docker compose build
+    - docker compose push
+  tags:
+    - builder
+    - production
+
+build_dev:
+  stage: build
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+  script:
+    - docker compose build
+    - docker compose push
+  tags:
+    - builder
+    - development
+
+up_dev:
+  environment: development
+  stage: up
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+  script:
+    - docker compose pull
+    - docker compose up -d --no-build
+  tags:
+    - development
+
+up_prod:
+  environment: production
+  stage: up
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  script:
+    - docker compose pull
+    - docker compose up -d --no-build
+  tags:
+    - production
