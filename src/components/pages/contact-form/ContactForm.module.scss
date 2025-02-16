@@ -1,0 +1,71 @@
+.contact-form-wrapper {
+    display: flex;
+
+    & .info {
+        @include content-container;
+
+        padding-top: 190px;
+        padding-bottom: 190px;
+        background-color: rgb(17 98 125 / 100%);
+        color: #fff;
+
+        & .title {
+            @include font(3, 42, 54);
+
+            max-width: 464px;
+        }
+
+        & .description, & .input-label {
+            @include font(1, 16, 22);
+
+            max-width: 460px;
+            margin-top: 20px;
+        }
+
+        & form {
+            margin-top: 60px;
+        }
+
+        & button {
+            margin-top: 36px;
+        }
+
+        & .input-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        & .input {
+            @include font(1, 14, 18);
+
+            display: block;
+            padding: 15px;
+            border: 1px solid #fff;
+            border-radius: 6px;
+            background-color: transparent;
+
+            &::placeholder {
+                color: rgb(255 255 255 / 60%);
+            }
+        }
+
+        & .caption {
+            @include font(1, 12, 14, 300);
+
+            margin-top: 36px;
+
+            & a {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    & .bg {
+        flex: 1;
+        background-image: url("/content/contact-form.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}

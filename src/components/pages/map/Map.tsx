@@ -16,6 +16,7 @@ import AreasPage from '@pages/areas/Areas'
 import FortovPage from '@pages/fortov/Fortov'
 import TransportPage from '@pages/transport/Transport'
 import HomePage from '@pages/home/Home.page'
+import ContactFormPage from '@pages/contact-form/ContactForm'
 
 const Preloader = dynamic(() => import('./preloader/Preloader'), { ssr: false })
 const Compass = dynamic(() => import('./card/Compass'), { ssr: false })
@@ -311,6 +312,7 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
 
             <AreasPage />
             <FortovPage />
+            <ContactFormPage />
           </Page>
         </>
       )}

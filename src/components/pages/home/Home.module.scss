@@ -1,0 +1,28 @@
+.home-wrapper {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 124px;
+    background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+
+    .container {
+        @include content-container;
+    }
+
+    .title {
+        @include font(3, 124, 150, 400);
+    }
+
+    .description {
+        @include font(1, 24, 34);
+
+        max-width: 780px;
+        margin-top: 12px;
+    }
+}
+
