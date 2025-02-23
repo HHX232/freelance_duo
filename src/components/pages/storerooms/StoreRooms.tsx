@@ -7,13 +7,13 @@ import MakeTicket from '@pages/storerooms/components/MakeTicket/MakeTicket'
 
 const StoreRooms = () => {
   return (
-      <div className={styles['storerooms-wrapper']}>
-        <Head />
-        <Comfort />
-        <Tiles />
-        <Design/>
-        <MakeTicket/>
-      </div>
+    <div className={styles['storerooms-wrapper']}>
+      <Head />
+      <Comfort />
+      <Tiles />
+      <Design />
+      <MakeTicket />
+    </div>
   )
 }
 
