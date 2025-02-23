@@ -4,10 +4,10 @@ services:
   frontend:
     build:
       context: .
-    image: registry.gitlab.com/labab-dev/kronfort/frontend:${TAG:-latest}
+    image: registry.gitlab.com/soundsnick/kronfort:${TAG:-latest}
     restart: unless-stopped
     ports:
-      - "127.0.0.1:8015:3000"
+      - "4000:3000"
 
 networks:
   default:
