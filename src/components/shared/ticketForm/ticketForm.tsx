@@ -2,12 +2,11 @@
 import styles from './ticketForm.module.scss'
 import FilledButton from '@shared/filledButton/FilledButton'
 
-
 const TicketForm = () => {
   return (
     <div className={styles['ticketForm']}>
-      <div className="header">
-        <p>Оставьте заявку и мы поможем вам с выбором кладовой</p>
+      <div className='header'>
+        <p>Оставьте заявку и мы поможем вам с выбором кладовой</p>
       </div>
       <form className={styles['info']}>
         <div className={styles['input-wrapper']}>
@@ -19,9 +18,10 @@ const TicketForm = () => {
           <input className={styles.input} placeholder='+7 (___) ___-__-__' />
         </div>
         <FilledButton>Отправить</FilledButton>
-        <p className={styles.caption}>Нажимая кнопку «Отправить», вы даёте согласие на <a href='/consent'>обработку своих персональных данных</a></p>
+        <p className={styles.caption}>
+          Нажимая кнопку «Отправить», вы даёте согласие на <a href='/consent'>обработку своих персональных данных</a>
+        </p>
       </form>
-
     </div>
   )
 }
