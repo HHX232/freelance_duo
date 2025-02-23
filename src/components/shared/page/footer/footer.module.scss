@@ -86,6 +86,7 @@
           display: flex;
           flex-shrink: 0;
           margin-left: 28px;
+          max-width: fit-content;
 
           @media (max-width: 586px) {
             display: none;

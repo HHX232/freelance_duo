@@ -1,0 +1,169 @@
+.tiles-wrapper {
+
+  @layer base {
+    background: #11627D14;
+    display: flex;
+    align-items: center;
+    padding: 60px 16px;
+  }
+
+  @include desktop {
+    padding: 80px 40px 80px 196px;
+  }
+
+}
+
+.wrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @include desktop {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+}
+
+.main-wrapper {
+
+  @layer base {
+
+  }
+
+  @include xxl {
+    height: 720px!important;
+    flex-direction: row;
+  }
+}
+
+.column {
+  @layer base {
+    flex-direction: column;
+  }
+
+  @include md {
+    .wrapper {
+      flex-direction: row;
+    }
+    .tile {
+      width: 100%;
+    }
+  }
+}
+
+.tile {
+
+  @layer base {
+    color: #FFFFFF;
+    padding: 36px 20px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-break: break-word;
+    overflow: hidden;
+
+
+    .title {
+      @include font(3, 22, 34, 400);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .description {
+      @include font(3, 14, 18, 400);
+    }
+  }
+
+  @include desktop {
+    height: 300px;
+  }
+
+  @include lg {
+
+    .title {
+      @include font(3, 32, 44, 400);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .description {
+      @include font(3, 16, 22, 400);
+    }
+
+  }
+
+  @include xxl {
+    height: 100%!important;
+    width: 100%;
+    padding: 40px;
+  }
+
+}
+
+.tile-bg1 {
+  @layer base {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_3.jpeg') no-repeat;
+    gap: 40px;
+    background-size: 100% 100%;
+    justify-content: space-between;
+  }
+
+  @include md {
+    justify-content: flex-end;
+  }
+
+}
+
+.tile-bg2 {
+  background: #11627D;
+}
+
+.tile-bg3 {
+  background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_4.jpeg') no-repeat center center;
+  background-size: 100%;
+
+  .title {
+    @include font(3, 40, 50, 400);
+  }
+
+  @include lg {
+
+    .title {
+      @include font(3, 64, 80, 400);
+    }
+  }
+}
+
+.tile-bg4 {
+
+  @layer base {
+    position: relative;
+    background: #FFFFFF;
+    color: black;
+
+    .title {
+      @include font(3, 40, 50, 400);
+    }
+  }
+
+  @include lg {
+
+    .title {
+      @include font(3, 64, 80, 400);
+    }
+  }
+
+}
+
+.icon-wrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
