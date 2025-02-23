@@ -1,0 +1,115 @@
+.block-wrapper {
+  @layer base {
+    padding: 0 16px;
+  }
+
+  @include desktop {
+    padding: 0 40px 0 196px;
+  }
+
+}
+
+.title {
+  @layer base {
+    color: rgba(33, 60, 78, 1);
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-bottom: 0px solid rgba(17, 98, 125, 0.3);
+    @include font(3, 30, 40, 400);
+  }
+
+  @include desktop {
+    @include font(3, 42, 54, 400);
+    border-bottom: 1px solid rgba(17, 98, 125, 0.3);
+    margin-bottom: 40px;
+  }
+
+}
+
+.tile {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    width: 100%;
+    word-wrap: break-word;
+
+    justify-content: space-between;
+    padding: 36px 20px;
+    @include font(3, 22, 34, 400);
+    color: #FFFFFF;
+    gap: 24px;
+    height: 300px;
+  }
+
+  @include desktop {
+    display: flex;
+
+    .tile {
+      justify-content: space-between;
+      height: 532px;
+      padding: 60px;
+      @include font(3, 32, 44, 400);
+      color: #FFFFFF;
+    }
+  }
+
+
+}
+
+.tiles-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.first-line {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @include lg {
+    flex-direction: row;
+
+    .tile {
+      height: 540px;
+    }
+  }
+}
+
+
+.second-line {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .tile {
+      background: #FFFFFF;
+      color: rgba(17, 17, 16, 1);
+    }
+  }
+
+  @include lg {
+    .tile {
+      height: 300px;
+    }
+  }
+
+  @include desktop {
+    flex-direction: row;
+  }
+
+
+}
+
+.bg1 {
+  background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_5.jpeg') no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.bg2 {
+  background: rgba(17, 98, 125, 1);
+}
