@@ -4,6 +4,7 @@ import styles from './StoreRooms.module.scss'
 import Tiles from '@pages/storerooms/components/tiles/Tiles'
 import Design from '@pages/storerooms/components/design/Design'
 import MakeTicket from '@pages/storerooms/components/MakeTicket/MakeTicket'
+import Carousel from '@pages/storerooms/components/carousel/carousel'
 
 const StoreRooms = () => {
   return (
@@ -11,6 +12,7 @@ const StoreRooms = () => {
       <Head />
       <Comfort />
       <Tiles />
+      <Carousel />
       <Design />
       <MakeTicket />
     </div>
