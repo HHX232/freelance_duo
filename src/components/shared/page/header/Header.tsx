@@ -337,6 +337,9 @@ const Header = ({dark, dashboard}: HeaderProps) => {
               <div onClick={() => setIsMenuOpened(false)}>
                 <MenuItem text={'Кладовые'} href={'/storerooms'}/>
               </div>
+              <div onClick={() => setIsMenuOpened(false)}>
+                <MenuItem text={'Паркинг'} href={'/parking'}/>
+              </div>
             </MenuBlock>
 
             <MenuBlock closeHandler={closeHandler} title='О проекте'>
