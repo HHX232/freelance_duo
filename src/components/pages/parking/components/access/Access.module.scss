@@ -1,0 +1,146 @@
+.wrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include lg{
+    flex-direction: row;
+  }
+}
+
+.image {
+  @layer base {
+    background: url('/content/parking/parking_space.png') no-repeat center center;
+    background-size: 100% 100%;
+    height: 300px;
+  }
+
+  @include lg {
+    width: 20%;
+    height: inherit;
+    background-size: cover;
+    background-position-x: 0%;
+  }
+
+  @include xl {
+    width: 25%;
+  }
+
+
+  @include xxl {
+    width: 30%;
+  }
+}
+
+.content {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding: 40px 16px;
+
+    background: rgba(17, 98, 125, 1);
+    color: white;
+  }
+
+  @include md{
+    padding: 60px 40px;
+  }
+
+  @include lg {
+    width: 100%;
+  }
+}
+
+.tiles {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  @include lg {
+    flex-direction: row;
+  }
+}
+
+.column{
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+}
+
+.tile {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 40px;
+  }
+}
+
+.title {
+  @layer base {
+    @include font(3, 30, 40, 400);
+  }
+
+  @include lg {
+    width: 40%;
+    @include font(4, 36, 50, 400);
+  }
+}
+
+.sub-title {
+  @layer base {
+    @include font(3, 22, 34, 400);
+    word-wrap: break-word;
+  }
+
+  @include lg {
+    @include font(3, 26, 36, 400);
+  }
+}
+
+.desc {
+  @layer base {
+    @include font(4, 14, 18, 400);
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+}
+
+.TableButtonWrapper{
+  @layer base {
+    display: flex;
+  }
+
+  @include lg{
+    display: none;
+  }
+}
+
+
+.title-wrapper{
+  @layer base {
+    display: flex;
+  }
+
+  @include lg {
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+.DesktopButton {
+  @layer base {
+    display: none;
+  }
+
+  @include lg{
+    display: flex;
+    height: fit-content;
+  }
+}
+

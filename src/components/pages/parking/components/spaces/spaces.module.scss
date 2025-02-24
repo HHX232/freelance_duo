@@ -14,19 +14,168 @@
     color: rgba(33, 60, 78, 1);
     padding-bottom: 40px;
     margin-bottom: 40px;
-    border-bottom: 0px solid rgba(17, 98, 125, 0.3);
+    border-bottom: 0 solid rgba(17, 98, 125, 0.3);
     @include font(3, 30, 40, 400);
   }
 
   @include md {
     @include font(3, 42, 54, 400);
     border-bottom: 1px solid rgba(17, 98, 125, 0.3);
-    margin-bottom: 40px;
   }
 
 }
 
 
-//
-//background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_5.jpeg') no-repeat center center;
-//background-size: 100% 100%;
+.tiles-main-wrapper {
+  @layer base {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  @include xxl {
+    flex-direction: row;
+    height: 720px;
+  }
+
+}
+
+.tiles-wrapper {
+  @layer base {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+.tile {
+  @layer base {
+    height: 300px;
+    width: 100%;
+    color: #FFFFFF;
+    padding: 36px 20px;
+    word-wrap: break-word;
+  }
+
+  @include xxl {
+    height: 100%;
+  }
+
+}
+
+.column {
+  @layer base {
+    flex-direction: column;
+
+    .tiles-wrapper {
+      flex-direction: column;
+    }
+  }
+
+  @include md {
+    .tiles-wrapper {
+      flex-direction: row;
+    }
+  }
+}
+
+.title_num {
+  @layer base {
+    @include font(3, 40, 50, 400);
+  }
+}
+
+.title_text {
+  @layer base {
+    @include font(3, 22, 34, 400);
+  }
+
+  @include md {
+    @include font(3, 26, 36, 400);
+  }
+}
+
+.desc {
+  @layer base {
+    @include font(3, 14, 18, 400);
+  }
+
+}
+
+.text_wrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.button_wrapper {
+  @layer base {
+    //height: inherit;
+    width: inherit;
+  }
+
+  @include lg {
+    width: 280px;
+  }
+}
+
+.num_info {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.bg-1 {
+  @layer base {
+    background: rgba(17, 98, 125, 1);
+  }
+}
+
+.bg-2 {
+  @layer base {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/parking_outside.jpeg') no-repeat center center;
+    background-size: 100% 100%;
+  }
+}
+
+.bg-3 {
+  @layer base {
+    background: #FFFFFF;
+    color: rgba(85, 85, 85, 1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @include lg {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  @include xxl {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+.bg-4 {
+  @layer base {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/parking_inside_2.jpeg') no-repeat center center;
+    background-size: 100% 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 24px;
+  }
+}
+
+
+
