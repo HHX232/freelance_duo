@@ -43,7 +43,6 @@
     .poster {
         padding: 54px;
         margin-top: 40px;
-        background-image: linear-gradient(90deg, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 0%) 100%), url("/content/payment-methods/poster.jpeg");
         background-position: center;
         background-size: cover;
 
@@ -137,12 +136,32 @@
 
                 &__title {
                     @include font(3, 32, 44);
+
+                    & span {
+                        color: $accent-blue;
+                    }
                 }
 
                 &__info {
                     display: flex;
                     flex-direction: column;
                     gap: 40px;
+
+                    &-inner {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 40px;
+
+                        &__caption {
+                            @include font(1, 16, 22);
+                        }
+
+                        &__phone {
+                            @include font(1, 24, 34);
+
+                            color: $accent-blue;
+                        }
+                    }
                 }
 
                 &__description {
