@@ -1,0 +1,198 @@
+.payment-methods {
+    padding-top: 140px;
+
+    @include content-container;
+
+    .title {
+        @include font(3, 42, 54);
+
+        margin-top: 36px;
+    }
+
+    .tabs {
+        display: flex;
+        margin-top: 60px;
+        gap: 8px;
+    }
+
+    .tab-button {
+        @include font(1, 16, 14);
+
+        padding: 16px 20px;
+        border-radius: 6px;
+        background-color: #fff;
+        color: rgb(85 85 85 / 100%);
+
+        &.active {
+            background-color: $sireneviy;
+            color: #fff;
+        }
+    }
+
+    .icon-wrapper {
+        display: flex;
+        width: 48px;
+        height: 48px;
+        flex: 0 0 48px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        background-color: rgb(17 98 125 / 8%);
+    }
+
+    .poster {
+        padding: 54px;
+        margin-top: 40px;
+        background-image: linear-gradient(90deg, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 0%) 100%), url("/content/payment-methods/poster.jpeg");
+        background-position: center;
+        background-size: cover;
+
+        .title {
+            @include font(3, 64, 80);
+
+            color: #fff;
+        }
+
+        .subtitle {
+            @include font(1, 24, 34);
+
+            max-width: 335px;
+            margin-top: 40px;
+            color: #fff;
+        }
+
+        .cards {
+            display: flex;
+            margin-top: 134px;
+            gap: 20px;
+
+            .card {
+                display: flex;
+                flex: 1;
+                align-items: center;
+                padding: 36px;
+                background-color: #fff;
+                gap: 16px;
+
+                
+
+                .card-title {
+                    @include font(3, 24, 36);
+                }
+            }
+        }
+    }
+
+    .poster-meta {
+        display: flex;
+        justify-content: space-between;
+        padding: 38px 54px;
+        background-color: $sireneviy;
+
+        &__title {
+            @include font(3, 32, 44);
+
+            color: #fff;
+        }
+
+        & button {
+            @include font(1, 16, 24);
+
+            padding: 12px 36px;
+            text-transform: uppercase;
+        }
+    }
+
+    .variants {
+        margin-top: 110px;
+
+        .title {
+            margin: 0;
+        }
+
+        .variant-items {
+            display: flex;
+            flex-direction: column;
+            margin-top: 60px;
+            gap: 24px;
+        }
+
+        .variant-row {
+            display: flex;
+            gap: 24px;
+
+            .cover {
+                background-position: center;
+                background-size: cover;
+
+            }
+
+            .meta {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 40px;
+                background-color: #fff;
+                gap: 77px;
+
+                &__title {
+                    @include font(3, 32, 44);
+                }
+
+                &__info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 40px;
+                }
+
+                &__description {
+                    @include font(1, 16, 22);
+
+                    color: $grey-text;
+                }
+
+                &__description-wrapper {
+                    display: flex;
+                    align-items: center;
+                    gap: 24px;
+                }
+
+                &__pages {
+                    @include font(1, 16, 22);
+
+                    color: #B5B9BE;
+                    letter-spacing: 2px;
+
+                    & span {
+                        color: $accent-blue;
+                    }
+                }
+
+                &-buttons {
+                    display: flex;
+                    gap: 20px;
+
+                    &__bordered {
+                        border: 1px solid $grey-stroke;
+                    }
+                }
+            }
+
+            &:nth-child(odd) {
+                .cover {
+                    flex: 0 0 60%;
+                }
+
+                .meta {
+                    flex: 1;
+                }
+            }
+
+            &:nth-child(even) {
+                .cover, .meta { 
+                    flex: 1;
+                }
+            }
+        }
+    }
+}

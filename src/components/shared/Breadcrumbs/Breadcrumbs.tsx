@@ -1,9 +1,8 @@
 'use client'
-import BreadcrumbSVG from '@icons/breadcrumb.svg'
-import {Breadcrumb} from 'antd'
+import { Breadcrumb } from 'antd'
 import Link from 'next/link'
 import styles from './index.module.scss'
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
 
 export interface BreadcrumbItem {
@@ -19,18 +18,11 @@ interface BreadcrumbsProps {
   dashboard?: boolean
 }
 
-const Breadcrumbs = ({items, darkTheme, className, dashboard}: BreadcrumbsProps) => {
+const Breadcrumbs = ({ items, darkTheme, className }: BreadcrumbsProps) => {
   const router = useRouter()
 
   return (
-    <section className={clsx(styles.breadcrumbs, className, {[styles.dark]: darkTheme})}>
-      <button
-        className={clsx(styles.backButton, dashboard ? styles.dashboard : '')}
-        onClick={() => router.back()}
-        title='Вернуться назад'
-      >
-        <BreadcrumbSVG width={14} height={14} />
-      </button>
+    <section className={clsx(styles.breadcrumbs, className, { [styles.dark]: darkTheme })}>
       <Breadcrumb separator={<>|</>}>
         {items.map((item, index) => (
           <Breadcrumb.Item key={index}>

@@ -14,15 +14,15 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import IconWithCount from '@shared/IconWithCount/IconWithCount'
 import FilledButton from '@shared/filledButton/FilledButton'
-import {useEffect, useRef, useState} from 'react'
+import { useEffect, useRef, useState } from 'react'
 import MenuItem from './menuItem/MenuItem'
 import MenuBlock from './menuBlock/MenuBlock'
-import {useIsMobile, useIsTablet} from '@utils/useIsMobile'
-import {useClickOutside} from '@src/lib/hooks/useOutsideClick'
-import {AuthPopup} from '@pages/dashboard/auth/auth'
-import {useStore} from '@src/lib/store/store'
-import {usePathname, useRouter} from 'next/navigation'
-import {Backcall} from '@shared/back-call-popup/backcall'
+import { useIsMobile, useIsTablet } from '@utils/useIsMobile'
+import { useClickOutside } from '@src/lib/hooks/useOutsideClick'
+import { AuthPopup } from '@pages/dashboard/auth/auth'
+import { useStore } from '@src/lib/store/store'
+import { usePathname, useRouter } from 'next/navigation'
+import { Backcall } from '@shared/back-call-popup/backcall'
 import useRouterNext from "@src/lib/hooks/useRouter";
 
 interface HeaderProps {
@@ -33,7 +33,7 @@ interface HeaderProps {
   }
 }
 
-const Header = ({dark, dashboard}: HeaderProps) => {
+const Header = ({ dark, dashboard }: HeaderProps) => {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
   const isMobile = useIsMobile()
   const isTablet = useIsTablet()
@@ -45,7 +45,7 @@ const Header = ({dark, dashboard}: HeaderProps) => {
   const { replace } = useRouterNext();
   const pathname = usePathname()
 
-  const {token, clearToken} = useStore()
+  const { token, clearToken } = useStore()
 
   // const handleClick = (e) => {
   //   e.preventDefault();
@@ -95,7 +95,7 @@ const Header = ({dark, dashboard}: HeaderProps) => {
 
   const [isOpenAuth, setOpenAuth] = useState(false)
 
-  const {favorites, compare} = useStore()
+  const { favorites, compare } = useStore()
 
   const [favoritesCount, setFavoritesCount] = useState(0)
   const [compareCount, setCompareCount] = useState(0)
@@ -159,7 +159,7 @@ const Header = ({dark, dashboard}: HeaderProps) => {
   return (
     <>
       <header
-        className={clsx(styles.header, {[styles.dark]: dark}, isMenuOpened ? `${styles.active} no-scroll` : '')}
+        className={clsx(styles.header, { [styles.dark]: dark }, isMenuOpened ? `${styles.active} no-scroll` : '')}
         ref={burgerRef}
       >
         <div className={styles.container}>
@@ -172,7 +172,7 @@ const Header = ({dark, dashboard}: HeaderProps) => {
                     {isLK && (
                       <>
                         {token ? (
-                          <Link href={'/lk'} className={styles.lk} style={isMenuOpened ? {color: '#fff'} : {}}>
+                          <Link href={'/lk'} className={styles.lk} style={isMenuOpened ? { color: '#fff' } : {}}>
                             Личный кабинет
                           </Link>
                         ) : (
@@ -180,7 +180,7 @@ const Header = ({dark, dashboard}: HeaderProps) => {
                             type='button'
                             className={styles.lk}
                             onClick={() => setOpenAuth(!isOpenAuth)}
-                            style={isMenuOpened ? {color: '#fff'} : {}}
+                            style={isMenuOpened ? { color: '#fff' } : {}}
                           >
                             Личный кабинет
                           </button>
@@ -335,7 +335,7 @@ const Header = ({dark, dashboard}: HeaderProps) => {
                 </div>
               </MenuItem>
               <div onClick={() => setIsMenuOpened(false)}>
-                <MenuItem text={'Кладовые'} href={'/storerooms'}/>
+                <MenuItem text={'Кладовые'} href={'/storerooms'} />
               </div>
             </MenuBlock>
 
@@ -355,6 +355,7 @@ const Header = ({dark, dashboard}: HeaderProps) => {
 
             <MenuBlock closeHandler={closeHandler} title='Информация'>
               <MenuItem text='О застройщике' href='/alkor' />
+              <MenuItem text='Способы покупки' href='/payment-methods' />
               <MenuItem text='Ход строительства' href='/gallery' />
               <MenuItem text='Документы' href='/docs' />
               <MenuItem text='Контакты' href='/contacts' />

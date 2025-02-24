@@ -6,7 +6,7 @@ const TicketForm = () => {
   return (
     <div className={styles['ticketForm']}>
       <div className='header'>
-        <p>Оставьте заявку и мы поможем вам с выбором кладовой</p>
+        <p className={styles['header__title']}>Оставьте заявку и мы поможем вам с выбором кладовой</p>
       </div>
       <form className={styles['info']}>
         <div className={styles['input-wrapper']}>

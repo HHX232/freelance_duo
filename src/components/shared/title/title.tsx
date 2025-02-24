@@ -1,5 +1,5 @@
 import styles from './title.module.scss'
-import Breadcrumbs, {BreadcrumbItem} from '@shared/Breadcrumbs/Breadcrumbs'
+import Breadcrumbs, { BreadcrumbItem } from '@shared/Breadcrumbs/Breadcrumbs'
 interface IProps {
   breadcrumbs?: BreadcrumbItem[]
   title?: string
@@ -13,15 +13,15 @@ export const Title = (props: IProps) => {
   return (
     <div className={styles.title} style={props.style}>
       {props.breadcrumbs && (
-        <Breadcrumbs items={props.breadcrumbs} darkTheme={props.darkTheme} dashboard={props.dashboard} />
+        <Breadcrumbs items={props.breadcrumbs} darkTheme={props.darkTheme} />
       )}
       {props.h1 ? (
         <>
-          {props.title && <p style={{color: props.darkTheme ? '#FDF1CD' : ''}} className={styles.main_title}>{props.title}</p>}
+          {props.title && <p style={{ color: props.darkTheme ? '#FDF1CD' : '' }} className={styles.main_title}>{props.title}</p>}
         </>
       ) : (
         <>
-          {props.title && <h1 style={{color: props.darkTheme ? '#FDF1CD' : ''}} className={styles.main_title}>{props.title}</h1>}
+          {props.title && <h1 style={{ color: props.darkTheme ? '#FDF1CD' : '' }} className={styles.main_title}>{props.title}</h1>}
         </>
       )}
     </div>
