@@ -4,13 +4,17 @@ import Head from '@pages/parking/components/head/Head'
 import Comfort from '@pages/parking/components/comfort/Comfort'
 import Scheme from '@pages/parking/components/scheme/Scheme'
 import Spaces from '@pages/parking/components/spaces/Spaces'
+import Access from '@pages/parking/components/access/Access'
 
 const ParkingWrapper = () => {
   return (
     <div className={styles['wrapper']}>
       <Head />
       <Comfort />
-      <Scheme />
+      <div>
+        <Access />
+        <Scheme />
+      </div>
       <Spaces />
       <MakeTicket />
     </div>
