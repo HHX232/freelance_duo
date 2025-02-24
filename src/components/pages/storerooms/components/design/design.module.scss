@@ -3,7 +3,10 @@
     padding: 0 16px;
   }
 
-  @include desktop {
+  @include lg {
+    padding: 0 40px;
+  }
+  @include xl {
     padding: 0 40px 0 196px;
   }
 

@@ -24,6 +24,8 @@
     "antd": "^5.18.0",
     "clsx": "^2.1.0",
     "dompurify": "^3.1.5",
+    "embla-carousel-class-names": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "next": "^14.2.4",
     "normalize.css": "^8.0.1",
     "react": "^18",
