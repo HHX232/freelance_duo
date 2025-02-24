@@ -1,12 +1,10 @@
 .ticketForm {
   @layer base {
-    background: rgba(255, 255, 255, 1);
-    color: rgba(116, 118, 121, 1);
-
     display: flex;
     flex-direction: column;
-
     padding: 36px 16px;
+    background: rgb(255 255 255 / 100%);
+    color: rgb(116 118 121 / 100%);
     gap: 24px;
   }
 
@@ -16,13 +14,13 @@
   }
 }
 
-.header {
+.header__title {
   @layer base {
     @include font(1, 16, 20);
   }
 
   @include lg {
-    @include font(1, 20, 28);
+    @include font(1, 24, 34);
   }
 }
 
@@ -43,12 +41,12 @@
 
     display: block;
     padding: 15px;
-    border: 1px solid rgba(205, 208, 211, 1);
+    border: 1px solid rgb(205 208 211 / 100%);
     border-radius: 6px;
     background-color: transparent;
 
     &::placeholder {
-      color: rgba(205, 208, 211, 1);;
+      color: rgb(205 208 211 / 100%);;
     }
   }
 
