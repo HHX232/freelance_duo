@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithRef, useCallback, useEffect, useState} from 'react'
+import {ComponentPropsWithRef, useCallback, useEffect, useState} from 'react'
 import {EmblaCarouselType} from 'embla-carousel'
 import emblaStyle from './embla.module.scss'
 import ToLeft from '@icons/toLeft.svg'

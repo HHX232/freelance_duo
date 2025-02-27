@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './Scheme.module.scss'
 import DownloadSVG from '@icon/download.svg'
 import SchemeIcon from '@icon/scheme.svg'

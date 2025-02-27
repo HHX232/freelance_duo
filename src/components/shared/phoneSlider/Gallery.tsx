@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import {FC} from 'react'
 import {EmblaOptionsType} from 'embla-carousel'
 import {EmblaViewportRefType} from 'embla-carousel-react'
 import emblaStyle from './embla.module.scss'

@@ -1,9 +1,9 @@
 'use client'
-import React, { Suspense, useEffect, useState } from 'react'
+import {Suspense, useEffect, useState} from 'react'
 import styles from './Map.module.scss'
-import { DirectionHint, PinType, Point } from './model'
+import {DirectionHint, PinType, Point} from './model'
 import MouseMover from '@shared/mouse-mover/MouseMover'
-import { useIsMobile } from '@utils/useIsMobile'
+import {useIsMobile} from '@utils/useIsMobile'
 import clsx from 'clsx'
 import Pin from '@pages/map/pin/pin'
 import dynamic from 'next/dynamic'
@@ -20,13 +20,13 @@ import ContactFormPage from '@pages/contact-form/ContactForm'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 
-const Preloader = dynamic(() => import('./preloader/Preloader'), { ssr: false })
-const Compass = dynamic(() => import('./card/Compass'), { ssr: false })
-const Card = dynamic(() => import('./card/CompassCard'), { ssr: false })
+const Preloader = dynamic(() => import('./preloader/Preloader'), {ssr: false})
+const Compass = dynamic(() => import('./card/Compass'), {ssr: false})
+const Card = dynamic(() => import('./card/CompassCard'), {ssr: false})
 
 const directionHints: DirectionHint[] = [
   {
-    name: "ЖК «Набережная»",
+    name: 'ЖК «Набережная»',
     coords: {
       x: 49,
       y: 10
@@ -37,7 +37,7 @@ const directionHints: DirectionHint[] = [
     }
   },
   {
-    name: "КАД (10 мин.)",
+    name: 'КАД (10 мин.)',
     coords: {
       x: 59,
       y: 10
@@ -49,19 +49,19 @@ const directionHints: DirectionHint[] = [
     icon: <ArrowUpSVG />
   },
   {
-    name: "Кронштадское шоссе (3 мин.)",
+    name: 'Кронштадское шоссе (3 мин.)',
     coords: {
       x: 76,
       y: 10
     }
   },
   {
-    name: "ЖК «Центральный»",
+    name: 'ЖК «Центральный»',
     coords: {
       x: 74,
       y: 28
     }
-  },
+  }
 ]
 
 const points: Point[] = [
@@ -166,7 +166,7 @@ const pins: PinType[] = [
   }
 ]
 
-const MapContent = ({ preloader }: { preloader: boolean }) => {
+const MapContent = ({preloader}: {preloader: boolean}) => {
   const isMobile = useIsMobile()
   const [curPoint, setCurPoint] = useState(points[0])
   const [isMobileCardVisible, setIsMobileCardVisible] = useState(false)
@@ -209,33 +209,37 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
     return <Preloader />
   }
 
-
   const mobileSlides: React.ReactNode[] = [
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']}`} key={999}>
       <div className={styles['caption']}>
-        <h2 className={styles['caption__title']}>3<span>мин</span></h2>
+        <h2 className={styles['caption__title']}>
+          3<span>мин</span>
+        </h2>
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>до моря</p>
       </div>
 
       <div className={styles['caption']}>
-        <h2 className={styles['caption__title']}>10<span>мин</span></h2>
+        <h2 className={styles['caption__title']}>
+          10<span>мин</span>
+        </h2>
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>до Кронштадского шоссе и КАД</p>
       </div>
     </div>,
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']}`} key={888}>
       <div className={styles['caption']}>
-        <h2 className={styles['caption__title']}>30<span>мин</span></h2>
+        <h2 className={styles['caption__title']}>
+          30<span>мин</span>
+        </h2>
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>до «Лахта Центра»</p>
       </div>
     </div>
   ]
 
-
   return (
-    <div >
+    <div>
       <Head>
         {/* eslint-disable-next-line react/no-unknown-property */}
         <link rel='preload' href='/map/map.png' as='image' fetchPriority='high' />
@@ -254,25 +258,31 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
           {/*{preloader && <Preloader />}*/}
           <Page>
             <HomePage />
-            <div style={{ position: 'relative', ...(isHide ? { opacity: 0 } : { opacity: 1 }) }}>
+            <div style={{position: 'relative', ...(isHide ? {opacity: 0} : {opacity: 1})}}>
               <div className={styles.captions}>
                 <h2 className={styles['captions-title']}>Локация</h2>
                 <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
                   <div className={styles['caption']}>
                     <CornerSVG />
-                    <h2 className={styles['caption__title']}>3<span>мин</span></h2>
+                    <h2 className={styles['caption__title']}>
+                      3<span>мин</span>
+                    </h2>
                     <hr className={styles['caption__divider']} />
                     <p className={styles['caption__description']}>до моря</p>
                   </div>
                   <div className={styles['caption']}>
                     <CornerSVG />
-                    <h2 className={styles['caption__title']}>10<span>мин</span></h2>
+                    <h2 className={styles['caption__title']}>
+                      10<span>мин</span>
+                    </h2>
                     <hr className={styles['caption__divider']} />
                     <p className={styles['caption__description']}>до Кронштадского шоссе и КАД</p>
                   </div>
                   <div className={styles['caption']}>
                     <CornerSVG />
-                    <h2 className={styles['caption__title']}>30<span>мин</span></h2>
+                    <h2 className={styles['caption__title']}>
+                      30<span>мин</span>
+                    </h2>
                     <hr className={styles['caption__divider']} />
                     <p className={styles['caption__description']}>до «Лахта Центра»</p>
                   </div>
@@ -282,26 +292,31 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
                 </div>
               </div>
 
-
-              {(isMobile && isMobileCardVisible) && (
+              {isMobile && isMobileCardVisible && (
                 <Card
                   color={curPoint.color}
                   text={curPoint.text}
                   name={curPoint.name}
                   isVisible={isMobileCardVisible}
-                  style={{ opacity: 1, zIndex: 9, top: '50%', left: '50%', maxWidth: 680}}
+                  style={{
+                    opacity: 1,
+                    zIndex: 9,
+                    top: '50%',
+                    left: '50%',
+                    maxWidth: 680
+                  }}
                   onClickCloseCard={onClickCloseCard}
                 />
               )}
-              <div style={{ overflow: 'hidden', width: '100%' }}>
+              <div style={{overflow: 'hidden', width: '100%'}}>
                 <MouseMover
-                  className={clsx(styles.wrapper,)}
+                  className={clsx(styles.wrapper)}
                   innerClassName={clsx(styles.inner, preloader ? styles.delay : '')}
                   isMobile={isMobile}
                   isMobileCardVisible={isMobileCardVisible}
                   disableMove={true}
                 >
-                   {/*--------------------------- */}
+                  {/*--------------------------- */}
 
                   <div className={styles.pointsWrapper}>
                     {pins &&
@@ -332,16 +347,12 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
                         key={i}
                         className={styles['direction-hint-wrapper']}
                         style={{
-                          top: `${ isMobile ? hint?.coords_mob?.y : hint.coords.y}%`,
-                          left: `${ isMobile ? hint?.coords_mob?.x : hint.coords.x}%`,
+                          top: `${isMobile ? hint?.coords_mob?.y : hint.coords.y}%`,
+                          left: `${isMobile ? hint?.coords_mob?.x : hint.coords.x}%`
                         }}
                       >
                         {hint.icon}
-                        <span
-                          className={styles['direction-hint']}
-                        >
-                          {hint.name}
-                        </span>
+                        <span className={styles['direction-hint']}>{hint.name}</span>
                       </div>
                     ))}
                   </div>
@@ -369,7 +380,7 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
   )
 }
 
-const MapPage = ({ preloader }: { preloader: boolean }) => {
+const MapPage = ({preloader}: {preloader: boolean}) => {
   return (
     <Suspense>
       <MapContent preloader={preloader} />
