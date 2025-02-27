@@ -109,19 +109,28 @@
   }
 }
 
-.content {
+.compass_content {
   @include font(1, 14--14, 21--21, 200);
 
-  z-index: 10;
-  display: flex;
-  width: 607px;
-  height: auto;
-  justify-content: space-between;
-  background: #fff url('/map/main-pattern.svg') 100% 100%;
-  gap: 40px;
-
   @layer base {
+    width: 100vw;
+    height: 100vh;
     padding: 40px 46px;
+    z-index: 10;
+    background: #fff url('/map/main-pattern.svg') 100% 100%;
+    gap: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  @include md{
+    flex-direction: row;
+    width: 607px;
+    justify-content: space-between;
+    margin: auto;
+    height: fit-content;
   }
 
   @include mobile {
@@ -147,7 +156,6 @@
   @include mobile {
     position: fixed;
     z-index: 9;
-    height: fit-content;
     padding: 24px;
     margin: auto;
     inset: 0;
@@ -201,6 +209,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  @media (max-width: 768px) {
+    gap: 40px
+  }
 
   p {
     margin-top: 35px;

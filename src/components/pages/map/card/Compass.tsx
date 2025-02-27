@@ -27,9 +27,10 @@ export interface CardProps {
   onClickCloseCard?: MouseEventHandler<SVGElement> | undefined
   isVisible: boolean
   style?: CSSProperties
+  coords_mob?: Coords
 }
 
-const Compass = ({ name, text, color, coords, isMobile = false, onClickCompass }: CompassProps) => {
+const Compass = ({ name, text, color, coords, isMobile = false, onClickCompass, coords_mob }: CompassProps) => {
   const [compassLocation, setCompassLocation] = useState({ x: 0, y: 0 })
   const [isTimeoutActive, setIsTimeoutActive] = useState<undefined | NodeJS.Timeout>(undefined)
   const [isHovered, setIsHovered] = useState(false)
@@ -62,8 +63,8 @@ const Compass = ({ name, text, color, coords, isMobile = false, onClickCompass }
     <div
       className={styles.cardWrapper}
       style={{
-        top: `${coords.y}%`,
-        left: `${coords.x}%`,
+        top: `${isMobile ? coords_mob?.y : coords.y }%`,
+        left: `${isMobile ? coords_mob?.x : coords.x }%`,
         zIndex: isHovered ? '3' : '2'
       }}
     >

@@ -1,5 +1,5 @@
 'use client'
-import { Suspense, useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import styles from './Map.module.scss'
 import { DirectionHint, PinType, Point } from './model'
 import MouseMover from '@shared/mouse-mover/MouseMover'
@@ -17,6 +17,8 @@ import FortovPage from '@pages/fortov/Fortov'
 import TransportPage from '@pages/transport/Transport'
 import HomePage from '@pages/home/Home.page'
 import ContactFormPage from '@pages/contact-form/ContactForm'
+import emblaStyle from '@shared/phoneSlider/embla.module.scss'
+import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 
 const Preloader = dynamic(() => import('./preloader/Preloader'), { ssr: false })
 const Compass = dynamic(() => import('./card/Compass'), { ssr: false })
@@ -28,12 +30,20 @@ const directionHints: DirectionHint[] = [
     coords: {
       x: 49,
       y: 10
+    },
+    coords_mob: {
+      x: 31,
+      y: 10
     }
   },
   {
     name: "КАД (10 мин.)",
     coords: {
       x: 59,
+      y: 10
+    },
+    coords_mob: {
+      x: 56,
       y: 10
     },
     icon: <ArrowUpSVG />
@@ -62,6 +72,10 @@ const points: Point[] = [
     coords: {
       x: 49.5,
       y: 12
+    },
+    coords_mob: {
+      x: 42.5,
+      y: 12
     }
   },
   {
@@ -71,6 +85,10 @@ const points: Point[] = [
     coords: {
       x: 67.5,
       y: 27.5
+    },
+    coords_mob: {
+      x: 55,
+      y: 24
     }
   }
 ]
@@ -191,6 +209,31 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
     return <Preloader />
   }
 
+
+  const mobileSlides: React.ReactNode[] = [
+    <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']}`} key={999}>
+      <div className={styles['caption']}>
+        <h2 className={styles['caption__title']}>3<span>мин</span></h2>
+        <hr className={styles['caption__divider']} />
+        <p className={styles['caption__description']}>до моря</p>
+      </div>
+
+      <div className={styles['caption']}>
+        <h2 className={styles['caption__title']}>10<span>мин</span></h2>
+        <hr className={styles['caption__divider']} />
+        <p className={styles['caption__description']}>до Кронштадского шоссе и КАД</p>
+      </div>
+    </div>,
+    <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']}`} key={888}>
+      <div className={styles['caption']}>
+        <h2 className={styles['caption__title']}>30<span>мин</span></h2>
+        <hr className={styles['caption__divider']} />
+        <p className={styles['caption__description']}>до «Лахта Центра»</p>
+      </div>
+    </div>
+  ]
+
+
   return (
     <div >
       <Head>
@@ -208,13 +251,13 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
 
       {!isLoading && (
         <>
-          {preloader && <Preloader />}
+          {/*{preloader && <Preloader />}*/}
           <Page>
             <HomePage />
             <div style={{ position: 'relative', ...(isHide ? { opacity: 0 } : { opacity: 1 }) }}>
               <div className={styles.captions}>
                 <h2 className={styles['captions-title']}>Локация</h2>
-                <div className={styles['caption-items']}>
+                <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
                   <div className={styles['caption']}>
                     <CornerSVG />
                     <h2 className={styles['caption__title']}>3<span>мин</span></h2>
@@ -234,18 +277,23 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
                     <p className={styles['caption__description']}>до «Лахта Центра»</p>
                   </div>
                 </div>
+                <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
+                  <PhoneSlider slides={mobileSlides} />
+                </div>
               </div>
+
+
               {(isMobile && isMobileCardVisible) && (
                 <Card
                   color={curPoint.color}
                   text={curPoint.text}
                   name={curPoint.name}
                   isVisible={isMobileCardVisible}
-                  style={{ opacity: 1, zIndex: 9, top: '50%', left: '50%', maxWidth: 680 }}
+                  style={{ opacity: 1, zIndex: 9, top: '50%', left: '50%', maxWidth: 680}}
                   onClickCloseCard={onClickCloseCard}
                 />
               )}
-              <div style={{ overflow: 'hidden' }}>
+              <div style={{ overflow: 'hidden', width: '100%' }}>
                 <MouseMover
                   className={clsx(styles.wrapper,)}
                   innerClassName={clsx(styles.inner, preloader ? styles.delay : '')}
@@ -253,7 +301,7 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
                   isMobileCardVisible={isMobileCardVisible}
                   disableMove={true}
                 >
-                  {/* --------------------------- */}
+                   {/*--------------------------- */}
 
                   <div className={styles.pointsWrapper}>
                     {pins &&
@@ -274,6 +322,7 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
                         name={point.name}
                         color={point.color}
                         coords={point.coords}
+                        coords_mob={point.coords_mob}
                         isMobile={isMobile}
                         onClickCompass={compassClickHandler(point)}
                       />
@@ -283,8 +332,8 @@ const MapContent = ({ preloader }: { preloader: boolean }) => {
                         key={i}
                         className={styles['direction-hint-wrapper']}
                         style={{
-                          top: `${hint.coords.y}%`,
-                          left: `${hint.coords.x}%`,
+                          top: `${ isMobile ? hint?.coords_mob?.y : hint.coords.y}%`,
+                          left: `${ isMobile ? hint?.coords_mob?.x : hint.coords.x}%`,
                         }}
                       >
                         {hint.icon}

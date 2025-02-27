@@ -6,6 +6,7 @@ export interface Point {
   text?: string
   color: string
   coords: Coords
+  coords_mob?: Coords
 }
 
 export interface PinType {
@@ -21,4 +22,5 @@ export interface DirectionHint {
   name: string
   coords: Coords
   icon?: ReactNode
+  coords_mob?: Coords
 }
