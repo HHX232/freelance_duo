@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithRef, useCallback, useEffect, useState} from 'react'
+import {ComponentPropsWithRef, useCallback, useEffect, useState} from 'react'
 import {EmblaCarouselType} from 'embla-carousel'
 
 interface UseDotButtonType {

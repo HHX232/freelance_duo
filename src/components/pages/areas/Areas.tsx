@@ -1,5 +1,5 @@
 'use client'
-import React, {Suspense} from 'react'
+import {Suspense} from 'react'
 import styles from './Areas.module.scss'
 import CornerSVG from '@icons/corner.svg'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'

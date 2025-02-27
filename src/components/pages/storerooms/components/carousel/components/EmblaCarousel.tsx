@@ -1,4 +1,3 @@
-import React from 'react'
 import {EmblaCarouselType, EmblaOptionsType} from 'embla-carousel'
 // import {
 //   NextButton, PrevButton,
@@ -27,7 +26,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <div className={emblaStyle['embla']}>
       <div className={emblaStyle['embla__viewport']} ref={emblaRef}>
         <div className={emblaStyle['embla__container']}>
-          {slides.map((index) => (
+          {slides?.map((index) => (
             <div className={emblaStyle['embla__slide']} key={index}>
               <img className={emblaStyle['embla__slide__img']} src={imgArr[index]} alt='Your alt text' />
             </div>

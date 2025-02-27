@@ -1,5 +1,4 @@
 'use client'
-import React from 'react'
 
 import styles from './carousel.module.scss'
 import {EmblaOptionsType} from 'embla-carousel'
