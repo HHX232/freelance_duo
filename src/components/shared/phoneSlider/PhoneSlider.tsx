@@ -7,14 +7,15 @@ import ClassNames from 'embla-carousel-class-names'
 import {EmblaOptionsType} from 'embla-carousel'
 import styles from './embla.module.scss'
 import Gallery from '@shared/phoneSlider/Gallery'
+import {FC, ReactNode} from 'react'
 
 interface PhoneSliderProps {
 
-  slides: React.ReactNode[]
+  slides: ReactNode[]
   options?: EmblaOptionsType
 }
 
-const PhoneSlider: React.FC<PhoneSliderProps> = (props) => {
+const PhoneSlider: FC<PhoneSliderProps> = (props) => {
 
   const {slides} = props
   const OPTIONS: EmblaOptionsType = {}

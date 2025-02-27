@@ -1,5 +1,5 @@
 import {Swiper, SwiperClass, SwiperSlide} from 'swiper/react'
-import React, {useState} from 'react'
+import {useState} from 'react'
 import {stepsForBuySlides} from '@pages/payment-methods/components/full-payment/components/steps-for-buy/content'
 import FilledButton from '@shared/filledButton/FilledButton'
 import styles from './steps-for-buy.module.scss'

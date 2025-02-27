@@ -5,6 +5,7 @@ import {EmblaCarouselType, EmblaOptionsType} from 'embla-carousel'
 // } from '@pages/storerooms/components/carousel/components/EmblaCarouselArrowButtons'
 import {EmblaViewportRefType} from 'embla-carousel-react'
 import emblaStyle from './embla.module.scss'
+import {FC} from 'react'
 
 interface PropType {
   slides: number[]
@@ -13,7 +14,7 @@ interface PropType {
   emblaApi: EmblaCarouselType | undefined
 }
 
-const EmblaCarousel: React.FC<PropType> = (props) => {
+const EmblaCarousel: FC<PropType> = (props) => {
   const {slides, emblaRef} = props
   const imgArr = [
     '/content/storerooms/carousel/st_1.jpeg',
