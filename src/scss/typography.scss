@@ -120,3 +120,55 @@
     font-weight: $font-weight;
   }
 }
+
+@mixin RomulH1() {
+}
+
+@mixin RomulH2() {
+  @include font(3, 64, 80);
+
+  @media (max-width: map_get($breakpoints, lg)) {
+    @include font(3, 52, 58);
+  }
+
+  @media (max-width: map_get($breakpoints, sm)) {
+    @include font(3, 40, 50);
+  }
+}
+
+@mixin RomulH3() {
+  @include font(3, 42, 54);
+
+  @media (max-width: map_get($breakpoints, lg)) {
+    @include font(3, 36, 50);
+  }
+
+  @media (max-width: map_get($breakpoints, sm)) {
+    @include font(3, 30, 40);
+  }
+}
+
+@mixin RomulH4() {
+  @include font(3, 32, 44);
+
+  @media (max-width: map_get($breakpoints, lg)) {
+    @include font(3, 26, 36);
+  }
+
+  @media (max-width: map_get($breakpoints, sm)) {
+    @include font(3, 22, 34);
+  }
+}
+
+@mixin RomulH5() {
+  @include font(3, 24, 36);
+
+
+  @media (max-width: map_get($breakpoints, lg)) {
+    @include font(3, 20, 30);
+  }
+
+  @media (max-width: map_get($breakpoints, sm)) {
+    @include font(3, 18, 26);
+  }
+}

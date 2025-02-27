@@ -24,7 +24,7 @@ const PaymentMethodsPage = () => {
     <main className={styles['payment-methods']}>
       <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
 
-      <h1 className={styles.title}>Способы покупки</h1>
+      <h1 className={styles.headTitle}>Способы покупки</h1>
       <div className={styles.tabs}>
         <button className={clsx([styles['tab-button']], {[styles.active]: active === 0})} onClick={() => setActive(0)}>
           Рассрочка
