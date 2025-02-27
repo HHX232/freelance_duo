@@ -21,17 +21,17 @@
 
 @mixin content-container {
   @layer base {
-    padding-right: 196px;
+    padding-right: 40px;
     padding-left: 196px;
   }
-  
+
   @include xxl {
-    padding-right: 170px;
+    padding-right: 40px;
     padding-left: 170px;
   }
 
   @include xl {
-    padding-right: 142px;
+    padding-right: 40px;
     padding-left: 142px;
   }
 

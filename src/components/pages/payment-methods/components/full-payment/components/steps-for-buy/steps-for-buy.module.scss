@@ -1,0 +1,137 @@
+.steps-for-buy {
+  margin-top: 110px;
+
+  @media (max-width: 1280px) {
+    margin-top: 90px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 80px;
+  }
+
+  @media (max-width: 320px) {
+    margin-top: 70px;
+  }
+
+
+  &-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 60px;
+
+
+    @media (max-width: 1024px) {
+      margin-bottom: 40px;
+    }
+
+    &-title {
+      @include font(3, 42, 54);
+      @media (max-width: 1024px) {
+        @include font(3, 32, 54);
+      }
+    }
+
+    &-arrow-group {
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
+  &-slider {
+    position: relative;
+    overflow: hidden;
+
+    &-wrapper {
+      display: flex;
+    }
+
+    &-pagination {
+      height: 48px;
+      bottom: 0;
+
+      margin-top: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-active {
+        border-radius: 40px !important;
+        background-color: #3C8CA6 !important;
+        width: 25px !important;
+      }
+
+      &-bullet {
+        width: 15px;
+        height: 15px;
+        border: none;
+        border-radius: 100%;
+        background-color: #11627D4D;
+        transition: 200ms;
+
+        &:not(:last-child) {
+          margin-right: 16px !important;
+        }
+      }
+
+      @media (min-width: 769px) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      margin-left: -40px;
+      margin-right: -40px;
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+  }
+
+  &-slide {
+    overflow: hidden;
+
+    background: #ffffff;
+    padding: 40px;
+
+    min-width: 441px;
+    max-width: 441px;
+    height: 441px;
+
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 1024px) {
+      padding: 36px 24px;
+    }
+
+    &-title {
+      @include font(3, 32, 44);
+
+    }
+
+    &-count {
+      background-color: #11627D14;
+      color: #11627D;
+
+      border-radius: 100%;
+
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: auto;
+    }
+
+    &-button {
+      margin-top: 40px;
+    }
+  }
+}
