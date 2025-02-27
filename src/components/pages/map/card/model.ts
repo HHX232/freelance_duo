@@ -10,4 +10,5 @@ export interface CompassProps {
   onEnterCompass?: MouseEventHandler<HTMLDivElement>
   onLeaveCompass?: MouseEventHandler<HTMLDivElement>
   onClickCompass?: MouseEventHandler<SVGElement>
+  coords_mob?: Coords
 }

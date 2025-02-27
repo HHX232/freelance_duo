@@ -26,7 +26,7 @@ const CompassCard = ({
       onMouseEnter={onEnterCard}
       onMouseLeave={onLeaveCard}
     >
-      <div className={styles.content}>
+      <div className={styles.compass_content}>
         {isMobile && <CancelSVG className={styles.close} onClick={onClickCloseCard} />}
         <div className={styles.leftSide}>
           <CardLeftSide style={{ color }} className={styles.leftSvg} />

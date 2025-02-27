@@ -1,24 +1,53 @@
 'use client'
-import { Suspense } from 'react'
+import React, { Suspense } from 'react'
 import styles from './Transport.module.scss'
-import Head from 'next/head'
 import CornerSVG from '@icons/corner.svg'
+import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
+import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 
 
 const TransportContent = () => {
+
+  const mobileSlides: React.ReactNode[] = [
+    <div
+      className={`${emblaStyle['embla__slide']} ${styles['caption-items']}`}
+      key={666}>
+      <div className={`${styles['caption']}`}>
+        <h2 className={styles['caption__title']}>Кад</h2>
+        <hr className={styles['caption__divider']} />
+      </div>
+
+      <div className={`${styles['caption']}`}>
+        <h2 className={styles['caption__title']}>Кронштадтское шоссе</h2>
+        <hr className={styles['caption__divider']} />
+      </div>
+    </div>,
+    <div
+      className={`${emblaStyle['embla__slide']} ${styles['caption-items']}`}
+      key={777}>
+      <div className={`${styles['caption']}`}>
+        <h2 className={styles['caption__title']}>256 автобус</h2>
+        <hr className={styles['caption__divider']} />
+      </div>
+
+      <div className={`${styles['caption']}`}>
+        <h2 className={styles['caption__title']}>382 автобус</h2>
+        <hr className={styles['caption__divider']} />
+      </div>
+
+    </div>
+  ]
+
+
+
+
   return (
     <div>
-      <Head>
-        {/* eslint-disable-next-line react/no-unknown-property */}
-        <link rel='preload' href='/content/ymap.png' as='image' fetchPriority='high' />
-      </Head>
-
       {(
         <section className={styles.section}>
-          <div>
             <div className={styles.captions}>
               <h2 className={styles['captions-title']}>Транспортная доступность</h2>
-              <div className={styles['caption-items']}>
+              <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
                 <div className={styles['caption']}>
                   <CornerSVG />
                   <h2 className={styles['caption__title']}>КАД</h2>
@@ -40,7 +69,9 @@ const TransportContent = () => {
                   <hr className={styles['caption__divider']} />
                 </div>
               </div>
-            </div>
+              <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
+                <PhoneSlider slides={mobileSlides}/>
+              </div>
 
           </div>
         </section>

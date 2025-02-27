@@ -1,28 +1,106 @@
 .home-wrapper {
-    display: flex;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 124px;
-    background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.png");
+  @layer base {
+
+    background-image: linear-gradient(180deg, rgba(38, 57, 69, 0) 50.45%, rgba(38, 57, 69, 1) 87.97%), url("/content/banner.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
 
-    .container {
-        @include content-container;
-    }
+    display: flex;
+    height: 640px;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 130px 20px 40px 20px;
+    gap: 40px;
 
-    .title {
-        @include font(3, 124, 150, 400);
-    }
+  }
 
-    .description {
-        @include font(1, 24, 34);
+  @include lg {
+    background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.png");
+  }
 
-        max-width: 780px;
-        margin-top: 12px;
+  @include xl{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-end;
+    //padding-bottom: 124px;
+    background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.png");
+    padding: 90px 40px 124px 142px;
+  }
+}
+
+.title {
+  @layer base {
+    @include font(3, 44, 54, 400);
+  }
+
+  @include md {
+    @include font(3, 90, 100, 400);
+
+  }
+
+  @include xl {
+    @include font(3, 124, 150, 400);
+
+  }
+}
+
+.description {
+
+  @layer base {
+    @include font(1, 16, 20);
+
+    max-width: 780px;
+    margin-top: 12px;
+  }
+
+  @include md{
+    @include font(1, 20, 26);
+
+  }
+
+  @include xl {
+    @include font(1, 24, 34);
+  }
+
+}
+
+
+.text_wrapper{
+  @layer base {
+
+  }
+}
+
+.button_wrapper{
+  @layer base{
+    button{
+      padding: 12px 36px!important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
+  }
+
+  @include lg{
+    width: fit-content;
+  }
+
+  @include xl{
+    display: none;
+  }
+}
+
+.icon{
+  @layer base {
+    display: none;
+  }
+
+  @include sm{
+    display: flex;
+  }
 }
 

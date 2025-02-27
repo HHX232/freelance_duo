@@ -36,7 +36,7 @@ $animation-delay-fast: 0.3s;
   &::after {
     position: fixed;
     z-index: 1;
-    top: 0;
+    //top: 0;
     display: block;
     width: 100%;
     height: 390px;
@@ -44,17 +44,33 @@ $animation-delay-fast: 0.3s;
     pointer-events: none;
 
     @layer base {
+      background: linear-gradient(0deg, rgb(30 56 73 / 100%) 5%, rgb(30 56 73 / 0%) 100%);
+      bottom: 0;
+
+    }
+
+    @include md {
       background: linear-gradient(180deg, rgb(30 56 73 / 100%) 5%, rgb(30 56 73 / 0%) 100%);
+      top: 0;
+      bottom: unset;
     }
   }
 }
 
 .mapImage {
-  position: absolute !important;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  contain: paint;
+  @layer base {
+    position: absolute !important;
+    z-index: 0;
+    top: 0;
+    right: 150px;
+    contain: paint;
+  }
+
+  @include md{
+    z-index: 0;
+    left: 0;
+    right: 0;
+  }
 }
 
 .wrapper {
@@ -101,12 +117,12 @@ $animation-delay-fast: 0.3s;
 .captions {
   @layer base {
     position: absolute;
-    z-index: 5;
+    z-index: 1;
     bottom: 0;
     display: flex;
     flex-direction: column;
     gap: 40px;
-    transform: translateY(-50%);
+    transform: translateY(-20%);
   }
 
   @include sm {
@@ -117,6 +133,7 @@ $animation-delay-fast: 0.3s;
     top: 50%;
     bottom: initial;
     gap: 366px;
+    transform: translateY(-50%);
   }
 
   @include lg {
@@ -155,16 +172,23 @@ $animation-delay-fast: 0.3s;
   }
 
   &__title {
-    @include font(3, 64, 80);
-  
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    color: $yellow-text;
-    gap: 8px;
+    @layer base {
+      @include font(3, 30, 40, 400);
 
-    & span {
-      @include font(3, 32, 44);
+      color: $yellow-text;
+    }
+
+    @include md {
+      @include font(3, 36, 50, 400);
+
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+
+      & span {
+        @include font(3, 26, 36);
+      }
     }
   }
 
@@ -182,6 +206,27 @@ $animation-delay-fast: 0.3s;
 
     margin-top: 16px;
     color: $yellow-text;
-    
+
+  }
+}
+
+.desktop_captions {
+  @layer base {
+    display: none;
+  }
+
+  @include md {
+    display: flex;
+  }
+}
+
+
+.mobile_captions {
+  @layer base {
+    display: flex;
+  }
+
+  @include md {
+    display: none;
   }
 }

@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import styles from './MouseMover.module.scss'
 import { MouseMoverProps } from './model'
 import { Coords } from '@src/components/model'
-import { MouseEvent, useEffect, useLayoutEffect, useState } from 'react'
+import { MouseEvent, useLayoutEffect, useState } from 'react'
 const COMPONENT_WIDTH = 1920
 const COMPONENT_HEIGHT = 1080
 const COEFF = COMPONENT_WIDTH / COMPONENT_HEIGHT
@@ -27,11 +27,11 @@ const MouseMover = ({
   const [shift, setShift] = useState<Coords>({ x: 0, y: 0 })
   const [size, setSize] = useState({ w: 0, h: 0 })
 
-  useEffect(() => {
-    if (isMobile) {
-      document.getElementById('page')?.scrollTo({ left: size.w / 2 - window.innerWidth / 2 + 130 })
-    }
-  }, [size, isMobile])
+  // useEffect(() => {
+  //   if (isMobile) {
+  //     document.getElementById('page')?.scrollTo({ left: size.w / 2 - window.innerWidth / 2 + 130 })
+  //   }
+  // }, [size, isMobile])
 
   useLayoutEffect(() => {
     const updateSize = () => {
@@ -71,12 +71,12 @@ const MouseMover = ({
     <section
       style={{
         transition: 'filter 0.5s',
-        ...(isMobile
-          ? {
-            width: `${size.w}px`,
-            height: `${size.h}px`
-          }
-          : {}),
+        // ...(isMobile
+        //   ? {
+        //     width: `${size.w}px`,
+        //     height: `${size.h}px`
+        //   }
+        //   : {}),
         ...((isMobile && isMobileCardVisible) ? {
           filter: 'brightness(0.5)'
         } : {})
