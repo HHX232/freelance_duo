@@ -1,12 +1,18 @@
 'use client'
 import styles from './ticketForm.module.scss'
 import FilledButton from '@shared/filledButton/FilledButton'
+import {FC} from 'react'
 
-const TicketForm = () => {
+interface ITicketFormProps {
+  description?: string
+  onSuccess?: () => void
+}
+
+const TicketForm: FC<ITicketFormProps> = ({description = 'Оставьте заявку и мы поможем вам с выбором кладовой'}) => {
   return (
     <div className={styles['ticketForm']}>
       <div className='header'>
-        <p className={styles['header__title']}>Оставьте заявку и мы поможем вам с выбором кладовой</p>
+        <p className={styles['header__title']}>{description}</p>
       </div>
       <form className={styles['info']}>
         <div className={styles['input-wrapper']}>

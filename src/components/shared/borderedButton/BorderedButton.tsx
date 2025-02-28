@@ -1,17 +1,13 @@
 import clsx from 'clsx'
 import styles from './BorderedButton.module.scss'
-import { CSSProperties } from 'react'
+import {ButtonHTMLAttributes, FC} from 'react'
 
-interface BorderedButtonProps {
-  children: React.ReactNode
-  style?: CSSProperties
-  className?: string
-}
-
-export default function BorderedButton({ children, className, style }: BorderedButtonProps) {
+const BorderedButton: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({children, className, style, ...props}) => {
   return (
-    <button style={style} className={clsx(className, styles.borderedButton)}>
+    <button {...props} style={style} className={clsx(className, styles.borderedButton)}>
       {children}
     </button>
   )
 }
+
+export default BorderedButton

@@ -1,0 +1,58 @@
+.head {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.headClose {
+  margin: 16px 16px 0 0;
+}
+
+.content {
+  padding: 60px;
+
+  @include bp-xl {
+    padding: 20px 40px;
+  }
+
+  @include bp-sm {
+    padding: 20px;
+  }
+
+  @include bp-xs {
+    padding: 16px 10px;
+  }
+}
+
+.form {
+  & > div {
+    padding: 0;
+
+    .header {
+      p {
+        @layer base {
+          @include font(1, 14, 18);
+        }
+
+        @include lg {
+          @include font(1, 16, 22);
+        }
+      }
+    }
+  }
+}
+
+.title {
+  @include RomulH3;
+}
+
+.bottom-indent {
+  margin-bottom: 60px;
+
+  @include bp-xl {
+    margin-bottom: 40px;
+  }
+
+  @include bp-xs {
+    margin-bottom: 36px;
+  }
+}
