@@ -19,18 +19,10 @@
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 60px;
-
-
-    @media (max-width: 1024px) {
-      margin-bottom: 40px;
-    }
+    @include blockHeadBottomIndent();
 
     &-title {
-      @include font(3, 42, 54);
-      @media (max-width: 1024px) {
-        @include font(3, 32, 54);
-      }
+      @include RomulH3();
     }
 
     &-arrow-group {

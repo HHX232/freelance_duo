@@ -2,15 +2,20 @@
   @layer base {
     display: flex;
     flex-direction: column;
-    padding: 36px 16px;
+    justify-content: space-between;
     background: rgb(255 255 255 / 100%);
     color: rgb(116 118 121 / 100%);
     gap: 24px;
   }
 
-  @include lg {
-    padding: 70px;
-    gap: 70px
+  padding: 70px;
+
+  @media (max-width: map_get($breakpoints, xl)) {
+    padding: 36px;
+  }
+
+  @media (max-width: map_get($breakpoints, sm)) {
+    padding: 36px 20px;
   }
 }
 

@@ -6,8 +6,17 @@ import FilledButton from '@shared/filledButton/FilledButton'
 import BorderedButton from '@shared/borderedButton/BorderedButton'
 import styles from '../../payment-methods.module.scss'
 import clsx from 'clsx'
+import {FC} from 'react'
 
-export const ZeroPercentTab = () => {
+interface IZeroPercentTabProps {
+  setShownInstallmentPlan: (flag: boolean) => void
+  setShownRequestCallBack: (flag: boolean) => void
+}
+
+export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPlan, setShownRequestCallBack}) => {
+  const handleInstallmentPlan = () => setShownInstallmentPlan(true)
+  const handleRequestCallBack = () => setShownRequestCallBack(true)
+
   return (
     <>
       <section
@@ -57,8 +66,10 @@ export const ZeroPercentTab = () => {
                   <p className={styles['meta__description']}>Первый взнос не менее 20% от базовой стоимости</p>
                 </div>
                 <div className={styles['meta-buttons']}>
-                  <FilledButton>Узнать подробнее</FilledButton>
-                  <BorderedButton className={styles['meta-buttons__bordered']}>Связаться с нами</BorderedButton>
+                  <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton>
+                  <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
+                    Связаться с нами
+                  </BorderedButton>
                 </div>
               </div>
             </div>
@@ -80,8 +91,10 @@ export const ZeroPercentTab = () => {
                   </p>
                 </div>
                 <div className={styles['meta-buttons']}>
-                  <FilledButton>Узнать подробнее</FilledButton>
-                  <BorderedButton className={styles['meta-buttons__bordered']}>Связаться с нами</BorderedButton>
+                  <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton>
+                  <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
+                    Связаться с нами
+                  </BorderedButton>
                 </div>
               </div>
             </div>
@@ -106,8 +119,10 @@ export const ZeroPercentTab = () => {
                   </p>
                 </div>
                 <div className={styles['meta-buttons']}>
-                  <FilledButton>Узнать подробнее</FilledButton>
-                  <BorderedButton className={styles['meta-buttons__bordered']}>Связаться с нами</BorderedButton>
+                  <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton>
+                  <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
+                    Связаться с нами
+                  </BorderedButton>
                 </div>
               </div>
             </div>

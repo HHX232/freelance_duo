@@ -9,6 +9,8 @@ import {ZeroPercentTab} from './components/zero-percent/zero-percent'
 import {FullPaymentTab} from './components/full-payment/full-payment'
 import {IpotekaTab} from './components/ipoteka/ipoteka'
 import {StepsForBuy} from '@pages/payment-methods/components/full-payment/components/steps-for-buy'
+import {InstallmentPlanDrawer} from '@pages/payment-methods/popup/installment-plan'
+import {RequestBackCallDrawer} from '@shared/request-back-call-drawer'
 
 const PaymentMethodsPage = () => {
   const [active, setActive] = useState(0)
@@ -19,6 +21,16 @@ const PaymentMethodsPage = () => {
       href: '/payment-methods'
     }
   ]
+
+  const [shownInstallmentPlan, setShownInstallmentPlan] = useState(false)
+  const handleInstallmentPlanDrawerClose = () => {
+    setShownInstallmentPlan(false)
+  }
+
+  const [shownRequestCallBack, setShownRequestCallBack] = useState(true)
+  const handleRequestCallBackDrawerClose = () => {
+    setShownRequestCallBack(false)
+  }
 
   return (
     <main className={styles['payment-methods']}>
@@ -37,13 +49,21 @@ const PaymentMethodsPage = () => {
         </button>
       </div>
 
-      {active === 0 && <ZeroPercentTab />}
+      {active === 0 && (
+        <ZeroPercentTab
+          setShownInstallmentPlan={setShownInstallmentPlan}
+          setShownRequestCallBack={setShownRequestCallBack}
+        />
+      )}
 
-      {active === 1 && <IpotekaTab />}
+      {active === 1 && <IpotekaTab setShownRequestCallBack={setShownRequestCallBack} />}
 
       {active === 2 && <FullPaymentTab />}
       {active === 2 && <StepsForBuy />}
       <MakeTicket />
+
+      <InstallmentPlanDrawer shown={shownInstallmentPlan} onClose={handleInstallmentPlanDrawerClose} />
+      <RequestBackCallDrawer shown={shownRequestCallBack} onClose={handleRequestCallBackDrawerClose} />
     </main>
   )
 }

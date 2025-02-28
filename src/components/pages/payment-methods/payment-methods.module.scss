@@ -15,7 +15,6 @@
 
   .title {
     @include RomulH3();
-    margin-top: 36px;
   }
 
   .tabs {
@@ -58,10 +57,25 @@
   }
 
   .poster {
-    padding: 54px;
     margin-top: 40px;
     background-position: center;
     background-size: cover;
+
+    @include xxxl {
+      padding: 54px;
+    }
+
+    @include md {
+      padding: 40px;
+    }
+
+    @include sm {
+      padding: 60px 20px 40px 20px;
+    }
+
+    @include xs {
+      padding: 60px 16px 40px 16px;
+    }
 
     &-title {
       @include RomulH2();
@@ -115,8 +129,32 @@
   .poster-meta {
     display: flex;
     justify-content: space-between;
-    padding: 38px 54px;
     background-color: $sireneviy;
+    flex-direction: row;
+
+    @include xl {
+      padding: 38px 54px;
+    }
+
+    @include lg {
+      padding: 24px 40px;
+    }
+
+    @include md {
+      padding: 40px;
+    }
+
+    @include sm {
+      padding: 36px 20px;
+    }
+
+    @include xs {
+      padding: 36px 16px;
+    }
+
+    @media (max-width: map-get($breakpoints, md)) {
+      flex-direction: column;
+    }
 
     &__title {
       @include RomulH4();
@@ -124,6 +162,14 @@
     }
 
     & button {
+      @media (max-width: map-get($breakpoints, md)) {
+        margin-top: 36px;
+      }
+
+      @media (max-width: map-get($breakpoints, sm)) {
+        margin-top: 24px;
+      }
+
       @include font(1, 16, 24);
 
       padding: 12px 36px;
@@ -135,13 +181,12 @@
     margin-top: 110px;
 
     .title {
-      margin: 0;
+      @include blockHeadBottomIndent();
     }
 
     .variant-items {
       display: flex;
       flex-direction: column;
-      margin-top: 60px;
       gap: 24px;
     }
 
@@ -149,10 +194,14 @@
       display: flex;
       gap: 24px;
 
+      @media (max-width: map-get($breakpoints, md)) {
+        min-height: 283px;
+        gap: 0;
+      }
+
       .cover {
         background-position: center;
         background-size: cover;
-
       }
 
       .meta {
@@ -162,6 +211,15 @@
         padding: 40px;
         background-color: #fff;
         gap: 77px;
+
+        @media (max-width: map-get($breakpoints, xl)) {
+          gap: 49px;
+        }
+
+        @media (max-width: map-get($breakpoints, lg)) {
+          gap: 39px;
+        }
+
 
         &__title {
           @include font(3, 32, 44);
@@ -227,8 +285,23 @@
       }
 
       &:nth-child(odd) {
+        @media (max-width: map-get($breakpoints, md)) {
+          flex-direction: column;
+        }
+
         .cover {
           flex: 0 0 60%;
+
+          @media (max-width: map-get($breakpoints, xl)) {
+            background-position: -150px center;
+            flex: 0 0 30%;
+          }
+
+          @media (max-width: map-get($breakpoints, md)) {
+            background-position: center;
+            min-height: 360px;
+            flex: 1;
+          }
         }
 
         .meta {
@@ -237,6 +310,10 @@
       }
 
       &:nth-child(even) {
+        @media (max-width: map-get($breakpoints, md)) {
+          flex-direction: column-reverse;
+        }
+
         .cover, .meta {
           flex: 1;
         }

@@ -19,6 +19,14 @@
   }
 }
 
+@mixin blockHeadBottomIndent {
+  margin-bottom: 60px !important;
+
+  @media (max-width: map_get($breakpoints, xl)){
+    margin-bottom: 40px !important;
+  }
+}
+
 @mixin content-container {
   @layer base {
     padding-right: 40px;
