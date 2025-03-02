@@ -1,8 +1,14 @@
+'use client'
+
 import styles from './Scheme.module.scss'
 import DownloadSVG from '@icon/download.svg'
 import SchemeIcon from '@icon/scheme.svg'
+import SchemeDesctop from '@icon/scheme_desctop.svg'
+import {useIsLg} from '@utils/useIsMobile'
 
 const Scheme = () => {
+  const isLg = useIsLg();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.info}>
@@ -21,9 +27,7 @@ const Scheme = () => {
           </button>
         </div>
       </div>
-      <div className={styles.schemeWrapper}>
-        <SchemeIcon className={styles.icon} />
-      </div>
+      <div className={styles.schemeWrapper}>{isLg ? <SchemeIcon className={styles.icon} /> : <SchemeDesctop /> }</div>
     </div>
   )
 }

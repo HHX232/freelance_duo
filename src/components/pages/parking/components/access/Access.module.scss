@@ -4,7 +4,7 @@
     flex-direction: column;
   }
 
-  @include lg{
+  @include xl{
     flex-direction: row;
   }
 }
@@ -17,13 +17,13 @@
   }
 
   @include lg {
-    width: 20%;
-    height: inherit;
+    height: 400px;
     background-size: cover;
     background-position-x: 0%;
   }
 
   @include xl {
+    height: inherit;
     width: 25%;
   }
 
@@ -42,6 +42,11 @@
 
     background: rgba(17, 98, 125, 1);
     color: white;
+  }
+
+  @include sm{
+    padding: 60px 20px;
+    gap:60px;
   }
 
   @include md{
