@@ -1,19 +1,27 @@
 .breadcrumbs {
-  display: none;
-  align-items: center;
-  gap: 10px;
+  @layer base {
+    display: none;
+    align-items: center;
+    gap: 10px;
 
-  li span {
-    @include font(2, 12, 12);
+    li span {
+      @include font(2, 14, 14);
 
-    color: #555;
-  }
-
-  li a {
-    &:hover {
-      background-color: transparent;
       color: #555;
     }
+
+    li a {
+      text-align: center;
+
+      &:hover {
+        background-color: transparent;
+        color: #555;
+      }
+    }
+  }
+
+  @include md{
+    @include font(2, 12, 12);
   }
 
   @media screen and (min-width: 656px) {
@@ -38,4 +46,9 @@
 
 .dark * {
   color: #fff !important;
+}
+
+
+.fitContent{
+  height: fit-content!important;
 }

@@ -53,14 +53,22 @@ const directionHints: DirectionHint[] = [
     coords: {
       x: 76,
       y: 10
-    }
+    },
+    coords_mob: {
+      x: 68,
+      y: 10
+    },
   },
   {
     name: 'ЖК «Центральный»',
     coords: {
       x: 74,
       y: 28
-    }
+    },
+    coords_mob: {
+      x: 74,
+      y: 30
+    },
   }
 ]
 
@@ -314,7 +322,7 @@ const MapContent = ({preloader}: {preloader: boolean}) => {
                   innerClassName={clsx(styles.inner, preloader ? styles.delay : '')}
                   isMobile={isMobile}
                   isMobileCardVisible={isMobileCardVisible}
-                  disableMove={true}
+                  disableMove={false}
                 >
                   {/*--------------------------- */}
 

@@ -3,26 +3,34 @@
     padding: 0 16px;
   }
 
-  @include lg {
-    padding: 0 40px;
-  }
-  @include xl {
-    padding: 0 40px 0 196px;
+  @include sm{
+    padding: 0 20px;
   }
 
+  @include md {
+    padding: 0 40px;
+  }
+
+  @include xl {
+    padding: 0 40px 0 142px;
+  }
+
+  @include xxl{
+    padding: 0 40px 0 170px;
+  }
 }
 
 .title {
   @layer base {
     color: rgba(33, 60, 78, 1);
     padding-bottom: 40px;
-    margin-bottom: 40px;
     border-bottom: 0 solid rgba(17, 98, 125, 0.3);
     @include font(3, 30, 40, 400);
   }
 
   @include md {
     @include font(3, 42, 54, 400);
+    margin-bottom: 40px;
     border-bottom: 1px solid rgba(17, 98, 125, 0.3);
   }
 

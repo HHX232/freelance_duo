@@ -9,32 +9,32 @@ const Design = () => {
   return (
     <div className={styles['block-wrapper']}>
       <div className={styles['title-wrapper']}>
-        <h1 className={styles['title']}>Внутреннее оформление</h1>
+        <div className={styles['title']}>Внутреннее оформление</div>
       </div>
 
       <div className={styles['tiles-wrapper']}>
         <div className={styles['first-line']}>
           <div className={`${styles['tile']} ${styles['bg1']}`}>
             <Lamp />
-            <h5>Централизованное освещение</h5>
+            <div>Централизованное освещение</div>
           </div>
           <div className={`${styles['tile']} ${styles['bg2']}`}>
             <Cursor />
-            <h5>Цементная стяжка с противоскользящим покрытием</h5>
+            <div>Цементная стяжка с противоскользящим покрытием</div>
           </div>
         </div>
         <div className={styles['second-line']}>
           <div className={styles['tile']}>
             <Rubick />
-            <h5>Металлическая сетка и бетонные панели</h5>
+            <div>Металлическая сетка и бетонные панели</div>
           </div>
           <div className={styles['tile']}>
             <Shower />
-            <h5>Потолок без отделки</h5>
+            <div>Потолок без отделки</div>
           </div>
           <div className={styles['tile']}>
             <Guard />
-            <h5>Усиленные стальные двери с защитой от взлома</h5>
+            <div>Усиленные стальные двери с защитой от взлома</div>
           </div>
         </div>
       </div>

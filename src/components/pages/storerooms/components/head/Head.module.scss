@@ -5,40 +5,72 @@
     height: 800px;
     flex-direction: column;
     justify-content: space-between;
-    padding-bottom: 124px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/content/storerooms/storerooms_1.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/storerooms_1.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
-    padding-top: 100px;
     overflow: hidden;
+    padding: 90px 16px 40px 16px;
   }
 
-  .container {
-    @include content-container;
+  @include sm{
+    padding: 90px 20px 90px 20px;
   }
 
-  .title {
-    @layer base{
-      @include font(3, 44, 54, 400);
-    }
-
-    @include desktop{
-      @include font(3, 124, 150, 400);
-    }
+  @include md{
+    padding: 130px 40px 90px 40px;
   }
 
-  .description {
-    @layer base{
-      @include font(3, 16, 20, 400);
-    }
-
-    @include desktop{
-      @include font(1, 24, 34);
-    }
-
-    max-width: 780px;
-    margin-top: 12px;
+  @include lg{
+    padding: 130px 40px 60px 40px;
   }
+
+  @include xl{
+    padding: 130px 40px 60px 142px;
+  }
+
+  @include xxl{
+    padding: 130px 40px 60px 170px;
+  }
+}
+
+.title {
+  @layer base{
+    @include font(3, 44, 54, 400);
+  }
+
+  @include md{
+    @include font(3, 90, 100, 400);
+  }
+
+  @include xl{
+    @include font(3, 124, 150, 400);
+  }
+}
+
+.description {
+  @layer base{
+    @include font(3, 16, 20, 400);
+  }
+
+  @include desktop{
+    @include font(1, 24, 34);
+  }
+
+  max-width: 780px;
+}
+
+.router{
+  @layer base {
+    display: flex!important;
+    @include font(3, 14, 20, 400);
+    align-items: center;
+  }
+}
+
+.text-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }

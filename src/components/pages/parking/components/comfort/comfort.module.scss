@@ -7,7 +7,6 @@
     word-break: break-word;
 
     .info-wrapper {
-      //max-width: 774px;
       display: flex;
       flex-direction: column;
       gap: 60px;
@@ -18,43 +17,19 @@
         color: #213C4E;
       }
 
-      .download {
-        display: flex;
-        gap: 20px;
-        width: fit-content;
-
-        .text {
-          display: flex;
-          height: 100%;
-          flex-direction: column;
-          align-items: start;
-          justify-content: space-between;
-
-          h4 {
-            @include font(1, 16, 20, 400);
-          }
-
-          p {
-            @include font(1, 12, 14);
-            color: #A0A3A8;
-          }
-
-        }
-
-        @include lg {
-          padding-top: 40px;
-          border-top: 1px solid rgba(17, 98, 125, 0.3);
-        }
-
-      }
     }
   }
 
-  @include lg {
-    .comfort-wrapper {
-      max-width: max-content;
-    }
+  @include sm {
+    padding: 0 20px;
+  }
+
+  @include md {
     padding: 0 40px;
+  }
+
+  @include lg {
+    max-width: max-content;
 
     .title {
       @include font(3, 36, 50, 400);
@@ -62,14 +37,13 @@
       color: #213C4E;
     }
 
-
   }
 
-  @include desktop {
+  @include xl {
     display: flex;
     justify-content: space-between;
     gap: 80px;
-    padding: 0 40px 0 196px;
+    padding: 0 40px 0 142px;
 
     .info-wrapper {
       max-width: 774px;
@@ -82,37 +56,11 @@
 
         color: #213C4E;
       }
-
-      .download {
-        display: flex;
-        gap: 20px;
-        width: fit-content;
-
-        .text {
-          display: flex;
-          height: 100%;
-          flex-direction: column;
-          align-items: start;
-          justify-content: space-between;
-
-          h4 {
-            @include font(1, 24, 34, 400);
-          }
-
-          p {
-            @include font(1, 12, 12);
-            color: #A0A3A8;
-          }
-
-        }
-
-        @include lg {
-          padding-top: 40px;
-          border-top: 1px solid rgba(17, 98, 125, 0.3);
-        }
-
-      }
     }
+  }
+
+  @include xxl {
+    padding: 0 40px 0 170px;
   }
 
 }
@@ -145,9 +93,11 @@
 
   @layer base {
     width: 100%;
+    border-top: 1px solid rgba(17, 98, 125, 0.3);
+    padding-top: 40px;
   }
 
-  @include desktop {
+  @include xl {
     padding: 0;
     border-top: 0 solid rgba(17, 98, 125, 0.3);
 
@@ -157,10 +107,6 @@
 
   }
 
-  @include sm {
-    padding: 40px;
-    border-top: 1px solid rgba(17, 98, 125, 0.3);
-  }
 }
 
 .table-desc-wrapper {
@@ -193,6 +139,62 @@
       margin-top: 12px;
       color: #555555;
     }
+  }
+
+}
+
+.download {
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+
+  .text {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+
+    h4 {
+      @include font(1, 16, 20, 400);
+    }
+
+    p {
+      @include font(1, 12, 14);
+      color: #A0A3A8;
+    }
+
+  }
+
+  @include lg {
+    padding-top: 40px;
+    border-top: 1px solid rgba(17, 98, 125, 0.3);
+  }
+
+  @include xl{
+
+      display: flex;
+      gap: 20px;
+      width: fit-content;
+
+      .text {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+
+        h4 {
+          @include font(1, 24, 34, 400);
+        }
+
+        p {
+          @include font(1, 12, 12);
+          color: #A0A3A8;
+        }
+
+      }
+
   }
 
 }

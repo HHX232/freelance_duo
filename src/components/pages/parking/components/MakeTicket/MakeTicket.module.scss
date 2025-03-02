@@ -4,14 +4,20 @@
     padding: 0 16px;
   }
 
-  @include lg {
+  @include sm{
+    padding: 0 20px;
+  }
+
+  @include md{
     padding: 0 40px;
-    margin-bottom: 110px;
   }
 
   @include xl{
-    padding: 0 40px 0 196px;
-    margin-bottom: 110px;
+    padding: 0 40px 0 142px;
+  }
+
+  @include xxl{
+    padding: 0 40px 0 170px;
   }
 }
 
@@ -25,9 +31,19 @@
     padding: 20px 16px;
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/parking_ticket.jpg') no-repeat;
     background-position-y: 65%;
-    background-size: 100%;
+    background-size: 100% 100%;
     @include font(3, 30, 40, 400);
     word-wrap: break-word;
+  }
+
+  @include sm{
+    height: 300px;
+    padding: 24px 20px;
+  }
+
+  @include md{
+    height: 480px;
+    padding: 40px;
   }
 
   @include lg {
@@ -55,6 +71,7 @@
 
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/parking_ticket.jpg') no-repeat;
     background-position-y: 65%;
+    background-size: 100% 100%;
 
   }
 }
