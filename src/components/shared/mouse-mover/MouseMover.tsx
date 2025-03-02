@@ -2,9 +2,10 @@
 
 import clsx from 'clsx'
 import styles from './MouseMover.module.scss'
-import { MouseMoverProps } from './model'
-import { Coords } from '@src/components/model'
-import { MouseEvent, useLayoutEffect, useState } from 'react'
+import {MouseMoverProps} from './model'
+import {Coords} from '@src/components/model'
+import {TouchEvent, useLayoutEffect, useState} from 'react'
+
 const COMPONENT_WIDTH = 1920
 const COMPONENT_HEIGHT = 1080
 const COEFF = COMPONENT_WIDTH / COMPONENT_HEIGHT
@@ -13,7 +14,7 @@ const getNeededSize = () => {
   const w = Math.max(COEFF * window.innerHeight, window.innerWidth)
   const h = Math.max(window.innerHeight, (1 / COEFF) * window.innerWidth)
 
-  return { w, h }
+  return {w, h}
 }
 
 const MouseMover = ({
@@ -23,9 +24,9 @@ const MouseMover = ({
   isMobile = false,
   isMobileCardVisible = false,
   disableMove = false
-}: MouseMoverProps & { disableMove?: boolean }) => {
-  const [shift, setShift] = useState<Coords>({ x: 0, y: 0 })
-  const [size, setSize] = useState({ w: 0, h: 0 })
+}: MouseMoverProps & {disableMove?: boolean}) => {
+  const [shift, setShift] = useState<Coords>({x: 0, y: 0})
+  const [size, setSize] = useState({w: 0, h: 0})
 
   // useEffect(() => {
   //   if (isMobile) {
@@ -38,12 +39,6 @@ const MouseMover = ({
       const newSize = getNeededSize()
       setSize(newSize)
 
-      if (!isMobile) {
-        setShift({
-          x: 0,
-          y: (newSize.h - window.innerHeight) / 2
-        })
-      }
     }
 
     updateSize()
@@ -53,41 +48,40 @@ const MouseMover = ({
     return () => window.removeEventListener('resize', updateSize)
   }, [isMobile])
 
-  const onMove = (event: MouseEvent<HTMLDivElement>) => {
+  const onTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
     if (disableMove) return
 
-    const { w: neededWidth, h: neededHeight } = getNeededSize()
-
+    const {w: neededWidth} = getNeededSize()
     const diffX = Math.abs(neededWidth - window.innerWidth)
-    const diffY = Math.abs(neededHeight - window.innerHeight)
-
-    setShift({
-      x: -diffX * (event.clientX / window.innerWidth - 0.5),
-      y: -diffY * (event.clientY / window.innerHeight - 0.5)
-    })
+    setShift((prevState) => ({
+      ...prevState,
+      x: -diffX * (event.changedTouches[0].pageX / window.innerWidth - 0.5)
+    }))
   }
 
   return (
     <section
       style={{
-        transition: 'filter 0.5s',
+        transition: 'filter 0.5s, transform 0.5s',
         // ...(isMobile
         //   ? {
         //     width: `${size.w}px`,
         //     height: `${size.h}px`
         //   }
         //   : {}),
-        ...((isMobile && isMobileCardVisible) ? {
-          filter: 'brightness(0.5)'
-        } : {})
+        ...(isMobile && isMobileCardVisible
+          ? {
+              filter: 'brightness(0.5)'
+            }
+          : {})
       }}
       className={clsx(styles.wrapper, className)}
-      onMouseMove={onMove}
+      onTouchMove={onTouchEnd}
     >
       <div
         className={clsx(styles.inner, innerClassName)}
         style={{
-          transform: isMobile ? '' : `translate(${shift.x}px, ${shift.y}px)`,
+          transform: isMobile ? `translate(${shift.x}px )` : ``,
           width: `${size.w}px`,
           height: `${size.h}px`
         }}

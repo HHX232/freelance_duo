@@ -133,14 +133,20 @@ $animation-delay-fast: 0.3s;
   }
 
   @include md {
-    top: 50%;
-    bottom: initial;
-    gap: 366px;
-    transform: translateY(-50%);
+    //top: 50%;
+    //bottom: initial;
+    //gap: 366px;
+    //transform: translateY(-50%);
+    bottom: 0px;
+    height: 100%;
+    width: fit-content;
+    justify-content: space-between;
+    padding: 90px 40px;
   }
 
   @include lg {
     gap: 60px;
+    justify-content: start;
   }
 
   &-title {

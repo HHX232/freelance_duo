@@ -118,7 +118,9 @@
 .caption-items {
   @layer base {
     display: flex;
-    gap: 60px;
+    gap: 40px;
+    //overflow: hidden;
+    word-break: break-word;
   }
 
   @include md {
