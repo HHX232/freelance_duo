@@ -8,8 +8,12 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding: 16px 24px;
+    padding: 24px 16px;
     background-image: linear-gradient(180deg, rgba(38, 57, 69, 0) 18.87%, rgba(38, 57, 69, 1) 98.38%), url("/content/ymap.png");
+  }
+
+  @include sm {
+    padding: 40px 20px;
   }
 
   @include md {

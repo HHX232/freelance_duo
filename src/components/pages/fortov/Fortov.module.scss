@@ -8,10 +8,14 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding: 16px 24px;
+    padding: 40px 20px;
 
     background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%), linear-gradient(180deg, rgb(38 57 69 / 0%) 18.3%, rgb(38 57 69 / 47%) 49.35%, #263945 100%),
 linear-gradient(47.64deg, rgb(30 56 73 / 50%) 6.94%, rgb(30 56 73 / 0%) 83.47%), url("/content/cluster.png");
+  }
+
+  @include sm{
+    padding: 40px 20px;
   }
 
   @include md {
