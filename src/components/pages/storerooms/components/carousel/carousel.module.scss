@@ -6,20 +6,32 @@ $background-color_1: transparent;
   @layer base {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: rgba(33, 60, 78, 1);
     padding: 0 16px;
 
     @include font(3, 30, 40, 400);
   }
 
+  @include sm{
+    padding: 0 20px;
+  }
+
+  @include md{
+    padding: 0 40px;
+  }
 
   @include lg {
-    padding: 0 40px;
     @include font(3, 36, 50, 400);
   }
 
   @include xl {
-    padding: 0 40px 0 196px;
+    padding: 0 40px 0 142px;
+    @include font(3, 42, 54, 400);
+  }
+
+  @include xxl {
+    padding: 0 40px 0 170px;
     @include font(3, 42, 54, 400);
   }
 

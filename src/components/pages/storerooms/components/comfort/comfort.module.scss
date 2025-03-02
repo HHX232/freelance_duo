@@ -2,149 +2,77 @@
   @layer base {
     display: flex;
     justify-content: space-between;
-    gap: 80px;
+    gap: 40px;
     padding: 0 16px;
-
-    .info-wrapper {
-      //max-width: 774px;
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-
-      .title{
-        @include font(3, 30, 40, 400);
-
-        color: #213C4E;
-      }
-
-      .description {
-        @include font(1, 16, 20);
-
-        max-width: 780px;
-        margin-top: 12px;
-        color: #555555;
-      }
-
-      .download {
-        display: flex;
-        gap: 20px;
-        width: fit-content;
-
-        .text{
-          display: flex;
-          height: 100%;
-          flex-direction: column;
-          align-items: start;
-          justify-content: space-between;
-
-          h4{
-            @include font(1, 16, 20, 400);
-          }
-
-          p{
-            @include font(1, 12, 14);
-            color: #A0A3A8;
-          }
-
-        }
-
-        @include lg{
-          padding-top: 40px;
-          border-top: 1px solid rgba(17, 98, 125, 0.3);
-        }
-
-      }
-    }
   }
 
-  @include lg{
+  @include sm {
+    padding: 0 20px;
+  }
+
+  @include md {
+    padding: 0 40px;
+  }
+
+  @include lg {
     .comfort-wrapper {
       max-width: max-content;
     }
     padding: 0 40px;
-
-    .title{
-      @include font(3, 30, 40, 400);
-
-      color: #213C4E;
-    }
-
-    .description {
-      @include font(1, 16, 20);
-
-      max-width: max-content;
-      margin-top: 12px;
-      color: #555555;
-    }
-
   }
 
-  @include desktop {
+  @include xl {
     display: flex;
     justify-content: space-between;
     gap: 80px;
-    padding: 0 40px 0 196px;
-
-    .info-wrapper {
-      max-width: 774px;
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-
-      .title{
-        @include font(3, 43, 54, 400);
-
-        color: #213C4E;
-      }
-
-      .description {
-        @include font(1, 24, 34);
-
-        max-width: 780px;
-        margin-top: 12px;
-        color: #555555;
-      }
-
-      .download {
-        display: flex;
-        gap: 20px;
-        width: fit-content;
-
-        .text{
-          display: flex;
-          height: 100%;
-          flex-direction: column;
-          align-items: start;
-          justify-content: space-between;
-
-          h4{
-            @include font(1, 24, 34, 400);
-          }
-
-          p{
-            @include font(1, 12, 12);
-            color: #A0A3A8;
-          }
-
-        }
-
-        @include lg{
-          padding-top: 40px;
-          border-top: 1px solid rgba(17, 98, 125, 0.3);
-        }
-
-      }
-    }
+    padding: 0 40px 0 142px;
   }
 
+  @include xxl{
+    padding: 0 40px 0 170px;
+  }
 }
 
-.img-wrapper{
+.info-wrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+.title {
+  @layer base {
+    @include font(3, 30, 40, 400);
+
+    color: #213C4E;
+  }
+
+  @include lg {
+    @include font(3, 42, 54, 400);
+    color: #213C4E;
+  }
+}
+
+.description {
+  @layer base {
+    @include font(1, 16, 20);
+
+    max-width: 780px;
+    color: #555555;
+  }
+
+  @include lg {
+    @include font(1, 24, 34);
+  }
+}
+
+.img-wrapper {
   @layer base {
     display: none;
   }
 
-  @include desktop {
+  @include xl {
     display: block;
     width: 830px;
     height: 420px;
@@ -154,38 +82,64 @@
 
 }
 
-.download-wrapper{
+.download-wrapper {
 
   @layer base {
     width: 100%;
+    padding-top: 40px;
+    border-top: 1px solid rgba(17, 98, 125, 0.3);
+
   }
 
-  @include desktop {
+  @include xl {
     padding: 0;
     border-top: 0 solid rgba(17, 98, 125, 0.3);
-
-    .download{
-      padding: 0;
-    }
   }
 
-  @include sm{
-    padding: 40px;
-    border-top: 1px solid rgba(17, 98, 125, 0.3);
-  }
 }
 
-.table-img-wrapper{
+.table-img-wrapper {
 
   @layer base {
     display: block;
     background: url("/content/storerooms/storerooms_2_3.svg") no-repeat top center;
     height: 400px;
     width: 100%;
+    background-size: cover;
   }
 
-  @include desktop {
+  @include xl {
     display: none;
+  }
+
+}
+
+.download {
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+
+  .text {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+
+    h4 {
+      @include font(1, 16, 20, 400);
+    }
+
+    p {
+      @include font(1, 12, 14);
+      color: #A0A3A8;
+    }
+
+  }
+
+  @include lg {
+    padding-top: 40px;
+    border-top: 1px solid rgba(17, 98, 125, 0.3);
   }
 
 }
