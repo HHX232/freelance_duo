@@ -6,31 +6,31 @@ import TgIcon from '@icons/tg.svg'
 import FriendIcon from '@icons/friend.svg'
 import FriendMobIcon from '@icons/friend_mob.svg'
 import Link from 'next/link'
-import { useIsTablet } from '@utils/useIsMobile'
-import { useEffect, useState } from 'react'
+import {useIsTablet} from '@utils/useIsMobile'
+import {useEffect, useState} from 'react'
 import clsx from 'clsx'
 import UserSVG from '@icon/user.svg'
-import { useStore } from '@src/lib/store/store'
-import { AuthPopup } from '@pages/dashboard/auth/auth'
-import { Backcall } from '@shared/back-call-popup/backcall'
+import {useStore} from '@src/lib/store/store'
+import {AuthPopup} from '@pages/dashboard/auth/auth'
+import {Backcall} from '@shared/back-call-popup/backcall'
 
 interface FooterLink {
   title: string
   href: string
 }
 
-const Footer = ({ dashboard }: { dashboard?: boolean }) => {
+const Footer = ({dashboard}: {dashboard?: boolean}) => {
   const isTablet = useIsTablet(963)
 
   const links: FooterLink[] = [
-    { title: 'Главная', href: '/map' },
-    { title: 'О проекте', href: '/o-proekte' },
-    { title: 'О застройщике', href: '/alkor' },
-    { title: 'Ход строительства', href: '/gallery' },
-    { title: 'Выбрать квартиру', href: '/planirovki-i-ceny' },
-    { title: 'Отделка', href: '/otdelka' },
-    { title: 'Новости', href: '/news' },
-    { title: 'Контакты', href: '/contacts' }
+    {title: 'Главная', href: '/'},
+    {title: 'О проекте', href: '/o-proekte'},
+    {title: 'О застройщике', href: '/alkor'},
+    {title: 'Ход строительства', href: '/gallery'},
+    {title: 'Выбрать квартиру', href: '/planirovki-i-ceny'},
+    {title: 'Отделка', href: '/otdelka'},
+    {title: 'Новости', href: '/news'},
+    {title: 'Контакты', href: '/contacts'}
   ]
 
   const [columnsCount, setColumnsCount] = useState(2)
@@ -44,7 +44,7 @@ const Footer = ({ dashboard }: { dashboard?: boolean }) => {
   }, [isTablet])
 
   const splitLinksIntoColumns = (links: FooterLink[], columnsCount: number) => {
-    const columns: FooterLink[][] = Array.from({ length: columnsCount }, () => [])
+    const columns: FooterLink[][] = Array.from({length: columnsCount}, () => [])
     const columnSize = Math.ceil(links.length / columnsCount)
 
     for (let i = 0; i < links.length; i++) {
@@ -57,7 +57,7 @@ const Footer = ({ dashboard }: { dashboard?: boolean }) => {
 
   const columns = splitLinksIntoColumns(links, columnsCount)
 
-  const { token } = useStore()
+  const {token} = useStore()
 
   const [isLK, setLK] = useState(false)
   const [isOpenAuth, setOpenAuth] = useState(false)
@@ -73,7 +73,7 @@ const Footer = ({ dashboard }: { dashboard?: boolean }) => {
       <>
         <div className={styles.container_left}>
           <div className={styles.logo_wrapper}>
-            <Link href={'/map'}>
+            <Link href={'/'}>
               <div className={styles.logo}>{dashboard ? <LogoFooterDashboard /> : <LogoIcon />}</div>
             </Link>
             {/* <div className={styles.worktime}>
@@ -102,7 +102,7 @@ const Footer = ({ dashboard }: { dashboard?: boolean }) => {
                 ) : (
                   <button
                     type='button'
-                    style={{ padding: '0', textAlign: 'left' }}
+                    style={{padding: '0', textAlign: 'left'}}
                     onClick={() => setOpenAuth(!isOpenAuth)}
                   >
                     <span>Личный кабинет</span>
@@ -168,7 +168,7 @@ const Footer = ({ dashboard }: { dashboard?: boolean }) => {
       </>
       <div className={styles.mobile_footer}>
         <div className={styles.container}>
-          <Link href={'/map'}>
+          <Link href={'/'}>
             <div className={styles.logo}>
               <LogoIcon />
             </div>
@@ -183,7 +183,7 @@ const Footer = ({ dashboard }: { dashboard?: boolean }) => {
               ) : (
                 <button
                   type='button'
-                  style={{ padding: '0', textAlign: 'left' }}
+                  style={{padding: '0', textAlign: 'left'}}
                   onClick={() => setOpenAuth(!isOpenAuth)}
                   className={styles.user}
                 >
@@ -196,7 +196,7 @@ const Footer = ({ dashboard }: { dashboard?: boolean }) => {
           <a href={'tel:+78126022010'} className={styles.phone}>
             +7 812 602 20 10
           </a>
-          <button className={styles.scroll} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <button className={styles.scroll} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
             <svg width='16' height='20' viewBox='0 0 16 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
               <path
                 d='M8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM7 19C7 19.5523 7.44772 20 8 20C8.55228 20 9 19.5523 9 19H7ZM7 1V19H9V1H7Z'
@@ -208,7 +208,7 @@ const Footer = ({ dashboard }: { dashboard?: boolean }) => {
         <div className={styles.nav}>
           <ul>
             <li>
-              <Link href={'/map'}>Главная</Link>
+              <Link href={'/'}>Главная</Link>
             </li>
             <li>
               <Link href={'/o-proekte'}>О проекте</Link>

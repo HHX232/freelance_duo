@@ -8,18 +8,18 @@ const Head = () => {
   const isMobile = useIsSm()
   const breadcrumbItems = isMobile
     ? [
-      {
-        title: 'Главная',
-        href: '/map',
-      }
-    ]
+        {
+          title: 'Главная',
+          href: '/'
+        }
+      ]
     : [
-      {title: 'Главная', href: '/map'},
-      {
-        title: 'Кладовые',
-        href: '/storerooms'
-      }
-    ]
+        {title: 'Главная', href: '/'},
+        {
+          title: 'Кладовые',
+          href: '/storerooms'
+        }
+      ]
 
   return (
     <div>

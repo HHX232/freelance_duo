@@ -15,7 +15,7 @@ import {RequestBackCallDrawer} from '@shared/request-back-call-drawer'
 const PaymentMethodsPage = () => {
   const [active, setActive] = useState(0)
   const breadcrumbItems = [
-    {title: 'Главная', href: '/map'},
+    {title: 'Главная', href: '/'},
     {
       title: 'Способы покупки',
       href: '/payment-methods'

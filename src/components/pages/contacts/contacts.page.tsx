@@ -9,7 +9,7 @@ import Link from 'next/link'
 import {useState} from 'react'
 import {Backcall} from '@shared/back-call-popup/backcall'
 
-const breadcrumbItems = [{title: 'Главная', href: '/map'}, {title: 'Контакты'}]
+const breadcrumbItems = [{title: 'Главная', href: '/'}, {title: 'Контакты'}]
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

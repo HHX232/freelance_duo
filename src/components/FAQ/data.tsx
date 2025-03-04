@@ -146,4 +146,4 @@ export const categories = [
   }
 ]
 
-export const breadcrumbItems = [{title: 'Главная', href: '/map'}, {title: 'Частые вопросы'}]
+export const breadcrumbItems = [{title: 'Главная', href: '/'}, {title: 'Частые вопросы'}]

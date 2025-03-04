@@ -13,7 +13,7 @@ import clsx from 'clsx'
 
 export const ProgressObj = ({progress}: {progress: IProgressItem}) => {
   const breadcrumbItems = [
-    {title: 'Главная', href: '/map'},
+    {title: 'Главная', href: '/'},
     {title: 'Ход строительства', href: '/gallery'},
     {title: `${progress.name}`}
   ]

@@ -2,13 +2,7 @@
 import styles from './catalog.module.scss'
 import {Col, Row, ConfigProvider, Select, Tabs, DrawerProps, Drawer} from 'antd'
 import Card from '@shared/card/Card'
-import {
-  Suspense,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState
-} from 'react'
+import {Suspense, useCallback, useEffect, useMemo, useState} from 'react'
 import RangeFilter from '@shared/RangeInput/RangeInput'
 import type {DefaultOptionType} from 'antd/es/select'
 import {ItemLoader} from '@src/components/ItemLoader/ItemLoader'
@@ -39,14 +33,14 @@ interface CatalogPageProps {
 }
 
 const ObjParams: Record<string, string> = {
-  "Терраса": "kvartiry-s-terrasoi",
-  "с балконом": "kvartiry-s-balkonom",
-  "Кладовая": "kvartiry-s-kladovoi",
-  "Раздельный СУ": "kvartiry-s-razdelnym-su",
-  "Лоджия": "kvartiry-s-lodzhiei",
-  "Гардеробная в спальне": "kvartiry-s-garderobnoi",
-  "Лофт": 'lofty'
-};
+  Терраса: 'kvartiry-s-terrasoi',
+  'с балконом': 'kvartiry-s-balkonom',
+  Кладовая: 'kvartiry-s-kladovoi',
+  'Раздельный СУ': 'kvartiry-s-razdelnym-su',
+  Лоджия: 'kvartiry-s-lodzhiei',
+  'Гардеробная в спальне': 'kvartiry-s-garderobnoi',
+  Лофт: 'lofty'
+}
 
 const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
   const items: IObj[] = data
@@ -96,15 +90,15 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
   const [minPriceValue, setMinPriceValue] = useState<number>(defaultFilters.minPriceValue)
   const [maxPriceValue, setMaxPriceValue] = useState<number>(defaultFilters.maxPriceValue)
 
-  const idToTypeMap: { [key: string]: string } = {
-    "odnokomnatnye": '1-комнатная',
-    "dvuhkomnatnye": '2-комнатная',
+  const idToTypeMap: {[key: string]: string} = {
+    odnokomnatnye: '1-комнатная',
+    dvuhkomnatnye: '2-комнатная',
     '3-komnatnye': '3-комнатная',
-    "studii": 'Студия',
-    "planirovki-i-ceny": '',
-  };
+    studii: 'Студия',
+    'planirovki-i-ceny': ''
+  }
 
-  const [selectedType, setSelectedType] = useState<string>('');
+  const [selectedType, setSelectedType] = useState<string>('')
 
   //const [selectedType, setSelectedType] = useState<string>(id ? reverseTransliterate(id) : '')
   const [sortOrder, setSortOrder] = useState<string>('')
@@ -114,28 +108,28 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
 
   useEffect(() => {
     if (id && idToTypeMap[id]) {
-      setSelectedType(idToTypeMap[id]);
+      setSelectedType(idToTypeMap[id])
     }
-  }, [id]);
+  }, [id])
 
   // useEffect для отслеживания изменения selectedType и выполнения редиректа
   useEffect(() => {
     if (selectedType === '') {
       // Если selectedType пустой, то редирект на "планировки и цены"
-      const hasException = Object.keys(ObjParams).some(param => selectedParams.includes(param));
+      const hasException = Object.keys(ObjParams).some((param) => selectedParams.includes(param))
       if (hasException) {
-        router.replace('/planirovki-i-ceny');
+        router.replace('/planirovki-i-ceny')
       }
     } else if (selectedType) {
       // Ищем соответствующий ключ (id) в idToTypeMap
-      const newId = Object.keys(idToTypeMap).find(key => idToTypeMap[key] === selectedType);
+      const newId = Object.keys(idToTypeMap).find((key) => idToTypeMap[key] === selectedType)
 
       if (newId) {
-        const newUrl = `/${newId}`; // Создаем новый URL
-        router.replace(newUrl); // Редирект на новый URL
+        const newUrl = `/${newId}` // Создаем новый URL
+        router.replace(newUrl) // Редирект на новый URL
       }
     }
-  }, [selectedType, router]);
+  }, [selectedType, router])
 
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [isFilterLoading, setIsFilterLoading] = useState<boolean>(false)
@@ -215,14 +209,14 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
       setMaxFrameValue(query.get('maxFrameValue') ? Number(query.get('maxFrameValue')) : defaultFilters.maxFrameValue)
       setMinPriceValue(query.get('minPriceValue') ? Number(query.get('minPriceValue')) : defaultFilters.minPriceValue)
       setMaxPriceValue(query.get('maxPriceValue') ? Number(query.get('maxPriceValue')) : defaultFilters.maxPriceValue)
-      const selectedTypeFromQuery = query.get('selectedType');
+      const selectedTypeFromQuery = query.get('selectedType')
       setSelectedType(
         selectedTypeFromQuery
           ? idToTypeMap[selectedTypeFromQuery] || '' // Если в query есть selectedType, используем его
           : id
             ? idToTypeMap[id] || '' // Если есть id, используем его
             : '' // Если ни того, ни другого, возвращаем пустую строку
-      );
+      )
       setSortOrder(query.get('sortOrder') || '')
       setSelectedPlandate(query.get('selectedPlandate') || defaultFilters.selectedPlandate)
       setSelectedParams(
@@ -237,75 +231,75 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
 
   useEffect(() => {
     if (isInitialized) {
-      const params = new URLSearchParams(searchParams); // Сохраняем существующие параметры
-      let shouldUpdateURL = false;
+      const params = new URLSearchParams(searchParams) // Сохраняем существующие параметры
+      let shouldUpdateURL = false
 
       // Обновляем URL только с теми значимыми параметрами, которые отличаются от дефолтных
       if (minSquareValue !== defaultFilters.minSquareValue) {
-        params.set('minSquareValue', minSquareValue.toString());
-        shouldUpdateURL = true;
+        params.set('minSquareValue', minSquareValue.toString())
+        shouldUpdateURL = true
       }
       if (maxSquareValue !== defaultFilters.maxSquareValue) {
-        params.set('maxSquareValue', maxSquareValue.toString());
-        shouldUpdateURL = true;
+        params.set('maxSquareValue', maxSquareValue.toString())
+        shouldUpdateURL = true
       }
       if (minFloorValue !== defaultFilters.minFloorValue) {
-        params.set('minFloorValue', minFloorValue.toString());
-        shouldUpdateURL = true;
+        params.set('minFloorValue', minFloorValue.toString())
+        shouldUpdateURL = true
       }
       if (maxFloorValue !== defaultFilters.maxFloorValue) {
-        params.set('maxFloorValue', maxFloorValue.toString());
-        shouldUpdateURL = true;
+        params.set('maxFloorValue', maxFloorValue.toString())
+        shouldUpdateURL = true
       }
       if (minFrameValue !== undefined && minFrameValue !== defaultFilters.minFrameValue) {
-        params.set('minFrameValue', minFrameValue.toString());
-        shouldUpdateURL = true;
+        params.set('minFrameValue', minFrameValue.toString())
+        shouldUpdateURL = true
       }
       if (maxFrameValue !== undefined && maxFrameValue !== defaultFilters.maxFrameValue) {
-        params.set('maxFrameValue', maxFrameValue.toString());
-        shouldUpdateURL = true;
+        params.set('maxFrameValue', maxFrameValue.toString())
+        shouldUpdateURL = true
       }
       if (minPriceValue !== defaultFilters.minPriceValue) {
-        params.set('minPriceValue', minPriceValue.toString());
-        shouldUpdateURL = true;
+        params.set('minPriceValue', minPriceValue.toString())
+        shouldUpdateURL = true
       }
       if (maxPriceValue !== defaultFilters.maxPriceValue) {
-        params.set('maxPriceValue', maxPriceValue.toString());
-        shouldUpdateURL = true;
+        params.set('maxPriceValue', maxPriceValue.toString())
+        shouldUpdateURL = true
       }
       if (sortOrder) {
-        params.set('sortOrder', sortOrder);
-        shouldUpdateURL = true;
+        params.set('sortOrder', sortOrder)
+        shouldUpdateURL = true
       }
       if (selectedPlandate !== defaultFilters.selectedPlandate) {
-        params.set('selectedPlandate', selectedPlandate);
-        shouldUpdateURL = true;
+        params.set('selectedPlandate', selectedPlandate)
+        shouldUpdateURL = true
       }
 
       // Проверяем, соответствует ли текущий param какому-либо значению в ObjParams
-      const matchingKey = Object.keys(ObjParams).find((key) => ObjParams[key] === param);
+      const matchingKey = Object.keys(ObjParams).find((key) => ObjParams[key] === param)
 
       // Логика работы с selectedParams
-      let filteredSelectedParams = [...selectedParams];
+      let filteredSelectedParams = [...selectedParams]
 
       // Если текущий param соответствует значению в ObjParams (например, "Терраса"),
       // исключаем его из selectedParams
       if (matchingKey) {
-        filteredSelectedParams = filteredSelectedParams.filter((p) => p !== matchingKey);
+        filteredSelectedParams = filteredSelectedParams.filter((p) => p !== matchingKey)
       }
 
       // Если после фильтрации остаются параметры, добавляем их в URL
       if (filteredSelectedParams.length > 0) {
-        params.set('selectedParams', filteredSelectedParams.join(','));
-        shouldUpdateURL = true;
+        params.set('selectedParams', filteredSelectedParams.join(','))
+        shouldUpdateURL = true
       } else {
         // Удаляем selectedParams, если пусто
-        params.delete('selectedParams');
-        shouldUpdateURL = true;
+        params.delete('selectedParams')
+        shouldUpdateURL = true
       }
 
       // Создаем URLSearchParams только с значимыми параметрами для проверки изменений
-      const significantParams = new URLSearchParams();
+      const significantParams = new URLSearchParams()
       const allowedParams = [
         'minSquareValue',
         'maxSquareValue',
@@ -317,27 +311,27 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
         'maxPriceValue',
         'sortOrder',
         'selectedPlandate',
-        'selectedParams',
-      ];
+        'selectedParams'
+      ]
 
       for (const [key, value] of params.entries()) {
         if (allowedParams.includes(key)) {
-          significantParams.set(key, value);
+          significantParams.set(key, value)
         }
       }
 
-      const currentSearchParams = new URLSearchParams(window.location.search);
-      const currentSignificantParams = new URLSearchParams();
+      const currentSearchParams = new URLSearchParams(window.location.search)
+      const currentSignificantParams = new URLSearchParams()
 
       for (const [key, value] of currentSearchParams.entries()) {
         if (allowedParams.includes(key)) {
-          currentSignificantParams.set(key, value);
+          currentSignificantParams.set(key, value)
         }
       }
 
       // Обновляем URL, только если есть изменения
       if (shouldUpdateURL && significantParams.toString() !== currentSignificantParams.toString()) {
-        router.replace(`${window.location.pathname}?${params.toString()}`);
+        router.replace(`${window.location.pathname}?${params.toString()}`)
       }
     }
   }, [
@@ -356,18 +350,17 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
     searchParams,
     defaultFilters,
     router,
-    param, // Добавлено для отслеживания изменений param
-  ]);
+    param // Добавлено для отслеживания изменений param
+  ])
 
   const pathname = usePathname()
   useEffect(() => {
     // Проверяем, что находимся на странице /planirovki-i-ceny и нет query параметров
     if (isInitialized && searchParams.toString() === '' && pathname === '/planirovki-i-ceny') {
-      router.replace('/planirovki-i-ceny'); // Очистка URL
-      resetFilters(); // Сброс фильтров
+      router.replace('/planirovki-i-ceny') // Очистка URL
+      resetFilters() // Сброс фильтров
     }
-  }, [isInitialized, searchParams, pathname, router]);
-
+  }, [isInitialized, searchParams, pathname, router])
 
   // Отдельный useEffect для изменения `selectedType`
   // useEffect(() => {
@@ -387,43 +380,44 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
 
   // Логика для установки активного параметра при загрузке страницы
   useEffect(() => {
-    const matchingKey = Object.keys(ObjParams).find(key => ObjParams[key] === param);
+    const matchingKey = Object.keys(ObjParams).find((key) => ObjParams[key] === param)
 
     if (matchingKey && !selectedParams.includes(matchingKey)) {
-      setSelectedParams((prevParams) => [...prevParams, matchingKey]);
+      setSelectedParams((prevParams) => [...prevParams, matchingKey])
     }
-  }, [param, selectedParams]);
+  }, [param, selectedParams])
 
   const handleParamChange = (value: string, checked: boolean) => {
     setSelectedParams((prevParams) => {
-      const cleanedValue = value.toLowerCase().trim();
+      const cleanedValue = value.toLowerCase().trim()
 
       // Находим ключ, если param соответствует значению в ObjParams
-      const matchingKey = Object.keys(ObjParams).find((key) => ObjParams[key] === param);
+      const matchingKey = Object.keys(ObjParams).find((key) => ObjParams[key] === param)
 
-      let updatedParams;
+      let updatedParams
       if (checked) {
         // Добавляем только параметры, которые не совпадают с текущим param (kvartiry-s-terrasoi)
-        updatedParams = matchingKey && cleanedValue === matchingKey
-          ? prevParams // Не добавляем "Террасу", если мы на странице "kvartiry-s-terrasoi"
-          : [...prevParams, cleanedValue];
+        updatedParams =
+          matchingKey && cleanedValue === matchingKey
+            ? prevParams // Не добавляем "Террасу", если мы на странице "kvartiry-s-terrasoi"
+            : [...prevParams, cleanedValue]
       } else {
         // Удаляем параметр из списка
-        updatedParams = prevParams.filter((p) => p !== cleanedValue);
+        updatedParams = prevParams.filter((p) => p !== cleanedValue)
       }
 
-      return updatedParams;
-    });
-  };
+      return updatedParams
+    })
+  }
 
   useEffect(() => {
     // Активируем "Террасу" при загрузке страницы, если мы на странице "kvartiry-s-terrasoi"
-    const matchingKey = Object.keys(ObjParams).find((key) => ObjParams[key] === param);
+    const matchingKey = Object.keys(ObjParams).find((key) => ObjParams[key] === param)
 
     if (matchingKey && !selectedParams.includes(matchingKey)) {
-      setSelectedParams((prevParams) => [...prevParams, matchingKey]);
+      setSelectedParams((prevParams) => [...prevParams, matchingKey])
     }
-  }, [param, selectedParams]);
+  }, [param, selectedParams])
 
   const onSquareMinChange = useCallback((value: number) => setMinSquareValue(Math.floor(value)), [])
   const onSquareMaxChange = useCallback((value: number) => setMaxSquareValue(Math.ceil(value)), [])
@@ -648,25 +642,27 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
   }, [sortedAndFilteredItems.length, currentVisibleCount])
 
   const crumbs = [
-    {key: 'odnokomnatnye', title: 'Однокомнатные', h1: "1-комнатные квартиры"},
-    {key: 'dvuhkomnatnye', title: 'Двухкомнатные ', h1: "2-комнатные квартиры"},
-    {key: '3-komnatnye', title: 'Трехкомнатные', h1: "3-комнатные квартиры"},
-    {key: 'studii', title: 'Студии', h1: "Студии"},
-    {key: 'lofty', title: 'Лофты', h1: "Лофты"},
-    {key: 'kvartiry-s-garderobnoi', title: "Квартиры с гардеробной", h1: "Квартиры с гардеробной"},
-    {key: 'kvartiry-s-kladovoi', title: 'Квартиры с кладовой', h1: "Квартиры с кладовой"},
-    {key: 'kvartiry-s-razdelnym-su', title: 'Квартиры с раздельным СУ', h1: "Квартиры с раздельным санузлом"},
-    {key: 'kvartiry-s-terrasoi', title: 'Квартиры с терассой', h1: "Квартиры с терассой"},
-    {key: 'kvartiry-s-balkonom', title: 'Квартиры с балконом', h1: "Квартиры с балконом"},
-    {key: 'kvartiry-s-lodzhiei', title: 'Квартиры с лоджией', h1: "Квартиры с лоджией"},
+    {key: 'odnokomnatnye', title: 'Однокомнатные', h1: '1-комнатные квартиры'},
+    {key: 'dvuhkomnatnye', title: 'Двухкомнатные ', h1: '2-комнатные квартиры'},
+    {key: '3-komnatnye', title: 'Трехкомнатные', h1: '3-комнатные квартиры'},
+    {key: 'studii', title: 'Студии', h1: 'Студии'},
+    {key: 'lofty', title: 'Лофты', h1: 'Лофты'},
+    {key: 'kvartiry-s-garderobnoi', title: 'Квартиры с гардеробной', h1: 'Квартиры с гардеробной'},
+    {key: 'kvartiry-s-kladovoi', title: 'Квартиры с кладовой', h1: 'Квартиры с кладовой'},
+    {key: 'kvartiry-s-razdelnym-su', title: 'Квартиры с раздельным СУ', h1: 'Квартиры с раздельным санузлом'},
+    {key: 'kvartiry-s-terrasoi', title: 'Квартиры с терассой', h1: 'Квартиры с терассой'},
+    {key: 'kvartiry-s-balkonom', title: 'Квартиры с балконом', h1: 'Квартиры с балконом'},
+    {key: 'kvartiry-s-lodzhiei', title: 'Квартиры с лоджией', h1: 'Квартиры с лоджией'}
   ]
-
 
   const crumb = crumbs.find((crumb) => crumb.key == id || crumb.key == param)?.title
 
   const breadcrumbItems = !crumb
-    ? [{ title: 'Главная', href: '/map' }, { title: 'Выбрать квартиру', href: '/planirovki-i-ceny' }]
-    : [{ title: 'Главная', href: '/map' }, { title: crumb }]
+    ? [
+        {title: 'Главная', href: '/'},
+        {title: 'Выбрать квартиру', href: '/planirovki-i-ceny'}
+      ]
+    : [{title: 'Главная', href: '/'}, {title: crumb}]
 
   const title = crumbs.find((crumb) => crumb.key == id || crumb.key == param)?.h1 || 'Выбрать квартиру'
 
@@ -935,7 +931,7 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
 const CatalogPageWrapper = ({data, filters_data, id, param}: CatalogPageProps) => {
   return (
     <Suspense>
-      <CatalogPage data={data} filters_data={filters_data} id={id} param={param}/>
+      <CatalogPage data={data} filters_data={filters_data} id={id} param={param} />
     </Suspense>
   )
 }

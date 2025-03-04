@@ -1,1 +1,1 @@
-export const breadcrumbItems = [{title: 'Главная', href: '/map'}, {title: 'Ход строительства'}]
+export const breadcrumbItems = [{title: 'Главная', href: '/'}, {title: 'Ход строительства'}]

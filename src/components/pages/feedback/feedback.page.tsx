@@ -17,12 +17,13 @@ import NextImage from 'next/image'
 import {sendCallBack} from '@src/actions/contacts'
 import {SuccessContactPopup} from '@shared/success-contact-popup/success-contact-popup'
 
-const breadcrumbItems = [{title: 'Главная', href: '/map'}, {title: 'Служба доверия'}]
+const breadcrumbItems = [{title: 'Главная', href: '/'}, {title: 'Служба доверия'}]
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Служба доверия – позвонить на горячую линию ЖК «Кронфорт»',
-    description: 'Контакты горячей линии службы доверия застройщика «Алькор», позвонить на горячую линию, если есть вопросы и пожелания. '
+    description:
+      'Контакты горячей линии службы доверия застройщика «Алькор», позвонить на горячую линию, если есть вопросы и пожелания. '
   }
 }
 
@@ -84,18 +85,18 @@ const FeedbackPage = () => {
     const checkCT = () => {
       if (typeof window !== 'undefined' && window.ct) {
         // Если window.ct доступен, получить sessionId
-        const sessionId = window.ct('calltracking_params', modId)?.sessionId;
-        console.log('Session ID:', sessionId);
-        setSessionID(sessionId);
+        const sessionId = window.ct('calltracking_params', modId)?.sessionId
+        console.log('Session ID:', sessionId)
+        setSessionID(sessionId)
       } else {
         // Попробуем еще раз через небольшую задержку
-        setTimeout(checkCT, 1000); // Повторяем проверку через 1 секунду
+        setTimeout(checkCT, 1000) // Повторяем проверку через 1 секунду
       }
-    };
+    }
 
     // Запускаем первоначальную проверку
-    checkCT();
-  }, [modId]);
+    checkCT()
+  }, [modId])
 
   // Логирование sessionId после его обновления
   useEffect(() => {

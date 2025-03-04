@@ -14,16 +14,16 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import IconWithCount from '@shared/IconWithCount/IconWithCount'
 import FilledButton from '@shared/filledButton/FilledButton'
-import { useEffect, useRef, useState } from 'react'
+import {useEffect, useRef, useState} from 'react'
 import MenuItem from './menuItem/MenuItem'
 import MenuBlock from './menuBlock/MenuBlock'
-import { useIsMobile, useIsTablet } from '@utils/useIsMobile'
-import { useClickOutside } from '@src/lib/hooks/useOutsideClick'
-import { AuthPopup } from '@pages/dashboard/auth/auth'
-import { useStore } from '@src/lib/store/store'
-import { usePathname, useRouter } from 'next/navigation'
-import { Backcall } from '@shared/back-call-popup/backcall'
-import useRouterNext from "@src/lib/hooks/useRouter";
+import {useIsMobile, useIsTablet} from '@utils/useIsMobile'
+import {useClickOutside} from '@src/lib/hooks/useOutsideClick'
+import {AuthPopup} from '@pages/dashboard/auth/auth'
+import {useStore} from '@src/lib/store/store'
+import {usePathname, useRouter} from 'next/navigation'
+import {Backcall} from '@shared/back-call-popup/backcall'
+import useRouterNext from '@src/lib/hooks/useRouter'
 
 interface HeaderProps {
   dark?: boolean
@@ -33,7 +33,7 @@ interface HeaderProps {
   }
 }
 
-const Header = ({ dark, dashboard }: HeaderProps) => {
+const Header = ({dark, dashboard}: HeaderProps) => {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
   const isMobile = useIsMobile()
   const isTablet = useIsTablet()
@@ -42,10 +42,10 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
 
   const router = useRouter()
 
-  const { replace } = useRouterNext();
+  const {replace} = useRouterNext()
   const pathname = usePathname()
 
-  const { token, clearToken } = useStore()
+  const {token, clearToken} = useStore()
 
   // const handleClick = (e) => {
   //   e.preventDefault();
@@ -59,7 +59,7 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
     replace({
       pathname: '/planirovki-i-ceny',
       query: {}
-    });
+    })
   }
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
       document.body.style.overflow = ''
       document.body.style.paddingRight = ''
     }
-  }, [isMenuOpened])
+  }, [isMenuOpened, isTablet])
 
   const onMenuClick = () => {
     setIsMenuOpened(!isMenuOpened)
@@ -95,7 +95,7 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
 
   const [isOpenAuth, setOpenAuth] = useState(false)
 
-  const { favorites, compare } = useStore()
+  const {favorites, compare} = useStore()
 
   const [favoritesCount, setFavoritesCount] = useState(0)
   const [compareCount, setCompareCount] = useState(0)
@@ -114,11 +114,11 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
   }, [favorites, compare])
   const isMapPage = typeof document !== 'undefined' ? document.URL.includes('map') : false
 
-  let LogoComponent = <Link href={'/map'}>{isMenuOpened ? <LogoSVG /> : <LogoMainSVG />}</Link>
+  let LogoComponent = <Link href={'/'}>{isMenuOpened ? <LogoSVG /> : <LogoMainSVG />}</Link>
 
   if (dashboard) {
     LogoComponent = (
-      <Link href={'/map'}>
+      <Link href={'/'}>
         <LogoSVG />
       </Link>
     )
@@ -126,14 +126,14 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
 
   if (isMapPage) {
     LogoComponent = (
-      <Link href={'/map'}>
+      <Link href={'/'}>
         <LogoSVG />
       </Link>
     )
   }
 
   if (!dashboard && !isMapPage) {
-    LogoComponent = <Link href={'/map'}>{isMenuOpened ? <LogoMainSVG /> : <LogoMainSVG />}</Link>
+    LogoComponent = <Link href={'/'}>{isMenuOpened ? <LogoMainSVG /> : <LogoMainSVG />}</Link>
   }
 
   const [isLK, setLK] = useState(false)
@@ -152,14 +152,14 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
   const handleLogout = () => {
     clearToken()
     if (pathname.startsWith('/lk')) {
-      router.push('/map')
+      router.push('/')
     }
   }
 
   return (
     <>
       <header
-        className={clsx(styles.header, { [styles.dark]: dark }, isMenuOpened ? `${styles.active} no-scroll` : '')}
+        className={clsx(styles.header, {[styles.dark]: dark}, isMenuOpened ? `${styles.active} no-scroll` : '')}
         ref={burgerRef}
       >
         <div className={styles.container}>
@@ -172,7 +172,7 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
                     {isLK && (
                       <>
                         {token ? (
-                          <Link href={'/lk'} className={styles.lk} style={isMenuOpened ? { color: '#fff' } : {}}>
+                          <Link href={'/lk'} className={styles.lk} style={isMenuOpened ? {color: '#fff'} : {}}>
                             Личный кабинет
                           </Link>
                         ) : (
@@ -180,7 +180,7 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
                             type='button'
                             className={styles.lk}
                             onClick={() => setOpenAuth(!isOpenAuth)}
-                            style={isMenuOpened ? { color: '#fff' } : {}}
+                            style={isMenuOpened ? {color: '#fff'} : {}}
                           >
                             Личный кабинет
                           </button>
@@ -276,10 +276,7 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
               )}
 
               {!dashboard ? (
-                <div
-                  onClick={handleClick}
-                  className={styles.get}
-                >
+                <div onClick={handleClick} className={styles.get}>
                   <FilledButton
                     className={clsx(styles.searchApartments, !isMenuOpened ? styles.closed : '')}
                     variety={isMenuOpened || isMapPage ? 'primary' : 'primary'}
@@ -338,7 +335,7 @@ const Header = ({ dark, dashboard }: HeaderProps) => {
                 <MenuItem text={'Кладовые'} href={'/storerooms'} />
               </div>
               <div onClick={() => setIsMenuOpened(false)}>
-                <MenuItem text={'Паркинг'} href={'/parking'}/>
+                <MenuItem text={'Паркинг'} href={'/parking'} />
               </div>
             </MenuBlock>
 

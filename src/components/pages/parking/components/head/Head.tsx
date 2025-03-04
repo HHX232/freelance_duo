@@ -11,11 +11,11 @@ const Head = () => {
     ? [
         {
           title: 'Главная',
-          href: '/map',
+          href: '/'
         }
       ]
     : [
-        {title: 'Главная', href: '/map'},
+        {title: 'Главная', href: '/'},
         {
           title: 'Паркинг',
           href: '/parking'
