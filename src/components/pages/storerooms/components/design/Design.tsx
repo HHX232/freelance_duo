@@ -32,7 +32,7 @@ const Design = () => {
             <Shower />
             <div>Потолок без отделки</div>
           </div>
-          <div className={styles['tile']}>
+          <div className={`${styles['tile']} ${styles['bg5']}`}>
             <Guard />
             <div>Усиленные стальные двери с защитой от взлома</div>
           </div>

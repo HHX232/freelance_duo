@@ -82,14 +82,14 @@
   max-width: 780px;
 
   @layer base {
-    @include font(3, 16, 20, 400);
+    @include font(1, 16, 20, 400);
   }
   @include md {
-    @include font(3, 20, 26, 400);
+    @include font(1, 20, 26, 400);
   }
 
-  @include desktop {
-    @include font(3, 24, 34);
+  @include xl {
+    @include font(1, 24, 34);
   }
 }
 

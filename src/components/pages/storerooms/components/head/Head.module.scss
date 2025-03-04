@@ -2,7 +2,7 @@
   @layer base {
     //position: relative;
     display: flex;
-    height: 800px;
+    height: 100vh;
     flex-direction: column;
     justify-content: space-between;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/storerooms_1.jpeg");
@@ -50,15 +50,17 @@
 }
 
 .description {
-  @layer base{
-    @include font(3, 16, 20, 400);
+  @layer base {
+    max-width: 780px;
+    @include font(1, 16, 20, 400);
+  }
+  @include md {
+    @include font(1, 20, 26, 400);
   }
 
-  @include desktop{
+  @include xl {
     @include font(1, 24, 34);
   }
-
-  max-width: 780px;
 }
 
 .router{
