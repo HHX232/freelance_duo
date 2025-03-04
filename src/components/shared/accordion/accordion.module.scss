@@ -1,22 +1,67 @@
 @import '../../../fonts/fonts';
 
+.accordion {
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+}
+
 .item {
    position: relative;
    display: flex;
+   width: 100%;
    align-items: center;
-   border-bottom: 1px solid #fff;
    font-family: $font-romul;
    font-size: 20px;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
    font-weight: 400;
    transition: all .3s !important;
+}
+
+.decor_line {
+   width: 100%;
+   height: 1px;
+   background-color: #fff;
+}
+
+.header {
+   position: relative;
+   width: 100%;
+   padding: 8px 20px 8px 0;
+   cursor: pointer; // Добавляем курсор для интерактивности
+}
+
+.li_item {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+}
+
+.none {
+   display: none;
 }
 
 .arrow {
    position: absolute;
    z-index: 100;
-   top: 50%;
+   top: 39%;
    left: 0;
-   transform: translateY(-50%);
+   transition: transform 0.3s ease; // Анимация для стрелки
+}
+
+.content {
+   overflow: hidden; // Скрываем содержимое
+   max-height: 0; // Начальная высота
+   margin-top: 10px;
+   opacity: 0; // Начальная прозрачность
+   transition: max-height 0.3s ease, opacity 0.3s ease; // Анимация для содержимого
+}
+
+.arrow_right {
+   right: 0 !important;
+   left: auto;
 }
 
 .item::before {
@@ -27,8 +72,6 @@
    height: 10px;
    color: #fff;
    content: "";
-
-
 }
 
 .white_text {
@@ -49,7 +92,6 @@
    font-family: $font-gotham-pro;
    font-weight: 400;
 }
-
 
 .accentSmall_text {
    font-size: 22px;
@@ -95,4 +137,16 @@
 .defaultXS {
    font-size: 12px;
    line-height: 1.2;
+}
+
+// Стили для открытого состояния
+.open {
+   .content {
+      max-height: 500px; // Максимальная высота (увеличьте, если нужно)
+      opacity: 1; // Плавное появление
+   }
+
+   .arrow {
+      transform: rotate(-180deg); // Поворот стрелки
+   }
 }
