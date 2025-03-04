@@ -88,14 +88,19 @@ linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%)
 }
 
 .caption {
-  position: relative;
-  max-width: 350px;
-  width: 100%;
+  @layer base {
+    position: relative;
+    width: fit-content;
 
-  & svg {
-    position: absolute;
-    top: 0;
-    right: 0;
+    & svg {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  @include md {
+    max-width: 350px;
   }
 
   &__title {
@@ -118,17 +123,6 @@ linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%)
       }
     }
 
-    //@include font(3, 64, 80);
-    //
-    //position: relative;
-    //display: flex;
-    //align-items: flex-end;
-    //color: $yellow-text;
-    //gap: 8px;
-    //
-    //& span {
-    //  @include font(3, 32, 44);
-    //}
   }
 
   &__divider {
@@ -141,11 +135,12 @@ linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%)
   }
 
   &__description {
-    @include font(1, 16, 22, 200);
-
-    margin-top: 16px;
-    color: $yellow-text;
-
+    @layer base {
+      @include font(1, 16, 22, 200);
+      margin-top: 16px;
+      width: 240px;
+      color: $yellow-text;
+    }
   }
 }
 
