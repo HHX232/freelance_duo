@@ -1,6 +1,6 @@
 'use client'
 import styles from './pin.module.scss'
-import {PinType} from '@pages/map/model'
+import {PinType} from '@pages/map/Components/pin/model'
 import PinSVG from '@icons/pin.svg'
 import PinBGSVG from '@icons/pin_bg.svg'
 import clsx from 'clsx'

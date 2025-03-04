@@ -1,28 +1,26 @@
 'use client'
-import {Suspense, useEffect, useState} from 'react'
+import {Suspense, useState} from 'react'
 import styles from './Map.module.scss'
-import {DirectionHint, PinType, Point} from './model'
+import {DirectionHint, PinType, Point} from './Components/pin/model'
 import MouseMover from '@shared/mouse-mover/MouseMover'
 import {useIsMobile} from '@utils/useIsMobile'
 import clsx from 'clsx'
-import Pin from '@pages/map/pin/pin'
+import Pin from './Components/pin/pin'
 import dynamic from 'next/dynamic'
 import NextImage from 'next/image'
 import Head from 'next/head'
 import ArrowUpSVG from '@icons/arrow_up.svg'
 import CornerSVG from '@icons/corner.svg'
 import Page from '@shared/page/Page'
-import AreasPage from '@pages/areas/Areas'
-import FortovPage from '@pages/fortov/Fortov'
-import TransportPage from '@pages/transport/Transport'
-import HomePage from '@pages/home/Home.page'
+import AreasPage from './Components/areas/Areas'
+import FortovPage from './Components/fortov/Fortov'
+import TransportPage from './Components/transport/Transport'
+import HomePage from './Components/home/Home.page'
 import ContactFormPage from '@pages/contact-form/ContactForm'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
-
-const Preloader = dynamic(() => import('./preloader/Preloader'), {ssr: false})
-const Compass = dynamic(() => import('./card/Compass'), {ssr: false})
-const Card = dynamic(() => import('./card/CompassCard'), {ssr: false})
+const Compass = dynamic(() => import('./Components/card/Compass'), {ssr: false})
+const Card = dynamic(() => import('./Components/card/CompassCard'), {ssr: false})
 
 const directionHints: DirectionHint[] = [
   {
@@ -32,7 +30,7 @@ const directionHints: DirectionHint[] = [
       y: 10
     },
     coords_mob: {
-      x: 31,
+      x: 49,
       y: 10
     }
   },
@@ -43,7 +41,7 @@ const directionHints: DirectionHint[] = [
       y: 10
     },
     coords_mob: {
-      x: 56,
+      x: 59,
       y: 10
     },
     icon: <ArrowUpSVG />
@@ -55,9 +53,9 @@ const directionHints: DirectionHint[] = [
       y: 10
     },
     coords_mob: {
-      x: 68,
+      x: 76,
       y: 10
-    },
+    }
   },
   {
     name: 'ЖК «Центральный»',
@@ -67,8 +65,8 @@ const directionHints: DirectionHint[] = [
     },
     coords_mob: {
       x: 74,
-      y: 30
-    },
+      y: 28
+    }
   }
 ]
 
@@ -82,7 +80,7 @@ const points: Point[] = [
       y: 12
     },
     coords_mob: {
-      x: 42.5,
+      x: 49.5,
       y: 12
     }
   },
@@ -95,8 +93,8 @@ const points: Point[] = [
       y: 27.5
     },
     coords_mob: {
-      x: 55,
-      y: 24
+      x: 67.5,
+      y: 27.5
     }
   }
 ]
@@ -123,8 +121,8 @@ const pins: PinType[] = [
       y: 32
     },
     coords_mob: {
-      x: 59.8,
-      y: 30
+      x: 59,
+      y: 32
     }
   },
   // {
@@ -146,8 +144,8 @@ const pins: PinType[] = [
       y: 49
     },
     coords_mob: {
-      x: 63.8,
-      y: 46.5
+      x: 64.3,
+      y: 49
     }
   },
   {
@@ -158,7 +156,7 @@ const pins: PinType[] = [
     },
     coords_mob: {
       x: 59.8,
-      y: 15.2
+      y: 17
     }
   },
   {
@@ -168,8 +166,8 @@ const pins: PinType[] = [
       y: 37.8
     },
     coords_mob: {
-      x: 79.3,
-      y: 35.4
+      x: 80,
+      y: 37.8
     }
   }
 ]
@@ -198,23 +196,6 @@ const MapContent = ({preloader}: {preloader: boolean}) => {
     } else {
       setActivePin(pin.name)
     }
-  }
-
-  const [isLoading, setLoading] = useState(true)
-  const [isHide, setHide] = useState(true)
-
-  useEffect(() => {
-    setLoading(false)
-    if (preloader) {
-      setHide(true)
-      setTimeout(() => setHide(false), 4000)
-    } else {
-      setHide(false)
-    }
-  }, [preloader])
-
-  if (isLoading) {
-    return <Preloader />
   }
 
   const mobileSlides: React.ReactNode[] = [
@@ -251,22 +232,14 @@ const MapContent = ({preloader}: {preloader: boolean}) => {
       <Head>
         {/* eslint-disable-next-line react/no-unknown-property */}
         <link rel='preload' href='/map/map.png' as='image' fetchPriority='high' />
-        {/* eslint-disable-next-line react/no-unknown-property */}
-        <link rel='preload' href='/map/preloader.png' as='image' fetchPriority='high' />
-        {/* eslint-disable-next-line react/no-unknown-property */}
-        <link rel='preload' href='/map/compass-loader.svg' as='image' fetchPriority='high' />
-        {/* eslint-disable-next-line react/no-unknown-property */}
-        <link rel='preload' href='/map/wave-loader.svg' as='image' fetchPriority='high' />
-        {/* eslint-disable-next-line react/no-unknown-property */}
-        <link rel='preload' href='/map/sail-loader.svg' as='image' fetchPriority='high' />
       </Head>
 
-      {!isLoading && (
+      {
         <>
           {/*{preloader && <Preloader />}*/}
           <Page>
             <HomePage />
-            <div style={{position: 'relative', ...(isHide ? {opacity: 0} : {opacity: 1})}}>
+            <div style={{position: 'relative'}}>
               <div className={styles.captions}>
                 <h2 className={styles['captions-title']}>Локация</h2>
                 <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
@@ -316,10 +289,10 @@ const MapContent = ({preloader}: {preloader: boolean}) => {
                   onClickCloseCard={onClickCloseCard}
                 />
               )}
-              <div style={{overflow: 'hidden', width: '100%'}}>
+              <div>
                 <MouseMover
                   className={clsx(styles.wrapper)}
-                  innerClassName={clsx(styles.inner, preloader ? styles.delay : '')}
+                  innerClassName={clsx(preloader ? styles.delay : '')}
                   isMobile={isMobile}
                   isMobileCardVisible={isMobileCardVisible}
                   disableMove={false}
@@ -377,13 +350,12 @@ const MapContent = ({preloader}: {preloader: boolean}) => {
               </div>
             </div>
             <TransportPage />
-
             <AreasPage />
             <FortovPage />
             <ContactFormPage />
           </Page>
         </>
-      )}
+      }
     </div>
   )
 }

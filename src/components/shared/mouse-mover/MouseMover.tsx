@@ -3,8 +3,7 @@
 import clsx from 'clsx'
 import styles from './MouseMover.module.scss'
 import {MouseMoverProps} from './model'
-import {Coords} from '@src/components/model'
-import {TouchEvent, useLayoutEffect, useState} from 'react'
+import {useLayoutEffect, useState} from 'react'
 
 const COMPONENT_WIDTH = 1920
 const COMPONENT_HEIGHT = 1080
@@ -22,23 +21,14 @@ const MouseMover = ({
   className,
   innerClassName,
   isMobile = false,
-  isMobileCardVisible = false,
-  disableMove = false
+  isMobileCardVisible = false
 }: MouseMoverProps & {disableMove?: boolean}) => {
-  const [shift, setShift] = useState<Coords>({x: 0, y: 0})
   const [size, setSize] = useState({w: 0, h: 0})
-
-  // useEffect(() => {
-  //   if (isMobile) {
-  //     document.getElementById('page')?.scrollTo({ left: size.w / 2 - window.innerWidth / 2 + 130 })
-  //   }
-  // }, [size, isMobile])
 
   useLayoutEffect(() => {
     const updateSize = () => {
       const newSize = getNeededSize()
       setSize(newSize)
-
     }
 
     updateSize()
@@ -48,27 +38,10 @@ const MouseMover = ({
     return () => window.removeEventListener('resize', updateSize)
   }, [isMobile])
 
-  const onTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
-    if (disableMove) return
-
-    const {w: neededWidth} = getNeededSize()
-    const diffX = Math.abs(neededWidth - window.innerWidth)
-    setShift((prevState) => ({
-      ...prevState,
-      x: -diffX * (event.changedTouches[0].pageX / window.innerWidth - 0.5)
-    }))
-  }
-
   return (
     <section
       style={{
-        transition: 'filter 0.5s, transform 0.5s',
-        // ...(isMobile
-        //   ? {
-        //     width: `${size.w}px`,
-        //     height: `${size.h}px`
-        //   }
-        //   : {}),
+        width: isMobile ? '100%' : 'auto',
         ...(isMobile && isMobileCardVisible
           ? {
               filter: 'brightness(0.5)'
@@ -76,14 +49,13 @@ const MouseMover = ({
           : {})
       }}
       className={clsx(styles.wrapper, className)}
-      onTouchMove={onTouchEnd}
     >
       <div
         className={clsx(styles.inner, innerClassName)}
         style={{
-          transform: isMobile ? `translate(${shift.x}px )` : ``,
           width: `${size.w}px`,
-          height: `${size.h}px`
+          height: `${size.h}px`,
+          transform: isMobile ? 'none' : undefined
         }}
       >
         {typeof children === 'function' ? children(size) : children}

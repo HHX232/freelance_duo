@@ -5,10 +5,15 @@
   height: 100vh;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    overflow-x: auto; // Включить горизонтальный скролл
+    overflow-y: hidden; // Отключить вертикальный скролл
+  }
 }
 
 .inner {
   position: absolute;
   overflow: hidden;
-  transition: all 0.15s ease 0s;
+  scale: 1 !important;
+  transform: none !important;
 }

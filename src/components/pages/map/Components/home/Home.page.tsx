@@ -6,19 +6,9 @@ import useRouterNext from '@src/lib/hooks/useRouter'
 import {EmblaOptionsType} from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import ClassNames from 'embla-carousel-class-names'
-import Gallery from '@pages/home/bg-slider/Gallery'
-import {
-  DotButton,
-  useDotButton
-} from '@pages/home/bg-slider/EmblaCarouselDotButton'
-import {
-  NextButton,
-  PrevButton,
-  usePrevNextButtons
-} from '@pages/home/bg-slider/EmblaCarouselArrowButtons'
-
-
-
+import Gallery from './bg-slider/Gallery'
+import {DotButton, useDotButton} from './bg-slider/EmblaCarouselDotButton'
+import {NextButton, PrevButton, usePrevNextButtons} from './bg-slider/EmblaCarouselArrowButtons'
 
 const HomePage = () => {
   const {replace} = useRouterNext()
@@ -28,7 +18,6 @@ const HomePage = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [ClassNames()])
   const {selectedIndex, scrollSnaps, onDotButtonClick} = useDotButton(emblaApi)
   const {prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick} = usePrevNextButtons(emblaApi)
-
 
   return (
     <div>
