@@ -30,7 +30,7 @@ const directionHints: DirectionHint[] = [
       y: 10
     },
     coords_mob: {
-      x: 49,
+      x: 47,
       y: 10
     }
   },

@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: 100vh !important;
   align-items: center;
   justify-content: center;
   @media (max-width: 768px) {
