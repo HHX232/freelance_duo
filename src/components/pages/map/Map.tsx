@@ -16,7 +16,7 @@ import AreasPage from './Components/areas/Areas'
 import FortovPage from './Components/fortov/Fortov'
 import TransportPage from './Components/transport/Transport'
 import HomePage from './Components/home/Home.page'
-import ContactFormPage from '@pages/contact-form/ContactForm'
+import ContactFormPage from './Components/contact-form/ContactForm'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 const Compass = dynamic(() => import('./Components/card/Compass'), {ssr: false})
