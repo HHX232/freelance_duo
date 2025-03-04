@@ -1,0 +1,34 @@
+enum AccordionColors {
+  primary = 'accent',
+  white = 'white'
+}
+
+enum AccordionFonts {
+  romul = 'romul',
+  gotham = 'gotham'
+}
+
+enum AccordionSizes {
+  accentSmall = 'accentSmall',
+  accentMedium = 'accentMedium',
+  accentLarge = 'accentLarge',
+  defaultXXL = 'defaultXXL',
+  defaultXL = 'defaultXL',
+  defaultL = 'defaultL',
+  defaultM = 'defaultM',
+  defaultS = 'defaultS',
+  defaultXS = 'defaultXS'
+}
+
+type AccordionColorType = `${AccordionColors}`
+type AccordionFontType = `${AccordionFonts}`
+type AccordionSizeType = `${AccordionSizes}`
+
+export interface IAccordionItem {
+  header: string | React.ReactNode
+  children: React.ReactNode
+  disabled?: boolean
+  color?: AccordionColorType
+  font?: AccordionFontType
+  size?: AccordionSizeType
+}
