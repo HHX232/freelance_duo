@@ -11,7 +11,7 @@ const COEFF = COMPONENT_WIDTH / COMPONENT_HEIGHT
 
 const getNeededSize = () => {
   const isMobile = window.innerWidth < 768 // Проверка на мобильное устройство
-  const baseHeight = window.outerHeight
+  const baseHeight = document.documentElement.clientHeight
   const baseWidth = window.outerWidth
 
   const h = isMobile ? baseHeight : Math.max(baseHeight, (1 / COEFF) * baseWidth)
