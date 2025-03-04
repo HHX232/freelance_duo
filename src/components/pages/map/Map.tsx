@@ -343,7 +343,8 @@ const MapContent = () => {
                     layout='responsive'
                     width={1980}
                     height={1024}
-                    priority
+                    loading='lazy'
+                    quality={100}
                   />
                 </MouseMover>
               </div>
