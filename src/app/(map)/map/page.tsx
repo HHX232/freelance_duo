@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import {Metadata} from 'next'
 import MapPage from '@pages/map/Map'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -13,7 +13,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Map() {
-  return (
-    <MapPage preloader={false} />
-  )
+  return <MapPage />
 }
