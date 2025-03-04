@@ -16,5 +16,5 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Home() {
   //redirect('/map', RedirectType.replace)
 
-  return <MapPage preloader={true} />
+  return <MapPage />
 }

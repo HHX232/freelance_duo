@@ -172,7 +172,7 @@ const pins: PinType[] = [
   }
 ]
 
-const MapContent = ({preloader}: {preloader: boolean}) => {
+const MapContent = () => {
   const isMobile = useIsMobile()
   const [curPoint, setCurPoint] = useState(points[0])
   const [isMobileCardVisible, setIsMobileCardVisible] = useState(false)
@@ -292,7 +292,6 @@ const MapContent = ({preloader}: {preloader: boolean}) => {
               <div>
                 <MouseMover
                   className={clsx(styles.wrapper)}
-                  innerClassName={clsx(preloader ? styles.delay : '')}
                   isMobile={isMobile}
                   isMobileCardVisible={isMobileCardVisible}
                   disableMove={false}
@@ -360,10 +359,10 @@ const MapContent = ({preloader}: {preloader: boolean}) => {
   )
 }
 
-const MapPage = ({preloader}: {preloader: boolean}) => {
+const MapPage = () => {
   return (
     <Suspense>
-      <MapContent preloader={preloader} />
+      <MapContent />
     </Suspense>
   )
 }
