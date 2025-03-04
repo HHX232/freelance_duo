@@ -6,7 +6,6 @@ import LogoMainSVG from '@icon/logo-main.svg'
 
 import MenuSVG from '@icons/menu.svg'
 import CompareSVG from '@icons/compare.svg'
-import CallBackSVG from '@icons/callback.svg'
 import UserSVG from '@icons/user.svg'
 import FavoriteSVG from '@icons/favorite.svg'
 import CancelSVG from '@icons/cancel.svg'
@@ -22,7 +21,6 @@ import {useClickOutside} from '@src/lib/hooks/useOutsideClick'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {useStore} from '@src/lib/store/store'
 import {usePathname, useRouter} from 'next/navigation'
-import {Backcall} from '@shared/back-call-popup/backcall'
 import useRouterNext from '@src/lib/hooks/useRouter'
 
 interface HeaderProps {
@@ -147,7 +145,7 @@ const Header = ({dark, dashboard}: HeaderProps) => {
     setIsMenuOpened(false)
   }, [router, pathname])
 
-  const [callBackModal, setCallBackModal] = useState(false)
+  // const [callBackModal, setCallBackModal] = useState(false)
 
   const handleLogout = () => {
     clearToken()
@@ -238,9 +236,9 @@ const Header = ({dark, dashboard}: HeaderProps) => {
                 <>
                   {!isLoadingCount && (
                     <>
-                      <button type='button' className={styles.callback} onClick={() => setCallBackModal(true)}>
+                      {/* <button type='button' className={styles.callback} onClick={() => setCallBackModal(true)}>
                         <CallBackSVG className={clsx(styles.compare, isMenuOpened ? styles.opened : '')} />
-                      </button>
+                      </button> */}
 
                       <Link href={`${dashboard ? '/lk/sravnenie' : '/sravnenie'}`}>
                         <IconWithCount
@@ -367,7 +365,7 @@ const Header = ({dark, dashboard}: HeaderProps) => {
         </div>
       </header>
       {isOpenAuth && <AuthPopup onClose={() => setOpenAuth(false)} />}
-      {callBackModal && <Backcall onClose={() => setCallBackModal(false)} />}
+      {/* {callBackModal && <Backcall onClose={() => setCallBackModal(false)} />} */}
     </>
   )
 }
