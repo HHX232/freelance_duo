@@ -10,8 +10,13 @@ const COMPONENT_HEIGHT = 1080
 const COEFF = COMPONENT_WIDTH / COMPONENT_HEIGHT
 
 const getNeededSize = () => {
-  const w = Math.max(COEFF * window.outerHeight, window.outerWidth)
-  const h = Math.max(window.outerHeight, (1 / COEFF) * window.outerWidth)
+  const isMobile = window.innerWidth < 768 // Проверка на мобильное устройство
+  const baseHeight = window.outerHeight
+  const baseWidth = window.outerWidth
+
+  const h = isMobile ? baseHeight : Math.max(baseHeight, (1 / COEFF) * baseWidth)
+
+  const w = Math.max(COEFF * baseHeight, baseWidth)
 
   return {w, h}
 }
