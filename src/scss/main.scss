@@ -10,6 +10,14 @@ html {
   -webkit-tap-highlight-color: transparent !important;
 }
 
+.p-toggleable-content {
+  border-bottom: none !important;
+}
+
+.p-accordion-toggle-icon {
+  display: none;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -216,6 +224,7 @@ input {
 }
 
 .ant-tabs-tab-btn {
+
   &:active,
   &:focus {
     color: #555 !important;
