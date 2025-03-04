@@ -103,9 +103,21 @@
   @layer base {
     display: block;
     background: url("/content/storerooms/storerooms_2_3.svg") no-repeat top center;
-    height: 400px;
+    height: 220px;
     width: 100%;
     background-size: cover;
+  }
+
+  @include sm {
+    height: 300px;
+  }
+
+  @include md {
+    height: 400px;
+  }
+
+  @include lg {
+    height: 450px;
   }
 
   @include xl {

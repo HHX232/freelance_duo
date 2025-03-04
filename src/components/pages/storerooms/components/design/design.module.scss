@@ -62,34 +62,23 @@
     width: 100%;
     word-wrap: break-word;
 
-    justify-content: space-between;
+    //justify-content: space-between;
+    justify-content: start;
     padding: 36px 20px;
     color: #FFFFFF;
-    gap: 24px;
+    gap: 40px;
     height: 300px;
 
-    @include font(3, 22, 34, 400);
+    @include font(3, 24, 36, 400);
   }
 
-  @include sm{
+  @include sm {
     padding: 36px;
   }
 
-  @include md{
+  @include md {
 
     @include font(3, 26, 36, 400);
-  }
-
-  @include desktop {
-    display: flex;
-
-    .tile {
-      justify-content: space-between;
-      height: 532px;
-      padding: 60px;
-      @include font(3, 32, 44, 400);
-      color: #FFFFFF;
-    }
   }
 
 }
@@ -117,7 +106,14 @@
     flex-direction: row;
 
     .tile {
-      height: 540px;
+      height: 480px;
+      @include font(3, 26, 36, 400);
+    }
+  }
+
+  @include xl {
+    .tile {
+      height: 532px;
     }
   }
 }
@@ -135,24 +131,72 @@
     }
   }
 
-  @include lg {
+
+
+  @include md{
     .tile {
-      height: 300px;
+      height: 240px;
+    }
+
+    .tile:last-of-type{
+      height: 204px;
+      padding-bottom: 0;
     }
   }
 
-  @include desktop {
+  @include lg {
+    .tile {
+      height: 204px;
+    }
+
+    .tile:last-of-type{
+      height: 348px;
+    }
+  }
+
+  @include xl {
     flex-direction: row;
+    @include font(3, 24, 36, 400);
+
+  }
+
+  @include xl {
+    .tile {
+      display: flex;
+      justify-content: space-between;
+      height: 312px;
+      padding: 40px;
+      @include font(3, 24, 36, 400);
+    }
   }
 
 
 }
 
 .bg1 {
-  background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_5.jpeg') no-repeat center center;
-  background-size: 100% 100%;
+  @layer base {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_5.jpeg') no-repeat center center;
+    background-size: 100% 100%;
+    justify-content: space-between;
+  }
+
+  @include sm {
+
+  }
+
 }
 
 .bg2 {
-  background: rgba(17, 98, 125, 1);
+  @layer base {
+    background: rgba(17, 98, 125, 1);
+    @include font(3, 22, 34, 400);
+    gap: 10px
+  }
+
+  @include sm {
+    justify-content: space-between;
+  }
+
 }
+
+

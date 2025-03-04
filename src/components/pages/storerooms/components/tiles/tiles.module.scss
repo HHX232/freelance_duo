@@ -87,7 +87,7 @@
     }
 
     .description {
-      @include font(3, 14, 18, 400);
+      @include font(1, 14, 18, 400);
     }
   }
 
@@ -105,7 +105,7 @@
     }
 
     .description {
-      @include font(3, 16, 22, 400);
+      @include font(1, 16, 22, 400);
     }
 
   }
@@ -174,8 +174,39 @@
 }
 
 .icon-wrapper {
-  position: absolute;
-  right: 0;
-  top: 0;
+  @layer base {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    svg {
+      height: 136px;
+      width: 136px;
+    }
+  }
+
+  @include sm {
+    right: 0;
+    top: 0;
+    bottom: unset;
+    left: unset;
+
+    svg {
+      height: 323px;
+      width: 323px;
+    }
+  }
+
+  @include md {
+    right: 0;
+    top: 0;
+    bottom: unset;
+    left: unset;
+
+    svg {
+      height: inherit;
+      width: inherit;
+    }
+  }
 }
 
