@@ -32,3 +32,19 @@ export interface IAccordionItem {
   font?: AccordionFontType
   size?: AccordionSizeType
 }
+export interface AccordionTabCustomProps {
+  key: string
+  header: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
+  contentStyle?: React.CSSProperties
+  isOpen: boolean
+  arrowComponent?: React.ReactNode
+  onClick: () => void
+}
+
+export interface AccordionProps {
+  items: IAccordionItem[]
+  extraClass?: string
+  extraStyle?: React.CSSProperties
+}

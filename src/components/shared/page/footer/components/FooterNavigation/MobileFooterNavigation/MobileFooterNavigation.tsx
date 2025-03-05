@@ -1,7 +1,7 @@
-import Accordion from '@shared/accordion/Accordion'
+import Accordion from '@src/components/UI-kit/AccordeonKit/accordion/Accordion'
 import styles from './MobileFooterNavigation.module.scss'
 import {IMobileFooterNavigationProps} from './MobileFooterNavigation.types'
-import {IAccordionItem} from '@shared/accordion/accordion.types'
+import {IAccordionItem} from '@src/components/UI-kit/AccordeonKit/accordion/accordion.types'
 import {IFooterNavigationLink, IMobileFooterNavigationLinksGroup} from '../FooterNavigation.types'
 import Link from 'next/link'
 

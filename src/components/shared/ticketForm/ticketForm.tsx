@@ -11,7 +11,6 @@ interface ITicketFormProps {
 }
 
 const TicketForm: FC<ITicketFormProps> = ({description = 'Оставьте заявку и мы поможем вам с выбором кладовой'}) => {
-
   const [phoneNumber, setPhoneNumber] = useState('')
 
   return (

@@ -1,20 +1,9 @@
 'use client'
 import {useState, useMemo, useCallback} from 'react'
 import styles from './accordion.module.scss'
-import {IAccordionItem} from './accordion.types'
+import {AccordionProps, AccordionTabCustomProps} from './accordion.types'
 import cn from 'clsx'
-import {AccordionArrow} from '@shared/accordionArrow/accordionArrow'
-
-interface AccordionTabCustomProps {
-  key: string
-  header: React.ReactNode
-  className?: string
-  style?: React.CSSProperties
-  contentStyle?: React.CSSProperties
-  isOpen: boolean
-  arrowComponent?: React.ReactNode
-  onClick: () => void
-}
+import {AccordionArrow} from '@src/components/UI-kit/AccordeonKit/accordionArrow/accordionArrow'
 
 const AccordionTabCustom = ({
   key,
@@ -25,7 +14,7 @@ const AccordionTabCustom = ({
   isOpen = false,
   onClick,
   arrowComponent,
-  children // This is now implicitly passed by React
+  children
 }: AccordionTabCustomProps & {children: React.ReactNode}) => {
   return (
     <li className={cn(styles.li_item, className, {[styles.open]: isOpen})} style={style} key={key}>
@@ -39,12 +28,6 @@ const AccordionTabCustom = ({
       </div>
     </li>
   )
-}
-
-export interface AccordionProps {
-  items: IAccordionItem[]
-  extraClass?: string
-  extraStyle?: React.CSSProperties
 }
 
 export default function Accordion({items, extraClass, extraStyle}: AccordionProps) {
@@ -83,7 +66,7 @@ export default function Accordion({items, extraClass, extraStyle}: AccordionProp
         )}
         style={extraStyle}
       >
-        {tab?.children} {/* Nest children here */}
+        {tab?.children}
       </AccordionTabCustom>
     ))
   }, [items, extraClass, extraStyle, openIndex, handleTabClick])

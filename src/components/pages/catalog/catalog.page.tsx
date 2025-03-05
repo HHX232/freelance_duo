@@ -3,33 +3,30 @@ import styles from './catalog.module.scss'
 import {Col, Row, ConfigProvider, Select, Tabs, DrawerProps, Drawer} from 'antd'
 import Card from '@shared/card/Card'
 import {Suspense, useCallback, useEffect, useMemo, useState} from 'react'
-import RangeFilter from '@shared/RangeInput/RangeInput'
+import RangeFilter from '@src/components/UI-kit/inputs/RangeInput/RangeInput'
 import type {DefaultOptionType} from 'antd/es/select'
 import {ItemLoader} from '@src/components/ItemLoader/ItemLoader'
 import RefreshIcon from '@icon/refresh.svg'
 import {tabs} from '@shared/tabs/tabs'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@shared/title/title'
+import {Title} from '@src/components/UI-kit/TextKit/title/title'
 import DropdownIcon from '@icons/dropdown_arrow.svg'
-import {getMinMaxFloor} from '@src/lib/utils/catalog/getMinMaxFloor'
+
 import {IObj} from '@src/types/object.interface'
-import {ExtraOptions} from '@shared/extra-options/extra-options'
 import {matchType} from '@src/lib/utils/catalog/matchType'
 import {useIsTablet} from '@utils/useIsMobile'
 import FilledButton from '@shared/filledButton/FilledButton'
-import {IFilterInterface, Parametrs} from '@src/types/filters.interface'
 import {usePathname, useRouter} from 'next/navigation'
 import {useSearchParams} from 'next/navigation'
 import {transliterate} from '@utils/transliterate'
+import {ExtraOptions} from '@src/components/UI-kit/inputs/extra-options/extra-options'
+import {CatalogPageProps, FilterProps, IFiltersState} from './catalog.types'
+import {useUpdateURL} from './hooks/useUpdateURL'
+import {useResetFilters} from './hooks/useResetFilters'
+import useFilteredAndSortedItems from './hooks/useFilteredAndSortedItems'
 
 const onChange = (key: string) => {
   console.log(key)
-}
-interface CatalogPageProps {
-  data: IObj[]
-  filters_data: IFilterInterface
-  id?: string
-  param?: string
 }
 
 const ObjParams: Record<string, string> = {
@@ -46,13 +43,6 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
   const items: IObj[] = data
   const router = useRouter()
   const searchParams = useSearchParams()
-
-  // useEffect(() => {
-  //   // Если на странице есть query-параметры, заменяем их чистым URL
-  //   if (searchParams.toString()) {
-  //     router.replace('/planirovki-i-ceny'); // Указываем URL без query-параметров
-  //   }
-  // }, [router, searchParams]);
 
   const transformFlatTypes = (flatsTypes: string[]) => {
     const transformedArray = flatsTypes.map((type) => ({
@@ -159,19 +149,7 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
     }
   }, [])
 
-  const [filters, setFilters] = useState<{
-    minSquareValue: number
-    maxSquareValue: number
-    minFloorValue: number
-    maxFloorValue: number
-    minFrameValue: number
-    maxFrameValue: number
-    minPriceValue: number
-    maxPriceValue: number
-    selectedParams: string[]
-    currentPage: number
-    selectedPlandate: string
-  }>({
+  const [filters, setFilters] = useState<IFiltersState>({
     minSquareValue: Math.floor(filters_data.flats_square.min),
     maxSquareValue: Math.ceil(filters_data.flats_square.max),
     minFloorValue: 1,
@@ -229,112 +207,8 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
     }
   }, [isInitialized, searchParams, id, defaultFilters])
 
-  useEffect(() => {
-    if (isInitialized) {
-      const params = new URLSearchParams(searchParams) // Сохраняем существующие параметры
-      let shouldUpdateURL = false
-
-      // Обновляем URL только с теми значимыми параметрами, которые отличаются от дефолтных
-      if (minSquareValue !== defaultFilters.minSquareValue) {
-        params.set('minSquareValue', minSquareValue.toString())
-        shouldUpdateURL = true
-      }
-      if (maxSquareValue !== defaultFilters.maxSquareValue) {
-        params.set('maxSquareValue', maxSquareValue.toString())
-        shouldUpdateURL = true
-      }
-      if (minFloorValue !== defaultFilters.minFloorValue) {
-        params.set('minFloorValue', minFloorValue.toString())
-        shouldUpdateURL = true
-      }
-      if (maxFloorValue !== defaultFilters.maxFloorValue) {
-        params.set('maxFloorValue', maxFloorValue.toString())
-        shouldUpdateURL = true
-      }
-      if (minFrameValue !== undefined && minFrameValue !== defaultFilters.minFrameValue) {
-        params.set('minFrameValue', minFrameValue.toString())
-        shouldUpdateURL = true
-      }
-      if (maxFrameValue !== undefined && maxFrameValue !== defaultFilters.maxFrameValue) {
-        params.set('maxFrameValue', maxFrameValue.toString())
-        shouldUpdateURL = true
-      }
-      if (minPriceValue !== defaultFilters.minPriceValue) {
-        params.set('minPriceValue', minPriceValue.toString())
-        shouldUpdateURL = true
-      }
-      if (maxPriceValue !== defaultFilters.maxPriceValue) {
-        params.set('maxPriceValue', maxPriceValue.toString())
-        shouldUpdateURL = true
-      }
-      if (sortOrder) {
-        params.set('sortOrder', sortOrder)
-        shouldUpdateURL = true
-      }
-      if (selectedPlandate !== defaultFilters.selectedPlandate) {
-        params.set('selectedPlandate', selectedPlandate)
-        shouldUpdateURL = true
-      }
-
-      // Проверяем, соответствует ли текущий param какому-либо значению в ObjParams
-      const matchingKey = Object.keys(ObjParams).find((key) => ObjParams[key] === param)
-
-      // Логика работы с selectedParams
-      let filteredSelectedParams = [...selectedParams]
-
-      // Если текущий param соответствует значению в ObjParams (например, "Терраса"),
-      // исключаем его из selectedParams
-      if (matchingKey) {
-        filteredSelectedParams = filteredSelectedParams.filter((p) => p !== matchingKey)
-      }
-
-      // Если после фильтрации остаются параметры, добавляем их в URL
-      if (filteredSelectedParams.length > 0) {
-        params.set('selectedParams', filteredSelectedParams.join(','))
-        shouldUpdateURL = true
-      } else {
-        // Удаляем selectedParams, если пусто
-        params.delete('selectedParams')
-        shouldUpdateURL = true
-      }
-
-      // Создаем URLSearchParams только с значимыми параметрами для проверки изменений
-      const significantParams = new URLSearchParams()
-      const allowedParams = [
-        'minSquareValue',
-        'maxSquareValue',
-        'minFloorValue',
-        'maxFloorValue',
-        'minFrameValue',
-        'maxFrameValue',
-        'minPriceValue',
-        'maxPriceValue',
-        'sortOrder',
-        'selectedPlandate',
-        'selectedParams'
-      ]
-
-      for (const [key, value] of params.entries()) {
-        if (allowedParams.includes(key)) {
-          significantParams.set(key, value)
-        }
-      }
-
-      const currentSearchParams = new URLSearchParams(window.location.search)
-      const currentSignificantParams = new URLSearchParams()
-
-      for (const [key, value] of currentSearchParams.entries()) {
-        if (allowedParams.includes(key)) {
-          currentSignificantParams.set(key, value)
-        }
-      }
-
-      // Обновляем URL, только если есть изменения
-      if (shouldUpdateURL && significantParams.toString() !== currentSignificantParams.toString()) {
-        router.replace(`${window.location.pathname}?${params.toString()}`)
-      }
-    }
-  }, [
+  //!новый кастомный хук
+  useUpdateURL({
     isInitialized,
     minSquareValue,
     maxSquareValue,
@@ -349,9 +223,9 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
     selectedParams,
     searchParams,
     defaultFilters,
-    router,
-    param // Добавлено для отслеживания изменений param
-  ])
+    param,
+    ObjParams
+  })
 
   const pathname = usePathname()
   useEffect(() => {
@@ -361,20 +235,6 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
       resetFilters() // Сброс фильтров
     }
   }, [isInitialized, searchParams, pathname, router])
-
-  // Отдельный useEffect для изменения `selectedType`
-  // useEffect(() => {
-  //   if (isInitialized) {
-  //     const currentUrlType = selectedType ? transliterate(selectedType) : ''
-  //     const currentPathname = window.location.pathname
-  //     const expectedPathname = currentUrlType ? `/planirovki-i-ceny/${currentUrlType}` : `/planirovki-i-ceny`
-  //
-  //     if (currentPathname !== expectedPathname) {
-  //       // Обновляем только путь, не трогая параметры
-  //       router.replace(`${expectedPathname}${window.location.search}`)
-  //     }
-  //   }
-  // }, [isInitialized, selectedType, router])
 
   // Обработчик изменения параметров
 
@@ -431,61 +291,26 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
   const onTypeChange = useCallback((value: string) => setSelectedType(value), [])
   const onPlandateChange = useCallback((value: string) => setSelectedPlandate(value), [])
 
-  const resetFilters = useCallback(() => {
-    if (items && items.length > 0) {
-      const {minFloor, maxFloor} = getMinMaxFloor(items)
-      const newFilters = {
-        minSquareValue: Math.floor(filters_data.flats_square.min),
-        maxSquareValue: Math.ceil(filters_data.flats_square.max),
-        minFloorValue: minFloor,
-        maxFloorValue: maxFloor,
-        minFrameValue: 1,
-        maxFrameValue: 5,
-        minPriceValue: Math.floor(filters_data.flats_price.min / 1000000),
-        maxPriceValue: Math.ceil(filters_data.flats_price.max / 1000000),
-        selectedType: options[0].value,
-        currentPage: 1,
-        selectedParams: [],
-        sortOrder: '',
-        selectedPlandate: ''
-      }
-
-      setMinSquareValue(newFilters.minSquareValue)
-      setMaxSquareValue(newFilters.maxSquareValue)
-      setMinFloorValue(newFilters.minFloorValue)
-      setMaxFloorValue(newFilters.maxFloorValue)
-      setMinFrameValue(newFilters.minFrameValue)
-      setMaxFrameValue(newFilters.maxFrameValue)
-      setMinPriceValue(newFilters.minPriceValue)
-      setMaxPriceValue(newFilters.maxPriceValue)
-      setSelectedType(typeof newFilters.selectedType === 'string' ? newFilters.selectedType : '')
-      setSelectedParams([])
-      setSelectedPlandate('')
-      setFilters({
-        ...newFilters
-      })
-      setSortOrder(newFilters.sortOrder)
-
-      const params = new URLSearchParams()
-      Object.entries(newFilters).forEach(([key, value]) => {
-        if (value !== null && value !== undefined) {
-          if (Array.isArray(value)) {
-            params.set(key, value.join(','))
-          } else {
-            params.set(key, value.toString())
-          }
-        }
-      })
-
-      //const transliteratedType = transliterate(selectedType)
-
-      if (!selectedType) {
-        //router.replace(`/planirovki-i-ceny`)
-      } else {
-        //router.replace(`/planirovki-i-ceny/${transliteratedType}`)
-      }
-    }
-  }, [items, options, filters_data, router])
+  //! новый кастомный хук
+  const resetFilters = useResetFilters({
+    items,
+    options,
+    filters_data,
+    setMinSquareValue,
+    setMaxSquareValue,
+    setMinFloorValue,
+    setMaxFloorValue,
+    setMinFrameValue,
+    setMaxFrameValue,
+    setMinPriceValue,
+    setMaxPriceValue,
+    setSelectedType,
+    setSelectedParams,
+    setSelectedPlandate,
+    setFilters,
+    setSortOrder,
+    selectedType
+  })
 
   const sortItems = (items: IObj[], order: string) => {
     switch (order) {
@@ -502,28 +327,7 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
     }
   }
 
-  const sortedAndFilteredItems = useMemo(() => {
-    const filtered = items.filter((item) => {
-      const itemTypeMatches = selectedType ? matchType(selectedType.toLowerCase(), item.Type.toLowerCase()) : true
-      const itemPlandateMatches = selectedPlandate ? item.Plandate === selectedPlandate : true
-
-      // Убедимся, что атрибуты и параметры сравниваются без учета регистра и пробелов
-      const itemParamsMatch = (selectedParams || []).every((param) =>
-        item.attributes.some((attribute) => attribute.toLowerCase().trim() === param.toLowerCase().trim())
-      )
-
-      const squareMatches = parseFloat(item.Tsquare) >= minSquareValue && parseFloat(item.Tsquare) <= maxSquareValue
-
-      const floorMatches = parseInt(item.Floor, 10) >= minFloorValue && parseInt(item.Floor, 10) <= maxFloorValue
-
-      const priceMatches =
-        parseFloat(item.Fvalue) >= minPriceValue * 1000000 && parseFloat(item.Fvalue) <= maxPriceValue * 1000000
-
-      return itemTypeMatches && itemPlandateMatches && itemParamsMatch && squareMatches && floorMatches && priceMatches
-    })
-
-    return sortItems(filtered, sortOrder)
-  }, [
+  const sortedAndFilteredItems = useFilteredAndSortedItems({
     items,
     selectedType,
     selectedPlandate,
@@ -534,8 +338,10 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
     maxFloorValue,
     minPriceValue,
     maxPriceValue,
-    sortOrder
-  ])
+    sortOrder,
+    matchType,
+    sortItems
+  })
 
   const [currentVisibleCount, setCurrentVisibleCount] = useState<number>(visibleItemsCount)
 
@@ -934,36 +740,6 @@ const CatalogPageWrapper = ({data, filters_data, id, param}: CatalogPageProps) =
       <CatalogPage data={data} filters_data={filters_data} id={id} param={param} />
     </Suspense>
   )
-}
-
-interface FilterProps {
-  onTypeChange: (value: string) => void
-  onPriceMinChange: (value: number) => void
-  onPriceMaxChange: (value: number) => void
-  onFloorMinChange: (value: number) => void
-  onFloorMaxChange: (value: number) => void
-  onFrameMinChange: (value: number) => void
-  onFrameMaxChange: (value: number) => void
-  onSquareMaxChange: (value: number) => void
-  onSquareMinChange: (value: number) => void
-  resetFilters: () => void
-  options: DefaultOptionType[]
-  selectedType: string
-  minPriceValue: number
-  maxPriceValue: number
-  minSquareValue: number
-  maxSquareValue: number
-  minFrameValue: number
-  maxFrameValue: number
-  maxFloorValue: number
-  minFloorValue: number
-  selectedPlandate: string
-  onPlandateChange: (value: string) => void
-  onParamChange: (value: string, checked: boolean) => void
-  selectedParams: string[]
-  onClose?: () => void
-  filters_data: IFilterInterface
-  parametrs: Parametrs
 }
 
 const Filter = ({
