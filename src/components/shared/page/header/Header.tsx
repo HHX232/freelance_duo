@@ -1,7 +1,6 @@
 'use client'
 import styles from './Header.module.scss'
 import LogoSVG from '@icons/logo.svg'
-//import LogoAccentSVG from '@icon/logo-accent.svg'
 import LogoMainSVG from '@icon/logo-main.svg'
 
 import MenuSVG from '@icons/menu.svg'
@@ -45,15 +44,8 @@ const Header = ({dark, dashboard}: HeaderProps) => {
 
   const {token, clearToken} = useStore()
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   router.replace('/planirovki-i-ceny');
-  //   setIsMenuOpened(false);
-  // };
-  //
   const handleClick = () => {
     setIsMenuOpened(false)
-    //router.push('/planirovki-i-ceny')
     replace({
       pathname: '/planirovki-i-ceny',
       query: {}
@@ -76,11 +68,6 @@ const Header = ({dark, dashboard}: HeaderProps) => {
 
   const onMenuClick = () => {
     setIsMenuOpened(!isMenuOpened)
-    if (isMenuOpened) {
-      //document.body.style.overflow = 'unset'
-    } else {
-      //document.body.style.overflow = 'hidden'
-    }
   }
 
   const closeHandler = () => {
@@ -145,8 +132,6 @@ const Header = ({dark, dashboard}: HeaderProps) => {
     setIsMenuOpened(false)
   }, [router, pathname])
 
-  // const [callBackModal, setCallBackModal] = useState(false)
-
   const handleLogout = () => {
     clearToken()
     if (pathname.startsWith('/lk')) {
@@ -207,14 +192,12 @@ const Header = ({dark, dashboard}: HeaderProps) => {
                       </>
                     )}
                   </div>
-
-                  {!dashboard && (
-                    <a className={styles.phone} href={'tel:+7 812 602 20 10'}>
-                      +7 (812) 602-20-10
-                    </a>
-                  )}
                 </>
               )}
+
+              <a className={styles.phone} href={'tel:+7 812 602 20 10'}>
+                + 7 (123) 123-45-67
+              </a>
             </div>
 
             <div className={styles.rightHeader}>
@@ -236,34 +219,32 @@ const Header = ({dark, dashboard}: HeaderProps) => {
                 <>
                   {!isLoadingCount && (
                     <>
-                      {/* <button type='button' className={styles.callback} onClick={() => setCallBackModal(true)}>
-                        <CallBackSVG className={clsx(styles.compare, isMenuOpened ? styles.opened : '')} />
-                      </button> */}
+                      <div className={styles.links}>
+                        <Link href={`${dashboard ? '/lk/sravnenie' : '/sravnenie'}`}>
+                          <IconWithCount
+                            count={compareCount}
+                            color={isMenuOpened || dashboard || isMapPage ? 'brown' : 'brown'}
+                          >
+                            <CompareSVG className={clsx(styles.compare, isMenuOpened ? styles.opened : '')} />
+                          </IconWithCount>
+                        </Link>
 
-                      <Link href={`${dashboard ? '/lk/sravnenie' : '/sravnenie'}`}>
-                        <IconWithCount
-                          count={compareCount}
-                          color={isMenuOpened || dashboard || isMapPage ? 'brown' : 'brown'}
-                        >
-                          <CompareSVG className={clsx(styles.compare, isMenuOpened ? styles.opened : '')} />
-                        </IconWithCount>
-                      </Link>
-
-                      <Link href={`${dashboard ? '/lk/izbrannoe' : '/izbrannoe'}`}>
-                        <IconWithCount
-                          count={favoritesCount}
-                          color={isMenuOpened || dashboard || isMapPage ? 'brown' : 'brown'}
-                        >
-                          <FavoriteSVG className={clsx(styles.favorite, isMenuOpened ? styles.opened : '')} />
-                        </IconWithCount>
-                      </Link>
+                        <Link href={`${dashboard ? '/lk/izbrannoe' : '/izbrannoe'}`}>
+                          <IconWithCount
+                            count={favoritesCount}
+                            color={isMenuOpened || dashboard || isMapPage ? 'brown' : 'brown'}
+                          >
+                            <FavoriteSVG className={clsx(styles.favorite, isMenuOpened ? styles.opened : '')} />
+                          </IconWithCount>
+                        </Link>
+                      </div>
                     </>
                   )}
                 </>
               )}
 
               {!isMenuOpened && (
-                <a href={'tel:+7 (812) 602-20-10'} className={styles.phone_mobile}>
+                <a href={'tel:+ 7 (123) 123-45-67'} className={styles.phone_mobile}>
                   <svg width='10' height='14' viewBox='0 0 10 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
                     <path
                       d='M7.67786 9.2864C7.48831 9.16779 7.24407 9.17561 7.06395 9.30709C6.92155 9.41099 6.76218 9.52408 6.66222 9.58615C6.40477 9.74613 6.19966 9.77923 5.94787 9.78153C5.65365 9.78383 5.36367 9.34065 5.15526 9.04458C4.72099 8.4267 4.37018 7.91318 4.08539 7.48379C3.84256 7.03096 3.55682 6.4802 3.21969 5.80715C3.05796 5.48442 2.8057 5.02009 2.95281 4.77184C3.07871 4.55944 3.20979 4.40176 3.47902 4.262C3.5837 4.20775 3.76287 4.12868 3.92602 4.0588C4.13207 3.97053 4.25938 3.76687 4.24712 3.54803C4.21081 2.90533 4.22873 1.83324 4.04248 1.10456C3.9628 0.791945 3.69215 0.598858 3.4116 0.516106C3.19234 0.451744 1.64247 0.597938 1.47933 0.644831C1.37559 0.674713 1.27422 0.717468 1.17803 0.772176C0.89182 0.934921 0.710287 1.16846 0.622585 1.2811C0.278851 1.72382 0.0756282 2.31503 0.0185749 3.03865C-0.0719559 4.18522 0.189263 5.12721 0.352879 5.58648C0.694256 6.54456 1.01394 7.69343 1.69953 8.84046C2.50629 10.1093 3.25317 10.8247 3.93969 11.5864C4.26881 11.9519 4.9808 12.6378 6.04878 13.1256C6.72304 13.4336 7.35063 13.5527 7.91503 13.4787C8.05837 13.4598 8.35637 13.4208 8.64258 13.2585C8.7383 13.2038 8.82647 13.139 8.90474 13.0659C9.02734 12.9505 9.92133 11.7078 9.97225 11.4899C10.0368 11.2118 9.99771 10.8867 9.75818 10.6647C9.19944 10.1475 8.23425 9.63442 7.67833 9.28686'
@@ -303,7 +284,7 @@ const Header = ({dark, dashboard}: HeaderProps) => {
               )}
 
               {isMenuOpened ? (
-                <CancelSVG className={styles.burger} onClick={onMenuClick} />
+                <CancelSVG className={`${styles.burger} ${styles.burgerOpened}`} onClick={onMenuClick} />
               ) : (
                 <MenuSVG className={styles.burger} onClick={onMenuClick} />
               )}
@@ -347,7 +328,6 @@ const Header = ({dark, dashboard}: HeaderProps) => {
               <MenuItem text='Благоустройство' href='/blagoustroistvo' />
               <MenuItem text='Архитектура' href='/architektura' />
               <MenuItem text='Виды отделки' href='/otdelka' />
-              {/*<MenuItem text='Ход строительства' />*/}
               <MenuItem text='Новости' href='/news' />
             </MenuBlock>
 
@@ -358,14 +338,11 @@ const Header = ({dark, dashboard}: HeaderProps) => {
               <MenuItem text='Документы' href='/docs' />
               <MenuItem text='Контакты' href='/contacts' />
               <MenuItem text='Служба доверия' href='/feedback' />
-
-              {/*<MenuItem text='FAQ' href='/faq' />*/}
             </MenuBlock>
           </div>
         </div>
       </header>
       {isOpenAuth && <AuthPopup onClose={() => setOpenAuth(false)} />}
-      {/* {callBackModal && <Backcall onClose={() => setCallBackModal(false)} />} */}
     </>
   )
 }
