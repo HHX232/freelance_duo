@@ -64,6 +64,7 @@ const AreasContent = () => {
           </div>
           <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
             <PhoneSlider slideGap={60} viewportIsShow slides={mobileSlides} />
+            <PhoneSlider slideGap={60} viewportIsShow slides={mobileSlides} />
           </div>
         </section>
       }
