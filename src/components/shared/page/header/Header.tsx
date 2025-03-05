@@ -192,14 +192,12 @@ const Header = ({dark, dashboard}: HeaderProps) => {
                       </>
                     )}
                   </div>
-
-                  {!dashboard && (
-                    <a className={styles.phone} href={'tel:+7 812 602 20 10'}>
-                      + 7 (123) 123-45-67
-                    </a>
-                  )}
                 </>
               )}
+
+              <a className={styles.phone} href={'tel:+7 812 602 20 10'}>
+                + 7 (123) 123-45-67
+              </a>
             </div>
 
             <div className={styles.rightHeader}>
@@ -221,27 +219,25 @@ const Header = ({dark, dashboard}: HeaderProps) => {
                 <>
                   {!isLoadingCount && (
                     <>
-                      {/* <button type='button' className={styles.callback} onClick={() => setCallBackModal(true)}>
-                        <CallBackSVG className={clsx(styles.compare, isMenuOpened ? styles.opened : '')} />
-                      </button> */}
+                      <div className={styles.links}>
+                        <Link href={`${dashboard ? '/lk/sravnenie' : '/sravnenie'}`}>
+                          <IconWithCount
+                            count={compareCount}
+                            color={isMenuOpened || dashboard || isMapPage ? 'brown' : 'brown'}
+                          >
+                            <CompareSVG className={clsx(styles.compare, isMenuOpened ? styles.opened : '')} />
+                          </IconWithCount>
+                        </Link>
 
-                      <Link href={`${dashboard ? '/lk/sravnenie' : '/sravnenie'}`}>
-                        <IconWithCount
-                          count={compareCount}
-                          color={isMenuOpened || dashboard || isMapPage ? 'brown' : 'brown'}
-                        >
-                          <CompareSVG className={clsx(styles.compare, isMenuOpened ? styles.opened : '')} />
-                        </IconWithCount>
-                      </Link>
-
-                      <Link href={`${dashboard ? '/lk/izbrannoe' : '/izbrannoe'}`}>
-                        <IconWithCount
-                          count={favoritesCount}
-                          color={isMenuOpened || dashboard || isMapPage ? 'brown' : 'brown'}
-                        >
-                          <FavoriteSVG className={clsx(styles.favorite, isMenuOpened ? styles.opened : '')} />
-                        </IconWithCount>
-                      </Link>
+                        <Link href={`${dashboard ? '/lk/izbrannoe' : '/izbrannoe'}`}>
+                          <IconWithCount
+                            count={favoritesCount}
+                            color={isMenuOpened || dashboard || isMapPage ? 'brown' : 'brown'}
+                          >
+                            <FavoriteSVG className={clsx(styles.favorite, isMenuOpened ? styles.opened : '')} />
+                          </IconWithCount>
+                        </Link>
+                      </div>
                     </>
                   )}
                 </>
