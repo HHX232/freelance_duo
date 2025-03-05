@@ -406,6 +406,10 @@
     height: 86px !important;
   }
 
+  .header.active {
+    height: 100vh !important;
+  }
+
   .logoWrapper svg {
     width: 86px !important;
     height: 174px !important;
@@ -443,6 +447,10 @@
   .header::before,
   .headerTop {
     height: 68px !important;
+  }
+
+  .header.active {
+    height: 100vh !important;
   }
 
   .logoWrapper svg {
