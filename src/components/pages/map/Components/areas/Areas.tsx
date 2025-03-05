@@ -7,7 +7,7 @@ import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 
 const AreasContent = () => {
   const mobileSlides: React.ReactNode[] = [
-    <div className={`${styles['caption']}`} key={111}>
+    <div className={`${styles['caption']}`}>
       <h2 className={styles['caption__title']}>
         &#62;3<span>м</span>
       </h2>
@@ -15,7 +15,7 @@ const AreasContent = () => {
       <p className={styles['caption__description']}>высота потолков</p>
     </div>,
 
-    <div className={`${styles['caption']}`} key={333}>
+    <div className={`${styles['caption']}`}>
       <h2 className={styles['caption__title']}>
         24-100<span>м2</span>
       </h2>
@@ -63,7 +63,6 @@ const AreasContent = () => {
             </div>
           </div>
           <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
-            <PhoneSlider slideGap={60} viewportIsShow slides={mobileSlides} />
             <PhoneSlider slideGap={60} viewportIsShow slides={mobileSlides} />
           </div>
         </section>
