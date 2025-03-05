@@ -2,7 +2,7 @@
 import {useState, useEffect, useRef, forwardRef} from 'react'
 import styles from './news.module.scss'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@shared/title/title'
+import {Title} from '@src/components/UI-kit/TextKit/title/title'
 import {breadcrumbItems} from './config/breadcrumbs'
 import clsx from 'clsx'
 import Image from 'next/image'
@@ -34,7 +34,7 @@ const NewsCard = forwardRef<HTMLDivElement, INews>((props, ref) => {
 
 NewsCard.displayName = 'NewsCard'
 
-export const News = ({news, id, h1, h1_details}: {news: INews[]; id?: string, h1?: boolean, h1_details?: boolean}) => {
+export const News = ({news, id, h1, h1_details}: {news: INews[]; id?: string; h1?: boolean; h1_details?: boolean}) => {
   const [selectedNews, setSelectedNews] = useState<INews | null>(news.find((item) => item.slug === id) || news[0])
 
   const [sanitizedContent, setSanitizedContent] = useState<string>('')
@@ -92,7 +92,7 @@ export const News = ({news, id, h1, h1_details}: {news: INews[]; id?: string, h1
   }
   return (
     <MainContainer>
-      <Title title='Новости' breadcrumbs={breadcrumbItems} dashboard={true} h1={h1}/>
+      <Title title='Новости' breadcrumbs={breadcrumbItems} dashboard={true} h1={h1} />
       <div className={styles.news}>
         {news.length > 0 && (
           <>
@@ -117,7 +117,6 @@ export const News = ({news, id, h1, h1_details}: {news: INews[]; id?: string, h1
                     ) : (
                       <h1 className={styles.main_title}>{selectedNews.title}</h1>
                     )}
-
                   </div>
                   <div className={styles.img}>
                     <Image

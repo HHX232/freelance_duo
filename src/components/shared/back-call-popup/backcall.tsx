@@ -2,7 +2,7 @@
 import styles from './backcall.module.scss'
 import {ConfigProvider, Modal, TimePicker} from 'antd'
 import {ChangeEvent, useEffect, useState} from 'react'
-import {InputField} from '@shared/input-field/input-field'
+import {InputField} from '@src/components/UI-kit/inputs/input-field/input-field'
 import FilledButton from '@shared/filledButton/FilledButton'
 import dayjs from 'dayjs'
 import {Agree} from '@shared/agree/agree'
@@ -78,18 +78,18 @@ export const Backcall = ({onClose}: {onClose: () => void}) => {
     const checkCT = () => {
       if (typeof window !== 'undefined' && window.ct) {
         // Если window.ct доступен, получить sessionId
-        const sessionId = window.ct('calltracking_params', modId)?.sessionId;
-        console.log('Session ID:', sessionId);
-        setSessionID(sessionId);
+        const sessionId = window.ct('calltracking_params', modId)?.sessionId
+        console.log('Session ID:', sessionId)
+        setSessionID(sessionId)
       } else {
         // Попробуем еще раз через небольшую задержку
-        setTimeout(checkCT, 1000); // Повторяем проверку через 1 секунду
+        setTimeout(checkCT, 1000) // Повторяем проверку через 1 секунду
       }
-    };
+    }
 
     // Запускаем первоначальную проверку
-    checkCT();
-  }, [modId]);
+    checkCT()
+  }, [modId])
 
   return (
     <>

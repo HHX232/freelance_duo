@@ -11,7 +11,7 @@ import {useEffect, useState} from 'react'
 import {getFlatsById} from '@src/actions/flats'
 import {useStore} from '@src/lib/store/store'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@shared/title/title'
+import {Title} from '@src/components/UI-kit/TextKit/title/title'
 import Link from 'next/link'
 
 export const Favorites = ({dashboard}: {dashboard?: boolean}) => {
