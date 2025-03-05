@@ -22,7 +22,7 @@
 @mixin blockHeadBottomIndent {
   margin-bottom: 60px !important;
 
-  @media (max-width: map_get($breakpoints, xl)){
+  @media (max-width: map_get($breakpoints, xl)) {
     margin-bottom: 40px !important;
   }
 }
@@ -56,5 +56,56 @@
   @include xs {
     padding-right: 16px;
     padding-left: 16px;
+  }
+}
+
+@mixin content-container-min {
+  @layer base {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1080px;
+
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+@mixin padding60 {
+  padding: 60px;
+  @include bp-xxl {
+    padding: 48px;
+  }
+
+  @include bp-md {
+    padding: 40px;
+  }
+
+  @include bp-sm {
+    padding: 36px 20px;
+  }
+
+  @include bp-xs {
+    padding: 24px 20px;
+  }
+}
+
+
+@mixin ol-style {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  li {
+    @include font(1, 16, 22);
+
+    @include bp-lg {
+      @include font(1, 14, 18);
+    }
+
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='18' viewBox='0 0 12 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='5.65625' y='4.34326' width='8' height='8' transform='rotate(45 5.65625 4.34326)' fill='%2311627D'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: 12px 18px;
+    background-position: 0 50%;
+    padding-left: 20px
   }
 }

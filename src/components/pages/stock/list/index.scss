@@ -1,0 +1,36 @@
+.stocks {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto-fill, auto);
+
+    gap: 24px;
+
+    @include bp-xl {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include bp-sm {
+      grid-template-columns:  repeat(1, 1fr);
+    }
+  }
+
+  &__more {
+    margin-top: 60px;
+
+    display: flex;
+    justify-content: center;
+
+    @include bp-lg {
+      margin-top: 40px;
+    }
+
+    &-button {
+      max-width: 273px;
+
+      @include bp-md {
+        max-width: 100%;
+      }
+    }
+  }
+}

@@ -3,28 +3,13 @@
 
   @include content-container;
 
-  .head-title {
-    @include RomulH3();
-
-    margin-top: 36px;
-
-    @media (max-width: map_get($breakpoints, lg)) {
-      margin-top: 24px;
-    }
-  }
-
   .title {
     @include RomulH3();
   }
 
   .tabs {
     display: flex;
-    margin-top: 60px;
     gap: 8px;
-
-    @media (max-width: map_get($breakpoints, xl)) {
-      margin-top: 40px;
-    }
 
     @media (max-width: map_get($breakpoints, xs)) {
 
@@ -222,7 +207,16 @@
 
 
         &__title {
-          @include font(3, 32, 44);
+          @include RomulH4();
+          margin-bottom: 40px;
+
+          @include bp-xl {
+            margin-bottom: 36px;
+          }
+
+          @include bp-sm {
+            margin-bottom: 24px;
+          }
 
           & span {
             color: $accent-blue;
@@ -232,7 +226,6 @@
         &__info {
           display: flex;
           flex-direction: column;
-          gap: 40px;
 
           &-inner {
             display: flex;
@@ -241,6 +234,20 @@
 
             &__caption {
               @include font(1, 16, 22);
+
+              margin-bottom: 58px;
+
+              @include bp-xl {
+                margin-bottom: 54px;
+              }
+
+              @include bp-lg {
+                margin-bottom: 44px;
+              }
+
+              @include bp-md {
+                margin-bottom: 40px;
+              }
             }
 
             &__phone {
@@ -253,7 +260,6 @@
 
         &__description {
           @include font(1, 16, 22);
-
           color: $grey-text;
         }
 
@@ -261,6 +267,23 @@
           display: flex;
           align-items: center;
           gap: 24px;
+          margin-bottom: 77px;
+
+          @include bp-xl {
+            margin-bottom: 49px;
+          }
+
+          @include bp-lg {
+            margin-bottom: 39px;
+          }
+
+          @include bp-md {
+            margin-bottom: 57px;
+          }
+
+          @include bp-sm {
+            margin-bottom: 36px;
+          }
         }
 
         &__pages {

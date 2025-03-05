@@ -1,6 +1,5 @@
 .breadcrumbs {
   @layer base {
-    display: none;
     align-items: center;
     gap: 10px;
 
@@ -22,10 +21,6 @@
 
   @include md{
     @include font(2, 12, 12);
-  }
-
-  @media screen and (min-width: 656px) {
-    display: flex;
   }
 }
 

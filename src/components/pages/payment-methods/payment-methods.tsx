@@ -11,6 +11,7 @@ import {IpotekaTab} from './components/ipoteka/ipoteka'
 import {StepsForBuy} from '@pages/payment-methods/components/full-payment/components/steps-for-buy'
 import {InstallmentPlanDrawer} from '@pages/payment-methods/popup/installment-plan'
 import {RequestBackCallDrawer} from '@shared/request-back-call-drawer'
+import {HeadTitle} from '@shared/head-title'
 
 const PaymentMethodsPage = () => {
   const [active, setActive] = useState(0)
@@ -27,7 +28,7 @@ const PaymentMethodsPage = () => {
     setShownInstallmentPlan(false)
   }
 
-  const [shownRequestCallBack, setShownRequestCallBack] = useState(true)
+  const [shownRequestCallBack, setShownRequestCallBack] = useState(false)
   const handleRequestCallBackDrawerClose = () => {
     setShownRequestCallBack(false)
   }
@@ -36,7 +37,7 @@ const PaymentMethodsPage = () => {
     <main className={styles['payment-methods']}>
       <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
 
-      <h1 className={styles.headTitle}>Способы покупки</h1>
+      <HeadTitle>Способы покупки</HeadTitle>
       <div className={styles.tabs}>
         <button className={clsx([styles['tab-button']], {[styles.active]: active === 0})} onClick={() => setActive(0)}>
           Рассрочка
@@ -55,9 +56,7 @@ const PaymentMethodsPage = () => {
           setShownRequestCallBack={setShownRequestCallBack}
         />
       )}
-
       {active === 1 && <IpotekaTab setShownRequestCallBack={setShownRequestCallBack} />}
-
       {active === 2 && <FullPaymentTab />}
       {active === 2 && <StepsForBuy />}
       <MakeTicket />

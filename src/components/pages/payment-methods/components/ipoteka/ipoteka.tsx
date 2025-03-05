@@ -19,7 +19,7 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
           backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 119.89%), url("/content/payment-methods/ipoteka.jpeg")`
         }}
       >
-        <h2 className={styles.title}>Ипотека</h2>
+        <h2 className={styles.posterTitle}>Ипотека</h2>
         <p className={styles.subtitle}>Выгодные условия для вашего дома</p>
 
         <div className={styles.cards}>

@@ -1,0 +1,17 @@
+import Header from '@shared/page/header/Header'
+import Footer from '@shared/page/footer/footer'
+import {FC, PropsWithChildren} from 'react'
+import {NewsletterForm} from '@shared/newsletter-form'
+
+const StocksLayout: FC<PropsWithChildren> = (props) => {
+  return (
+    <>
+      <Header />
+      <main>{props.children}</main>
+      <NewsletterForm />
+      <Footer />
+    </>
+  )
+}
+
+export default StocksLayout
