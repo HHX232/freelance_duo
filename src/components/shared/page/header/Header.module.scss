@@ -222,7 +222,8 @@
   &.burgerOpened {
     width: 30px;
     height: 30px;
-    margin-right: 6px;
+    margin-right: -3px;
+    margin-left: -11px;
   }
 
   @media (max-width: 504px) {
