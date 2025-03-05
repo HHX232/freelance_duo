@@ -82,9 +82,15 @@
 }
 
 .cardWrapper {
-  position: absolute;
+  position: fixed;
   width: 607px;
   height: 430px;
+
+  left: 0;
+  right: 0;
+  top: auto;
+  z-index: 1000;
+  bottom: env(safe-area-inset-bottom, -20px);
 
   @include mobile {
     width: 0;

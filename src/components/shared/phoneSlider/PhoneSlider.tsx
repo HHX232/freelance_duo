@@ -1,7 +1,4 @@
-import {
-  DotButton,
-  useDotButton
-} from '@shared/phoneSlider/EmblaCarouselDotButton'
+import {DotButton, useDotButton} from '@shared/phoneSlider/EmblaCarouselDotButton'
 import useEmblaCarousel from 'embla-carousel-react'
 import ClassNames from 'embla-carousel-class-names'
 import {EmblaOptionsType} from 'embla-carousel'
@@ -10,22 +7,21 @@ import Gallery from '@shared/phoneSlider/Gallery'
 import {FC, ReactNode} from 'react'
 
 interface PhoneSliderProps {
-
   slides: ReactNode[]
   options?: EmblaOptionsType
+  viewportIsShow?: boolean
+  slideGap?: number
 }
 
 const PhoneSlider: FC<PhoneSliderProps> = (props) => {
-
-  const {slides} = props
+  const {slides, ...allProps} = props
   const OPTIONS: EmblaOptionsType = {}
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [ClassNames()])
   const {selectedIndex, scrollSnaps, onDotButtonClick} = useDotButton(emblaApi)
 
-
   return (
     <div className={styles['phone-slider-wrapper']}>
-      <Gallery slides={slides} options={OPTIONS} emblaRef={emblaRef} />
+      <Gallery {...allProps} slides={slides} options={OPTIONS} emblaRef={emblaRef} />
       <div className={styles['embla__dots']}>
         {scrollSnaps.map((_, index) => (
           <DotButton

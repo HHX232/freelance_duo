@@ -38,7 +38,7 @@ const HomePage = () => {
             }}
           >
             <MenuPoint className={styles['icon']} />
-            Подобрать квартиру
+            <span>Подобрать квартиру</span>
           </FilledButton>
         </div>
         <div className={styles['slider_outer_wrapper']}>

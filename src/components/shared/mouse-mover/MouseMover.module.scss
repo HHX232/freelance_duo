@@ -6,6 +6,10 @@
   align-items: center;
   justify-content: center;
   @media (max-width: 768px) {
+    &::-webkit-scrollbar {
+      height: 0 !important;
+    }
+
     overflow-x: auto; // Включить горизонтальный скролл
     overflow-y: hidden; // Отключить вертикальный скролл
   }

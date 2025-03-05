@@ -1,4 +1,5 @@
 .pointsWrapper {
+
   &::before {
     position: absolute;
     z-index: 1;
@@ -44,6 +45,7 @@
 }
 
 .mapImage {
+
   @layer base {
     position: absolute !important;
     z-index: 0;
@@ -86,17 +88,28 @@
 }
 
 .captions {
+  
+  &-title {
+
+    @include font(3, 42, 54, 400);
+
+    color: $yellow-text;
+
+  }
+
   @layer base {
+
     position: absolute;
     z-index: 1;
     bottom: 0;
     display: flex;
     flex-direction: column;
     gap: 40px;
-    //transform: translateY(-20%);
     width: 100%;
     padding-bottom: 24px;
+
   }
+
 
   @include sm {
     gap: 60px;
@@ -120,13 +133,26 @@
     justify-content: start;
   }
 
-  &-title {
-    @include font(3, 42, 54, 400);
+  @include content-container;
 
-    color: $yellow-text;
+  @include xxxl {
+    padding-left: 196px;
+    padding-top: 133px;
   }
 
-  @include content-container;
+  @include xxl {
+    padding-left: 170px;
+    padding-top: 90px;
+  }
+
+  @include xl {
+    padding-top: 60px;
+  }
+
+  @include lg {
+    padding-top: 60px;
+  }
+
 }
 
 .caption-items {

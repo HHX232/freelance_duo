@@ -213,7 +213,9 @@ const MapContent = () => {
           10<span>мин</span>
         </h2>
         <hr className={styles['caption__divider']} />
-        <p className={styles['caption__description']}>до Кронштадского шоссе и КАД</p>
+        <p className={styles['caption__description']}>
+          до Кронштадского <br /> шоссе и КАД
+        </p>
       </div>
     </div>,
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']}`} key={888}>

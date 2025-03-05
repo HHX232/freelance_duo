@@ -6,16 +6,20 @@ interface PhoneSliderProps {
   slides: React.ReactNode[]
   options?: EmblaOptionsType
   emblaRef: EmblaViewportRefType
+  viewportIsShow?: boolean
+  slideGap?: number
 }
 
 const Gallery: FC<PhoneSliderProps> = (props) => {
-  const {slides, emblaRef} = props
-
+  const {slides, emblaRef, viewportIsShow, slideGap = 10} = props
 
   return (
     <div className={emblaStyle['embla']}>
-      <div className={emblaStyle['embla__viewport']} ref={emblaRef}>
-        <div className={emblaStyle['embla__container']}>
+      <div
+        className={`${emblaStyle['embla__viewport']} ${viewportIsShow ? emblaStyle.show_viewport : ''}`}
+        ref={emblaRef}
+      >
+        <div style={{gap: slideGap + 'px'}} className={emblaStyle['embla__container']}>
           {slides.map((slide) => slide)}
         </div>
       </div>

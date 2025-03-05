@@ -1,4 +1,6 @@
 .home-wrapper {
+  height: 100vh;
+
   @layer base {
     position: relative;
     //background-image: linear-gradient(180deg, rgba(38, 57, 69, 0) 50.45%, rgba(38, 57, 69, 1) 87.97%), url("/content/banner.png");
@@ -12,57 +14,40 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: 130px 16px 24px 16px;
-    gap: 40px;
+  }
 
+  @include xs {
+    padding: 130px 20px 79px 16px;
   }
 
   @include sm {
-    padding: 130px 20px 40px 20px;
+    padding: 130px 20px 111px 20px;
+  }
+
+  @include md {
+    padding: 130px 20px 111px 40px;
   }
 
   @include lg {
-    //background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.png");
-    padding: 60px 40px 36px 40px;
+    padding: 130px 20px 120px 40px;
   }
 
-  @include xl{
+  @include xl {
+    padding: 60px 40px 124px 142px;
+  }
+
+  @include xxl {
+    padding: 90px 40px 124px 170px;
+  }
+
+  @include xxxl {
     display: flex;
-    height: 100vh;
     flex-direction: column;
     justify-content: flex-end;
     //padding-bottom: 124px;
     //background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.png");
-    padding: 90px 40px 40px 142px;
+    padding: 90px 40px 124px 196px;
   }
-
-
-  &::after {
-    @layer base {
-      //background: linear-gradient(180deg, rgba(38, 57, 69, 0) 50.45%, rgba(38, 57, 69, 1) 87.97%);
-      background: linear-gradient(180deg, rgba(38, 57, 69, 0) 18.87%, rgb(38, 57, 69) 98.38%);
-      bottom: 0;
-      left: 0;
-
-      position: absolute;
-      z-index: 2;
-      display: block;
-      width: 100%;
-      height: 390px;
-      content: '';
-      pointer-events: none;
-    }
-
-    @include md {
-      //background: linear-gradient(180deg, rgb(30 56 73 / 100%) 5%, rgb(30 56 73 / 0%) 100%);
-      //top: 0;
-      //bottom: unset;
-    }
-
-    @include lg {
-      display: none;
-    }
-  }
-
 }
 
 .title {
@@ -72,16 +57,18 @@
 
   @include md {
     @include font(3, 90, 100, 400);
-
   }
 
   @include xl {
     @include font(3, 124, 150, 400);
   }
+
+  @include lg {
+    @include font(3, 90, 90, 400);
+  }
 }
 
 .description {
-
   @layer base {
     @include font(1, 16, 20);
 
@@ -89,57 +76,98 @@
     margin-top: 12px;
   }
 
-  @include md{
+  @include md {
     @include font(1, 20, 26);
-
   }
 
   @include xl {
     @include font(1, 24, 34);
   }
 
+  @include lg {
+    @include font(1, 20, 26);
+    max-width: 557px;
+  }
 }
 
+.text_wrapper {
+  .description {
+    margin-top: 12px;
+  }
 
-.text_wrapper{
   @layer base {
     z-index: 3;
   }
 }
 
-.button_wrapper{
-  @layer base{
+.button_wrapper {
+  @layer base {
     z-index: 3;
+    margin-top: 36px;
 
-    button{
-      padding: 12px 36px!important;
+    button {
+      padding: 12px 36px !important;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
     }
+
+    span {
+      font-size: 16px;
+    }
   }
 
-  @include lg{
+  @include md {
+    margin-top: 40px;
+  }
+
+  @include lg {
     width: fit-content;
   }
 
-  @include xl{
+  @include xl {
     display: none;
+  }
+
+  @include xs {
+    button {
+      height: 48px;
+    }
   }
 }
 
-.icon{
+.icon {
   @layer base {
     display: none;
   }
 
-  @include sm{
+  @include sm {
     display: flex;
   }
 }
 
-.slider_outer_wrapper{
+.slider_outer_wrapper {
+  .slider__layout {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+
+    z-index: 10;
+
+    @include lg {
+      background: linear-gradient(228deg, rgba(0, 0, 0, 0.3) 47.45%, rgba(0, 0, 0, 0.2) 81.97%);
+    }
+
+  @include xs {
+    background: linear-gradient(180deg, rgba(38, 57, 69, 0) 34.4%, #263945 90.97%),
+    linear-gradient(215deg, rgba(0, 0, 0, 0) 45.29%, rgba(0, 0, 0, 0.2) 72.52%);
+  }
+  }
+
   @layer base {
     overflow: hidden;
     position: absolute;
@@ -159,10 +187,9 @@
   @include xl {
     background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%);
   }
-
 }
 
-.slider_controls{
+.slider_controls {
   @layer base {
     width: 100%;
     z-index: 3;
@@ -181,18 +208,38 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     align-items: center;
+
+    position: absolute;
+    right: 40px;
+    left: auto;
+    bottom: 40px;
   }
 
-  @include lg{
+  @include lg {
     display: flex;
     align-items: center;
   }
-
 }
 
-.dots_wrapper{
+.dots_wrapper {
+  position: absolute;
+  
+  @include md {
+    bottom: 56px;
+  }
+
+  width: fit-content;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  justify-content: center;
+
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+
+  @include xs {
+    bottom: 32px;
+  }
+
 }
