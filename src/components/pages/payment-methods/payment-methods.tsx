@@ -48,6 +48,9 @@ const PaymentMethodsPage = () => {
         <button className={clsx([styles['tab-button']], {[styles.active]: active === 2})} onClick={() => setActive(2)}>
           100% оплата
         </button>
+        <button className={clsx([styles['tab-button']], {[styles.active]: active === 3})} onClick={() => setActive(3)}>
+          trade-in
+        </button>
       </div>
 
       {active === 0 && (
@@ -59,6 +62,7 @@ const PaymentMethodsPage = () => {
       {active === 1 && <IpotekaTab setShownRequestCallBack={setShownRequestCallBack} />}
       {active === 2 && <FullPaymentTab />}
       {active === 2 && <StepsForBuy />}
+      {active === 3 && <StepsForBuy />}
       <MakeTicket />
 
       <InstallmentPlanDrawer shown={shownInstallmentPlan} onClose={handleInstallmentPlanDrawerClose} />
