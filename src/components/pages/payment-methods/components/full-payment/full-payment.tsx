@@ -12,7 +12,7 @@ export const FullPaymentTab = () => {
           backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("/content/payment-methods/full-payment-poster.jpeg")`
         }}
       >
-        <h2 className={styles.title}>100% оплата</h2>
+        <h2 className={styles.posterTitle}>100% оплата</h2>
         <p className={styles.subtitle}>Практичный способ приобрести жилье без дополнительных переплат</p>
 
         <div className={styles.cards}>
