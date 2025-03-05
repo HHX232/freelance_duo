@@ -2,42 +2,56 @@
   @layer base {
     //position: relative;
     display: flex;
-    height: 100vh;
+    //height: 100vh;
+    height: 640px;
     flex-direction: column;
     justify-content: space-between;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/storerooms_1.jpeg");
     background-position: center;
     background-repeat: no-repeat;
+    background-position-x: 80%;
     background-size: cover;
-    color: #fff;
     overflow: hidden;
     padding: 90px 16px 40px 16px;
   }
 
   @include sm{
+    height: 875px;
     padding: 90px 20px 90px 20px;
   }
 
   @include md{
+    height: 1000px;
     padding: 130px 40px 90px 40px;
   }
 
   @include lg{
+    height: 600px;
+    background-position-x: 70%;
+    background-position-y: 60%;
     padding: 130px 40px 60px 40px;
   }
 
   @include xl{
+    height: 650px;
     padding: 130px 40px 60px 142px;
   }
 
   @include xxl{
+    height: 750px;
     padding: 130px 40px 60px 170px;
+  }
+
+  @include xxl{
+    height: 800px;
+    padding: 142px 40px 110px 196px;
   }
 }
 
 .title {
   @layer base{
     @include font(3, 44, 54, 400);
+    color: rgba(255,255,255, 1);
   }
 
   @include md{
@@ -53,6 +67,7 @@
   @layer base {
     max-width: 780px;
     @include font(1, 16, 20, 400);
+    color: rgba(255,255,255, 0.8);
   }
   @include md {
     @include font(1, 20, 26, 400);
@@ -60,6 +75,7 @@
 
   @include xl {
     @include font(1, 24, 34);
+    color: rgba(255,255,255, 1);
   }
 }
 
