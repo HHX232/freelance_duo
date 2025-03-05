@@ -43,7 +43,7 @@ const Head = () => {
             <SaleBlock
               title={
                 <div className={styles.sale_title}>
-                  <p className={styles.sale_title_text}>скидка 10% </p>
+                  <div className={styles.sale_title_text}>скидка 10% </div>
                 </div>
               }
               description={<div className={styles.sale_desc}>На парковку до 27 сентабря 2025</div>}

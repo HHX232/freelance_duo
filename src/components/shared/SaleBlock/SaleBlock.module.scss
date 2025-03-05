@@ -11,8 +11,17 @@
   }
 
 
+  @include lg {
+    width: 396px;
+  }
+
   @include xl {
     padding: 60px 24px 24px 24px;
+    width: 347px;
+  }
+
+  @include xxl {
+    width: 544px;
   }
 }
 
