@@ -2,7 +2,7 @@
   position: fixed;
   z-index: 4;
   width: 100%;
-  height: 85px;
+  height: 96px;
   backdrop-filter: blur(11px);
   background-color: hsl(0deg 0% 100% / 20%);
   color: #555;
@@ -13,7 +13,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 85px;
+    height: 96px;
     background-color: hsl(0deg 0% 100% / 65%);
     content: '';
 
@@ -29,7 +29,8 @@
   .user,
   .compare,
   .favorite {
-    height: 23px;
+    width: 46px;
+    height: 30px;
     color: #555;
     transition: 0.5s ease-in-out;
 
@@ -85,12 +86,6 @@
     }
   }
 
-  @media (min-width: 1199px) {
-    .headerTop {
-      padding: 0 59px 0 42px;
-    }
-  }
-
   .compare,
   .favorite {
     color: #fff;
@@ -131,10 +126,10 @@
   left: 0;
   display: flex;
   width: 100%;
-  height: 85px;
+  height: 96px;
   align-items: center;
   justify-content: space-between;
-  padding: 0 42px;
+  padding: 0 40px;
   margin: 0 auto;
 
   @media (max-width: 504px) {
@@ -168,8 +163,8 @@
   transition: 0.5s ease-in-out;
 
   svg {
-    width: 76.5px;
-    height: 160.65px;
+    width: 82px;
+    height: 168px;
   }
 
   &.opened {
@@ -195,10 +190,9 @@
 }
 
 .lk {
+  @include font(1, 16, 14, 500);
+
   color: #555;
-  font-family: $font-montserrat;
-  font-size: 12px;
-  font-weight: 400;
   text-transform: uppercase;
 
   @media (max-width: 650px) {
@@ -207,9 +201,10 @@
 }
 
 .phone {
-  @include font(1, 12, 14, 500);
+  @include font(1, 16, 14, 500);
 
   display: block;
+  margin-left: -40px;
   text-transform: uppercase;
 
   @media (max-width: 650px) {
@@ -218,9 +213,17 @@
 }
 
 .burger {
-  width: 25px;
+  width: 30px;
+  height: 30px;
+  margin-right: 1px;
   cursor: pointer;
   fill: #000;
+
+  &.burgerOpened {
+    width: 30px;
+    height: 30px;
+    margin-right: 6px;
+  }
 
   @media (max-width: 504px) {
     width: 17px;
@@ -231,7 +234,7 @@
 .container {
   width: 100%;
   height: inherit;
-  padding: 0 42px;
+  padding: 0 40px;
 
   @media (max-width: 504px) {
     padding: 0 24px;
@@ -246,14 +249,14 @@
   display: flex;
   height: inherit;
   align-items: center;
-  gap: 35px;
+  gap: 70px;
 }
 
 .rightHeader {
   display: flex;
   height: inherit;
   align-items: center;
-  gap: 35px;
+  gap: 40px;
 
   @media (max-width: 504px) {
     position: relative;
@@ -277,6 +280,7 @@
 
   .get {
     display: flex;
+    margin-right: 22px;
 
     @media (max-width: 990px) {
       display: none;
@@ -381,7 +385,10 @@
 }
 
 .searchApartments {
-  width: 285px !important;
+  @include font(1, 16, 14, 500);
+
+  width: 276px !important;
+  height: 48px !important;
   padding: 14px 0 !important;
-  font-size: 12px !important;
+  letter-spacing: 0.07em;
 }
