@@ -398,6 +398,12 @@
   letter-spacing: 0.07em;
 }
 
+@include custom(0, map-get($breakpoints, sm)) {
+  .rightHeader {
+    gap: 36px !important;
+  }
+}
+
 @include custom(0, map-get($breakpoints, xl)) {
   .header,
   .header::before,
