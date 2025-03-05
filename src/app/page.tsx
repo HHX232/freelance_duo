@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Новый малоэтажный квартал «Кронфорт» в Кронштадте от застройщика ГК «Алькор», жилой квартал находится на побережье Финского залива и входит в систему Острова фортов, старт продаж квартир – 1 квартал 2024 года.',
     alternates: {
-      canonical: new URL('/', process.env.NEXT_PUBLIC_SITE_URL).toString()
+      canonical: 'http://localhost:3000'
     }
   }
 }

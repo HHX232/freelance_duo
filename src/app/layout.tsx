@@ -28,7 +28,8 @@ export default function RootLayout({
           name='viewport'
           content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no'
         />
-        <meta name="yandex-verification" content="999c936ac92f008e" />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, viewport-fit=cover'></meta>
+        <meta name='yandex-verification' content='999c936ac92f008e' />
         <link rel='shortcut icon' href='/favicon.svg' />
         {/* Preconnect to GTM domains */}
         <link rel='preconnect' href='https://www.googletagmanager.com' />
@@ -36,11 +37,7 @@ export default function RootLayout({
 
         {/* Предзагрузка изображения для оптимизации LCP */}
         <link rel='preload' href='/map/compass-loader.svg' as='image' type='image/svg+xml' />
-        <script
-          type="text/javascript"
-          async
-          src="//smartcallback.ru/api/SmartCallBack.js?t=zc2ZQ6WuzUWcsEZCNMpY"
-        />
+        <script type='text/javascript' async src='//smartcallback.ru/api/SmartCallBack.js?t=zc2ZQ6WuzUWcsEZCNMpY' />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -61,7 +58,7 @@ export default function RootLayout({
         {/* Ваш основной контент */}
         <RootStyleRegistry>
           <Main>{children}</Main>
-          <Widget color='korichneviy' style={{ zIndex: 3 }} />
+          <Widget color='korichneviy' style={{zIndex: 3}} />
           <Jivo />
         </RootStyleRegistry>
 

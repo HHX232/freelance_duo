@@ -23,6 +23,12 @@ const nextConfig = {
         pathname: '/**'
       },
       {
+        protocol: 'http',
+        hostname: 'localhost:3000',
+        port: '',
+        pathname: '/'
+      },
+      {
         protocol: 'https',
         hostname: 'kronfort-back.labab.ru',
         port: '',

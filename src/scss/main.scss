@@ -1,6 +1,20 @@
 @import 'normalize.css';
 @import 'antd/dist/reset.css';
 
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+ 
+*::-webkit-scrollbar-track {
+  background: rgba(17, 98, 125, 0.04);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background: rgba(17, 98, 125, 0.16);
+}
+
+
 html {
   -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
 }
