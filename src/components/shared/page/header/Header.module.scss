@@ -207,7 +207,7 @@
   margin-left: -40px;
   text-transform: uppercase;
 
-  @media (max-width: 650px) {
+  @include custom(0, map-get($breakpoints, sm)) {
     display: none;
   }
 }
@@ -278,9 +278,8 @@
   .phone_mobile {
     display: none;
 
-    @media (max-width: 504px) {
-      display: flex;
-      align-items: flex-end;
+    @include custom(0, map-get($breakpoints, sm)) {
+      display: block;
     }
   }
 
