@@ -43,13 +43,13 @@
   }
 
   @include md{
-    height: 480px;
+    height: 484px;
     padding: 40px;
   }
 
   @include lg {
-    padding-bottom: 40px;
-    margin-bottom: 40px;
+    text-wrap: nowrap;
+    padding: 20px 0;
     @include font(3, 42, 54, 400);
     height: 570px;
     background: none;
@@ -67,7 +67,7 @@
 
   @include lg {
     padding: 40px;
-    gap: 40px;
+    gap: 10px;
     flex-direction: row;
 
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_6.jpg') no-repeat;

@@ -6,7 +6,7 @@ const MakeTicket = () => {
     <div className={styles['content-wrapper']}>
       <div className={styles['innerWrapper']}>
         <div className={styles['title']}>
-          <h3>Нужна помощь с выбором?</h3>
+          <div>Нужна помощь с выбором?</div>
         </div>
         <TicketForm />
       </div>

@@ -1,0 +1,35 @@
+.download {
+  @layer base {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+
+    .text {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      align-items: start;
+      justify-content: space-between;
+
+      h4 {
+        @include font(1, 16, 20, 400);
+      }
+
+      p {
+        @include font(1, 12, 14);
+        color: #A0A3A8;
+      }
+
+    }
+
+
+  }
+
+
+  @include lg {
+    padding-top: 40px;
+    border-top: 1px solid rgba(17, 98, 125, 0.3);
+  }
+
+}

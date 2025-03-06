@@ -60,24 +60,25 @@
       gap: 20px;
       padding: 0;
       align-items: center;
-    }
 
-    .text{
-      text-align: left;
+      .text{
+        text-align: left;
 
-      h4{
-        @include font(1, 16, 20, 400);
+        div{
+          @include font(1, 16, 20, 400);
+        }
+
+        p{
+          @include font(1, 12, 14, 400);
+          color: rgba(160, 163, 168, 1);
+        }
       }
 
-      p{
-        @include font(1, 12, 14, 400);
-        color: rgba(160, 163, 168, 1);
-      }
     }
 
   }
 
-  @include desktop {
+  @include xl {
     padding: 0;
 
     .download {

@@ -126,6 +126,7 @@
   display: flex;
   gap: 20px;
   width: fit-content;
+  align-items: center;
 
   .text {
     display: flex;
@@ -135,6 +136,7 @@
     justify-content: space-between;
 
     h4 {
+      color: rgba(40, 45, 60, 1);
       @include font(1, 16, 20, 400);
     }
 

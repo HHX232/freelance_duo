@@ -21,7 +21,7 @@ const Scheme = () => {
           >
             <DownloadSVG />
             <div className={styles['text']}>
-              <h4>Скачайте схему паркинга</h4>
+              <div>Скачайте схему паркинга</div>
               <p>PDF, 4MB</p>
             </div>
           </button>

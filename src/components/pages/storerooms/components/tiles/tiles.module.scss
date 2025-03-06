@@ -121,9 +121,9 @@
 .tile-bg1 {
   @layer base {
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_3.jpeg') no-repeat;
-    gap: 40px;
+    gap: 24px;
     background-size: 100% 100%;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   @include md {
