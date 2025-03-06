@@ -8,7 +8,6 @@ import FindApartmentButton from './components/FindApartmentButton/FindApartmentB
 import LinkWithIconAndCount from './components/LinkWithIconAndCount/LinkWithIconAndCount'
 import CompareSVG from '@icons/compare.svg'
 import FavoriteSVG from '@icons/favorite.svg'
-import PhoneSVG from '@icons/phone.svg'
 import clsx from 'clsx'
 import HeaderMenu from './components/HeaderMenu/HeaderMenu'
 import TextLink from './components/TextLink/TextLink'
@@ -20,6 +19,7 @@ import {usePathname, useRouter} from 'next/navigation'
 import UserSVG from '@icons/user.svg'
 import {useIsXl, useIsSm} from '@utils/useIsMobile'
 import LogoutButton from './components/LogoutButton/LogoutButton'
+import PhoneIconSVG from './components/icons/PhoneIconSVG/PhoneIconSVG'
 
 export default function Header({dark, dashboard}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
@@ -125,7 +125,7 @@ export default function Header({dark, dashboard}: IHeaderProps) {
         </div>
         <div className={styles.phoneIcon}>
           <Link href={'tel:+71231234567'}>
-            <PhoneSVG />
+            <PhoneIconSVG />
           </Link>
         </div>
         {!isLoadingCount && (

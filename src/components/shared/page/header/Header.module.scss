@@ -213,11 +213,6 @@
     height: 68px;
 
     .container {
-      // .logo svg {
-      //   width: 74px;
-      //   height: 134px;
-      // }
-
       .phoneLink {
         margin-left: auto;
       }
@@ -263,8 +258,6 @@
 
 @include custom(0, map-get($breakpoints, sm)) {
   header.header {
-    padding: 0 16px !important;
-
     .phoneLink {
       display: none !important;
     }
@@ -280,8 +273,51 @@
   }
 
   header.header.menuOpened {
+    height: 60px !important;
+    padding: 0 16px !important;
+
+    .logo {
+      margin-top: 2px !important;
+    }
+
     .phoneIcon {
       color: #fff !important;
+    }
+
+    .toggleMenuButton {
+      margin-right: -4px;
+      margin-left: 30px !important;
+    }
+
+    .mobileMenu {
+      margin-top: 10px;
+
+      .mobilePersonalCabinetLink {
+        min-width: 140px;
+        height: 36px;
+        margin-left: 0;
+
+        a {
+          @include font(1, 14, 18, 400);
+        }
+      }
+
+      .mobielFavoriteLink,
+      .mobileCompareLink {
+        width: 36px;
+        height: 36px;
+
+        svg {
+          // width: 20px !important;
+          height: 20px !important;
+          margin-top: 5px;
+        }
+
+        span {
+          margin-top: 4px !important;
+          margin-left: 4px !important;
+        }
+      }
     }
   }
 }
