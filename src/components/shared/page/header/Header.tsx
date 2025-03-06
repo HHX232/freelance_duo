@@ -13,8 +13,8 @@ import clsx from 'clsx'
 import IconWithCount from '@shared/IconWithCount/IconWithCount'
 import FilledButton from '@shared/filledButton/FilledButton'
 import {useEffect, useRef, useState} from 'react'
-import MenuItem from './menuItem/MenuItem'
-import MenuBlock from './menuBlock/MenuBlock'
+import MenuItem from './components/menu/menuItem/MenuItem'
+import MenuBlock from './components/menu/menuBlock/MenuBlock'
 import {useIsMobile, useIsTablet} from '@utils/useIsMobile'
 import {useClickOutside} from '@src/lib/hooks/useOutsideClick'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
@@ -328,7 +328,6 @@ const Header = ({dark, dashboard}: HeaderProps) => {
               <MenuItem text='Благоустройство' href='/blagoustroistvo' />
               <MenuItem text='Архитектура' href='/architektura' />
               <MenuItem text='Виды отделки' href='/otdelka' />
-              {/*<MenuItem text='Ход строительства' />*/}
               <MenuItem text='Новости' href='/news' />
             </MenuBlock>
 
@@ -339,14 +338,11 @@ const Header = ({dark, dashboard}: HeaderProps) => {
               <MenuItem text='Документы' href='/docs' />
               <MenuItem text='Контакты' href='/contacts' />
               <MenuItem text='Служба доверия' href='/feedback' />
-
-              {/*<MenuItem text='FAQ' href='/faq' />*/}
             </MenuBlock>
           </div>
         </div>
       </header>
       {isOpenAuth && <AuthPopup onClose={() => setOpenAuth(false)} />}
-      {/* {callBackModal && <Backcall onClose={() => setCallBackModal(false)} />} */}
     </>
   )
 }
