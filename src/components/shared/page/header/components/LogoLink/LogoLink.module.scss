@@ -7,10 +7,10 @@
 
   &.transparent {
     align-items: center;
+    margin-left: 10px;
 
     svg {
-      width: 44px !important;
-      height: 44px !important;
+      width: 64px !important;
 
       path:first-child {
         fill: transparent !important;
@@ -44,12 +44,6 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, xl)) {
-  .icon.small {
-    height: 70px;
-  }
-}
-
 @include custom(0, map-get($breakpoints, md)) {
   .logoLink {
     width: 65px;
@@ -61,6 +55,19 @@
       svg {
         width: 73px;
         height: 134px;
+      }
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, sm)) {
+  .logoLink {
+    margin-left: -8px !important;
+
+    .icon {
+      svg {
+        width: 54px !important;
+        height: 54px !important;
       }
     }
   }
