@@ -8,6 +8,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
   return (
     <div className={styles.menu}>
       <div className={styles.container}>
+        {/* TODO: Сделать отдельный компонент */}
         <div className={styles.container_item}>
           <p className={styles.item_title}>Недвижимость</p>
           <div className={styles.item_inner}>
