@@ -44,16 +44,21 @@
   @include md{
     height: 480px;
     padding: 40px;
+    @include font(3, 36, 50, 400);
   }
 
   @include lg {
     padding-bottom: 40px;
     margin-bottom: 40px;
-    @include font(3, 42, 54, 400);
     height: 570px;
     background: none;
     align-items: start;
   }
+
+  @include xl{
+    @include font(3, 42, 54, 400);
+  }
+
 }
 
 

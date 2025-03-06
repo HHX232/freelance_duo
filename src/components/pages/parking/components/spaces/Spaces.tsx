@@ -19,7 +19,7 @@ const Spaces = () => {
           </div>
           <div className={`${styles['tile']} ${styles['bg-3']}`}>
             <div className={`${styles['text_wrapper']}`}>
-              <div className={`${styles['title_text']}`}>Инфраструктура</div>
+              <div className={`${styles['title_text']}`}>места хватит всем</div>
               <div className={`${styles['desc']}`}>для установки зарядных станций электромобилей.</div>
             </div>
             <div className={`${styles['button_wrapper']}`}>

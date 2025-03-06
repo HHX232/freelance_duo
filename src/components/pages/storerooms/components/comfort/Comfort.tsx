@@ -1,5 +1,5 @@
 import styles from './comfort.module.scss'
-import DownloadSVG from '@icon/download.svg'
+import DownloadButton from '@shared/downloadButton'
 
 const Comfort = () => {
   return (
@@ -14,17 +14,7 @@ const Comfort = () => {
         <div className={styles['table-img-wrapper']}></div>
 
         <div className={styles['download-wrapper']}>
-          <button
-            type='button'
-            className={styles['download']}
-            // onClick={() => sendTmrEvent('download', id, fvalue)}
-          >
-            <DownloadSVG />
-            <div className={styles['text']}>
-              <h4>Скачайте буклет</h4>
-              <p>PDF, 4MB</p>
-            </div>
-          </button>
+          <DownloadButton/>
         </div>
       </div>
 

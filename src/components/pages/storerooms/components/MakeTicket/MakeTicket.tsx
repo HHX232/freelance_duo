@@ -1,12 +1,17 @@
+"use client"
 import styles from './MakeTicket.module.scss'
 import TicketForm from '@shared/ticketForm/ticketForm'
+import {useIsMinWidth} from '@utils/useIsMobile'
 
 const MakeTicket = () => {
+
+  const isSm = useIsMinWidth(479);
+
   return (
     <div className={styles['content-wrapper']}>
       <div className={styles['innerWrapper']}>
         <div className={styles['title']}>
-          <h3>Нужна помощь с выбором?</h3>
+          <div>Нужна помощь {isSm && <br/>}с выбором?</div>
         </div>
         <TicketForm />
       </div>

@@ -1,5 +1,19 @@
 .storerooms-wrapper{
-  display: flex;
-  flex-direction: column;
-  gap: 110px
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+  }
+
+  @include sm {
+    gap: 80px;;
+  }
+
+  @include md {
+    gap: 90px;
+  }
+
+  @include xxl {
+    gap: 110px;
+  }
 }

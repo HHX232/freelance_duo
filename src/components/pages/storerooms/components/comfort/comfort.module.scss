@@ -57,9 +57,9 @@
 .description {
   @layer base {
     @include font(1, 16, 20);
-
-    max-width: 780px;
-    color: #555555;
+    text-align: left;
+    color: rgba(85, 85, 85, 1);
+    line-height: 20px;
   }
 
   @include lg {
@@ -110,6 +110,7 @@
 
   @include sm {
     height: 300px;
+    background-position-x: 90%;
   }
 
   @include md {
@@ -126,32 +127,4 @@
 
 }
 
-.download {
-  display: flex;
-  gap: 20px;
-  width: fit-content;
 
-  .text {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    align-items: start;
-    justify-content: space-between;
-
-    h4 {
-      @include font(1, 16, 20, 400);
-    }
-
-    p {
-      @include font(1, 12, 14);
-      color: #A0A3A8;
-    }
-
-  }
-
-  @include lg {
-    padding-top: 40px;
-    border-top: 1px solid rgba(17, 98, 125, 0.3);
-  }
-
-}
