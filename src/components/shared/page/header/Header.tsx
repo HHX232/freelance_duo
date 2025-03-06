@@ -18,9 +18,14 @@ import useRouterNext from '@src/lib/hooks/useRouter'
 import Link from 'next/link'
 import {usePathname, useRouter} from 'next/navigation'
 import UserSVG from '@icons/user.svg'
+import {useIsXl, useIsSm} from '@utils/useIsMobile'
 
 export default function Header({dark, dashboard}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  const isXl = useIsXl()
+  const isSm = useIsSm()
 
   const {favorites, compare} = useStore()
   const {token, clearToken} = useStore()
@@ -43,6 +48,22 @@ export default function Header({dark, dashboard}: IHeaderProps) {
       query: {}
     })
   }
+
+  const handleScroll = () => {
+    if (window.scrollY > 30) {
+      setIsScrolled(true)
+    } else {
+      setIsScrolled(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  })
 
   useEffect(() => {
     if (favorites) {
@@ -78,7 +99,11 @@ export default function Header({dark, dashboard}: IHeaderProps) {
     >
       <div className={styles.container}>
         <div className={styles.logo}>
-          <LogoLink isMenuOpened={isMenuOpened} />
+          <LogoLink
+            isSmall={(isXl && isScrolled) || (isSm && isMenuOpened)}
+            isTransparent={isSm && isMenuOpened}
+            isMenuOpened={isMenuOpened}
+          />
         </div>
 
         {isLK && (

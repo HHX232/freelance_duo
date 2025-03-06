@@ -49,7 +49,7 @@
 
 @include custom(0, map-get($breakpoints, md)) {
   .menu {
-    padding-top: 140px;
+    padding-top: 180px;
     padding-left: 20px;
 
     .container {
