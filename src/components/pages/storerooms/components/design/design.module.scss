@@ -77,9 +77,11 @@
   }
 
   @include md {
-
+    padding: 40px;
     @include font(3, 26, 36, 400);
   }
+
+
 
 }
 
@@ -114,6 +116,12 @@
   @include xl {
     .tile {
       height: 532px;
+    }
+  }
+
+  @include xxxl {
+    .tile{
+      padding: 60px;
     }
   }
 }

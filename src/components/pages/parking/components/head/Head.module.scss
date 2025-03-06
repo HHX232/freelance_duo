@@ -43,9 +43,12 @@
   @include xxl {
     padding: 130px 40px 90px 170px;
     height: 750px;
-
   }
 
+  @include xxxl {
+    padding: 142px 40px 110px 196px;
+    height: 800px;
+  }
 }
 
 
@@ -88,7 +91,7 @@
     @include font(3, 90, 100, 400);
   }
 
-  @include desktop {
+  @include xl {
     @include font(3, 124, 150, 400);
   }
 }
@@ -120,15 +123,7 @@
   }
 }
 
-.sale_desc {
-  @layer base {
-    @include font(1, 16, 20);
-  }
 
-  @include xl{
-    @include font(3, 24, 34, 40);
-  }
-}
 
 
 .icon {
@@ -168,6 +163,7 @@
   }
 
   @include xl {
+    @include font(3, 42, 54, 400);
     white-space: normal;
     display: table-caption;
   }
@@ -193,6 +189,7 @@
 
   @include xl {
     white-space: normal;
+    @include font(1, 24, 34, 40);
   }
 
   @include xxl {

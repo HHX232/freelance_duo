@@ -91,6 +91,14 @@
     }
   }
 
+  @include sm{
+    padding: 36px;
+  }
+
+  @include md{
+    padding: 40px;
+  }
+
   @include xl {
     height: 300px;
   }
@@ -157,7 +165,7 @@
   @layer base {
     position: relative;
     background: #FFFFFF;
-    color: black;
+    color: rgba(85, 85, 85, 1);
 
     .title {
       @include font(3, 40, 50, 400);

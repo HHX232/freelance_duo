@@ -29,9 +29,13 @@
   }
 
   @include md {
-    @include font(3, 42, 54, 400);
+    @include font(3, 36, 50, 400);
     margin-bottom: 40px;
     border-bottom: 1px solid rgba(17, 98, 125, 0.3);
+  }
+
+  @include xl {
+    @include font(3, 42, 54, 400);
   }
 
 }
@@ -45,6 +49,10 @@
 
   @include xxl {
     flex-direction: row;
+    height: 670px;
+  }
+
+  @include xxxl {
     height: 720px;
   }
 
@@ -69,6 +77,15 @@
     word-wrap: break-word;
   }
 
+  @include sm{
+    padding: 36px;
+  }
+
+
+  @include md{
+    padding: 40px;
+  }
+
   @include xxl {
     height: 100%;
   }
@@ -89,11 +106,21 @@
       flex-direction: row;
     }
   }
+
+
 }
 
 .title_num {
   @layer base {
     @include font(3, 40, 50, 400);
+  }
+
+  @include md {
+    @include font(3, 52, 58, 400);
+  }
+
+  @include xl {
+    @include font(3, 64, 80, 400);
   }
 }
 
@@ -105,13 +132,20 @@
   @include md {
     @include font(3, 26, 36, 400);
   }
+
+  @include xl {
+    @include font(3, 32, 44, 400);
+  }
 }
 
 .desc {
   @layer base {
-    @include font(3, 14, 18, 400);
+    @include font(1, 14, 18, 400);
   }
 
+  @include xl {
+    @include font(1, 16, 22, 400);
+  }
 }
 
 .text_wrapper {
@@ -145,12 +179,28 @@
   @layer base {
     background: rgba(17, 98, 125, 1);
   }
+
+  @include xxl {
+    height: 323px;
+  }
+
+  @include xxxl {
+    height: 348px;
+  }
 }
 
 .bg-2 {
   @layer base {
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/parking_outside.jpeg') no-repeat center center;
     background-size: 100% 100%;
+  }
+
+  @include xxl {
+    height: 323px;
+  }
+
+  @include xxxl {
+    height: 348px;
   }
 }
 
@@ -172,7 +222,15 @@
   @include xxl {
     flex-direction: column;
     align-items: flex-start;
+    height: 323px;
   }
+
+  @include xxxl {
+    padding: 60px 40px;
+    height: 348px;
+  }
+
+
 }
 
 
@@ -186,7 +244,15 @@
     justify-content: flex-end;
     gap: 24px;
   }
+
+  @include xxxl {
+    padding: 60px;
+  }
 }
 
 
-
+.num-col-wrapper{
+  @include xxl {
+    height: fit-content;
+  }
+}
