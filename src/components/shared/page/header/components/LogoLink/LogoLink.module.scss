@@ -44,12 +44,6 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, xl)) {
-  .icon.small {
-    height: 70px;
-  }
-}
-
 @include custom(0, map-get($breakpoints, md)) {
   .logoLink {
     width: 65px;

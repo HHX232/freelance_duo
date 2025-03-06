@@ -50,13 +50,7 @@ export default function Header({dark, dashboard}: IHeaderProps) {
     })
   }
 
-  const handleScroll = () => {
-    if (window.scrollY > 30) {
-      setIsScrolled(true)
-    } else {
-      setIsScrolled(false)
-    }
-  }
+  const handleScroll = (): void => setIsScrolled(window.scrollY > 0)
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
@@ -64,7 +58,7 @@ export default function Header({dark, dashboard}: IHeaderProps) {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  })
+  }, [])
 
   useEffect(() => {
     if (favorites) {
