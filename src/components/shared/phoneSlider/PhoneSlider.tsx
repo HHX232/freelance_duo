@@ -11,16 +11,18 @@ interface PhoneSliderProps {
   options?: EmblaOptionsType
   viewportIsShow?: boolean
   slideGap?: number
+  embalaContainerClassName?: string
+  sliderWrapperClassName?: string
 }
 
 const PhoneSlider: FC<PhoneSliderProps> = (props) => {
-  const {slides, ...allProps} = props
-  const OPTIONS: EmblaOptionsType = {}
+  const {slides, options, sliderWrapperClassName, ...allProps} = props
+  const OPTIONS: EmblaOptionsType = {...options}
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [ClassNames()])
   const {selectedIndex, scrollSnaps, onDotButtonClick} = useDotButton(emblaApi)
 
   return (
-    <div className={styles['phone-slider-wrapper']}>
+    <div className={`${styles['phone-slider-wrapper']} ${sliderWrapperClassName}`}>
       <Gallery {...allProps} slides={slides} options={OPTIONS} emblaRef={emblaRef} />
       <div className={styles['embla__dots']}>
         {scrollSnaps.map((_, index) => (

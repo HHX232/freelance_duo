@@ -1,5 +1,17 @@
 .section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  height: fit-content;
+
   @layer base {
+    background:
+      linear-gradient(180deg, rgba(38, 57, 69, 0) 18.3%, rgba(38, 57, 69, 0.47) 49.35%, #263945 100%),
+      linear-gradient(48deg, rgba(30, 56, 73, 0.7) 25.09%, rgba(30, 56, 73, 0) 100.35%),
+      linear-gradient(44deg, rgba(30, 56, 73, 0.5) 4.95%, rgba(30, 56, 73, 0) 67.43%),
+      url('/content/cluster.png') lightgray 50% / cover no-repeat;
+
     position: relative;
     height: 100vh;
     background-position: center;
@@ -9,32 +21,65 @@
     flex-direction: column;
     justify-content: end;
     padding: 40px 20px;
-
-    background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%), linear-gradient(180deg, rgb(38 57 69 / 0%) 18.3%, rgb(38 57 69 / 47%) 49.35%, #263945 100%),
-linear-gradient(47.64deg, rgb(30 56 73 / 50%) 6.94%, rgb(30 56 73 / 0%) 83.47%), url("/content/cluster.png");
+  }
+  .caption_sub_title {
+    @layer base {
+      @include font(1, 16, 34, 200);
+      color: $yellow-text;
+    }
   }
 
-  @include sm{
+  @include sm {
     padding: 40px 20px;
   }
 
   @include md {
-    background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
-linear-gradient(37.52deg, rgb(30 56 73 / 70%) 25.4%, rgb(30 56 73 / 0%) 65.67%), url("/content/cluster.png");
     padding: 90px 40px;
+    justify-content: space-between !important;
+    background:
+      linear-gradient(44deg, rgba(30, 56, 73, 0.9) 4.95%, rgba(30, 56, 73, 0) 67.43%),
+      linear-gradient(90deg, #1e3849 -28.39%, rgba(0, 0, 0, 0) 93.62%),
+      url('/content/cluster.png') lightgray 50% / cover no-repeat;
+
+    .caption_sub_title {
+      font-size: 20px;
+      line-height: 26px;
+    }
   }
 
   @include lg {
-    background: linear-gradient(90.01deg, rgb(30 56 73 / 70%) 0.01%, rgb(0 0 0 / 0%) 35.63%),
-linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%), url("/content/cluster.png");
-    padding: 60px 40px;
-    background-size: 100% 100%;
-    //height: fit-content;
+    padding: 60px 0 60px 40px;
 
+    background:
+      linear-gradient(142deg, rgba(30, 56, 73, 0.9) 11.78%, rgba(30, 56, 73, 0) 55.41%),
+      linear-gradient(90deg, #1e3849 0%, rgba(10, 18, 24, 0.33) 44.44%, rgba(0, 0, 0, 0) 74.06%),
+      url('/content/cluster.png') lightgray 50% / cover no-repeat;
+
+    .caption_sub_title {
+      font-size: 20px;
+    }
   }
 
-  @include xl{
-    padding: 90px 142px;
+  @include xl {
+    padding: 90px 0 64px 142px;
+
+    
+    .caption_sub_title {
+      font-size: 24px;
+    }
+  }
+
+  @include xxl {
+    background:
+      linear-gradient(156deg, rgba(30, 56, 73, 0.9) 6.63%, rgba(30, 56, 73, 0) 43.47%),
+      linear-gradient(90deg, #1e3849 0%, rgba(0, 0, 0, 0) 62.08%),
+      url('/content/cluster.png') lightgray 50% / cover no-repeat;
+
+    padding: 90px 0 26px 170px;
+  }
+
+  @include xxxl {
+    padding: 130px 0 26px 190px;
   }
 }
 
@@ -51,13 +96,12 @@ linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%)
   }
 
   @include md {
-    //justify-content: space-between;
+    justify-content: space-between;
     height: 100%;
-    gap: 100px
+    flex: 100%;
   }
 
   @include lg {
-    gap: 60px;
     justify-content: start;
   }
 
@@ -65,24 +109,26 @@ linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%)
     @layer base {
       color: $yellow-text;
       @include font(3, 30, 40, 400);
-
     }
 
     @include md {
       @include font(3, 36, 50, 400);
     }
-  }
 
+    @include xl {
+      @include font(3, 42, 40, 400);
+    }
+  }
 }
 
 .caption-items {
   @layer base {
     display: flex;
-    gap: 60px;
+    gap: 40px;
+    flex-direction: column;
   }
 
-  @include md {
-    flex-direction: column;
+  @include xl {
     gap: 48px;
   }
 }
@@ -99,7 +145,16 @@ linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%)
     }
   }
 
-  @include md {
+  @include xs {
+    max-width: none;
+  }
+
+  @include xl {
+    max-width: 456px;
+    width: 100%;
+  }
+
+  @include xxl {
     max-width: 350px;
   }
 
@@ -107,43 +162,111 @@ linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%)
     @layer base {
       @include font(3, 22, 34, 400);
 
+      br {
+        display: none;
+      }
       color: $yellow-text;
+
+      &.number_title {
+        @include font(3, 40, 50);
+      }
     }
 
-    @include md {
-      @include font(3, 52, 58);
+    @include sm {
+      span br {
+        display: block;
+      }
+
+      & span {
+        @include font(3, 26, 36);
+      }
+
+      &.number_title {
+        @include font(3, 52, 58);
+      }
+    }
+
+    @include lg {
+      & span {
+        @include font(3, 26, 36);
+      }
+
+      &.number_title {
+        @include font(3, 52, 58);
+      }
+    }
+
+    @include xl {
+      & span {
+        @include font(3, 32, 44);
+      }
+
+      &.number_title {
+        @include font(3, 64, 80);
+      }
 
       position: relative;
       display: flex;
       align-items: flex-end;
       gap: 8px;
+    }
 
+    @include xxl {
       & span {
-        @include font(3, 26, 36);
+        @include font(3, 32, 44);
+      }
+
+      br {
+        display: block;
+      }
+      &.number_title {
+        @include font(3, 64, 80);
       }
     }
 
+    @include xxxl {
+      & span {
+        @include font(3, 32, 54);
+      }
+
+      &.number_title {
+        @include font(3, 64, 80);
+      }
+    }
   }
 
   &__divider {
     width: 83px;
     height: 2px;
     border: 0;
-    margin-top: 18px;
-    margin-left: 0;
     background-color: $orange-bg-500;
+
+    @layer base {
+      margin: 12px 0 12px 0;
+    }
+
+    @include xl {
+      margin: 16px 0 16px 0;
+    }
   }
 
   &__description {
     @layer base {
-      @include font(1, 16, 22, 200);
+      @include font(1, 14, 18, 200);
       margin-top: 16px;
-      width: 240px;
+      max-width: 360px;
       color: $yellow-text;
+    }
+
+    @include xl {
+      max-width: none;
+      @include font(1, 16, 22, 200);
+    }
+    @include xxl {
+      max-width: 347px;
     }
   }
 }
-
 
 .desktop_captions {
   @layer base {
@@ -155,8 +278,11 @@ linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%)
   }
 }
 
-
 .mobile_captions {
+  .number_title {
+    font-size: 40px;
+  }
+
   @layer base {
     display: flex;
   }
@@ -164,4 +290,29 @@ linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%)
   @include md {
     display: none;
   }
+}
+
+.mobile_captions {
+    .mobile_slide {
+      width: fit-content;
+      flex: 0 0 75% !important;
+    }
+
+  @include sm {
+    .mobile_slide {
+      width: fit-content;
+      flex: 0 0 55% !important;
+    }
+  }
+}
+
+.phone_slider_container {
+  width: 100%;
+  gap: 60px;
+}
+.captions-title {
+  margin-bottom: 8px;
+}
+.phone_slider_wrapper {
+  gap: 60px !important;
 }
