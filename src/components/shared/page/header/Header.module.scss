@@ -1,3 +1,5 @@
+@import '../../../../scss/breakpoints';
+
 .header {
   position: fixed;
   z-index: 4;
@@ -405,9 +407,15 @@
 }
 
 @include custom(0, map-get($breakpoints, xl)) {
-  .header,
-  .header::before,
   .headerTop {
+    height: 86px !important;
+  }
+
+  .header {
+    height: 86px !important;
+  }
+
+  .header::before {
     height: 86px !important;
   }
 
@@ -448,9 +456,15 @@
 }
 
 @include custom(0, map-get($breakpoints, md)) {
-  .header,
-  .header::before,
   .headerTop {
+    height: 68px !important;
+  }
+
+  .header {
+    height: 68px !important;
+  }
+
+  .header::before {
     height: 68px !important;
   }
 

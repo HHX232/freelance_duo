@@ -14,11 +14,14 @@ export default function MobileFooterNavigation(props: IMobileFooterNavigationPro
         color: 'accent',
         size: 'accentMedium',
         children: (
-          <ul key={groupIndex}>
+          //TODO добавить модуль стилей вместо inline
+          <ul style={{gap: '10px', display: 'flex', flexDirection: 'column'}} key={groupIndex}>
             {group.links.map((link: IFooterNavigationLink, linkIndex: number) => {
               return (
                 <li key={linkIndex}>
-                  <Link href={link.href}>{link.name}</Link>
+                  <Link style={{fontSize: '14px'}} href={link.href}>
+                    {link.name}
+                  </Link>
                 </li>
               )
             })}
@@ -31,7 +34,13 @@ export default function MobileFooterNavigation(props: IMobileFooterNavigationPro
   return (
     <div className={styles.nav}>
       <div className={styles.accordions}>
-        <Accordion extraStyle={{padding: '8px 20px 8px 0px'}} items={links} />
+        <Accordion
+          extraClass={styles.accordion_adaptive}
+          containerExtraClass={styles.extraGap}
+          leftArrow={false}
+          arrowSize='large'
+          items={links}
+        />
       </div>
     </div>
   )

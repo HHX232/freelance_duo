@@ -49,41 +49,59 @@ const SECONDARY_LINKS: IFooterNavigationLink[] = [
 const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
   {
     name: (
-      <p style={{marginLeft: '30px'}}>
+      <p>
         Недвижимость
         <br />
       </p>
     ),
     links: [
-      {name: 'ссылка', href: '#link'},
-      {name: 'ссылка', href: '#link'},
-      {name: 'ссылка', href: '#link'}
+      // {
+      //   name: (
+      //     <Accordion
+      //       items={[
+      //         {header: 'Квартиры', children: 'Квартиры'},
+      //         {header: 'Комнаты', children: 'Комнаты'}
+      //       ]}
+      //     />
+      //   ),
+      // TODO если строка пустая то делаем не ссылку а div
+      //   href: ''
+      // },
+      {name: 'Кладовые', href: '#link'},
+      {name: 'Паркинг', href: '#link'}
     ]
   },
   {
     name: (
-      <p style={{marginLeft: '30px'}}>
-        Недвижимость
+      <p>
+        О проекте
         <br />
       </p>
     ),
     links: [
-      {name: 'ссылка', href: '#link'},
-      {name: 'ссылка', href: '#link'},
-      {name: 'ссылка', href: '#link'}
+      {name: 'О проекте', href: '/about'},
+      {name: 'Расположежие', href: '/locatio'},
+      {name: 'Инфраструктура', href: '/infrastructure'},
+      {name: 'Благоустройство', href: '/landscaping'},
+      {name: 'Архитектура', href: '/architecture'},
+      {name: 'Виды отделки', href: '/finishes'},
+      {name: 'Новости', href: '/news'}
     ]
   },
   {
     name: (
-      <p style={{marginLeft: '30px'}}>
-        Недвижимость
+      <p>
+        Информация
         <br />
       </p>
     ),
     links: [
-      {name: 'ссылка', href: '#link'},
-      {name: 'ссылка', href: '#link'},
-      {name: 'ссылка', href: '#link'}
+      {name: 'О застройщике', href: '#link'},
+      {name: 'Способы покупки', href: '#link'},
+      {name: 'Ход строительства', href: '#link'},
+      {name: 'Документы', href: '#link'},
+      {name: 'Контакты', href: '#link'},
+      {name: 'Служба доверия', href: '#link'}
     ]
   }
 ]

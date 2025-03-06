@@ -14,13 +14,25 @@ const AccordionTabCustom = ({
   isOpen = false,
   onClick,
   arrowComponent,
+  leftArrow,
+  rightArrow,
+  arrowSize = 'large',
+  arrowExtraStyles,
   children
 }: AccordionTabCustomProps & {children: React.ReactNode}) => {
   return (
     <li className={cn(styles.li_item, className, {[styles.open]: isOpen})} style={style} key={key}>
       <div className={styles.header} onClick={onClick}>
         {header}
-        {arrowComponent || <AccordionArrow arrowState={isOpen} />}
+        {arrowComponent || (
+          <AccordionArrow
+            leftArrow={leftArrow}
+            rightArrow={rightArrow}
+            arrowState={isOpen}
+            size={arrowSize}
+            extraStyles={arrowExtraStyles}
+          />
+        )}
       </div>
       <div className={styles.decor_line}></div>
       <div style={contentStyle} className={styles.content}>
@@ -30,7 +42,17 @@ const AccordionTabCustom = ({
   )
 }
 
-export default function Accordion({items, extraClass, extraStyle}: AccordionProps) {
+export default function Accordion({
+  items,
+  containerExtraClass,
+  extraClass,
+  extraStyle,
+  arrowComponent,
+  leftArrow,
+  rightArrow,
+  arrowSize,
+  arrowExtraStyles
+}: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const handleTabClick = useCallback((index: number) => {
@@ -40,6 +62,11 @@ export default function Accordion({items, extraClass, extraStyle}: AccordionProp
   const tabs = useMemo(() => {
     return items.map((tab, i) => (
       <AccordionTabCustom
+        arrowComponent={arrowComponent}
+        leftArrow={leftArrow}
+        rightArrow={rightArrow}
+        arrowSize={arrowSize}
+        arrowExtraStyles={arrowExtraStyles}
         key={i.toString()}
         header={tab?.header}
         isOpen={openIndex === i}
@@ -71,5 +98,5 @@ export default function Accordion({items, extraClass, extraStyle}: AccordionProp
     ))
   }, [items, extraClass, extraStyle, openIndex, handleTabClick])
 
-  return <div className={styles.accordion}>{tabs}</div>
+  return <div className={cn(styles.accordion, containerExtraClass)}>{tabs}</div>
 }

@@ -23,9 +23,9 @@ export default function FooterContacts(props: IFooterContactsProps) {
           secondaryLinks={props.navProps.secondaryLinks}
         />
       </div>
-      <div className={styles.account}>
+      <div className={`${styles.account} ${styles.lk_media}`}>
         {props.isLK && (
-          <div className={styles.lk}>
+          <div className={`${styles.lk} `}>
             <PrivateOfficeButton isAuth={!!props.token} onClick={props.onClickPrivateOffice} />
           </div>
         )}

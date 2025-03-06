@@ -23,7 +23,12 @@ enum AccordionSizes {
 type AccordionColorType = `${AccordionColors}`
 type AccordionFontType = `${AccordionFonts}`
 type AccordionSizeType = `${AccordionSizes}`
-
+export interface IArrowDopProps {
+  leftArrow?: boolean
+  rightArrow?: boolean
+  arrowSize?: 'large' | 'medium' | 'small'
+  arrowExtraStyles?: React.CSSProperties
+}
 export interface IAccordionItem {
   header: string | React.ReactNode
   children: React.ReactNode
@@ -32,7 +37,7 @@ export interface IAccordionItem {
   font?: AccordionFontType
   size?: AccordionSizeType
 }
-export interface AccordionTabCustomProps {
+export interface AccordionTabCustomProps extends IArrowDopProps {
   key: string
   header: React.ReactNode
   className?: string
@@ -43,8 +48,10 @@ export interface AccordionTabCustomProps {
   onClick: () => void
 }
 
-export interface AccordionProps {
+export interface AccordionProps extends IArrowDopProps {
   items: IAccordionItem[]
+  containerExtraClass?: string
   extraClass?: string
   extraStyle?: React.CSSProperties
+  arrowComponent?: React.ReactNode
 }
