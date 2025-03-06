@@ -1,0 +1,41 @@
+.logoLink {
+  display: flex;
+  width: 82px;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 82px;
+    height: 168px;
+  }
+
+  .lg {
+    display: none;
+  }
+}
+
+@include custom(0, map-get($breakpoints, md)) {
+  .logoLink.menuOpened {
+    .icon {
+      display: none;
+    }
+
+    .lg {
+      display: block;
+
+      svg {
+        width: 44px !important;
+        height: 44px !important;
+
+        path:first-child {
+          fill: transparent !important;
+        }
+
+        path:last-child {
+          fill: #fff !important;
+        }
+      }
+    }
+  }
+}

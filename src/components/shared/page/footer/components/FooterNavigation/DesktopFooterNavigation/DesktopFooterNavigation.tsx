@@ -16,7 +16,7 @@ export default function DesktopFooterNavigation(props: IDesktopFooterNavigationP
                     <li key={linkIndex}>
                       <Link href={link.href}>{link.name}</Link>
                     </li>
-                    <li key={linkIndex + '_secondary'}>
+                    <li className={styles.secondary_link} key={linkIndex + '_secondary'}>
                       <Link href={props.secondaryLinks[linksGroupIndex].href}>
                         {props.secondaryLinks[linksGroupIndex].name}
                       </Link>

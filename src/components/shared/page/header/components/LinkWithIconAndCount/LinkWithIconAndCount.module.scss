@@ -1,0 +1,13 @@
+.link {
+  display: flex;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+
+  .icon {
+    width: 30px;
+    height: 30px;
+    transition: color 0.2s ease-in-out;
+  }
+}

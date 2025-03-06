@@ -1,6 +1,6 @@
 'use client'
 import {useState, useRef, useEffect} from 'react'
-import Image from '@shared/image/Image'
+import Image from '@src/components/UI-kit/image/Image'
 import styles from './index.module.scss'
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -75,10 +75,7 @@ export const ContentPageWithMultiSlider = ({data, title}: ContentPageData) => {
       <div className={styles.text}>
         <div className={styles.text_container}>
           <div className={styles.textBlock}>
-            <h1
-              className={styles.active}
-              dangerouslySetInnerHTML={{__html: title}}
-            />
+            <h1 className={styles.active} dangerouslySetInnerHTML={{__html: title}} />
             <Swiper
               modules={[A11y]}
               onSwiper={(swiper) => {

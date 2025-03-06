@@ -6,7 +6,7 @@ import SailIcon from '@icons/sail.svg'
 import WaveIcon from '@icons/wave.svg'
 import {PointIcon} from '../model'
 import {ComponentType, useEffect, useRef, useState} from 'react'
-import Image from '@shared/image/Image'
+import Image from '@src/components/UI-kit/image/Image'
 import {calcLocation} from './calc-location'
 
 const ICONS: Record<PointIcon, ComponentType<React.SVGProps<SVGSVGElement>>> = {

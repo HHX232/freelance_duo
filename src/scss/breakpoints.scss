@@ -99,10 +99,44 @@ $breakpoints: (
   }
 }
 
-@mixin bp-xs { @media (max-width: map-get($breakpoints, xs)) { @content }}
-@mixin bp-sm { @media (max-width: map-get($breakpoints, sm)) { @content }}
-@mixin bp-md { @media (max-width: map-get($breakpoints, md)) { @content }}
-@mixin bp-lg { @media (max-width: map-get($breakpoints, lg)) { @content }}
-@mixin bp-xl { @media (max-width: map-get($breakpoints, xl)) { @content }}
-@mixin bp-xxl { @media (max-width: map-get($breakpoints, xxl)) { @content }}
-@mixin bp-xxxl { @media (max-width: map-get($breakpoints, xxxl)) { @content }}
+@mixin bp-xs {
+  @media (max-width: map-get($breakpoints, xs)) {
+    @content
+  }
+}
+
+@mixin bp-sm {
+  @media (max-width: map-get($breakpoints, sm)) {
+    @content
+  }
+}
+
+@mixin bp-md {
+  @media (max-width: map-get($breakpoints, md)) {
+    @content
+  }
+}
+
+@mixin bp-lg {
+  @media (max-width: map-get($breakpoints, lg)) {
+    @content
+  }
+}
+
+@mixin bp-xl {
+  @media (max-width: map-get($breakpoints, xl)) {
+    @content
+  }
+}
+
+@mixin bp-xxl {
+  @media (max-width: map-get($breakpoints, xxl)) {
+    @content
+  }
+}
+
+@mixin bp-xxxl {
+  @media (max-width: map-get($breakpoints, xxxl)) {
+    @content
+  }
+}

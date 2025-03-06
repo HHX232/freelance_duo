@@ -1,5 +1,5 @@
 'use client'
-import {Title} from '@shared/title/title'
+import {Title} from '@src/components/UI-kit/TextKit/title/title'
 import styles from './payment-methods.module.scss'
 import clsx from 'clsx'
 
@@ -11,7 +11,7 @@ import {IpotekaTab} from './components/ipoteka/ipoteka'
 import {StepsForBuy} from '@pages/payment-methods/components/full-payment/components/steps-for-buy'
 import {InstallmentPlanDrawer} from '@pages/payment-methods/popup/installment-plan'
 import {RequestBackCallDrawer} from '@shared/request-back-call-drawer'
-import {HeadTitle} from '@shared/head-title'
+import {HeadTitle} from '@src/components/UI-kit/TextKit/head-title'
 
 const PaymentMethodsPage = () => {
   const [active, setActive] = useState(0)
