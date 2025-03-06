@@ -192,7 +192,7 @@
   }
 
   .toggleMenuButton {
-    > div {
+    div {
       width: 36px;
       height: 36px;
 
@@ -219,12 +219,6 @@
     }
   }
 
-  .personalCabinetLink,
-  .compareLink,
-  .favoriteLink {
-    display: none;
-  }
-
   .toggleMenuButton {
     > div {
       width: 36px;
@@ -239,11 +233,17 @@
 }
 
 @include custom(0, map-get($breakpoints, md)) {
-  header.header.menuOpened {
-    padding: 0 20px !important;
+  header {
+    .personalCabinetLink,
+    .compareLink,
+    .favoriteLink {
+      display: none;
+    }
   }
 
-  .header.menuOpened {
+  header.header.menuOpened {
+    padding: 0 20px !important;
+
     .mobileMenu {
       display: flex;
     }
