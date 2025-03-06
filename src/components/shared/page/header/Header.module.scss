@@ -3,483 +3,264 @@
   z-index: 4;
   width: 100%;
   height: 96px;
+  padding: 0 40px;
   backdrop-filter: blur(11px);
-  background-color: hsl(0deg 0% 100% / 20%);
+  background-color: rgb(255 255 255 / 70%);
   color: #555;
-  transition: 0.5s ease-in-out;
 
-  &::before {
+  .alignRight {
+    margin-left: auto !important;
+  }
+
+  .dark {
+    color: #fff !important;
+  }
+
+  &.menuOpened {
+    padding: 0 30px 0 40px !important;
+
+    .container,
+    .container a {
+      color: #fff;
+
+      .toggleMenuButton {
+        margin-left: 42px;
+      }
+    }
+
+    .menu {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
+
+    .logo {
+      height: 100%;
+    }
+
+    .personalCabinetLink {
+      margin-left: 74px;
+      text-transform: uppercase;
+    }
+
+    .phoneLink {
+      margin-left: 40px;
+    }
+
+    .phoneIcon {
+      display: none;
+      width: 32px;
+      height: 32px;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      color: #fff;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .compareLink {
+      margin-left: auto;
+
+      .icon {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .favoriteLink {
+      margin-left: 40px;
+
+      .icon {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .findApartment {
+      margin-left: 40px;
+    }
+
+    .toggleMenuButton {
+      margin-left: 54px;
+    }
+  }
+
+  .mobileMenu {
+    display: none;
+    width: 100%;
+    height: 48px;
+    gap: 10px;
+    grid-template-columns: 1fr auto auto auto;
+
+    .mobilePersonalCabinetLink {
+      width: 100%;
+      height: 48px;
+      border-radius: 6px;
+      background-color: rgb(255 255 255 / 16%);
+      color: #fff;
+
+      .a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .mobileCompareLink,
+    .mobielFavoriteLink {
+      display: flex;
+      width: 48px;
+      height: 48px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background-color: rgb(255 255 255 / 16%);
+      color: #fff;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        margin-top: 2px;
+        margin-left: 2px;
+      }
+
+      span {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .menu {
     position: absolute;
+    z-index: -1;
     top: 0;
     left: 0;
     width: 100%;
-    height: 96px;
-    background-color: hsl(0deg 0% 100% / 65%);
-    content: '';
-
-    @media (max-width: 504px) {
-      height: 40px;
-    }
-  }
-
-  @media (max-width: 504px) {
-    height: 40px;
-  }
-
-  .user,
-  .compare,
-  .favorite {
-    width: 46px;
-    height: 30px;
-    color: #555;
-    transition: 0.5s ease-in-out;
-
-    @media (max-width: 504px) {
-      height: 20px;
-    }
-  }
-
-  .compare,
-  .favorite {
-    opacity: 0.5;
-  }
-
-  .compare.opened,
-  .favorite.opened {
-    color: #555;
-    opacity: 1;
-  }
-
-  .menu {
-    margin-top: 0;
+    height: fit-content;
+    background-color: #11627d;
     opacity: 0;
-    visibility: hidden;
-  }
-}
-
-.header.active {
-  height: 100vh;
-  background-color: $sireneviy;
-  color: #fff;
-  -ms-overflow-style: none;
-  overflow-y: scroll;
-  scrollbar-width: none;
-
-  &::before {
-    display: none;
-  }
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
-  .burger {
-    @media (max-width: 504px) {
-      position: relative;
-      left: -13px;
-    }
-  }
-
-  .rightHeader {
-    @media (max-width: 504px) {
-      left: 13px;
-    }
-  }
-
-  .compare,
-  .favorite {
-    color: #fff;
-  }
-
-  .menu {
-    margin-top: 150px;
-    opacity: 1;
-    visibility: visible;
-
-    @media (max-width: 1199px) {
-      margin-top: 100px;
-    }
-
-    @media (max-width: 900px) {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      row-gap: 20px;
-    }
-
-    @media (max-width: 730px) {
-      padding-right: 0;
-      padding-left: 0;
-      margin-top: 225px;
-    }
-
-    @media (max-width: 504px) {
-      padding-top: 0;
-      margin-top: 113px;
-      grid-gap: 0;
-    }
-  }
-}
-
-.headerTop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  width: 100%;
-  height: 96px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  margin: 0 auto;
-
-  @media (max-width: 504px) {
-    height: 40px;
-    padding: 0 24px;
-  }
-}
-
-.menu {
-  display: grid;
-  padding-right: 60px;
-  padding-left: 125px;
-  margin: 0 auto;
-  color: #fff;
-  gap: 60px;
-  grid-template-columns: 1fr 1fr 1fr;
-  transition: 0.5s ease;
-
-  p {
-    @include font(3, 24, 15);
-
-    color: #fdf1cd;
-  }
-}
-
-.logoWrapper {
-  width: fit-content;
-  height: fit-content;
-  align-self: flex-start;
-  color: #555;
-  transition: 0.5s ease-in-out;
-
-  svg {
-    width: 82px;
-    height: 168px;
-  }
-
-  &.opened {
-    background-color: transparent;
-  }
-
-  svg.opened {
-    color: white;
-  }
-
-  @media (max-width: 504px) {
-    svg {
-      width: 44px;
-      height: 93px;
-    }
-  }
-}
-
-.lkWrapper {
-  display: flex;
-  align-items: center;
-  grid-gap: 11px;
-}
-
-.lk {
-  @include font(1, 16, 14, 500);
-
-  color: #555;
-  text-transform: uppercase;
-
-  @media (max-width: 650px) {
-    display: none;
-  }
-}
-
-.phone {
-  @include font(1, 16, 14, 500);
-
-  display: block;
-  margin-left: -40px;
-  text-transform: uppercase;
-
-  @include custom(0, map-get($breakpoints, sm)) {
-    display: none;
-  }
-}
-
-.burger {
-  width: 30px;
-  height: 30px;
-  margin-right: 1px;
-  cursor: pointer;
-  fill: #000;
-
-  &.burgerOpened {
-    width: 30px;
-    height: 30px;
-    margin-right: -3px;
-    margin-left: -11px;
-  }
-
-  @media (max-width: 504px) {
-    width: 17px;
-    height: 18px;
-  }
-}
-
-.container {
-  width: 100%;
-  height: inherit;
-  padding: 0 40px;
-
-  @media (max-width: 504px) {
-    padding: 0 24px;
-  }
-}
-
-.dark {
-  color: #fff;
-}
-
-.leftHeader {
-  display: flex;
-  height: inherit;
-  align-items: center;
-  gap: 70px;
-}
-
-.rightHeader {
-  display: flex;
-  height: inherit;
-  align-items: center;
-  gap: 40px;
-
-  @media (max-width: 504px) {
-    position: relative;
-    grid-gap: 44px;
-  }
-
-  .callback {
-    display: flex;
-    padding: 0;
-    margin: 0;
-  }
-
-  .links {
-    display: flex;
-    gap: 40px;
-  }
-
-  .phone_mobile {
-    display: none;
-
-    @include custom(0, map-get($breakpoints, sm)) {
-      display: block;
-    }
-  }
-
-  .get {
-    display: flex;
-    margin-right: 22px;
-
-    @media (max-width: 990px) {
-      display: none;
-    }
-  }
-
-  .dashboard_actions {
-    display: flex;
-    align-items: center;
-
-    @media (max-width: 690px) {
-      display: none;
-    }
-
-    ul {
-      display: flex;
-      align-items: center;
-      grid-gap: 5px;
-      list-style: none;
-
-      li {
-        position: relative;
-        display: flex;
-        width: 100%;
-        min-width: 180px;
-        height: 30px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 4px;
-        background: #fff;
-
-        a {
-          display: flex;
-          width: 100%;
-          height: 100%;
-          align-items: center;
-          justify-content: center;
-        }
-
-        a,
-        span {
-          display: flex;
-          color: #555;
-          font-size: 10px;
-          font-weight: 500;
-          text-align: center;
-          text-transform: uppercase;
-        }
-      }
-
-      .dropdown {
-        position: relative;
-        background: #fff;
-        cursor: pointer;
-      }
-
-      .active {
-        height: 45px !important;
-        margin-top: -4px;
-        opacity: 1 !important;
-        transition:
-          height 0.6s ease-out,
-          opacity 0.2s ease-out;
-      }
-
-      .dropdown_list {
-        position: absolute;
-        z-index: 1;
-        top: 100%;
-        left: 0;
-        display: flex;
-        width: 100%;
-        height: 0;
-        flex-direction: column;
-        padding-top: 17px;
-        padding-bottom: 14px;
-        border-radius: 0 0 10px 10px;
-        border-top: 0;
-        background: #fff;
-        grid-gap: 0;
-        opacity: 0;
-        transition:
-          height 0.6s ease-out,
-          opacity 0.2s ease-out;
-
-        li {
-          color: #555;
-          font-size: 10px;
-          font-weight: 400;
-          line-height: 240%;
-          text-align: center;
-
-          a {
-            display: flex;
-            width: 100%;
-            justify-content: center;
-          }
-        }
-      }
-    }
-  }
-}
-
-.searchApartments {
-  @include font(1, 16, 14, 500);
-
-  width: 276px !important;
-  height: 48px !important;
-  padding: 14px 0 !important;
-  letter-spacing: 0.07em;
-}
-
-@include custom(0, map-get($breakpoints, sm)) {
-  .rightHeader {
-    gap: 36px !important;
+    transform: translateY(-100%);
+    transition:
+      transform 0.6s ease-in-out,
+      opacity 0.2s ease-in-out;
   }
 }
 
 @include custom(0, map-get($breakpoints, xl)) {
-  .header,
-  .header::before,
-  .headerTop {
-    height: 86px !important;
+  .header {
+    height: 86px;
   }
 
-  .header.active {
-    height: 100vh !important;
-  }
-
-  .logoWrapper svg {
-    width: 86px !important;
-    height: 174px !important;
-  }
-
-  .searchApartments {
+  .findApartment {
     display: none;
   }
 
-  .links {
-    gap: 50px !important;
+  .toggleMenuButton {
+    > div {
+      width: 36px;
+      height: 36px;
+
+      button > svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, lg)) {
+  header.header.menuOpened {
+    padding: 0 40px !important;
   }
 
-  .leftHeader {
-    gap: 40px;
+  .header {
+    height: 68px;
 
-    .phone {
-      margin-left: -9px;
+    .container {
+      .logo svg {
+        width: 74px;
+        height: 134px;
+      }
+
+      .phoneLink {
+        margin-left: auto;
+      }
     }
   }
 
-  .rightHeader {
-    gap: 20px;
+  .personalCabinetLink,
+  .compareLink,
+  .favoriteLink {
+    display: none;
+  }
 
-    svg {
-      width: 48px !important;
-      height: 24px !important;
-      margin-right: -16px;
+  .toggleMenuButton {
+    > div {
+      width: 36px;
+      height: 36px;
+
+      button > svg {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 }
 
 @include custom(0, map-get($breakpoints, md)) {
-  .header,
-  .header::before,
-  .headerTop {
-    height: 68px !important;
+  header.header.menuOpened {
+    padding: 0 20px !important;
   }
 
-  .header.active {
-    height: 100vh !important;
+  .header.menuOpened {
+    .mobileMenu {
+      display: grid;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, sm)) {
+  header.header {
+    padding: 0 16px !important;
+
+    .phoneLink {
+      display: none !important;
+    }
+
+    .phoneIcon {
+      display: flex !important;
+      color: #555 !important;
+    }
+
+    .toggleMenuButton {
+      margin-left: 36px !important;
+    }
   }
 
-  .logoWrapper svg {
-    width: 72px !important;
-    height: 134px !important;
-  }
-
-  .links {
-    display: none;
-  }
-
-  .rightHeader svg {
-    width: 24px !important;
-    height: 24px !important;
-    margin-right: -2px !important;
-  }
-
-  .lkWrapper {
-    display: none !important;
-  }
-
-  .leftHeader {
-    width: 100%;
-    justify-content: space-between;
-    padding-right: 58px;
+  header.header.menuOpened {
+    .phoneIcon {
+      color: #fff !important;
+    }
   }
 }
