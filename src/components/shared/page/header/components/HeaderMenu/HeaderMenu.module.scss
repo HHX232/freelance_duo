@@ -1,0 +1,65 @@
+.menu {
+  width: 100%;
+  height: 100dvh;
+  padding-top: 152px;
+  padding-right: 20px;
+  padding-left: 170px;
+  color: #fff;
+  transition: 0.5s ease;
+
+  .container {
+    display: grid;
+    width: 100%;
+    max-width: 1530px;
+    height: fit-content;
+    column-gap: 60px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    p {
+      @include font(3, 24, 15);
+
+      color: #fdf1cd;
+    }
+
+    span {
+      @include font(1, 20, 26, 400);
+    }
+
+    a {
+      @include font(1, 14, 18, 400);
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, xl)) {
+  .menu .container {
+    span {
+      @include font(3, 20, 26, 400);
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, lg)) {
+  .menu .container {
+    span {
+      @include font(3, 20, 26, 400);
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, md)) {
+  .menu {
+    padding-top: 140px;
+    padding-left: 20px;
+
+    .container {
+      height: fit-content;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+
+      p {
+        @include font(3, 24, 15);
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 .title {
-  @include RomulH3();
+  @include RomulH3;
 
   @layer base {
     display: flex;
@@ -27,9 +27,9 @@
 
   @media (max-width: map_get($breakpoints, lg)) {
     height: 458px;
-    background-size: cover;
-    background-position: 30% center;
     padding: 40px;
+    background-position: 30% center;
+    background-size: cover;
   }
 
   @media (max-width: map_get($breakpoints, sm)) {
@@ -74,5 +74,3 @@
     margin-bottom: 90px;
   }
 }
-
-

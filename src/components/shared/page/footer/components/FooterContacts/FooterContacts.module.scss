@@ -1,9 +1,32 @@
+@import '../../../../../../scss/breakpoints';
+
+
+.lk_media {
+  @include bp-md {
+    display: none;
+  }
+}
+
+.logo {
+  @include bp-sm {
+    margin-bottom: 10px;
+  }
+}
+
 .container {
   display: flex;
   width: 100%;
   height: 100%;
   flex-direction: column;
   gap: 58px;
+
+  @include bp-md {
+    gap: 57px;
+  }
+
+  @include bp-sm {
+    gap: 53px;
+  }
 
   a {
     color: #fff;
@@ -25,7 +48,14 @@
         gap: 12px 37px;
       }
     }
+
+    @include bp-sm {
+      position: relative;
+      top: -15px;
+    }
   }
+
+
 
   .contacts {
     display: flex;
@@ -36,9 +66,20 @@
     margin-right: 1px;
     gap: 12px;
 
+    @include bp-md {
+      position: relative;
+      top: -16px;
+      margin-bottom: 17px;
+    }
+
+    @include bp-sm {
+      margin-bottom: 0;
+    }
+
     .phone {
       margin-bottom: 2px;
       margin-left: 8px;
+      text-align: center;
     }
   }
 }

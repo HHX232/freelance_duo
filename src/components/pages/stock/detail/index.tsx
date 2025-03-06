@@ -1,7 +1,7 @@
 'use client'
 
-import {Title} from '@shared/title/title'
-import {HeadTitle} from '@shared/head-title'
+import {Title} from '@src/components/UI-kit/TextKit/title/title'
+import {HeadTitle} from '@src/components/UI-kit/TextKit/head-title'
 import './index.scss'
 import FilledButton from '@shared/filledButton/FilledButton'
 import BorderedButton from '@shared/borderedButton/BorderedButton'

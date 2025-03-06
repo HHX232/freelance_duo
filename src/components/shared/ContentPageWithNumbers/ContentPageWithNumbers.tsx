@@ -11,7 +11,7 @@ import clsx from 'clsx'
 import styles from './index.module.scss'
 import {PageWithNumberTypes} from '@src/contentData/about_central-2_data'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@shared/title/title'
+import {Title} from '@src/components/UI-kit/TextKit/title/title'
 
 interface ContentPageData {
   data: PageWithNumberTypes

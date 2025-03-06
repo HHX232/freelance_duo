@@ -1,5 +1,5 @@
 'use client'
-import Image from '@shared/image/Image'
+import Image from '@src/components/UI-kit/image/Image'
 import styles from './Street.module.scss'
 import LayersMap from '@icons/layers.svg'
 import Card from './card/Card'

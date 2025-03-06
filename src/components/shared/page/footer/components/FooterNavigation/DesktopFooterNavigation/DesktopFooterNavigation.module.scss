@@ -1,3 +1,5 @@
+@import '../../../../../../../scss/breakpoints';
+
 .nav {
   width: 100%;
   max-width: 752px;
@@ -10,6 +12,12 @@
     height: 100%;
     gap: 30px;
     grid-template-columns: 1fr 1fr auto;
+
+    @include bp-xl {
+      padding-top: 4px;
+      padding-left: 9px;
+      gap: 18px;
+    }
 
     ul {
       display: flex;
@@ -42,4 +50,8 @@
       }
     }
   }
+}
+
+.secondary_link {
+  width: max-content;
 }

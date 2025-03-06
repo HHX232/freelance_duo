@@ -1,0 +1,11 @@
+.findApartmentButtonContainer {
+  .findApartmentButton {
+    @include font(1, 16, 14, 400);
+
+    width: 276px;
+    height: 48px;
+    border-radius: 6px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+}
