@@ -7,33 +7,39 @@ $background-color_1: transparent;
   @layer base {
     --slide-height: 200px;
     --slide-spacing: 24px;
-    --slide-size: 90%;
+    --slide-width: 288px;
   }
 
   @include sm{
     --slide-height: 260px;
     --slide-spacing: 24px;
+    --slide-width: 421px;
   }
 
   @include md{
     --slide-height: 400px;
     --slide-spacing: 24px;
+    --slide-width: 688px;
   }
 
   @include lg{
     --slide-height: 500px;
+    --slide-width: 944px;
   }
 
   @include xl{
     --slide-height: 600px;
+    --slide-width: 1000px;
   }
 
   @include xxl{
-    --slide-height: 700px;
+    --slide-height: 650px;
+    --slide-width: 1100px;
   }
 
   @include xxxl{
-    --slide-height: 800px;
+    --slide-height: 700px;
+    --slide-width: 1217px;
   }
 
 
@@ -48,10 +54,11 @@ $background-color_1: transparent;
 }
 .embla__slide {
   transform: translate3d(0, 0, 0);
-  flex: 0 0 var(--slide-size);
+  flex: 0 0 calc(var(--slide-width) + var(--slide-spacing)) ;
   min-width: 0;
   padding-left: var(--slide-spacing);
   transition: opacity 0.2s ease-in-out;
+
   //&:not(.is-snapped) {
   //  opacity: 0.16;
   //}

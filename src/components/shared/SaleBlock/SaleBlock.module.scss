@@ -8,8 +8,17 @@
     gap: 10px;
     padding: 20px;
     height: fit-content;
+    //height: 130px;
   }
 
+  @include sm{
+    padding: 24px;
+    //height: 118px;
+  }
+
+  @include md{
+    //height: 134px;
+  }
 
   @include lg {
     width: 396px;
@@ -22,6 +31,7 @@
 
   @include xxl {
     width: 544px;
+    padding: 36px 36px 36px 90px;
   }
 }
 

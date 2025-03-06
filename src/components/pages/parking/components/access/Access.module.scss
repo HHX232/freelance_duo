@@ -16,11 +16,11 @@
     height: 300px;
   }
 
-  @layer sm{
+  @include sm{
     height: 350px;
   }
 
-  @include lg {
+  @include md {
     height: 400px;
     background-size: cover;
     background-position-x: 0%;
@@ -28,12 +28,18 @@
 
   @include xl {
     height: inherit;
-    width: 25%;
+    min-width: 220px;
+    max-width: 100%;
   }
 
-
   @include xxl {
-    width: 30%;
+    min-width: 402px;
+    max-width: 100%;
+  }
+
+  @include xxxl {
+    min-width: 635px;
+    max-width: 100%;
   }
 }
 
@@ -41,7 +47,7 @@
   @layer base {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 60px;
     padding: 40px 16px;
 
     background: rgba(17, 98, 125, 1);
@@ -50,7 +56,7 @@
 
   @include sm{
     padding: 60px 20px;
-    gap:60px;
+    gap:90px;
   }
 
   @include md{
@@ -59,6 +65,21 @@
 
   @include lg {
     width: 100%;
+  }
+
+  @include xl {
+    min-width: 1060px;
+    max-width: 100%;
+  }
+
+  @include xxl {
+    min-width: 1198px;
+    max-width: 100%;
+  }
+
+  @include xxxl {
+    min-width: 1285px;
+    max-width: 100%;
   }
 }
 
@@ -80,6 +101,10 @@
     flex-direction: column;
     gap: 60px;
   }
+
+  @include lg{
+    gap: 90px
+  }
 }
 
 .tile {
@@ -96,9 +121,17 @@
     @include font(3, 30, 40, 400);
   }
 
+  @include md{
+    @include font(3, 36, 50, 400);
+  }
+
   @include lg {
     width: 40%;
-    @include font(4, 36, 50, 400);
+  }
+
+  @include xl {
+    @include font(3, 42, 54, 400);
+    width: 50%;
   }
 }
 
@@ -108,8 +141,12 @@
     word-wrap: break-word;
   }
 
-  @include lg {
+  @include md {
     @include font(3, 26, 36, 400);
+  }
+
+  @include xl {
+    @include font(3, 32, 44, 400);
   }
 }
 

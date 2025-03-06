@@ -7,7 +7,7 @@ const Spaces = () => {
       <div className={styles['title']}>Парковочные места</div>
       <div className={`${styles['tiles-wrapper']} ${styles['tiles-main-wrapper']}`}>
         <div className={`${styles['tiles-wrapper']} ${styles['column']}`}>
-          <div className={styles['tiles-wrapper']}>
+          <div className={`${styles['tiles-wrapper']} ${styles['num-col-wrapper']}`}>
             <div className={`${styles['tile']} ${styles['bg-1']} ${styles['num_info']}`}>
               <div className={`${styles['title_num']}`}>74</div>
               <div className={`${styles['desc']}`}>парковочных места</div>
