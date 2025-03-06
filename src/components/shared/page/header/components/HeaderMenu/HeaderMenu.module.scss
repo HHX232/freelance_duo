@@ -7,13 +7,46 @@
   color: #fff;
   transition: 0.5s ease;
 
+  .item_title {
+    margin-bottom: 44px;
+  }
+
+  .container_item {
+    width: 100%;
+    max-width: 383px;
+  }
+
+  .accordion_extra {
+    &>div:first-child {
+      padding: 5px 20px 5px 0;
+    }
+  }
+
+
+  .item_inner {
+    display: flex;
+    flex-direction: column;
+
+    // gap: 14px;
+  }
+
+  .accrodeon_inner_list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .accordeon_inner_item {
+    padding: 10px 0;
+    color: #fff;
+    font-size: 20px;
+  }
+
   .container {
-    display: grid;
+    display: flex;
     width: 100%;
     max-width: 1530px;
     height: fit-content;
-    column-gap: 60px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 57px;
 
     p {
       @include font(3, 24, 15);
