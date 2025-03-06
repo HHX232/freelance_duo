@@ -1,40 +1,66 @@
 .logoLink {
   display: flex;
   width: 82px;
-  height: fit-content;
-  align-items: center;
+  height: 100%;
+  align-items: flex-start;
   justify-content: center;
 
-  svg {
-    width: 82px;
-    height: 168px;
+  &.transparent {
+    align-items: center;
+
+    svg {
+      width: 44px !important;
+      height: 44px !important;
+
+      path:first-child {
+        fill: transparent !important;
+      }
+
+      path:last-child {
+        fill: #fff !important;
+      }
+    }
   }
 
-  .lg {
-    display: none;
+  .icon {
+    display: flex;
+    overflow: hidden;
+    border-radius: 0 0 8px 8px;
+
+    svg {
+      width: 82px;
+      height: 168px;
+    }
+  }
+
+  .small {
+    height: 100%;
+    align-items: flex-start;
+    padding-bottom: 10px;
+
+    svg {
+      height: 100%;
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, xl)) {
+  .icon.small {
+    height: 70px;
   }
 }
 
 @include custom(0, map-get($breakpoints, md)) {
-  .logoLink.menuOpened {
-    .icon {
-      display: none;
-    }
+  .logoLink {
+    width: 65px;
 
-    .lg {
-      display: block;
+    .icon {
+      width: 73px;
+      align-items: center;
 
       svg {
-        width: 44px !important;
-        height: 44px !important;
-
-        path:first-child {
-          fill: transparent !important;
-        }
-
-        path:last-child {
-          fill: #fff !important;
-        }
+        width: 73px;
+        height: 134px;
       }
     }
   }

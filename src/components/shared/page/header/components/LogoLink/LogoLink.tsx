@@ -5,15 +5,20 @@ import LogoLgSVG from '@icons/logo-lg.svg'
 import {ILogoLinkProps} from './LogoLink.types'
 import clsx from 'clsx'
 
-export default function LogoLink({isMenuOpened}: ILogoLinkProps) {
+export default function LogoLink({isMenuOpened, isSmall, isTransparent}: ILogoLinkProps) {
   return (
-    <div className={clsx(styles.logoLink, isMenuOpened ? styles.menuOpened : '')}>
-      <Link className={styles.icon} href={'/'}>
-        <LogoSVG />
-      </Link>
-      <Link className={styles.lg} href={'/'}>
-        <LogoLgSVG />
-      </Link>
+    <div
+      className={clsx(styles.logoLink, isMenuOpened ? styles.menuOpened : '', isTransparent ? styles.transparent : '')}
+    >
+      {isSmall ? (
+        <Link className={clsx(styles.icon, styles.small)} href={'/'}>
+          <LogoLgSVG />
+        </Link>
+      ) : (
+        <Link className={styles.icon} href={'/'}>
+          <LogoSVG />
+        </Link>
+      )}
     </div>
   )
 }
