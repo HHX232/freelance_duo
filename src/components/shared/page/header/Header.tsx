@@ -100,7 +100,7 @@ export default function Header({dark, dashboard}: IHeaderProps) {
       <div className={styles.container}>
         <div className={styles.logo}>
           <LogoLink
-            isSmall={(isXl && isScrolled) || (isSm && isMenuOpened)}
+            isSmall={(isXl && isScrolled && !isMenuOpened) || (isSm && isMenuOpened)}
             isTransparent={isSm && isMenuOpened}
             isMenuOpened={isMenuOpened}
           />
