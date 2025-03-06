@@ -6,6 +6,7 @@ export interface AccordionArrowProps {
   leftArrow?: boolean
   rightArrow?: boolean
   size?: TArrowSize | string
+  arrowColor?: string
   extraStyles?: React.CSSProperties
 }
 
@@ -14,7 +15,8 @@ export const AccordionArrow = ({
   leftArrow = true,
   rightArrow = true,
   size = 'large',
-  extraStyles
+  extraStyles,
+  arrowColor
 }: AccordionArrowProps) => {
   return (
     <>
@@ -25,15 +27,15 @@ export const AccordionArrow = ({
             ...extraStyles
           }}
           className={styles.arrow}
-          width={size === 'large' ? '15' : '8'}
-          height={size === 'large' ? '9' : '5'}
+          width={size === 'large' ? '15' : '11'}
+          height={size === 'large' ? '8' : '7'}
           viewBox='0 0 18 10'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
         >
           <path
             d='M1.5 1.25L9 8.75L16.5 1.25'
-            stroke='#FDF1CD'
+            stroke={arrowColor ? arrowColor : '#FDF1CD'}
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -47,15 +49,15 @@ export const AccordionArrow = ({
             ...extraStyles
           }}
           className={`${styles.arrow} ${styles.arrow_right}`}
-          width={size === 'large' ? '15' : '8'}
-          height={size === 'large' ? '9' : '5'}
+          width={size === 'large' ? '15' : '11'}
+          height={size === 'large' ? '8' : '7'}
           viewBox='0 0 18 10'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
         >
           <path
             d='M1.5 1.25L9 8.75L16.5 1.25'
-            stroke='#FDF1CD'
+            stroke={arrowColor ? `${arrowColor}` : '#FDF1CD'}
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'

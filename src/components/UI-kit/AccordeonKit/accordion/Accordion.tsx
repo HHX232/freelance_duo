@@ -19,6 +19,7 @@ const AccordionTabCustom = ({
   rightArrow,
   arrowSize = 'large',
   arrowExtraStyles,
+  arrowColor,
   children
 }: AccordionTabCustomProps & {children: React.ReactNode}) => {
   return (
@@ -30,6 +31,7 @@ const AccordionTabCustom = ({
             leftArrow={leftArrow}
             rightArrow={rightArrow}
             arrowState={isOpen}
+            arrowColor={arrowColor}
             size={arrowSize}
             extraStyles={arrowExtraStyles}
           />
@@ -52,6 +54,7 @@ export default function Accordion({
   leftArrow,
   rightArrow,
   arrowSize,
+  arrowColor,
   arrowExtraStyles
 }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -63,6 +66,7 @@ export default function Accordion({
   const tabs = useMemo(() => {
     return items.map((tab, i) => (
       <AccordionTabCustom
+        arrowColor={arrowColor}
         arrowComponent={arrowComponent}
         leftArrow={leftArrow}
         rightArrow={rightArrow}

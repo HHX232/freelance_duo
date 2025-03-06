@@ -39,6 +39,7 @@ export interface IAccordionItem {
 }
 export interface AccordionTabCustomProps extends IArrowDopProps {
   key: string
+  arrowColor?: string
   header: React.ReactNode
   className?: string
   style?: React.CSSProperties
@@ -50,6 +51,7 @@ export interface AccordionTabCustomProps extends IArrowDopProps {
 
 export interface AccordionProps extends IArrowDopProps {
   items: IAccordionItem[]
+  arrowColor?: string
   containerExtraClass?: string
   extraClass?: string
   extraStyle?: React.CSSProperties
