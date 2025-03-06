@@ -16,6 +16,6 @@ export interface IFullButtonProps {
   borderColor?: TBorderColor | string
 }
 
-export const FullButton: FC<IFullButtonProps> = ({type}) => {
+export const FullButton: FC<IFullButtonProps> = () => {
   return <></>
 }
