@@ -7,10 +7,12 @@
 
   &.transparent {
     align-items: center;
+    margin-left: 10px;
 
     svg {
-      width: 44px !important;
-      height: 44px !important;
+      width: 64px !important;
+
+      // height: 54px !important;
 
       path:first-child {
         fill: transparent !important;

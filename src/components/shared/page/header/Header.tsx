@@ -162,17 +162,20 @@ export default function Header({dark, dashboard}: IHeaderProps) {
         <div className={styles.mobilePersonalCabinetLink}>
           <TextLink href={'/lk'} title='Личный кабинет' />
         </div>
-        <div className={styles.mobileCompareLink}>
-          {token ? (
-            <Link href={'/lk'}>
-              <UserSVG className={styles.user} />
-            </Link>
-          ) : (
-            <button type='button' onClick={() => setOpenAuth(!isOpenAuth)}>
-              <UserSVG className={styles.user} />
-            </button>
-          )}
-        </div>
+        {dashboard && (
+          <div className={styles.mobileCompareLink}>
+            {token ? (
+              <Link href={'/lk'}>
+                <UserSVG className={styles.user} />
+              </Link>
+            ) : (
+              <button type='button' onClick={() => setOpenAuth(!isOpenAuth)}>
+                <UserSVG className={styles.user} />
+              </button>
+            )}
+          </div>
+        )}
+
         {!isLoadingCount && (
           <>
             <div className={styles.mobileCompareLink}>
