@@ -59,7 +59,7 @@ export default function RootLayout({
         <RootStyleRegistry>
           <Main>{children}</Main>
           <Widget color='korichneviy' style={{zIndex: 3}} />
-          {/* <Jivo /> */}
+          <Jivo />
         </RootStyleRegistry>
 
         {/* Вставка скриптов здесь */}
