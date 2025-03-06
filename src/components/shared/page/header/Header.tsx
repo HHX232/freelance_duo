@@ -20,6 +20,7 @@ import UserSVG from '@icons/user.svg'
 import {useIsXl, useIsSm} from '@utils/useIsMobile'
 import LogoutButton from './components/LogoutButton/LogoutButton'
 import PhoneIconSVG from './components/icons/PhoneIconSVG/PhoneIconSVG'
+import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMenuBottom'
 
 export default function Header({dark, dashboard}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
@@ -202,6 +203,9 @@ export default function Header({dark, dashboard}: IHeaderProps) {
 
       <div className={styles.menu}>
         <HeaderMenu onClose={() => setIsMenuOpened(false)} setIsMenuOpened={setIsMenuOpened} />
+        <div className={styles.headerMenuBottom}>
+          <HeaderMenuBottom />
+        </div>
       </div>
     </header>
   )
