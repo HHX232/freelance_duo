@@ -8,10 +8,11 @@ interface PhoneSliderProps {
   emblaRef: EmblaViewportRefType
   viewportIsShow?: boolean
   slideGap?: number
+  embalaContainerClassName?: string
 }
 
 const Gallery: FC<PhoneSliderProps> = (props) => {
-  const {slides, emblaRef, viewportIsShow, slideGap = 10} = props
+  const {slides, emblaRef, viewportIsShow, slideGap = 10, embalaContainerClassName} = props
 
   return (
     <div className={emblaStyle['embla']}>
@@ -19,7 +20,7 @@ const Gallery: FC<PhoneSliderProps> = (props) => {
         className={`${emblaStyle['embla__viewport']} ${viewportIsShow ? emblaStyle.show_viewport : ''}`}
         ref={emblaRef}
       >
-        <div style={{gap: slideGap + 'px'}} className={emblaStyle['embla__container']}>
+        <div style={{gap: slideGap + 'px'}} className={`${emblaStyle['embla__container']} ${embalaContainerClassName}`}>
           {slides.map((slide) => slide)}
         </div>
       </div>

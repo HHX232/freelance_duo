@@ -79,7 +79,6 @@
 .caption-items {
   @layer base {
     display: flex;
-    gap: 60px;
     width: 100%;
   }
 
@@ -160,4 +159,10 @@
   @include md {
     display: none;
   }
+}
+
+.mobile_slide {
+
+ flex: 0 0 60% !important;
+
 }
