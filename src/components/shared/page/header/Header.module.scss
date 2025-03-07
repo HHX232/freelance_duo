@@ -223,8 +223,9 @@
     }
 
     .headerMenuBottom {
-      position: relative;
-      bottom: 96px;
+      position: absolute;
+      z-index: -1;
+      bottom: 0;
       left: 0;
       width: 100%;
       height: fit-content;
@@ -357,7 +358,6 @@
       .mobileMenu {
         padding-right: 8px;
         padding-left: 8px;
-        margin-top: 26px;
       }
     }
 
@@ -398,7 +398,7 @@
       .mobileMenu {
         padding-right: 4px;
         padding-left: 4px;
-        margin-top: 9px;
+        margin-top: 2px;
 
         .mobilePersonalCabinetLink {
           min-width: 100px;
