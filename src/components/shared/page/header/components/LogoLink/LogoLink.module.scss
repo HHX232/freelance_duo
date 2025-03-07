@@ -34,19 +34,43 @@
   }
 
   .small {
-    height: 100%;
     align-items: flex-start;
-    padding-bottom: 10px;
 
     svg {
-      height: 100%;
+      height: 80px !important;
     }
   }
 }
 
-@include custom(0, map-get($breakpoints, md)) {
+@include custom(0, map-get($breakpoints, xl) - 20px) {
+  .logoLink {
+    .small {
+      svg {
+        height: 70px !important;
+      }
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, lg) - 20px) {
+  .logoLink {
+    .small {
+      svg {
+        height: 60px !important;
+      }
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, md) - 20px) {
   .logoLink {
     width: 65px;
+
+    .small {
+      svg {
+        height: 60px !important;
+      }
+    }
 
     .icon {
       width: 73px;
@@ -60,14 +84,20 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, sm)) {
+@include custom(0, map-get($breakpoints, sm) - 20px) {
   .logoLink {
     margin-left: -8px !important;
 
-    .icon {
+    .small {
       svg {
-        width: 54px !important;
-        height: 54px !important;
+        height: 60px !important;
+      }
+    }
+
+    &.transparent {
+      svg {
+        width: 50px !important;
+        height: 50px !important;
       }
     }
   }
