@@ -5,6 +5,7 @@ import cn from 'clsx'
 import Link from 'next/link'
 import Inst from '@icons/inst.svg'
 import Vk from '@icons/vk.svg'
+import {useWindowWidth} from '../hooks/useWindowWidth'
 
 interface IMobileHeaderMenuProps {
   onClose: () => void
@@ -31,6 +32,8 @@ interface IMobileAccordionMainProps {
 const MobileAccordionMain: FC<IMobileAccordionMainProps> = ({children, header}) => {
   const [accordionActive, setAccordionActive] = useState(false)
 
+  const windowWidth = useWindowWidth()
+
   return (
     <span className={cn(styles.main_accordion_box, {[styles.main_accordion_box_active]: accordionActive})}>
       <div className={styles.active_bg_line}></div>
@@ -45,7 +48,7 @@ const MobileAccordionMain: FC<IMobileAccordionMainProps> = ({children, header}) 
         decorUnderLine={!accordionActive}
         items={[
           {
-            size: 'accentMedium',
+            size: (windowWidth ? windowWidth : 769) < 760 ? 'accentSmall' : 'accentMedium',
             font: 'romul',
             color: accordionActive ? 'white' : 'accent',
             header: header,
