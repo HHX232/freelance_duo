@@ -18,7 +18,7 @@
   }
 
   &.menuOpened {
-    padding: 0 44px 0 40px;
+    padding: 0 56px 0 40px;
     background-color: #11627d;
 
     .container,
@@ -26,11 +26,12 @@
       color: #fff;
 
       .toggleMenuButton {
-        margin-left: 50px;
+        margin-right: -10px;
+        margin-left: 48px;
 
         svg {
-          width: 26px;
-          height: 26px;
+          width: 24px;
+          height: 24px;
         }
       }
     }
@@ -212,6 +213,7 @@
       left: 0;
       width: 100%;
       height: fit-content;
+      transform: translateY(100%);
     }
   }
 }
