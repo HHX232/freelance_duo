@@ -1,176 +1,173 @@
 @import '../../../../../../../scss/variables';
 
 .container {
-   display: flex;
-   width: 100%;
-   max-width: 1530px;
-   height: fit-content;
-   flex-direction: column;
-   gap: 57px;
+  display: flex;
+  width: 100%;
+  max-width: 1530px;
+  height: fit-content;
+  flex-direction: column;
+  gap: 57px;
 
-   &_mobile {
-      max-height: 80vh;
-      padding-right: 20px;
-      padding-left: 20px;
+  &_mobile {
+    max-height: 80vh;
+    padding-right: 20px;
+    padding-left: 20px;
 
-      // overflow-y: auto;
-   }
+    @include custom(0, map-get($breakpoints, md) - 20px) {
+      padding-right: 0;
+      padding-left: 0;
+    }
 
+    // overflow-y: auto;
+  }
 
+  @include custom(0, 1150px) {
+    gap: 50px;
+  }
 
-   @include custom(0, 1150px) {
-      gap: 50px;
-   }
+  p {
+    @include font(3, 24, 15);
 
-   p {
-      @include font(3, 24, 15);
+    color: #fdf1cd;
+  }
 
-      color: #fdf1cd;
-   }
+  span {
+    @include font(1, 20, 26, 400);
+  }
 
-   span {
-      @include font(1, 20, 26, 400);
-   }
-
-   a {
-      @include font(1, 14, 18, 400);
-   }
+  a {
+    @include font(1, 14, 18, 400);
+  }
 }
 
 .main_accordion_box {
-   position: relative;
-   width: 100%;
-   max-width: 100%;
-   transition: all .3s;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  transition: all 0.3s;
 
-   &_active {
-      position: relative;
-      transition: all .3s;
+  &_active {
+    position: relative;
+    transition: all 0.3s;
 
-      .active_bg_line {
-         position: absolute;
-         top: 0;
-         left: -10%;
-         width: 130vw;
-         height: 85%;
-         max-height: 53px;
-         background-color: #26394580;
-         content: '';
-         transition: all .3s;
-      }
-   }
+    .active_bg_line {
+      position: absolute;
+      top: 0;
+      left: -10%;
+      width: 130vw;
+      height: 85%;
+      max-height: 53px;
+      background-color: #26394580;
+      content: '';
+      transition: all 0.3s;
+    }
+  }
 }
 
 .accordion_header_active {
-   &>div:first-child {
-      margin-bottom: 12px;
-   }
-
+  & > div:first-child {
+    margin-bottom: 12px;
+  }
 }
 
 .extra_box {
-   gap: 8px;
+  gap: 8px;
 }
 
 .accordion_mobile_box {
-   display: flex;
-   width: 100%;
-   flex-direction: column;
-   gap: 8px;
-
-
-
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .accordion_mobile_100 {
-   width: 100%;
+  width: 100%;
 }
 
 .accordion_mobile_list_default {
-   display: flex;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-   &>li {
-      padding: 6px 0;
-      color: #fff;
+  & > li {
+    padding: 6px 0;
+    color: #fff;
 
-      &>a {
-         font-size: 18px !important;
-         line-height: 26px;
-         text-transform: none;
-      }
-
-   }
+    & > a {
+      font-size: 18px !important;
+      line-height: 26px;
+      text-transform: none;
+    }
+  }
 }
 
 .mobile_text_box {
-   display: flex;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .mobile_text_title {
-   margin-bottom: 24px;
-   color: #fff !important;
-   font-family: $font-primary !important;
-   font-size: 14px !important;
-   font-weight: 300 !important;
-   line-height: 18px !important;
+  margin-bottom: 24px;
+  color: #fff !important;
+  font-family: $font-primary !important;
+  font-size: 14px !important;
+  font-weight: 300 !important;
+  line-height: 18px !important;
 }
 
 .mobile_inner_text {
-   display: flex;
-   flex-direction: column;
-   font-family: $font-primary !important;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-primary !important;
 }
 
 .mobile_text {
-   color: #fff !important;
-   font-family: $font-primary !important;
-   font-size: 20px !important;
-   font-weight: 500 !important;
-   line-height: 30px !important;
+  color: #fff !important;
+  font-family: $font-primary !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  line-height: 30px !important;
 }
 
 .mobile_text_adress {
-   margin-top: 20px;
-   margin-bottom: 20px !important;
-   color: #fff !important;
-   font-family: $font-primary !important;
-   font-size: 14px !important;
-   font-weight: 400 !important;
+  margin-top: 20px;
+  margin-bottom: 20px !important;
+  color: #fff !important;
+  font-family: $font-primary !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
 }
 
 .time_block {
-   display: flex;
-   flex-direction: column;
-   margin-bottom: 54px;
-   gap: 6px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 54px;
+  gap: 6px;
 
-   &>p {
-      color: #fff !important;
-      font-family: $font-primary !important;
-      font-size: 14px !important;
-      font-weight: 300 !important;
-      opacity: 0.6;
-   }
-
+  & > p {
+    color: #fff !important;
+    font-family: $font-primary !important;
+    font-size: 14px !important;
+    font-weight: 300 !important;
+    opacity: 0.6;
+  }
 }
 
 .social_box {
-   display: flex;
-   align-items: center;
-   gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .social_box_text {
-   color: #fff !important;
-   font-family: $font-primary !important;
-   font-size: 14px !important;
-   font-weight: 400 !important;
+  color: #fff !important;
+  font-family: $font-primary !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
 }
 
 .vk,
 .inst {
-   width: 40px;
-   height: 40px;
+  width: 40px;
+  height: 40px;
 }

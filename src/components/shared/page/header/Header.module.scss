@@ -208,7 +208,7 @@
 
     .headerMenuBottom {
       position: absolute;
-      z-index: 2;
+      z-index: -1;
       bottom: 0;
       left: 0;
       width: 100%;
@@ -308,6 +308,8 @@
       }
 
       .logo {
+        margin-left: -8px;
+
         a {
           width: 68px !important;
 
@@ -337,6 +339,11 @@
             }
           }
         }
+      }
+
+      .mobileMenu {
+        padding-right: 8px;
+        padding-left: 8px;
       }
     }
 
@@ -370,6 +377,38 @@
             height: 18px;
             margin-top: -6px;
             margin-right: 1px;
+          }
+        }
+      }
+
+      .mobileMenu {
+        padding-right: 4px;
+        padding-left: 4px;
+        margin-top: 2px;
+
+        .mobilePersonalCabinetLink {
+          min-width: 100px;
+          height: 36px;
+          padding-top: 0;
+
+          a {
+            font-size: 12px;
+          }
+        }
+
+        .mobileCompareLink,
+        .mobielFavoriteLink {
+          width: 36px;
+          height: 36px;
+
+          .link {
+            width: 20px;
+            height: 20px;
+
+            svg {
+              width: 20px;
+              height: 20px;
+            }
           }
         }
       }
