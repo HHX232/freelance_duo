@@ -4,8 +4,10 @@ import {IFindApartmentButtonProps} from './FindApartmentButton.types'
 
 export default function FindApartmentButton({onClick, style}: IFindApartmentButtonProps) {
   return (
-    <div onClick={onClick} style={style} className={styles.findApartmentButtonContainer}>
-      <FilledButton className={styles.findApartmentButton}>Подобрать квартиру</FilledButton>
+    <div style={style} className={styles.findApartmentButtonContainer}>
+      <FilledButton onClick={onClick} className={styles.findApartmentButton}>
+        Подобрать квартиру
+      </FilledButton>
     </div>
   )
 }
