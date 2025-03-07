@@ -1,5 +1,4 @@
 .pointsWrapper {
-
   &::before {
     position: absolute;
     z-index: 1;
@@ -11,6 +10,7 @@
     background: linear-gradient(180deg, #1e3849 0%, rgb(30 56 73 / 0%) 100%);
     content: '';
     transform: rotate(105deg);
+    min-height: 653px !important;
   }
 
   @include mobile {
@@ -27,17 +27,19 @@
     //top: 0;
     display: block;
     width: 100%;
-    height: 390px;
+    height: 100%;
     content: '';
     pointer-events: none;
 
     @layer base {
-      background: linear-gradient(0deg, rgb(30 56 73 / 100%) 5%, rgb(30 56 73 / 0%) 100%);
-      bottom: 0;
+      background: linear-gradient(180deg, rgba(38, 57, 69, 0) 43.85%, rgba(38, 57, 69, 0.47) 57.88%, #263945 100%),
+        linear-gradient(90deg, rgba(19, 36, 47, 0.7) 0%, rgba(30, 56, 73, 0) 50%),
+        radial-gradient(41.9% 13.62% at 48.44% 26.85%, rgba(255, 255, 255, 0) 0%, rgba(30, 56, 73, 0.1) 100%);
     }
 
     @include md {
-      background: linear-gradient(180deg, rgb(30 56 73 / 100%) 5%, rgb(30 56 73 / 0%) 100%);
+      background: linear-gradient(90deg, rgba(19, 36, 47, 0.7) 0%, rgba(30, 56, 73, 0) 50%),
+        radial-gradient(64.3% 48.24% at 55.31% 48.9%, rgba(255, 255, 255, 0) 0%, rgba(30, 56, 73, 0.1) 66.49%);
       top: 0;
       bottom: unset;
     }
@@ -45,13 +47,16 @@
 }
 
 .mapImage {
-
   @layer base {
     position: absolute !important;
     z-index: 0;
     top: 0;
     right: 0px;
+    left: 0;
+    bottom: 0;
     contain: paint;
+    object-fit: cover;
+    object-position: bottom;
   }
 
   @include md {
@@ -62,9 +67,8 @@
 }
 
 .wrapper {
-  @media (max-width: 504px) {
-    min-height: 100vh;
-  }
+  height: 100vh;
+  min-height: 653px !important;
   scale: 1;
 }
 
@@ -88,17 +92,22 @@
 }
 
 .captions {
-  
   &-title {
+    @layer base {
+      @include font(3, 30, 40, 400);
+      color: $yellow-text;
+    }
 
-    @include font(3, 42, 54, 400);
+    @include md {
+      @include font(3, 36, 50, 400);
+    }
 
-    color: $yellow-text;
-
+    @include xl {
+      @include font(3, 42, 54, 400);
+    }
   }
 
   @layer base {
-
     position: absolute;
     z-index: 1;
     bottom: 0;
@@ -107,9 +116,7 @@
     gap: 40px;
     width: 100%;
     padding-bottom: 24px;
-
   }
-
 
   @include sm {
     gap: 60px;
@@ -137,7 +144,7 @@
 
   @include xxxl {
     padding-left: 196px;
-    padding-top: 133px;
+    padding-top: 130px;
   }
 
   @include xxl {
@@ -152,7 +159,6 @@
   @include lg {
     padding-top: 60px;
   }
-
 }
 
 .caption-items {
@@ -171,29 +177,45 @@
   position: relative;
   max-width: 245px;
 
+  @include xl {
+    width: 245px;
+  }
+
   & svg {
     position: absolute;
     top: 0;
     right: 0;
   }
 
+  @include md {
+    min-width: 215px;
+  }
+
   &__title {
     @layer base {
-      @include font(3, 30, 40, 400);
-
       color: $yellow-text;
+      @include font(3, 40, 50, 400);
+
+      span {
+        @include font(3, 22, 34, 400);
+        color: $yellow-text;
+        padding-left: 8px;
+      }
     }
 
     @include md {
-      @include font(3, 36, 50, 400);
+      @include font(3, 52, 58, 400);
 
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      gap: 8px;
+      span {
+        @include font(3, 26, 36, 400);
+      }
+    }
 
-      & span {
-        @include font(3, 26, 36);
+    @include md {
+      @include font(3, 64, 80, 400);
+
+      span {
+        @include font(3, 32, 44, 400);
       }
     }
   }
@@ -202,16 +224,36 @@
     width: 83px;
     height: 2px;
     border: 0;
-    margin-top: 18px;
     margin-left: 0;
     background-color: $orange-bg-500;
+
+    @layer base {
+      margin: 8px 0;
+    }
+
+    @include md {
+      margin: 12px 0;
+    }
+    @include md {
+      margin: 16px 0;
+    }
   }
 
   &__description {
-    @include font(1, 16, 22, 200);
+    @layer base {
+      @include font(1, 14, 18, 200);
 
-    margin-top: 16px;
-    color: $yellow-text;
+      color: $yellow-text;
+    }
+
+    @include md {
+      max-width: 190px;
+    }
+
+    @include md {
+      max-width: 220px;
+      @include font(1, 16, 23, 200);
+    }
   }
 }
 

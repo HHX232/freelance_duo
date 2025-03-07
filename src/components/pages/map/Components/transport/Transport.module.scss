@@ -1,77 +1,64 @@
 .section {
   @layer base {
     position: relative;
-    height: 100vh;
+
+    background:
+      linear-gradient(121deg, rgba(255, 255, 255, 0.4) 18.87%, rgba(255, 255, 255, 0) 66.38%),
+      url('/content/ymap.png') lightgray -154.546px -4px / 226.113% 101.147% no-repeat;
+    object-fit: cover;
+    background-size: cover !important;
     background-position: center;
-    background-size: cover;
+    background-position-x: -550px;
+
+    background-repeat: no-repeat;
 
     display: flex;
-    flex-direction: column;
-    justify-content: end;
-    padding: 24px 16px;
-    background-image: linear-gradient(180deg, rgba(38, 57, 69, 0) 18.87%, rgba(38, 57, 69, 1) 98.38%), url("/content/ymap.png");
+    align-items: flex-end;
+    height: 100vh;
+
+    padding: 16px 16px 24px 16px;
+
+    &::after {
+      content: '';
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      position: absolute;
+      background: linear-gradient(180deg, rgba(38, 57, 69, 0) 39.54%, rgba(38, 57, 69, 0.6) 63.73%, #263945 100%);
+    }
   }
 
   @include sm {
     padding: 40px 20px;
+
+    background-position-y: -100px;
+    background-position-x: -480px;
   }
 
   @include md {
-    background: linear-gradient(180.6deg, rgb(255 255 255 / 0) 0%, rgb(255 255 255 / 0.5) 0%), url("/content/ymap.png") no-repeat;
-    background-size: 100% 100%;
     padding: 90px 40px;
-    justify-content: start;
+    background-position-x: -250px;
+    background-position-y: 0;
+
+    &::after {
+      background: linear-gradient(121deg, rgba(255, 255, 255, 0.4) 18.87%, rgba(255, 255, 255, 0) 66.38%);
+    }
   }
 
   @include lg {
-    background: linear-gradient(180.6deg, rgb(255 255 255 / 0) 0%, rgb(255 255 255 / 0.5) 0%), url("/content/ymap.png") no-repeat;
     background-size: 100% 100%;
+    background-position: top left;
   }
 
   @include xl {
     padding: 90px 142px;
   }
-
-  &:after{
-    @layer base {
-      display: none;
-    }
-
-    @include md {
-      background: linear-gradient(180deg, rgb(255 255 255 / 0.7) 40%, rgba(255, 255, 255, 0) 66.38%);
-      backdrop-filter: blur(1px);
-      //border-radius: 50%;
-      top: 0;
-      left: 0;
-      position: absolute;
-      z-index: 0;
-      display: block;
-      width: 100%;
-      height: 270px;
-      content: "";
-      pointer-events: none;
-    }
+  @include xxl {
+    padding: 90px 170px;
   }
-
-  &:before {
-    @layer base {
-      display: none;
-    }
-
-    @include md {
-      background: linear-gradient(-120.6deg, rgb(255 255 255 / 0.7) 10%, rgb(255 255 255 / 0) 50%);
-      backdrop-filter: blur(1px);
-      //border-radius: 50%;
-      top: 0;
-      left: 0;
-      position: absolute;
-      z-index: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-      content: "";
-      pointer-events: none;
-    }
+  @include xxxl {
+    padding: 130px 190px;
   }
 }
 
@@ -81,6 +68,10 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+
+    width: 100%;
+
+    justify-content: center;
 
     color: $yellow-text;
   }
@@ -92,7 +83,7 @@
   @include md {
     justify-content: space-between;
     height: 100%;
-    gap: 100px
+    gap: 100px;
   }
 
   @include lg {
@@ -101,7 +92,6 @@
   }
 
   &-title {
-
     @layer base {
       color: $yellow-text;
       @include font(3, 30, 40, 400);
@@ -109,31 +99,30 @@
 
     @include md {
       @include font(3, 36, 50, 400);
-      color: $sireneviy;
+      color: #213c4e;
+    }
+
+    @include md {
+      @include font(3, 42, 54, 400);
     }
   }
-
 }
 
 .caption-items {
   @layer base {
     display: flex;
-    gap: 40px;
+    width: fit-content;
     //overflow: hidden;
     word-break: break-word;
-  }
 
-  @include md {
-    flex-direction: column;
-    gap: 48px;
+    flex: 0 0 auto !important;
   }
 }
 
 .caption {
-
   @layer base {
     position: relative;
-    max-width: 300px;
+    width: fit-content;
 
     & svg {
       position: absolute;
@@ -143,39 +132,68 @@
   }
 
   @include md {
-    max-width: 355px;
   }
-
 
   &__title {
     @layer base {
       @include font(3, 22, 34, 400);
 
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       color: $yellow-text;
+
+      span {
+        @include font(3, 40, 50, 400);
+      }
     }
 
     @include md {
-      @include font(3, 52, 58);
+      @include font(3, 26, 36, 400);
 
-      position: relative;
       display: flex;
+      flex-direction: row;
       align-items: flex-end;
-      color: $sireneviy;
+      gap: 8px;
+      color: $yellow-text;
+
+      span {
+        @include font(3, 52, 58, 400);
+      }
+    }
+
+    @include xl {
+      @include font(3, 32, 44, 400);
+
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
       gap: 8px;
 
-      & span {
-        @include font(3, 26, 36);
+      span {
+        @include font(3, 64, 80, 400);
       }
     }
   }
 
   &__divider {
+    @layer base {
+      margin-top: 8px;
+    }
+
     width: 83px;
     height: 2px;
     border: 0;
-    margin-top: 18px;
     margin-left: 0;
     background-color: $orange-bg-500;
+
+    @include md {
+      margin-top: 12px;
+    }
+
+    @include xl {
+      margin-top: 16px;
+    }
   }
 
   &__description {
@@ -183,7 +201,6 @@
 
     margin-top: 16px;
     color: $sireneviy;
-
   }
 }
 
@@ -194,16 +211,67 @@
 
   @include md {
     display: flex;
+    flex-direction: column;
+    max-width: 355px;
+    width: 100%;
+    display: flex;
+    gap: 40px;
+
+    .caption {
+      width: 100%;
+    }
+
+    .caption__title {
+      @include font(3, 26, 36, 400);
+      color: #213c4e;
+    }
+    .caption__divider {
+    }
+  }
+
+  @include xl {
+    gap: 48px;
   }
 }
-
 
 .mobile_captions {
   @layer base {
     display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   @include md {
     display: none;
+  }
+}
+
+.phone_slider_container {
+  width: 100% !important;
+  gap: 74px !important;
+  align-items: flex-end !important;
+
+  .caption-items:nth-child(2) {
+    flex: 0 0 30% !important;
+    width: 240px;
+  }
+
+  .caption-items:nth-child(1) {
+    .caption__title {
+      @layer base {
+        span {
+          display: block;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+
+.phone_slider_wrapper {
+  gap: 24px !important;
+
+  @include sm {
+    gap: 60px !important;
   }
 }

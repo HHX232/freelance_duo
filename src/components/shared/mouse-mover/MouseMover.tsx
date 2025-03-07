@@ -49,7 +49,7 @@ const MouseMover = ({
   return (
     <section
       style={{
-        width: isMobile ? '100%' : 'auto',
+        width: isMobile ? '100vw' : 'auto',
         ...(isMobile && isMobileCardVisible
           ? {
               filter: 'brightness(0.5)'

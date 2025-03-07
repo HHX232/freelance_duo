@@ -27,22 +27,22 @@ const directionHints: DirectionHint[] = [
     name: 'ЖК «Набережная»',
     coords: {
       x: 49,
-      y: 10
+      y: 9.5
     },
     coords_mob: {
       x: 47,
-      y: 10
+      y: 5
     }
   },
   {
     name: 'КАД (10 мин.)',
     coords: {
-      x: 59,
+      x: 63,
       y: 10
     },
     coords_mob: {
-      x: 59,
-      y: 10
+      x: 63,
+      y: 5
     },
     icon: <ArrowUpSVG />
   },
@@ -54,7 +54,7 @@ const directionHints: DirectionHint[] = [
     },
     coords_mob: {
       x: 76,
-      y: 10
+      y: 5
     }
   },
   {
@@ -65,7 +65,7 @@ const directionHints: DirectionHint[] = [
     },
     coords_mob: {
       x: 74,
-      y: 28
+      y: 22
     }
   }
 ]
