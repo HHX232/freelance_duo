@@ -54,6 +54,7 @@
 
 .content {
    overflow: hidden; // Скрываем содержимое
+   width: 100%;
    max-height: 0; // Начальная высота
    margin-top: 10px;
    opacity: 0; // Начальная прозрачность
@@ -140,13 +141,13 @@
    line-height: 1.2;
 }
 
-// Стили для открытого состояния
-.open {
-   .content {
-      max-height: 500px; // Максимальная высота (увеличьте, если нужно)
-      opacity: 1; // Плавное появление
-   }
+.contentActive {
+   max-height: 500px; // Максимальная высота (увеличьте, если нужно)
+   opacity: 1; // Плавное появление
 
+}
+
+.open {
    .arrow {
       transform: rotate(-180deg); // Поворот стрелки
    }
