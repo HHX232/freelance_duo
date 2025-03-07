@@ -3,8 +3,6 @@ import {IFullButtonProps} from './FullButton.types'
 import Link from 'next/link'
 import cn from 'clsx'
 import styles from './FullButton.module.scss'
-import arrowSvg from './ButtonIcons/Shape.svg'
-import Image from 'next/image'
 import {ArrowIcon} from './ButtonIcons/ArrowIcon'
 
 export const FullButton: FC<IFullButtonProps> = ({
@@ -72,13 +70,14 @@ export const FullButton: FC<IFullButtonProps> = ({
     </button>
   ) : (
     <Link
+      href={href}
       className={cn(
         styles.button,
         {
           [styles.disabled]: disabled,
+          [styles[`border-color-${borderColor}`]]: borderColor,
           [styles.border]: border === true,
           [styles.none_border]: border === false,
-          [styles[`border-color-${borderColor}`]]: borderColor,
           [styles[`border-width-${borderWidth}`]]: borderWidth,
           [styles[`button-fill-${buttonFill}`]]: buttonFill,
           [styles[`button-element-color-${buttonElementColor}`]]: buttonElementColor,
@@ -88,18 +87,27 @@ export const FullButton: FC<IFullButtonProps> = ({
         extraClass
       )}
       onClick={onClick}
-      href={href}
     >
+      {containArrow && (
+        <ArrowIcon
+          extraStyle={arrowExtraStyles}
+          extraClass={cn(styles.arrow, arrowExtraClass)}
+          color={arrowColor}
+          width={arrowWidth}
+          height={arrowHeight}
+          strokeWidth={arrowStrokeWidth}
+        />
+      )}
       {buttonText}
       {containArrow && (
-        <span className={styles.arrow}>
-          <Image className={styles.arrow_image} alt='arrow' width={24} height={24} src={arrowSvg} />
-        </span>
-      )}
-      {containArrow && (
-        <span className={styles.arrow_box}>
-          <Image className={styles.arrow_image} alt='arrow' width={24} height={24} src={arrowSvg} />
-        </span>
+        <ArrowIcon
+          extraStyle={arrowExtraStyles}
+          extraClass={cn(styles.arrow, arrowExtraClass)}
+          color={arrowColor}
+          width={arrowWidth}
+          height={arrowHeight}
+          strokeWidth={arrowStrokeWidth}
+        />
       )}
     </Link>
   )
