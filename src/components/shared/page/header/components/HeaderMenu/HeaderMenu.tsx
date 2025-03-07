@@ -18,6 +18,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
             <p className={styles.item_title}>Недвижимость</p>
             <div className={`${styles.item_inner} ${styles.accent}`}>
               <Accordion
+                animationOn={false}
                 extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
                 leftArrow={false}
                 rightArrow={true}
@@ -76,6 +77,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               />
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
                   leftArrow={false}
                   rightArrow={false}
@@ -90,6 +92,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
                   leftArrow={false}
                   rightArrow={false}
@@ -104,6 +107,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
                   leftArrow={false}
                   rightArrow={false}
@@ -122,6 +126,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
             <p className={styles.item_title}>О проекте</p>
             <div style={{paddingTop: '13px'}} className={`${styles.item_inner} ${styles.item_inner_default}`}>
               <Accordion
+                animationOn={false}
                 extraClass={styles.accordion_extra}
                 leftArrow={false}
                 rightArrow={true}
@@ -155,6 +160,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               />
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -170,6 +176,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -185,6 +192,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -200,6 +208,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -215,6 +224,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -230,6 +240,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -245,6 +256,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -269,6 +281,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
             >
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -286,6 +299,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -300,6 +314,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                 />
               </Link>
               <Accordion
+                animationOn={false}
                 extraClass={styles.accordion_extra}
                 leftArrow={false}
                 rightArrow={true}
@@ -341,6 +356,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
 
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -356,6 +372,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -371,6 +388,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -386,6 +404,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}
@@ -401,6 +420,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </Link>
               <Link onClick={onClose} href={'/'}>
                 <Accordion
+                  animationOn={false}
                   extraClass={styles.accordion_extra}
                   leftArrow={false}
                   rightArrow={false}

@@ -25,6 +25,7 @@ const MobileAccordionMain: FC<IMobileAccordionMainProps> = ({children, header}) 
     <span className={cn(styles.main_accordion_box, {[styles.main_accordion_box_active]: accordionActive})}>
       <div className={styles.active_bg_line}></div>
       <Accordion
+        animationOn={false}
         onClick={() => {
           setAccordionActive((prev) => !prev)
         }}
@@ -60,6 +61,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
             style={{width: '100%', zIndex: 999}}
           >
             <Accordion
+              animationOn={false}
               leftArrow={false}
               containerExtraClass={styles.accordion_mobile_100}
               items={[

@@ -16,7 +16,8 @@
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
    font-weight: 400;
-   transition: all .3s !important;
+
+   // transition: all .3s !important;
 }
 
 .decor_line {
@@ -49,16 +50,24 @@
    z-index: 100;
    top: 39%;
    left: 0;
-   transition: transform 0.3s ease; // Анимация для стрелки
+   transition: transform 0.3s ease;
+}
+
+.animationOn {
+   transition: all 0.3s ease, opacity 0.3s ease !important;
+}
+
+.animationOff {
+   transition: none !important;
 }
 
 .content {
-   overflow: hidden; // Скрываем содержимое
+   overflow: hidden;
    width: 100%;
-   max-height: 0; // Начальная высота
+   max-height: 0;
    margin-top: 10px;
-   opacity: 0; // Начальная прозрачность
-   transition: max-height 0.3s ease, opacity 0.3s ease; // Анимация для содержимого
+   opacity: 0;
+
 }
 
 .arrow_right {

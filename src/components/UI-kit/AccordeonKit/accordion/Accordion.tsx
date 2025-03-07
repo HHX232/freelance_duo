@@ -14,6 +14,7 @@ const AccordionTabCustom = ({
   contentStyle,
   isOpen = false,
   onClick,
+  animationOn,
   arrowComponent,
   leftArrow,
   rightArrow,
@@ -24,7 +25,15 @@ const AccordionTabCustom = ({
   children
 }: AccordionTabCustomProps & {children: React.ReactNode}) => {
   return (
-    <li className={cn(styles.li_item, className, {[styles.open]: isOpen})} style={style} key={key}>
+    <li
+      className={cn(styles.li_item, className, {
+        [styles.open]: isOpen,
+        [styles.animationOn]: animationOn,
+        [styles.animationOff]: !animationOn
+      })}
+      style={style}
+      key={key}
+    >
       <div className={styles.header} onClick={onClick}>
         {header}
         {arrowComponent || (
@@ -39,7 +48,14 @@ const AccordionTabCustom = ({
         )}
       </div>
       {decorUnderLine && <div className={styles.decor_line}></div>}
-      <div style={contentStyle} className={cn(styles.content, {[styles.contentActive]: isOpen})}>
+      <div
+        style={contentStyle}
+        className={cn(styles.content, {
+          [styles.contentActive]: isOpen,
+          [styles.animationOn]: animationOn,
+          [styles.animationOff]: !animationOn
+        })}
+      >
         {children}
       </div>
     </li>
@@ -55,6 +71,7 @@ export default function Accordion({
   leftArrow,
   rightArrow,
   arrowSize,
+  animationOn = true,
   arrowColor,
   onClick,
   decorUnderLine,
@@ -78,6 +95,7 @@ export default function Accordion({
         arrowSize={arrowSize}
         arrowExtraStyles={arrowExtraStyles}
         key={i.toString()}
+        animationOn={animationOn}
         header={tab?.header}
         isOpen={forceIsOpen !== undefined ? forceIsOpen : openIndex === i}
         onClick={() => handleTabClick(i)}
@@ -97,7 +115,9 @@ export default function Accordion({
             [styles.defaultL]: tab?.size === 'defaultL',
             [styles.defaultM]: tab?.size === 'defaultM',
             [styles.defaultS]: tab?.size === 'defaultS',
-            [styles.defaultXS]: tab?.size === 'defaultXS'
+            [styles.defaultXS]: tab?.size === 'defaultXS',
+            [styles.animationOn]: animationOn,
+            [styles.animationOff]: !animationOn
           },
           extraClass
         )}
@@ -109,7 +129,14 @@ export default function Accordion({
   }, [items, extraClass, extraStyle, openIndex, handleTabClick])
 
   return (
-    <div onClick={onClick} className={cn(styles.accordion, containerExtraClass)}>
+    <div
+      onClick={onClick}
+      className={cn(
+        styles.accordion,
+        {[styles.animationOn]: animationOn, [styles.animationOff]: !animationOn},
+        containerExtraClass
+      )}
+    >
       {tabs}
     </div>
   )
