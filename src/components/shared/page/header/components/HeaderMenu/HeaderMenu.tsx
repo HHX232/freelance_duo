@@ -447,6 +447,16 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                 />
               </Link>
             </div>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: '20px',
+                backgroundColor: 'white',
+                padding: '20px'
+              }}
+            ></div>
           </div>
           {/* 
         ------------------------------------------------------------------------------------
