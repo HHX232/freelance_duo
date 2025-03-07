@@ -186,10 +186,27 @@
     margin-top: 4px;
     margin-bottom: 46px;
   }
+
+  .active_bg_line {
+    max-height: 45px !important;
+  }
+
+  .accordion_mobile_list_default {
+    &>li>a {
+      font-size: 14px !important;
+    }
+
+    &>li {
+      font-size: 14px !important;
+    }
+  }
 }
 
 @include custom(0, map-get($breakpoints, xs)) {
   .mobile_text_title {
     margin-bottom: 28px;
   }
+
 }
+
+// max-height: 45px;

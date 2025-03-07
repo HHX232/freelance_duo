@@ -11,19 +11,6 @@ interface IMobileHeaderMenuProps {
   onClose: () => void
 }
 
-// {
-//    header: 'О проекте',
-//    size: 'accentMedium',
-//    font: 'romul',
-//    children: <></>
-//  },
-//  {
-//    header: 'Информация',
-//    size: 'accentMedium',
-//    font: 'romul',
-//    children: <></>
-//  }
-
 interface IMobileAccordionMainProps {
   header: string
   children: React.ReactNode
@@ -61,6 +48,7 @@ const MobileAccordionMain: FC<IMobileAccordionMainProps> = ({children, header}) 
 }
 
 export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
+  const windowWidth = useWindowWidth()
   return (
     <div className={`${styles.container} ${styles.container_mobile}`}>
       <div className={styles.accordion_mobile_box}>
@@ -77,7 +65,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
               items={[
                 {
                   header: 'Квартиры',
-                  size: 'accentMedium',
+                  size: (windowWidth ? windowWidth : 769) < 760 ? 'accentSmall' : 'accentMedium',
                   font: 'romul',
                   children: (
                     <ul className={styles.accordion_mobile_list_default}>
