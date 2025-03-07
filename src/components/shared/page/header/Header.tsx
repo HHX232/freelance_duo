@@ -204,7 +204,7 @@ export default function Header({dark, dashboard}: IHeaderProps) {
       <div className={styles.menu}>
         <HeaderMenu onClose={() => setIsMenuOpened(false)} setIsMenuOpened={setIsMenuOpened} />
         <div className={styles.headerMenuBottom}>
-          <HeaderMenuBottom />
+          <HeaderMenuBottom handleFindApartment={handleClick} />
         </div>
       </div>
     </header>
