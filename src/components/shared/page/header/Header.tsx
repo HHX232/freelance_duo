@@ -17,7 +17,7 @@ import useRouterNext from '@src/lib/hooks/useRouter'
 import Link from 'next/link'
 import {usePathname, useRouter} from 'next/navigation'
 import UserSVG from '@icons/user.svg'
-import {useIsXl, useIsSm} from '@utils/useIsMobile'
+import {useIsXl, useIsMd} from '@utils/useIsMobile'
 import LogoutButton from './components/LogoutButton/LogoutButton'
 import PhoneIconSVG from './components/icons/PhoneIconSVG/PhoneIconSVG'
 import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMenuBottom'
@@ -27,7 +27,7 @@ export default function Header({dark, dashboard}: IHeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
 
   const isXl = useIsXl()
-  const isSm = useIsSm()
+  const isMd = useIsMd()
 
   const {favorites, compare} = useStore()
   const {token, clearToken} = useStore()
@@ -96,8 +96,8 @@ export default function Header({dark, dashboard}: IHeaderProps) {
       <div className={styles.container}>
         <div className={styles.logo}>
           <LogoLink
-            isSmall={(isXl && isScrolled && !isMenuOpened) || (isSm && isMenuOpened)}
-            isTransparent={isSm && isMenuOpened}
+            isSmall={(isXl && isScrolled && !isMenuOpened) || (isMd && isMenuOpened)}
+            isTransparent={isMd && isMenuOpened}
             isMenuOpened={isMenuOpened}
           />
         </div>

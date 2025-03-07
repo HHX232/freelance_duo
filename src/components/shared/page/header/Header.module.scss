@@ -37,6 +37,10 @@
       }
     }
 
+    .phoneIcon svg path {
+      fill: #fff;
+    }
+
     .menu {
       opacity: 1;
       transform: translateY(0);
@@ -72,11 +76,14 @@
       align-items: center;
       justify-content: center;
       margin-left: auto;
-      color: #fff;
 
       svg {
         width: 24px;
         height: 24px;
+
+        path {
+          fill: #555;
+        }
       }
     }
 
@@ -119,6 +126,8 @@
     width: 100%;
     height: 48px;
     flex-wrap: wrap;
+    padding-right: 18px;
+    padding-left: 18px;
     margin-top: 20px;
     gap: 10px;
 
@@ -128,7 +137,6 @@
       flex: 0 0 0 48px;
       flex-grow: 1;
       border-radius: 6px;
-      margin-left: 20px;
       background-color: rgb(255 255 255 / 16%);
       color: #fff;
 
@@ -195,151 +203,116 @@
 @include custom(0, map-get($breakpoints, xl)) {
   .header {
     height: 86px;
+    padding-right: 28px;
 
-    .menu {
-      padding-top: 86px;
-    }
-  }
+    .container {
+      .logo {
+        svg {
+          height: 174px;
+        }
+      }
 
-  .findApartment {
-    display: none;
-  }
+      .personalCabinetLink {
+        margin-left: 48px;
+      }
 
-  .toggleMenuButton {
-    div {
-      width: 36px;
-      height: 36px;
+      .findApartment {
+        display: none;
+      }
 
-      button > svg {
-        width: 32px;
-        height: 32px;
+      .toggleMenuButton {
+        margin-left: 45px;
+
+        svg {
+          height: 24px;
+        }
       }
     }
   }
 }
 
-@include custom(0, map-get($breakpoints, lg)) {
-  header.header.menuOpened {
-    padding: 0 40px !important;
-  }
-
+@include custom(0, map-get($breakpoints, lg) - 20px) {
   .header {
     height: 68px;
-
-    .menu {
-      padding-top: 68px;
-    }
 
     .container {
       .phoneLink {
         margin-left: auto;
       }
-    }
-  }
 
-  .toggleMenuButton {
-    > div {
-      width: 36px;
-      height: 36px;
+      .personalCabinetLink,
+      .compareLink,
+      .favoriteLink {
+        display: none;
+      }
 
-      button > svg {
-        width: 32px;
-        height: 32px;
+      .logo {
+        a {
+          width: 68px !important;
+
+          svg {
+            height: 134px !important;
+          }
+        }
       }
     }
   }
 }
 
-@include custom(0, map-get($breakpoints, md)) {
-  header {
-    .personalCabinetLink,
-    .compareLink,
-    .favoriteLink {
-      display: none;
-    }
-  }
+@include custom(0, map-get($breakpoints, md) - 20px) {
+  .header {
+    padding: 0 12px !important;
 
-  header.header.menuOpened {
-    padding: 0 20px !important;
+    .container {
+      .toggleMenuButton {
+        margin-left: 30px;
+      }
 
-    .mobileMenu {
-      display: flex;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-}
-
-@include custom(0, map-get($breakpoints, sm)) {
-  header.header {
-    .phoneLink {
-      display: none !important;
-    }
-
-    .phoneIcon {
-      display: flex !important;
-      color: #555 !important;
-    }
-
-    .toggleMenuButton {
-      margin-left: 36px !important;
-    }
-  }
-
-  header.header.menuOpened {
-    height: 60px !important;
-    padding: 0 16px !important;
-
-    .menu {
-      padding-top: 60px;
-    }
-
-    .logo {
-      margin-top: 2px !important;
-    }
-
-    .phoneIcon {
-      color: #fff !important;
-    }
-
-    .toggleMenuButton {
-      margin-right: -4px;
-      margin-left: 30px !important;
-    }
-
-    .mobileMenu {
-      margin-top: 10px;
-
-      .mobilePersonalCabinetLink {
-        min-width: 140px;
-        height: 36px;
-        margin-left: 0;
+      .logo {
+        margin-left: 8px;
 
         a {
-          @include font(1, 14, 18, 400);
-        }
-      }
-
-      .mobielFavoriteLink,
-      .mobileCompareLink {
-        width: 36px;
-        height: 36px;
-
-        svg {
-          // width: 20px !important;
-          height: 20px !important;
-          margin-top: 5px;
-        }
-
-        span {
-          margin-top: 4px !important;
-          margin-left: 4px !important;
+          svg {
+            height: 126px !important;
+          }
         }
       }
     }
+  }
+}
+
+@include custom(0, map-get($breakpoints, sm) - 20px) {
+  .header {
+    .container {
+      .phoneLink {
+        display: none;
+      }
+
+      .phoneIcon {
+        display: block;
+      }
+
+      .toggleMenuButton {
+        margin-left: 24px;
+      }
+
+      .logo {
+        a {
+          svg {
+            height: 106px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, xs) - 20px) {
+  header.header .container {
+    padding-right: 0 !important;
+  }
+
+  .mobileMenu {
+    padding: 0 !important;
   }
 }

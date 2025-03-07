@@ -64,10 +64,10 @@
   .logoLink {
     margin-left: -8px !important;
 
-    .icon {
+    &.transparent {
       svg {
-        width: 54px !important;
-        height: 54px !important;
+        width: 50px !important;
+        height: 50px !important;
       }
     }
   }
