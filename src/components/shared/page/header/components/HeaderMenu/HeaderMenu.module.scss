@@ -1,19 +1,92 @@
 .menu {
   width: 100%;
   height: 100dvh;
-  padding-top: 152px;
+  padding-top: 33px;
   padding-right: 20px;
   padding-left: 170px;
   color: #fff;
+  overflow-y: auto;
   transition: 0.5s ease;
 
+  .item_title {
+    margin-bottom: 44px;
+
+    @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 20px !important;
+    }
+  }
+
+  .container_item {
+    width: 100%;
+    max-width: 383px;
+
+    @include custom(0, map-get($breakpoints, lg)) {
+      max-width: 244px;
+    }
+  }
+
+  .accordion_extra {
+    & > div:first-child {
+      padding: 5px 20px 5px 0;
+
+      @include custom(0, map-get($breakpoints, lg)) {
+        padding: 6px 20px 6px 0;
+        font-size: 14px !important;
+        line-height: 18px;
+      }
+    }
+  }
+
+  .accordion_extra__accent {
+    & > div:first-child {
+      @include custom(0, map-get($breakpoints, lg)) {
+        font-size: 20px !important;
+        line-height: 26px;
+      }
+    }
+  }
+
+  .item_inner {
+    display: flex;
+    flex-direction: column;
+
+    &_default {
+      @include custom(0, map-get($breakpoints, lg)) {
+        padding-top: 6px !important;
+        gap: 2px;
+      }
+    }
+  }
+
+  .accrodeon_inner_list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .accordeon_inner_item {
+    padding: 10px 0;
+    color: #fff;
+    font-size: 20px;
+
+    @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 14px;
+    }
+  }
+
   .container {
-    display: grid;
+    display: flex;
     width: 100%;
     max-width: 1530px;
     height: fit-content;
-    column-gap: 60px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 57px;
+
+    @include custom(0, map-get($breakpoints, lg)) {
+      padding-top: 9px;
+    }
+
+    @include custom(0, 1150px) {
+      gap: 40px;
+    }
 
     p {
       @include font(3, 24, 15);
@@ -49,7 +122,7 @@
 
 @include custom(0, map-get($breakpoints, md)) {
   .menu {
-    padding-top: 140px;
+    padding-top: 30px;
     padding-left: 20px;
 
     .container {

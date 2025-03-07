@@ -1,40 +1,103 @@
 .logoLink {
   display: flex;
   width: 82px;
-  height: fit-content;
-  align-items: center;
+  height: 100%;
+  align-items: flex-start;
   justify-content: center;
 
-  svg {
-    width: 82px;
-    height: 168px;
+  &.transparent {
+    align-items: center;
+    margin-left: 10px;
+
+    svg {
+      width: 64px !important;
+
+      path:first-child {
+        fill: transparent !important;
+      }
+
+      path:last-child {
+        fill: #fff !important;
+      }
+    }
   }
 
-  .lg {
-    display: none;
+  .icon {
+    display: flex;
+    overflow: hidden;
+    border-radius: 0 0 8px 8px;
+
+    svg {
+      width: 82px;
+      height: 168px;
+    }
+  }
+
+  .small {
+    align-items: flex-start;
+
+    svg {
+      height: 80px !important;
+    }
   }
 }
 
-@include custom(0, map-get($breakpoints, md)) {
-  .logoLink.menuOpened {
-    .icon {
-      display: none;
+@include custom(0, map-get($breakpoints, xl) - 20px) {
+  .logoLink {
+    .small {
+      svg {
+        height: 70px !important;
+      }
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, lg) - 20px) {
+  .logoLink {
+    .small {
+      svg {
+        height: 60px !important;
+      }
+    }
+  }
+}
+
+@include custom(0, map-get($breakpoints, md) - 20px) {
+  .logoLink {
+    width: 65px;
+
+    .small {
+      svg {
+        height: 60px !important;
+      }
     }
 
-    .lg {
-      display: block;
+    .icon {
+      width: 73px;
+      align-items: center;
 
       svg {
-        width: 44px !important;
-        height: 44px !important;
+        width: 73px;
+        height: 134px;
+      }
+    }
+  }
+}
 
-        path:first-child {
-          fill: transparent !important;
-        }
+@include custom(0, map-get($breakpoints, sm) - 20px) {
+  .logoLink {
+    margin-left: -8px !important;
 
-        path:last-child {
-          fill: #fff !important;
-        }
+    .small {
+      svg {
+        height: 60px !important;
+      }
+    }
+
+    &.transparent {
+      svg {
+        width: 50px !important;
+        height: 50px !important;
       }
     }
   }

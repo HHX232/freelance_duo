@@ -1,60 +1,429 @@
+'use client'
+import Accordion from '@src/components/UI-kit/AccordeonKit/accordion/Accordion'
 import styles from './HeaderMenu.module.scss'
 import {IHeaderMenuProps} from './HeaderMenu.types'
-import MenuBlock from './menuBlock/MenuBlock'
-import MenuItem from './menuItem/MenuItem'
+import Link from 'next/link'
+import {useWindowWidth} from './hooks/useWindowWidth'
+import {MobileHeaderMenu} from './MobileHeaderMenu/MobileHeaderMenu'
 
-export default function HeaderMenu({onClose, setIsMenuOpened}: IHeaderMenuProps) {
+export default function HeaderMenu({onClose}: IHeaderMenuProps) {
+  const windowWidth = useWindowWidth()
+
   return (
     <div className={styles.menu}>
-      <div className={styles.container}>
-        <MenuBlock closeHandler={onClose} title='Недвижимость'>
-          <MenuItem text='Квартиры' openable>
-            <div onClick={() => setIsMenuOpened(false)}>
-              <MenuItem text='Все квартиры' href='/planirovki-i-ceny' />
+      {(windowWidth ? windowWidth : 901) > 900 ? (
+        <div className={`${styles.container} ${styles.container_desctop}`}>
+          {/* TODO: Сделать отдельный компонент */}
+          <div className={`${styles.container_item} ${styles.container_item_accent}`}>
+            <p className={styles.item_title}>Недвижимость</p>
+            <div className={`${styles.item_inner} ${styles.accent}`}>
+              <Accordion
+                extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
+                leftArrow={false}
+                rightArrow={true}
+                items={[
+                  {
+                    header: 'Квартиры',
+                    children: (
+                      <ul className={styles.accrodeon_inner_list}>
+                        <li
+                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
+                          onClick={onClose}
+                        >
+                          Однокомнатные
+                        </li>
+                        <li
+                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
+                          onClick={onClose}
+                        >
+                          Двухкомнатные
+                        </li>
+                        <li
+                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
+                          onClick={onClose}
+                        >
+                          Трехкомнатные
+                        </li>
+                        <li
+                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
+                          onClick={onClose}
+                        >
+                          Четырехкомнатые
+                        </li>
+                        <li
+                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
+                          onClick={onClose}
+                        >
+                          Лофты
+                        </li>
+                        <li
+                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
+                          onClick={onClose}
+                        >
+                          Апартаменты
+                        </li>
+                        <li
+                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
+                          onClick={onClose}
+                        >
+                          С балконом
+                        </li>
+                      </ul>
+                    ),
+                    size: 'defaultXXL'
+                  }
+                ]}
+              />
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Паркинг',
+                      children: <></>,
+                      size: 'defaultXXL'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Коммерческие помещения',
+                      children: <></>,
+                      size: 'defaultXXL'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Кладовые',
+                      children: <></>,
+                      size: 'defaultXXL'
+                    }
+                  ]}
+                />
+              </Link>
             </div>
-            <div onClick={() => setIsMenuOpened(false)}>
-              <MenuItem text='Студии' href='/studii' />
-            </div>
-            <div onClick={() => setIsMenuOpened(false)}>
-              <MenuItem text='Однокомнатные' href='/odnokomnatnye' />
-            </div>
-            <div onClick={() => setIsMenuOpened(false)}>
-              <MenuItem text='Двухкомнатные' href='/dvuhkomnatnye' />
-            </div>
-            <div onClick={() => setIsMenuOpened(false)}>
-              <MenuItem text='Трехкомнатные' href='/3-komnatnye' />
-            </div>
-          </MenuItem>
-          <div onClick={() => setIsMenuOpened(false)}>
-            <MenuItem text={'Кладовые'} href={'/storerooms'} />
           </div>
-          <div onClick={() => setIsMenuOpened(false)}>
-            <MenuItem text={'Паркинг'} href={'/parking'} />
+          <div className={`${styles.container_item} ${styles.container_item_default}`}>
+            <p className={styles.item_title}>О проекте</p>
+            <div style={{paddingTop: '13px'}} className={`${styles.item_inner} ${styles.item_inner_default}`}>
+              <Accordion
+                extraClass={styles.accordion_extra}
+                leftArrow={false}
+                rightArrow={true}
+                arrowSize='medium'
+                arrowColor='#fff'
+                items={[
+                  {
+                    // mb: 44px;
+                    header: 'О проекте',
+
+                    children: (
+                      <ul className={styles.accrodeon_inner_list}>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          Однокомнатные
+                        </li>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          Двухкомнатные
+                        </li>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          Трехкомнатные
+                        </li>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          Четырехкомнатые
+                        </li>
+                      </ul>
+                    ),
+                    size: 'defaultXL',
+                    color: 'white'
+                  }
+                ]}
+              />
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Расположение',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Инфраструктура',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Благоустройство',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Виды отделки',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Ход строительства',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Новости',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Акции',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+            </div>
           </div>
-        </MenuBlock>
+          <div className={`${styles.container_item} ${styles.container_item_default}`}>
+            <p className={styles.item_title}>Информация</p>
 
-        <MenuBlock closeHandler={onClose} title='О проекте'>
-          <MenuItem text='О проекте' openable>
-            <MenuItem text='О проекте "Кронфорт"' href='/o-proekte' />
-            <MenuItem text='"Кронфорт. Центральный"' href='/tsentralnyi' />
-          </MenuItem>
-          <MenuItem text='Расположение' href='/raspolozhenie' />
-          <MenuItem text='Инфраструктура' href='/infrastruktura' />
-          <MenuItem text='Благоустройство' href='/blagoustroistvo' />
-          <MenuItem text='Архитектура' href='/architektura' />
-          <MenuItem text='Виды отделки' href='/otdelka' />
-          <MenuItem text='Новости' href='/news' />
-        </MenuBlock>
+            <div
+              style={{paddingTop: '13px', maxHeight: '680px', overflowY: 'scroll'}}
+              className={`${styles.item_inner} ${styles.item_inner_default}`}
+            >
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      // mb: 44px;
+                      header: 'О застройщике',
 
-        <MenuBlock closeHandler={onClose} title='Информация'>
-          <MenuItem text='О застройщике' href='/alkor' />
-          <MenuItem text='Способы покупки' href='/payment-methods' />
-          <MenuItem text='Ход строительства' href='/gallery' />
-          <MenuItem text='Документы' href='/docs' />
-          <MenuItem text='Контакты' href='/contacts' />
-          <MenuItem text='Служба доверия' href='/feedback' />
-        </MenuBlock>
-      </div>
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'План развития',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Accordion
+                extraClass={styles.accordion_extra}
+                leftArrow={false}
+                rightArrow={true}
+                arrowSize='medium'
+                arrowColor='#fff'
+                items={[
+                  {
+                    header: 'Способы покупки',
+                    children: (
+                      <ul className={styles.accrodeon_inner_list}>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          Однокомнатные
+                        </li>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          Двухкомнатные
+                        </li>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          Трехкомнатные
+                        </li>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          Четырехкомнатые
+                        </li>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          Лофты
+                        </li>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          Апартаменты
+                        </li>
+                        <li className={styles.accordeon_inner_item} onClick={onClose}>
+                          С балконом
+                        </li>
+                      </ul>
+                    ),
+                    size: 'defaultXL',
+                    color: 'white'
+                  }
+                ]}
+              />
+
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Ипотечный калькулятор',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Инвестиции',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Документы',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Контакты',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/'}>
+                <Accordion
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'FAQ',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+            </div>
+          </div>
+
+          {/* 
+        ------------------------------------------------------------------------------------
+        */}
+        </div>
+      ) : (
+        <MobileHeaderMenu onClose={onClose} />
+      )}
     </div>
   )
 }
