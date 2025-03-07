@@ -274,6 +274,10 @@
           }
         }
       }
+
+      .mobileMenu {
+        display: flex;
+      }
     }
 
     .container {
@@ -362,6 +366,10 @@
 
       .phoneIcon {
         display: block;
+
+        svg path {
+          fill: #fff;
+        }
       }
 
       .toggleMenuButton {
