@@ -160,9 +160,12 @@ export default function Header({dark, dashboard}: IHeaderProps) {
       </div>
 
       <div className={styles.mobileMenu}>
-        <div className={styles.mobilePersonalCabinetLink}>
+        <Link href={'/lk'} className={styles.mobilePersonalCabinetLink}>
           <TextLink href={'/lk'} title='Личный кабинет' />
-        </div>
+          <div className={styles.userLogo}>
+            <UserSVG />
+          </div>
+        </Link>
         {dashboard && (
           <div className={styles.mobileCompareLink}>
             {token ? (
