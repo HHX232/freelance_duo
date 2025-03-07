@@ -1,5 +1,4 @@
 .section {
-
   @layer base {
     position: relative;
     height: 100vh;
@@ -12,30 +11,44 @@
     background-size: cover;
     gap: 40px;
 
-    background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%), linear-gradient(180deg, rgb(38 57 69 / 0%) 18.3%, rgb(38 57 69 / 47%) 49.35%, #263945 100%),
-    linear-gradient(47.64deg, rgb(30 56 73 / 50%) 6.94%, rgb(30 56 73 / 0%) 83.47%), url("/content/areas.jpg");
+    background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
+      linear-gradient(180deg, rgb(38 57 69 / 0%) 18.3%, rgb(38 57 69 / 47%) 49.35%, #263945 100%),
+      linear-gradient(47.64deg, rgb(30 56 73 / 50%) 6.94%, rgb(30 56 73 / 0%) 83.47%), url('/content/areas.jpg');
   }
 
   @include sm {
     padding: 40px 20px;
+    gap: 6 0px;
   }
 
   @include md {
     background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
-    linear-gradient(37.52deg, rgb(30 56 73 / 70%) 25.4%, rgb(30 56 73 / 0%) 65.67%), url("/content/areas.jpg");
+      linear-gradient(37.52deg, rgb(30 56 73 / 70%) 25.4%, rgb(30 56 73 / 0%) 65.67%), url('/content/areas.jpg');
     padding: 90px 40px;
   }
 
   @include lg {
-    background: linear-gradient(90.01deg, rgb(30 56 73 / 70%) 0.01%, rgb(0 0 0 / 0%) 35.63%),
-    linear-gradient(115.11deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%), url("/content/areas.jpg");
-    background-size: 100% 100%;
+
+    background:
+      linear-gradient(115deg, rgba(30, 56, 73, 0.7) 21.9%, rgba(30, 56, 73, 0) 66.78%),
+      linear-gradient(90deg, rgba(30, 56, 73, 0.7) 0.01%, rgba(0, 0, 0, 0) 35.63%),
+      url('/content/areas.jpg');
+
+    background-size: cover;
     padding: 60px 40px;
     //height: fit-content;
   }
 
-  @include xl{
+  @include xl {
     padding: 90px 142px;
+  }
+
+  @include xxl {
+    padding: 90px 170px;
+  }
+
+  @include xxxl {
+    padding: 130px 190px;
   }
 }
 
@@ -54,26 +67,28 @@
   @include md {
     //justify-content: space-between;
     height: 100%;
-    gap: 100px
+    justify-content: space-between;
   }
 
   @include lg {
     gap: 60px;
+    justify-content: start;
   }
 
   &-title {
-
     @layer base {
       color: $yellow-text;
       @include font(3, 30, 40, 400);
-
     }
 
     @include md {
       @include font(3, 36, 50, 400);
     }
-  }
 
+    @include xl {
+      @include font(3, 42, 54, 400);
+    }
+  }
 }
 
 .caption-items {
@@ -84,8 +99,13 @@
 
   @include md {
     flex-direction: column;
+    gap: 40px;
+  }
+
+  @include xl {
     gap: 48px;
   }
+
 }
 
 .caption {
@@ -105,40 +125,50 @@
       @include font(3, 22, 34, 400);
 
       color: $yellow-text;
-    }
-
-    @include md {
-      @include font(3, 52, 58);
-
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      gap: 8px;
 
       & span {
-        @include font(3, 26, 36);
+        @include font(3, 40, 50, 400);
       }
     }
+
+
+    @include xl {
+      @include font(3, 32, 44);
+
+
+      & span {
+        @include font(3, 64, 80);
+      }
+    }
+
   }
 
   &__divider {
+    @layer base {
+      margin-top: 8px;
+    }
+
     width: 83px;
     height: 2px;
     border: 0;
-    margin-top: 18px;
     margin-left: 0;
     background-color: $orange-bg-500;
+
+    @include md {
+      margin-top: 12px;
+    }
+
+    @include xl {
+      margin: 16px;
+    }
   }
 
   &__description {
-    @include font(1, 16, 22, 200);
+    @include font(1, 14, 18, 200);
 
-    margin-top: 16px;
     color: $yellow-text;
-
   }
 }
-
 
 .desktop_captions {
   @layer base {
@@ -150,7 +180,6 @@
   }
 }
 
-
 .mobile_captions {
   @layer base {
     display: flex;
@@ -158,6 +187,36 @@
 
   @include md {
     display: none;
+  }
+}
+
+.phone_slider_container {
+  width: 100% !important;
+  gap: 10px;
+
+  .caption-items:nth-child(2) {
+    flex: 0 0 95% !important;
+  }
+
+  .caption-items:nth-child(1) {
+    flex: 0 0 55% !important;
+  }
+
+  @include sm {
+    .caption-items:nth-child(2) {
+      flex: 0 0 54% !important;
+    }
+    .caption-items:nth-child(1) {
+      flex: 0 0 40% !important;
+    }
+  }
+}
+
+.phone_slider_wrapper {
+  gap: 24px !important;
+
+  @include sm {
+    gap: 60px !important;
   }
 }
 

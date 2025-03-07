@@ -5,31 +5,38 @@
     flex-direction: row;
     gap: 20px;
 
-    .text {
-      display: flex;
-      height: 100%;
-      flex-direction: column;
-      align-items: start;
-      justify-content: space-between;
+  }
+}
 
-      h4 {
-        @include font(1, 16, 20, 400);
-      }
+.text {
+  @layer base {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
 
-      p {
-        @include font(1, 12, 14);
-        color: #A0A3A8;
-      }
-
+    div {
+      @include font(1, 16, 20, 400);
     }
 
-
+    p {
+      @include font(1, 12, 14);
+      color: #A0A3A8;
+    }
   }
 
+  @include md {
+    div {
+      @include font(1, 20, 26, 400);
+    }
+  }
 
-  @include lg {
-    padding-top: 40px;
-    border-top: 1px solid rgba(17, 98, 125, 0.3);
+  @include xl {
+    div {
+      @include font(1, 24, 34, 400);
+    }
   }
 
 }
+

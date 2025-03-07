@@ -11,6 +11,7 @@ import {
 import FooterContacts from './components/FooterContacts/FooterContacts'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {Backcall} from '@shared/back-call-popup/backcall'
+import ScrollOnTopButton from '@src/components/UI-kit/buttons/ScrollOnTopButton/ScrollOnTopButton'
 
 const PRIMARY_LINKS: IFooterNavigationLinksGroup[] = [
   {
@@ -144,6 +145,7 @@ const Footer = ({dashboard}: {dashboard?: boolean}) => {
 
         {isOpenAuth && <AuthPopup onClose={() => setOpenAuth(false)} />}
         {callBackModal && <Backcall onClose={() => setCallBackModal(false)} />}
+        <ScrollOnTopButton />
       </div>
     </div>
   )

@@ -48,8 +48,7 @@
   }
 
   @include lg {
-    padding-bottom: 40px;
-    margin-bottom: 40px;
+    padding: 20px 0 ;
     height: 570px;
     background: none;
     align-items: start;
@@ -70,15 +69,19 @@
   }
 
   @include lg {
-    padding: 40px;
-    gap: 40px;
+    padding: 20px 20px 20px 40px;
+    gap: 10px;
     flex-direction: row;
 
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/parking_ticket.jpg') no-repeat;
     background-position-y: 65%;
     background-size: 100% 100%;
-
   }
+
+  @include xxl{
+    padding: 40px 40px 40px 60px;
+  }
+
 }
 
 

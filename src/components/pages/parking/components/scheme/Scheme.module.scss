@@ -21,13 +21,24 @@
   @include lg{
     padding: 60px 40px 60px 170px;
     flex-direction: row-reverse;
-    height: 300px;
+    height: 264px;
     gap: 40px;
   }
 
   @include xl{
     justify-content: center;
-    padding: 60px 40px;
+    padding: 60px 40px 60px 170px;
+    height: 324px;
+    gap: 60px;
+  }
+
+  @include xxl{
+    height: 270px;
+  }
+
+  @include xxxl{
+    height: 310px;
+    padding: 80px 40px 80px 196px;
   }
 }
 
@@ -39,12 +50,28 @@
     align-items: start;
     gap: 40px;
   }
+
+  @include lg{
+    justify-content: start;
+  }
 }
 .title {
   @layer base {
     color: rgba(85, 85, 85, 1);
     @include font(3, 30, 40, 400)
+  }
 
+  @include md {
+    @include font(3, 36, 50, 400)
+  }
+
+  @include xl {
+    @include font(3, 42, 54, 400);
+    width: 90%;
+  }
+
+  @include xxl{
+    width: 100%;
   }
 }
 
@@ -107,11 +134,19 @@
   }
 
   @include lg {
+    top: -60px;
     right: -40px;
     left: inherit;
   }
 
   @include xl {
     position: relative;
+  }
+
+  @include xxxl {
+    left: 0;
+    right: 0;
+    width: 905px;
+    height: 310px;
   }
 }

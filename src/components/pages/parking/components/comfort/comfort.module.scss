@@ -16,16 +16,6 @@
     padding: 0 40px;
   }
 
-  @include lg {
-
-    .title {
-      @include font(3, 36, 50, 400);
-
-      color: #213C4E;
-    }
-
-  }
-
   @include xl {
     display: flex;
     justify-content: space-between;
@@ -51,11 +41,6 @@
     width: 485px;
     text-align: left;
 
-    .description {
-      @include font(1, 24, 34);
-      margin-top: 12px;
-      color: #555555;
-    }
   }
 
   @include xxl{
@@ -97,115 +82,29 @@
     flex-direction: column;
     //gap: 40px;
 
-    .description {
-      @include font(1, 16, 20);
-
-      max-width: 780px;
-      margin-top: 12px;
-      color: #555555;
-    }
   }
 
   @include xl {
     display: none;
   }
 
-  @include lg {
-    .description {
-      @include font(1, 20, 26);
-
-      max-width: max-content;
-      margin-top: 12px;
-      color: #555555;
-    }
-  }
-
 }
 
-.download {
-  display: flex;
-  gap: 20px;
-  width: fit-content;
-  align-items: center;
-
-  .text {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    align-items: start;
-    justify-content: space-between;
-
-    h4 {
-      color: rgba(40, 45, 60, 1);
-      @include font(1, 16, 20, 400);
-    }
-
-    p {
-      @include font(1, 12, 14);
-      color: #A0A3A8;
-    }
-
-  }
-
-  @include lg {
-    padding-top: 40px;
-    border-top: 1px solid rgba(17, 98, 125, 0.3);
-  }
-
-  @include xl {
-
-    display: flex;
-    gap: 20px;
-    width: fit-content;
-
-    .text {
-      display: flex;
-      height: 100%;
-      flex-direction: column;
-      align-items: start;
-      justify-content: space-between;
-
-      h4 {
-        @include font(1, 24, 34, 400);
-      }
-
-      p {
-        @include font(1, 12, 12);
-        color: #A0A3A8;
-      }
-
-    }
-
-  }
-
-}
 
 .info-wrapper {
   @layer base {
     display: flex;
     flex-direction: column;
     gap: 40px;
-
-    .title {
-      @include font(3, 30, 40, 400);
-
-      color: #213C4E;
-    }
   }
 
-  @include md{
+  @include sm{
     gap: 60px;
   }
 
   @include xl {
     gap: 60px;
     width: 553px;
-
-    .title {
-      @include font(3, 43, 54, 400);
-
-      color: #213C4E;
-    }
   }
 
   @include xxl{
@@ -215,4 +114,55 @@
   @include xxxl{
     width: 714px;
   }
+}
+
+.info{
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+.description{
+  @layer base {
+
+    @include font(1, 16, 20);
+    max-width: 780px;
+    margin-top: 12px;
+    color: #555555;
+  }
+
+  @include sm {
+    @include font(1, 20, 26);
+
+    max-width: max-content;
+    margin-top: 12px;
+    color: #555555;
+  }
+
+  @include xl {
+    .description {
+      @include font(1, 24, 34);
+      margin-top: 12px;
+      color: #555555;
+    }
+  }
+}
+
+.title{
+  @layer base {
+    @include font(3, 30, 40, 400);
+    color: #213C4E;
+  }
+
+  @include md{
+    @include font(3, 36, 50, 400);
+  }
+
+  @include xl {
+    @include font(3, 42, 54, 400);
+  }
+
+
 }

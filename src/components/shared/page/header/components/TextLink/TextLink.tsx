@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 import styles from './TextLink.module.scss'
 import {ITextLinkProps} from './TextLink.types'

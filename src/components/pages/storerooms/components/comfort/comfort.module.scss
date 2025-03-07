@@ -15,21 +15,21 @@
   }
 
   @include lg {
-    .comfort-wrapper {
-      max-width: max-content;
-    }
+    max-width: max-content;
     padding: 0 40px;
   }
 
   @include xl {
     display: flex;
     justify-content: space-between;
-    gap: 80px;
+    gap: 60px;
     padding: 0 40px 0 142px;
   }
 
   @include xxl{
     padding: 0 40px 0 170px;
+    gap: 80px;
+
   }
 }
 
@@ -38,6 +38,21 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+  }
+
+  @include xl {
+    width: 552px;
+    height: 488px;
+  }
+
+  @include xxl {
+    width: 562px;
+    height: 488px;
+  }
+
+  @include xxxl {
+    height: 420px;
+    width: 774px;
   }
 }
 
@@ -50,7 +65,11 @@
 
   @include lg {
     @include font(3, 42, 54, 400);
-    color: #213C4E;
+    word-break: break-all;
+  }
+
+  @include xl {
+    word-break: normal;
   }
 }
 
@@ -65,6 +84,10 @@
   @include lg {
     @include font(1, 24, 34);
   }
+
+  @include xxxl {
+    width: 700px;
+  }
 }
 
 .img-wrapper {
@@ -74,10 +97,21 @@
 
   @include xl {
     display: block;
+    width: 486px;
+    height: 488px;
+    background: url("/content/storerooms/storerooms_2_2.png") no-repeat top center;
+    background-size: 100% 100%;
+    object-fit: fill;
+  }
+
+  @include xxl {
+    width: 748px;
+    height: 488px;
+  }
+
+  @include xxxl {
     width: 830px;
     height: 420px;
-    background: url("/content/storerooms/storerooms_2_2.png") no-repeat top center;
-    object-fit: fill;
   }
 
 }
@@ -127,4 +161,19 @@
 
 }
 
+
+.innerWrapper{
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+
+  @include xl {
+    gap: 60px;
+    justify-content: space-between;
+    height: 100%;
+  }
+}
 
