@@ -18,7 +18,7 @@
   }
 
   &.menuOpened {
-    padding: 0 30px 0 40px !important;
+    padding: 0 44px 0 40px;
     background-color: #11627d;
 
     .container,
@@ -26,7 +26,12 @@
       color: #fff;
 
       .toggleMenuButton {
-        margin-left: 42px;
+        margin-left: 50px;
+
+        svg {
+          width: 26px;
+          height: 26px;
+        }
       }
     }
 
@@ -200,13 +205,34 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, xl)) {
+@include custom(0, map-get($breakpoints, xl) - 20px) {
   .header {
     height: 86px;
     padding-right: 28px;
 
+    &.menuOpened {
+      padding: 0 38px 0 40px;
+
+      .container {
+        .toggleMenuButton {
+          margin-left: 42px;
+
+          svg {
+            width: 23px;
+            height: 23px;
+          }
+        }
+      }
+    }
+
     .container {
       .logo {
+        .small {
+          svg {
+            height: 60px !important;
+          }
+        }
+
         svg {
           height: 174px;
         }
@@ -235,6 +261,21 @@
   .header {
     height: 68px;
 
+    &.menuOpened {
+      padding: 0 38px 0 20px;
+
+      .container {
+        .toggleMenuButton {
+          margin-left: 42px;
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+
     .container {
       .phoneLink {
         margin-left: auto;
@@ -251,7 +292,7 @@
           width: 68px !important;
 
           svg {
-            height: 134px !important;
+            height: 134px;
           }
         }
       }
@@ -263,6 +304,22 @@
   .header {
     padding: 0 12px !important;
 
+    &.menuOpened {
+      .container {
+        .toggleMenuButton {
+          margin-left: 23px;
+        }
+
+        .logo {
+          a {
+            svg {
+              height: 70px !important;
+            }
+          }
+        }
+      }
+    }
+
     .container {
       .toggleMenuButton {
         margin-left: 30px;
@@ -273,7 +330,7 @@
 
         a {
           svg {
-            height: 126px !important;
+            height: 126px;
           }
         }
       }
@@ -283,6 +340,21 @@
 
 @include custom(0, map-get($breakpoints, sm) - 20px) {
   .header {
+    &.menuOpened {
+      .container {
+        .toggleMenuButton {
+          margin-left: 12px !important;
+
+          svg {
+            width: 18px;
+            height: 18px;
+            margin-top: -6px;
+            margin-right: 1px;
+          }
+        }
+      }
+    }
+
     .container {
       .phoneLink {
         display: none;
@@ -299,7 +371,7 @@
       .logo {
         a {
           svg {
-            height: 106px !important;
+            height: 106px;
           }
         }
       }
