@@ -25,7 +25,7 @@
   .caption_sub_title {
     @layer base {
       @include font(1, 16, 34, 200);
-      color: $yellow-text;
+      color: $white;
     }
   }
 
@@ -199,6 +199,10 @@
     @include xl {
       & span {
         @include font(3, 32, 44);
+      }
+
+      br {
+        display: none
       }
 
       &.number_title {

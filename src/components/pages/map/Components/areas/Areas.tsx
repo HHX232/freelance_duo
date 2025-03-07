@@ -10,7 +10,7 @@ const AreasContent = () => {
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']} ${styles.mobile_slide}`} key={7891}>
       <div className={`${styles['caption']}`}>
         <h2 className={styles['caption__title']}>
-          &#62;3<span>м</span>
+          <span>&#62;3</span> м
         </h2>
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>высота потолков</p>
@@ -19,7 +19,7 @@ const AreasContent = () => {
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']} ${styles.mobile_slide}`} key={74891}>
       <div className={`${styles['caption']}`}>
         <h2 className={styles['caption__title']}>
-          24-100<span>м2</span>
+          <span>24-100</span> м2
         </h2>
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>площадь квартир</p>
@@ -27,7 +27,9 @@ const AreasContent = () => {
     </div>,
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']} ${styles.mobile_slide}`} key={222}>
       <div className={`${styles['caption']}`}>
-        <h2 className={styles['caption__title']}>10</h2>
+        <h2 className={styles['caption__title']}>
+          <span>10</span>
+        </h2>
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>корпусов в проекте</p>
       </div>
@@ -39,12 +41,14 @@ const AreasContent = () => {
       {
         <section className={styles.section}>
           <div className={styles.captions}>
-            <h2 className={styles['captions-title']}>От Уютных студий до просторных лофтов</h2>
+            <h2 className={styles['captions-title']}>
+              От Уютных студий <br /> до просторных лофтов
+            </h2>
             <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
               <div className={styles['caption']}>
                 <CornerSVG />
                 <h2 className={styles['caption__title']}>
-                  &#62;3<span>м</span>
+                  <span>&#62;3</span> м
                 </h2>
                 <hr className={styles['caption__divider']} />
                 <p className={styles['caption__description']}>высота потолков</p>
@@ -52,21 +56,30 @@ const AreasContent = () => {
               <div className={styles['caption']}>
                 <CornerSVG />
                 <h2 className={styles['caption__title']}>
-                  24-100<span>м2</span>
+                  <span>24-100</span> м2
                 </h2>
                 <hr className={styles['caption__divider']} />
                 <p className={styles['caption__description']}>площадь квартир</p>
               </div>
               <div className={styles['caption']}>
                 <CornerSVG />
-                <h2 className={styles['caption__title']}>10</h2>
+                <h2 className={styles['caption__title']}>
+                  <span>10</span>
+                </h2>
                 <hr className={styles['caption__divider']} />
                 <p className={styles['caption__description']}>корпусов в проекте</p>
               </div>
             </div>
           </div>
           <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
-            <PhoneSlider slideGap={0} options={{dragFree: true}} viewportIsShow slides={mobileSlides} />
+            <PhoneSlider
+              embalaContainerClassName={styles.phone_slider_container}
+              sliderWrapperClassName={styles.phone_slider_wrapper}
+              slideGap={0}
+              options={{dragFree: true}}
+              viewportIsShow
+              slides={mobileSlides}
+            />
           </div>
         </section>
       }
