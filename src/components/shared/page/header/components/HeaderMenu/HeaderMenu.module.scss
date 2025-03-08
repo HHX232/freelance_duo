@@ -74,6 +74,10 @@
     }
   }
 
+  &:not(.accordion_extra__accent) {
+    gap: 6px;
+  }
+
   .item_inner {
     display: flex;
     flex-direction: column;
