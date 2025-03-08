@@ -5,6 +5,7 @@ import cn from 'clsx'
 import styles from './FullButton.module.scss'
 import {ArrowIcon} from '../ButtonIcons/ArrowIcon'
 
+//!падинги и подобное просто задайте в extraClass
 export const FullButton: FC<IFullButtonProps> = ({
   type = 'Button', // Элемент button или Link
   border = false,
