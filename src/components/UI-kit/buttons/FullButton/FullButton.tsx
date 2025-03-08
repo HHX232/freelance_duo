@@ -3,7 +3,7 @@ import {IFullButtonProps} from './FullButton.types'
 import Link from 'next/link'
 import cn from 'clsx'
 import styles from './FullButton.module.scss'
-import {ArrowIcon} from './ButtonIcons/ArrowIcon'
+import {ArrowIcon} from '../ButtonIcons/ArrowIcon'
 
 //!падинги и подобное просто задайте в extraClass
 export const FullButton: FC<IFullButtonProps> = ({
