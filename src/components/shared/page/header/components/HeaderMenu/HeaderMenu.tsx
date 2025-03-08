@@ -5,6 +5,7 @@ import {IHeaderMenuProps} from './HeaderMenu.types'
 import Link from 'next/link'
 import {useWindowWidth} from './hooks/useWindowWidth'
 import {MobileHeaderMenu} from './MobileHeaderMenu/MobileHeaderMenu'
+import Image from '@src/components/UI-kit/image/Image'
 
 export default function HeaderMenu({onClose}: IHeaderMenuProps) {
   const windowWidth = useWindowWidth()
@@ -140,16 +141,26 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     children: (
                       <ul className={styles.accrodeon_inner_list}>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          Однокомнатные
+                          <Image
+                            className={styles.accordeon_inner_item_image}
+                            src='/content/about/about-new.png'
+                            alt='Кронфорт'
+                            loading='lazy'
+                            fill={true}
+                            quality={10}
+                          />
+                          «Кронфорт»
                         </li>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          Двухкомнатные
-                        </li>
-                        <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          Трехкомнатные
-                        </li>
-                        <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          Четырехкомнатые
+                          <Image
+                            className={styles.accordeon_inner_item_image}
+                            src='/content/about/central-1.png'
+                            alt='Кронфорт'
+                            loading='lazy'
+                            fill={true}
+                            quality={10}
+                          />
+                          «Кронфорт. Центральный»
                         </li>
                       </ul>
                     ),

@@ -53,6 +53,24 @@
     }
   }
 
+  .phoneIcon {
+    display: none;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+
+    svg {
+      width: 24px;
+      height: 24px;
+
+      path {
+        fill: #555;
+      }
+    }
+  }
+
   .container {
     position: relative;
     display: flex;
@@ -73,24 +91,6 @@
 
     .phoneLink {
       margin-left: 40px;
-    }
-
-    .phoneIcon {
-      display: none;
-      width: 32px;
-      height: 32px;
-      align-items: center;
-      justify-content: center;
-      margin-left: auto;
-
-      svg {
-        width: 24px;
-        height: 24px;
-
-        path {
-          fill: #555;
-        }
-      }
     }
 
     .logoutButton {
@@ -427,10 +427,6 @@
 
       .phoneIcon {
         display: block;
-
-        svg path {
-          fill: #fff;
-        }
       }
 
       .toggleMenuButton {

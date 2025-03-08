@@ -88,9 +88,19 @@
   }
 
   .accordeon_inner_item {
+    display: flex;
+    align-items: center;
     padding: 10px 0;
     color: #fff;
     font-size: 20px;
+    gap: 14px;
+
+    .accordeon_inner_item_image {
+      overflow: hidden;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
 
     @include custom(0, map-get($breakpoints, lg)) {
       font-size: 14px;
