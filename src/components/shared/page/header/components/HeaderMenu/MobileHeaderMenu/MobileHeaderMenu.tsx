@@ -22,7 +22,11 @@ const MobileAccordionMain: FC<IMobileAccordionMainProps> = ({children, header}) 
   const windowWidth = useWindowWidth()
 
   return (
-    <span className={cn(styles.main_accordion_box, {[styles.main_accordion_box_active]: accordionActive})}>
+    <span
+      className={cn(styles.main_accordion_box, {
+        [styles.main_accordion_box_active]: accordionActive
+      })}
+    >
       <div className={styles.active_bg_line}></div>
       <Accordion
         animationOn={false}
@@ -58,7 +62,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
             onClick={(e: any) => {
               e.stopPropagation()
             }}
-            style={{width: '100%', zIndex: 999}}
+            style={{width: '100%', zIndex: 999, overflowY: 'auto'}}
           >
             <Accordion
               animationOn={false}
@@ -72,37 +76,37 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
                   children: (
                     <ul className={styles.accordion_mobile_list_default}>
                       <li>
-                        <Link onClick={onClose} href={'/'}>
+                        <Link onClick={onClose} href={'/odnokomnatnye'}>
                           Однокомнатные
                         </Link>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/'}>
+                        <Link onClick={onClose} href={'/dvukhkomnatnye'}>
                           Двухкомнатные
                         </Link>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/'}>
+                        <Link onClick={onClose} href={'/3-komnatnye'}>
                           Трехкомнатные
                         </Link>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/'}>
+                        <Link onClick={onClose} href={'/4-komnatnye'}>
                           Четырехкомнатые
                         </Link>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/'}>
+                        <Link onClick={onClose} href={'/lofty'}>
                           Лофты
                         </Link>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/'}>
+                        <Link onClick={onClose} href={'/planirovki-i-ceny'}>
                           Апартаменты
                         </Link>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/'}>
+                        <Link onClick={onClose} href={'/kvartiry-s-balkonom'}>
                           С балконом
                         </Link>
                       </li>
@@ -111,6 +115,51 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
                 }
               ]}
             />
+            <Link onClick={onClose} href={'/parking'}>
+              <Accordion
+                animationOn={false}
+                extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
+                leftArrow={false}
+                rightArrow={false}
+                items={[
+                  {
+                    header: 'Паркинг',
+                    children: <></>,
+                    size: 'defaultXXL'
+                  }
+                ]}
+              />
+            </Link>
+            <Link onClick={onClose} href={'/studii'}>
+              <Accordion
+                animationOn={false}
+                extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
+                leftArrow={false}
+                rightArrow={false}
+                items={[
+                  {
+                    header: 'Коммерческие помещения',
+                    children: <></>,
+                    size: 'defaultXXL'
+                  }
+                ]}
+              />
+            </Link>
+            <Link onClick={onClose} href={'/kvartiry-s-kladovoi'}>
+              <Accordion
+                animationOn={false}
+                extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
+                leftArrow={false}
+                rightArrow={false}
+                items={[
+                  {
+                    header: 'Кладовые',
+                    children: <></>,
+                    size: 'defaultXXL'
+                  }
+                ]}
+              />
+            </Link>
           </span>
         </MobileAccordionMain>
         <MobileAccordionMain header='О проекте'>

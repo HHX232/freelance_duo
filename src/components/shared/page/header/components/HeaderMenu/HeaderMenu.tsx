@@ -38,7 +38,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          <Link href={'/dvukhkomnatnye'}>Двухкомнатные</Link>
+                          <Link href={'/dvuhkomnatnye'}>Двухкомнатные</Link>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
@@ -50,6 +50,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
+                          {/* TODO: Проверить ссылку */}
                           <Link href={'/4-komnatnye'}>Четырехкомнатые</Link>
                         </li>
                         <li
