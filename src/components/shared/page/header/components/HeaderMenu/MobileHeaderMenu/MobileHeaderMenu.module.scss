@@ -46,6 +46,26 @@
   max-width: 100%;
   transition: all 0.3s;
 
+  .accordeon_inner_about {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      gap: 20px;
+
+      .accordeon_inner_item_image {
+        overflow: hidden;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+    }
+  }
+
   &_active {
     position: relative;
     transition: all 0.3s;
@@ -65,7 +85,7 @@
 }
 
 .accordion_header_active {
-  &>div:first-child {
+  & > div:first-child {
     margin-bottom: 12px;
   }
 }
@@ -89,11 +109,11 @@
   display: flex;
   flex-direction: column;
 
-  &>li {
+  & > li {
     padding: 6px 0;
     color: #fff;
 
-    &>a {
+    & > a {
       font-size: 18px !important;
       line-height: 26px;
       text-transform: none;
@@ -144,7 +164,7 @@
   margin-bottom: 54px;
   gap: 6px;
 
-  &>p {
+  & > p {
     color: #fff !important;
     font-family: $font-primary !important;
     font-size: 14px !important;
@@ -175,7 +195,6 @@
 @include custom(0, map-get($breakpoints, sm)) {
   .accordion_mobile_box {
     gap: 18px;
-
   }
 
   .container {
@@ -192,11 +211,11 @@
   }
 
   .accordion_mobile_list_default {
-    &>li>a {
+    & > li > a {
       font-size: 14px !important;
     }
 
-    &>li {
+    & > li {
       font-size: 14px !important;
     }
   }
@@ -206,7 +225,6 @@
   .mobile_text_title {
     margin-bottom: 28px;
   }
-
 }
 
 // max-height: 45px;
