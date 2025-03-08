@@ -84,7 +84,7 @@
     gap: 20px;
     grid-template-columns: 1fr 1fr;
 
-    @include custom(0, map-get($breakpoints, md)) {
+    @include custom(0, map-get($breakpoints, md) - 100px) {
       grid-template-columns: 1fr auto;
     }
 
@@ -92,7 +92,7 @@
       display: grid;
     }
 
-    @include custom(0, map-get($breakpoints, md)) {
+    @include custom(0, map-get($breakpoints, md) - 100px) {
       padding: 0 20px;
     }
 
@@ -121,7 +121,7 @@
         fill: #555;
       }
 
-      @include custom(0, map-get($breakpoints, md)) {
+      @include custom(0, map-get($breakpoints, md) - 100px) {
         display: flex;
       }
     }
@@ -133,7 +133,7 @@
       background-color: #fff;
       color: #555;
 
-      @include custom(0, map-get($breakpoints, md)) {
+      @include custom(0, map-get($breakpoints, md) - 100px) {
         display: none;
       }
     }
