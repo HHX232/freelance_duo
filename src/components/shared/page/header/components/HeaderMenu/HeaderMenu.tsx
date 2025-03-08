@@ -32,43 +32,44 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          Однокомнатные
+                          <Link href={'/odnokomnatnye'}>Однокомнатные</Link>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          Двухкомнатные
+                          <Link href={'/dvukhkomnatnye'}>Двухкомнатные</Link>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          Трехкомнатные
+                          <Link href={'/3-komnatnye'}>Трехкомнатные</Link>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          Четырехкомнатые
+                          <Link href={'/4-komnatnye'}>Четырехкомнатые</Link>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          Лофты
+                          <Link href={'/lofty'}>Лофты</Link>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          Апартаменты
+                          {/* TODO: Проверить ссылку */}
+                          <Link href={'/planirovki-i-ceny'}>Апартаменты</Link>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          С балконом
+                          <Link href={'/kvartiry-s-balkonom'}>С балконом</Link>
                         </li>
                       </ul>
                     ),
@@ -76,7 +77,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   }
                 ]}
               />
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/parking'}>
                 <Accordion
                   animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
@@ -91,7 +92,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              {/* TODO: Проверить ссылку */}
+              <Link onClick={onClose} href={'/studii'}>
                 <Accordion
                   animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
@@ -106,7 +108,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/kvartiry-s-kladovoi'}>
                 <Accordion
                   animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
@@ -141,26 +143,30 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     children: (
                       <ul className={styles.accrodeon_inner_list}>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          <Image
-                            className={styles.accordeon_inner_item_image}
-                            src='/content/about/about-new.png'
-                            alt='Кронфорт'
-                            loading='lazy'
-                            fill={true}
-                            quality={10}
-                          />
-                          «Кронфорт»
+                          <Link href={'/o-proekte'}>
+                            <Image
+                              className={styles.accordeon_inner_item_image}
+                              src='/content/about/about-new.png'
+                              alt='Кронфорт'
+                              loading='lazy'
+                              fill={true}
+                              quality={10}
+                            />
+                            «Кронфорт»
+                          </Link>
                         </li>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          <Image
-                            className={styles.accordeon_inner_item_image}
-                            src='/content/about/central-1.png'
-                            alt='Кронфорт'
-                            loading='lazy'
-                            fill={true}
-                            quality={10}
-                          />
-                          «Кронфорт. Центральный»
+                          <Link href={'/tsentralnyi'}>
+                            <Image
+                              className={styles.accordeon_inner_item_image}
+                              src='/content/about/central-1.png'
+                              alt='Кронфорт'
+                              loading='lazy'
+                              fill={true}
+                              quality={10}
+                            />
+                            «Кронфорт. Центральный»
+                          </Link>
                         </li>
                       </ul>
                     ),
@@ -169,7 +175,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   }
                 ]}
               />
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/raspolozhenie'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -185,7 +191,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/infrastruktura'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -201,7 +207,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/blagoustroistvo'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -217,7 +223,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/otdelka'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -233,7 +239,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/gallery'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -249,7 +255,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/news'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -265,7 +271,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/stocks'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -290,7 +296,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               style={{paddingTop: '13px', maxHeight: '680px', overflowY: 'scroll'}}
               className={`${styles.item_inner} ${styles.item_inner_default}`}
             >
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/alkor'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -308,7 +314,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              {/* TODO: Проверить ссылку */}
+              <Link onClick={onClose} href={'/plan-razvitiya'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -336,26 +343,18 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     header: 'Способы покупки',
                     children: (
                       <ul className={styles.accrodeon_inner_list}>
+                        {/* TODO: Проверить ссылки */}
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          Однокомнатные
+                          <Link href={'/payment-methods'}>Ипотека</Link>
                         </li>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          Двухкомнатные
+                          <Link href={'/payment-methods'}>Рассрочка</Link>
                         </li>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          Трехкомнатные
+                          <Link href={'/payment-methods'}>100% оплата</Link>
                         </li>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          Четырехкомнатые
-                        </li>
-                        <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          Лофты
-                        </li>
-                        <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          Апартаменты
-                        </li>
-                        <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          С балконом
+                          <Link href={'/payment-methods'}>Trade In</Link>
                         </li>
                       </ul>
                     ),
@@ -365,7 +364,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                 ]}
               />
 
-              <Link onClick={onClose} href={'/'}>
+              {/* TODO: Проверить ссылки */}
+              <Link onClick={onClose} href={'/ipotechniy-kalkulator'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -381,7 +381,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/investicii'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -397,7 +397,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/docs'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -413,7 +413,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/contacts'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -429,7 +429,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/faq'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
