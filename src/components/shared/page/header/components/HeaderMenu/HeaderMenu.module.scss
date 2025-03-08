@@ -40,7 +40,7 @@
     width: 100%;
     max-width: 470px;
 
-    @include custom(0, map-get($breakpoints, xxl) + 100px) {
+    @include custom(0, map-get($breakpoints, xxxl) - 20px) {
       max-width: 380px;
     }
 
