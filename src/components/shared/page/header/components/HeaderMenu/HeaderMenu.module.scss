@@ -83,6 +83,9 @@
     flex-direction: column;
 
     &_default {
+      padding-top: 6px;
+      gap: 6px;
+
       @include custom(0, map-get($breakpoints, lg)) {
         padding-top: 6px !important;
         gap: 2px;
