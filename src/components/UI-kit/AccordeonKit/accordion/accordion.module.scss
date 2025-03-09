@@ -63,11 +63,11 @@
 }
 
 .content {
-  overflow: hidden;
   width: 100%;
   max-height: 0;
   margin-top: 10px;
   opacity: 0;
+  overflow-y: auto;
 }
 
 .arrow_right {
@@ -156,6 +156,8 @@
 }
 
 .open {
+  padding-bottom: 24px;
+
   .arrow {
     transform: rotate(-180deg); // Поворот стрелки
   }
