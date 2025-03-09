@@ -101,7 +101,6 @@ export default function Header({dark, dashboard}: IHeaderProps) {
             isMenuOpened={isMenuOpened}
           />
         </div>
-
         {isLK && (
           <>
             {token ? (
