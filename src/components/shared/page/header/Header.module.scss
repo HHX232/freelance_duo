@@ -27,7 +27,16 @@
 
       .toggleMenuButton {
         margin-right: -10px;
-        margin-left: 38px;
+        margin-left: 37px;
+
+        @include custom(0, map-get($breakpoints, xxxl) - 100px) {
+          margin-right: 0;
+          margin-left: 49px;
+        }
+
+        @include custom(0, map-get($breakpoints, xl) - 100px) {
+          margin-right: -10px;
+        }
 
         svg {
           width: 23px;
@@ -207,22 +216,30 @@
       transform 0.6s ease-in-out,
       opacity 0.2s ease-in-out;
 
+    @include custom(0, map-get($breakpoints, xl) - 100px) {
+      padding-top: 71px;
+    }
+
+    @include custom(0, map-get($breakpoints, lg) - 100px) {
+      padding-top: 144px;
+    }
+
     .headerMenuBottom {
-      position: absolute;
+      position: relative;
       bottom: 96px;
       left: 0;
       width: 100%;
       height: fit-content;
       transform: translateY(100%);
 
-      @include custom(0, map-get($breakpoints, xl)) {
+      @include custom(0, map-get($breakpoints, xl) - 100px) {
         bottom: 144px;
       }
     }
   }
 }
 
-@include custom(0, map-get($breakpoints, xl) - 20px) {
+@include custom(0, map-get($breakpoints, xl) - 100px) {
   .header {
     height: 86px;
     padding-right: 28px;
@@ -274,7 +291,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, lg) - 20px) {
+@include custom(0, map-get($breakpoints, lg) - 100px) {
   .header {
     height: 68px;
 
@@ -291,10 +308,6 @@
             height: 20px;
           }
         }
-      }
-
-      .menu {
-        padding-top: 144px;
       }
 
       .mobileMenu {
@@ -328,7 +341,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, md) - 20px) {
+@include custom(0, map-get($breakpoints, md) - 100px) {
   .header {
     padding: 0 12px !important;
 
@@ -372,7 +385,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, sm) - 20px) {
+@include custom(0, map-get($breakpoints, sm) - 100px) {
   .header {
     &.menuOpened {
       .container {
@@ -445,7 +458,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, xs) - 20px) {
+@include custom(0, map-get($breakpoints, xs) - 100px) {
   header.header .container {
     padding-right: 0 !important;
   }

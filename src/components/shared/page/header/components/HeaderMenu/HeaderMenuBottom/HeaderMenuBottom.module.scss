@@ -11,33 +11,34 @@
     bottom: 40px;
     display: flex;
     flex-direction: column;
-    padding: 12px 10px;
+    padding: 12px 8px;
     border: 1px solid #fff;
     border-radius: 100px;
     gap: 6px;
 
-    @include custom(0, map-get($breakpoints, xxl)) {
+    @include custom(0, map-get($breakpoints, xxxl) - 100px) {
       right: 36px;
       bottom: 94px;
     }
 
-    @include custom(0, map-get($breakpoints, xl)) {
+    @include custom(0, map-get($breakpoints, xxl) - 100px) {
       right: 30px;
       bottom: 30px;
     }
 
-    @include custom(0, map-get($breakpoints, lg)) {
+    @include custom(0, map-get($breakpoints, xl) - 100px) {
       right: auto;
-      bottom: 180px;
+      bottom: 107px;
       left: 30px;
-      padding: 18px;
+      padding: 14px;
+      gap: 10px;
     }
 
     @include custom(0, 900px) {
       display: none;
     }
 
-    .link {
+    .contactLink {
       width: 32px;
       height: 32px;
       padding: 4px;
@@ -52,17 +53,17 @@
     width: 58px;
     height: 58px;
 
-    @include custom(0, map-get($breakpoints, xxl)) {
+    @include custom(0, map-get($breakpoints, xxl) - 100px) {
       bottom: 102px;
     }
 
-    @include custom(0, map-get($breakpoints, xl)) {
+    @include custom(0, map-get($breakpoints, xxl) - 100px) {
       bottom: 30px;
       left: 30px;
     }
 
-    @include custom(0, map-get($breakpoints, lg)) {
-      bottom: 110px;
+    @include custom(0, map-get($breakpoints, xl) - 100px) {
+      bottom: 37px;
       left: 30px;
     }
 
@@ -74,12 +75,11 @@
   .buttons {
     position: absolute;
     z-index: 1;
-    bottom: 40px;
+    bottom: 36px;
     left: 0;
     display: none;
     width: 100%;
     height: fit-content;
-    padding: auto;
     padding: 0 36px;
     gap: 20px;
     grid-template-columns: 1fr 1fr;
