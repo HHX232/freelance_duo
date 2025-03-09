@@ -37,6 +37,16 @@ export default function RootLayout({
 
         {/* Предзагрузка изображения для оптимизации LCP */}
         <link rel='preload' href='/map/compass-loader.svg' as='image' type='image/svg+xml' />
+      </head>
+      <body>
+        {/* Ваш основной контент */}
+        <RootStyleRegistry>
+          <Main>{children}</Main>
+          <Widget color='korichneviy' style={{zIndex: 3}} />
+          <Jivo />
+        </RootStyleRegistry>
+
+        {/* Вставка скриптов здесь */}
         <script type='text/javascript' async src='//smartcallback.ru/api/SmartCallBack.js?t=zc2ZQ6WuzUWcsEZCNMpY' />
         <script
           dangerouslySetInnerHTML={{
@@ -53,16 +63,6 @@ export default function RootLayout({
             `
           }}
         />
-      </head>
-      <body>
-        {/* Ваш основной контент */}
-        <RootStyleRegistry>
-          <Main>{children}</Main>
-          <Widget color='korichneviy' style={{zIndex: 3}} />
-          <Jivo />
-        </RootStyleRegistry>
-
-        {/* Вставка скриптов здесь */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
