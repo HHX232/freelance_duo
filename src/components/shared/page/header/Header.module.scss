@@ -279,10 +279,11 @@
     height: 68px;
 
     &.menuOpened {
-      padding: 0 38px 0 20px;
+      padding: 0 40px 0 20px;
 
       .container {
         .toggleMenuButton {
+          margin-right: 0;
           margin-left: 42px;
 
           svg {
