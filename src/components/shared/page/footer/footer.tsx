@@ -12,6 +12,8 @@ import FooterContacts from './components/FooterContacts/FooterContacts'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {Backcall} from '@shared/back-call-popup/backcall'
 import ScrollOnTopButton from '@src/components/UI-kit/buttons/ScrollOnTopButton/ScrollOnTopButton'
+import Accordion from '@src/components/UI-kit/AccordeonKit/accordion/Accordion'
+import Link from 'next/link'
 
 const PRIMARY_LINKS: IFooterNavigationLinksGroup[] = [
   {
@@ -56,20 +58,50 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
       </p>
     ),
     links: [
-      // {
-      //   name: (
-      //     <Accordion
-      //       items={[
-      //         {header: 'Квартиры', children: 'Квартиры'},
-      //         {header: 'Комнаты', children: 'Комнаты'}
-      //       ]}
-      //     />
-      //   ),
-      // TODO если строка пустая то делаем не ссылку а div
-      //   href: ''
-      // },
-      {name: 'Кладовые', href: '#link'},
-      {name: 'Паркинг', href: '#link'}
+      {
+        name: (
+          <>
+            <Accordion
+              items={[
+                {
+                  header: 'Квартиры',
+                  children: (
+                    <ul className={styles.accrodeon_inner_list}>
+                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                        <Link href={'/odnokomnatnye'}>Однокомнатные</Link>
+                      </li>
+                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                        <Link href={'/dvuhkomnatnye'}>Двухкомнатные</Link>
+                      </li>
+                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                        <Link href={'/3-komnatnye'}>Трехкомнатные</Link>
+                      </li>
+                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                        {/* TODO: Проверить ссылку */}
+                        <Link href={'/4-komnatnye'}>Четырехкомнатые</Link>
+                      </li>
+                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                        <Link href={'/lofty'}>Лофты</Link>
+                      </li>
+                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                        {/* TODO: Проверить ссылку */}
+                        <Link href={'/planirovki-i-ceny'}>Апартаменты</Link>
+                      </li>
+                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                        <Link href={'/kvartiry-s-balkonom'}>С балконом</Link>
+                      </li>
+                    </ul>
+                  ),
+                  size: 'defaultXXL'
+                }
+              ]}
+            />
+            <Accordion items={[{header: 'Паркинг', children: <></>, size: 'defaultXXL'}]} />
+            <Accordion items={[{header: 'Коммерческие помещения', children: <></>, size: 'defaultXXL'}]} />
+            <Accordion items={[{header: 'Кладовые', children: <></>, size: 'defaultXXL'}]} />
+          </>
+        )
+      }
     ]
   },
   {

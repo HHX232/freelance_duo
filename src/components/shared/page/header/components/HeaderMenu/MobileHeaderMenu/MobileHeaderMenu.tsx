@@ -17,7 +17,7 @@ interface IMobileAccordionMainProps {
   children: React.ReactNode
 }
 
-const MobileAccordionMain: FC<IMobileAccordionMainProps> = ({children, header}) => {
+export const MobileAccordionMain: FC<IMobileAccordionMainProps> = ({children, header}) => {
   const [accordionActive, setAccordionActive] = useState(false)
 
   const windowWidth = useWindowWidth()

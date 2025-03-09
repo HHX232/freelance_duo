@@ -15,17 +15,25 @@ export default function MobileFooterNavigation(props: IMobileFooterNavigationPro
         size: 'accentMedium',
         children: (
           //TODO добавить модуль стилей вместо inline
-          <ul style={{gap: '10px', display: 'flex', flexDirection: 'column'}} key={groupIndex}>
+          <div
+            className={styles.links}
+            style={{gap: '10px', display: 'flex', flexDirection: 'column'}}
+            key={groupIndex}
+          >
             {group.links.map((link: IFooterNavigationLink, linkIndex: number) => {
               return (
-                <li key={linkIndex}>
-                  <Link style={{fontSize: '14px'}} href={link.href}>
-                    {link.name}
-                  </Link>
-                </li>
+                <div className={styles.link} key={linkIndex}>
+                  {link.href ? (
+                    <Link style={{fontSize: '14px'}} href={link.href}>
+                      {link.name}
+                    </Link>
+                  ) : (
+                    link.name
+                  )}
+                </div>
               )
             })}
-          </ul>
+          </div>
         )
       }
     }
