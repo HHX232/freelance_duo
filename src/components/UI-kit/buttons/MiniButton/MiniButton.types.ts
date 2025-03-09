@@ -1,4 +1,4 @@
-type TFullButton = 'Link' | 'Button'
+type TMiniButton = 'Link' | 'Button'
 type TBorderColor =
   | 'none'
   | 'orange-light'
@@ -27,7 +27,7 @@ type TButtonFill =
   | 'white'
 type TButtonElementColor = 'white' | 'black' | 'orange' | 'blue'
 type TButtonBorderRadius = '0' | '6px' | '12px' | 'circle'
-
+type backgroundOpacity = 'visible' | 'hidden' | 'inherit' | '8' | '16' | '24' | '32' | '40' | '48'
 interface IArrowProps {
   arrowExtraClass?: string
   arrowColor?: string
@@ -36,8 +36,8 @@ interface IArrowProps {
   arrowStrokeWidth?: string
   arrowExtraStyles?: React.CSSProperties
 }
-export interface IFullButtonProps extends IArrowProps {
-  type?: TFullButton
+export interface IMiniButtonProps extends IArrowProps {
+  type?: TMiniButton
   border: boolean
   borderColor?: TBorderColor | string
   borderWidth?: TBorderWidth
@@ -48,7 +48,7 @@ export interface IFullButtonProps extends IArrowProps {
   onClick?: () => void
   disabled?: boolean
   href?: string
-  buttonText: string | React.ReactNode
-  extraClass?: React.CSSProperties
-  containArrow?: boolean
+  extraStyle?: React.CSSProperties
+  backgroundOpacity?: backgroundOpacity
+  extraClass?:string
 }

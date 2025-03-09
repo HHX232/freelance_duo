@@ -14,7 +14,7 @@ export const FullButton: FC<IFullButtonProps> = ({
   buttonFill = 'none',
   buttonElementColor = 'black',
   animationOn = false,
-  butronBorderRadius = '0',
+  buttonBorderRadius = '0',
   disabled = false,
   href = '/',
   onClick,
@@ -41,7 +41,7 @@ export const FullButton: FC<IFullButtonProps> = ({
           [styles[`button-fill-${buttonFill}`]]: buttonFill,
           [styles[`button-element-color-${buttonElementColor}`]]: buttonElementColor,
           [styles.animationOn]: animationOn,
-          [styles[`butron-border-radius-${butronBorderRadius}`]]: butronBorderRadius
+          [styles[`butron-border-radius-${buttonBorderRadius}`]]: buttonBorderRadius
         },
         extraClass
       )}
@@ -83,7 +83,7 @@ export const FullButton: FC<IFullButtonProps> = ({
           [styles[`button-fill-${buttonFill}`]]: buttonFill,
           [styles[`button-element-color-${buttonElementColor}`]]: buttonElementColor,
           [styles.animationOn]: animationOn,
-          [styles[`butron-border-radius-${butronBorderRadius}`]]: butronBorderRadius
+          [styles[`butron-border-radius-${buttonBorderRadius}`]]: buttonBorderRadius
         },
         extraClass
       )}

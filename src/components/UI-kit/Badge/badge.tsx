@@ -4,6 +4,7 @@ import {FC} from 'react'
 import cn from 'clsx'
 
 type TPlacement = 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end'
+type TBadgeSize = 'small' | 'medium' | 'big'
 interface IBadget {
   children?: React.ReactNode
   content: string | number
@@ -11,6 +12,7 @@ interface IBadget {
   overlap?: 'circular'
   withBorder?: boolean
   extraClassName?: string
+  badgeSize?: TBadgeSize
 }
 export function BadgeDefault({children, content, placement, overlap, withBorder, extraClassName}: IBadget) {
   return (
@@ -34,6 +36,7 @@ interface IBadge {
   extraClassName?: string
   extraBackground?: string
   type?: TBadgeType
+  badgeSize?: TBadgeSize
 }
 
 // !Пример реализации
@@ -44,11 +47,24 @@ interface IBadge {
       </div> */
 }
 
-const Badge: FC<IBadge> = ({value, placement = 'top-end', extraClassName, extraBackground, type}) => {
+const Badge: FC<IBadge> = ({
+  value,
+  placement = 'top-end',
+  extraClassName,
+  extraBackground,
+  type,
+  badgeSize = 'medium'
+}) => {
   return (
     <span
       style={{background: extraBackground}}
-      className={cn(styles.badge, styles[`badge_${placement}`], styles[`badge_${type}`], extraClassName)}
+      className={cn(
+        styles.badge,
+        styles[`badge_${placement}`],
+        styles[`badge_${type}`],
+        styles[`badge_${badgeSize}`],
+        extraClassName
+      )}
     >
       {value}
     </span>

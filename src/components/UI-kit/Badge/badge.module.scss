@@ -1,8 +1,6 @@
 .badge {
    position: absolute;
    display: flex;
-   width: 20px;
-   height: 20px;
    align-items: center;
    justify-content: center;
    padding: 6px 4px 5px;
@@ -14,6 +12,21 @@
    font-size: 12px;
    font-weight: 500;
    line-height: 14px
+}
+
+.badge_small {
+   width: 16px;
+   height: 16px;
+}
+
+.badge_medium {
+   width: 20px;
+   height: 20px;
+}
+
+.badge_big {
+   width: 24px;
+   height: 24px;
 }
 
 .badge_top-end {
