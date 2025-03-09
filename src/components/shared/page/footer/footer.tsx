@@ -66,31 +66,31 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
                 {
                   header: 'Квартиры',
                   children: (
-                    <ul className={styles.accrodeon_inner_list}>
-                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                    <div className={styles.accrodeon_inner_list}>
+                      <div className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
                         <Link href={'/odnokomnatnye'}>Однокомнатные</Link>
-                      </li>
-                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                      </div>
+                      <div className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
                         <Link href={'/dvuhkomnatnye'}>Двухкомнатные</Link>
-                      </li>
-                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                      </div>
+                      <div className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
                         <Link href={'/3-komnatnye'}>Трехкомнатные</Link>
-                      </li>
-                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                      </div>
+                      <div className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
                         {/* TODO: Проверить ссылку */}
                         <Link href={'/4-komnatnye'}>Четырехкомнатые</Link>
-                      </li>
-                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                      </div>
+                      <div className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
                         <Link href={'/lofty'}>Лофты</Link>
-                      </li>
-                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                      </div>
+                      <div className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
                         {/* TODO: Проверить ссылку */}
                         <Link href={'/planirovki-i-ceny'}>Апартаменты</Link>
-                      </li>
-                      <li className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
+                      </div>
+                      <div className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}>
                         <Link href={'/kvartiry-s-balkonom'}>С балконом</Link>
-                      </li>
-                    </ul>
+                      </div>
+                    </div>
                   ),
                   size: 'defaultXXL'
                 }

@@ -25,29 +25,29 @@ export default function MobileFooterNavigation() {
                   size: 'accentSmall',
                   font: 'romul',
                   children: (
-                    <ul className={styles.accordion_mobile_list_default}>
-                      <li>
+                    <div className={styles.accordion_mobile_list_default}>
+                      <div>
                         <Link href={'/odnokomnatnye'}>Однокомнатные</Link>
-                      </li>
-                      <li>
+                      </div>
+                      <div>
                         <Link href={'/dvukhkomnatnye'}>Двухкомнатные</Link>
-                      </li>
-                      <li>
+                      </div>
+                      <div>
                         <Link href={'/3-komnatnye'}>Трехкомнатные</Link>
-                      </li>
-                      <li>
+                      </div>
+                      <div>
                         <Link href={'/4-komnatnye'}>Четырехкомнатые</Link>
-                      </li>
-                      <li>
+                      </div>
+                      <div>
                         <Link href={'/lofty'}>Лофты</Link>
-                      </li>
-                      <li>
+                      </div>
+                      <div>
                         <Link href={'/planirovki-i-ceny'}>Апартаменты</Link>
-                      </li>
-                      <li>
+                      </div>
+                      <div>
                         <Link href={'/kvartiry-s-balkonom'}>С балконом</Link>
-                      </li>
-                    </ul>
+                      </div>
+                    </div>
                   )
                 }
               ]}
@@ -120,8 +120,8 @@ export default function MobileFooterNavigation() {
                       header: 'О проекте',
 
                       children: (
-                        <ul className={styles.accordeon_inner_about}>
-                          <li>
+                        <div className={styles.accordeon_inner_about}>
+                          <div>
                             <Link href={'/o-proekte'}>
                               <Image
                                 className={styles.accordeon_inner_item_image}
@@ -133,8 +133,8 @@ export default function MobileFooterNavigation() {
                               />
                               «Кронфорт»
                             </Link>
-                          </li>
-                          <li>
+                          </div>
+                          <div>
                             <Link href={'/tsentralnyi'}>
                               <Image
                                 className={styles.accordeon_inner_item_image}
@@ -146,8 +146,8 @@ export default function MobileFooterNavigation() {
                               />
                               «Кронфорт. Центральный»
                             </Link>
-                          </li>
-                        </ul>
+                          </div>
+                        </div>
                       ),
                       size: 'defaultXL',
                       color: 'white'
@@ -326,21 +326,21 @@ export default function MobileFooterNavigation() {
                   {
                     header: 'Способы покупки',
                     children: (
-                      <ul className={styles.accrodeon_inner_list}>
+                      <div className={styles.accrodeon_inner_list}>
                         {/* TODO: Проверить ссылки */}
-                        <li>
+                        <div>
                           <Link href={'/payment-methods'}>Ипотека</Link>
-                        </li>
-                        <li>
+                        </div>
+                        <div>
                           <Link href={'/payment-methods'}>Рассрочка</Link>
-                        </li>
-                        <li>
+                        </div>
+                        <div>
                           <Link href={'/payment-methods'}>100% оплата</Link>
-                        </li>
-                        <li>
+                        </div>
+                        <div>
                           <Link href={'/payment-methods'}>Trade In</Link>
-                        </li>
-                      </ul>
+                        </div>
+                      </div>
                     ),
                     size: 'defaultXL',
                     color: 'white'
