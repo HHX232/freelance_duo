@@ -82,7 +82,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
                         </Link>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/dvukhkomnatnye'}>
+                        <Link onClick={onClose} href={'/dvuhkomnatnye'}>
                           Двухкомнатные
                         </Link>
                       </li>
