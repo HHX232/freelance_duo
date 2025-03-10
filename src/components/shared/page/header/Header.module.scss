@@ -228,6 +228,11 @@
       left: 0;
       width: 100%;
       height: fit-content;
+      transform: translateY(100%);
+
+      @include custom(0, map-get($breakpoints, xl) - 1px) {
+        bottom: 144px;
+      }
     }
   }
 }
