@@ -6,7 +6,6 @@ import {IStockItemProps} from '@shared/stock-item/types'
 import {FC, useEffect, useState} from 'react'
 import ArrowUpIcon from '@icons/arrow_up.svg'
 
-import React from 'react'
 import {useWindowWidth} from '@shared/page/header/components/HeaderMenu/hooks/useWindowWidth'
 
 const MOCK_DATA: IStockItemProps[] = [
@@ -70,6 +69,7 @@ export const StocksOther: FC<IStocksOtherProps> = ({data = MOCK_DATA, className}
           if (index >= dataLength) return null
 
           return (
+            // eslint-disable-next-line react/jsx-key
             <div className={s.card_wrapper}>
               <StockItem key={`stock-item-${index}`} {...item} />
             </div>

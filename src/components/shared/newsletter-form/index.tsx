@@ -8,9 +8,9 @@ export const NewsletterForm = () => {
       <section className={styles['contact-form-wrapper']}>
         <div className={styles['info']}>
           <div className={styles.wrapper}>
-            <h3 className={styles.title}>Подпишитесь на рассылку</h3>
+            <h3 className={styles.title}>Подпишитесь на рассылку</h3>
             <p className={styles.description}>
-              Подпишитесь, чтобы получать информацию о самых свежих и актуальных акциях ЖК «Северная Долина»
+              Подпишитесь, чтобы получать информацию о самых свежих и актуальных акциях ЖК «Северная Долина»
             </p>
             <form>
               <div className={styles['input-wrapper']}>

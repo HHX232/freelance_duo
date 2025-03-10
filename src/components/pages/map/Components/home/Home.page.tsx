@@ -32,6 +32,7 @@ const HomePage = () => {
           {slidesSubTitles.map((_, index) => {
             if (index !== selectedIndex) return null
 
+            // eslint-disable-next-line react/jsx-key
             return <p className={`${styles.description}`}>{slidesSubTitles[selectedIndex]}</p>
           })}
         </div>

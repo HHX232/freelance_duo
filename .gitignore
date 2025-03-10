@@ -38,5 +38,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# sitemap
+/public/sitemap.xml
+
 /.idea
 *~
