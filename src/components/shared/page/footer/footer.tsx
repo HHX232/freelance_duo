@@ -12,6 +12,9 @@ import FooterContacts from './components/FooterContacts/FooterContacts'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {Backcall} from '@shared/back-call-popup/backcall'
 import ScrollOnTopButton from '@src/components/UI-kit/buttons/ScrollOnTopButton/ScrollOnTopButton'
+import Accordion from '@src/components/UI-kit/AccordeonKit/accordion/Accordion'
+import Link from 'next/link'
+import Image from '@src/components/UI-kit/image/Image'
 
 const PRIMARY_LINKS: IFooterNavigationLinksGroup[] = [
   {
@@ -56,20 +59,77 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
       </p>
     ),
     links: [
-      // {
-      //   name: (
-      //     <Accordion
-      //       items={[
-      //         {header: 'Квартиры', children: 'Квартиры'},
-      //         {header: 'Комнаты', children: 'Комнаты'}
-      //       ]}
-      //     />
-      //   ),
-      // TODO если строка пустая то делаем не ссылку а div
-      //   href: ''
-      // },
-      {name: 'Кладовые', href: '#link'},
-      {name: 'Паркинг', href: '#link'}
+      {
+        name: (
+          <Accordion
+            animationOn={false}
+            leftArrow={false}
+            items={[
+              {
+                header: 'Квартиры',
+                children: (
+                  <>
+                    <div>
+                      <Link href={'/odnokomnatnye'}>Однокомнатные</Link>
+                    </div>
+                    <div>
+                      <Link href={'/dvuhkomnatnye'}>Двухкомнатные</Link>
+                    </div>
+                    <div>
+                      <Link href={'/3-komnatnye'}>Трехкомнатные</Link>
+                    </div>
+                    <div>
+                      <Link href={'/4-komnatnye'}>Четырехкомнатые</Link>
+                    </div>
+                    <div>
+                      <Link href={'/lofty'}>Лофты</Link>
+                    </div>
+                    <div>
+                      <Link href={'/planirovki-i-ceny'}>Апартаменты</Link>
+                    </div>
+                    <div>
+                      <Link href={'/kvartiry-s-balkonom'}>С балконом</Link>
+                    </div>
+                  </>
+                )
+              }
+            ]}
+          />
+        )
+      },
+      {
+        name: (
+          <Accordion
+            animationOn={false}
+            leftArrow={false}
+            rightArrow={false}
+            items={[{header: 'Паркинг', children: <></>, size: 'defaultXXL'}]}
+          />
+        ),
+        href: '/parking'
+      },
+      {
+        name: (
+          <Accordion
+            animationOn={false}
+            leftArrow={false}
+            rightArrow={false}
+            items={[{header: 'Коммерческие помещения', children: <></>, size: 'defaultXXL'}]}
+          />
+        ),
+        href: '/studii'
+      },
+      {
+        name: (
+          <Accordion
+            animationOn={false}
+            leftArrow={false}
+            rightArrow={false}
+            items={[{header: 'Кладовые', children: <></>, size: 'defaultXXL'}]}
+          />
+        ),
+        href: '/kvartiry-s-kladovoi'
+      }
     ]
   },
   {
@@ -80,13 +140,61 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
       </p>
     ),
     links: [
-      {name: 'О проекте', href: '/about'},
+      {
+        name: (
+          <Accordion
+            animationOn={false}
+            leftArrow={false}
+            extraClass={styles.accordion_extra}
+            arrowSize='medium'
+            arrowColor='#fff'
+            items={[
+              {
+                header: 'О проекте',
+                children: (
+                  <>
+                    <div className={styles.accordeon_inner_item}>
+                      <Link href={'/o-proekte'}>
+                        <Image
+                          className={styles.accordeon_inner_item_image}
+                          src='/content/about/about-new.png'
+                          alt='Кронфорт'
+                          loading='lazy'
+                          fill={true}
+                          quality={10}
+                        />
+                        «Кронфорт»
+                      </Link>
+                    </div>
+                    <div className={styles.accordeon_inner_item}>
+                      <Link href={'/tsentralnyi'}>
+                        <Image
+                          className={styles.accordeon_inner_item_image}
+                          src='/content/about/central-1.png'
+                          alt='Кронфорт'
+                          loading='lazy'
+                          fill={true}
+                          quality={10}
+                        />
+                        «Кронфорт. Центральный»
+                      </Link>
+                    </div>
+                  </>
+                ),
+                size: 'defaultXL',
+                color: 'white'
+              }
+            ]}
+          />
+        )
+      },
       {name: 'Расположежие', href: '/locatio'},
       {name: 'Инфраструктура', href: '/infrastructure'},
       {name: 'Благоустройство', href: '/landscaping'},
-      {name: 'Архитектура', href: '/architecture'},
       {name: 'Виды отделки', href: '/finishes'},
-      {name: 'Новости', href: '/news'}
+      {name: 'Ход строительства', href: '/gallery'},
+      {name: 'Новости', href: '/news'},
+      {name: 'Акции', href: '/stocks'}
     ]
   },
   {
@@ -97,12 +205,47 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
       </p>
     ),
     links: [
-      {name: 'О застройщике', href: '#link'},
-      {name: 'Способы покупки', href: '#link'},
-      {name: 'Ход строительства', href: '#link'},
-      {name: 'Документы', href: '#link'},
-      {name: 'Контакты', href: '#link'},
-      {name: 'Служба доверия', href: '#link'}
+      {name: 'О застройщике', href: '/alkor'},
+      {name: 'План развития', href: '/plan-razvitiya'},
+      {
+        name: (
+          <Accordion
+            animationOn={false}
+            leftArrow={false}
+            extraClass={styles.accordion_extra}
+            arrowSize='medium'
+            arrowColor='#fff'
+            items={[
+              {
+                header: 'Способы покупки',
+                children: (
+                  <>
+                    <div className={styles.accordeon_inner_item}>
+                      <Link href={'/payment-methods'}>Ипотека</Link>
+                    </div>
+                    <div className={styles.accordeon_inner_item}>
+                      <Link href={'/payment-methods'}>Рассрочка</Link>
+                    </div>
+                    <div className={styles.accordeon_inner_item}>
+                      <Link href={'/payment-methods'}>100% оплата</Link>
+                    </div>
+                    <div className={styles.accordeon_inner_item}>
+                      <Link href={'/payment-methods'}>Trade In</Link>
+                    </div>
+                  </>
+                ),
+                size: 'defaultXL',
+                color: 'white'
+              }
+            ]}
+          />
+        )
+      },
+      {name: 'Ипотечный калькулятор', href: '/ipotechniy-kalkulator'},
+      {name: 'Инвестиции', href: '/investicii'},
+      {name: 'Документы', href: '/docs'},
+      {name: 'Контакты', href: '/contacts'},
+      {name: 'FAQ', href: '/faq'}
     ]
   }
 ]
