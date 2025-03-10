@@ -7,8 +7,8 @@
   .contacts {
     position: absolute;
     z-index: 2;
-    right: 40px;
-    bottom: 40px;
+    right: 36px;
+    bottom: 30px;
     display: flex;
     flex-direction: column;
     padding: 12px 8px;
@@ -16,17 +16,12 @@
     border-radius: 100px;
     gap: 6px;
 
-    @include custom(0, map-get($breakpoints, xxxl) - 100px) {
-      right: 36px;
-      bottom: 94px;
-    }
-
-    @include custom(0, map-get($breakpoints, xxl) - 100px) {
+    @include custom(0, map-get($breakpoints, xxl) - 1px) {
       right: 30px;
       bottom: 30px;
     }
 
-    @include custom(0, map-get($breakpoints, xl) - 100px) {
+    @include custom(0, map-get($breakpoints, xl) - 1px) {
       right: auto;
       bottom: 107px;
       left: 30px;
@@ -48,21 +43,22 @@
   .settingButton {
     position: absolute;
     z-index: 1;
-    bottom: 40px;
+    bottom: 30px;
     left: 40px;
     width: 58px;
     height: 58px;
 
-    @include custom(0, map-get($breakpoints, xxl) - 100px) {
-      bottom: 102px;
+    @include custom(0, map-get($breakpoints, xxxl) - 1px) {
+      bottom: 40px;
+      left: 40px;
     }
 
-    @include custom(0, map-get($breakpoints, xxl) - 100px) {
+    @include custom(0, map-get($breakpoints, xxl) - 1px) {
       bottom: 30px;
       left: 30px;
     }
 
-    @include custom(0, map-get($breakpoints, xl) - 100px) {
+    @include custom(0, map-get($breakpoints, xl) - 1px) {
       bottom: 37px;
       left: 30px;
     }
@@ -84,7 +80,7 @@
     gap: 20px;
     grid-template-columns: 1fr 1fr;
 
-    @include custom(0, map-get($breakpoints, md) - 100px) {
+    @include custom(0, map-get($breakpoints, md) - 1px) {
       grid-template-columns: 1fr auto;
     }
 
@@ -92,7 +88,7 @@
       display: grid;
     }
 
-    @include custom(0, map-get($breakpoints, md) - 100px) {
+    @include custom(0, map-get($breakpoints, md) - 1px) {
       padding: 0 20px;
     }
 
@@ -121,7 +117,7 @@
         fill: #555;
       }
 
-      @include custom(0, map-get($breakpoints, md) - 100px) {
+      @include custom(0, map-get($breakpoints, md) - 1px) {
         display: flex;
       }
     }
@@ -136,7 +132,7 @@
       line-height: 24px;
       text-transform: uppercase;
 
-      @include custom(0, map-get($breakpoints, md) - 100px) {
+      @include custom(0, map-get($breakpoints, md) - 1px) {
         display: none;
       }
     }

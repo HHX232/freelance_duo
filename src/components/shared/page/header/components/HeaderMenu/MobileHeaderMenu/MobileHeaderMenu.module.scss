@@ -13,7 +13,7 @@
     padding-right: 20px;
     padding-left: 20px;
 
-    @include custom(0, map-get($breakpoints, md) - 20px) {
+    @include custom(0, map-get($breakpoints, md) - 1px) {
       padding-right: 0;
       padding-left: 0;
     }
@@ -85,7 +85,7 @@
 }
 
 .accordion_header_active {
-  &>div:first-child {
+  & > div:first-child {
     margin-bottom: 12px;
   }
 }
@@ -109,11 +109,11 @@
   display: flex;
   flex-direction: column;
 
-  &>li {
+  & > li {
     padding: 6px 0;
     color: #fff;
 
-    &>a {
+    & > a {
       font-size: 18px !important;
       line-height: 26px;
       text-transform: none;
@@ -164,7 +164,7 @@
   margin-bottom: 54px;
   gap: 6px;
 
-  &>p {
+  & > p {
     color: #fff !important;
     font-family: $font-primary !important;
     font-size: 14px !important;
@@ -192,7 +192,7 @@
   height: 40px;
 }
 
-@include custom(0, map-get($breakpoints, sm)) {
+@include custom(0, map-get($breakpoints, sm) - 1px) {
   .accordion_mobile_box {
     gap: 18px;
   }
@@ -211,17 +211,17 @@
   }
 
   .accordion_mobile_list_default {
-    &>li>a {
+    & > li > a {
       font-size: 14px !important;
     }
 
-    &>li {
+    & > li {
       font-size: 14px !important;
     }
   }
 }
 
-@include custom(0, map-get($breakpoints, xs)) {
+@include custom(0, map-get($breakpoints, xs) - 1px) {
   .mobile_text_title {
     margin-bottom: 28px;
   }
