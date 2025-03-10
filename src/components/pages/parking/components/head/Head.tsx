@@ -3,18 +3,9 @@ import styles from './Head.module.scss'
 import SaleBlock from '@shared/SaleBlock/SaleBlock'
 import SalePIcon from '@icon/SaleP.svg'
 import Breadcrumbs from '@shared/Breadcrumbs/Breadcrumbs'
-import {useIsSm} from '@utils/useIsMobile'
 
 const Head = () => {
-  const isMobile = useIsSm()
-  const breadcrumbItems = isMobile
-    ? [
-        {
-          title: 'Главная',
-          href: '/'
-        }
-      ]
-    : [
+  const breadcrumbItems = [
         {title: 'Главная', href: '/'},
         {
           title: 'Паркинг',
@@ -29,7 +20,7 @@ const Head = () => {
       <section className={styles['head-wrapper']}>
         <div className={styles.routerWrapper}>
           {/*<Title breadcrumbs={breadcrumbItems} dashboard={true} darkTheme={true} />*/}
-          <Breadcrumbs items={breadcrumbItems} darkTheme={true} className={styles['router']} isIconBack={isMobile} />
+          <Breadcrumbs items={breadcrumbItems} darkTheme={true} className={styles['router']}  />
         </div>
         <div className={styles.container}>
           <div className={styles.title_wrap}>

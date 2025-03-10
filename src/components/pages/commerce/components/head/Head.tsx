@@ -1,19 +1,10 @@
 "use client"
-import {useIsSm} from '@utils/useIsMobile'
 import styles from './Head.module.scss'
 import Breadcrumbs from '@shared/Breadcrumbs/Breadcrumbs'
 
 const Head = () => {
 
-  const isMobile = useIsSm()
-  const breadcrumbItems = isMobile
-    ? [
-      {
-        title: 'Главная',
-        href: '/'
-      }
-    ]
-    : [
+  const breadcrumbItems = [
       {title: 'Главная', href: '/'},
       {
         title: 'Коммерческие помещения',
@@ -24,7 +15,7 @@ const Head = () => {
   return (
     <section className={`${styles['head-wrapper']}`}>
       <div>
-        <Breadcrumbs items={breadcrumbItems} darkTheme={true} className={styles['router']} isIconBack={isMobile} />
+        <Breadcrumbs items={breadcrumbItems} darkTheme={true} className={styles['router']} />
       </div>
       <div className={`${styles['text-wrapper']}`}>
         <div className={styles.title}>Коммерческие <br/> помещения</div>
