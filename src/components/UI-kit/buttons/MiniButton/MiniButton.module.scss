@@ -5,7 +5,43 @@
    height: fit-content;
    align-items: center;
    justify-content: center;
+   aspect-ratio: 1/1;
 
+}
+
+
+.bg-opacity-8 {
+   --bg-opacity: 0.08;
+
+}
+
+.bg-opacity-16 {
+   --bg-opacity: 0.16;
+
+}
+
+.bg-opacity-24 {
+   --bg-opacity: 0.24;
+
+}
+
+.bg-opacity-32 {
+   --bg-opacity: 0.32;
+
+}
+
+.bg-opacity-40 {
+   --bg-opacity: 0.40;
+
+}
+
+.bg-opacity-48 {
+   --bg-opacity: 0.48;
+
+}
+
+.bg-opacity-default {
+   --bg-opacity: 1;
 }
 
 
@@ -87,43 +123,63 @@
 }
 
 .button-fill-orange-500 {
-   background-color: #FD7628;
+   background-color: rgb(253 118 40 / var(--bg-opacity, 1));
+
+   /* #FD7628 */
 }
 
 .button-fill-orange-600 {
-   background-color: #F8721C;
+   background-color: rgb(248 114 28 / var(--bg-opacity, 1));
+
+   /* #F8721C */
 }
 
 .button-fill-orange-700 {
-   background-color: #F06710;
+   background-color: rgb(240 103 16 / var(--bg-opacity, 1));
+
+   /* #F06710 */
 }
 
 .button-fill-bronze-500 {
-   background-color: #D38F6D;
+   background-color: rgb(211 143 109 / var(--bg-opacity, 1));
+
+   /* #D38F6D */
 }
 
 .button-fill-bronze-600 {
-   background-color: #C38566;
+   background-color: rgb(195 133 102 / var(--bg-opacity, 1));
+
+   /* #C38566 */
 }
 
 .button-fill-bronze-700 {
-   background-color: #B17759;
+   background-color: rgb(177 119 89 / var(--bg-opacity, 1));
+
+   /* #B17759 */
 }
 
 .button-fill-blue {
-   background-color: #11627D;
+   background-color: rgb(17 98 125 / var(--bg-opacity, 1));
+
+   /* #11627D */
 }
 
 .button-fill-gray {
-   background-color: #B5B9BE;
+   background-color: rgb(181 185 190 / var(--bg-opacity, 1));
+
+   /* #B5B9BE */
 }
 
 .button-fill-gray-light {
-   background-color: rgb(205 208 211 / 16%);
+   background-color: rgb(205 208 211 / var(--bg-opacity, 0.16));
+
+   /* rgb(205 208 211 / 16%) */
 }
 
 .button-fill-white {
-   background-color: #FFF;
+   background-color: rgb(255 255 255 / var(--bg-opacity, 1));
+
+   /* #FFF */
 }
 
 /* Button Element Color */
