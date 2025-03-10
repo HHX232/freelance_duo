@@ -94,7 +94,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                 />
               </Link>
               {/* TODO: Проверить ссылку */}
-              <Link onClick={onClose} href={'/studii'}>
+              <Link onClick={onClose} href={'/commerce'}>
                 <Accordion
                   animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
@@ -109,7 +109,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/kvartiry-s-kladovoi'}>
+              <Link onClick={onClose} href={'/storerooms'}>
                 <Accordion
                   animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
