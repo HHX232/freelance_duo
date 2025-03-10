@@ -43,7 +43,7 @@
   .settingButton {
     position: absolute;
     z-index: 1;
-    bottom: 40px;
+    bottom: 30px;
     left: 40px;
     width: 58px;
     height: 58px;
@@ -87,17 +87,7 @@
     }
 
     @include custom(0, map-get($breakpoints, md) - 1px) {
-      padding: 20px;
-    }
-
-    @include custom(0, map-get($breakpoints, sm) - 1px) {
-      padding: 20px 16px;
-      gap: 10px;
-
-      button {
-        height: 36px;
-        font-size: 14px;
-      }
+      padding: 0 20px;
     }
 
     .findApartmentButton,
