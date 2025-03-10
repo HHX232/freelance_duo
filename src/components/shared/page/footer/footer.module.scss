@@ -95,6 +95,10 @@
         >>>>>>>4040d71 (update footer navigation links) padding: 12px 0;
       }
 
+      @include custom(0, map-get($breakpoints, xl) - 1px) {
+        padding: 12px 0;
+      }
+
       @include custom(0, map-get($breakpoints, lg)) {
         font-size: 14px;
       }

@@ -234,10 +234,8 @@
       height: fit-content;
       grid-template-rows: 1fr auto;
 
-      .headerMenuBottom {
-        z-index: -1;
-        width: 100%;
-        height: fit-content;
+      @include custom(0, map-get($breakpoints, xl) - 1px) {
+        bottom: 144px;
       }
     }
   }

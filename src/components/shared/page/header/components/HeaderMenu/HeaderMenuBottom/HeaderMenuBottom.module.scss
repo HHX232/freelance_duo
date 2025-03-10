@@ -7,8 +7,8 @@
   .contacts {
     position: absolute;
     z-index: 2;
-    right: 40px;
-    bottom: 40px;
+    right: 36px;
+    bottom: 30px;
     display: flex;
     flex-direction: column;
     padding: 12px 8px;
@@ -43,7 +43,7 @@
   .settingButton {
     position: absolute;
     z-index: 1;
-    bottom: 40px;
+    bottom: 30px;
     left: 40px;
     width: 58px;
     height: 58px;
