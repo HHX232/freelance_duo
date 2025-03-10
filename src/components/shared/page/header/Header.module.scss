@@ -18,7 +18,7 @@
   }
 
   &.menuOpened {
-    padding: 0 45px 0 40px;
+    padding-right: 46px;
     background-color: #11627d;
 
     .container,
@@ -27,18 +27,6 @@
       color: #fff;
 
       .toggleMenuButton {
-        margin-right: -10px;
-        margin-left: 37px;
-
-        @include custom(0, map-get($breakpoints, xxxl) - 100px) {
-          margin-right: 0;
-          margin-left: 49px;
-        }
-
-        @include custom(0, map-get($breakpoints, xl) - 100px) {
-          margin-right: -10px;
-        }
-
         svg {
           width: 23px;
           height: 23px;
@@ -243,10 +231,9 @@
 @include custom(0, map-get($breakpoints, xl) - 100px) {
   .header {
     height: 86px;
-    padding-right: 28px;
 
     &.menuOpened {
-      padding: 0 48px 0 40px;
+      padding: 0 40px;
 
       .container {
         .toggleMenuButton {
@@ -297,7 +284,7 @@
     height: 68px;
 
     &.menuOpened {
-      padding: 0 40px 0 20px;
+      padding: 0 20px;
 
       .container {
         .toggleMenuButton {
@@ -344,9 +331,11 @@
 
 @include custom(0, map-get($breakpoints, md) - 100px) {
   .header {
-    padding: 0 12px !important;
+    padding: 0 12px;
 
     &.menuOpened {
+      padding: 0 12px;
+
       .container {
         .toggleMenuButton {
           margin-left: 23px;
