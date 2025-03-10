@@ -205,11 +205,11 @@
       transform 0.6s ease-in-out,
       opacity 0.2s ease-in-out;
 
-    @include custom(0, map-get($breakpoints, xl) - 100px) {
+    @include custom(0, map-get($breakpoints, xl) - 1px) {
       padding-top: 71px;
     }
 
-    @include custom(0, map-get($breakpoints, lg) - 100px) {
+    @include custom(0, map-get($breakpoints, lg) - 1px) {
       padding-top: 144px;
     }
 
@@ -221,14 +221,14 @@
       height: fit-content;
       transform: translateY(100%);
 
-      @include custom(0, map-get($breakpoints, xl) - 100px) {
+      @include custom(0, map-get($breakpoints, xl) - 1px) {
         bottom: 144px;
       }
     }
   }
 }
 
-@include custom(0, map-get($breakpoints, xl) - 100px) {
+@include custom(0, map-get($breakpoints, xl) - 1px) {
   .header {
     height: 86px;
 
@@ -279,12 +279,12 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, lg) - 100px) {
+@include custom(0, map-get($breakpoints, lg) - 1px) {
   .header {
     height: 68px;
 
     &.menuOpened {
-      padding: 0 20px;
+      // padding: 0 40px;
 
       .container {
         .toggleMenuButton {
@@ -329,7 +329,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, md) - 100px) {
+@include custom(0, map-get($breakpoints, md) - 1px) {
   .header {
     padding: 0 12px;
 
@@ -374,7 +374,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, sm) - 100px) {
+@include custom(0, map-get($breakpoints, sm) - 1px) {
   .header {
     &.menuOpened {
       .container {
@@ -447,7 +447,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, xs) - 100px) {
+@include custom(0, map-get($breakpoints, xs) - 1px) {
   header.header .container {
     padding-right: 0 !important;
   }

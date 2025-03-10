@@ -90,7 +90,7 @@
     gap: 40px;
     grid-template-columns: auto 1fr;
 
-    @include custom(0, map-get($breakpoints, xl) - 100px) {
+    @include custom(0, map-get($breakpoints, xl) - 1px) {
       padding: 12px 0;
     }
 
