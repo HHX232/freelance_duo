@@ -4,6 +4,7 @@ import FilledButton from '@shared/filledButton/FilledButton'
 import {useState} from 'react'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {FC} from 'react'
+import clsx from 'clsx'
 
 interface ITicketFormProps {
   description?: string
@@ -23,7 +24,7 @@ const TicketForm: FC<ITicketFormProps> = ({description = 'Оставьте за�
           <span className={styles['input-label']}>Имя</span>
           <input className={styles.input} placeholder='Введите имя' />
         </div>
-        <div className={styles['input-wrapper']}>
+        <div className={clsx(styles['input-wrapper'], styles.margin)}>
           <span className={styles['input-label']}>Телефон</span>
           <input
             className={styles.input}
@@ -37,7 +38,7 @@ const TicketForm: FC<ITicketFormProps> = ({description = 'Оставьте за�
             value={phoneNumber}
           />
         </div>
-        <FilledButton>Отправить</FilledButton>
+        <FilledButton className={styles.sendButton}>Отправить</FilledButton>
         <p className={styles.caption}>
           Нажимая кнопку «Отправить», вы даёте согласие на <a href='/consent'>обработку своих персональных данных</a>
         </p>

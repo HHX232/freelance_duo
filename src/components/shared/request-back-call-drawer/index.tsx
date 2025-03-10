@@ -16,6 +16,7 @@ export const RequestBackCallDrawer: FC<IRequestBackCallDrawerProps> = ({shown, o
 
   return (
     <Drawer
+      className={styles.popup}
       bodyStyle={{
         padding: 0,
         display: 'flex',
@@ -44,7 +45,7 @@ export const RequestBackCallDrawer: FC<IRequestBackCallDrawerProps> = ({shown, o
       </div>
 
       <div className={styles.content}>
-        <h3 className={clsx(styles.title, styles.bottomIndent)}>Заказать обратный звонок</h3>
+        <h3 className={clsx(styles.title)}>Заказать обратный звонок</h3>
 
         <div className={styles.form}>
           <TicketForm

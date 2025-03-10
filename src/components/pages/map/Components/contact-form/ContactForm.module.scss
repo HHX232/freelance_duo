@@ -27,7 +27,7 @@
       }
     }
 
-    @layer sm {
+    @include sm {
       width: 100%;
       padding: 90px 36px 60px 36px;
     }
@@ -74,6 +74,7 @@
     & .title {
       @layer base {
         @include font(3, 30, 40);
+        white-space: normal;
       }
 
       @include md {
@@ -82,7 +83,7 @@
 
       @include xl {
         @include font(3, 42, 54);
-        white-space: nowrap;
+        // white-space: nowrap;
       }
     }
 

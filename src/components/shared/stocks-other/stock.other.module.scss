@@ -1,0 +1,90 @@
+@layer base {
+  .section {
+    padding: 0 16px 60px 16px;
+
+    a {
+      display: flex !important;
+    }
+
+    .title {
+      @include font(3, 30, 40, 400);
+      color: #213c4e;
+    }
+
+    .list {
+      padding-top: 40px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .card_wrapper {
+      flex: 1;
+    }
+
+    .more_link {
+      @include font(1, 16, 24, 400);
+      margin-top: 40px;
+      color: #555;
+      text-transform: uppercase;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      background: #fff !important;
+
+      border-radius: 6px;
+
+      padding: 12px;
+
+      svg {
+        transform: rotate(35deg);
+      }
+      svg path {
+        stroke: #555555 !important;
+      }
+    }
+  }
+}
+
+@include sm {
+  .section {
+    padding: 0 20px 90px 26px;
+  }
+}
+
+@include md {
+  .section {
+    padding: 0 40px 90px 40px;
+
+    .title {
+      @include font(3, 36, 50);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .more_link {
+      margin: 0;
+      padding: 12px 36px;
+    }
+
+    .list {
+      flex-direction: row;
+    }
+  }
+}
+
+@include xl {
+  .section {
+    .title {
+      @include font(3, 42, 54);
+    }
+  }
+}
