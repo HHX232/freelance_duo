@@ -5,41 +5,40 @@
     justify-content: space-between;
     background: rgb(255 255 255 / 100%);
     color: rgb(116 118 121 / 100%);
+    gap: 24px;
+  }
+
+  padding: 70px;
+
+  @media (max-width: map_get($breakpoints, xl)) {
+    padding: 36px;
+  }
+
+  @media (max-width: map_get($breakpoints, sm)) {
+    padding: 36px 20px;
   }
 }
 
 .header__title {
   @layer base {
-    @include font(1, 14, 18);
-
-    padding-bottom: 36px;
+    @include font(1, 16, 20);
   }
 
-  @include sm {
-    padding-bottom: 40px;
-  }
-
-  @include md {
-    max-width: 530px;
+  @include lg {
+    @include font(1, 24, 34);
   }
 }
+
 
 .info {
   display: flex;
   flex-direction: column;
+  gap: 36px;
 
   .input-wrapper {
     display: flex;
     flex-direction: column;
     gap: 4px;
-  }
-
-  .input-wrapper.margin {
-    margin-top: 24px; 
-  }
-
-  .sendButton {
-    margin-top: 36px;
   }
 
   .input {
@@ -52,20 +51,16 @@
     background-color: transparent;
 
     &::placeholder {
-      color: rgb(205 208 211 / 100%);
+      color: rgb(205 208 211 / 100%);;
     }
   }
 
   .caption {
-    @include font(1, 12, 14, 400);
-
-    margin-top: 36px;
-    color: 747679;
+    @include font(1, 12, 14, 300);
 
     & a {
       text-decoration: underline;
-      display: inline !important;
-      color: inherit;
     }
   }
 }
+

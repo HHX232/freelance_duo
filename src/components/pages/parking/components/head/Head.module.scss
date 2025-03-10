@@ -136,6 +136,11 @@
     width: 40px;
     height: 40px;
   }
+
+  @include xxl{
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .routerWrapper{
