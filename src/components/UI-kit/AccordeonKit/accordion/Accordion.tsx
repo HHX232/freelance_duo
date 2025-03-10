@@ -25,7 +25,7 @@ const AccordionTabCustom = ({
   children
 }: AccordionTabCustomProps & {children: React.ReactNode}) => {
   return (
-    <li
+    <div
       className={cn(styles.li_item, className, {
         [styles.open]: isOpen,
         [styles.animationOn]: animationOn,
@@ -58,7 +58,7 @@ const AccordionTabCustom = ({
       >
         {children}
       </div>
-    </li>
+    </div>
   )
 }
 
