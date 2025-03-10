@@ -26,28 +26,36 @@ const Access = () => {
           <div className={`${styles['column']}`}>
             <div className={styles['tile']}>
               <CircleLineDivider numberOfCircles={3} />
-              <div className={styles['sub-title']}>Круглосуточное видеонаблюдение</div>
-              <div className={styles['desc']}>с охватом всей территории</div>
+              <div className={styles['textWrapper']}>
+                <div className={styles['sub-title']}>Круглосуточное видеонаблюдение</div>
+                <div className={styles['desc']}>с охватом всей территории</div>
+              </div>
             </div>
 
             <div className={styles['tile']}>
               <CircleLineDivider numberOfCircles={3} />
-              <div className={styles['sub-title']}>Системы контроля</div>
-              <div className={styles['desc']}>доступа на въездах и выездах</div>
+              <div className={styles['textWrapper']}>
+                <div className={styles['sub-title']}>Системы контроля</div>
+                <div className={styles['desc']}>доступа на въездах и выездах</div>
+              </div>
             </div>
           </div>
 
           <div className={`${styles['column']}`}>
             <div className={styles['tile']}>
               <CircleLineDivider numberOfCircles={3} />
-              <div className={styles['sub-title']}>Автоматизированные ворота</div>
-              <div className={styles['desc']}>с дистанционным управлением</div>
+              <div className={styles['textWrapper']}>
+                <div className={styles['sub-title']}>Автоматизированные ворота</div>
+                <div className={styles['desc']}>с дистанционным управлением</div>
+              </div>
             </div>
 
             <div className={styles['tile']}>
               <CircleLineDivider numberOfCircles={3} />
-              <div className={styles['sub-title']}>Многоуровневая система контроля</div>
-              <div className={styles['desc']}>доступа с использованием электронных брелоков</div>
+              <div className={styles['textWrapper']}>
+                <div className={styles['sub-title']}>Многоуровневая система контроля</div>
+                <div className={styles['desc']}>доступа с использованием электронных брелоков</div>
+              </div>
             </div>
           </div>
         </div>

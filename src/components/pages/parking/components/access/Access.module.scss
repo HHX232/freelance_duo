@@ -4,7 +4,7 @@
     flex-direction: column;
   }
 
-  @include xl{
+  @include xl {
     flex-direction: row;
   }
 }
@@ -16,7 +16,7 @@
     height: 300px;
   }
 
-  @include sm{
+  @include sm {
     height: 350px;
   }
 
@@ -54,12 +54,12 @@
     color: white;
   }
 
-  @include sm{
+  @include sm {
     padding: 60px 20px;
-    gap:90px;
+    gap: 90px;
   }
 
-  @include md{
+  @include md {
     padding: 60px 40px;
   }
 
@@ -70,15 +70,20 @@
   @include xl {
     min-width: 1060px;
     max-width: 100%;
+    padding: 60px 40px 60px 60px;
+    gap: 130px;
   }
 
   @include xxl {
     min-width: 1198px;
+    padding: 80px 40px 80px 60px;
     max-width: 100%;
   }
 
   @include xxxl {
     min-width: 1285px;
+    padding: 80px 40px 80px 80px;
+    gap: 160px;
     max-width: 100%;
   }
 }
@@ -92,17 +97,19 @@
 
   @include lg {
     flex-direction: row;
+    gap: 80px;
   }
+
 }
 
-.column{
+.column {
   @layer base {
     display: flex;
     flex-direction: column;
     gap: 60px;
   }
 
-  @include lg{
+  @include lg {
     gap: 90px
   }
 }
@@ -121,7 +128,7 @@
     @include font(3, 30, 40, 400);
   }
 
-  @include md{
+  @include md {
     @include font(3, 36, 50, 400);
   }
 
@@ -156,24 +163,24 @@
     color: rgba(255, 255, 255, 0.6);
   }
 
-  @include xl{
+  @include xl {
     @include font(1, 16, 22, 400);
   }
 
 }
 
-.TableButtonWrapper{
+.TableButtonWrapper {
   @layer base {
     display: flex;
   }
 
-  @include lg{
+  @include lg {
     display: none;
   }
 }
 
 
-.title-wrapper{
+.title-wrapper {
   @layer base {
     display: flex;
   }
@@ -183,14 +190,22 @@
     align-items: flex-end;
   }
 }
+
 .DesktopButton {
   @layer base {
     display: none;
   }
 
-  @include lg{
+  @include lg {
     display: flex;
     height: fit-content;
   }
 }
 
+.textWrapper{
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
