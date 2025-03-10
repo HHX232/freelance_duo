@@ -37,7 +37,7 @@ const Breadcrumbs = ({items, darkTheme, className, isIconBack}: BreadcrumbsProps
             {item.back ? (
               <>
                 {item.href ? (
-                  <Link href={'#'} onClick={() => router.back()}>
+                  <Link href={'#'} onClick={() => router.back()} >
                     {item.title}
                   </Link>
                 ) : (
@@ -45,15 +45,7 @@ const Breadcrumbs = ({items, darkTheme, className, isIconBack}: BreadcrumbsProps
                 )}
               </>
             ) : (
-              <>
-                {item.href ? (
-                  <Link href={item.href} className={styles.fitContent}>
-                    {item.title}
-                  </Link>
-                ) : (
-                  item.title
-                )}
-              </>
+              <>{item.href ? <Link href={item.href} className={styles.fitContent}>{item.title}</Link> : item.title}</>
             )}
           </Breadcrumb.Item>
         ))}
