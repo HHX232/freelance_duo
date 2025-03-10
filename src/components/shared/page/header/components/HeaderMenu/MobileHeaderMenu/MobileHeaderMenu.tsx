@@ -163,6 +163,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
             </Link>
           </span>
         </MobileAccordionMain>
+
         <MobileAccordionMain header='О проекте'>
           <span
             onClick={(e: any) => {
@@ -341,163 +342,171 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
             </ul>
           </span>
         </MobileAccordionMain>
-        <MobileAccordionMain header='Информация'>
-          <ul>
-            <li>
-              <Link onClick={onClose} href={'/alkor'}>
-                <Accordion
-                  animationOn={false}
-                  leftArrow={false}
-                  rightArrow={false}
-                  items={[
-                    {
-                      // mb: 44px;
-                      header: 'О застройщике',
 
-                      children: <></>,
-                      size: 'defaultXL',
-                      color: 'white'
-                    }
-                  ]}
-                />
-              </Link>
-            </li>
-            <li>
-              <Link onClick={onClose} href={'/plan-razvitiya'}>
+        <MobileAccordionMain header='Информация'>
+          <span
+            onClick={(e: any) => {
+              e.stopPropagation()
+            }}
+            style={{width: '100%', zIndex: 999, overflowY: 'auto'}}
+          >
+            <ul>
+              <li>
+                <Link onClick={onClose} href={'/alkor'}>
+                  <Accordion
+                    animationOn={false}
+                    leftArrow={false}
+                    rightArrow={false}
+                    items={[
+                      {
+                        // mb: 44px;
+                        header: 'О застройщике',
+
+                        children: <></>,
+                        size: 'defaultXL',
+                        color: 'white'
+                      }
+                    ]}
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link onClick={onClose} href={'/plan-razvitiya'}>
+                  <Accordion
+                    animationOn={false}
+                    leftArrow={false}
+                    rightArrow={false}
+                    items={[
+                      {
+                        header: 'План развития',
+                        children: <></>,
+                        size: 'defaultXL',
+                        color: 'white'
+                      }
+                    ]}
+                  />
+                </Link>
+              </li>
+              <li>
                 <Accordion
                   animationOn={false}
                   leftArrow={false}
-                  rightArrow={false}
+                  rightArrow={true}
+                  arrowSize='medium'
+                  arrowColor='#fff'
                   items={[
                     {
-                      header: 'План развития',
-                      children: <></>,
+                      header: 'Способы покупки',
+                      children: (
+                        <ul className={styles.accrodeon_inner_list}>
+                          {/* TODO: Проверить ссылки */}
+                          <li onClick={onClose}>
+                            <Link href={'/payment-methods'}>Ипотека</Link>
+                          </li>
+                          <li onClick={onClose}>
+                            <Link href={'/payment-methods'}>Рассрочка</Link>
+                          </li>
+                          <li onClick={onClose}>
+                            <Link href={'/payment-methods'}>100% оплата</Link>
+                          </li>
+                          <li onClick={onClose}>
+                            <Link href={'/payment-methods'}>Trade In</Link>
+                          </li>
+                        </ul>
+                      ),
                       size: 'defaultXL',
                       color: 'white'
                     }
                   ]}
                 />
-              </Link>
-            </li>
-            <li>
-              <Accordion
-                animationOn={false}
-                leftArrow={false}
-                rightArrow={true}
-                arrowSize='medium'
-                arrowColor='#fff'
-                items={[
-                  {
-                    header: 'Способы покупки',
-                    children: (
-                      <ul className={styles.accrodeon_inner_list}>
-                        {/* TODO: Проверить ссылки */}
-                        <li onClick={onClose}>
-                          <Link href={'/payment-methods'}>Ипотека</Link>
-                        </li>
-                        <li onClick={onClose}>
-                          <Link href={'/payment-methods'}>Рассрочка</Link>
-                        </li>
-                        <li onClick={onClose}>
-                          <Link href={'/payment-methods'}>100% оплата</Link>
-                        </li>
-                        <li onClick={onClose}>
-                          <Link href={'/payment-methods'}>Trade In</Link>
-                        </li>
-                      </ul>
-                    ),
-                    size: 'defaultXL',
-                    color: 'white'
-                  }
-                ]}
-              />
-            </li>
-            <li>
-              <Link onClick={onClose} href={'/ipotechniy-kalkulator'}>
-                <Accordion
-                  animationOn={false}
-                  leftArrow={false}
-                  rightArrow={false}
-                  items={[
-                    {
-                      header: 'Ипотечный калькулятор',
-                      children: <></>,
-                      size: 'defaultXL',
-                      color: 'white'
-                    }
-                  ]}
-                />
-              </Link>
-            </li>
-            <li>
-              <Link onClick={onClose} href={'/investicii'}>
-                <Accordion
-                  animationOn={false}
-                  leftArrow={false}
-                  rightArrow={false}
-                  items={[
-                    {
-                      header: 'Инвестиции',
-                      children: <></>,
-                      size: 'defaultXL',
-                      color: 'white'
-                    }
-                  ]}
-                />
-              </Link>
-            </li>
-            <li>
-              <Link onClick={onClose} href={'/docs'}>
-                <Accordion
-                  animationOn={false}
-                  leftArrow={false}
-                  rightArrow={false}
-                  items={[
-                    {
-                      header: 'Документы',
-                      children: <></>,
-                      size: 'defaultXL',
-                      color: 'white'
-                    }
-                  ]}
-                />
-              </Link>
-            </li>
-            <li>
-              <Link onClick={onClose} href={'/contacts'}>
-                <Accordion
-                  animationOn={false}
-                  leftArrow={false}
-                  rightArrow={false}
-                  items={[
-                    {
-                      header: 'Контакты',
-                      children: <></>,
-                      size: 'defaultXL',
-                      color: 'white'
-                    }
-                  ]}
-                />
-              </Link>
-            </li>
-            <li>
-              <Link onClick={onClose} href={'/faq'}>
-                <Accordion
-                  animationOn={false}
-                  leftArrow={false}
-                  rightArrow={false}
-                  items={[
-                    {
-                      header: 'FAQ',
-                      children: <></>,
-                      size: 'defaultXL',
-                      color: 'white'
-                    }
-                  ]}
-                />
-              </Link>
-            </li>
-          </ul>
+              </li>
+              <li>
+                <Link onClick={onClose} href={'/ipotechniy-kalkulator'}>
+                  <Accordion
+                    animationOn={false}
+                    leftArrow={false}
+                    rightArrow={false}
+                    items={[
+                      {
+                        header: 'Ипотечный калькулятор',
+                        children: <></>,
+                        size: 'defaultXL',
+                        color: 'white'
+                      }
+                    ]}
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link onClick={onClose} href={'/investicii'}>
+                  <Accordion
+                    animationOn={false}
+                    leftArrow={false}
+                    rightArrow={false}
+                    items={[
+                      {
+                        header: 'Инвестиции',
+                        children: <></>,
+                        size: 'defaultXL',
+                        color: 'white'
+                      }
+                    ]}
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link onClick={onClose} href={'/docs'}>
+                  <Accordion
+                    animationOn={false}
+                    leftArrow={false}
+                    rightArrow={false}
+                    items={[
+                      {
+                        header: 'Документы',
+                        children: <></>,
+                        size: 'defaultXL',
+                        color: 'white'
+                      }
+                    ]}
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link onClick={onClose} href={'/contacts'}>
+                  <Accordion
+                    animationOn={false}
+                    leftArrow={false}
+                    rightArrow={false}
+                    items={[
+                      {
+                        header: 'Контакты',
+                        children: <></>,
+                        size: 'defaultXL',
+                        color: 'white'
+                      }
+                    ]}
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link onClick={onClose} href={'/faq'}>
+                  <Accordion
+                    animationOn={false}
+                    leftArrow={false}
+                    rightArrow={false}
+                    items={[
+                      {
+                        header: 'FAQ',
+                        children: <></>,
+                        size: 'defaultXL',
+                        color: 'white'
+                      }
+                    ]}
+                  />
+                </Link>
+              </li>
+            </ul>
+          </span>
         </MobileAccordionMain>
       </div>
 
