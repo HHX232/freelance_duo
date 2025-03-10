@@ -20,7 +20,42 @@
     gap: 40px;
     grid-template-columns: auto 1fr;
 
+    @include custom(0, map-get($breakpoints, xl) - 100px) {
+      padding: 12px 0;
+    }
 
+    @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 14px;
+    }
+
+    .accordeon_inner_item {
+      display: flex;
+      align-items: center;
+      padding: 5px 0;
+      color: #fff;
+      gap: 14px;
+
+      .accordeon_inner_item_image {
+        overflow: hidden;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+    }
+
+    .accordion_extra {
+      color: #fff;
+
+      & > div:first-child {
+        padding: 0 20px 10px 0;
+
+        @include custom(0, map-get($breakpoints, lg)) {
+          padding: 6px 20px 6px 0;
+          font-size: 14px !important;
+          line-height: 18px;
+        }
+      }
+    }
 
     @include custom(0, 900px) {
       grid-template-columns: auto;
