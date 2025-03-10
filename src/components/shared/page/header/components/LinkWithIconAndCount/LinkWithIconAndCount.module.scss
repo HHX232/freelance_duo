@@ -1,4 +1,5 @@
 .link {
+  position: relative;
   display: flex;
   width: 46px;
   height: 46px;
@@ -9,5 +10,9 @@
     width: 30px;
     height: 30px;
     transition: color 0.2s ease-in-out;
+  }
+
+  .badge {
+    right: 10px;
   }
 }

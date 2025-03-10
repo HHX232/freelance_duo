@@ -1,0 +1,15 @@
+.wrapper {
+  height: 6px;
+  width: 100%;
+  display: flex;
+  border-radius: 6px;
+  background-color: rgba(233, 233, 233, 1);
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 6px;
+  background-color: rgba(195, 133, 102, 1);
+  transition: width 0.5s;
+}

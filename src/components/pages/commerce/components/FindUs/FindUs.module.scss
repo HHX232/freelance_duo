@@ -1,0 +1,284 @@
+.wrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    gap: 24px
+  }
+
+  @include sm {
+    padding: 0 20px;
+  }
+;
+
+  @include md {
+    padding: 0 40px;
+  }
+;
+
+  @include xl {
+    padding: 0 40px 0 142px;
+  }
+
+  @include xxl {
+    padding: 0 40px 0 170px;
+  }
+
+  @include xxxl {
+    padding: 0 40px 0 196px;
+  }
+}
+
+
+.mapWrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: url("/content/commerce/map.png") no-repeat;
+    background-position-y: 35%;
+    background-position-x: 50%;
+    height: 500px;
+  }
+
+  @include xxl {
+    height: 550px;
+  }
+}
+
+.title {
+  @layer base {
+    position: absolute;
+    top: -29px;
+    left: 0;
+
+    padding: 16px 20px;
+    background: rgba(211, 143, 109, 1);
+    color: rgba(255, 255, 255, 1);
+    @include font(3, 18, 26, 400)
+  }
+
+  @include md {
+    @include font(3, 20, 30, 400)
+  }
+
+  @include xl {
+    @include font(3, 24, 36, 400)
+  }
+}
+
+.infoWrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @include lg {
+    flex-direction: row;
+  }
+}
+
+.infoBlock {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 16px;
+  }
+
+  @include sm {
+    padding: 40px 36px;
+  }
+
+  @include lg {
+    width: 100%;
+  }
+
+  @include xxl {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+.infoInnerWrapper{
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  @include md {
+    gap: 40px;
+  }
+}
+
+.infoTitle {
+  @layer base {
+    @include font(3, 22, 34, 400)
+  }
+
+  @include md {
+    @include font(3, 26, 36, 400)
+  }
+
+  @include xl {
+    @include font(3, 32, 44, 400)
+  }
+
+}
+
+.infoBody {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.textWrapper {
+  @layer base {
+    display: flex;
+    gap: 16px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.text {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 220px;
+    @include font(1, 14, 18, 400)
+  }
+
+  @include sm {
+    width: 334px;
+  }
+
+  @include lg {
+    width: 352px;
+  }
+
+  @include xl {
+    @include font(1, 16, 22, 400);
+    width: 429px;
+  }
+
+}
+
+.commerceWrapper {
+  @layer base {
+    position: relative;
+    overflow: hidden;
+    background: rgba(17, 98, 125, 1);
+    color: rgba(255, 255, 255, 1);
+
+    svg {
+      path {
+        stroke: rgba(255, 255, 255, 1);
+      }
+    }
+
+    .footerSub {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+
+.starIcon {
+  @layer base {
+    position: absolute;
+    right: -90px;
+    bottom: -70px;
+
+    path {
+      stroke: none !important;
+    }
+  }
+
+  @include sm {
+    right: -25%;
+    bottom: -50%;
+  }
+
+  @include md {
+    right: -20%;
+    bottom: -48%;
+  }
+
+  @include lg {
+    right: -25%;
+    bottom: -40%;
+  }
+
+  @include xxl {
+    right: -10%;
+    bottom: -10%;
+  }
+}
+
+.salesWrapper {
+  @layer base {
+    background: #FFFFFF;
+
+    .infoTitle {
+      color: rgba(17, 98, 125, 1);
+    }
+
+    .footerTitle {
+      color: rgba(17, 98, 125, 1);
+    }
+
+    .footerSub {
+      color: rgba(160, 163, 168, 1);
+    }
+
+    .text {
+      color: rgba(85, 85, 85, 1);
+    }
+  }
+}
+
+.infoFooter {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @include sm {
+    flex-direction: row;
+    align-items: end;
+  }
+}
+
+.footerTitle {
+  @layer base {
+    @include font(3, 22, 34, 400)
+  }
+
+  @include md {
+    @include font(3, 26, 36, 400)
+  }
+
+  @include xl {
+    @include font(3, 32, 44, 400)
+  }
+
+}
+
+.footerSub {
+  @layer base {
+    @include font(1, 14, 18, 400)
+  }
+
+  @include xl {
+    @include font(1, 16, 22, 400)
+  }
+}
+

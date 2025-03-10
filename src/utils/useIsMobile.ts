@@ -45,6 +45,21 @@ export const useIsMinWidth = (value = 768) => {
   return isLarge
 }
 
+export const useIsMaxWidth = (value = 768) => {
+  const [isLarge, setIsLarge] = useState(false)
+
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      const currentWidth = window.innerWidth
+      setIsLarge(currentWidth <= value)
+    }
+    window.addEventListener('resize', updateSize)
+    updateSize() // Check on mount
+    return () => window.removeEventListener('resize', updateSize)
+  }, [value])
+
+  return isLarge
+}
 
 // New breakpoints
 export const useIsXs = (): boolean => {

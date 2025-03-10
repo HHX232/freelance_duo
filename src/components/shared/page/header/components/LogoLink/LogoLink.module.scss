@@ -66,6 +66,10 @@
   .logoLink {
     width: 65px;
 
+    &.transparent {
+      margin-left: -10px;
+    }
+
     .small {
       svg {
         height: 60px !important;

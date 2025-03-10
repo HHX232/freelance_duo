@@ -1,0 +1,154 @@
+.wrapper {
+  @layer base{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 16px;
+    gap: 24px;
+    color: rgba(116, 118, 121, 1);
+  }
+
+  @include sm{
+    height: 630px;
+    padding: 36px;
+  }
+
+  @include md{
+    height: 628px;
+  }
+
+  @include lg{
+    width: 440px;
+    height: 662px;
+    padding: 40px;
+  }
+
+  @include xl{
+    width: 500px;
+    height: 702px;
+  }
+
+  @include xxxl{
+    width: 577px;
+    height: 762px;
+    padding: 70px;
+  }
+
+}
+
+.title{
+  @layer base{
+    @include font(1,16, 20, 400)
+  }
+
+  @include md{
+    @include font(1,20, 26, 400)
+  }
+
+  @include xl{
+    @include font(1,24, 34, 400)
+  }
+}
+
+.steps{
+  @layer base{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+.stepsTitles{
+  @layer base{
+    display: flex;
+    justify-content: space-between;
+    @include font(1,14, 18, 400)
+  }
+
+  @include xl{
+    @include font(1,16, 22, 400)
+  }
+}
+
+.progressWrapper{
+  @layer base{
+    width: 100%;
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+.innerWrapper{
+  @layer base{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.formWrapper{
+  @layer base{
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+}
+
+.inputsWrapper{
+  @layer base{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.inputStyles{
+  @layer base{
+    height: auto!important;
+    border-radius: 6px!important;
+    padding: 14px!important;
+    border-color: rgba(205, 208, 211, 1)!important;
+    color: rgba(205, 208, 211, 1)!important;
+
+    &::placeholder{
+      color: rgba(181, 185, 190, 1)!important;
+    }
+  }
+}
+
+.labelStyles{
+  @layer base{
+    color: rgba(181, 185, 190, 1)!important;
+    @include font(1,14, 18, 400)
+  }
+
+  @include xl{
+    @include font(1,16, 22, 400)
+  }
+}
+
+.subtext{
+  @layer base{
+    color: rgba(116, 118, 121, 1);
+    @include font(1,12, 14, 400);
+
+    span{
+      text-decoration: underline;
+    }
+  }
+}
+
+.button{
+  @layer base{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    width: 100%;
+    height: 48px;
+    padding: 12px 36px!important;
+  }
+}

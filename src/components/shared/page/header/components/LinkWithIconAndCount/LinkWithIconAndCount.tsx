@@ -1,15 +1,14 @@
 import Link from 'next/link'
 import styles from './LinkWithIconAndCount.module.scss'
 import {ILinkWithIconAndCountProps} from './LinkWithIconAndCount.types'
-import IconWithCount from '@shared/IconWithCount/IconWithCount'
+import Badge from '@src/components/UI-kit/Badge/badge'
 
 export default function LinkWithIconAndCount(props: ILinkWithIconAndCountProps) {
   return (
     <div style={props.style} className={styles.link}>
       <Link href={props.href}>
-        <IconWithCount hw={[20, 20]} position={[-15, 0, 0, 16]} count={props.count}>
-          <div className={styles.icon}>{props.children}</div>
-        </IconWithCount>
+        <div className={styles.icon}>{props.children}</div>
+        <Badge extraClassName={styles.badge} value={props.count} />
       </Link>
     </div>
   )
