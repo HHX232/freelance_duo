@@ -1,71 +1,204 @@
 .contact-form-wrapper {
+  display: flex;
+
+  @layer base {
     display: flex;
+    flex-direction: column;
+  }
 
-    & .info {
-        @include content-container;
+  @include md {
+    flex-direction: row;
+  }
 
-        padding-top: 190px;
-        padding-bottom: 190px;
-        background-color: rgb(17 98 125 / 100%);
-        color: #fff;
+  & .info {
+    @include content-container;
+    background-color: rgb(17 98 125 / 100%);
+    color: #fff;
 
-        & .title {
-            @include font(3, 42, 54);
+    display: flex;
+    justify-content: center;
 
-            max-width: 464px;
-        }
+    @layer base {
+      width: 100%;
+      padding: 60px 16px;
 
-        & .description, & .input-label {
-            @include font(1, 16, 22);
-
-            max-width: 460px;
-            margin-top: 20px;
-        }
-
-        & form {
-            margin-top: 60px;
-        }
-
-        & button {
-            margin-top: 36px;
-        }
-
-        & .input-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        & .input {
-            @include font(1, 14, 18);
-
-            display: block;
-            padding: 15px;
-            border: 1px solid #fff;
-            border-radius: 6px;
-            background-color: transparent;
-
-            &::placeholder {
-                color: rgb(255 255 255 / 60%);
-            }
-        }
-
-        & .caption {
-            @include font(1, 12, 14, 300);
-
-            margin-top: 36px;
-
-            & a {
-                text-decoration: underline;
-            }
-        }
+      & form {
+        margin-top: 40px;
+      }
     }
 
-    & .bg {
-        flex: 1;
-        background-image: url("/content/contact-form.jpeg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+    @include sm {
+      width: 100%;
+      padding: 90px 36px 60px 36px;
     }
+
+    @include md {
+      width: 100%;
+      min-width: 500px;
+      padding: 118px 70px 118px 40px;
+    }
+
+    @include lg {
+      width: 50%;
+      min-width: none;
+      padding: 118px 60px 118px 40px;
+    }
+
+    @include xl {
+      width: 100%;
+      padding: 90px 90px 90px 142px;
+
+      & form {
+        margin-top: 60px;
+      }
+    }
+
+    @include xxl {
+      width: 50%;
+      padding: 90px 130px 90px 170px;
+
+      & form {
+        margin-top: 60px;
+      }
+    }
+
+    @include xxxl {
+      width: 50%;
+      padding: 191px 300px 191px 196px;
+
+      & form {
+        margin-top: 60px;
+      }
+    }
+
+    & .title {
+      @layer base {
+        @include font(3, 30, 40);
+        white-space: normal;
+      }
+
+      @include md {
+        @include font(3, 36, 50);
+      }
+
+      @include xl {
+        @include font(3, 42, 54);
+        // white-space: nowrap;
+      }
+    }
+
+    & .description {
+      @include font(1, 14, 18);
+      @layer base {
+        margin-top: 20px !important;
+      }
+
+      @include xl {
+        @include font(1, 16, 22);
+      }
+    }
+
+    & .input-label {
+      @include font(1, 14, 18);
+
+      @layer base {
+        margin-top: 24px;
+      }
+    }
+
+    & button {
+      margin-top: 36px;
+    }
+
+    & .input-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    & .input {
+      @include font(1, 14, 18);
+
+      display: block;
+      padding: 15px;
+      border: 1px solid #fff;
+      border-radius: 6px;
+      background-color: transparent;
+
+      &::placeholder {
+        color: rgb(255 255 255 / 60%);
+      }
+    }
+
+    & .caption {
+      @include font(1, 12, 14, 300);
+
+      @include xs {
+        padding-top: 24px;
+      }
+
+      @include lg {
+        padding-top: 20px;
+      }
+
+      @include xl {
+        padding-top: 36px;
+      }
+
+      & a {
+        display: inline;
+        text-decoration: underline !important;
+      }
+    }
+  }
+
+  & .bg {
+    @layer base {
+      height: 240px;
+      width: 100%;
+    }
+
+    @include sm {
+      height: 289px;
+    }
+
+    @include md {
+      height: auto;
+      width: 100%;
+    }
+
+    @include lg {
+      width: 50%;
+    }
+
+    @include xl {
+      width: 100%;
+    }
+
+    @include xxl {
+      width: 50%;
+    }
+
+    background-image: url('/content/contact-form.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.wrapper {
+  @layer {
+  }
+
+  @include xl {
+    min-width: 472px;
+  }
+
+  @include xxxl {
+    width: 464px;
+  }
+}
+
+.zero_margin {
+  margin: 0 !important;
 }

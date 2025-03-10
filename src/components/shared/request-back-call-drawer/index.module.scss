@@ -1,58 +1,65 @@
-.head {
-  display: flex;
-  justify-content: flex-end;
-}
+@layer base {
+  .popup {
+    .head {
+      display: flex;
+      justify-content: flex-end;
+    }
 
-.headClose {
-  margin: 16px 16px 0 0;
-}
+    .headClose {
+      margin: 16px 16px 0 0 !important;
+    }
 
-.content {
-  padding: 60px;
+    .content {
+      padding: 0 16px;
+      padding-top: 10px;
+    }
 
-  @include bp-xl {
-    padding: 20px 40px;
-  }
+    .form {
+      padding: 0;
+    }
 
-  @include bp-sm {
-    padding: 20px;
-  }
-
-  @include bp-xs {
-    padding: 16px 10px;
-  }
-}
-
-.form {
-  & > div {
-    padding: 0;
-
-    .header {
-      p {
-        @layer base {
-          @include font(1, 14, 18);
-        }
-
-        @include lg {
-          @include font(1, 16, 22);
-        }
-      }
+    .title {
+      color: #555;
+      @include font(3, 30, 40);
+      padding-bottom: 16px;
     }
   }
 }
 
-.title {
-  @include RomulH3;
+@include sm {
+  .popup {
+    .title {
+      @include font(3, 36, 50);
+      padding-bottom: 24px;
+      max-width: 530px;
+    }
+
+    .content {
+      padding: 0 20px;
+      padding-top: 20px;
+    }
+  }
 }
 
-.bottom-indent {
-  margin-bottom: 60px;
+@include md {
+  .popup {
+    .title {
+      @include font(3, 36, 50);
+      padding-bottom: 24px;
+      max-width: 530px;
+    }
 
-  @include bp-xl {
-    margin-bottom: 40px;
+    .content {
+      padding: 0 40px;
+      padding-top: 20px;
+    }
   }
+}
 
-  @include bp-xs {
-    margin-bottom: 36px;
+@include xl {
+  .popup {
+    .title {
+      @include font(3, 42, 54);
+    }
   }
 }

@@ -6,16 +6,24 @@ import {HeadTitle} from '@src/components/UI-kit/TextKit/head-title'
 import './index.scss'
 import FilledButton from '@shared/filledButton/FilledButton'
 import {StockItem} from '@shared/stock-item'
+import {useState} from 'react'
+import RefreshIcon from '@icons/refresh-cw.svg'
 
 const breadcrumbItems = [
   {title: 'Главная', href: '/'},
   {
-    title: 'Акции',
+    title: 'Наши акции',
     href: '/stocks'
   }
 ]
 
-const MOCK_ITEMS = [
+interface IMockItem {
+  tag: string
+  imageSrc: string
+  title: string
+}
+
+const MOCK_ITEMS: IMockItem[] = [
   {
     tag: 'Бессрочная акция',
     imageSrc: '/stocks-example/preview-image.png',
@@ -48,21 +56,33 @@ const MOCK_ITEMS = [
   }
 ]
 
+const maxMockItemsLength = 12
+
 export const StocksList = () => {
+  const [itemsForRender, setItemsForRender] = useState<IMockItem[]>([...MOCK_ITEMS])
+
   return (
-    <div className={'page-container'}>
+    <div className={'promotion-page-container'}>
       <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
-      <HeadTitle>Акции</HeadTitle>
+      <HeadTitle>наши Акции</HeadTitle>
 
       <div className='stocks'>
         <div className='stocks__list'>
-          {MOCK_ITEMS.map((item, idx) => (
+          {itemsForRender.map((item, idx) => (
             <StockItem key={`stock-item-${idx}`} href={'/stocks/1'} {...item} />
           ))}
         </div>
 
         <div className='stocks__more'>
-          <FilledButton className='stocks__more-button'>Показать еще (6)</FilledButton>
+          {itemsForRender.length >= maxMockItemsLength ? null : (
+            <FilledButton
+              onClick={() => setItemsForRender((items) => [...items, ...MOCK_ITEMS])}
+              className='stocks__more-button'
+            >
+              <RefreshIcon />
+              <span>Показать еще (6)</span>
+            </FilledButton>
+          )}
         </div>
       </div>
     </div>

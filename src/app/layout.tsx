@@ -1,7 +1,6 @@
 import type {Metadata} from 'next'
 import {Main} from './main'
 import {RootStyleRegistry} from '@src/components/RootStyleRegistry/RootStyleRegistry'
-import Widget from '@shared/page/widget/Widget'
 import {Jivo} from '@shared/jivo/jivo'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kronfort.labab.ru'
@@ -37,6 +36,15 @@ export default function RootLayout({
 
         {/* Предзагрузка изображения для оптимизации LCP */}
         <link rel='preload' href='/map/compass-loader.svg' as='image' type='image/svg+xml' />
+      </head>
+      <body>
+        {/* Ваш основной контент */}
+        <RootStyleRegistry>
+          <Main>{children}</Main>
+          <Jivo />
+        </RootStyleRegistry>
+
+        {/* Вставка скриптов здесь */}
         <script type='text/javascript' async src='//smartcallback.ru/api/SmartCallBack.js?t=zc2ZQ6WuzUWcsEZCNMpY' />
         <script
           dangerouslySetInnerHTML={{
@@ -53,15 +61,6 @@ export default function RootLayout({
             `
           }}
         />
-      </head>
-      <body>
-        {/* Ваш основной контент */}
-        <RootStyleRegistry>
-          <Main>{children}</Main>
-          <Jivo />
-        </RootStyleRegistry>
-
-        {/* Вставка скриптов здесь */}
         <script
           dangerouslySetInnerHTML={{
             __html: `

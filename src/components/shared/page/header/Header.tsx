@@ -22,7 +22,7 @@ import LogoutButton from './components/LogoutButton/LogoutButton'
 import PhoneIconSVG from './components/icons/PhoneIconSVG/PhoneIconSVG'
 import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMenuBottom'
 
-export default function Header({dark, dashboard}: IHeaderProps) {
+export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -96,12 +96,11 @@ export default function Header({dark, dashboard}: IHeaderProps) {
       <div className={styles.container}>
         <div className={styles.logo}>
           <LogoLink
-            isSmall={(isXl && isScrolled && !isMenuOpened) || (isMd && isMenuOpened)}
+            isSmall={hideLogo ? true : (isXl && isScrolled && !isMenuOpened) || (isMd && isMenuOpened)}
             isTransparent={isMd && isMenuOpened}
             isMenuOpened={isMenuOpened}
           />
         </div>
-
         {isLK && (
           <>
             {token ? (

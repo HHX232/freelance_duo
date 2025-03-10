@@ -1,17 +1,18 @@
 .stocks {
   &__list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(auto-fill, auto);
+    @layer base {
+      gap: 24px;
+      grid-template-columns: repeat(1, 1fr);
+    }
 
-    gap: 24px;
-
-    @include bp-xl {
+    @include md {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @include bp-sm {
-      grid-template-columns:  repeat(1, 1fr);
+    @include xxl {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -27,10 +28,43 @@
 
     &-button {
       max-width: 273px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
 
       @include bp-md {
         max-width: 100%;
       }
     }
+  }
+}
+
+.promotion-page-container {
+  @layer base {
+    padding: 80px 16px 60px 16px;
+  }
+  @include sm {
+    padding: 90px 20px 90px 20px;
+  }
+
+  @include md {
+    padding: 90px 40px 90px 40px;
+  }
+
+  @include lg {
+    padding: 130px 40px 90px 40px;
+  }
+
+  @include xl {
+    padding: 142px 40px 90px 142px;
+  }
+
+  @include xxl {
+    padding-left: 170px;
+  }
+
+  @include xxxl {
+    padding: 142px 40px 110px 196px;
   }
 }

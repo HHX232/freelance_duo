@@ -8,6 +8,10 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   title: string
   styleContainer?: React.CSSProperties
   variety?: 'primary' | 'secondary'
+  stylesLabel?: any
+  inputStyles?: any
+  maxLength?: number
+  pattern?: string
 }
 
 export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
@@ -22,6 +26,10 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
       styleContainer,
       error,
       title,
+      stylesLabel,
+      inputStyles,
+      maxLength,
+      pattern,
       ...props
     },
     ref
@@ -34,15 +42,17 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
 
     return (
       <label className={clsx(styles.input_container, className)} style={styleContainer}>
-        <span className={styles.label}>{title}</span>
+        <span className={clsx(styles.label, stylesLabel)}>{title}</span>
         <input
           type={type}
           onChange={handleChange}
-          className={clsx(styles.input_field, styles[variety])}
+          className={clsx(styles.input_field, styles[variety], inputStyles)}
           style={style}
           {...props}
           ref={ref}
           placeholder={placeholder}
+          maxLength={maxLength}
+          pattern={pattern}
         />
         {error && <span className={styles.error}>{error}</span>}
       </label>

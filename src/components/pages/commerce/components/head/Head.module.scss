@@ -1,0 +1,79 @@
+.head-wrapper {
+  @layer base {
+    //position: relative;
+    display: flex;
+    //height: 100vh;
+    height: 640px;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+    background-size: cover;
+    overflow: hidden;
+    padding: 90px 16px 40px 16px;
+  }
+
+  @include sm{
+    height: 875px;
+    padding: 90px 20px 90px 20px;
+  }
+
+  @include md{
+    height: 1000px;
+    padding: 130px 40px 90px 40px;
+  }
+
+  @include lg{
+    height: 600px;
+    background-position-x: 70%;
+    background-position-y: 60%;
+    padding: 130px 40px 60px 40px;
+  }
+
+  @include xl{
+    height: 650px;
+    padding: 130px 40px 60px 142px;
+  }
+
+  @include xxl{
+    height: 750px;
+    padding: 130px 40px 90px 170px;
+  }
+
+  @include xxxl{
+    height: 800px;
+    padding: 142px 40px 110px 196px;
+  }
+}
+
+.title {
+  @layer base{
+    word-break: break-all;
+    @include font(3, 40, 50, 400);
+    color: rgba(255,255,255, 1);
+  }
+
+  @include md{
+    @include font(3, 52, 58, 400);
+  }
+
+  @include xl{
+    @include font(3, 64, 80, 400);
+  }
+}
+
+.router{
+  @layer base {
+    display: flex!important;
+    @include font(3, 14, 20, 400);
+    align-items: center;
+  }
+}
+
+.text-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

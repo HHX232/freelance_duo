@@ -10,6 +10,11 @@ import Gallery from './bg-slider/Gallery'
 import {DotButton, useDotButton} from './bg-slider/EmblaCarouselDotButton'
 import {NextButton, PrevButton, usePrevNextButtons} from './bg-slider/EmblaCarouselArrowButtons'
 
+const slidesSubTitles = [
+  'Море меняет все, Море здесь – главная доминанта, наполняющая энергией все пространство вокруг.',
+  'Органично встроенный в общий облик города квартал с многофункциональной инфраструктурой, отвечающей высоким стандартам жилой среды.'
+]
+
 const HomePage = () => {
   const {replace} = useRouterNext()
   const OPTIONS: EmblaOptionsType = {loop: true}
@@ -24,9 +29,11 @@ const HomePage = () => {
       <section className={styles['home-wrapper']}>
         <div className={styles['text_wrapper']}>
           <div className={styles.title}>Кронфорт</div>
-          <p className={styles.description}>
-            Море меняет все, Море здесь – главная доминанта, наполняющая энергией все пространство вокруг.
-          </p>
+          {slidesSubTitles.map((_, index) => {
+            if (index !== selectedIndex) return null
+
+            return <p className={`${styles.description}`}>{slidesSubTitles[selectedIndex]}</p>
+          })}
         </div>
         <div className={styles['button_wrapper']}>
           <FilledButton

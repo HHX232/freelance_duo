@@ -69,6 +69,8 @@
 }
 
 .description {
+  animation: descriptionAnimation .8s both;
+
   @layer base {
     @include font(1, 16, 20);
 
@@ -86,7 +88,20 @@
 
   @include lg {
     @include font(1, 20, 26);
-    max-width: 557px;
+    max-width: 780px;
+  }
+}
+
+@keyframes descriptionAnimation {
+  0% {
+    opacity: 0;
+    padding-bottom: 15px;
+  }
+
+  100% {
+    opacity: 1 !important;
+    padding-bottom: 0;
+
   }
 }
 
@@ -162,10 +177,10 @@
       background: linear-gradient(228deg, rgba(0, 0, 0, 0.3) 47.45%, rgba(0, 0, 0, 0.2) 81.97%);
     }
 
-  @include xs {
-    background: linear-gradient(180deg, rgba(38, 57, 69, 0) 34.4%, #263945 90.97%),
-    linear-gradient(215deg, rgba(0, 0, 0, 0) 45.29%, rgba(0, 0, 0, 0.2) 72.52%);
-  }
+    @include xs {
+      background: linear-gradient(180deg, rgba(38, 57, 69, 0) 34.4%, #263945 90.97%),
+        linear-gradient(215deg, rgba(0, 0, 0, 0) 45.29%, rgba(0, 0, 0, 0.2) 72.52%);
+    }
   }
 
   @layer base {
@@ -223,7 +238,7 @@
 
 .dots_wrapper {
   position: absolute;
-  
+
   @include md {
     bottom: 56px;
   }
@@ -241,5 +256,4 @@
   @include xs {
     bottom: 32px;
   }
-
 }
