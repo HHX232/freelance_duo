@@ -1,7 +1,6 @@
 .filledButton {
   @include font(1, 14--14, 10--10);
 
-  width: 100%;
   padding: 17px 0;
   border: none;
   border-radius: 4px;
@@ -9,6 +8,12 @@
   cursor: pointer;
   outline: none;
   text-transform: uppercase;
+
+  @layer base {
+  width: 100%;
+
+  }
+
 }
 
 .secondary-btn {

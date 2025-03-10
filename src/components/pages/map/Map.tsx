@@ -239,7 +239,7 @@ const MapContent = () => {
       {
         <>
           {/*{preloader && <Preloader />}*/}
-          <Page>
+          <Page className={styles.page}>
             <HomePage />
             <div style={{position: 'relative'}}>
               <div className={styles.captions}>

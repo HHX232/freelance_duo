@@ -19,7 +19,7 @@
     }
   }
 
-  @include md{
+  @include md {
     @include font(2, 12, 12);
   }
 }
@@ -43,7 +43,39 @@
   color: #fff !important;
 }
 
+.fitContent {
+  height: fit-content !important;
+}
 
-.fitContent{
-  height: fit-content!important;
+.desktop_version {
+  @layer base {
+    display: none;
+  }
+
+  @include md {
+    display: block;
+  }
+}
+
+.mobile_version {
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  span {
+    color: #555;
+  }
+
+  svg path {
+    width: 18px;
+    height: 18px;
+  }
+  svg path {
+    stroke: #555 !important;
+  }
+
+  @include md {
+    display: none !important;
+  }
 }

@@ -20,19 +20,22 @@ interface BreadcrumbsProps {
   isIconBack?: boolean
 }
 
-const Breadcrumbs = ({items, darkTheme, className, isIconBack}: BreadcrumbsProps) => {
+const Breadcrumbs = ({items, darkTheme, className}: BreadcrumbsProps) => {
   const router = useRouter()
 
   return (
     <section className={clsx(styles.breadcrumbs, className, {[styles.dark]: darkTheme})}>
-      {isIconBack && <Link href={'#'} onClick={() => router.back()}><BackIcon/></Link>}
-      <Breadcrumb separator={<>|</>}>
+      <Link className={styles.mobile_version} href={'#'} onClick={() => router.back()}>
+        <BackIcon />
+        <span>{items[items.length - 2].title}</span>
+      </Link>
+      <Breadcrumb className={styles.desktop_version} separator={<>|</>}>
         {items.map((item, index) => (
           <Breadcrumb.Item key={index}>
             {item.back ? (
               <>
                 {item.href ? (
-                  <Link href={'#'} onClick={() => router.back()} >
+                  <Link href={'#'} onClick={() => router.back()}>
                     {item.title}
                   </Link>
                 ) : (
@@ -40,7 +43,15 @@ const Breadcrumbs = ({items, darkTheme, className, isIconBack}: BreadcrumbsProps
                 )}
               </>
             ) : (
-              <>{item.href ? <Link href={item.href} className={styles.fitContent}>{item.title}</Link> : item.title}</>
+              <>
+                {item.href ? (
+                  <Link href={item.href} className={styles.fitContent}>
+                    {item.title}
+                  </Link>
+                ) : (
+                  item.title
+                )}
+              </>
             )}
           </Breadcrumb.Item>
         ))}

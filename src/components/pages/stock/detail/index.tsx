@@ -15,7 +15,7 @@ import VkPrimaryIcon from '@icons/vk-primary.svg'
 const breadcrumbItems = [
   {title: 'Главная', href: '/'},
   {
-    title: 'Акции',
+    title: 'Наши акции',
     href: '/stocks'
   }
 ]
@@ -32,7 +32,7 @@ export const StocksDetail = () => {
   }
 
   return (
-    <div className='stocks-detail page-container page-container--min'>
+    <div className='stocks-detail'>
       <Title
         breadcrumbs={[
           ...breadcrumbItems,
@@ -121,7 +121,7 @@ export const StocksDetail = () => {
             <p className='stocks-detail__footer-backcall__caption'>Есть вопросы? Пишите!</p>
             <FilledButton
               className='stocks-detail__footer-backcall__button'
-              variety='primary'
+              variety='secondary'
               type='submit'
               onClick={handleBackCallShow}
             >

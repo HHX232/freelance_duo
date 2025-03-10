@@ -3,8 +3,37 @@
   align-items: flex-start;
   flex-direction: column;
 
+  @layer base {
+    padding: 80px 16px 70px 16px;
+  }
+
+  @include sm {
+    padding: 90px 20px 80px 20px;
+  }
+
+  @include md {
+    padding: 90px 40px 90px 40px;
+  }
+
+  @include lg {
+    padding-top: 130px;
+  }
+
+  @include xl {
+    padding: 142px 142px 90px 142px;
+  }
+
+  @include xxl {
+    padding: 142px 297px 110px 297px;
+  }
+
+  @include xxl {
+    padding: 142px 349px 110px 349px;
+  }
+
   &__title {
     margin-bottom: 24px;
+    color: #213c4e;
 
     @include bp-sm {
       margin-bottom: 16px;
@@ -28,11 +57,11 @@
 
   &__plate {
     background-color: #ffffff;
-
   }
 
   &__content {
     @include font(1, 16, 22);
+    color: #555;
 
     & > *:not(li) {
       margin-bottom: 18px;
@@ -55,11 +84,19 @@
 
     margin-top: 40px;
 
-    @include bp-sm {
-      flex-direction: column;
-
+    @layer base {
+      flex-direction: column-reverse;
       button {
-        max-width: 100%;
+        max-width: 100% !important;
+      }
+    }
+
+    @include md {
+      flex-direction: row;
+      button {
+        width: fit-content !important;
+        padding-left: 36px !important;
+        padding-right: 36px !important;
       }
     }
   }
@@ -68,6 +105,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    border-color: #b5b9be !important;
+    color: #555;
 
     height: 48px;
 
@@ -78,29 +118,61 @@
 
   &__backcall {
     max-width: 250px;
+    background-color: #fd7628 !important;
   }
 
   &__footer {
-    border-top: 1px solid rgba(223, 223, 223, 1);
-
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+
+    @layer base {
+      gap: 36px;
+      flex-direction: column;
+    }
+
+    @include md {
+      border-top: 1px solid #dfdfdf;
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
     @include padding60;
 
     &-socials {
       display: flex;
-      align-items: center;
+      flex-direction: column-reverse;
 
-      gap: 24px;
+      &__caption {
+        color: #555;
+        line-height: 18px;
+
+        @layer base {
+        font-size: 14px;
+
+        }
+
+        @include xl {
+          font-size: 16px;
+        }
+      }
+
+      @layer base {
+        align-items: center;
+        gap: 16px;
+      }
 
       @include bp-xxl {
         gap: 16px;
       }
 
-      @include bp-md {
-        align-items: flex-start;
+      @include md {
         flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+
+      @include lg {
+        flex-direction: row !important;
+        align-items: center !important;
       }
 
       @include bp-sm {
@@ -116,20 +188,48 @@
 
     &-backcall {
       display: flex;
-      align-items: center;
       gap: 24px;
+      width: 100%;
 
-      @include bp-xxl {
+      @layer base {
+        justify-content: end;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      @include md {
         gap: 16px;
+        align-items: end;
+
+        &__button {
+          width: fit-content !important;
+          padding-left: 36px !important;
+          padding-right: 36px !important;
+        }
+      }
+
+      @include lg {
+        flex-direction: row;
+        align-items: center;
       }
 
       &__caption {
+        @layer base {
+          color: #555;
+          white-space: nowrap;
+          font-size: 14px;
+          line-height: 18px;
+        }
         display: block;
+
+        @include xl {
+          font-size: 16px;
+        }
       }
 
       &__button {
         width: 100%;
-        max-width: 241px;
+        max-width: 100% !important;
       }
     }
   }

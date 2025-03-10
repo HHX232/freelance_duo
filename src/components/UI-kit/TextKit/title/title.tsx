@@ -12,16 +12,22 @@ interface IProps {
 export const Title = (props: IProps) => {
   return (
     <div className={styles.title} style={props.style}>
-      {props.breadcrumbs && (
-        <Breadcrumbs items={props.breadcrumbs} darkTheme={props.darkTheme} />
-      )}
+      {props.breadcrumbs && <Breadcrumbs items={props.breadcrumbs} darkTheme={props.darkTheme} />}
       {props.h1 ? (
         <>
-          {props.title && <p style={{ color: props.darkTheme ? '#FDF1CD' : '' }} className={styles.main_title}>{props.title}</p>}
+          {props.title && (
+            <p style={{color: props.darkTheme ? '#FDF1CD' : ''}} className={styles.main_title}>
+              {props.title}
+            </p>
+          )}
         </>
       ) : (
         <>
-          {props.title && <h1 style={{ color: props.darkTheme ? '#FDF1CD' : '' }} className={styles.main_title}>{props.title}</h1>}
+          {props.title && (
+            <h1 style={{color: props.darkTheme ? '#FDF1CD' : ''}} className={styles.main_title}>
+              {props.title}
+            </h1>
+          )}
         </>
       )}
     </div>

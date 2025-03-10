@@ -1,6 +1,8 @@
 .stocks {
   &__item {
-    max-width: 597px;
+
+    animation: animateItem  .4s both;
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -31,8 +33,8 @@
 
     &:hover {
       .stocks__item-more {
-        margin-top: 18px;
-        height: auto;
+        padding-top: 18px;
+        // height: auto;
         transform: translateY(0);
       }
     }
@@ -90,7 +92,7 @@
       align-items: center;
 
       height: 0;
-      transition: 200ms;
+      transition: .5s;
 
       transform: translateY(100px);
 
@@ -102,5 +104,15 @@
         margin-left: 10px;
       }
     }
+  }
+}
+
+
+@keyframes animateItem {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
   }
 }
