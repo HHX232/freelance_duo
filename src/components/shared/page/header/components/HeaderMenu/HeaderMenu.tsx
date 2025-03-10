@@ -88,7 +88,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
-              <Link onClick={onClose} href={'/'}>
+              <Link onClick={onClose} href={'/commerce'}>
                 <Accordion
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
                   leftArrow={false}
@@ -417,7 +417,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
             </div>
           </div>
 
-          {/* 
+          {/*
         ------------------------------------------------------------------------------------
         */}
         </div>
