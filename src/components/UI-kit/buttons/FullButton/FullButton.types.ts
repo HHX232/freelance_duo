@@ -25,6 +25,7 @@ type TButtonFill =
   | 'gray'
   | 'gray-light'
   | 'white'
+
 type TButtonElementColor = 'white' | 'black' | 'orange' | 'blue'
 type TButtonBorderRadius = '0' | '6px' | '12px' | 'circle'
 
@@ -49,6 +50,7 @@ export interface IFullButtonProps extends IArrowProps {
   disabled?: boolean
   href?: string
   buttonText: string | React.ReactNode
-  extraClass?: React.CSSProperties
+  extraClass?: string
   containArrow?: boolean
+  children?: React.ReactNode
 }

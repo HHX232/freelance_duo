@@ -132,6 +132,9 @@
       border-color: #fff;
       background-color: #fff;
       color: #555;
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: uppercase;
 
       @include custom(0, map-get($breakpoints, md) - 100px) {
         display: none;
