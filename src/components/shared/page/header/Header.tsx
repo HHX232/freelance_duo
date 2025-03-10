@@ -4,7 +4,6 @@ import styles from './Header.module.scss'
 import {IHeaderProps} from './Header.types'
 import LogoLink from './components/LogoLink/LogoLink'
 import ToggleMenuButton from './components/ToggleMenuButton/ToggleMenuButton'
-import FindApartmentButton from './components/FindApartmentButton/FindApartmentButton'
 import LinkWithIconAndCount from './components/LinkWithIconAndCount/LinkWithIconAndCount'
 import CompareSVG from '@icons/compare.svg'
 import FavoriteSVG from '@icons/favorite.svg'
@@ -21,6 +20,7 @@ import {useIsXl, useIsMd} from '@utils/useIsMobile'
 import LogoutButton from './components/LogoutButton/LogoutButton'
 import PhoneIconSVG from './components/icons/PhoneIconSVG/PhoneIconSVG'
 import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMenuBottom'
+import FindApartmentButton from './components/FindApartmentButton/FindApartmentButton'
 
 export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
