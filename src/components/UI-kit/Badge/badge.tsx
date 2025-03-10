@@ -1,32 +1,18 @@
-import {Badge as MuiBadge} from '@material-tailwind/react'
 import styles from './badge.module.scss'
 import {FC} from 'react'
 import cn from 'clsx'
 
 type TPlacement = 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end'
 type TBadgeSize = 'small' | 'medium' | 'big'
-interface IBadget {
-  children?: React.ReactNode
-  content: string | number
-  placement?: TPlacement
-  overlap?: 'circular'
-  withBorder?: boolean
-  extraClassName?: string
-  badgeSize?: TBadgeSize
-}
-export function BadgeDefault({children, content, placement, overlap, withBorder, extraClassName}: IBadget) {
-  return (
-    <MuiBadge
-      className={extraClassName}
-      content={content}
-      placement={placement}
-      overlap={overlap}
-      withBorder={withBorder}
-    >
-      {children}
-    </MuiBadge>
-  )
-}
+// interface IBadget {
+//   children?: React.ReactNode
+//   content: string | number
+//   placement?: TPlacement
+//   overlap?: 'circular'
+//   withBorder?: boolean
+//   extraClassName?: string
+//   badgeSize?: TBadgeSize
+// }
 
 type TBadgeType = 'default' | 'primary' | 'blue' | 'danger'
 

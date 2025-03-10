@@ -6,6 +6,7 @@ import {EmblaCarouselType, EmblaOptionsType} from 'embla-carousel'
 import {EmblaViewportRefType} from 'embla-carousel-react'
 import emblaStyle from './embla.module.scss'
 import {FC} from 'react'
+import Image from 'next/image'
 
 interface PropType {
   slides: number[]
@@ -29,7 +30,7 @@ const EmblaCarousel: FC<PropType> = (props) => {
         <div className={emblaStyle['embla__container']}>
           {slides?.map((index) => (
             <div className={emblaStyle['embla__slide']} key={index}>
-              <img className={emblaStyle['embla__slide__img']} src={imgArr[index]} alt='Your alt text' />
+              <Image className={emblaStyle['embla__slide__img']} src={imgArr[index]} alt='Your alt text' />
             </div>
           ))}
         </div>

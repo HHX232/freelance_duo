@@ -54,7 +54,7 @@
   }
 
   .accordion_extra {
-    & > div:first-child {
+    &>div:first-child {
       padding: 0 20px 10px 0;
 
       @include custom(0, map-get($breakpoints, lg)) {
@@ -66,7 +66,7 @@
   }
 
   .accordion_extra__accent {
-    & > div:first-child {
+    &>div:first-child {
       @include custom(0, map-get($breakpoints, lg)) {
         font-size: 20px !important;
         line-height: 26px;
@@ -184,6 +184,7 @@
   .menu {
     padding-top: 30px;
     padding-left: 20px;
+    overflow-x: hidden;
 
     .container {
       height: fit-content;

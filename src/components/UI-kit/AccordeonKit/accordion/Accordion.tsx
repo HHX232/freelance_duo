@@ -1,5 +1,5 @@
 'use client'
-import {useState, useMemo, useCallback} from 'react'
+import {useState, useMemo, useCallback, useId} from 'react'
 import styles from './accordion.module.scss'
 import {AccordionProps, AccordionTabCustomProps} from './accordion.types'
 import cn from 'clsx'
@@ -80,6 +80,7 @@ export default function Accordion({
 }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
+  const id = useId()
   const handleTabClick = useCallback((index: number) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index))
   }, [])
@@ -87,6 +88,7 @@ export default function Accordion({
   const tabs = useMemo(() => {
     return items.map((tab, i) => (
       <AccordionTabCustom
+        key={id}
         arrowColor={arrowColor}
         arrowComponent={arrowComponent}
         leftArrow={leftArrow}
@@ -94,7 +96,6 @@ export default function Accordion({
         rightArrow={rightArrow}
         arrowSize={arrowSize}
         arrowExtraStyles={arrowExtraStyles}
-        key={i.toString()}
         animationOn={animationOn}
         header={tab?.header}
         isOpen={forceIsOpen !== undefined ? forceIsOpen : openIndex === i}
@@ -126,7 +127,23 @@ export default function Accordion({
         {tab?.children}
       </AccordionTabCustom>
     ))
-  }, [items, extraClass, extraStyle, openIndex, handleTabClick])
+  }, [
+    items,
+    id,
+    arrowColor,
+    arrowComponent,
+    leftArrow,
+    decorUnderLine,
+    rightArrow,
+    arrowSize,
+    arrowExtraStyles,
+    animationOn,
+    forceIsOpen,
+    openIndex,
+    extraClass,
+    extraStyle,
+    handleTabClick
+  ])
 
   return (
     <div
