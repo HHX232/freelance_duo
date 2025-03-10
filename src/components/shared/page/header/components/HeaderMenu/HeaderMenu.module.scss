@@ -16,11 +16,11 @@
     padding-left: 66px;
   }
 
-  @include custom(0, map-get($breakpoints, lg) - 20px) {
+  @include custom(0, map-get($breakpoints, lg) - 1px) {
     padding-left: 40px;
   }
 
-  @include custom(0, map-get($breakpoints, sm) - 20px) {
+  @include custom(0, map-get($breakpoints, sm) - 1px) {
     padding-top: 0 !important;
   }
 
@@ -40,7 +40,7 @@
     width: 100%;
     max-width: 470px;
 
-    @include custom(0, map-get($breakpoints, xxxl) - 20px) {
+    @include custom(0, map-get($breakpoints, xxxl) - 1px) {
       max-width: 380px;
     }
 
