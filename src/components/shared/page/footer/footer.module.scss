@@ -1,10 +1,80 @@
 @import '../../../../scss/breakpoints';
+@import '../../../../scss/variables';
+
+.secondary_font_prime_color {
+  padding: 14px 0;
+  border-bottom: 1px solid #ffffff4d;
+  color: $yellow-text !important;
+  cursor: pointer;
+  font-family: $font-secondary !important;
+  font-size: 20px !important;
+  line-height: 26px !important;
+  text-transform: none;
+
+  @include custom(0, map-get($breakpoints, md)) {
+    font-size: 18px !important;
+  }
+}
+
+.accordion_extra_to_div {
+  &>div>div>a {
+    font-size: 20px !important;
+    line-height: 30px !important;
+    text-transform: none;
+  }
+}
+
+.secondary_font_prime_color_accordeon {
+  // padding: 14px 0;
+  color: $yellow-text !important;
+  cursor: pointer;
+  font-family: $font-secondary !important;
+  font-size: 20px !important;
+  line-height: 26px !important;
+  text-transform: none;
+
+  @include custom(0, map-get($breakpoints, md)) {
+    font-size: 18px !important;
+  }
+
+  &>div {
+    font-size: 20px !important;
+    line-height: 26px !important;
+
+    @include custom(0, map-get($breakpoints, md)) {
+      font-size: 18px !important;
+    }
+  }
+}
+
+.accordion_extra_font {
+  font-family: $font-accent;
+
+  @include custom(0, map-get($breakpoints, md)) {
+    font-size: 22px;
+  }
+}
+
+.accordeon_inner_item_font {
+  padding: 12px 0;
+  font-family: $font-secondary;
+  font-size: 18px;
+  text-transform: none;
+
+  // ссылка третий слой
+  &>a {
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+}
 
 .footer {
   width: 100%;
   height: fit-content;
   padding: 36px 40px 40px;
   background-color: #165167;
+
+
 
   @include bp-sm {
     padding: 36px 20px;
@@ -46,7 +116,7 @@
     .accordion_extra {
       color: #fff;
 
-      & > div:first-child {
+      &>div:first-child {
         padding: 0 20px 10px 0;
 
         @include custom(0, map-get($breakpoints, lg)) {

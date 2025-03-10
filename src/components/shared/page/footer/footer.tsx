@@ -53,7 +53,7 @@ const SECONDARY_LINKS: IFooterNavigationLink[] = [
 const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
   {
     name: (
-      <p>
+      <p className={styles.accordion_extra_font}>
         Недвижимость
         <br />
       </p>
@@ -64,30 +64,31 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
           <Accordion
             animationOn={false}
             leftArrow={false}
+            extraClass={styles.accordion_extra_font}
             items={[
               {
                 header: 'Квартиры',
                 children: (
                   <>
-                    <div>
+                    <div className={styles.accordeon_inner_item_font}>
                       <Link href={'/odnokomnatnye'}>Однокомнатные</Link>
                     </div>
-                    <div>
+                    <div className={styles.accordeon_inner_item_font}>
                       <Link href={'/dvuhkomnatnye'}>Двухкомнатные</Link>
                     </div>
-                    <div>
+                    <div className={styles.accordeon_inner_item_font}>
                       <Link href={'/3-komnatnye'}>Трехкомнатные</Link>
                     </div>
-                    <div>
+                    <div className={styles.accordeon_inner_item_font}>
                       <Link href={'/4-komnatnye'}>Четырехкомнатые</Link>
                     </div>
-                    <div>
+                    <div className={styles.accordeon_inner_item_font}>
                       <Link href={'/lofty'}>Лофты</Link>
                     </div>
-                    <div>
+                    <div className={styles.accordeon_inner_item_font}>
                       <Link href={'/planirovki-i-ceny'}>Апартаменты</Link>
                     </div>
-                    <div>
+                    <div className={styles.accordeon_inner_item_font}>
                       <Link href={'/kvartiry-s-balkonom'}>С балконом</Link>
                     </div>
                   </>
@@ -100,6 +101,7 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
       {
         name: (
           <Accordion
+            extraClass={styles.accordion_extra_font}
             animationOn={false}
             leftArrow={false}
             rightArrow={false}
@@ -111,6 +113,7 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
       {
         name: (
           <Accordion
+            extraClass={styles.accordion_extra_font}
             animationOn={false}
             leftArrow={false}
             rightArrow={false}
@@ -122,6 +125,7 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
       {
         name: (
           <Accordion
+            extraClass={styles.accordion_extra_font}
             animationOn={false}
             leftArrow={false}
             rightArrow={false}
@@ -134,7 +138,7 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
   },
   {
     name: (
-      <p>
+      <p className={styles.accordion_extra_font}>
         О проекте
         <br />
       </p>
@@ -145,12 +149,13 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
           <Accordion
             animationOn={false}
             leftArrow={false}
-            extraClass={styles.accordion_extra}
-            arrowSize='medium'
+            // TODO Увеличить круглые изображения!
+            extraClass={`${styles.accordion_extra} ${styles.accordion_extra_to_div}`}
+            arrowSize='large'
             arrowColor='#fff'
             items={[
               {
-                header: 'О проекте',
+                header: <p className={`${styles.secondary_font_prime_color_accordeon}`}>О проекте</p>,
                 children: (
                   <>
                     <div className={styles.accordeon_inner_item}>
@@ -188,36 +193,37 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
           />
         )
       },
-      {name: 'Расположежие', href: '/locatio'},
-      {name: 'Инфраструктура', href: '/infrastructure'},
-      {name: 'Благоустройство', href: '/landscaping'},
-      {name: 'Виды отделки', href: '/finishes'},
-      {name: 'Ход строительства', href: '/gallery'},
-      {name: 'Новости', href: '/news'},
-      {name: 'Акции', href: '/stocks'}
+      // TODO ссылки исправить
+      {name: <p className={styles.secondary_font_prime_color}>Расположежие</p>, href: '/locatio'},
+      {name: <p className={styles.secondary_font_prime_color}>Инфраструктура</p>, href: '/infrastructure'},
+      {name: <p className={styles.secondary_font_prime_color}>Благоустройство</p>, href: '/landscaping'},
+      {name: <p className={styles.secondary_font_prime_color}>Виды отделки</p>, href: '/finishes'},
+      {name: <p className={styles.secondary_font_prime_color}>Ход строительства</p>, href: '/gallery'},
+      {name: <p className={styles.secondary_font_prime_color}>Новости</p>, href: '/news'},
+      {name: <p className={styles.secondary_font_prime_color}>Акции</p>, href: '/stocks'}
     ]
   },
   {
     name: (
-      <p>
+      <p className={styles.accordion_extra_font}>
         Информация
         <br />
       </p>
     ),
     links: [
-      {name: 'О застройщике', href: '/alkor'},
-      {name: 'План развития', href: '/plan-razvitiya'},
+      {name: <p className={styles.secondary_font_prime_color}>О застройщике</p>, href: '/alkor'},
+      {name: <p className={styles.secondary_font_prime_color}>План развития</p>, href: '/plan-razvitiya'},
       {
         name: (
           <Accordion
             animationOn={false}
             leftArrow={false}
-            extraClass={styles.accordion_extra}
+            extraClass={`${styles.accordion_extra} ${styles.accordion_extra_to_div}`}
             arrowSize='medium'
             arrowColor='#fff'
             items={[
               {
-                header: 'Способы покупки',
+                header: <p className={`${styles.secondary_font_prime_color_accordeon}`}>Способы покупки</p>,
                 children: (
                   <>
                     <div className={styles.accordeon_inner_item}>
@@ -241,11 +247,14 @@ const MOBILE_LINKS: IMobileFooterNavigationLinksGroup[] = [
           />
         )
       },
-      {name: 'Ипотечный калькулятор', href: '/ipotechniy-kalkulator'},
-      {name: 'Инвестиции', href: '/investicii'},
-      {name: 'Документы', href: '/docs'},
-      {name: 'Контакты', href: '/contacts'},
-      {name: 'FAQ', href: '/faq'}
+      {
+        name: <p className={styles.secondary_font_prime_color}>Ипотечный калькулятор</p>,
+        href: '/ipotechniy-kalkulator'
+      },
+      {name: <p className={styles.secondary_font_prime_color}>Инвестиции</p>, href: '/investicii'},
+      {name: <p className={styles.secondary_font_prime_color}>Документы</p>, href: '/docs'},
+      {name: <p className={styles.secondary_font_prime_color}>Контакты</p>, href: '/contacts'},
+      {name: <p className={styles.secondary_font_prime_color}>FAQ</p>, href: '/faq'}
     ]
   }
 ]
