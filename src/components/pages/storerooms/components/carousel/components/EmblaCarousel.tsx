@@ -1,8 +1,4 @@
 import {EmblaCarouselType, EmblaOptionsType} from 'embla-carousel'
-// import {
-//   NextButton, PrevButton,
-//   usePrevNextButtons
-// } from '@pages/storerooms/components/carousel/components/EmblaCarouselArrowButtons'
 import {EmblaViewportRefType} from 'embla-carousel-react'
 import emblaStyle from './embla.module.scss'
 import {FC} from 'react'
@@ -30,7 +26,7 @@ const EmblaCarousel: FC<PropType> = (props) => {
         <div className={emblaStyle['embla__container']}>
           {slides?.map((index) => (
             <div className={emblaStyle['embla__slide']} key={index}>
-              <Image className={emblaStyle['embla__slide__img']} src={imgArr[index]} alt='Your alt text' />
+              <Image className={emblaStyle['embla__slide__img']} src={imgArr[index]} width={4096} height={2734} alt='Your alt text' />
             </div>
           ))}
         </div>
