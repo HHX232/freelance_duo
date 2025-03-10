@@ -1,154 +1,164 @@
 @import '../../../../fonts/fonts';
 
 .accordion {
-   display: flex;
-   width: 100%;
-   flex-direction: column;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 }
 
 .item {
-   position: relative;
-   display: flex;
-   width: 100%;
-   align-items: center;
-   font-family: $font-romul;
-   font-size: 20px;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   font-weight: 400;
-   transition: all .3s !important;
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-family: $font-romul;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+
+  // transition: all .3s !important;
 }
 
 .decor_line {
-   width: 100%;
-   height: 1px;
-   background-color: #fff;
-   opacity: .3;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  opacity: 0.3;
 }
 
 .header {
-   position: relative;
-   width: 100%;
-   padding: 8px 20px 8px 0;
-   cursor: pointer; // Добавляем курсор для интерактивности
+  position: relative;
+  width: 100%;
+  padding: 8px 20px 8px 0;
+  cursor: pointer; // Добавляем курсор для интерактивности
 }
 
 .li_item {
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .none {
-   display: none;
+  display: none;
 }
 
 .arrow {
-   position: absolute;
-   z-index: 100;
-   top: 39%;
-   left: 0;
-   transition: transform 0.3s ease; // Анимация для стрелки
+  position: absolute;
+  z-index: 100;
+  top: 39%;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.animationOn {
+  transition:
+    all 0.3s ease,
+    opacity 0.3s ease !important;
+}
+
+.animationOff {
+  transition: none !important;
 }
 
 .content {
-   overflow: hidden; // Скрываем содержимое
-   width: 100%;
-   max-height: 0; // Начальная высота
-   margin-top: 10px;
-   opacity: 0; // Начальная прозрачность
-   transition: max-height 0.3s ease, opacity 0.3s ease; // Анимация для содержимого
+  width: 100%;
+  max-height: 0;
+  margin-top: 10px;
+  opacity: 0;
+  overflow-y: auto;
 }
 
 .arrow_right {
-   right: 0 !important;
-   left: auto;
+  right: 0 !important;
+  left: auto;
 }
 
 .item::before {
-   position: absolute;
-   bottom: 0;
-   left: 0;
-   width: 100px;
-   height: 10px;
-   color: #fff;
-   content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 10px;
+  color: #fff;
+  content: '';
 }
 
 .white_text {
-   color: #fff;
+  color: #fff;
 }
 
 .accent_text {
-   color: #FDF1CD;
+  color: #fdf1cd;
 }
 
 .romul_text {
-   font-family: $font-romul;
-   font-weight: 400;
-   text-transform: uppercase;
+  font-family: $font-romul;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .gotham_text {
-   font-family: $font-gotham-pro;
-   font-weight: 400;
+  font-family: $font-gotham-pro;
+  font-weight: 400;
 }
 
 .accentSmall_text {
-   font-size: 22px;
-   line-height: 1.2;
+  font-size: 22px;
+  line-height: 1.2;
 }
 
 .accentMedium_text {
-   font-size: 26px;
-   line-height: 1.4;
+  font-size: 26px;
+  line-height: 1.4;
 }
 
 .accentLarge_text {
-   font-size: 32px;
-   line-height: 1.4;
+  font-size: 32px;
+  line-height: 1.4;
 }
 
 // Стили для стандартного шрифта
 .defaultXXL {
-   font-size: 24px;
-   line-height: 1.8;
+  font-size: 24px;
+  line-height: 1.8;
 }
 
 .defaultXL {
-   font-size: 20px;
-   line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .defaultL {
-   font-size: 16px;
-   line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .defaultM {
-   font-size: 14px;
-   line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .defaultS {
-   font-size: 16px;
-   line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 .defaultXS {
-   font-size: 12px;
-   line-height: 1.2;
+  font-size: 12px;
+  line-height: 1.2;
 }
 
 .contentActive {
-   max-height: 500px; // Максимальная высота (увеличьте, если нужно)
-   opacity: 1; // Плавное появление
-
+  max-height: 500px; // Максимальная высота (увеличьте, если нужно)
+  opacity: 1; // Плавное появление
 }
 
 .open {
-   .arrow {
-      transform: rotate(-180deg); // Поворот стрелки
-   }
+  padding-bottom: 24px;
+
+  .arrow {
+    transform: rotate(-180deg); // Поворот стрелки
+  }
 }

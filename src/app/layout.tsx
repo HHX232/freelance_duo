@@ -1,7 +1,6 @@
 import type {Metadata} from 'next'
 import {Main} from './main'
 import {RootStyleRegistry} from '@src/components/RootStyleRegistry/RootStyleRegistry'
-import Widget from '@shared/page/widget/Widget'
 import {Jivo} from '@shared/jivo/jivo'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kronfort.labab.ru'
@@ -58,7 +57,6 @@ export default function RootLayout({
         {/* Ваш основной контент */}
         <RootStyleRegistry>
           <Main>{children}</Main>
-          <Widget color='korichneviy' style={{zIndex: 3}} />
           <Jivo />
         </RootStyleRegistry>
 

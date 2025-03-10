@@ -18,7 +18,7 @@
   }
 
   &.menuOpened {
-    padding: 0 44px 0 40px;
+    padding: 0 45px 0 40px;
     background-color: #11627d;
 
     .container,
@@ -26,11 +26,21 @@
       color: #fff;
 
       .toggleMenuButton {
-        margin-left: 50px;
+        margin-right: -10px;
+        margin-left: 37px;
+
+        @include custom(0, map-get($breakpoints, xxxl) - 100px) {
+          margin-right: 0;
+          margin-left: 49px;
+        }
+
+        @include custom(0, map-get($breakpoints, xl) - 100px) {
+          margin-right: -10px;
+        }
 
         svg {
-          width: 26px;
-          height: 26px;
+          width: 23px;
+          height: 23px;
         }
       }
     }
@@ -49,6 +59,24 @@
     .menu {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  .phoneIcon {
+    display: none;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+
+    svg {
+      width: 24px;
+      height: 24px;
+
+      path {
+        fill: #555;
+      }
     }
   }
 
@@ -72,24 +100,6 @@
 
     .phoneLink {
       margin-left: 40px;
-    }
-
-    .phoneIcon {
-      display: none;
-      width: 32px;
-      height: 32px;
-      align-items: center;
-      justify-content: center;
-      margin-left: auto;
-
-      svg {
-        width: 24px;
-        height: 24px;
-
-        path {
-          fill: #555;
-        }
-      }
     }
 
     .logoutButton {
@@ -206,24 +216,36 @@
       transform 0.6s ease-in-out,
       opacity 0.2s ease-in-out;
 
+    @include custom(0, map-get($breakpoints, xl) - 100px) {
+      padding-top: 71px;
+    }
+
+    @include custom(0, map-get($breakpoints, lg) - 100px) {
+      padding-top: 144px;
+    }
+
     .headerMenuBottom {
-      position: absolute;
-      z-index: 2;
-      bottom: 0;
+      position: relative;
+      bottom: 96px;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: fit-content;
+      transform: translateY(100%);
+
+      @include custom(0, map-get($breakpoints, xl) - 100px) {
+        bottom: 144px;
+      }
     }
   }
 }
 
-@include custom(0, map-get($breakpoints, xl) - 20px) {
+@include custom(0, map-get($breakpoints, xl) - 100px) {
   .header {
     height: 86px;
     padding-right: 28px;
 
     &.menuOpened {
-      padding: 0 38px 0 40px;
+      padding: 0 48px 0 40px;
 
       .container {
         .toggleMenuButton {
@@ -269,15 +291,16 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, lg) - 20px) {
+@include custom(0, map-get($breakpoints, lg) - 100px) {
   .header {
     height: 68px;
 
     &.menuOpened {
-      padding: 0 38px 0 20px;
+      padding: 0 40px 0 20px;
 
       .container {
         .toggleMenuButton {
+          margin-right: 0;
           margin-left: 42px;
 
           svg {
@@ -285,10 +308,6 @@
             height: 20px;
           }
         }
-      }
-
-      .menu {
-        padding-top: 144px;
       }
 
       .mobileMenu {
@@ -308,6 +327,8 @@
       }
 
       .logo {
+        margin-left: -8px;
+
         a {
           width: 68px !important;
 
@@ -320,7 +341,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, md) - 20px) {
+@include custom(0, map-get($breakpoints, md) - 100px) {
   .header {
     padding: 0 12px !important;
 
@@ -337,6 +358,12 @@
             }
           }
         }
+      }
+
+      .mobileMenu {
+        padding-right: 8px;
+        padding-left: 8px;
+        margin-top: 26px;
       }
     }
 
@@ -358,7 +385,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, sm) - 20px) {
+@include custom(0, map-get($breakpoints, sm) - 100px) {
   .header {
     &.menuOpened {
       .container {
@@ -373,6 +400,38 @@
           }
         }
       }
+
+      .mobileMenu {
+        padding-right: 4px;
+        padding-left: 4px;
+        margin-top: 9px;
+
+        .mobilePersonalCabinetLink {
+          min-width: 100px;
+          height: 36px;
+          padding-top: 0;
+
+          a {
+            font-size: 12px;
+          }
+        }
+
+        .mobileCompareLink,
+        .mobielFavoriteLink {
+          width: 36px;
+          height: 36px;
+
+          .link {
+            width: 20px;
+            height: 20px;
+
+            svg {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
     }
 
     .container {
@@ -382,10 +441,6 @@
 
       .phoneIcon {
         display: block;
-
-        svg path {
-          fill: #fff;
-        }
       }
 
       .toggleMenuButton {
@@ -403,7 +458,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, xs) - 20px) {
+@include custom(0, map-get($breakpoints, xs) - 100px) {
   header.header .container {
     padding-right: 0 !important;
   }
