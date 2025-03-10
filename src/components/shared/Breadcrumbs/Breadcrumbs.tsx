@@ -20,17 +20,16 @@ interface BreadcrumbsProps {
   iconStyles?: string
 }
 
-const Breadcrumbs = ({items, darkTheme, className, isIconBack}: BreadcrumbsProps) => {
+const Breadcrumbs = ({items, darkTheme, className, iconStyles}: BreadcrumbsProps) => {
   const router = useRouter()
 
   return (
     <section className={clsx(styles.breadcrumbs, className, {[styles.dark]: darkTheme})}>
-      {isIconBack && (
-        <Link href={'#'} onClick={() => router.back()}>
-          <BackIcon />
-        </Link>
-      )}
-      <Breadcrumb separator={<>|</>}>
+      <Link className={styles.mobile_version} href={'#'} onClick={() => router.back()}>
+        <BackIcon className={iconStyles} />
+        <span>{items.length >= 2 ? items[items.length - 2]?.title : 'Назад'}</span>
+      </Link>
+      <Breadcrumb className={styles.desktop_version} separator={<>|</>}>
         {items.map((item, index) => (
           <Breadcrumb.Item key={index}>
             {item.back ? (
