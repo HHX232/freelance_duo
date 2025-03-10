@@ -90,59 +90,60 @@
     gap: 40px;
     grid-template-columns: auto 1fr;
 
-    @include custom(0, map-get($breakpoints, xl) - 1px) {
-      padding: 12px 0;
-    }
-
-    @include custom(0, map-get($breakpoints, lg)) {
-      font-size: 14px;
-    }
-
-    .accordeon_inner_item {
-      display: flex;
-      align-items: center;
-      padding: 5px 0;
-      color: #fff;
-      gap: 14px;
-
-      .accordeon_inner_item_image {
-        overflow: hidden;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
+    <<<<<<< HEAD @include custom(0, map-get($breakpoints, xl) - 1px) {
+      =======@include custom(0, map-get($breakpoints, xl) - 100px) {
+        >>>>>>>4040d71 (update footer navigation links) padding: 12px 0;
       }
-    }
 
-    .accordion_extra {
-      color: #fff;
+      @include custom(0, map-get($breakpoints, lg)) {
+        font-size: 14px;
+      }
 
-      &>div:first-child {
-        padding: 0 20px 10px 0;
+      .accordeon_inner_item {
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
+        color: #fff;
+        gap: 14px;
 
-        @include custom(0, map-get($breakpoints, lg)) {
-          padding: 14px 20px 14px 0;
-          font-size: 14px !important;
-          line-height: 18px;
+        .accordeon_inner_item_image {
+          overflow: hidden;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
         }
       }
-    }
 
-    @include custom(0, 900px) {
-      grid-template-columns: auto;
+      .accordion_extra {
+        color: #fff;
 
-      .side.side_right {
-        display: none;
+        &>div:first-child {
+          padding: 0 20px 10px 0;
+
+          @include custom(0, map-get($breakpoints, lg)) {
+            padding: 6px 20px 6px 0;
+            font-size: 14px !important;
+            line-height: 18px;
+          }
+        }
+      }
+
+      @include custom(0, 900px) {
+        grid-template-columns: auto;
+
+        .side.side_right {
+          display: none;
+        }
+      }
+
+      .side {
+        width: 100%;
+        height: 100%;
+      }
+
+      .side_right {
+        display: flex;
+        justify-content: right;
       }
     }
-
-    .side {
-      width: 100%;
-      height: 100%;
-    }
-
-    .side_right {
-      display: flex;
-      justify-content: right;
-    }
   }
-}
