@@ -20,7 +20,7 @@ interface BreadcrumbsProps {
   isIconBack?: boolean
 }
 
-const Breadcrumbs = ({items, darkTheme, className, isIconBack}: BreadcrumbsProps) => {
+const Breadcrumbs = ({items, darkTheme, className}: BreadcrumbsProps) => {
   const router = useRouter()
 
   return (

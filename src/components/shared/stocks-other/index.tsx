@@ -7,7 +7,6 @@ import {FC, useEffect, useState} from 'react'
 import ArrowUpIcon from '@icons/arrow_up.svg'
 
 import React from 'react'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 import {useWindowWidth} from '@shared/page/header/components/HeaderMenu/hooks/useWindowWidth'
 
 const MOCK_DATA: IStockItemProps[] = [
