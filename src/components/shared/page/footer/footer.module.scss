@@ -50,7 +50,7 @@
         padding: 0 20px 10px 0;
 
         @include custom(0, map-get($breakpoints, lg)) {
-          padding: 6px 20px 6px 0;
+          padding: 14px 20px 14px 0;
           font-size: 14px !important;
           line-height: 18px;
         }
