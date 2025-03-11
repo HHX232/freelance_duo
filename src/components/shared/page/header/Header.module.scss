@@ -231,6 +231,14 @@
       padding-top: 134px;
     }
 
+    @include custom(0, map-get($breakpoints, sm) - 1px) {
+      padding-top: 174px;
+    }
+
+    @include custom(0, map-get($breakpoints, xs) - 1px) {
+      padding-top: 130px;
+    }
+
     .menu_inner {
       position: relative;
       display: grid;
