@@ -160,7 +160,6 @@
 
 /* Additional Classes */
 .disabled {
-   opacity: 0.5 !important;
    pointer-events: none !important;
 }
 
@@ -213,7 +212,6 @@
    position: relative;
    border: none;
    background-color: #fd7628;
-   transition: all 0.2s;
 
    &:hover {
       background-color: #f8721c;
@@ -249,15 +247,19 @@
    border: none;
    background-color: #fff;
    color: #555;
-   transition: all 0.2s;
 
    &:hover {
       color: #11627d !important;
+
+      .arrow_active>path {
+         stroke: #11627D !important;
+      }
    }
 
    &:active {
       background-color: #fff !important;
       color: #11627d !important;
+
    }
 
    &:active:hover {
@@ -273,7 +275,6 @@
       content: '';
       inset: -2px;
       opacity: 0;
-      transition: opacity 0.2s;
    }
 
    &:active::before {
@@ -283,15 +284,27 @@
    &:focus {
       background-color: #11627d;
       color: #fff !important;
+
+      .arrow_active>path {
+         stroke: #fff !important;
+      }
    }
 
    &:focus:not(:hover) {
       background-color: #fff;
       color: #555 !important;
+
+      .arrow_active>path {
+         stroke: #555 !important;
+      }
    }
 
    &:active:focus {
       color: #11627d !important;
+
+      .arrow_active>path {
+         stroke: #11627d !important;
+      }
    }
 }
 
@@ -302,6 +315,15 @@
    color: #FD7628;
    outline: none;
 
+   .arrow_active>path {
+      stroke: #F06710 !important;
+   }
+
+   &:hover {
+      .arrow_active>path {
+         stroke: #F06710 !important;
+      }
+   }
 
    &:hover::before {
       border-color: #F06710;
@@ -320,11 +342,19 @@
    &:focus {
       background-color: #FD7628;
       color: #FD7628 !important;
+
+      .arrow_active>path {
+         stroke: #FD7628 !important;
+      }
    }
 
    &:focus:hover {
       background-color: #FD7628;
       color: #fff !important;
+
+      .arrow_active>path {
+         stroke: #fff !important;
+      }
    }
 
    &:focus:hover::before {
@@ -342,15 +372,27 @@
 
    &:focus:not(:active) {
       color: #fff !important;
+
+      .arrow_active>path {
+         stroke: #fff !important;
+      }
    }
 
    &:focus:not(:active, :hover) {
       color: #FD7628 !important;
+
+      .arrow_active>path {
+         stroke: #FD7628 !important;
+      }
    }
 
    &:active:focus {
       background-color: transparent !important;
       color: #FD7628 !important;
+
+      .arrow_active>path {
+         stroke: #FD7628 !important;
+      }
    }
 
    &:focus:not(:focus-visible) {
@@ -364,7 +406,6 @@
       border-radius: 8px;
       content: '';
       inset: -1px;
-
    }
 }
 
@@ -410,5 +451,191 @@
       background-color: rgb(255 255 255 / 16%);
       content: '';
       inset: -1px;
+   }
+}
+
+.active_button_transparent_with_gray_border {
+   position: relative;
+   border: none;
+   background-color: transparent;
+   color: #555;
+   outline: none;
+   transition: all 0.2s;
+
+   .arrow_active>path {
+      stroke: #555 !important;
+   }
+
+   &:hover {
+      .arrow_active>path {
+         stroke: #555 !important;
+      }
+   }
+
+   &:hover::before {
+      border-color: #555;
+   }
+
+   &:active {
+      background-color: transparent;
+   }
+
+   &:active::before {
+      border-width: 3px;
+      border-color: #66A2B6;
+      background-color: transparent;
+   }
+
+
+
+   &:focus {
+      // border: none !important;
+      background-color: #11627D;
+      color: #fff !important;
+
+      .arrow_active>path {
+         stroke: #fff !important;
+      }
+   }
+
+   &:focus:hover {
+      background-color: #11627D;
+      color: #fff !important;
+
+      .arrow_active>path {
+         stroke: #fff !important;
+      }
+   }
+
+   &:focus:hover::before {
+      border: none !important;
+      background-color: transparent;
+   }
+
+   &:focus:not(:active)::before {
+      background-color: #11627D;
+   }
+
+   &:focus:not(:active, :hover)::before {
+      background-color: transparent;
+   }
+
+   &:focus:not(:active) {
+      color: #fff !important;
+
+      .arrow_active>path {
+         stroke: #fff !important;
+      }
+   }
+
+   &:active:hover::before {
+      border: 3px solid #66A2B6 !important;
+      background-color: transparent !important;
+   }
+
+   &:focus:not(:active, :hover) {
+      color: #555 !important;
+
+      .arrow_active>path {
+         stroke: #555 !important;
+      }
+   }
+
+   &:active:focus {
+      background-color: transparent !important;
+      color: #555 !important;
+
+      .arrow_active>path {
+         stroke: #555 !important;
+      }
+   }
+
+   &:focus:not(:focus-visible) {
+      background-color: transparent;
+   }
+
+   &::before {
+      position: absolute;
+      z-index: -1;
+      border: 1px solid #B5B9BE;
+      border-radius: 8px;
+      content: '';
+      inset: -1px;
+      transition: border-color 0.2s, border-width 0.2s, background-color 0.2s;
+   }
+}
+
+
+
+// Disabled 
+
+.disabled_active_button_bronze {
+   background-color: #B5B9BE !important;
+   color: #fff !important;
+   cursor: not-allowed !important;
+   pointer-events: none !important;
+   user-select: none !important;
+
+   .arrow_active>path {
+      stroke: #fff !important;
+   }
+}
+
+.disabled_active_button_orange {
+   background-color: #B5B9BE !important;
+   color: #fff !important;
+   cursor: not-allowed !important;
+   pointer-events: none !important;
+   user-select: none !important;
+
+   .arrow_active>path {
+      stroke: #fff !important;
+   }
+}
+
+.disabled_active_button_white {
+   background-color: rgb(255 255 255 / 16%) !important;
+   color: #B5B9BE !important;
+   cursor: not-allowed !important;
+   pointer-events: none !important;
+   user-select: none !important;
+
+   .arrow_active>path {
+      stroke: #B5B9BE !important;
+   }
+}
+
+.disabled_active_button_transparent_with_orange_border,
+.disabled_active_button_transparent_with_gray_border {
+   border: 1px solid #CDD0D3;
+   background-color: transparent !important;
+   color: #B5B9BE !important;
+   cursor: not-allowed !important;
+   pointer-events: none !important;
+   user-select: none !important;
+
+   &::before {
+      display: none !important;
+   }
+
+   .arrow_active>path {
+      stroke: #B5B9BE !important;
+   }
+}
+
+.disabled_active_button_gray_transparent {
+   border: none !important;
+   background-color: rgb(255 255 255 / 16%) !important;
+   color: rgb(255 255 255 / 24%) !important;
+   cursor: not-allowed !important;
+   pointer-events: none !important;
+   user-select: none !important;
+
+   &::before {
+      display: none !important;
+   }
+
+   .arrow_active>path {
+      stroke: rgb(255 255 255 / 24%) !important;
    }
 }
