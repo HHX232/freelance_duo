@@ -21,6 +21,7 @@ import LogoutButton from './components/LogoutButton/LogoutButton'
 import PhoneIconSVG from './components/icons/PhoneIconSVG/PhoneIconSVG'
 import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMenuBottom'
 import FindApartmentButton from './components/FindApartmentButton/FindApartmentButton'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
@@ -93,6 +94,29 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
     <header
       className={clsx(styles.header, {[styles.dark]: dark}, isMenuOpened ? `${styles.menuOpened} no-scroll` : '')}
     >
+      <div style={{width: '200px', padding: '30px', marginTop: '20px'}}>
+        <FullButton
+          buttonElementColor='orange'
+          buttonBorderRadius='6px'
+          activeButton={true}
+          buttonText='Hello'
+          buttonFill='gray-light'
+          borderColor='gray'
+          type='Button'
+          border={false}
+          borderWidth='1px'
+        />
+        {/* <FullButton
+          buttonElementColor='black'
+          buttonBorderRadius='6px'
+          activeButton={true}
+          buttonText='Hello'
+          buttonFill='white'
+          type='Button'
+          border={true}
+          borderWidth='1px'
+        /> */}
+      </div>
       <div className={styles.container}>
         <div className={styles.logo}>
           <LogoLink
