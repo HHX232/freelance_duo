@@ -18,18 +18,20 @@
   }
 
   &.menuOpened {
-    <<<<<<< HEAD height: fit-content;
-    =======>>>>>>>8d10d9a (fix header toggle menu button position on open) padding-right: 46px;
+    padding-right: 46px;
     background-color: #11627d;
-
-    .container {
-      height: 68px !important;
-    }
 
     .container,
     .container a {
       background-color: #11627d !important;
       color: #fff;
+
+      .favoriteLink,
+      .compareLink {
+        span {
+          background-color: #fd7628;
+        }
+      }
 
       .toggleMenuButton {
         svg {
@@ -349,9 +351,12 @@
     padding: 0 12px;
 
     &.menuOpened {
+      height: fit-content;
       padding: 0 12px;
 
       .container {
+        height: 68px !important;
+
         .toggleMenuButton {
           margin-left: 23px;
         }
