@@ -202,12 +202,14 @@
     z-index: -1;
     top: 0;
     left: 0;
+    display: grid;
     width: 100%;
     height: fit-content;
     min-height: 100dvh;
     max-height: 100dvh;
     padding-top: 96px;
     background-color: #11627d;
+    grid-template-rows: 1fr auto;
     opacity: 0;
     overflow-y: auto;
     transform: translateY(-100%);
