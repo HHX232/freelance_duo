@@ -35,6 +35,10 @@ $background-color_1: transparent;
     @include font(3, 42, 54, 400);
   }
 
+  @include xxxl {
+    padding: 0 40px 0 196px;
+  }
+
 }
 
 .gallery-wrapper {

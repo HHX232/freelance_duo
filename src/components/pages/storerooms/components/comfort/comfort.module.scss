@@ -29,7 +29,10 @@
   @include xxl{
     padding: 0 40px 0 170px;
     gap: 80px;
+  }
 
+  @include xxxl {
+    padding: 0 40px 0 196px;
   }
 }
 
@@ -99,7 +102,7 @@
     display: block;
     width: 486px;
     height: 488px;
-    background: url("/content/storerooms/storerooms_2_2.png") no-repeat top center;
+    background: url("/content/storerooms/comf_xl.png") no-repeat top center;
     background-size: 100% 100%;
     object-fit: fill;
   }
@@ -107,11 +110,18 @@
   @include xxl {
     width: 748px;
     height: 488px;
+
+    background: url("/content/storerooms/comf_xxl.png") no-repeat top center;
+    background-size: 100% 100%;
   }
 
   @include xxxl {
     width: 830px;
     height: 420px;
+
+
+    background: url("/content/storerooms/comf_xxxl.png") no-repeat top center;
+    background-size: 100% 100%;
   }
 
 }
@@ -136,7 +146,7 @@
 
   @layer base {
     display: block;
-    background: url("/content/storerooms/storerooms_2_3.svg") no-repeat top center;
+    background: url("/content/storerooms/comf_xs.png") no-repeat top center;
     height: 220px;
     width: 100%;
     background-size: cover;
@@ -144,15 +154,20 @@
 
   @include sm {
     height: 300px;
-    background-position-x: 90%;
+    background: url("/content/storerooms/comf_sm.png") no-repeat top center;
+    background-size: 100% 100%;
   }
 
   @include md {
     height: 400px;
+    background: url("/content/storerooms/comf_md.png") no-repeat top center;
+    background-size: 100% 100%;
   }
 
   @include lg {
     height: 450px;
+    background: url("/content/storerooms/comf_lg.png") no-repeat top center;
+    background-size: 100% 100%;
   }
 
   @include xl {

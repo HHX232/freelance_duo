@@ -1,6 +1,5 @@
 .content-wrapper {
   @layer base {
-    margin-bottom: 110px;
     padding: 0 16px;
   }
 
@@ -19,6 +18,10 @@
   @include xxl{
     padding: 0 40px 0 170px;
   }
+
+  @include xxxl{
+    padding: 0 40px 0 196px;
+  }
 }
 
 .title {
@@ -29,9 +32,8 @@
     width: 100%;
     height: 240px;
     padding: 20px 16px;
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_6.jpg') no-repeat;
-    background-position-y: 65%;
-    background-size: 100%;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_xs.png') no-repeat;
+    background-size: 100% 100%;
     @include font(3, 30, 40, 400);
     word-wrap: break-word;
   }
@@ -40,11 +42,17 @@
   @include sm{
     height: 300px;
     padding: 24px 20px;
+
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_sm.png') no-repeat;
+    background-size: 100% 100%;
   }
 
   @include md{
     height: 484px;
     padding: 40px;
+
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_md.png') no-repeat;
+    background-size: 100% 100%;
   }
 
   @include lg {
@@ -70,9 +78,23 @@
     gap: 10px;
     flex-direction: row;
 
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_6.jpg') no-repeat;
-    background-position-y: 65%;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_lg.png') no-repeat;
+    background-size: 100% 100%;
+  }
 
+  @include xl{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_xl.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  @include xxl{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_xxl.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  @include xxxl{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_xxxl.png') no-repeat;
+    background-size: 100% 100%;
   }
 }
 

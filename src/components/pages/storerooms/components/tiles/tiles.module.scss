@@ -23,6 +23,10 @@
     padding: 80px 40px 80px 170px;
   }
 
+  @include xxl {
+    padding: 80px 40px 80px 196px;
+  }
+
 }
 
 .wrapper {
@@ -128,14 +132,43 @@
 
 .tile-bg1 {
   @layer base {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_3.jpeg') no-repeat;
-    gap: 24px;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xs.png') no-repeat;
     background-size: 100% 100%;
+
+    gap: 24px;
     justify-content: flex-end;
   }
 
+  @include sm{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_sm.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
   @include md {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_md.png') no-repeat;
+    background-size: 100% 100%;
+
     justify-content: flex-end;
+  }
+
+  @include lg{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_lg.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  @include xl{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xl.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  @include xxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxl.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  @include xxxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxxl.png') no-repeat;
+    background-size: 100% 100%;
   }
 
 }
@@ -145,18 +178,47 @@
 }
 
 .tile-bg3 {
-  background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_4.jpeg') no-repeat center center;
-  background-size: 100%;
+  @layer base{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xs.png') no-repeat center center;
+    background-size: 100% 100%;
 
-  .title {
-    @include font(3, 40, 50, 400);
+    .title {
+      @include font(3, 40, 50, 400);
+    }
+  }
+
+  @include sm{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_sm.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include md{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_md.png') no-repeat center center;
+    background-size: 100% 100%;
   }
 
   @include lg {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_lg.png') no-repeat center center;
+    background-size: 100% 100%;
 
     .title {
       @include font(3, 64, 80, 400);
     }
+  }
+
+  @include xl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xl.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include xxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xxl.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include xxxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xxxl.png') no-repeat center center;
+    background-size: 100% 100%;
   }
 }
 
