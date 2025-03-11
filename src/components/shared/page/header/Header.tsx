@@ -157,7 +157,6 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
           <ToggleMenuButton isMenuOpened={isMenuOpened} onClick={() => setIsMenuOpened((prev) => !prev)} />
         </div>
       </div>
-
       <div className={styles.mobileMenu}>
         <div className={styles.mobilePersonalCabinetLink}>
           <TextLink href={'/lk'} title='Личный кабинет' />
@@ -199,7 +198,6 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
           </>
         )}
       </div>
-
       <div className={styles.menu}>
         <div className={styles.menu_inner}>
           <HeaderMenu onClose={() => setIsMenuOpened(false)} setIsMenuOpened={setIsMenuOpened} />
