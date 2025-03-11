@@ -6,12 +6,13 @@
     justify-content: space-between;
     padding: 90px 16px 40px 16px;
     background-position: center;
-    background-position-y: 15%;
+    //background-position-y: 15%;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
-    background-image: linear-gradient(90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), url("/content/parking/head_bg.jpeg");
-    background-position-x: 80%;
+    //background-image: linear-gradient(90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), url("/content/parking/head_bg.jpeg");
+    //background-position-x: 80%;
+    background-image: linear-gradient(90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), url("/content/parking/b_base.png");
 
     height: 640px;
 
@@ -20,34 +21,42 @@
   @include sm{
     padding: 90px 20px 40px 20px;
     height: 875px;
+    background-image: linear-gradient(90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), url("/content/parking/b_sm.png");
 
   }
 
   @include md{
     padding: 130px 40px 60px 40px;
     height: 1000px;
+    background-image: linear-gradient(90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), url("/content/parking/b_md.png");
 
   }
 
   @include lg{
     height: 600px;
+    background-image: linear-gradient(90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), url("/content/parking/b_lg.png");
 
   }
 
   @include xl {
     padding: 130px 40px 60px 142px;
     height: 650px;
+    background-image: linear-gradient(90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), url("/content/parking/b_xl.png");
 
   }
 
   @include xxl {
     padding: 130px 40px 90px 170px;
     height: 750px;
+    background-image: linear-gradient(90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), url("/content/parking/b_xxl.png");
+
   }
 
   @include xxxl {
     padding: 142px 40px 110px 196px;
     height: 800px;
+    background-image: linear-gradient(90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), url("/content/parking/b_xxxl.png");
+
   }
 }
 
