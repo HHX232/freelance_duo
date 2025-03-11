@@ -1,16 +1,12 @@
 .menu {
   width: 100%;
-  height: 100dvh;
+  height: fit-content;
   padding-top: 58px;
   padding-right: 20px;
   padding-left: 170px;
   color: #fff;
   overflow-y: auto;
   transition: 0.5s ease;
-
-  @include custom(0, map-get($breakpoints, xl)) {
-    // padding-right: 160px;
-  }
 
   @include custom(0, map-get($breakpoints, lg) - 1px) {
     padding-left: 66px;

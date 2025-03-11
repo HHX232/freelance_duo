@@ -9,8 +9,6 @@ import PhoneIconSVG from '../../icons/PhoneIconSVG/PhoneIconSVG'
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBottomProps) {
-  const onCallRequest = () => {}
-
   return (
     <div className={styles.headerMenuBottom}>
       <div className={styles.contacts}>
@@ -35,17 +33,18 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
         </div>
         <FullButton
           type='Link'
+          href='tel:+71231234567'
           border={false}
           buttonFill='white'
-          onClick={onCallRequest}
           extraClass={styles.phoneButton}
-          buttonText={' Заказать звонок'}
+          buttonText={'Заказать звонок'}
         />
         <FullButton
+          type='Link'
+          href='tel:+71231234567'
           buttonFill='white'
           buttonText={''}
           border={false}
-          onClick={onCallRequest}
           extraClass={styles.phoneButtonWithIcon}
         >
           <PhoneIconSVG />

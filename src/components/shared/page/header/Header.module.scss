@@ -132,6 +132,7 @@
     flex-wrap: wrap;
     padding-left: 18px;
     margin-top: 20px;
+    background-color: #11627d;
     gap: 10px;
 
     .mobilePersonalCabinetLink {
@@ -195,10 +196,13 @@
     z-index: -1;
     top: 0;
     left: 0;
+    display: grid;
     width: 100%;
     height: fit-content;
+    min-height: 100dvh;
     padding-top: 96px;
     background-color: #11627d;
+    grid-template-rows: 1fr auto;
     opacity: 0;
     transform: translateY(-100%);
     transition:
@@ -213,18 +217,14 @@
       padding-top: 144px;
     }
 
+    @include custom(0, map-get($breakpoints, md) - 1px) {
+      padding-top: 134px;
+    }
+
     .headerMenuBottom {
-      position: absolute;
       z-index: -1;
-      bottom: 0;
-      left: 0;
       width: 100%;
       height: fit-content;
-      transform: translateY(100%);
-
-      @include custom(0, map-get($breakpoints, xl) - 1px) {
-        bottom: 144px;
-      }
     }
   }
 }
