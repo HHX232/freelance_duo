@@ -7,6 +7,7 @@ export default function FindApartmentButton({onClick, style}: IFindApartmentButt
   return (
     <div style={style} className={styles.findApartmentButtonContainer}>
       <FullButton
+        activeButton={true}
         extraClass={styles.findApartmentButton as any}
         type='Button'
         onClick={onClick}

@@ -5,8 +5,11 @@
    height: fit-content;
    align-items: center;
    justify-content: center;
+   font-weight: 300;
 
 }
+
+
 
 
 .arrow {
@@ -173,5 +176,147 @@
 .animationOn {
    &:hover>.arrow {
       transform: rotate(-45deg);
+   }
+}
+
+// ! Активные состояния
+
+.active_button_bronze {
+   position: relative;
+   border: none;
+   background-color: #D38F6D;
+
+   &:hover {
+      background-color: #C38566;
+   }
+
+   &:focus:not(:hover) {
+      border: none !important;
+      background-color: #D38F6D;
+   }
+
+   &:active {
+      background-color: #B17759;
+   }
+
+   &::before {
+      position: absolute;
+      z-index: -1;
+      border-radius: 8px;
+      background-color: #936147;
+      content: '';
+      inset: -2px;
+      opacity: 0;
+   }
+
+   &:active::before {
+      opacity: 1;
+   }
+}
+
+.active_button_orange {
+   position: relative;
+   border: none;
+   background-color: #FD7628;
+   transition: all .2s;
+
+   &:hover {
+      background-color: #F8721C;
+   }
+
+   &:focus:not(:hover) {
+      background-color: #FD7628;
+      transition: none;
+   }
+
+   &:active {
+      background-color: #F06710;
+      transition: none;
+   }
+
+   &::before {
+      position: absolute;
+      z-index: -1;
+      border-radius: 8px;
+      background-color: #E35D08;
+      content: '';
+      inset: -2px;
+      opacity: 0;
+   }
+
+   &:active::before {
+      opacity: 1;
+   }
+}
+
+.active_button_white {
+   position: relative;
+   border: none;
+   background-color: #fff;
+   color: #555;
+   transition: all 0.2s;
+
+   &:hover {
+      color: #11627D !important;
+   }
+
+   &:active {
+      background-color: #fff !important;
+      color: #11627D !important;
+   }
+
+   &:active:hover {
+      background-color: #fff !important;
+      color: #11627D !important;
+   }
+
+   &::before {
+      position: absolute;
+      z-index: -1;
+      border-radius: 8px;
+      background-color: #11627d4d;
+      content: '';
+      inset: -2px;
+      opacity: 0;
+      transition: opacity 0.2s;
+   }
+
+   &:active::before {
+      opacity: 1;
+   }
+
+   &:focus {
+      background-color: #11627D;
+      color: #fff !important;
+   }
+
+   &:focus:not(:hover) {
+      background-color: #fff;
+      color: #555 !important;
+   }
+
+   &:active:focus {
+      color: #11627D !important;
+   }
+}
+
+.active_button_transparent_with_orange_border {
+   border: 1px solid #FD7628;
+
+   &:hover {
+      border: 1px solid #F06710 !important;
+   }
+
+   &:active {
+      border: 3px solid #FFB488 !important;
+   }
+
+   &:active:hover {
+      color: #F06710 !important;
+   }
+
+   &:focus:hover:not(:active) {
+      background-color: #F06710 !important;
+      color: #fff !important;
    }
 }
