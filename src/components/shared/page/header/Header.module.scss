@@ -223,17 +223,9 @@
     }
 
     .headerMenuBottom {
-      position: absolute;
       z-index: -1;
-      bottom: 0;
-      left: 0;
       width: 100%;
       height: fit-content;
-      transform: translateY(100%);
-
-      @include custom(0, map-get($breakpoints, xl) - 1px) {
-        bottom: 144px;
-      }
     }
   }
 }
