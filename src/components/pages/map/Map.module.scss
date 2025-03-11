@@ -1,5 +1,9 @@
 
 
+.page {
+  min-height: 743px;
+}
+
 .pointsWrapper {
   &::before {
     position: absolute;
@@ -90,10 +94,13 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
+    z-index: 10;
   }
 }
 
 .captions {
+
   &-title {
     @layer base {
       @include font(3, 30, 40, 400);

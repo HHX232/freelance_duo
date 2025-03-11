@@ -74,7 +74,7 @@ const FortovContent = () => {
               <PhoneSlider
                 embalaContainerClassName={styles.phone_slider_container}
                 sliderWrapperClassName={styles.phone_slider_wrapper}
-                options={{dragFree: true}}
+                options={{align: 'start'}}
                 slideGap={60}
                 viewportIsShow
                 slides={mobileSlides}

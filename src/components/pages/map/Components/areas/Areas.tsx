@@ -76,7 +76,7 @@ const AreasContent = () => {
               embalaContainerClassName={styles.phone_slider_container}
               sliderWrapperClassName={styles.phone_slider_wrapper}
               slideGap={0}
-              options={{dragFree: true}}
+              options={{align: 'start'}}
               viewportIsShow
               slides={mobileSlides}
             />

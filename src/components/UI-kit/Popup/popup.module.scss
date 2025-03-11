@@ -1,0 +1,25 @@
+.header {
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  justify-content: end;
+
+  .close_button {
+    padding: 8px;
+  }
+}
+
+.modal {
+  height: 100%;
+
+  @layer base {
+    padding: 10px 16px 20px 16px;
+  }
+
+  @layer sm {
+    padding: 10px 20px 20px 20px;
+  }
+
+  @include md {
+    padding: 10px 40px 40px 40px;
+  }
+}

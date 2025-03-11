@@ -22,15 +22,32 @@
   }
 }
 
+.compass_button {
+  padding: 0 !important;
+  margin: 0 !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 134px;
+  height: 134px;
+
+  @include mobile {
+    width: 50px;
+    height: 50px;
+  }
+}
+
 .compassLink {
   .compass {
-    position: absolute;
     width: 134px;
     height: 134px;
     transition: 0.3s cubic-bezier(0.175, 0.885, 0.405, 1.49);
 
     @include mobile {
       width: 50px;
+      height: 50px;
     }
   }
 
@@ -49,6 +66,7 @@
     z-index: -1;
     top: 0;
     left: 0;
+    right: 0;
     width: 134px;
     height: 134px;
     animation: mymove 1.6s ease-in-out infinite;
@@ -61,6 +79,7 @@
 
     @include mobile {
       width: 50px;
+      height: 50px;
     }
   }
 
@@ -78,7 +97,7 @@
 }
 
 .activeCardZindex {
-  z-index: 3;
+  z-index: 15;
 }
 
 .cardWrapper {
@@ -131,7 +150,7 @@
     align-items: start;
   }
 
-  @include md{
+  @include md {
     flex-direction: row;
     width: 607px;
     justify-content: space-between;
@@ -140,9 +159,8 @@
   }
 
   @include mobile {
-    padding-top: 56px!important;
+    padding-top: 56px !important;
   }
-
 
   &::after {
     position: absolute;
@@ -217,7 +235,7 @@
   text-align: center;
 
   @media (max-width: 768px) {
-    gap: 40px
+    gap: 40px;
   }
 
   p {
@@ -276,4 +294,99 @@
   top: 15px;
   right: 15px;
   width: 28px;
+}
+
+.mobile_modal {
+  display: flex;
+  gap: 40px;
+  height: 100%;
+
+  .popup_logo {
+    min-width: 107px !important;
+  }
+
+  .modal_text {
+    color: $grey;
+  }
+
+  .modal_button {
+    color: inherit;
+    padding: 12px 36px;
+  }
+
+  .modal_logo_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal_logo_wrapper .modal_name {
+    color: $grey;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+
+    margin-top: 18px;
+  }
+
+  @layer base {
+    flex-direction: column;
+    height: 100%;
+
+    .popup_logo {
+      min-width: 107px !important;
+    }
+
+    .modal_logo_wrapper {
+      width: fit-content;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .modal_button {
+      width: calc(100% - 16px - 16px);
+      position: fixed;
+      bottom: 0;
+
+      bottom: 20px;
+      left: 16px;
+      right: 16px;
+
+      span {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+    }
+  }
+
+  @include md {
+    flex-direction: row;
+    height: fit-content;
+
+    .popup_logo {
+      min-width: 107px !important;
+    }
+
+    .modal_logo_wrapper {
+      width: fit-content;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .modal_button {
+      position: static;
+      margin-top: 24px !important;
+    }
+  }
+
+  @include lg {
+
+    .modal_button {
+      position: static;
+      width: fit-content;
+      margin-top: 24px !important;
+    }
+  }
 }

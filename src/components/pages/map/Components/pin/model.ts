@@ -7,6 +7,10 @@ export interface Point {
   color: string
   coords: Coords
   coords_mob?: Coords
+  link?: {
+    title: string
+    href: string
+  }
 }
 
 export interface PinType {
