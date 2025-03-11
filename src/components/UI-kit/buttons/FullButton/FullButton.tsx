@@ -5,9 +5,12 @@ import cn from 'clsx'
 import styles from './FullButton.module.scss'
 import {ArrowIcon} from '../ButtonIcons/ArrowIcon'
 
+// ! Standart фон и рамки задают активные состояния кнопок при включенном activeButton = {true}
+
 //!падинги и подобное просто задайте в extraClass
 export const FullButton: FC<IFullButtonProps> = ({
   type = 'Button', // Элемент button или Link
+  activeButton = true,
   border = false,
   borderColor = 'none',
   borderWidth = '2px',
@@ -34,6 +37,14 @@ export const FullButton: FC<IFullButtonProps> = ({
       className={cn(
         styles.button,
         {
+          // !Ниже идет серая полупрозрачная
+          [styles.active_button_gray]: activeButton && buttonFill === 'gray-light',
+          // !Ниже идут с рамками
+          [styles.active_button_transparent_with_orange_border]:
+            activeButton && buttonFill === 'none' && borderColor === 'orange-default',
+          [styles.active_button_transparent_with_gray_border]:
+            activeButton && buttonFill === 'none' && borderColor === 'gray-light',
+          // ! переделать дизейбл
           [styles.disabled]: disabled,
           [styles[`border-color-${borderColor}`]]: borderColor,
           [styles.border]: border === true,
@@ -42,7 +53,11 @@ export const FullButton: FC<IFullButtonProps> = ({
           [styles[`button-fill-${buttonFill}`]]: buttonFill,
           [styles[`button-element-color-${buttonElementColor}`]]: buttonElementColor,
           [styles.animationOn]: animationOn,
-          [styles[`butron-border-radius-${buttonBorderRadius}`]]: buttonBorderRadius
+          [styles[`butron-border-radius-${buttonBorderRadius}`]]: buttonBorderRadius,
+          // задать так же цвета элементам
+          [styles.active_button_bronze]: activeButton && buttonFill === 'bronze-500',
+          [styles.active_button_orange]: activeButton && buttonFill === 'orange-500',
+          [styles.active_button_white]: activeButton && buttonFill === 'white'
         },
         extraClass
       )}

@@ -32,6 +32,7 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
           <FindApartmentButton onClick={handleFindApartment} />
         </div>
         <FullButton
+          activeButton={true}
           type='Link'
           href='tel:+71231234567'
           border={false}
@@ -40,6 +41,7 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
           buttonText={'Заказать звонок'}
         />
         <FullButton
+          activeButton={true}
           type='Link'
           href='tel:+71231234567'
           buttonFill='white'
