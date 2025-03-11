@@ -6,7 +6,8 @@
     height: 640px;
     flex-direction: column;
     justify-content: space-between;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/storerooms_1.jpeg");
+    //background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/storerooms_1.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_base.png");
     background-position: center;
     background-repeat: no-repeat;
     background-position-x: 80%;
@@ -18,33 +19,39 @@
   @include sm{
     height: 875px;
     padding: 90px 20px 90px 20px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_sm.png");
   }
 
   @include md{
     height: 1000px;
     padding: 130px 40px 90px 40px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_md.png");
   }
 
   @include lg{
     height: 600px;
-    background-position-x: 70%;
-    background-position-y: 60%;
+    //background-position-x: 70%;
+    //background-position-y: 60%;
     padding: 130px 40px 60px 40px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_lg.png");
   }
 
   @include xl{
     height: 650px;
     padding: 130px 40px 60px 142px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xl.png");
   }
 
   @include xxl{
     height: 750px;
     padding: 130px 40px 60px 170px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xxl.png");
   }
 
-  @include xxl{
+  @include xxxl{
     height: 800px;
     padding: 142px 40px 110px 196px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xxl.png");
   }
 }
 
