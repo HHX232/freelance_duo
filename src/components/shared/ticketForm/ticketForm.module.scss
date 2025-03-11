@@ -6,17 +6,21 @@
     background: rgb(255 255 255 / 100%);
     color: rgb(116 118 121 / 100%);
     gap: 24px;
+    padding: 36px 16px;
   }
 
-  padding: 70px;
-
-  @media (max-width: map_get($breakpoints, xl)) {
+  @include sm{
     padding: 36px;
   }
 
-  @media (max-width: map_get($breakpoints, sm)) {
-    padding: 36px 20px;
+  @include xxl{
+    padding: 40px;
   }
+
+  @include xxxl{
+    padding: 70px;
+  }
+
 }
 
 .header__title {
