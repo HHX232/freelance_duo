@@ -14,13 +14,12 @@ import CornerSVG from '@icons/corner.svg'
 import Page from '@shared/page/Page'
 import AreasPage from './Components/areas/Areas'
 import FortovPage from './Components/fortov/Fortov'
-import TransportPage from './Components/transport/Transport'
+// import TransportPage from './Components/transport/Transport'
 import HomePage from './Components/home/Home.page'
 import ContactFormPage from './Components/contact-form/ContactForm'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 const Compass = dynamic(() => import('./Components/card/Compass'), {ssr: false})
-const Card = dynamic(() => import('./Components/card/CompassCard'), {ssr: false})
 
 const directionHints: DirectionHint[] = [
   {
@@ -37,7 +36,7 @@ const directionHints: DirectionHint[] = [
   {
     name: 'КАД (10 мин.)',
     coords: {
-      x: 63,
+      x: 30,
       y: 10
     },
     coords_mob: {
@@ -75,6 +74,7 @@ const points: Point[] = [
     name: 'Набережная',
     text: 'Органично встроенный в общий облик города квартал с многофункциональной инфраструктурой, отвечающей высоким стандартам жилой среды. Видовые квартиры, умиротворяющие прогулки по морскому побережью и бесконечная водная гладь, настраивающая на неспешный ритм жизни.',
     color: '#008D88',
+
     coords: {
       x: 49.5,
       y: 12
@@ -86,6 +86,10 @@ const points: Point[] = [
   },
   {
     name: 'Центральный',
+    link: {
+      href: '/planirovki-i-ceny',
+      title: 'Подобрать квартиру'
+    },
     text: 'Малоэтажный квартал, формирующий образ жизни на морском побережье в окружении актуальной архитектуры и современных инфраструктурных решений для жизни и досуга. Квартал «Кронфорт. Центральный» прилегает непосредственно к парку рекреационного кластера «Остров фортов», предлагая его жителям дополнительные культурно-досуговые возможности.',
     color: '#FF7314',
     coords: {
@@ -174,21 +178,7 @@ const pins: PinType[] = [
 
 const MapContent = () => {
   const isMobile = useIsMobile()
-  const [curPoint, setCurPoint] = useState(points[0])
-  const [isMobileCardVisible, setIsMobileCardVisible] = useState(false)
-
   const [activePin, setActivePin] = useState('')
-
-  const compassClickHandler = (point: Point) => () => {
-    if (isMobile) {
-      setCurPoint(point)
-      setIsMobileCardVisible((visible) => !visible)
-    }
-  }
-
-  const onClickCloseCard = () => {
-    setIsMobileCardVisible(false)
-  }
 
   const onPinClick = (pin: PinType) => {
     if (activePin === pin.name) {
@@ -242,60 +232,43 @@ const MapContent = () => {
           <Page className={styles.page}>
             <HomePage />
             <div style={{position: 'relative'}}>
-              <div className={styles.captions}>
-                <h2 className={styles['captions-title']}>Локация</h2>
-                <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
-                  <div className={styles['caption']}>
-                    <CornerSVG />
-                    <h2 className={styles['caption__title']}>
-                      3<span>мин</span>
-                    </h2>
-                    <hr className={styles['caption__divider']} />
-                    <p className={styles['caption__description']}>до моря</p>
-                  </div>
-                  <div className={styles['caption']}>
-                    <CornerSVG />
-                    <h2 className={styles['caption__title']}>
-                      10<span>мин</span>
-                    </h2>
-                    <hr className={styles['caption__divider']} />
-                    <p className={styles['caption__description']}>до Кронштадского шоссе и КАД</p>
-                  </div>
-                  <div className={styles['caption']}>
-                    <CornerSVG />
-                    <h2 className={styles['caption__title']}>
-                      30<span>мин</span>
-                    </h2>
-                    <hr className={styles['caption__divider']} />
-                    <p className={styles['caption__description']}>до «Лахта Центра»</p>
-                  </div>
-                </div>
-                <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
-                  <PhoneSlider slides={mobileSlides} />
-                </div>
-              </div>
-
-              {isMobile && isMobileCardVisible && (
-                <Card
-                  color={curPoint.color}
-                  text={curPoint.text}
-                  name={curPoint.name}
-                  isVisible={isMobileCardVisible}
-                  style={{
-                    opacity: 1,
-                    zIndex: 9,
-                    top: '50%',
-                    left: '50%',
-                    maxWidth: 680
-                  }}
-                  onClickCloseCard={onClickCloseCard}
-                />
-              )}
               <div>
+                <div className={styles.captions}>
+                  <h2 className={styles['captions-title']}>Локация</h2>
+                  <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
+                    <div className={styles['caption']}>
+                      <CornerSVG />
+                      <h2 className={styles['caption__title']}>
+                        3<span>мин</span>
+                      </h2>
+                      <hr className={styles['caption__divider']} />
+                      <p className={styles['caption__description']}>до моря</p>
+                    </div>
+                    <div className={styles['caption']}>
+                      <CornerSVG />
+                      <h2 className={styles['caption__title']}>
+                        10<span>мин</span>
+                      </h2>
+                      <hr className={styles['caption__divider']} />
+                      <p className={styles['caption__description']}>до Кронштадского шоссе и КАД</p>
+                    </div>
+                    <div className={styles['caption']}>
+                      <CornerSVG />
+                      <h2 className={styles['caption__title']}>
+                        30<span>мин</span>
+                      </h2>
+                      <hr className={styles['caption__divider']} />
+                      <p className={styles['caption__description']}>до «Лахта Центра»</p>
+                    </div>
+                  </div>
+                  <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
+                    <PhoneSlider slides={mobileSlides} />
+                  </div>
+                </div>
                 <MouseMover
                   className={clsx(styles.wrapper)}
                   isMobile={isMobile}
-                  isMobileCardVisible={isMobileCardVisible}
+                  isMobileCardVisible={false}
                   disableMove={false}
                 >
                   {/*--------------------------- */}
@@ -321,7 +294,8 @@ const MapContent = () => {
                         coords={point.coords}
                         coords_mob={point.coords_mob}
                         isMobile={isMobile}
-                        onClickCompass={compassClickHandler(point)}
+                        link={point.link}
+                        // onClickCompass={compassClickHandler(point)}
                       />
                     ))}
                     {directionHints.map((hint, i) => (
@@ -351,7 +325,8 @@ const MapContent = () => {
                 </MouseMover>
               </div>
             </div>
-            <TransportPage />
+            {/* <TransportPage /> */}
+
             <AreasPage />
             <FortovPage />
             <ContactFormPage />

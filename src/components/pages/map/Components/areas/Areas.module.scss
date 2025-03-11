@@ -28,11 +28,8 @@
   }
 
   @include lg {
-
-    background:
-      linear-gradient(115deg, rgba(30, 56, 73, 0.7) 21.9%, rgba(30, 56, 73, 0) 66.78%),
-      linear-gradient(90deg, rgba(30, 56, 73, 0.7) 0.01%, rgba(0, 0, 0, 0) 35.63%),
-      url('/content/areas.jpg');
+    background: linear-gradient(115deg, rgba(30, 56, 73, 0.7) 21.9%, rgba(30, 56, 73, 0) 66.78%),
+      linear-gradient(90deg, rgba(30, 56, 73, 0.7) 0.01%, rgba(0, 0, 0, 0) 35.63%), url('/content/areas.jpg');
 
     background-size: cover;
     padding: 60px 40px;
@@ -105,7 +102,6 @@
   @include xl {
     gap: 48px;
   }
-
 }
 
 .caption {
@@ -131,16 +127,13 @@
       }
     }
 
-
     @include xl {
       @include font(3, 32, 44);
-
 
       & span {
         @include font(3, 64, 80);
       }
     }
-
   }
 
   &__divider {
@@ -192,14 +185,16 @@
 
 .phone_slider_container {
   width: 100% !important;
-  gap: 10px;
-
+  backface-visibility: hidden;
+  .caption-items:nth-child(1) {
+    flex: 0 0 56% !important;
+  }
   .caption-items:nth-child(2) {
-    flex: 0 0 95% !important;
+    flex: 0 0 80% !important;
   }
 
-  .caption-items:nth-child(1) {
-    flex: 0 0 55% !important;
+  .caption-items:nth-child(3) {
+    flex: 0 0 auto !important;
   }
 
   @include sm {
@@ -221,7 +216,5 @@
 }
 
 .mobile_slide {
-
- flex: 0 0 60% !important;
-
+  flex: 0 0 60% !important;
 }
