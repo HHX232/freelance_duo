@@ -38,12 +38,12 @@ export const FullButton: FC<IFullButtonProps> = ({
         styles.button,
         {
           // !Ниже идет серая полупрозрачная
-          [styles.active_button_gray]: activeButton && buttonFill === 'gray-light',
+          [styles.active_button_gray_transparent]: activeButton && !border && buttonFill === 'gray-light',
           // !Ниже идут с рамками
           [styles.active_button_transparent_with_orange_border]:
             activeButton && buttonFill === 'none' && borderColor === 'orange-default',
           [styles.active_button_transparent_with_gray_border]:
-            activeButton && buttonFill === 'none' && borderColor === 'gray-light',
+            activeButton && buttonFill === 'none' && borderColor === 'gray',
           // ! переделать дизейбл
           [styles.disabled]: disabled,
           [styles[`border-color-${borderColor}`]]: borderColor,
