@@ -64,7 +64,7 @@ export const StocksList = () => {
   return (
     <div className={'promotion-page-container'}>
       <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
-      <HeadTitle>наши Акции</HeadTitle>
+      <HeadTitle className={'promotion-page_title'}>наши Акции</HeadTitle>
 
       <div className='stocks'>
         <div className='stocks__list'>

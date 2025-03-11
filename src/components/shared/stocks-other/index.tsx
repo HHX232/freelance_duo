@@ -69,8 +69,7 @@ export const StocksOther: FC<IStocksOtherProps> = ({data = MOCK_DATA, className}
           if (index >= dataLength) return null
 
           return (
-            // eslint-disable-next-line react/jsx-key
-            <div className={s.card_wrapper}>
+            <div key={index} className={s.card_wrapper}>
               <StockItem key={`stock-item-${index}`} {...item} />
             </div>
           )
