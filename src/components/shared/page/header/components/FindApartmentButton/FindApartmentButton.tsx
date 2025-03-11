@@ -10,6 +10,7 @@ export default function FindApartmentButton({onClick, style}: IFindApartmentButt
         activeButton={true}
         extraClass={styles.findApartmentButton}
         type='Button'
+        borderColor='none'
         onClick={onClick}
         buttonText='Подобрать квартиру'
         border={false}
