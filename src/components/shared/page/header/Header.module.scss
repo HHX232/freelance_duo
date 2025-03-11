@@ -235,11 +235,10 @@
       position: relative;
       display: grid;
       width: 100%;
-      height: fit-content;
+      height: 100%;
       grid-template-rows: 1fr auto;
 
       .headerMenuBottom {
-        z-index: -1;
         width: 100%;
         height: fit-content;
       }

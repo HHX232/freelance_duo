@@ -8,7 +8,7 @@ export default function FindApartmentButton({onClick, style}: IFindApartmentButt
     <div style={style} className={styles.findApartmentButtonContainer}>
       <FullButton
         activeButton={true}
-        extraClass={styles.findApartmentButton as any}
+        extraClass={styles.findApartmentButton}
         type='Button'
         onClick={onClick}
         buttonText='Подобрать квартиру'

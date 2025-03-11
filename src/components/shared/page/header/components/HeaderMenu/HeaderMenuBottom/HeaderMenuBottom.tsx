@@ -31,26 +31,32 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
         <div className={styles.findApartmentButton}>
           <FindApartmentButton onClick={handleFindApartment} />
         </div>
-        <FullButton
-          activeButton={true}
-          type='Link'
-          href='tel:+71231234567'
-          border={false}
-          buttonFill='white'
-          extraClass={styles.phoneButton}
-          buttonText={'Заказать звонок'}
-        />
-        <FullButton
-          activeButton={true}
-          type='Link'
-          href='tel:+71231234567'
-          buttonFill='white'
-          buttonText={''}
-          border={false}
-          extraClass={styles.phoneButtonWithIcon}
-        >
-          <PhoneIconSVG />
-        </FullButton>
+        {/* TODO: replace link with FullButton type Link */}
+
+        <Link href={'tel:+71231234567'}>
+          <FullButton
+            activeButton={true}
+            type='Button'
+            href='tel:+71231234567'
+            border={false}
+            buttonBorderRadius='6px'
+            buttonFill='white'
+            extraClass={styles.phoneButton}
+            buttonText={'Заказать звонок'}
+          />
+          <FullButton
+            activeButton={true}
+            type='Button'
+            href='tel:+71231234567'
+            buttonFill='white'
+            buttonText={''}
+            border={false}
+            buttonBorderRadius='6px'
+            extraClass={styles.phoneButtonWithIcon}
+          >
+            <PhoneIconSVG />
+          </FullButton>
+        </Link>
       </div>
     </div>
   )
