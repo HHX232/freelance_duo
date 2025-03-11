@@ -18,26 +18,15 @@
   }
 
   &.menuOpened {
-    padding: 0 45px 0 40px;
+    padding-right: 46px;
     background-color: #11627d;
 
     .container,
     .container a {
+      background-color: #11627d !important;
       color: #fff;
 
       .toggleMenuButton {
-        margin-right: -10px;
-        margin-left: 37px;
-
-        @include custom(0, map-get($breakpoints, xxxl) - 100px) {
-          margin-right: 0;
-          margin-left: 49px;
-        }
-
-        @include custom(0, map-get($breakpoints, xl) - 100px) {
-          margin-right: -10px;
-        }
-
         svg {
           width: 23px;
           height: 23px;
@@ -143,7 +132,9 @@
     flex-wrap: wrap;
     padding-left: 18px;
     margin-top: 20px;
+    background-color: #11627d;
     gap: 10px;
+    transition: all .3s;
 
     .mobilePersonalCabinetLink {
       display: grid;
@@ -206,46 +197,45 @@
     z-index: -1;
     top: 0;
     left: 0;
+    display: grid;
     width: 100%;
     height: fit-content;
+    min-height: 100dvh;
     padding-top: 96px;
     background-color: #11627d;
+    grid-template-rows: 1fr auto;
     opacity: 0;
     transform: translateY(-100%);
     transition:
       transform 0.6s ease-in-out,
       opacity 0.2s ease-in-out;
 
-    @include custom(0, map-get($breakpoints, xl) - 100px) {
+    @include custom(0, map-get($breakpoints, xl) - 1px) {
       padding-top: 71px;
     }
 
-    @include custom(0, map-get($breakpoints, lg) - 100px) {
+    @include custom(0, map-get($breakpoints, lg) - 1px) {
       padding-top: 144px;
     }
 
+    @include custom(0, map-get($breakpoints, md) - 1px) {
+      padding-top: 134px;
+    }
+
     .headerMenuBottom {
-      position: relative;
-      bottom: 96px;
-      left: 0;
+      z-index: -1;
       width: 100%;
       height: fit-content;
-      transform: translateY(100%);
-
-      @include custom(0, map-get($breakpoints, xl) - 100px) {
-        bottom: 144px;
-      }
     }
   }
 }
 
-@include custom(0, map-get($breakpoints, xl) - 100px) {
+@include custom(0, map-get($breakpoints, xl) - 1px) {
   .header {
     height: 86px;
-    padding-right: 28px;
 
     &.menuOpened {
-      padding: 0 48px 0 40px;
+      padding: 0 40px;
 
       .container {
         .toggleMenuButton {
@@ -291,12 +281,12 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, lg) - 100px) {
+@include custom(0, map-get($breakpoints, lg) - 1px) {
   .header {
     height: 68px;
 
     &.menuOpened {
-      padding: 0 40px 0 20px;
+      // padding: 0 40px;
 
       .container {
         .toggleMenuButton {
@@ -341,11 +331,13 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, md) - 100px) {
+@include custom(0, map-get($breakpoints, md) - 1px) {
   .header {
-    padding: 0 12px !important;
+    padding: 0 12px;
 
     &.menuOpened {
+      padding: 0 12px;
+
       .container {
         .toggleMenuButton {
           margin-left: 23px;
@@ -363,7 +355,6 @@
       .mobileMenu {
         padding-right: 8px;
         padding-left: 8px;
-        margin-top: 26px;
       }
     }
 
@@ -385,7 +376,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, sm) - 100px) {
+@include custom(0, map-get($breakpoints, sm) - 1px) {
   .header {
     &.menuOpened {
       .container {
@@ -404,7 +395,7 @@
       .mobileMenu {
         padding-right: 4px;
         padding-left: 4px;
-        margin-top: 9px;
+        margin-top: 2px;
 
         .mobilePersonalCabinetLink {
           min-width: 100px;
@@ -458,7 +449,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, xs) - 100px) {
+@include custom(0, map-get($breakpoints, xs) - 1px) {
   header.header .container {
     padding-right: 0 !important;
   }

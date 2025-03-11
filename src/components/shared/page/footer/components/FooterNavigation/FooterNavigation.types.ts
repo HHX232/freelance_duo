@@ -15,5 +15,5 @@ export interface IMobileFooterNavigationLinksGroup {
 
 export interface IFooterNavigationLink {
   name: string | React.ReactNode
-  href: string
+  href?: string
 }

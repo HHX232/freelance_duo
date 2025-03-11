@@ -1,6 +1,6 @@
 .menu {
   width: 100%;
-  height: 100dvh;
+  height: fit-content;
   padding-top: 58px;
   padding-right: 20px;
   padding-left: 170px;
@@ -8,19 +8,15 @@
   overflow-y: auto;
   transition: 0.5s ease;
 
-  @include custom(0, map-get($breakpoints, xl)) {
-    // padding-right: 160px;
-  }
-
   @include custom(0, map-get($breakpoints, lg) - 1px) {
     padding-left: 66px;
   }
 
-  @include custom(0, map-get($breakpoints, lg) - 20px) {
+  @include custom(0, map-get($breakpoints, lg) - 1px) {
     padding-left: 40px;
   }
 
-  @include custom(0, map-get($breakpoints, sm) - 20px) {
+  @include custom(0, map-get($breakpoints, sm) - 1px) {
     padding-top: 0 !important;
   }
 
@@ -40,7 +36,7 @@
     width: 100%;
     max-width: 470px;
 
-    @include custom(0, map-get($breakpoints, xxl) + 100px) {
+    @include custom(0, map-get($breakpoints, xxxl) - 1px) {
       max-width: 380px;
     }
 
@@ -54,7 +50,7 @@
   }
 
   .accordion_extra {
-    &>div:first-child {
+    & > div:first-child {
       padding: 0 20px 10px 0;
 
       @include custom(0, map-get($breakpoints, lg)) {
@@ -66,7 +62,7 @@
   }
 
   .accordion_extra__accent {
-    &>div:first-child {
+    & > div:first-child {
       @include custom(0, map-get($breakpoints, lg)) {
         font-size: 20px !important;
         line-height: 26px;
@@ -97,7 +93,7 @@
     display: flex;
     flex-direction: column;
 
-    @include custom(0, map-get($breakpoints, xl) - 100px) {
+    @include custom(0, map-get($breakpoints, xl) - 1px) {
       margin-top: 8px;
     }
   }
@@ -116,7 +112,7 @@
       border-radius: 50%;
     }
 
-    @include custom(0, map-get($breakpoints, xl) - 100px) {
+    @include custom(0, map-get($breakpoints, xl) - 1px) {
       padding: 12px 0;
     }
 
@@ -157,7 +153,7 @@
     a {
       @include font(1, 20, 30, 400);
 
-      @include custom(0, map-get($breakpoints, xl) - 100px) {
+      @include custom(0, map-get($breakpoints, xl) - 1px) {
         font-size: 18px;
       }
     }

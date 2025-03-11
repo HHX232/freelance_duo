@@ -5,12 +5,10 @@ import MessageSVG from '@icon/message.svg'
 import FindApartmentButton from '../../FindApartmentButton/FindApartmentButton'
 import {IHeaderMenuBottomProps} from './HeaderMenuBottom.types'
 import SettingsButton from './SettingsButton/SettingsButton'
-import FilledButton from '@shared/filledButton/FilledButton'
 import PhoneIconSVG from '../../icons/PhoneIconSVG/PhoneIconSVG'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBottomProps) {
-  const onCallRequest = () => {}
-
   return (
     <div className={styles.headerMenuBottom}>
       <div className={styles.contacts}>
@@ -33,12 +31,24 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
         <div className={styles.findApartmentButton}>
           <FindApartmentButton onClick={handleFindApartment} />
         </div>
-        <FilledButton onClick={onCallRequest} className={styles.phoneButton}>
-          Заказать звонок
-        </FilledButton>
-        <FilledButton onClick={onCallRequest} className={styles.phoneButtonWithIcon}>
+        <FullButton
+          type='Link'
+          href='tel:+71231234567'
+          border={false}
+          buttonFill='white'
+          extraClass={styles.phoneButton}
+          buttonText={'Заказать звонок'}
+        />
+        <FullButton
+          type='Link'
+          href='tel:+71231234567'
+          buttonFill='white'
+          buttonText={''}
+          border={false}
+          extraClass={styles.phoneButtonWithIcon}
+        >
           <PhoneIconSVG />
-        </FilledButton>
+        </FullButton>
       </div>
     </div>
   )
