@@ -235,11 +235,12 @@
       position: relative;
       display: grid;
       width: 100%;
-      height: fit-content;
+      height: 100%;
       grid-template-rows: 1fr auto;
 
-      @include custom(0, map-get($breakpoints, xl) - 1px) {
-        bottom: 144px;
+      .headerMenuBottom {
+        width: 100%;
+        height: fit-content;
       }
     }
   }
