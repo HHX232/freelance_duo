@@ -51,7 +51,7 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
             type='Button'
             href='tel:+71231234567'
             buttonFill='white'
-            buttonText={'Заказать звонок'}
+            buttonText={''}
             border={false}
             buttonBorderRadius='6px'
             extraClass={styles.phoneButtonWithIcon}
