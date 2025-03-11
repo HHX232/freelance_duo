@@ -96,18 +96,21 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
     >
       <div style={{width: '200px', padding: '30px', marginTop: '20px'}}>
         <FullButton
-          buttonElementColor='orange'
           buttonBorderRadius='6px'
           activeButton={true}
           buttonText='Hello'
           buttonFill='gray-light'
-          borderColor='gray'
+          containArrow={true}
+          arrowColor='white'
           type='Button'
           border={false}
           borderWidth='1px'
+          disabled={true}
         />
         {/* <FullButton
+          containArrow={true}
           buttonElementColor='black'
+          arrowColor='black'
           buttonBorderRadius='6px'
           activeButton={true}
           buttonText='Hello'
