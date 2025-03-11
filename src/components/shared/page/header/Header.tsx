@@ -187,7 +187,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
                 <CompareSVG className={clsx(styles.icon)} />
               </LinkWithIconAndCount>
             </div>
-            <div className={styles.mobielFavoriteLink}>
+            <div className={styles.mobileFavoriteLink}>
               <LinkWithIconAndCount
                 href={dashboard ? '/lk/izbrannoe' : '/izbrannoe'}
                 isMenuOpened={isMenuOpened}
@@ -201,9 +201,11 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
       </div>
 
       <div className={styles.menu}>
-        <HeaderMenu onClose={() => setIsMenuOpened(false)} setIsMenuOpened={setIsMenuOpened} />
-        <div className={styles.headerMenuBottom}>
-          <HeaderMenuBottom handleFindApartment={handleClick} />
+        <div className={styles.menu_inner}>
+          <HeaderMenu onClose={() => setIsMenuOpened(false)} setIsMenuOpened={setIsMenuOpened} />
+          <div className={styles.headerMenuBottom}>
+            <HeaderMenuBottom handleFindApartment={handleClick} />
+          </div>
         </div>
       </div>
     </header>
