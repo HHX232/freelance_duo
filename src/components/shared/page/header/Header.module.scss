@@ -18,8 +18,13 @@
   }
 
   &.menuOpened {
+    height: fit-content;
     padding-right: 46px;
     background-color: #11627d;
+
+    .container {
+      height: 68px !important;
+    }
 
     .container,
     .container a {
@@ -128,13 +133,13 @@
   .mobileMenu {
     display: none;
     width: 100%;
-    height: 48px;
+    height: fit-content;
     flex-wrap: wrap;
+    padding-top: 20px;
     padding-left: 18px;
-    margin-top: 20px;
     background-color: #11627d;
     gap: 10px;
-    transition: all .3s;
+    transition: all 0.3s;
 
     .mobilePersonalCabinetLink {
       display: grid;
@@ -168,7 +173,7 @@
     }
 
     .mobileCompareLink,
-    .mobielFavoriteLink {
+    .mobileFavoriteLink {
       display: flex;
       width: 48px;
       height: 48px;
@@ -197,14 +202,14 @@
     z-index: -1;
     top: 0;
     left: 0;
-    display: grid;
     width: 100%;
     height: fit-content;
     min-height: 100dvh;
+    max-height: 100dvh;
     padding-top: 96px;
     background-color: #11627d;
-    grid-template-rows: 1fr auto;
     opacity: 0;
+    overflow-y: auto;
     transform: translateY(-100%);
     transition:
       transform 0.6s ease-in-out,
@@ -222,10 +227,18 @@
       padding-top: 134px;
     }
 
-    .headerMenuBottom {
-      z-index: -1;
+    .menu_inner {
+      position: relative;
+      display: grid;
       width: 100%;
       height: fit-content;
+      grid-template-rows: 1fr auto;
+
+      .headerMenuBottom {
+        z-index: -1;
+        width: 100%;
+        height: fit-content;
+      }
     }
   }
 }
@@ -408,7 +421,7 @@
         }
 
         .mobileCompareLink,
-        .mobielFavoriteLink {
+        .mobileFavoriteLink {
           width: 36px;
           height: 36px;
 
