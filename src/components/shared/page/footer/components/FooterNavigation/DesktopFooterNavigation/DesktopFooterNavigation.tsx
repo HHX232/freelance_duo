@@ -13,11 +13,9 @@ export default function DesktopFooterNavigation(props: IDesktopFooterNavigationP
               if (linksGroupIndex < 2 && linkIndex >= group.links.length - 1) {
                 return (
                   <>
-                    <li key={linkIndex}>
-                      <Link href={link.href}>{link.name}</Link>
-                    </li>
+                    <li key={linkIndex}>{link.href ? <Link href={link.href}>{link.name}</Link> : link.href}</li>
                     <li className={styles.secondary_link} key={linkIndex + '_secondary'}>
-                      <Link href={props.secondaryLinks[linksGroupIndex].href}>
+                      <Link href={props.secondaryLinks[linksGroupIndex].href as string}>
                         {props.secondaryLinks[linksGroupIndex].name}
                       </Link>
                     </li>
@@ -25,11 +23,7 @@ export default function DesktopFooterNavigation(props: IDesktopFooterNavigationP
                 )
               }
 
-              return (
-                <li key={linkIndex}>
-                  <Link href={link.href}>{link.name}</Link>
-                </li>
-              )
+              return <li key={linkIndex}>{link.href ? <Link href={link.href}>{link.name}</Link> : link.href}</li>
             })}
           </ul>
         ))}

@@ -24,6 +24,7 @@ export const FullButton: FC<IFullButtonProps> = ({
   arrowColor = '#000000',
   arrowWidth = '24',
   arrowHeight = '24',
+  children,
   arrowStrokeWidth = '1.5',
   arrowExtraStyles,
   containArrow = false
@@ -58,6 +59,7 @@ export const FullButton: FC<IFullButtonProps> = ({
         />
       )}
       {buttonText}
+      {children}
       {containArrow && (
         <ArrowIcon
           extraStyle={arrowExtraStyles}
@@ -100,6 +102,7 @@ export const FullButton: FC<IFullButtonProps> = ({
         />
       )}
       {buttonText}
+      {children}
       {containArrow && (
         <ArrowIcon
           extraStyle={arrowExtraStyles}

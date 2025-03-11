@@ -47,9 +47,7 @@ export default function FooterContacts(props: IFooterContactsProps) {
 
       <ul className={styles.secondaryLinks}>
         {props.navProps.secondaryLinks.map((link, linkIndex) => (
-          <li key={linkIndex}>
-            <Link href={link.href}>{link.name}</Link>
-          </li>
+          <li key={linkIndex}>{link.href ? <Link href={link.href}>{link.name}</Link> : link.name}</li>
         ))}
       </ul>
     </div>

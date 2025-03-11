@@ -16,7 +16,7 @@ const Head = () => {
     <div>
       <section className={`${styles['head-wrapper']}`}>
         <div>
-          <Breadcrumbs items={breadcrumbItems} darkTheme={true} className={styles['router']}/>
+          <Breadcrumbs items={breadcrumbItems} darkTheme={true} className={styles['router']} />
         </div>
         <div className={`${styles['text-wrapper']}`}>
           <div className={styles.title}>Кладовые</div>

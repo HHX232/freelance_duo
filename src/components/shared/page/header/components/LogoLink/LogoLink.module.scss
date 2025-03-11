@@ -42,7 +42,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, xl) - 20px) {
+@include custom(0, map-get($breakpoints, xl) - 1px) {
   .logoLink {
     .small {
       svg {
@@ -52,7 +52,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, lg) - 20px) {
+@include custom(0, map-get($breakpoints, lg) - 1px) {
   .logoLink {
     .small {
       svg {
@@ -62,7 +62,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, md) - 20px) {
+@include custom(0, map-get($breakpoints, md) - 1px) {
   .logoLink {
     width: 65px;
 
@@ -88,7 +88,7 @@
   }
 }
 
-@include custom(0, map-get($breakpoints, sm) - 20px) {
+@include custom(0, map-get($breakpoints, sm) - 1px) {
   .logoLink {
     margin-left: -8px !important;
 

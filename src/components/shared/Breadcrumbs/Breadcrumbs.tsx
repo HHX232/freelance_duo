@@ -18,6 +18,7 @@ interface BreadcrumbsProps {
   className?: string
   dashboard?: boolean
   iconStyles?: string
+  isIconBack?: boolean
 }
 
 const Breadcrumbs = ({items, darkTheme, className, iconStyles}: BreadcrumbsProps) => {
