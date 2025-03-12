@@ -41,7 +41,7 @@ export default function RootLayout({
         {/* Ваш основной контент */}
         <RootStyleRegistry>
           <Main>{children}</Main>
-          {/* <Jivo /> */}
+          <Jivo />
         </RootStyleRegistry>
 
         {/* Вставка скриптов здесь */}
