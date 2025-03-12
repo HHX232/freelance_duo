@@ -68,6 +68,10 @@
   margin-top: 10px;
   opacity: 0;
   transition: height 0.2s ease-in-out;
+
+  span > .accordion:first-child {
+    padding-bottom: 18px;
+  }
 }
 
 .arrow_right {
