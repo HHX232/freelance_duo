@@ -5,19 +5,36 @@
 
   .title {
     @include RomulH3();
+    color: $deep-blue !important;
+
+  }
+
+  .head_title {
+    color: $deep-blue !important;
   }
 
   .tabs {
+
     display: flex;
     gap: 8px;
 
-    @media (max-width: map_get($breakpoints, xs)) {
+    overflow-x: auto;
 
+    button {
+      white-space: nowrap;
     }
+
+    @media (max-width: map_get($breakpoints, xs)) {}
   }
 
+  .tabs_container {
+    display: flex
+  }
   .tab-button {
     @include font(1, 16, 14);
+
+    flex: 0 0 auto;
+    width: fit-content;
 
     padding: 16px 20px;
     border-radius: 6px;
@@ -207,6 +224,7 @@
 
 
         &__title {
+
           @include RomulH4();
           margin-bottom: 40px;
 
