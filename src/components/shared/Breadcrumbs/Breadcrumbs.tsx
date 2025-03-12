@@ -18,7 +18,6 @@ interface BreadcrumbsProps {
   className?: string
   dashboard?: boolean
   iconStyles?: string
-  isIconBack?: boolean
 }
 
 const Breadcrumbs = ({items, darkTheme, className, iconStyles}: BreadcrumbsProps) => {
@@ -27,8 +26,8 @@ const Breadcrumbs = ({items, darkTheme, className, iconStyles}: BreadcrumbsProps
   return (
     <section className={clsx(styles.breadcrumbs, className, {[styles.dark]: darkTheme})}>
       <Link className={styles.mobile_version} href={'#'} onClick={() => router.back()}>
-        <BackIcon className={iconStyles}/>
-        <span>{items.length >= 2 ? items[items.length - 2]?.title : "Назад"}</span>
+        <BackIcon className={iconStyles} />
+        <span>{items.length >= 2 ? items[items.length - 2]?.title : 'Назад'}</span>
       </Link>
       <Breadcrumb className={styles.desktop_version} separator={<>|</>}>
         {items.map((item, index) => (

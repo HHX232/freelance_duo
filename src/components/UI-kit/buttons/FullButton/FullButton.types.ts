@@ -38,11 +38,12 @@ interface IArrowProps {
   arrowExtraStyles?: React.CSSProperties
 }
 export interface IFullButtonProps extends IArrowProps {
+  activeButton: boolean
   type?: TFullButton
   border: boolean
-  borderColor?: TBorderColor | string
+  borderColor: TBorderColor | string
   borderWidth?: TBorderWidth
-  buttonFill?: TButtonFill
+  buttonFill: TButtonFill
   buttonElementColor?: TButtonElementColor
   animationOn?: boolean
   buttonBorderRadius?: TButtonBorderRadius

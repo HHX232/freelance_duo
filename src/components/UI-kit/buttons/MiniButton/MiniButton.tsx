@@ -5,6 +5,8 @@ import cn from 'clsx'
 import styles from './MiniButton.module.scss'
 import {ArrowIcon} from '../ButtonIcons/ArrowIcon'
 
+// ! ЕСЛИ РАМКА НЕ ОТОБРАЖАЕТСЯ, ТО ОБЕРНИТЕ В СПАН С Z-INDEX++
+
 const hexToRgba = (hex: string, opacity: number): string => {
   const hexColor = hex.replace('#', '')
 
@@ -35,7 +37,8 @@ export const MiniButton: FC<IMiniButtonProps> = ({
   arrowStrokeWidth = '1.5',
   arrowExtraStyles,
   backgroundOpacity,
-  extraStyle
+  extraStyle,
+  activeButton
 }) => {
   let backgroundColor = 'transparent'
 
@@ -48,6 +51,9 @@ export const MiniButton: FC<IMiniButtonProps> = ({
       'bronze-600': '#C38566',
       'bronze-700': '#B17759',
       blue: '#11627D',
+      'blue-middle': '#11627D',
+      'blue-light': '#7A9BB2',
+      black: '#000000',
       gray: '#B5B9BE',
       'gray-light': '#CDD0D3',
       white: '#FFFFFF'
@@ -81,7 +87,31 @@ export const MiniButton: FC<IMiniButtonProps> = ({
           [styles[`button-element-color-${buttonElementColor}`]]: buttonElementColor,
           [styles.animationOn]: animationOn,
           [styles[`butron-border-radius-${buttonBorderRadius}`]]: buttonBorderRadius,
-          [styles[`background-opacity-${backgroundOpacity}`]]: backgroundOpacity
+          [styles[`background-opacity-${backgroundOpacity}`]]: backgroundOpacity,
+          //! Ниже идут с заливкой
+          [styles.active_button_bronze]: activeButton && buttonFill === 'bronze-500',
+          [styles.active_button_orange]: activeButton && buttonFill === 'orange-500',
+          [styles.active_button_blue_light]: activeButton && buttonFill === 'blue-light',
+          [styles.active_button_blue_middle]: activeButton && buttonFill === 'blue-middle',
+          [styles.active_button_white]: activeButton && buttonFill === 'white',
+          // ! Стили для дизейбл версий
+          [styles.disabled]: disabled,
+          [styles.disabled_active_button_bronze]: disabled && activeButton && buttonFill === 'bronze-500',
+          [styles.disabled_active_button_orange]: disabled && activeButton && buttonFill === 'orange-500',
+          [styles.disabled_active_button_white]: disabled && activeButton && buttonFill === 'white',
+          [styles.disabled_active_button_gray_transparent]:
+            disabled && activeButton && !border && buttonFill === 'gray-light',
+          [styles.active_button_arrow_white_disable]:
+            activeButton && disabled && buttonFill === 'none' && arrowColor === 'white',
+          [styles.active_button_arrow_dark_disable]:
+            activeButton && disabled && buttonFill === 'none' && arrowColor === 'dark',
+          [styles.active_button_blue_light_disabled]: activeButton && disabled && buttonFill === 'blue-light',
+          [styles.active_button_blue_middle_disabled]: activeButton && disabled && buttonFill === 'blue-middle',
+          // !Ниже идет серая полупрозрачная
+          [styles.active_button_gray_transparent]: activeButton && !border && buttonFill === 'gray-light',
+          // !Ниже идут без заливки, только стрелочки
+          [styles.active_button_arrow_white]: activeButton && buttonFill === 'none' && arrowColor === 'white',
+          [styles.active_button_arrow_dark]: activeButton && buttonFill === 'none' && arrowColor === 'dark'
         },
         extraClass
       )}
@@ -94,7 +124,7 @@ export const MiniButton: FC<IMiniButtonProps> = ({
       <ArrowIcon
         extraStyle={arrowExtraStyles}
         extraClass={cn(styles.arrow, arrowExtraClass)}
-        color={arrowColor}
+        color={arrowColor === 'white' ? '#fff' : arrowColor === 'dark' ? '#555555' : arrowColor}
         width={arrowWidth}
         height={arrowHeight}
         strokeWidth={arrowStrokeWidth}
