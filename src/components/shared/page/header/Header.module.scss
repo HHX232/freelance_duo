@@ -152,7 +152,6 @@
     height: fit-content;
     flex-wrap: wrap;
     padding-top: 20px;
-    padding-left: 18px;
     background-color: #11627d;
     gap: 10px;
     transition: all 0.3s;
@@ -331,11 +330,13 @@
     height: 68px;
 
     .headerTopContainer {
-      height: 68px;
+      height: 156px;
     }
 
     &.menuOpened {
       .container {
+        height: 68px;
+
         .toggleMenuButton {
           margin-right: 0;
           margin-left: 42px;
@@ -364,7 +365,7 @@
       }
 
       .logo {
-        margin-left: -8px;
+        margin-left: -26px;
 
         a {
           width: 68px !important;
@@ -432,7 +433,13 @@
 @include custom(0, map-get($breakpoints, sm) - 1px) {
   .header {
     &.menuOpened {
+      .headerTopContainer {
+        height: 138px;
+      }
+
       .container {
+        height: 64px !important;
+
         .toggleMenuButton {
           margin-left: 12px !important;
 
