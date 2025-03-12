@@ -69,8 +69,34 @@
   opacity: 0;
   transition: height 0.2s ease-in-out;
 
-  span>.accordion:first-child {
-    padding-bottom: 18px;
+  span {
+    .accordion:first-child {
+      padding-bottom: 18px;
+    }
+
+    li {
+
+      a,
+      .header {
+        @include font(1, 20px, 30px);
+      }
+
+      &:not(:has(.header)) {
+        &:first-child {
+          margin-top: 12px;
+        }
+
+        &:last-child {
+          margin-bottom: 12px;
+        }
+
+        padding: 18px 0;
+      }
+
+      .header {
+        color: #fdf1cd;
+      }
+    }
   }
 }
 
