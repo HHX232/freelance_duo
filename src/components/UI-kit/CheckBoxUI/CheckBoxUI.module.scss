@@ -1,0 +1,162 @@
+.checkbox {
+   position: relative;
+   z-index: 25;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 2px;
+   border-radius: 4px;
+   aspect-ratio: 1/1;
+   background-color: #fff;
+
+   &::before {
+      position: absolute;
+      z-index: -1;
+      border: 1px solid #B5B9BE;
+      border-radius: 4px;
+      content: '';
+      inset: 0;
+   }
+
+   &:hover::before {
+      border: 1px solid #1B5C74;
+   }
+
+   &:active::before {
+      border: 3px solid rgb(17 98 125 / 40%) !important;
+      border-radius: 6.5px;
+      inset: -2.5px;
+   }
+}
+
+.bid_box {
+   display: flex;
+   width: fit-content;
+   height: fit-content;
+   flex-direction: column;
+   gap: 4px;
+}
+
+
+
+.checkbox_container_span {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+}
+
+.checkbox_filled {
+   background-color: #11627D;
+
+   &::before {
+      border: none;
+   }
+
+   &:hover {
+      background-color: #1B5C74;
+   }
+
+   &:focus {
+      background-color: #165167;
+   }
+
+   &:active {
+      background-color: #11627D;
+   }
+
+
+
+}
+
+
+.checkbox_disabled {
+   background-color: #E9E9E9;
+   pointer-events: none;
+   user-select: none;
+
+   &::before {
+      border: 1px solid #B5B9BE;
+      inset: 0;
+   }
+}
+
+.checkbox_disabled_check {
+   &::before {
+      display: none !important;
+      border: none !important;
+   }
+}
+
+.big_box_disabled {
+   pointer-events: none;
+   user-select: none;
+}
+
+.icon_box {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.icon_box_size_medium {
+   width: 16px !important;
+   height: 16px !important;
+}
+
+.icon_box_size_large {
+   width: 20px !important;
+   height: 20px !important;
+}
+
+.icon_box_size_small {
+   width: 12px !important;
+   height: 12px !important;
+}
+
+.checked_icon_box_dis {
+   opacity: 0;
+}
+
+.checkbox_error {
+   &::before {
+      border: 1px solid #D36281 !important;
+   }
+}
+
+.checkbox_error_checked {
+   background-color: #D36281;
+
+   &:hover {
+      background-color: #D36281;
+   }
+
+   &::before {
+      border: none !important;
+   }
+}
+
+.label_size_small {
+   font-size: 12px !important;
+}
+
+.error_text {
+   color: #D36281 !important;
+}
+
+.error_text_big {
+   max-width: 76px;
+}
+
+.error_text_small {
+   max-width: 57px;
+}
+
+.error_text_medium {
+   max-width: 72px;
+}
+
+.label_size_disabled {
+   color: #B5B9BE !important;
+   pointer-events: none;
+   user-select: none;
+}
