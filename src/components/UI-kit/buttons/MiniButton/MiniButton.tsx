@@ -6,6 +6,8 @@ import styles from './MiniButton.module.scss'
 import {ArrowIcon} from '../ButtonIcons/ArrowIcon'
 
 // ! ЕСЛИ РАМКА НЕ ОТОБРАЖАЕТСЯ, ТО ОБЕРНИТЕ В СПАН С Z-INDEX++
+// ? Стили под красными комментариями идут для кнопок с активным состоянием cn(activeButton === true)
+// ? -----------------------------------------------------------------------------------------------
 
 const hexToRgba = (hex: string, opacity: number): string => {
   const hexColor = hex.replace('#', '')
