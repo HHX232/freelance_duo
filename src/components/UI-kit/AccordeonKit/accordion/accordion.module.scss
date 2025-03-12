@@ -78,7 +78,9 @@
 
       a,
       .header {
-        @include font(1, 20px, 30px);
+        @include font(1, 20, 30);
+
+        font-size: 20px !important;
       }
 
       &:not(:has(.header)) {
