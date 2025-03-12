@@ -433,7 +433,7 @@
   .header {
     &.menuOpened {
       .headerTopContainer {
-        height: 138px;
+        height: 124px;
       }
 
       .container {
@@ -449,6 +449,10 @@
             margin-right: 1px;
           }
         }
+      }
+
+      .menu {
+        padding-top: 160px;
       }
 
       .mobileMenu {
