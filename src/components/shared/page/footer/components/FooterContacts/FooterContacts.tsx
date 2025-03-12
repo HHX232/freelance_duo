@@ -7,6 +7,7 @@ import LogoFooterDashboard from '@icons/logo-footer-dashboard.svg'
 import LogoIcon from '@icons/logo-accent-footer.svg'
 import PrivateOfficeButton from './buttons/PrivateOfficeButton/PrivateOfficeButton'
 import FooterNavigation from '../FooterNavigation/FooterNavigation'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 export default function FooterContacts(props: IFooterContactsProps) {
   return (
@@ -27,13 +28,36 @@ export default function FooterContacts(props: IFooterContactsProps) {
         )}
       </div>
       <div className={styles.contacts}>
-        <Link href={'https://t.me/Kronfort_life'}>
+        {/* TODO: Поменять ссылки */}
+
+        <FullButton
+          extraClass={styles.contactsButton}
+          type={'Link'}
+          href={'/#vkLink'}
+          activeButton={true}
+          border={false}
+          borderColor={''}
+          buttonFill={'none'}
+          buttonElementColor={'black'}
+          buttonText={''}
+        >
           <VkIcon width={40} height={40} />
-        </Link>
-        {/* TODO: Поменять ссылку на инстаграм */}
-        <Link href={'#inst'}>
+        </FullButton>
+
+        <FullButton
+          extraClass={styles.contactsButton}
+          type={'Link'}
+          href={'/instLink'}
+          activeButton={true}
+          border={false}
+          borderColor={''}
+          buttonFill={'none'}
+          buttonElementColor={'black'}
+          buttonText={''}
+        >
           <InstIcon width={40} height={40} />
-        </Link>
+        </FullButton>
+
         <div className={styles.phone}>
           <a href={'tel:+78126022010'} className={styles.phone}>
             Тел: + 7 (123) 123-45-67

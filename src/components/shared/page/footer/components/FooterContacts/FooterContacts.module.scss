@@ -1,6 +1,5 @@
 @import '../../../../../../scss/breakpoints';
 
-
 .lk_media {
   @include bp-md {
     display: none;
@@ -55,8 +54,6 @@
     }
   }
 
-
-
   .contacts {
     display: flex;
     width: 100%;
@@ -74,6 +71,10 @@
 
     @include bp-sm {
       margin-bottom: 0;
+    }
+
+    .contactsButton {
+      width: fit-content;
     }
 
     .phone {
