@@ -69,12 +69,11 @@
 }
 
 .footer {
+  overflow: hidden;
   width: 100%;
   height: fit-content;
   padding: 36px 40px 40px;
   background-color: #165167;
-
-
 
   @include bp-sm {
     padding: 36px 20px;
@@ -89,10 +88,6 @@
     margin: 0 auto;
     gap: 40px;
     grid-template-columns: auto 1fr;
-
-    @include custom(0, map-get($breakpoints, xl) - 1px) {
-      padding: 12px 0;
-    }
 
     @include custom(0, map-get($breakpoints, lg)) {
       font-size: 14px;
@@ -120,7 +115,7 @@
         padding: 0 20px 10px 0;
 
         @include custom(0, map-get($breakpoints, lg)) {
-          padding: 14px 20px 14px 0;
+          padding: 6px 20px 6px 0;
           font-size: 14px !important;
           line-height: 18px;
         }

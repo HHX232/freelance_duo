@@ -18,6 +18,10 @@
   @include xxl{
     padding: 0 40px 0 170px;
   }
+
+  @include xxxl{
+    padding: 0 40px 0 196px;
+  }
 }
 
 .title {
@@ -191,15 +195,39 @@
 
 .bg-2 {
   @layer base {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/parking_outside.jpeg') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/out_base.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include sm{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/out_sm.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include md{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/out_md.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include lg{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/out_lg.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include xl{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/out_xl.png') no-repeat center center;
     background-size: 100% 100%;
   }
 
   @include xxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/out_xxl.png') no-repeat center center;
+    background-size: 100% 100%;
     height: 323px;
   }
 
   @include xxxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/out_xxxl.png') no-repeat center center;
+    background-size: 100% 100%;
     height: 348px;
   }
 }
@@ -236,7 +264,7 @@
 
 .bg-4 {
   @layer base {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/parking_inside_2.jpeg') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/inf_base.png') no-repeat center center;
     background-size: 100% 100%;
 
     display: flex;
@@ -245,7 +273,34 @@
     gap: 24px;
   }
 
+  @include sm{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/inf_sm.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include md{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/inf_md.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include lg{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/inf_lg.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include xl{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/inf_xl.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include xxl{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/inf_xxl.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
   @include xxxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/parking/inf_xxxl.png') no-repeat center center;
+    background-size: 100% 100%;
     padding: 60px;
   }
 }

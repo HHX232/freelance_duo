@@ -28,6 +28,10 @@
     padding: 0 40px 0 170px;
   }
 
+  @include xxxl {
+    padding: 0 40px 0 196px;
+  }
+
 }
 
 .desc-wrapper {

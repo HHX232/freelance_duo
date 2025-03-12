@@ -64,7 +64,7 @@
   
       @include xxxl {
         width: 50%;
-        padding: 191px 300px 191px 196px;
+        padding: 130px 300px 130px 196px;
   
         & form {
           margin-top: 60px;
@@ -82,7 +82,6 @@
   
         @include xl {
           @include font(3, 42, 54);
-          white-space: nowrap;
         }
       }
   

@@ -29,7 +29,7 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
             <div>Шаг {step}/2</div>
           </div>
           <div className={styles.progressWrapper}>
-            <ProgressBar progress={step === 1 ? '8%' : '34%'} />
+            <ProgressBar progress={step === 1 ? '50%' : '100%'} />
           </div>
         </div>
         {step === 1 ? (

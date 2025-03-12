@@ -22,6 +22,8 @@ type TButtonFill =
   | 'bronze-600'
   | 'bronze-700'
   | 'blue'
+  | 'blue-middle'
+  | 'blue-light'
   | 'gray'
   | 'gray-light'
   | 'white'
@@ -30,7 +32,7 @@ type TButtonBorderRadius = '0' | '6px' | '12px' | 'circle'
 type backgroundOpacity = 'visible' | 'hidden' | 'inherit' | '8' | '16' | '24' | '32' | '40' | '48'
 interface IArrowProps {
   arrowExtraClass?: string
-  arrowColor?: string
+  arrowColor?: string | 'white' | 'dark'
   arrowWidth?: string
   arrowHeight?: string
   arrowStrokeWidth?: string
@@ -50,5 +52,6 @@ export interface IMiniButtonProps extends IArrowProps {
   href?: string
   extraStyle?: React.CSSProperties
   backgroundOpacity?: backgroundOpacity
-  extraClass?:string
+  extraClass?: string
+  activeButton: boolean
 }

@@ -23,6 +23,9 @@
     padding: 0 40px 0 170px;
   }
 
+  @include xxxl {
+    padding: 0 40px 0 196px;
+  }
 }
 
 .title {
@@ -171,27 +174,63 @@
   @include xl {
     .tile {
       display: flex;
-      justify-content: space-between;
+      justify-content: unset;
       height: 312px;
       padding: 40px;
       @include font(3, 24, 36, 400);
     }
   }
 
+  @include xxl {
+    .tile {
+      height: 276px;
+    }
+  }
+
+  @include xxxl {
+    .tile{
+      height: 240px;
+    }
+  }
 
 }
 
 .bg1 {
   @layer base {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/storerooms_5.jpeg') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xs.png') no-repeat center center;
     background-size: 100% 100%;
     justify-content: space-between;
   }
 
   @include sm {
-
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_sm.png') no-repeat center center;
+    background-size: 100% 100%;
   }
 
+  @include md{
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_md.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include lg {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_lg.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include xl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xl.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include xxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xxl.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  @include xxxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xxxl.png') no-repeat center center;
+    background-size: 100% 100%;
+  }
 }
 
 .bg2 {

@@ -119,7 +119,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
             <Link onClick={onClose} href={'/parking'}>
               <Accordion
                 animationOn={false}
-                extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
+                extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent} ${styles.romul_text}`}
                 leftArrow={false}
                 rightArrow={false}
                 items={[
@@ -134,7 +134,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
             <Link onClick={onClose} href={'/studii'}>
               <Accordion
                 animationOn={false}
-                extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
+                extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent} ${styles.romul_text}`}
                 leftArrow={false}
                 rightArrow={false}
                 items={[
@@ -149,7 +149,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
             <Link onClick={onClose} href={'/kvartiry-s-kladovoi'}>
               <Accordion
                 animationOn={false}
-                extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
+                extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent} ${styles.romul_text}`}
                 leftArrow={false}
                 rightArrow={false}
                 items={[
