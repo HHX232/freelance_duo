@@ -17,6 +17,10 @@
     color: #fff !important;
   }
 
+  .bold {
+    @include font(1, 16, 14, 400);
+  }
+
   .headerTopContainer {
     width: 100%;
     height: 100%;
