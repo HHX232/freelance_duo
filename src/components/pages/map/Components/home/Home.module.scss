@@ -3,17 +3,17 @@
 
   @layer base {
     position: relative;
+    display: flex;
+    height: 640px;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 130px 16px 24px;
+
     //background-image: linear-gradient(180deg, rgba(38, 57, 69, 0) 50.45%, rgba(38, 57, 69, 1) 87.97%), url("/content/banner.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
-
-    display: flex;
-    height: 640px;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 130px 16px 24px 16px;
   }
 
   @include xs {
@@ -21,7 +21,7 @@
   }
 
   @include sm {
-    padding: 130px 20px 111px 20px;
+    padding: 130px 20px 111px;
   }
 
   @include md {
@@ -44,6 +44,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
     //padding-bottom: 124px;
     //background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.png");
     padding: 90px 40px 124px 196px;
@@ -69,7 +70,7 @@
 }
 
 .description {
-  animation: descriptionAnimation .8s both;
+  animation: descriptionAnimation 0.8s both;
 
   @layer base {
     @include font(1, 16, 20);
@@ -88,20 +89,20 @@
 
   @include lg {
     @include font(1, 20, 26);
+
     max-width: 780px;
   }
 }
 
 @keyframes descriptionAnimation {
   0% {
-    opacity: 0;
     padding-bottom: 15px;
+    opacity: 0;
   }
 
   100% {
-    opacity: 1 !important;
     padding-bottom: 0;
-
+    opacity: 1 !important;
   }
 }
 
@@ -121,15 +122,17 @@
     margin-top: 36px;
 
     button {
-      padding: 12px 36px !important;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 12px 36px !important;
       gap: 10px;
-    }
 
-    span {
-      font-size: 16px;
+      span {
+        @include font(1, 16, 24, 400);
+
+        text-transform: uppercase;
+      }
     }
   }
 
@@ -165,34 +168,30 @@
 .slider_outer_wrapper {
   .slider__layout {
     position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-
     z-index: 10;
+    inset: 0;
 
     @include lg {
-      background: linear-gradient(228deg, rgba(0, 0, 0, 0.3) 47.45%, rgba(0, 0, 0, 0.2) 81.97%);
+      background: linear-gradient(228deg, rgb(0 0 0 / 30%) 47.45%, rgb(0 0 0 / 20%) 81.97%);
     }
 
     @include xs {
-      background: linear-gradient(180deg, rgba(38, 57, 69, 0) 34.4%, #263945 90.97%),
-        linear-gradient(215deg, rgba(0, 0, 0, 0) 45.29%, rgba(0, 0, 0, 0.2) 72.52%);
+      background: linear-gradient(180deg, rgb(38 57 69 / 0%) 34.4%, #263945 90.97%),
+        linear-gradient(215deg, rgb(0 0 0 / 0%) 45.29%, rgb(0 0 0 / 20%) 72.52%);
     }
   }
 
   @layer base {
-    overflow: hidden;
     position: absolute;
     z-index: 2;
     top: 0;
     left: 0;
+    overflow: hidden;
     width: 100%;
     height: 100%;
+
     //background: black;
-    background-image: linear-gradient(180deg, rgba(38, 57, 69, 0) 50.45%, rgba(38, 57, 69, 1) 87.97%);
+    background-image: linear-gradient(180deg, rgb(38 57 69 / 0%) 50.45%, rgb(38 57 69 / 100%) 87.97%);
   }
 
   @include lg {
@@ -206,9 +205,9 @@
 
 .slider_controls {
   @layer base {
-    width: 100%;
     z-index: 3;
     display: flex;
+    width: 100%;
     justify-content: center;
   }
 
@@ -219,15 +218,14 @@
 
 .embla__buttons {
   @layer base {
-    display: none;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    align-items: center;
-
     position: absolute;
     right: 40px;
-    left: auto;
     bottom: 40px;
+    left: auto;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @include lg {
@@ -238,20 +236,17 @@
 
 .dots_wrapper {
   position: absolute;
+  right: 0;
+  left: 0;
+  display: flex;
+  width: fit-content;
+  width: 100%;
+  justify-content: center;
+  margin: auto;
 
   @include md {
     bottom: 56px;
   }
-
-  width: fit-content;
-  left: 0;
-  right: 0;
-  margin: auto;
-
-  justify-content: center;
-
-  width: 100%;
-  display: flex;
 
   @include xs {
     bottom: 32px;
