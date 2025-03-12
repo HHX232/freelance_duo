@@ -1,21 +1,19 @@
 import Link from 'next/link'
 import styles from './HeaderMenuBottom.module.scss'
-import PhoneSVG from '@icon/phone.svg'
 import MessageSVG from '@icon/message.svg'
 import FindApartmentButton from '../../FindApartmentButton/FindApartmentButton'
 import {IHeaderMenuBottomProps} from './HeaderMenuBottom.types'
-import SettingsButton from './SettingsButton/SettingsButton'
+import SettingsButton from './buttons/HeaderMenuBottomSettingsButton/HeaderMenuBottomSettingsButton'
 import PhoneIconSVG from '../../icons/PhoneIconSVG/PhoneIconSVG'
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import HeaderMenuBottomPhoneButton from './buttons/HeaderMenuBottomPhoneButton/HeaderMenuBottomPhoneButton'
 
 export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBottomProps) {
   return (
     <div className={styles.headerMenuBottom}>
       <div className={styles.contacts}>
         <div className={styles.contactLink}>
-          <Link href={'tel:+71231234567'}>
-            <PhoneSVG />
-          </Link>
+          <HeaderMenuBottomPhoneButton />
         </div>
         <div className={styles.contactLink}>
           <Link href={''}>
