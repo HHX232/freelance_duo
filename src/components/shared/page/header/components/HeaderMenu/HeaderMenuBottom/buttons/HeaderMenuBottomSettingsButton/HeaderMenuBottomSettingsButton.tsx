@@ -1,8 +1,8 @@
-import styles from './SettingsButton.module.scss'
+import styles from './HeaderMenuBottomSettingsButton.module.scss'
 import SettingsSVG from '@icon/Menu point.svg'
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
-export default function SettingsButton() {
+export default function HeaderMenuBottomSettingsButton() {
   return (
     <FullButton
       type={'Link'}
