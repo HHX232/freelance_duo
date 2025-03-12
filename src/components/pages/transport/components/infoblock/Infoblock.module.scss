@@ -1,0 +1,169 @@
+.comfort-wrapper {
+    @layer base {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 16px;
+      gap: 80px;
+      word-break: break-word;
+  
+    }
+  
+    @include sm {
+      padding: 0 20px;
+    }
+  
+    @include md {
+      padding: 0 40px;
+    }
+  
+    @include xl {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px 0 142px;
+      gap: 80px;
+  
+    }
+  
+    @include xxl {
+      padding: 0 40px 0 170px;
+    }
+  
+  }
+  
+  .desc-wrapper {
+    @layer base {
+      display: none;
+    }
+  
+    @include xl {
+      display: flex;
+      width: 485px;
+      flex-direction: column;
+      text-align: left;
+  
+    }
+  
+    @include xxl{
+      width: 747px;
+    }
+  
+    @include xxxl{
+      width: 890px;
+    }
+  
+  }
+  
+  .download-wrapper {
+    @layer base {
+      width: 100%;
+      padding-top: 40px;
+      border-top: 1px solid rgb(17 98 125 / 30%);
+    }
+  
+    @include xl {
+      padding: 0;
+      border-top: 0 solid rgb(17 98 125 / 30%);
+  
+      .download {
+        padding: 0;
+      }
+  
+    }
+  
+  }
+  
+  .table-desc-wrapper {
+    @layer base {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+
+      //gap: 40px;
+  
+    }
+  
+    @include xl {
+      display: none;
+    }
+  
+  }
+  
+  
+  .info-wrapper {
+    @layer base {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+  
+    @include sm{
+      gap: 60px;
+    }
+  
+    @include xl {
+      width: 553px;
+      gap: 60px;
+    }
+  
+    @include xxl{
+      width: 563px;
+    }
+  
+    @include xxxl{
+      width: 714px;
+    }
+  }
+  
+  .info{
+    @layer base {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+  
+  .description{
+    @layer base {
+      @include font(1, 16, 20, 300);
+
+      max-width: 780px;
+      margin-top: 12px;
+      color: #FFF;
+    }
+  
+    @include sm {
+      @include font(1, 20, 26, 300);
+  
+      max-width: max-content;
+      margin-top: 12px;
+      color: #FFF;
+    }
+  
+    @include xl {
+      .description {
+        @include font(1, 24, 34, 300);
+
+        margin-top: 12px;
+        color: #FFF;
+      }
+    }
+  }
+  
+  .title{
+    @layer base {
+      @include font(3, 30, 40, 400);
+
+      color: #FFF;
+    }
+  
+    @include md{
+      @include font(3, 36, 50, 400);
+    }
+  
+    @include xl {
+      @include font(3, 42, 54, 400);
+    }
+  
+  
+  }
+  
