@@ -1,11 +1,11 @@
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
-import PhoneSVG from '@icon/phone.svg'
+import MessageSVG from '@icon/message.svg'
 
-export default function HeaderMenuBottomPhoneButton() {
+export default function HeaderMenuBottomMessageButton() {
   return (
     <FullButton
       type={'Link'}
-      href={'tel:+71231234567'}
+      href={'/#messages'}
       activeButton={true}
       border={false}
       borderColor={''}
@@ -13,7 +13,7 @@ export default function HeaderMenuBottomPhoneButton() {
       buttonElementColor={'white'}
       buttonText={''}
     >
-      <PhoneSVG />
+      <MessageSVG />
     </FullButton>
   )
 }
