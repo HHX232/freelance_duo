@@ -1,4 +1,5 @@
 @import '../../../../../../../scss/variables';
+@import '../../../../../../../fonts/fonts';
 
 .container {
   display: flex;
@@ -35,6 +36,12 @@
   a {
     @include font(1, 14, 18, 400);
   }
+}
+
+.romul_text {
+  font-family: $font-romul;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .main_accordion_box {
