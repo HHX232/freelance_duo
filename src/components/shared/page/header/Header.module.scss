@@ -18,8 +18,15 @@
   }
 
   &.menuOpened {
-    padding-right: 46px;
+    height: fit-content;
+    padding: 0;
     background-color: #11627d;
+
+    .headerTopContainer {
+      padding: 0 40px;
+      padding-right: 46px;
+      background-color: #11627d;
+    }
 
     .container,
     .container a {
@@ -74,6 +81,13 @@
         fill: #555;
       }
     }
+  }
+
+  .headerTopContainer {
+    width: 100%;
+    height: 96px;
+    background-color: transparent;
+    transition: background-color 0.2s ease-in-out;
   }
 
   .container {
@@ -195,6 +209,7 @@
 
       span {
         margin-left: 6px;
+        background-color: #fd7628;
       }
     }
   }
@@ -258,8 +273,14 @@
   .header {
     height: 86px;
 
+    .headerTopContainer {
+      height: 86px;
+    }
+
     &.menuOpened {
-      padding: 0 40px;
+      .headerTopContainer {
+        padding: 0 40px;
+      }
 
       .container {
         .toggleMenuButton {
@@ -309,9 +330,11 @@
   .header {
     height: 68px;
 
-    &.menuOpened {
-      // padding: 0 40px;
+    .headerTopContainer {
+      height: 68px;
+    }
 
+    &.menuOpened {
       .container {
         .toggleMenuButton {
           margin-right: 0;
@@ -361,7 +384,10 @@
 
     &.menuOpened {
       height: fit-content;
-      padding: 0 12px;
+
+      .headerTopContainer {
+        padding: 0 12px;
+      }
 
       .container {
         height: 68px !important;

@@ -1,4 +1,5 @@
 @import '../../../../../../../scss/variables';
+@import '../../../../../../../fonts/fonts';
 
 .container {
   display: flex;
@@ -9,7 +10,6 @@
   gap: 57px;
 
   &_mobile {
-    max-height: 80vh;
     padding-right: 20px;
     padding-left: 20px;
 
@@ -17,8 +17,6 @@
       padding-right: 0;
       padding-left: 0;
     }
-
-    // overflow-y: auto;
   }
 
   @include custom(0, 1150px) {
@@ -38,6 +36,12 @@
   a {
     @include font(1, 14, 18, 400);
   }
+}
+
+.romul_text {
+  font-family: $font-romul;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .main_accordion_box {
@@ -85,7 +89,7 @@
 }
 
 .accordion_header_active {
-  &>div:first-child {
+  & > div:first-child {
     margin-bottom: 12px;
   }
 }
@@ -109,11 +113,11 @@
   display: flex;
   flex-direction: column;
 
-  &>li {
+  & > li {
     padding: 6px 0;
     color: #fff;
 
-    &>a {
+    & > a {
       font-size: 18px !important;
       line-height: 26px;
       text-transform: none;
@@ -164,7 +168,7 @@
   margin-bottom: 54px;
   gap: 6px;
 
-  &>p {
+  & > p {
     color: #fff !important;
     font-family: $font-primary !important;
     font-size: 14px !important;
@@ -211,11 +215,11 @@
   }
 
   .accordion_mobile_list_default {
-    &>li>a {
+    & > li > a {
       font-size: 14px !important;
     }
 
-    &>li {
+    & > li {
       font-size: 14px !important;
     }
   }
