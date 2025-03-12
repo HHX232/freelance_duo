@@ -12,7 +12,6 @@ import HeaderMenu from './components/HeaderMenu/HeaderMenu'
 import {useStore} from '@src/lib/store/store'
 import DashboardActions from './components/DashboardActions/DashboardActions'
 import useRouterNext from '@src/lib/hooks/useRouter'
-import Link from 'next/link'
 import {usePathname, useRouter} from 'next/navigation'
 import UserSVG from '@icons/user.svg'
 import {useIsXl, useIsMd} from '@utils/useIsMobile'
@@ -220,9 +219,18 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
           {dashboard && (
             <div className={styles.mobileCompareLink}>
               {token ? (
-                <Link href={'/lk'}>
+                <FullButton
+                  type={'Link'}
+                  href={'/lk'}
+                  activeButton={true}
+                  border={false}
+                  borderColor={''}
+                  buttonFill={'none'}
+                  buttonElementColor={'black'}
+                  buttonText={'Личный кабинет'}
+                >
                   <UserSVG className={styles.user} />
-                </Link>
+                </FullButton>
               ) : (
                 <button type='button' onClick={() => setOpenAuth(!isOpenAuth)}>
                   <UserSVG className={styles.user} />
