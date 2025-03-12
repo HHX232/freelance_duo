@@ -19,6 +19,7 @@ import HomePage from './Components/home/Home.page'
 import ContactFormPage from './Components/contact-form/ContactForm'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
+import TransportPage from './Components/transport/Transport'
 const Compass = dynamic(() => import('./Components/card/Compass'), {ssr: false})
 
 const directionHints: DirectionHint[] = [
@@ -36,7 +37,7 @@ const directionHints: DirectionHint[] = [
   {
     name: 'КАД (10 мин.)',
     coords: {
-      x: 30,
+      x: 64,
       y: 10
     },
     coords_mob: {
@@ -325,7 +326,7 @@ const MapContent = () => {
                 </MouseMover>
               </div>
             </div>
-            {/* <TransportPage /> */}
+            <TransportPage />
 
             <AreasPage />
             <FortovPage />
