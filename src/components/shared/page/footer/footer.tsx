@@ -282,6 +282,7 @@ const Footer = ({dashboard}: {dashboard?: boolean}) => {
 
   return (
     <div className={styles.footer}>
+      <span style={{position: 'relative'}}></span>
       <div className={styles.footer_inner}>
         <div className={`${styles.side} ${styles.side_left}`}>
           <FooterContacts

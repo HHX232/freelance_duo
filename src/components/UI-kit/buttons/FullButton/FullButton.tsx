@@ -5,6 +5,8 @@ import cn from 'clsx'
 import styles from './FullButton.module.scss'
 import {ArrowIcon} from '../ButtonIcons/ArrowIcon'
 
+// ! ЕСЛИ РАМКА НЕ ОТОБРАЖАЕТСЯ, ТО ОБЕРНИТЕ В СПАН С Z-INDEX++
+
 // ! Standart фон и рамки задают активные состояния кнопок при включенном activeButton = {true}
 
 /* <FullButton
