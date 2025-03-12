@@ -21,7 +21,6 @@ import LogoutButton from './components/LogoutButton/LogoutButton'
 import PhoneIconSVG from './components/icons/PhoneIconSVG/PhoneIconSVG'
 import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMenuBottom'
 import FindApartmentButton from './components/FindApartmentButton/FindApartmentButton'
-import {MiniButton} from '@src/components/UI-kit/buttons/MiniButton/MiniButton'
 
 export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
