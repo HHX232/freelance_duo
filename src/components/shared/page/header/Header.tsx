@@ -54,6 +54,10 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const handleScroll = (): void => setIsScrolled(window.scrollY > 0)
 
   useEffect(() => {
+    window.document.body.style.overflowY = isMenuOpened ? 'hidden' : 'auto'
+  }, [isMenuOpened])
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll)
 
     return () => {
