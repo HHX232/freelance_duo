@@ -1,10 +1,6 @@
 import {ComponentPropsWithRef, useCallback, useEffect, useState} from 'react'
 import {EmblaCarouselType} from 'embla-carousel'
-import emblaStyle from './slider.module.scss'
-import ToLeft from '@icons/toLeft.svg'
-import ToRight from '@icons/toRight.svg'
 import {MiniButton} from '@src/components/UI-kit/buttons/MiniButton/MiniButton'
-import clsx from 'clsx'
 
 interface UsePrevNextButtonsType {
   prevBtnDisabled: boolean

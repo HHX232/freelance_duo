@@ -1,6 +1,5 @@
 import styles from './Home.module.scss'
 import sliderStyle from './bg-slider/slider.module.scss'
-import FilledButton from '@shared/filledButton/FilledButton'
 import MenuPoint from '@icons/Menu point.svg'
 import useRouterNext from '@src/lib/hooks/useRouter'
 import {EmblaOptionsType} from 'embla-carousel'
