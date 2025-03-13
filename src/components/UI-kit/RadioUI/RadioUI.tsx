@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import LinkUI from '../Typography/Link/LinkUI'
 
 const RadioUI = forwardRef<HTMLInputElement, RadioUIProps>(
-  ({label, error, uiSize = 'lg', extraClass, extraStyles, ...rest}, forwardedRef) => {
+  ({children, error, uiSize = 'lg', extraClass, extraStyles, ...rest}, forwardedRef) => {
     const uid = useId()
     const inputId = `${RadioUI.displayName}-${uid}`
 
@@ -19,7 +19,7 @@ const RadioUI = forwardRef<HTMLInputElement, RadioUIProps>(
         <label htmlFor={inputId}>
           <div className={styles.button} />
           <LinkUI size={uiSize === 'sm' ? 'xs' : 'md'} weight={'regular'}>
-            {label}
+            {children}
           </LinkUI>
         </label>
 
