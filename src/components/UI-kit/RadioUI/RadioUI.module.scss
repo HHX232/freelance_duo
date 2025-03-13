@@ -63,13 +63,17 @@
       border-color: #11627d;
     }
 
-    &:disabled + label .button {
-      &::before {
-        border-color: #b5b9be;
-      }
+    &:disabled + label {
+      cursor: not-allowed;
 
-      &::after {
-        display: none;
+      .button {
+        &::before {
+          border-color: #b5b9be;
+        }
+
+        &::after {
+          display: none;
+        }
       }
     }
   }
