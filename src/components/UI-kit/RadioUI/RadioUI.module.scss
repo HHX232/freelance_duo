@@ -10,7 +10,7 @@
     opacity: 1;
   }
 
-  &.hasError > label > .button {
+  &.hasError>label>.button {
     &::before {
       border-color: #d36281 !important;
     }
@@ -59,11 +59,11 @@
   input {
     display: none;
 
-    &:checked + label .button::before {
+    &:checked+label .button::before {
       border-color: #11627d;
     }
 
-    &:disabled + label {
+    &:disabled+label {
       cursor: not-allowed;
 
       .button {
@@ -84,7 +84,7 @@
     }
 
     &:active .button::after,
-    input:checked + label .button::before {
+    input:checked+label .button::before {
       border-width: 6px;
     }
   }
@@ -95,7 +95,7 @@
     }
 
     &:active .button::after,
-    input:checked + label .button::before {
+    input:checked+label .button::before {
       border-width: 5px;
     }
   }
@@ -106,7 +106,7 @@
     }
 
     &:active .button::after,
-    input:checked + label .button::before {
+    input:checked+label .button::before {
       border-width: 4px;
     }
   }
