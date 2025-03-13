@@ -7,7 +7,7 @@ import {IFooterNavigationLink, IFooterNavigationLinksGroup} from './components/F
 import FooterContacts from './components/FooterContacts/FooterContacts'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {Backcall} from '@shared/back-call-popup/backcall'
-import ScrollOnTopButton from '@src/components/UI-kit/buttons/ScrollOnTopButton/ScrollOnTopButton'
+import {MiniButton} from '@src/components/UI-kit/buttons/MiniButton/MiniButton'
 
 const PRIMARY_LINKS: IFooterNavigationLinksGroup[] = [
   {
@@ -49,6 +49,13 @@ const Footer = ({dashboard}: {dashboard?: boolean}) => {
   const [isLK, setLK] = useState(false)
   const [isOpenAuth, setOpenAuth] = useState(false)
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   useEffect(() => {
     setLK(true)
   }, [token])
@@ -77,7 +84,16 @@ const Footer = ({dashboard}: {dashboard?: boolean}) => {
 
         {isOpenAuth && <AuthPopup onClose={() => setOpenAuth(false)} />}
         {callBackModal && <Backcall onClose={() => setCallBackModal(false)} />}
-        <ScrollOnTopButton />
+
+        <MiniButton
+          extraClass={styles.scrollTopButton}
+          arrowExtraClass={styles.scrollTopButtonArrow}
+          activeButton={true}
+          border={false}
+          arrowColor={'#555'}
+          buttonFill={'white'}
+          onClick={handleScrollToTop}
+        />
       </div>
     </div>
   )

@@ -9,11 +9,9 @@ import CompareSVG from '@icons/compare.svg'
 import FavoriteSVG from '@icons/favorite.svg'
 import clsx from 'clsx'
 import HeaderMenu from './components/HeaderMenu/HeaderMenu'
-import TextLink from './components/TextLink/TextLink'
 import {useStore} from '@src/lib/store/store'
 import DashboardActions from './components/DashboardActions/DashboardActions'
 import useRouterNext from '@src/lib/hooks/useRouter'
-import Link from 'next/link'
 import {usePathname, useRouter} from 'next/navigation'
 import UserSVG from '@icons/user.svg'
 import {useIsXl, useIsMd} from '@utils/useIsMobile'
@@ -21,6 +19,7 @@ import LogoutButton from './components/LogoutButton/LogoutButton'
 import PhoneIconSVG from './components/icons/PhoneIconSVG/PhoneIconSVG'
 import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMenuBottom'
 import FindApartmentButton from './components/FindApartmentButton/FindApartmentButton'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
@@ -110,11 +109,32 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
             <>
               {token ? (
                 <div className={styles.personalCabinetLink}>
-                  <TextLink href={'/lk'} title='Личный кабинет' />
+                  <FullButton
+                    extraClass={styles.buttonTextFont}
+                    type={'Link'}
+                    href={'/lk'}
+                    activeButton={true}
+                    border={false}
+                    borderColor={''}
+                    buttonFill={'none'}
+                    buttonElementColor={'black'}
+                    buttonText={'Личный кабинет'}
+                  />
                 </div>
               ) : (
                 <div className={styles.personalCabinetLink}>
-                  <TextLink onClick={() => setOpenAuth(!isOpenAuth)} href={'/lk'} title='Личный кабинет' />
+                  <FullButton
+                    extraClass={styles.buttonTextFont}
+                    type={'Link'}
+                    href={'/lk'}
+                    activeButton={true}
+                    border={false}
+                    borderColor={''}
+                    onClick={() => setOpenAuth(!isOpenAuth)}
+                    buttonFill={'none'}
+                    buttonElementColor={'black'}
+                    buttonText={'Личный кабинет'}
+                  />
                 </div>
               )}
 
@@ -126,12 +146,33 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
             </>
           )}
           <div className={styles.phoneLink}>
-            <TextLink href={'tel:+71231234567'} title='+ 7 (123) 123-45-67' />
+            <FullButton
+              extraClass={styles.buttonTextFont}
+              type={'Link'}
+              href={'tel:+71231234567'}
+              activeButton={true}
+              border={false}
+              borderColor={''}
+              onClick={() => setOpenAuth(!isOpenAuth)}
+              buttonFill={'none'}
+              buttonElementColor={'black'}
+              buttonText={'+ 7 (123) 123-45-67'}
+            />
           </div>
           <div className={styles.phoneIcon}>
-            <Link href={'tel:+71231234567'}>
+            <FullButton
+              type={'Link'}
+              href={'tel:+71231234567'}
+              activeButton={true}
+              border={false}
+              borderColor={''}
+              onClick={() => setOpenAuth(!isOpenAuth)}
+              buttonFill={'none'}
+              buttonElementColor={'black'}
+              buttonText={''}
+            >
               <PhoneIconSVG />
-            </Link>
+            </FullButton>
           </div>
           {!isLoadingCount && (
             <>
@@ -164,14 +205,34 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
         </div>
         <div className={styles.mobileMenu}>
           <div className={styles.mobilePersonalCabinetLink}>
-            <TextLink href={'/lk'} title='Личный кабинет' />
+            <FullButton
+              extraClass={styles.buttonTextFont}
+              type={'Link'}
+              href={'/lk'}
+              activeButton={true}
+              border={false}
+              borderColor={''}
+              buttonFill={'none'}
+              buttonElementColor={'white'}
+              buttonText={'Личный кабинет'}
+            />
           </div>
           {dashboard && (
             <div className={styles.mobileCompareLink}>
               {token ? (
-                <Link href={'/lk'}>
+                <FullButton
+                  extraClass={styles.buttonTextFont}
+                  type={'Link'}
+                  href={'/lk'}
+                  activeButton={true}
+                  border={false}
+                  borderColor={''}
+                  buttonFill={'none'}
+                  buttonElementColor={'white'}
+                  buttonText={'Личный кабинет'}
+                >
                   <UserSVG className={styles.user} />
-                </Link>
+                </FullButton>
               ) : (
                 <button type='button' onClick={() => setOpenAuth(!isOpenAuth)}>
                   <UserSVG className={styles.user} />

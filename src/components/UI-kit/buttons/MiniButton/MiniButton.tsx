@@ -40,7 +40,8 @@ export const MiniButton: FC<IMiniButtonProps> = ({
   arrowExtraStyles,
   backgroundOpacity,
   extraStyle,
-  activeButton
+  activeButton,
+  restProps
 }) => {
   let backgroundColor = 'transparent'
 
@@ -122,6 +123,7 @@ export const MiniButton: FC<IMiniButtonProps> = ({
         ...extraStyle
       }}
       onClick={onClick}
+      {...restProps}
     >
       <ArrowIcon
         extraStyle={arrowExtraStyles}

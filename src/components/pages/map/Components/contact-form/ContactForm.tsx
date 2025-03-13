@@ -1,7 +1,7 @@
-import FilledButton from '@shared/filledButton/FilledButton'
 import styles from './ContactForm.module.scss'
 import {useState} from 'react'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 const ContactFormPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -34,7 +34,18 @@ const ContactFormPage = () => {
                   value={phoneNumber}
                 />
               </div>
-              <FilledButton>Отправить</FilledButton>
+              <FullButton
+                type={'Button'}
+                onClick={() => {}}
+                activeButton={true}
+                border={false}
+                borderColor={''}
+                buttonFill={'bronze-500'}
+                buttonText={'Отправить'}
+                buttonElementColor={'white'}
+                buttonBorderRadius={'6px'}
+                extraClass={styles['button-send']}
+              />
               <p className={styles.caption}>
                 Нажимая кнопку «Отправить», вы даёте согласие на{' '}
                 <a href='/consent'>обработку своих персональных данных</a>
