@@ -1,5 +1,4 @@
 import styles from './Infoblock.module.scss'
-import DownloadButton from '@shared/downloadButton'
 
 const Infoblock = () => {
   return (
