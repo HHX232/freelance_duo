@@ -208,6 +208,22 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </Link>
+              <Link onClick={onClose} href={'/transport'}>
+                <Accordion
+                  animationOn={false}
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Транспортная доступность',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
               <Link onClick={onClose} href={'/blagoustroistvo'}>
                 <Accordion
                   animationOn={false}
