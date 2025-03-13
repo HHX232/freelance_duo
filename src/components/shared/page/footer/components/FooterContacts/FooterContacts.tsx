@@ -17,11 +17,7 @@ export default function FooterContacts(props: IFooterContactsProps) {
         </Link>
       </div>
       <div className={styles.links}>
-        <FooterNavigation
-          linksGroups={props.navProps.linksGroups}
-          mobileLinksGroup={props.navProps.mobileLinksGroup}
-          secondaryLinks={props.navProps.secondaryLinks}
-        />
+        <FooterNavigation linksGroups={props.navProps.linksGroups} secondaryLinks={props.navProps.secondaryLinks} />
       </div>
       <div className={`${styles.account} ${styles.lk_media}`}>
         {props.isLK && (
