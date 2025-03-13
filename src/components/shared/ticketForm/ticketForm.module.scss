@@ -6,22 +6,15 @@
     background: rgb(255 255 255 / 100%);
     color: rgb(116 118 121 / 100%);
     gap: 24px;
+    padding: 36px 16px;
+
+    .header__title {
+      @include font(1, 16, 20);
+    }
   }
 
-  padding: 70px;
-
-  @media (max-width: map_get($breakpoints, xl)) {
+  @include sm {
     padding: 36px;
-  }
-
-  @media (max-width: map_get($breakpoints, sm)) {
-    padding: 36px 20px;
-  }
-}
-
-.header__title {
-  @layer base {
-    @include font(1, 16, 20);
   }
 
   @include lg {
@@ -29,38 +22,61 @@
   }
 }
 
-
 .info {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
-
-  .input-wrapper {
+  @layer base {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-  }
 
-  .input {
-    @include font(1, 16, 18);
+    .input-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
 
-    display: block;
-    padding: 15px;
-    border: 1px solid rgb(205 208 211 / 100%);
-    border-radius: 6px;
-    background-color: transparent;
+    .input-wrapper:nth-child(2) {
+      margin-top: 20px;
+      margin-bottom: 36px;
+    }
 
-    &::placeholder {
-      color: rgb(205 208 211 / 100%);;
+    .input {
+      @include font(1, 16, 18);
+
+      display: block;
+      padding: 15px;
+      border: 1px solid rgb(205 208 211 / 100%);
+      border-radius: 6px;
+      background-color: transparent;
+
+      &::placeholder {
+        color: rgb(205 208 211 / 100%);
+      }
+    }
+
+    .caption {
+      @include font(1, 12, 14, 300);
+
+      margin-top: 20px !important;
+
+      & a {
+        text-decoration: underline !important;
+        display: inline !important;
+        text-underline-offset: 2px;
+        text-decoration-color: $grey;
+      }
     }
   }
 
-  .caption {
-    @include font(1, 12, 14, 300);
+  @include sm {
+    .input-wrapper:nth-child(2) {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+  }
 
-    & a {
-      text-decoration: underline;
+  @include lg {
+    .input-wrapper:nth-child(2) {
+      margin-top: 20px;
+      margin-bottom: 40px;
     }
   }
 }
-

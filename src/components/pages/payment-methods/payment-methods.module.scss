@@ -1,34 +1,40 @@
 .payment-methods {
-  padding-top: 140px;
-
-  @include content-container;
+  @layer base {
+    padding: 80px 0px 60px 0px;
+    .header_content {
+      padding: 0 16px 0 16px;
+    }
+  }
 
   .title {
     @include RomulH3();
     color: $deep-blue !important;
-
   }
 
   .head_title {
     color: $deep-blue !important;
   }
 
+  .tabs_section {
+    overflow: hidden !important;
+  }
+
   .tabs {
+    @layer base {
+      display: flex;
+      gap: 8px;
 
-    display: flex;
-    gap: 8px;
+      overflow-x: auto;
 
-    overflow-x: auto;
-
-    button {
-      white-space: nowrap;
+      button {
+        white-space: nowrap;
+      }
     }
-
-    @media (max-width: map_get($breakpoints, xs)) {}
   }
 
   .tabs_container {
-    display: flex
+    display: flex;
+    gap: 8px;
   }
   .tab-button {
     @include font(1, 16, 14);
@@ -59,9 +65,16 @@
   }
 
   .poster {
+
     margin-top: 40px;
-    background-position: center;
     background-size: cover;
+    background-image: linear-gradient(90deg, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 0%) 100%),
+      url('/content/payment-methods/poster_mobile.jpg');
+    background-position: center;
+
+    @layer base {
+      padding: 60px 16px 40px 16px;
+    }
 
     @include xxxl {
       padding: 54px;
@@ -73,6 +86,8 @@
 
     @include sm {
       padding: 60px 20px 40px 20px;
+      background-image: linear-gradient(90deg, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 0%) 100%),
+        url('/content/payment-methods/poster.jpeg') !important;
     }
 
     @include xs {
@@ -81,11 +96,22 @@
 
     &-title {
       @include RomulH2();
+
       color: #fff;
     }
 
     .subtitle {
       @include font(1, 24, 34);
+
+      @layer base {
+        max-width: 300px;
+        color: #fff;
+        padding-top: 24px;
+      }
+
+      @include xxl {
+        margin-top: 40px;
+      }
 
       @media (max-width: map_get($breakpoints, lg)) {
         @include font(1, 20, 26);
@@ -94,10 +120,6 @@
       @media (max-width: map_get($breakpoints, sm)) {
         @include font(1, 16, 20);
       }
-
-      max-width: 300px;
-      margin-top: 40px;
-      color: #fff;
     }
 
     .cards {
@@ -134,6 +156,12 @@
     background-color: $sireneviy;
     flex-direction: row;
 
+    @layer base {
+      padding: 40px 16px;
+
+      text-transform: uppercase;
+    }
+
     @include xl {
       padding: 38px 54px;
     }
@@ -151,7 +179,7 @@
     }
 
     @include xs {
-      padding: 36px 16px;
+      padding: 40px 16px;
     }
 
     @media (max-width: map-get($breakpoints, md)) {
@@ -172,15 +200,38 @@
         margin-top: 24px;
       }
 
-      @include font(1, 16, 24);
+      @include lg {
+        min-width: auto;
+      }
 
-      padding: 12px 36px;
-      text-transform: uppercase;
+      @layer base {
+        min-width: 100%;
+      }
+
+      @include font(1, 16, 24);
     }
   }
 
   .variants {
-    margin-top: 110px;
+    @layer base {
+      padding: 70px 16px 0 16px;
+
+      .head_icon {
+        display: block;
+      }
+
+      .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    @include md {
+      .head_icon {
+        display: none;
+      }
+    }
 
     .title {
       @include blockHeadBottomIndent();
@@ -204,27 +255,34 @@
       .cover {
         background-position: center;
         background-size: cover;
+        
+        @layer base {
+          min-height: 220px;
+        }
+
       }
 
       .meta {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 40px;
+
         background-color: #fff;
         gap: 77px;
+
+        @layer base {
+          padding: 24px 16px;
+        }
 
         @media (max-width: map-get($breakpoints, xl)) {
           gap: 49px;
         }
 
         @media (max-width: map-get($breakpoints, lg)) {
-          gap: 39px;
+          gap: 36px;
         }
 
-
         &__title {
-
           @include RomulH4();
           margin-bottom: 40px;
 
@@ -244,6 +302,15 @@
         &__info {
           display: flex;
           flex-direction: column;
+
+          .icon_box {
+            @layer base {
+              display: none;
+            }
+            @include md {
+              display: block;
+            }
+          }
 
           &-inner {
             display: flex;
@@ -307,7 +374,7 @@
         &__pages {
           @include font(1, 16, 22);
 
-          color: #B5B9BE;
+          color: #b5b9be;
           letter-spacing: 2px;
 
           & span {
@@ -317,7 +384,11 @@
 
         &-buttons {
           display: flex;
-          gap: 20px;
+          gap: 16px;
+
+          @layer base {
+            flex-direction: column;
+          }
 
           &__bordered {
             border: 1px solid $grey-stroke;
@@ -340,7 +411,6 @@
 
           @media (max-width: map-get($breakpoints, md)) {
             background-position: center;
-            min-height: 360px;
             flex: 1;
           }
         }
@@ -352,13 +422,21 @@
 
       &:nth-child(even) {
         @media (max-width: map-get($breakpoints, md)) {
-          flex-direction: column-reverse;
+          flex-direction: column;
         }
 
-        .cover, .meta {
+        .cover,
+        .meta {
           flex: 1;
         }
       }
+    }
+  }
+
+  .make_ticket_wrapper {
+    @layer base {
+    padding: 70px 16px 0 16px;
+
     }
   }
 }

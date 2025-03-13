@@ -42,7 +42,7 @@ const TicketForm: FC<ITicketFormProps> = (props) => {
             value={phoneNumber}
           />
         </div>
-        <FilledButton>Отправить</FilledButton>
+        <FilledButton className={styles.send_button}>Отправить</FilledButton>
         <p className={styles.caption}>
           Нажимая кнопку «Отправить», вы даёте согласие на <a href='/consent'>обработку своих персональных данных</a>
         </p>

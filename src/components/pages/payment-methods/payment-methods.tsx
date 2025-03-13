@@ -33,44 +33,45 @@ const PaymentMethodsPage = () => {
   const handleRequestCallBackDrawerClose = () => {
     setShownRequestCallBack(false)
   }
-  const [emblaRef] = useEmblaCarousel({})
+  const [emblaRef] = useEmblaCarousel({dragFree: true})
 
   return (
-    <main className={styles['payment-methods']}>
-      <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
+    <div className={styles['payment-methods']}>
+      <div className={styles.header_content}>
+        <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
 
-      <HeadTitle className={styles.head_title}>Способы покупки</HeadTitle>
-
-      <section className='embla'>
-        <div className='embla__viewport' ref={emblaRef}>
-          <div className={ clsx('embla__container', styles.tabs_container) }>
-            <button
-              className={clsx([styles['tab-button']], {[styles.active]: active === 0}, 'embla__slide')}
-              onClick={() => setActive(0)}
-            >
-              Рассрочка
-            </button>
-            <button
-              className={clsx([styles['tab-button']], {[styles.active]: active === 1}, 'embla__slide')}
-              onClick={() => setActive(1)}
-            >
-              Ипотека
-            </button>
-            <button
-              className={clsx([styles['tab-button']], {[styles.active]: active === 2}, 'embla__slide')}
-              onClick={() => setActive(2)}
-            >
-              100% оплата
-            </button>
-            <button
-              className={clsx([styles['tab-button']], {[styles.active]: active === 3}, 'embla__slide')}
-              onClick={() => setActive(3)}
-            >
-              trade-in
-            </button>
+        <HeadTitle className={styles.head_title}>Способы покупки</HeadTitle>
+        <section className={clsx('embla', styles.tabs_section)}>
+          <div className='embla__viewport' ref={emblaRef}>
+            <div className={clsx('embla__container', styles.tabs_container)}>
+              <button
+                className={clsx([styles['tab-button']], {[styles.active]: active === 0}, 'embla__slide')}
+                onClick={() => setActive(0)}
+              >
+                Рассрочка
+              </button>
+              <button
+                className={clsx([styles['tab-button']], {[styles.active]: active === 1}, 'embla__slide')}
+                onClick={() => setActive(1)}
+              >
+                Ипотека
+              </button>
+              <button
+                className={clsx([styles['tab-button']], {[styles.active]: active === 2}, 'embla__slide')}
+                onClick={() => setActive(2)}
+              >
+                100% оплата
+              </button>
+              <button
+                className={clsx([styles['tab-button']], {[styles.active]: active === 3}, 'embla__slide')}
+                onClick={() => setActive(3)}
+              >
+                trade-in
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <div className={styles.tabs}></div>
 
@@ -84,11 +85,13 @@ const PaymentMethodsPage = () => {
       {active === 2 && <FullPaymentTab />}
       {active === 2 && <StepsForBuy />}
       {active === 3 && <StepsForBuy />}
-      <MakeTicket />
+      <div className={styles.make_ticket_wrapper}>
+        <MakeTicket style={{margin: 0}} />
+      </div>
 
       <InstallmentPlanDrawer shown={shownInstallmentPlan} onClose={handleInstallmentPlanDrawerClose} />
       <RequestBackCallDrawer shown={shownRequestCallBack} onClose={handleRequestCallBackDrawerClose} />
-    </main>
+    </div>
   )
 }
 
