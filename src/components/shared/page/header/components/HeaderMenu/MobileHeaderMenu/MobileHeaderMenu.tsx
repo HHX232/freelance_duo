@@ -252,6 +252,21 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                     ]}
                   />
                 </Link>
+                <Link onClick={onClose} href={'/transport'}>
+                  <Accordion
+                    animationOn={false}
+                    leftArrow={false}
+                    rightArrow={false}
+                    items={[
+                      {
+                        header: 'Транспортная доступность',
+                        children: <></>,
+                        size: 'defaultXL',
+                        color: 'white'
+                      }
+                    ]}
+                  />
+                </Link>
               </li>
               <li>
                 <Link onClick={onClose} href={'/blagoustroistvo'}>
