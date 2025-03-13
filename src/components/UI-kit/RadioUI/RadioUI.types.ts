@@ -1,10 +1,11 @@
 import {ComponentPropsWithRef} from 'react'
-import {TLinkSize} from '../Typography/Link/LinkUI.types'
 
-export interface RadioUIProps extends ComponentPropsWithRef<'input'> {
+export type RadioUISize = 'lg' | 'md' | 'sm'
+
+export interface IRadioUIProps extends ComponentPropsWithRef<'input'> {
   children?: React.ReactNode
   error?: string
-  uiSize?: TLinkSize
+  uiSize?: RadioUISize
   extraClass?: string
   extraStyles?: React.CSSProperties
 }
