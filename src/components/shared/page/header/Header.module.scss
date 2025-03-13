@@ -17,7 +17,7 @@
     color: #fff !important;
   }
 
-  .bold {
+  .buttonTextFont {
     @include font(1, 16, 14, 400);
   }
 
@@ -163,24 +163,21 @@
     transition: all 0.3s;
 
     .mobilePersonalCabinetLink {
-      display: grid;
       min-width: 200px;
       height: 48px;
       flex: 0 0 0 48px;
       flex-grow: 1;
       align-items: center;
       justify-content: center;
-      padding-top: 8px;
-      padding-right: 4px;
       border-radius: 6px;
       background-color: rgb(255 255 255 / 16%);
       color: #fff;
       gap: 14px;
       grid-template-columns: auto auto;
 
-      .a {
+      .buttonTextFont {
         display: flex;
-        width: fit-content;
+        width: 100%;
         height: 100%;
         align-items: center;
         justify-content: center;
