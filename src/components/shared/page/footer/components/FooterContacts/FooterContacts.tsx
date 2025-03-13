@@ -8,6 +8,7 @@ import LogoIcon from '@icons/logo-accent-footer.svg'
 import PrivateOfficeButton from './buttons/PrivateOfficeButton/PrivateOfficeButton'
 import FooterNavigation from '../FooterNavigation/FooterNavigation'
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import LinkUI from '@src/components/UI-kit/Typography/Link/LinkUI'
 
 export default function FooterContacts(props: IFooterContactsProps) {
   return (
@@ -59,15 +60,23 @@ export default function FooterContacts(props: IFooterContactsProps) {
         </FullButton>
 
         <div className={styles.phone}>
-          <a href={'tel:+78126022010'} className={styles.phone}>
+          <LinkUI extraClass={styles.phone} href={'tel:+78126022010'} size={'sm'}>
             Тел: + 7 (123) 123-45-67
-          </a>
+          </LinkUI>
         </div>
       </div>
 
       <ul className={styles.secondaryLinks}>
         {props.navProps.secondaryLinks.map((link, linkIndex) => (
-          <li key={linkIndex}>{link.href ? <Link href={link.href}>{link.name}</Link> : link.name}</li>
+          <li key={linkIndex}>
+            {link.href ? (
+              <LinkUI href={link.href} size={'sm'}>
+                {link.name}
+              </LinkUI>
+            ) : (
+              <LinkUI size={'sm'}>{link.name}</LinkUI>
+            )}
+          </li>
         ))}
       </ul>
     </div>
