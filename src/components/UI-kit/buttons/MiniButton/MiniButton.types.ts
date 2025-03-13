@@ -1,3 +1,5 @@
+import {ComponentPropsWithRef} from 'react'
+
 type TMiniButton = 'Link' | 'Button'
 type TBorderColor =
   | 'none'
@@ -54,4 +56,5 @@ export interface IMiniButtonProps extends IArrowProps {
   backgroundOpacity?: backgroundOpacity
   extraClass?: string
   activeButton: boolean
+  restProps?: ComponentPropsWithRef<'button'>
 }
