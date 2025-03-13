@@ -13,6 +13,10 @@
       background-color: #bf5673 !important;
     }
 
+    input:checked + label .button {
+      background-color: #d36281 !important;
+    }
+
     .button::before {
       border-color: #d3628166;
     }
