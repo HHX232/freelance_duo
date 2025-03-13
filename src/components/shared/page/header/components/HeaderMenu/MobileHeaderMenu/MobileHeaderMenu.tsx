@@ -2,9 +2,9 @@ import React, {FC, useState} from 'react'
 import styles from './MobileHeaderMenu.module.scss'
 import Accordion from '@src/components/UI-kit/AccordeonKit/accordion/Accordion'
 import cn, {clsx} from 'clsx'
-import Link from 'next/link'
 import {useWindowWidth} from '../hooks/useWindowWidth'
 import Image from '@src/components/UI-kit/image/Image'
+import LinkUI from '@src/components/UI-kit/Typography/Link/LinkUI'
 
 interface IMobileHeaderMenuProps {
   onClose: () => void
@@ -76,46 +76,46 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                   children: (
                     <ul className={styles.accordion_mobile_list_default}>
                       <li>
-                        <Link onClick={onClose} href={'/odnokomnatnye'}>
+                        <LinkUI size={'sm'} onClick={onClose} href={'/odnokomnatnye'}>
                           Однокомнатные
-                        </Link>
+                        </LinkUI>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/dvuhkomnatnye'}>
+                        <LinkUI size={'sm'} onClick={onClose} href={'/dvuhkomnatnye'}>
                           Двухкомнатные
-                        </Link>
+                        </LinkUI>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/3-komnatnye'}>
+                        <LinkUI size={'sm'} onClick={onClose} href={'/3-komnatnye'}>
                           Трехкомнатные
-                        </Link>
+                        </LinkUI>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/4-komnatnye'}>
+                        <LinkUI size={'sm'} onClick={onClose} href={'/4-komnatnye'}>
                           Четырехкомнатые
-                        </Link>
+                        </LinkUI>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/lofty'}>
+                        <LinkUI size={'sm'} onClick={onClose} href={'/lofty'}>
                           Лофты
-                        </Link>
+                        </LinkUI>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/planirovki-i-ceny'}>
+                        <LinkUI size={'sm'} onClick={onClose} href={'/planirovki-i-ceny'}>
                           Апартаменты
-                        </Link>
+                        </LinkUI>
                       </li>
                       <li>
-                        <Link onClick={onClose} href={'/kvartiry-s-balkonom'}>
+                        <LinkUI size={'sm'} onClick={onClose} href={'/kvartiry-s-balkonom'}>
                           С балконом
-                        </Link>
+                        </LinkUI>
                       </li>
                     </ul>
                   )
                 }
               ]}
             />
-            <Link onClick={onClose} href={'/parking'}>
+            <LinkUI size={'sm'} onClick={onClose} href={'/parking'}>
               <Accordion
                 animationOn={false}
                 extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent} ${styles.romul_text}`}
@@ -129,8 +129,8 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                   }
                 ]}
               />
-            </Link>
-            <Link onClick={onClose} href={'/studii'}>
+            </LinkUI>
+            <LinkUI size={'sm'} onClick={onClose} href={'/studii'}>
               <Accordion
                 animationOn={false}
                 extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent} ${styles.romul_text}`}
@@ -144,8 +144,8 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                   }
                 ]}
               />
-            </Link>
-            <Link onClick={onClose} href={'/kvartiry-s-kladovoi'}>
+            </LinkUI>
+            <LinkUI size={'sm'} onClick={onClose} href={'/kvartiry-s-kladovoi'}>
               <Accordion
                 animationOn={false}
                 extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent} ${styles.romul_text}`}
@@ -159,7 +159,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                   }
                 ]}
               />
-            </Link>
+            </LinkUI>
           </span>
         </MobileAccordionMain>
 
@@ -186,7 +186,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       children: (
                         <ul className={styles.accordeon_inner_about}>
                           <li onClick={onClose}>
-                            <Link href={'/o-proekte'}>
+                            <LinkUI size={'sm'} href={'/o-proekte'}>
                               <Image
                                 className={styles.accordeon_inner_item_image}
                                 src='/content/about/about-new.png'
@@ -196,10 +196,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                                 quality={10}
                               />
                               «Кронфорт»
-                            </Link>
+                            </LinkUI>
                           </li>
                           <li onClick={onClose}>
-                            <Link href={'/tsentralnyi'}>
+                            <LinkUI size={'sm'} href={'/tsentralnyi'}>
                               <Image
                                 className={styles.accordeon_inner_item_image}
                                 src='/content/about/central-1.png'
@@ -209,7 +209,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                                 quality={10}
                               />
                               «Кронфорт. Центральный»
-                            </Link>
+                            </LinkUI>
                           </li>
                         </ul>
                       ),
@@ -220,7 +220,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 />
               </li>
               <li>
-                <Link onClick={onClose} href={'/raspolozhenie'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/raspolozhenie'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -234,10 +234,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/infrastruktura'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/infrastruktura'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -251,8 +251,8 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
-                <Link onClick={onClose} href={'/transport'}>
+                </LinkUI>
+                <LinkUI size={'sm'} onClick={onClose} href={'/transport'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -266,10 +266,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/blagoustroistvo'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/blagoustroistvo'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -283,10 +283,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/otdelka'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/otdelka'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -300,10 +300,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/gallery'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/gallery'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -317,10 +317,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/news'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/news'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -334,10 +334,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/stocks'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/stocks'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -351,7 +351,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
             </ul>
           </span>
@@ -366,7 +366,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
           >
             <ul>
               <li>
-                <Link onClick={onClose} href={'/alkor'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/alkor'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -382,10 +382,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/plan-razvitiya'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/plan-razvitiya'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -399,7 +399,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
                 <Accordion
@@ -415,16 +415,24 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                         <ul className={styles.accrodeon_inner_list}>
                           {/* TODO: Проверить ссылки */}
                           <li onClick={onClose}>
-                            <Link href={'/payment-methods'}>Ипотека</Link>
+                            <LinkUI size={'sm'} href={'/payment-methods'}>
+                              Ипотека
+                            </LinkUI>
                           </li>
                           <li onClick={onClose}>
-                            <Link href={'/payment-methods'}>Рассрочка</Link>
+                            <LinkUI size={'sm'} href={'/payment-methods'}>
+                              Рассрочка
+                            </LinkUI>
                           </li>
                           <li onClick={onClose}>
-                            <Link href={'/payment-methods'}>100% оплата</Link>
+                            <LinkUI size={'sm'} href={'/payment-methods'}>
+                              100% оплата
+                            </LinkUI>
                           </li>
                           <li onClick={onClose}>
-                            <Link href={'/payment-methods'}>Trade In</Link>
+                            <LinkUI size={'sm'} href={'/payment-methods'}>
+                              Trade In
+                            </LinkUI>
                           </li>
                         </ul>
                       ),
@@ -435,7 +443,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 />
               </li>
               <li>
-                <Link onClick={onClose} href={'/ipotechniy-kalkulator'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/ipotechniy-kalkulator'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -449,10 +457,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/investicii'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/investicii'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -466,10 +474,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/docs'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/docs'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -483,10 +491,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/contacts'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/contacts'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -500,10 +508,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
               <li>
-                <Link onClick={onClose} href={'/faq'}>
+                <LinkUI size={'sm'} onClick={onClose} href={'/faq'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -517,7 +525,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       }
                     ]}
                   />
-                </Link>
+                </LinkUI>
               </li>
             </ul>
           </span>
