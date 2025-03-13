@@ -110,7 +110,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
               {token ? (
                 <div className={styles.personalCabinetLink}>
                   <FullButton
-                    extraClass={styles.bold}
+                    extraClass={styles.buttonTextFont}
                     type={'Link'}
                     href={'/lk'}
                     activeButton={true}
@@ -124,7 +124,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
               ) : (
                 <div className={styles.personalCabinetLink}>
                   <FullButton
-                    extraClass={styles.bold}
+                    extraClass={styles.buttonTextFont}
                     type={'Link'}
                     href={'/lk'}
                     activeButton={true}
@@ -147,7 +147,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
           )}
           <div className={styles.phoneLink}>
             <FullButton
-              extraClass={styles.bold}
+              extraClass={styles.buttonTextFont}
               type={'Link'}
               href={'tel:+71231234567'}
               activeButton={true}
@@ -206,13 +206,14 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
         <div className={styles.mobileMenu}>
           <div className={styles.mobilePersonalCabinetLink}>
             <FullButton
+              extraClass={styles.buttonTextFont}
               type={'Link'}
               href={'/lk'}
               activeButton={true}
               border={false}
               borderColor={''}
               buttonFill={'none'}
-              buttonElementColor={'black'}
+              buttonElementColor={'white'}
               buttonText={'Личный кабинет'}
             />
           </div>
@@ -220,13 +221,14 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
             <div className={styles.mobileCompareLink}>
               {token ? (
                 <FullButton
+                  extraClass={styles.buttonTextFont}
                   type={'Link'}
                   href={'/lk'}
                   activeButton={true}
                   border={false}
                   borderColor={''}
                   buttonFill={'none'}
-                  buttonElementColor={'black'}
+                  buttonElementColor={'white'}
                   buttonText={'Личный кабинет'}
                 >
                   <UserSVG className={styles.user} />
