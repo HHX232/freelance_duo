@@ -1,0 +1,211 @@
+.blocks_container {
+    background-color: #11627D;
+
+    @layer base {
+        display: flex;
+        flex-direction: column;
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
+    
+      @include sm {
+        padding-top: 80px;
+        padding-bottom: 80px;;
+      }
+    
+      @include md {
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+    
+      @include xxl {
+        padding-top: 110px;
+        padding-bottom: 110px;
+      }
+  
+    @include content-container;
+      
+  
+    .blocks {
+      .blocks-items {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+  
+      .blocks-row {
+        display: flex;
+        gap: 24px;
+  
+        @media (max-width: map-get($breakpoints, md)) {
+          min-height: 283px;
+          gap: 0;
+        }
+  
+        .cover {
+          background-position: center;
+          background-size: cover;
+        }
+  
+        .meta {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 40px;
+          background-color: rgb(25 108 135);
+          gap: 77px;
+  
+          @media (max-width: map-get($breakpoints, xl)) {
+            gap: 49px;
+          }
+  
+          @media (max-width: map-get($breakpoints, lg)) {
+            gap: 39px;
+          }
+  
+  
+          &__title {
+            @include RomulH4;
+
+            margin-bottom: 40px;
+            color: #FFF;
+  
+            @include bp-xl {
+              margin-bottom: 36px;
+            }
+  
+            @include bp-sm {
+              margin-bottom: 24px;
+            }
+  
+            & span {
+              color: $accent-blue;
+            }
+          }
+  
+          &__info {
+            display: flex;
+            flex-direction: column;
+  
+            &-inner {
+              display: flex;
+              flex-direction: column;
+              gap: 40px;
+  
+              &__caption {
+                @include font(1, 16, 22);
+  
+                margin-bottom: 58px;
+  
+                @include bp-xl {
+                  margin-bottom: 54px;
+                }
+  
+                @include bp-lg {
+                  margin-bottom: 44px;
+                }
+  
+                @include bp-md {
+                  margin-bottom: 40px;
+                }
+              }
+  
+              &__phone {
+                @include font(1, 24, 34);
+  
+                color: $accent-blue;
+              }
+            }
+          }
+  
+          &__description {
+            @include font(1, 16, 22);
+
+            color: $grey-text;
+          }
+  
+          &__description-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 77px;
+            gap: 24px;
+  
+            @include bp-xl {
+              margin-bottom: 49px;
+            }
+  
+            @include bp-lg {
+              margin-bottom: 39px;
+            }
+  
+            @include bp-md {
+              margin-bottom: 57px;
+            }
+  
+            @include bp-sm {
+              margin-bottom: 36px;
+            }
+          }
+  
+          &__btnplus {
+            @include font(1, 22, 22, 400);
+
+            width: 30px;
+            height: 30px;
+            padding-top: 5px;
+            border-radius: 50%;
+            background-color: #FFF;
+            color: #111;
+            letter-spacing: 2px;
+            text-align: center;
+            
+          }
+  
+          &-buttons {
+            display: flex;
+            gap: 20px;
+  
+            &__bordered {
+              border: 1px solid $grey-stroke;
+            }
+          }
+        }
+  
+        &:nth-child(odd) {
+          @media (max-width: map-get($breakpoints, md)) {
+            flex-direction: column;
+          }
+  
+          .cover {
+            flex: 0 0 60%;
+  
+            @media (max-width: map-get($breakpoints, xl)) {
+              flex: 0 0 30%;
+              background-position: -150px center;
+            }
+  
+            @media (max-width: map-get($breakpoints, md)) {
+              min-height: 360px;
+              flex: 1;
+              background-position: center;
+            }
+          }
+  
+          .meta {
+            flex: 1;
+          }
+        }
+  
+        &:nth-child(even) {
+          @media (max-width: map-get($breakpoints, md)) {
+            flex-direction: column-reverse;
+          }
+  
+          .cover, .meta {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+  
