@@ -18,7 +18,7 @@ const LinkUI: FC<PropsWithChildren<ILinkUIProps>> = ({
     <Link
       {...linkProps}
       href={href}
-      className={cn(styles.linkText, styles[`linkText_${size}`], styles[`linkText_${weight}`], extraClass)}
+      className={cn(styles.link, styles[`link_${size}`], styles[`link_${weight}`], extraClass)}
       style={extraStyle}
     >
       {children}
@@ -26,7 +26,7 @@ const LinkUI: FC<PropsWithChildren<ILinkUIProps>> = ({
   ) : (
     <span
       {...linkProps}
-      className={cn(styles.linkText, styles[`linkText_${size}`], styles[`linkText_${weight}`], extraClass)}
+      className={cn(styles.link, styles[`link_${size}`], styles[`link_${weight}`], extraClass)}
       style={extraStyle}
     >
       {children}
