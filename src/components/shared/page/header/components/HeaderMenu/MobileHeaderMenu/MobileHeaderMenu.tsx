@@ -1,15 +1,14 @@
-import {FC, useState} from 'react'
+import React, {FC, useState} from 'react'
 import styles from './MobileHeaderMenu.module.scss'
 import Accordion from '@src/components/UI-kit/AccordeonKit/accordion/Accordion'
-import cn from 'clsx'
+import cn, {clsx} from 'clsx'
 import Link from 'next/link'
-import Inst from '@icons/inst.svg'
-import Vk from '@icons/vk.svg'
 import {useWindowWidth} from '../hooks/useWindowWidth'
 import Image from '@src/components/UI-kit/image/Image'
 
 interface IMobileHeaderMenuProps {
   onClose: () => void
+  extraClass?: string | undefined
 }
 
 interface IMobileAccordionMainProps {
@@ -53,10 +52,10 @@ const MobileAccordionMain: FC<IMobileAccordionMainProps> = ({children, header}) 
   )
 }
 
-export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
+export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClass}) => {
   const windowWidth = useWindowWidth()
   return (
-    <div className={`${styles.container} ${styles.container_mobile}`}>
+    <div className={clsx(styles.container, styles.container_mobile, extraClass)}>
       <div className={styles.accordion_mobile_box}>
         <MobileAccordionMain header='Недвижимость'>
           <span
@@ -508,31 +507,6 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose}) => {
             </ul>
           </span>
         </MobileAccordionMain>
-      </div>
-
-      <div className={styles.mobile_text_box}>
-        <p className={styles.mobile_text_title}>Головной офис продаж</p>
-        <div className={styles.mobile_inner_text}>
-          <a className={styles.mobile_text} href={'tel:+7 812 602 20 10'}>
-            +7 (812) 270-50-73
-          </a>
-          <p className={styles.mobile_text_adress}>
-            ст. м. «Старая деревня», ул. Оптиков, 4, корпус 3, лит. А, бизнес-центр «Лахта-2»
-          </p>
-          <div className={styles.time_block}>
-            <p className={styles.time_block_text}>По будням: с 9:00 до 19:00</p>
-            <p className={styles.time_block_text}>Выходные: суббота - воскресенье</p>
-          </div>
-          <div className={styles.social_box}>
-            <a href={'/'} target='_blank' rel='noreferrer'>
-              <Vk className={styles.vk}></Vk>
-            </a>
-            <a href={'/'} target='_blank' rel='noreferrer'>
-              <Inst className={styles.inst}></Inst>
-            </a>
-            <p className={styles.social_box_text}>— Мы в соц сетях</p>
-          </div>
-        </div>
       </div>
     </div>
   )
