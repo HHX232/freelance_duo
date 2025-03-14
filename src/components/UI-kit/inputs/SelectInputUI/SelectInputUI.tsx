@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import styles from './SelectInput.module.scss'
 import cn from 'clsx'
-import LinkUI from '../../Typography/Link/LinkUI'
+import RadioUI from '../../RadioUI/RadioUI'
 
 interface SelectOption {
   value: string
@@ -26,7 +26,6 @@ interface CustomSelectProps {
   theme?: 'white' | 'dark'
   error?: string
   labelTopText?: string
-  renderCheckbox?: (checked: boolean) => React.ReactNode
 }
 
 const CustomSelect = React.forwardRef<HTMLSelectElement, CustomSelectProps>(
@@ -146,8 +145,10 @@ const CustomSelect = React.forwardRef<HTMLSelectElement, CustomSelectProps>(
   }
 )
 
+CustomSelect.displayName = 'CustomSelect'
+
 // ! Используется
-export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
+const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   options,
   value,
   onChange,
@@ -160,8 +161,7 @@ export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   disabled = false,
   theme = 'white',
   error,
-  labelTopText = '',
-  renderCheckbox
+  labelTopText = ''
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -183,7 +183,7 @@ export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   }
 
   const selectedOption = options.find((opt) => opt.value === value)
-  const hasError = (error?.length ? error?.length : 0) > 0
+  const hasError = !!error?.length
 
   return (
     <div
@@ -217,7 +217,9 @@ export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
         })}
         onClick={() => !disabled && setIsDropdownOpen(!isDropdownOpen)}
       >
-        {leftIcon && <div className={styles.selectIconLeft}>{leftIcon}</div>}
+        {leftIcon && (
+          <div className={cn(styles.selectIconLeft, selectedOption?.value ? styles.iconWhite : '')}>{leftIcon}</div>
+        )}
 
         <div className={styles.selectValue} data-placeholder={placeholder || 'Select an option'}>
           {selectedOption?.label || ''}
@@ -253,32 +255,20 @@ export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
               })}
               onClick={() => handleSelect(option.value)}
             >
-              <div className={styles.selectCheckboxContainer}>
-                {renderCheckbox ? (
-                  renderCheckbox(option.value === value)
-                ) : (
-                  <div
-                    className={cn(styles.selectCheckboxDefault, {
-                      [styles.selectCheckboxChecked]: option.value === value
-                    })}
-                  />
-                )}
-              </div>
-              <LinkUI size='md' weight='regular' href=''>
+              <RadioUI value={option.value} checked={option.value === value}>
                 {option.label}
-              </LinkUI>
+              </RadioUI>
             </div>
           ))}
         </div>
       )}
-      {hasError && <p className={styles.selectError}>{error}</p>}
     </div>
   )
 }
 
-CustomSelect.displayName = 'CustomSelect'
+CustomSelectWithDropdown.displayName = 'CustomSelectWithDropdown'
 
-export default CustomSelect
+export default CustomSelectWithDropdown
 
 // const SelectExample = () => {
 //    const [selectedValue, setSelectedValue] = useState('')
