@@ -1,8 +1,53 @@
 .payment-methods {
+  overflow-x: hidden;
+
   @layer base {
     padding: 80px 0px 60px 0px;
+
     .header_content {
       padding: 0 16px 0 16px;
+    }
+  }
+
+  @include sm {
+    padding-top: 90px;
+    padding-bottom: 90px;
+
+    .header_content {
+      padding: 0 20px 0 20px;
+    }
+  }
+
+  @include md {
+    .header_content {
+      padding: 0 40px 0 40px;
+    }
+  }
+
+  @include lg {
+    padding-top: 130px;
+    padding-bottom: 90px;
+  }
+
+  @include xl {
+    padding-top: 142px;
+    padding-bottom: 90px;
+    .header_content {
+      padding: 0 40px 0 142px;
+    }
+  }
+
+  @include xxl {
+    padding-top: 142px;
+    padding-bottom: 90px;
+    .header_content {
+      padding: 0 40px 0 170px;
+    }
+  }
+
+  @include xxxl {
+    .header_content {
+      padding: 0 40px 0 196px;
     }
   }
 
@@ -16,7 +61,6 @@
   }
 
   .tabs_section {
-    overflow: hidden !important;
   }
 
   .tabs {
@@ -64,8 +108,32 @@
     background-color: rgb(17 98 125 / 8%);
   }
 
-  .poster {
+  .poster_container {
+    @layer base {
+      margin: 0;
+    }
 
+    @include sm {
+      margin: 0 20px;
+    }
+
+    @include md {
+      margin: 0 40px;
+    }
+
+    @include xl {
+      margin: 0 40px 0 142px;
+    }
+
+    @include xxl {
+      margin: 0 40px 0 170px;
+    }
+    @include xxxl {
+      margin: 0 40px 0 196px;
+    }
+  }
+
+  .poster {
     margin-top: 40px;
     background-size: cover;
     background-image: linear-gradient(90deg, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 0%) 100%),
@@ -135,12 +203,20 @@
         display: flex;
         flex: 1;
         align-items: center;
-        padding: 36px;
+
         background-color: #fff;
         gap: 16px;
 
-        @media (max-width: map-get($breakpoints, md)) {
+        @layer base {
+          padding: 14px 16px;
+        }
+
+        @include md {
           padding: 16px;
+        }
+
+        @include xl {
+          padding: 24px 36px;
         }
 
         .card-title {
@@ -154,24 +230,38 @@
     display: flex;
     justify-content: space-between;
     background-color: $sireneviy;
-    flex-direction: row;
+
+    .tab-button {
+      text-transform: uppercase;
+    }
 
     @layer base {
       padding: 40px 16px;
-
       text-transform: uppercase;
+      flex-direction: column;
+      gap: 24px;
     }
 
     @include xl {
       padding: 38px 54px;
+      gap: 60px;
     }
 
     @include lg {
       padding: 24px 40px;
+      flex-direction: row;
+      align-items: center;
+      .tab-button {
+        min-width: auto !important;
+        padding: 12px 36px !important;
+        line-height: 24px !important;
+        height: fit-content;
+      }
     }
 
     @include md {
       padding: 40px;
+      gap: 36px;
     }
 
     @include sm {
@@ -182,33 +272,16 @@
       padding: 40px 16px;
     }
 
-    @media (max-width: map-get($breakpoints, md)) {
-      flex-direction: column;
-    }
-
     &__title {
       @include RomulH4();
       color: #fff;
     }
 
     & button {
-      @media (max-width: map-get($breakpoints, md)) {
-        margin-top: 36px;
-      }
-
-      @media (max-width: map-get($breakpoints, sm)) {
-        margin-top: 24px;
-      }
-
-      @include lg {
-        min-width: auto;
-      }
-
+      @include font(1, 16, 24);
       @layer base {
         min-width: 100%;
       }
-
-      @include font(1, 16, 24);
     }
   }
 
@@ -227,10 +300,29 @@
       }
     }
 
+    @include sm {
+      padding: 80px 20px 0 20px;
+    }
+
     @include md {
+      padding: 90px 40px 0 40px;
+
       .head_icon {
         display: none;
       }
+    }
+
+    @include xl {
+      padding: 90px 40px 0 142px;
+    }
+
+    @include xxl {
+      padding: 110px 40px 0 170px;
+    }
+
+    
+    @include xxxl {
+      padding: 110px 40px 0 196px;
     }
 
     .title {
@@ -245,21 +337,61 @@
 
     .variant-row {
       display: flex;
-      gap: 24px;
 
-      @media (max-width: map-get($breakpoints, md)) {
-        min-height: 283px;
-        gap: 0;
+      @layer base {
+        flex-direction: column;
+      }
+
+      @include lg {
+        gap: 24px;
+        .cover {
+          width: 100%;
+          max-width: 299px;
+        }
+      }
+
+      @include xl {
+        gap: 24px;
+        .cover {
+          width: 100%;
+          max-width: 384px;
+          min-height: 400px;
+        }
+      }
+
+      @include xxl {
+        gap: 24px;
+        .cover {
+          width: 100%;
+          max-width: 618px;
+          min-height: 500px;
+        }
+      }
+
+      @include xxxl {
+        gap: 24px;
+        .cover {
+          width: 100%;
+          min-width: 907px;
+          min-height: 500px;
+        }
       }
 
       .cover {
-        background-position: center;
+        background-position: top !important;
         background-size: cover;
-        
+
         @layer base {
           min-height: 220px;
         }
 
+        @include sm {
+          min-height: 300px;
+        }
+
+        @include md {
+          min-height: 283px;
+        }
       }
 
       .meta {
@@ -268,18 +400,24 @@
         justify-content: space-between;
 
         background-color: #fff;
-        gap: 77px;
 
         @layer base {
           padding: 24px 16px;
-        }
-
-        @media (max-width: map-get($breakpoints, xl)) {
-          gap: 49px;
-        }
-
-        @media (max-width: map-get($breakpoints, lg)) {
           gap: 36px;
+        }
+
+        @include md {
+          padding: 24px 16px;
+          gap: 57px;
+        }
+
+        @include lg {
+          padding: 24px 16px;
+          gap: 39px;
+        }
+
+        @include xl {
+          width: 100%;
         }
 
         &__title {
@@ -390,6 +528,11 @@
             flex-direction: column;
           }
 
+          @include md {
+            flex-direction: row;
+            gap: 16px;
+          }
+
           &__bordered {
             border: 1px solid $grey-stroke;
           }
@@ -397,22 +540,8 @@
       }
 
       &:nth-child(odd) {
-        @media (max-width: map-get($breakpoints, md)) {
-          flex-direction: column;
-        }
-
-        .cover {
-          flex: 0 0 60%;
-
-          @media (max-width: map-get($breakpoints, xl)) {
-            background-position: -150px center;
-            flex: 0 0 30%;
-          }
-
-          @media (max-width: map-get($breakpoints, md)) {
-            background-position: center;
-            flex: 1;
-          }
+        @include lg {
+          flex-direction: row;
         }
 
         .meta {
@@ -421,13 +550,8 @@
       }
 
       &:nth-child(even) {
-        @media (max-width: map-get($breakpoints, md)) {
-          flex-direction: column;
-        }
-
-        .cover,
-        .meta {
-          flex: 1;
+        @include lg {
+          flex-direction: row-reverse;
         }
       }
     }
@@ -435,8 +559,31 @@
 
   .make_ticket_wrapper {
     @layer base {
-    padding: 70px 16px 0 16px;
-
+      padding: 70px 16px 0 16px;
     }
+
+    @include sm {
+      padding: 80px 20px 0 20px;
+    }
+
+    @include md {
+      padding: 90px 40px 0 40px;
+    }
+
+    @include xl {
+      padding: 90px 40px 0 142px;
+    }
+    @include xxl {
+      padding: 110px 40px 0 170px;
+    }
+    @include xxxl {
+      padding: 110px 40px 0 196px;
+    }
+  }
+}
+
+.send_button {
+  @include lg {
+    min-width: auto !important;
   }
 }

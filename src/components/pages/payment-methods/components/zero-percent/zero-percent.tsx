@@ -19,30 +19,32 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
 
   return (
     <>
-      <section className={styles.poster}>
-        <h2 className={styles.posterTitle}>Рассрочка</h2>
-        <p className={styles.subtitle}>Удобство и выгода в каждой покупке</p>
+      <div className={styles.poster_container}>
+        <section className={styles.poster}>
+          <h2 className={styles.posterTitle}>Рассрочка</h2>
+          <p className={styles.subtitle}>Удобство и выгода в каждой покупке</p>
 
-        <div className={styles.cards}>
-          <div className={styles.card}>
-            <div className={styles['icon-wrapper']}>
-              <PieChartSVG />
+          <div className={styles.cards}>
+            <div className={styles.card}>
+              <div className={styles['icon-wrapper']}>
+                <PieChartSVG />
+              </div>
+              <h3 className={styles['card-title']}>Без переплат</h3>
             </div>
-            <h3 className={styles['card-title']}>Без переплат</h3>
-          </div>
-          <div className={styles.card}>
-            <div className={styles['icon-wrapper']}>
-              <ClockSVG />
+            <div className={styles.card}>
+              <div className={styles['icon-wrapper']}>
+                <ClockSVG />
+              </div>
+              <h3 className={styles['card-title']}>Быстрое одобрение</h3>
             </div>
-            <h3 className={styles['card-title']}>Быстрое одобрение</h3>
           </div>
+        </section>
+        <div className={styles['poster-meta']}>
+          <p className={styles['poster-meta__title']}>Есть вопросы? Свяжитесь с нами!</p>
+          <button className={clsx([styles['poster-meta__question_button']], styles['tab-button'])}>
+            Получить консультацию
+          </button>
         </div>
-      </section>
-      <div className={styles['poster-meta']}>
-        <p className={styles['poster-meta__title']}>Есть вопросы? Свяжитесь с нами!</p>
-        <button className={clsx([styles['poster-meta__question_button']], styles['tab-button'])}>
-          Получить консультацию
-        </button>
       </div>
 
       <section className={styles.variants}>

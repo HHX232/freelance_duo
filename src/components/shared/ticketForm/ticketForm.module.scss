@@ -4,12 +4,18 @@
     flex-direction: column;
     justify-content: space-between;
     background: rgb(255 255 255 / 100%);
-    color: rgb(116 118 121 / 100%);
+    color: #747679;
     gap: 24px;
     padding: 36px 16px;
 
     .header__title {
       @include font(1, 16, 20);
+    }
+
+    .input-label {
+      font-size: 14px;
+      line-height: 18px;
+      color: #b5b9be;
     }
   }
 
@@ -17,8 +23,36 @@
     padding: 36px;
   }
 
+  @include md {
+    .header__title {
+      @include font(1, 20, 26);
+    }
+  }
+
   @include lg {
-    @include font(1, 24, 34);
+    gap: 40px;
+  }
+
+  @include xl {
+    gap: 36px;
+    .header__title {
+      @include font(1, 24, 34);
+    }
+
+    .input-label {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  @include xxl {
+    gap: 18px;
+    padding: 40px;
+  }
+
+  @include xxxl {
+    gap: 42px;
+    padding: 70px;
   }
 }
 
@@ -54,10 +88,10 @@
 
     .caption {
       @include font(1, 12, 14, 300);
-
-      margin-top: 20px !important;
-
+      padding-top: 20px;
+      
       & a {
+        color: $grey-text !important;
         text-decoration: underline !important;
         display: inline !important;
         text-underline-offset: 2px;
@@ -75,8 +109,26 @@
 
   @include lg {
     .input-wrapper:nth-child(2) {
-      margin-top: 20px;
-      margin-bottom: 40px;
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+  }
+
+  @include xxl {
+    .input-wrapper:nth-child(2) {
+      margin-top: 24px;
+      margin-bottom: 36px;
+    }
+
+    .caption {
+      padding-top: 36px !important;
+    }
+  }
+
+  @include xxxl {
+
+    .caption {
+      padding-top: 36px !important;
     }
   }
 }

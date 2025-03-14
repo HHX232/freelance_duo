@@ -13,6 +13,7 @@ import {InstallmentPlanDrawer} from '@pages/payment-methods/popup/installment-pl
 import {RequestBackCallDrawer} from '@shared/request-back-call-drawer'
 import {HeadTitle} from '@src/components/UI-kit/TextKit/head-title'
 import useEmblaCarousel from 'embla-carousel-react'
+import {useWindowWidth} from '@shared/page/header/components/HeaderMenu/hooks/useWindowWidth'
 
 const PaymentMethodsPage = () => {
   const [active, setActive] = useState(0)
@@ -33,14 +34,17 @@ const PaymentMethodsPage = () => {
   const handleRequestCallBackDrawerClose = () => {
     setShownRequestCallBack(false)
   }
-  const [emblaRef] = useEmblaCarousel({dragFree: true})
+  const width = useWindowWidth()
+  const [emblaRef] = useEmblaCarousel({dragFree: true, active: !!width && width < 768})
 
   return (
-    <div className={styles['payment-methods']}>
+    <div className={clsx(styles['payment-methods'])}>
       <div className={styles.header_content}>
-        <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
+        <div className={styles.header_main_content}>
+          <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
 
-        <HeadTitle className={styles.head_title}>Способы покупки</HeadTitle>
+          <HeadTitle className={styles.head_title}>Способы покупки</HeadTitle>
+        </div>
         <section className={clsx('embla', styles.tabs_section)}>
           <div className='embla__viewport' ref={emblaRef}>
             <div className={clsx('embla__container', styles.tabs_container)}>
