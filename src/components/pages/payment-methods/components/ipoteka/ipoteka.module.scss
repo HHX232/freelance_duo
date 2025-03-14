@@ -1,0 +1,93 @@
+.wrapper {
+  @layer base {
+    background: none !important;
+    position: relative;
+
+    .bg {
+      position: absolute;
+      z-index: -2;
+      transform: scale(-1, 1);
+      object-fit: cover;
+      object-position: 70%;
+    }
+    .overflow {
+      background: linear-gradient(111deg, rgba(0, 0, 0, 0.4) 27.01%, rgba(0, 0, 0, 0) 98.55%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+    .cards {
+      margin-top: 52px;
+    }
+    .cards_list {
+      margin: 0 !important;
+    }
+    .cards_wrapper {
+      margin-top: 52px;
+    }
+  }
+  @include sm {
+    .cards_wrapper {
+      margin-top: 206px;
+    }
+  }
+  @include md {
+    .cards_wrapper {
+      margin-top: 182px;
+    }
+    .bg {
+      transform: scale(1, 1);
+      object-position: 0;
+    }
+  }
+  @include lg {
+    .cards_wrapper {
+      margin-top: 94px;
+    }
+    .bg {
+      object-position: 30% 30%;
+    }
+  }
+  @include xl {
+    .cards_wrapper {
+      margin-top: 98px;
+    }
+  }
+  @include xxl {
+    .cards_wrapper {
+      margin-top: 70px;
+    }
+  }
+  @include xxxl {
+    .cards_wrapper {
+      margin-top: 110px;
+    }
+  }
+}
+
+.container {
+  @layer base {
+    margin: 0;
+  }
+  @include sm {
+    margin: 0 20px;
+  }
+  @include md {
+    margin: 0 40px;
+  }
+
+  @include xl {
+    margin: 0 40px 0 142px;
+  }
+
+  @include xxl {
+    margin: 0 40px 0 170px;
+  }
+
+  @include xxxl {
+    margin: 0 40px 0 196px;
+  }
+}
