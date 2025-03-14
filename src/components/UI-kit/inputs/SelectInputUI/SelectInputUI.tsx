@@ -2,6 +2,7 @@ import React, {useState, useRef, useEffect} from 'react'
 import styles from './SelectInput.module.scss'
 import cn from 'clsx'
 import RadioUI from '../../RadioUI/RadioUI'
+import CheckBoxUI from '../../CheckBoxUI/CheckBoxUI'
 
 interface SelectOption {
   value: string
@@ -12,7 +13,9 @@ interface SelectOption {
 interface CustomSelectProps {
   options: SelectOption[]
   value: string
+  values?: string[]
   onChange: (value: string) => void
+  onMultipleChange?: (value: string[]) => void
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
   containerClassName?: string
@@ -27,6 +30,7 @@ interface CustomSelectProps {
   error?: string
   labelTopText?: string
   dropdownDirection?: 'down' | 'up'
+  multiple?: boolean
 }
 
 const CustomSelect = React.forwardRef<HTMLSelectElement, CustomSelectProps>(
@@ -152,7 +156,9 @@ CustomSelect.displayName = 'CustomSelect'
 const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   options,
   value,
+  values = [],
   onChange,
+  onMultipleChange = () => {},
   leftIcon,
   rightIcon,
   containerClassName,
@@ -163,7 +169,8 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   theme = 'white',
   error,
   labelTopText = '',
-  dropdownDirection = 'down'
+  dropdownDirection = 'down',
+  multiple
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -182,6 +189,16 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   const handleSelect = (optionValue: string) => {
     onChange(optionValue)
     setIsDropdownOpen(false)
+  }
+
+  const handleMultipleSelect = (optionValue: string) => {
+    if (values.includes(optionValue)) {
+      values = values.filter((v) => v !== optionValue)
+    } else {
+      values.push(optionValue)
+    }
+
+    onMultipleChange(values)
   }
 
   const selectedOption = options.find((opt) => opt.value === value)
@@ -258,11 +275,25 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
                 className={cn(styles.selectOption, optionClassName, {
                   [styles.selectOptionSelected]: option.value === value
                 })}
-                onClick={() => handleSelect(option.value)}
               >
-                <RadioUI value={option.value} checked={option.value === value}>
-                  {option.label}
-                </RadioUI>
+                {multiple ? (
+                  <CheckBoxUI
+                    label={option.label}
+                    defaultChecked={values.includes(option.value)}
+                    size='medium'
+                    typeMark='check'
+                    theme='dark'
+                    onChange={() => handleMultipleSelect(option.value)}
+                  />
+                ) : (
+                  <RadioUI
+                    onChange={() => handleSelect(option.value)}
+                    value={option.value}
+                    checked={option.value === value}
+                  >
+                    {option.label}
+                  </RadioUI>
+                )}
               </div>
             ))}
           </div>
