@@ -14,12 +14,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 export default function CommercePage() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <CommerceWrapper/>
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

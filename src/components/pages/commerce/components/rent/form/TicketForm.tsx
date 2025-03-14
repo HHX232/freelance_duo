@@ -3,10 +3,10 @@ import styles from './TicketForm.module.scss'
 import {FC, useState} from 'react'
 import ProgressBar from '@src/components/UI-kit/ProgressBar/progressBar'
 import {InputField} from '@src/components/UI-kit/inputs/input-field/input-field'
-import FilledButton from '@shared/filledButton/FilledButton'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import ToRight from '@icons/toRight_2.svg'
 import Link from 'next/link'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 interface TicketFormProps {
   OpenModal: () => void
@@ -72,9 +72,22 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 styleContainer={{gridGap: '4px'}}
               />
             </div>
-            <FilledButton className={styles.button} onClick={() => setStep(2)}>
-              Далее <ToRight />
-            </FilledButton>
+            <FullButton
+              type={'Button'}
+              buttonText={'ДАЛЕЕ'}
+              onClick={() => {
+                setStep(2)
+              }}
+              activeButton={true}
+              border={false}
+              borderColor={''}
+              extraClass={styles.button}
+              buttonFill='bronze-500'
+              buttonElementColor='white'
+              buttonBorderRadius={'6px'}
+            >
+              <ToRight/>
+            </FullButton>
           </div>
         ) : (
           <div className={styles.formWrapper}>
@@ -124,15 +137,21 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 styleContainer={{gridGap: '4px'}}
               />
             </div>
-            <FilledButton
-              className={styles.button}
+            <FullButton
+              type={'Button'}
+              buttonText={'ОТПРАВИТЬ'}
               onClick={() => {
                 setStep(1)
                 OpenModal();
               }}
-            >
-              отправить
-            </FilledButton>
+              activeButton={true}
+              border={false}
+              borderColor={''}
+              extraClass={styles.button}
+              buttonFill='bronze-500'
+              buttonElementColor='white'
+              buttonBorderRadius={'6px'}
+            />
             <div className={styles.subtext}>
               Нажимая кнопку «Отправить», вы даёте согласие на
               <Link href={'/consent'} target='_blank'>

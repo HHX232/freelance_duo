@@ -6,14 +6,19 @@ import {useEffect, useState} from 'react'
 import ModalForm from '@pages/commerce/components/modalForm/ModalForm'
 import CloseIcon from '@icons/CloseIcon.svg'
 import FindUs from '@pages/commerce/components/FindUs/FindUs'
+import {useIsMaxWidth} from '@utils/useIsMobile'
+import MapModal from '@pages/commerce/components/FindUs/mapModal'
 
 const CommerceWrapper = () => {
   const [isModal, setIsModal] = useState(false)
+  const [isMapModal, setIsMapModal] = useState(false)
   const openModal = () => setIsModal(true)
+  const openMapModal = () => setIsMapModal(true)
+  const isTablet = useIsMaxWidth(1023)
 
   useEffect(() => {
-    isModal ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'unset')
-  }, [isModal])
+    isModal || (isTablet && isMapModal) ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'unset')
+  }, [isModal, isMapModal])
 
   return (
     <div className={styles.wrapper}>
@@ -38,9 +43,16 @@ const CommerceWrapper = () => {
           </div>
         </ModalForm>
       )}
+      {isMapModal && isTablet && (
+        <ModalForm onClose={() => setIsMapModal(false)}>
+          <MapModal
+            closeModal={() => setIsMapModal(false)}
+          />
+        </ModalForm>
+      )}
       <Head />
       <MakeTicket openModal={openModal} />
-      <FindUs />
+      <FindUs openMapModal={openMapModal} />
     </div>
   )
 }
