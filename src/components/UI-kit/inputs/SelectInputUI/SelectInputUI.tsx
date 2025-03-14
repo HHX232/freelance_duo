@@ -183,7 +183,7 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   }
 
   const selectedOption = options.find((opt) => opt.value === value)
-  const hasError = !!error?.length
+  const hasError: boolean = !!error?.length
 
   return (
     <div
@@ -191,6 +191,7 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
       className={cn(styles.selectWithDropdown, containerClassName, {
         [styles.selectDisabled]: disabled,
         [styles.selectWhiteTheme]: theme === 'white',
+        [styles.selectDarkTheme]: theme === 'dark',
         [styles.selectWhiteError]: hasError
       })}
     >
