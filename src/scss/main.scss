@@ -7,11 +7,11 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: rgba(17, 98, 125, 0.04);
+  background: rgb(17 98 125 / 4%);
 }
 
 *::-webkit-scrollbar-thumb {
-  background: rgba(17, 98, 125, 0.16);
+  background: rgb(17 98 125 / 16%);
 }
 
 html {
@@ -28,10 +28,9 @@ html {
 }
 
 .popup-content {
-  padding: 0;
-
   width: 100%;
   height: 100vh;
+  padding: 0;
 
   @media screen and (min-width: map_get($breakpoints, md)) {
     width: 602px;
@@ -44,7 +43,7 @@ html {
 
   }
 
-  
+
   @media screen and (min-width: map_get($breakpoints, lg)) {
     width: 682px;
 
@@ -53,7 +52,7 @@ html {
 }
 
 .popup-overlay {
-  background: rgba(0, 0, 0, 0.24);
+  background: rgb(0 0 0 / 24%);
 }
 
 body {
@@ -262,6 +261,7 @@ input {
 }
 
 .ant-tabs-tab-btn {
+
   &:active,
   &:focus {
     color: #555 !important;

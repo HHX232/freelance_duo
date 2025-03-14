@@ -1,0 +1,19 @@
+.contactsMap{
+  @layer base {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    position: relative;
+  }
+
+  @include lg{
+    pointer-events: unset;
+  }
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}

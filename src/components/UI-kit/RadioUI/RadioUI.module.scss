@@ -1,0 +1,121 @@
+.radio {
+  display: flex;
+  flex-direction: column;
+
+  &:hover .button::before {
+    border-color: #1b5c74;
+  }
+
+  &:active .button::after {
+    opacity: 1;
+  }
+
+  &.hasError > label > .button {
+    &::before {
+      border-color: #d36281 !important;
+    }
+
+    &::after {
+      border-color: #d3628166 !important;
+    }
+  }
+
+  label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    cursor: pointer;
+
+    .button {
+      position: relative;
+      width: auto;
+      height: 24px;
+      aspect-ratio: 1/1;
+
+      &::before,
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #b5b9be;
+        border-radius: 50%;
+        content: '';
+        transform: translate(-50%, -50%);
+        transition: all 0.1s ease-in-out;
+      }
+
+      &::after {
+        box-sizing: content-box;
+        border-width: 0;
+        border-color: #11627d66;
+        opacity: 0;
+      }
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked + label .button::before {
+      border-color: #11627d;
+    }
+
+    &:disabled + label {
+      cursor: not-allowed;
+
+      .button {
+        &::before {
+          border-color: #b5b9be;
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.size-lg {
+    .button {
+      height: 24px;
+    }
+
+    &:active .button::after,
+    input:checked + label .button::before {
+      border-width: 6px;
+    }
+  }
+
+  &.size-md {
+    .button {
+      height: 20px;
+    }
+
+    &:active .button::after,
+    input:checked + label .button::before {
+      border-width: 5px;
+    }
+  }
+
+  &.size-sm {
+    .button {
+      height: 16px;
+    }
+
+    &:active .button::after,
+    input:checked + label .button::before {
+      border-width: 4px;
+    }
+  }
+
+  &.hasError {
+    gap: 4px;
+
+    .error {
+      color: #d36281;
+    }
+  }
+}

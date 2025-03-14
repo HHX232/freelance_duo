@@ -1,6 +1,5 @@
 import styles from './Home.module.scss'
 import sliderStyle from './bg-slider/slider.module.scss'
-import FilledButton from '@shared/filledButton/FilledButton'
 import MenuPoint from '@icons/Menu point.svg'
 import useRouterNext from '@src/lib/hooks/useRouter'
 import {EmblaOptionsType} from 'embla-carousel'
@@ -9,6 +8,7 @@ import ClassNames from 'embla-carousel-class-names'
 import Gallery from './bg-slider/Gallery'
 import {DotButton, useDotButton} from './bg-slider/EmblaCarouselDotButton'
 import {NextButton, PrevButton, usePrevNextButtons} from './bg-slider/EmblaCarouselArrowButtons'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 const slidesSubTitles = [
   'Море меняет все, Море здесь – главная доминанта, наполняющая энергией все пространство вокруг.',
@@ -40,17 +40,30 @@ const HomePage = () => {
           })}
         </div>
         <div className={styles['button_wrapper']}>
-          <FilledButton
+          {/* <FilledButton>
+            <MenuPoint className={styles['icon']} />
+            <span>Подобрать квартиру</span>
+          </FilledButton> */}
+          <FullButton
+            type={'Button'}
             onClick={() => {
               replace({
                 pathname: '/planirovki-i-ceny',
                 query: {}
               })
             }}
+            buttonBorderRadius={'6px'}
+            activeButton={true}
+            border={false}
+            borderColor={''}
+            buttonFill={'bronze-500'}
+            buttonElementColor={'white'}
+            extraClass={styles['button_find_apartment']}
+            buttonText={''}
           >
             <MenuPoint className={styles['icon']} />
             <span>Подобрать квартиру</span>
-          </FilledButton>
+          </FullButton>
         </div>
         <div className={styles['slider_outer_wrapper']}>
           <Gallery slides={SLIDES} options={OPTIONS} emblaRef={emblaRef} />

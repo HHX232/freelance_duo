@@ -1,9 +1,11 @@
 .settingsButton {
   display: block;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   padding: 16px;
   border-radius: 50%;
+  aspect-ratio: 1/1;
   background-color: $accent-color;
 
   svg {

@@ -1,10 +1,9 @@
 'use client'
 import styles from './ticketForm.module.scss'
-import FilledButton from '@shared/filledButton/FilledButton'
 import {useState} from 'react'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {FC} from 'react'
-import clsx from 'clsx'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 interface ITicketFormProps {
   description?: string
@@ -42,7 +41,17 @@ const TicketForm: FC<ITicketFormProps> = (props) => {
             value={phoneNumber}
           />
         </div>
-        <FilledButton className={styles.send_button}>Отправить</FilledButton>
+        <FullButton
+          type={'Button'}
+          buttonText={'ОТПРАВИТЬ'}
+          activeButton={true}
+          border={false}
+          borderColor={''}
+          extraClass={styles.button}
+          buttonFill='bronze-500'
+          buttonElementColor='white'
+          buttonBorderRadius={'6px'}
+        />
         <p className={styles.caption}>
           Нажимая кнопку «Отправить», вы даёте согласие на <a href='/consent'>обработку своих персональных данных</a>
         </p>
