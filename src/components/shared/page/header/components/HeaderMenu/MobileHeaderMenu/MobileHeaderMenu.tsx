@@ -76,37 +76,47 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                   children: (
                     <ul className={styles.accordion_mobile_list_default}>
                       <li>
-                        <LinkUI size={'sm'} onClick={onClose} href={'/odnokomnatnye'}>
+                        <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/odnokomnatnye'}>
                           Однокомнатные
                         </LinkUI>
                       </li>
                       <li>
-                        <LinkUI size={'sm'} onClick={onClose} href={'/dvuhkomnatnye'}>
+                        <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/dvuhkomnatnye'}>
                           Двухкомнатные
                         </LinkUI>
                       </li>
                       <li>
-                        <LinkUI size={'sm'} onClick={onClose} href={'/3-komnatnye'}>
+                        <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/3-komnatnye'}>
                           Трехкомнатные
                         </LinkUI>
                       </li>
                       <li>
-                        <LinkUI size={'sm'} onClick={onClose} href={'/4-komnatnye'}>
+                        <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/4-komnatnye'}>
                           Четырехкомнатые
                         </LinkUI>
                       </li>
                       <li>
-                        <LinkUI size={'sm'} onClick={onClose} href={'/lofty'}>
+                        <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/lofty'}>
                           Лофты
                         </LinkUI>
                       </li>
                       <li>
-                        <LinkUI size={'sm'} onClick={onClose} href={'/planirovki-i-ceny'}>
+                        <LinkUI
+                          size={'sm'}
+                          extraStyle={{color: '#FFFFFF'}}
+                          onClick={onClose}
+                          href={'/planirovki-i-ceny'}
+                        >
                           Апартаменты
                         </LinkUI>
                       </li>
                       <li>
-                        <LinkUI size={'sm'} onClick={onClose} href={'/kvartiry-s-balkonom'}>
+                        <LinkUI
+                          size={'sm'}
+                          extraStyle={{color: '#FFFFFF'}}
+                          onClick={onClose}
+                          href={'/kvartiry-s-balkonom'}
+                        >
                           С балконом
                         </LinkUI>
                       </li>
@@ -115,7 +125,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 }
               ]}
             />
-            <LinkUI size={'sm'} onClick={onClose} href={'/parking'}>
+            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/parking'}>
               <Accordion
                 animationOn={false}
                 extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent} ${styles.romul_text}`}
@@ -130,7 +140,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 ]}
               />
             </LinkUI>
-            <LinkUI size={'sm'} onClick={onClose} href={'/studii'}>
+            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/studii'}>
               <Accordion
                 animationOn={false}
                 extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent} ${styles.romul_text}`}
@@ -145,7 +155,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 ]}
               />
             </LinkUI>
-            <LinkUI size={'sm'} onClick={onClose} href={'/kvartiry-s-kladovoi'}>
+            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/kvartiry-s-kladovoi'}>
               <Accordion
                 animationOn={false}
                 extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent} ${styles.romul_text}`}
@@ -186,7 +196,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                       children: (
                         <ul className={styles.accordeon_inner_about}>
                           <li onClick={onClose}>
-                            <LinkUI size={'sm'} href={'/o-proekte'}>
+                            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} href={'/o-proekte'}>
                               <Image
                                 className={styles.accordeon_inner_item_image}
                                 src='/content/about/about-new.png'
@@ -199,7 +209,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                             </LinkUI>
                           </li>
                           <li onClick={onClose}>
-                            <LinkUI size={'sm'} href={'/tsentralnyi'}>
+                            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} href={'/tsentralnyi'}>
                               <Image
                                 className={styles.accordeon_inner_item_image}
                                 src='/content/about/central-1.png'
@@ -220,7 +230,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 />
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/raspolozhenie'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/raspolozhenie'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -237,7 +247,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/infrastruktura'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/infrastruktura'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -252,7 +262,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                     ]}
                   />
                 </LinkUI>
-                <LinkUI size={'sm'} onClick={onClose} href={'/transport'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/transport'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -269,7 +279,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/blagoustroistvo'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/blagoustroistvo'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -286,7 +296,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/otdelka'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/otdelka'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -303,7 +313,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/gallery'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/gallery'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -320,7 +330,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/news'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/news'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -337,7 +347,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/stocks'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/stocks'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -366,7 +376,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
           >
             <ul>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/alkor'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/alkor'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -385,7 +395,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/plan-razvitiya'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/plan-razvitiya'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -415,22 +425,22 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                         <ul className={styles.accrodeon_inner_list}>
                           {/* TODO: Проверить ссылки */}
                           <li onClick={onClose}>
-                            <LinkUI size={'sm'} href={'/payment-methods'}>
+                            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} href={'/payment-methods'}>
                               Ипотека
                             </LinkUI>
                           </li>
                           <li onClick={onClose}>
-                            <LinkUI size={'sm'} href={'/payment-methods'}>
+                            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} href={'/payment-methods'}>
                               Рассрочка
                             </LinkUI>
                           </li>
                           <li onClick={onClose}>
-                            <LinkUI size={'sm'} href={'/payment-methods'}>
+                            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} href={'/payment-methods'}>
                               100% оплата
                             </LinkUI>
                           </li>
                           <li onClick={onClose}>
-                            <LinkUI size={'sm'} href={'/payment-methods'}>
+                            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} href={'/payment-methods'}>
                               Trade In
                             </LinkUI>
                           </li>
@@ -443,7 +453,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 />
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/ipotechniy-kalkulator'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/ipotechniy-kalkulator'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -460,7 +470,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/investicii'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/investicii'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -477,7 +487,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/docs'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/docs'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -494,7 +504,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/contacts'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/contacts'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
@@ -511,7 +521,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 </LinkUI>
               </li>
               <li>
-                <LinkUI size={'sm'} onClick={onClose} href={'/faq'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/faq'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}
