@@ -4,6 +4,7 @@ import {useState} from 'react'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {FC} from 'react'
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import clsx from 'clsx'
 
 interface ITicketFormProps {
   description?: string
