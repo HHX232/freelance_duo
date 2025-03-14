@@ -1,13 +1,19 @@
+import {CSSProperties, FC} from 'react'
 import styles from './MakeTicket.module.scss'
 import TicketForm from '@shared/ticketForm/ticketForm'
+import {HeadTitle} from '@src/components/UI-kit/TextKit/head-title'
 
-const MakeTicket = () => {
+const MakeTicket: FC<{style?: CSSProperties}> = ({style}) => {
   return (
-    <div className={styles['innerWrapper']}>
+    <div style={style} className={styles['innerWrapper']}>
       <div className={styles['title']}>
-        <h3>Нужна помощь с выбором?</h3>
+        <HeadTitle style={{margin: 0}}>
+          Нужна помощь <br /> с выбором?
+        </HeadTitle>
       </div>
-      <TicketForm />
+      <div className={styles.form}>
+        <TicketForm />
+      </div>
     </div>
   )
 }

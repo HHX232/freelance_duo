@@ -50,6 +50,7 @@ export const RequestBackCallDrawer: FC<IRequestBackCallDrawerProps> = ({shown, o
         <div className={styles.form}>
           <TicketForm
             onSuccess={onClose}
+            formContainerClassName={styles.form_container}
             description={
               'Оставьте заявку на обратный звонок, и персональный менеджер свяжется с вами для уточнения деталей'
             }

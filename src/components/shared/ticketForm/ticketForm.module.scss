@@ -4,66 +4,131 @@
     flex-direction: column;
     justify-content: space-between;
     background: rgb(255 255 255 / 100%);
-    color: rgb(116 118 121 / 100%);
+    color: #747679;
     gap: 24px;
     padding: 36px 16px;
-  }
 
-  @include sm{
-    padding: 36px;
-  }
+    .header__title {
+      @include font(1, 16, 20);
+    }
 
-  @include xxl{
-    padding: 40px;
-  }
-
-  @include xxxl{
-    padding: 70px;
-  }
-
-}
-
-.header__title {
-  @layer base {
-    @include font(1, 16, 20);
-  }
-
-  @include lg {
-    @include font(1, 24, 34);
-  }
-}
-
-
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
-
-  .input-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .input {
-    @include font(1, 16, 18);
-
-    display: block;
-    padding: 15px;
-    border: 1px solid rgb(205 208 211 / 100%);
-    border-radius: 6px;
-    background-color: transparent;
-
-    &::placeholder {
-      color: rgb(205 208 211 / 100%);;
+    .input-label {
+      font-size: 14px;
+      line-height: 18px;
+      color: #b5b9be;
     }
   }
 
-  .caption {
-    @include font(1, 12, 14, 300);
+  @include sm {
+    padding: 36px;
+  }
 
-    & a {
-      text-decoration: underline;
+  @include md {
+    .header__title {
+      @include font(1, 20, 26);
+    }
+  }
+
+  @include lg {
+    gap: 40px;
+  }
+
+  @include xl {
+    gap: 36px;
+    .header__title {
+      @include font(1, 24, 34);
+    }
+
+    .input-label {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  @include xxl {
+    gap: 18px;
+    padding: 40px;
+  }
+
+  @include xxxl {
+    gap: 42px;
+    padding: 70px;
+  }
+}
+
+.info {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+
+    .input-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .input-wrapper:nth-child(2) {
+      margin-top: 20px;
+      margin-bottom: 36px;
+    }
+
+    .input {
+      @include font(1, 16, 18);
+
+      display: block;
+      padding: 15px;
+      border: 1px solid rgb(205 208 211 / 100%);
+      border-radius: 6px;
+      background-color: transparent;
+
+      &::placeholder {
+        color: rgb(205 208 211 / 100%);
+      }
+    }
+
+    .caption {
+      @include font(1, 12, 14, 300);
+      padding-top: 20px;
+      
+      & a {
+        color: $grey-text !important;
+        text-decoration: underline !important;
+        display: inline !important;
+        text-underline-offset: 2px;
+        text-decoration-color: $grey;
+      }
+    }
+  }
+
+  @include sm {
+    .input-wrapper:nth-child(2) {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+  }
+
+  @include lg {
+    .input-wrapper:nth-child(2) {
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+  }
+
+  @include xxl {
+    .input-wrapper:nth-child(2) {
+      margin-top: 24px;
+      margin-bottom: 36px;
+    }
+
+    .caption {
+      padding-top: 36px !important;
+    }
+  }
+
+  @include xxxl {
+
+    .caption {
+      padding-top: 36px !important;
     }
   }
 }

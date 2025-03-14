@@ -8,17 +8,21 @@ import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 interface ITicketFormProps {
   description?: string
   onSuccess?: () => void
+
+  formContainerClassName?: string
 }
 
-const TicketForm: FC<ITicketFormProps> = ({description = 'Оставьте заявку и мы поможем вам с выбором кладовой'}) => {
+const TicketForm: FC<ITicketFormProps> = (props) => {
+  const {description = 'Оставьте заявку и мы поможем вам с выбором кладовой', formContainerClassName} = props
+
   const [phoneNumber, setPhoneNumber] = useState('')
 
   return (
-    <div className={styles['ticketForm']}>
+    <div className={clsx(formContainerClassName, styles['ticketForm'])}>
       <div className='header'>
         <p className={styles['header__title']}>{description}</p>
       </div>
-      <form className={styles['info']}>
+      <form className={clsx(styles['info'])}>
         <div className={styles['input-wrapper']}>
           <span className={styles['input-label']}>Имя</span>
           <input className={styles.input} placeholder='Введите имя' />

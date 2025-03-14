@@ -13,7 +13,6 @@
     margin-top: 70px;
   }
 
-
   &-head {
     display: flex;
     align-items: center;
@@ -23,6 +22,7 @@
 
     &-title {
       @include RomulH3();
+      color: $deep-blue !important;
     }
 
     &-arrow-group {
@@ -55,7 +55,7 @@
 
       &-active {
         border-radius: 40px !important;
-        background-color: #3C8CA6 !important;
+        background-color: #3c8ca6 !important;
         width: 25px !important;
       }
 
@@ -64,7 +64,7 @@
         height: 15px;
         border: none;
         border-radius: 100%;
-        background-color: #11627D4D;
+        background-color: #11627d4d;
         transition: 200ms;
 
         &:not(:last-child) {
@@ -104,12 +104,11 @@
 
     &-title {
       @include font(3, 32, 44);
-
     }
 
     &-count {
-      background-color: #11627D14;
-      color: #11627D;
+      background-color: #11627d14;
+      color: #11627d;
 
       border-radius: 100%;
 
