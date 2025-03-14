@@ -1,8 +1,6 @@
 import {ComponentPropsWithRef, useCallback, useEffect, useState} from 'react'
 import {EmblaCarouselType} from 'embla-carousel'
-import emblaStyle from './slider.module.scss'
-import ToLeft from '@icons/toLeft.svg'
-import ToRight from '@icons/toRight.svg'
+import {MiniButton} from '@src/components/UI-kit/buttons/MiniButton/MiniButton'
 
 interface UsePrevNextButtonsType {
   prevBtnDisabled: boolean
@@ -56,13 +54,20 @@ export const PrevButton: React.FC<PropType> = (props) => {
   const {...restProps} = props
 
   return (
-    <button
-      className={`${emblaStyle['embla__button']} ${emblaStyle['embla__button--prev']}`}
-      type='button'
-      {...restProps}
-    >
-      <ToRight />
-    </button>
+    <MiniButton
+      extraStyle={{
+        width: '48px',
+        height: '48px'
+      }}
+      buttonFill={'white'}
+      arrowColor={'#555'}
+      arrowExtraStyles={{
+        transform: 'rotateZ(-135deg)'
+      }}
+      activeButton={true}
+      border={false}
+      restProps={restProps}
+    />
   )
 }
 
@@ -70,12 +75,19 @@ export const NextButton: React.FC<PropType> = (props) => {
   const {...restProps} = props
 
   return (
-    <button
-      className={`${emblaStyle['embla__button']} ${emblaStyle['embla__button--next']}`}
-      type='button'
-      {...restProps}
-    >
-      <ToLeft />
-    </button>
+    <MiniButton
+      extraStyle={{
+        width: '48px',
+        height: '48px'
+      }}
+      buttonFill={'white'}
+      arrowColor={'#555'}
+      arrowExtraStyles={{
+        transform: 'rotateZ(45deg)'
+      }}
+      activeButton={true}
+      border={false}
+      restProps={restProps}
+    />
   )
 }

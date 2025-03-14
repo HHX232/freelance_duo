@@ -1,3 +1,4 @@
+'use client'
 import {FC, PropsWithChildren} from 'react'
 import Link from 'next/link'
 import cn from 'clsx'
@@ -10,17 +11,26 @@ const LinkUI: FC<PropsWithChildren<ILinkUIProps>> = ({
   weight = 'medium',
   extraClass,
   extraStyle,
+  href,
   ...linkProps
-}) => {
-  return (
+}) =>
+  href ? (
     <Link
       {...linkProps}
-      className={cn(styles.linkText, styles[`linkText_${size}`], styles[`linkText_${weight}`], extraClass)}
+      href={href}
+      className={cn(styles.link, styles[`link_${size}`], styles[`link_${weight}`], extraClass)}
       style={extraStyle}
     >
       {children}
     </Link>
+  ) : (
+    <span
+      {...linkProps}
+      className={cn(styles.link, styles[`link_${size}`], styles[`link_${weight}`], extraClass)}
+      style={extraStyle}
+    >
+      {children}
+    </span>
   )
-}
 
 export default LinkUI
