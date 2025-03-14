@@ -106,6 +106,14 @@
   opacity: 0;
 }
 
+.directionUp {
+  position: relative;
+
+  .selectDropdown {
+    transform: translateY(calc(-100% - 60px));
+  }
+}
+
 .selectDropdown {
   position: absolute;
   z-index: 10;

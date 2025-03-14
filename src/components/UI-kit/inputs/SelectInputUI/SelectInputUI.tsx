@@ -26,6 +26,7 @@ interface CustomSelectProps {
   theme?: 'white' | 'dark'
   error?: string
   labelTopText?: string
+  dropdownDirection?: 'down' | 'up'
 }
 
 const CustomSelect = React.forwardRef<HTMLSelectElement, CustomSelectProps>(
@@ -161,7 +162,8 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   disabled = false,
   theme = 'white',
   error,
-  labelTopText = ''
+  labelTopText = '',
+  dropdownDirection = 'down'
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -192,7 +194,8 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
         [styles.selectDisabled]: disabled,
         [styles.selectWhiteTheme]: theme === 'white',
         [styles.selectDarkTheme]: theme === 'dark',
-        [styles.selectWhiteError]: hasError
+        [styles.selectWhiteError]: hasError,
+        [styles.directionUp]: dropdownDirection === 'up'
       })}
     >
       <label
