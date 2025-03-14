@@ -14,12 +14,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 export default function StoreRoomes() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <StoreRooms/>
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

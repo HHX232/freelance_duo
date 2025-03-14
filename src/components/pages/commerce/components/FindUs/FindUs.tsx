@@ -1,22 +1,41 @@
-"use client"
+'use client'
 import styles from './FindUs.module.scss'
-// import Icon_1 from '@icons/Find_Icon_1.svg'
-// import Icon_2 from '@icons/Find_Icon_2.svg'
 import ClockIcon from '@icons/commerce_clock.svg'
 import Map from '@icons/map.svg'
 import WhiteStar from '@icons/white_star.svg'
 import LineBlue from '@icons/line_blue.svg'
 import LineWhite from '@icons/line_white.svg'
 import {useIsMinWidth} from '@utils/useIsMobile'
+import CommerceMap from '@pages/commerce/components/FindUs/map'
+import {FC} from 'react'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
-const FindUs = () => {
+interface Props {
+  openMapModal: () => void
+}
 
+const FindUs: FC<Props> = ({openMapModal}) => {
   const isXXl = useIsMinWidth(1600)
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.mapWrapper}>
         <div className={styles.title}>Как нас найти</div>
+        <CommerceMap />
+        <div className={styles.mobileButtonWrapper}>
+          <FullButton
+            type={'Button'}
+            buttonText={'СМОТРЕТЬ НА КАРТЕ'}
+            onClick={() => {
+              openMapModal()
+            }}
+            activeButton={true}
+            border={false}
+            borderColor={''}
+            extraClass={styles.mobileButton}
+            buttonFill={'white'}
+          />
+        </div>
       </div>
       <div className={styles.infoWrapper}>
         <div className={`${styles.commerceWrapper} ${styles.infoBlock}`}>
@@ -46,7 +65,7 @@ const FindUs = () => {
           </div>
         </div>
         <div className={`${styles.salesWrapper} ${styles.infoBlock}`}>
-          { isXXl && <LineBlue /> }
+          {isXXl && <LineBlue />}
           <div className={styles.infoInnerWrapper}>
             <div className={`${styles.infoTitle}`}>Отдел продаж</div>
             <div className={`${styles.infoBody}`}>

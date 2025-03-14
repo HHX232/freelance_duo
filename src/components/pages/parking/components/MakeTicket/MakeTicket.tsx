@@ -8,7 +8,7 @@ const MakeTicket = () => {
         <div className={styles['title']}>
           <div>Нужна помощь с выбором?</div>
         </div>
-        <TicketForm />
+        <TicketForm description={"Оставьте заявку и мы поможем вам с выбором парковки"}/>
       </div>
     </div>
   )
