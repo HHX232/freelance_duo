@@ -41,10 +41,33 @@
           min-height: 283px;
           gap: 0;
         }
+
+        // колонка (плитка)
+        .block-col {
+            @include xxxl {
+                min-height: 550px;
+            }
+
+            @include xxl {
+                min-height: 500px;
+            }
+
+            @include xl {
+                min-height: 450px;
+            }
+
+            @include lg {
+                min-height: 350px;
+            }
+        }
   
         .cover {
           background-position: center;
           background-size: cover;
+
+          @include lg {
+            flex: 0 1 65% !important;
+          }
         }
   
         .meta {
@@ -54,6 +77,10 @@
           padding: 40px;
           background-color: rgb(25 108 135);
           gap: 77px;
+
+          @include lg {
+            flex: 0 1 35%;
+          }
   
           @media (max-width: map-get($breakpoints, xl)) {
             gap: 49px;

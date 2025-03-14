@@ -1,0 +1,111 @@
+.head {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .headClose {
+    margin: 16px 16px 0 0;
+  }
+  
+  .content {
+    padding: 60px;
+  
+    @include bp-xl {
+      padding: 20px 40px;
+    }
+  
+    @include bp-sm {
+      padding: 20px;
+    }
+  
+    @include bp-xs {
+      padding: 16px 10px;
+    }
+  }
+  
+  .title {
+    @include RomulH3;
+  }
+
+  .contentImg {
+    @layer base {
+        min-height: 200px;
+        margin-bottom: 20px;
+    }
+
+    @include sm {
+        min-height: 300px;
+        margin-bottom: 30px;
+    }
+
+    @include md {
+        min-height: 350px;
+        margin-bottom: 40px;
+    }
+
+    @include xxl {
+        min-height: 400px;
+        margin-bottom: 50px;
+    }
+  }
+  
+  .bottom-indent {
+    margin-bottom: 60px;
+  
+    @include bp-xl {
+      margin-bottom: 40px;
+    }
+  
+    @include bp-xs {
+      margin-bottom: 36px;
+    }
+  }
+
+  .modalPagination {
+    display: flex;
+    width: 10%;
+    justify-content: space-between;
+    margin-left: 45%;
+  }
+
+  .embla__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  
+  .embla__dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+    margin: 0;
+    appearance: none;
+    background-color: rgb(7 113 81);
+    cursor: pointer;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: all .5s ease-in-out;
+
+    &::after {
+      display: flex;
+      width: 15px;
+      height: 15px;
+      align-items: center;
+      border-radius: 50%;
+      background-color: rgb(255 255 255 / 30%);
+      content: '';
+    }
+  }
+
+  .embla__dot--selected {
+    &::after {
+      width: 20px;
+      border-radius: 30%;
+      background-color: rgb(11 91 101);
+      transition: all .5s ease-in-out;
+    }
+  }
+  
