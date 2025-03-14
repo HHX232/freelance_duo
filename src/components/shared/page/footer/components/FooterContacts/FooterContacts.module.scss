@@ -18,6 +18,7 @@
   height: 100%;
   flex-direction: column;
   gap: 58px;
+  overflow: hidden;
 
   @include bp-md {
     gap: 57px;
