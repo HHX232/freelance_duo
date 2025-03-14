@@ -6,6 +6,7 @@ import Link from 'next/link'
 import {useWindowWidth} from './hooks/useWindowWidth'
 import {MobileHeaderMenu} from './MobileHeaderMenu/MobileHeaderMenu'
 import Image from '@src/components/UI-kit/image/Image'
+import MobileHeaderInfoBlock from '../MobileHeaderInfoBlock/MobileHeaderInfoBlock'
 
 export default function HeaderMenu({onClose}: IHeaderMenuProps) {
   const windowWidth = useWindowWidth()
@@ -201,6 +202,22 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   items={[
                     {
                       header: 'Инфраструктура',
+                      children: <></>,
+                      size: 'defaultXL',
+                      color: 'white'
+                    }
+                  ]}
+                />
+              </Link>
+              <Link onClick={onClose} href={'/transport'}>
+                <Accordion
+                  animationOn={false}
+                  extraClass={styles.accordion_extra}
+                  leftArrow={false}
+                  rightArrow={false}
+                  items={[
+                    {
+                      header: 'Транспортная доступность',
                       children: <></>,
                       size: 'defaultXL',
                       color: 'white'
@@ -453,7 +470,10 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
         */}
         </div>
       ) : (
-        <MobileHeaderMenu onClose={onClose} />
+        <div className={styles.mobileContainer}>
+          <MobileHeaderMenu onClose={onClose} />
+          <MobileHeaderInfoBlock />
+        </div>
       )}
     </div>
   )

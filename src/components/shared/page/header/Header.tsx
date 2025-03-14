@@ -54,6 +54,10 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const handleScroll = (): void => setIsScrolled(window.scrollY > 0)
 
   useEffect(() => {
+    window.document.body.style.overflowY = isMenuOpened ? 'hidden' : 'auto'
+  }, [isMenuOpened])
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll)
 
     return () => {
@@ -93,117 +97,120 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
     <header
       className={clsx(styles.header, {[styles.dark]: dark}, isMenuOpened ? `${styles.menuOpened} no-scroll` : '')}
     >
-      <div className={styles.container}>
-        <div className={styles.logo}>
-          <LogoLink
-            isSmall={hideLogo ? true : (isXl && isScrolled && !isMenuOpened) || (isMd && isMenuOpened)}
-            isTransparent={isMd && isMenuOpened}
-            isMenuOpened={isMenuOpened}
-          />
-        </div>
-        {isLK && (
-          <>
-            {token ? (
-              <div className={styles.personalCabinetLink}>
-                <TextLink href={'/lk'} title='Личный кабинет' />
-              </div>
-            ) : (
-              <div className={styles.personalCabinetLink}>
-                <TextLink onClick={() => setOpenAuth(!isOpenAuth)} href={'/lk'} title='Личный кабинет' />
-              </div>
-            )}
-
-            {token && (
-              <div className={styles.logoutButton}>
-                <LogoutButton handleLogout={handleLogout} />
-              </div>
-            )}
-          </>
-        )}
-        <div className={styles.phoneLink}>
-          <TextLink href={'tel:+71231234567'} title='+ 7 (123) 123-45-67' />
-        </div>
-        <div className={styles.phoneIcon}>
-          <Link href={'tel:+71231234567'}>
-            <PhoneIconSVG />
-          </Link>
-        </div>
-        {!isLoadingCount && (
-          <>
-            <div className={styles.compareLink}>
-              <LinkWithIconAndCount
-                href={dashboard ? '/lk/sravnenie' : '/sravnenie'}
-                isMenuOpened={isMenuOpened}
-                count={compareCount}
-              >
-                <CompareSVG className={clsx(styles.icon)} />
-              </LinkWithIconAndCount>
-            </div>
-            <div className={styles.favoriteLink}>
-              <LinkWithIconAndCount
-                href={dashboard ? '/lk/izbrannoe' : '/izbrannoe'}
-                isMenuOpened={isMenuOpened}
-                count={favoritesCount}
-              >
-                <FavoriteSVG className={clsx(styles.icon)} />
-              </LinkWithIconAndCount>
-            </div>
-          </>
-        )}
-        <div className={clsx(styles.findApartment, isLoadingCount ? styles.alignRight : '')}>
-          {dashboard ? <DashboardActions onClick={handleClick} /> : <FindApartmentButton onClick={handleClick} />}
-        </div>
-        <div className={styles.toggleMenuButton}>
-          <ToggleMenuButton isMenuOpened={isMenuOpened} onClick={() => setIsMenuOpened((prev) => !prev)} />
-        </div>
-      </div>
-
-      <div className={styles.mobileMenu}>
-        <div className={styles.mobilePersonalCabinetLink}>
-          <TextLink href={'/lk'} title='Личный кабинет' />
-        </div>
-        {dashboard && (
-          <div className={styles.mobileCompareLink}>
-            {token ? (
-              <Link href={'/lk'}>
-                <UserSVG className={styles.user} />
-              </Link>
-            ) : (
-              <button type='button' onClick={() => setOpenAuth(!isOpenAuth)}>
-                <UserSVG className={styles.user} />
-              </button>
-            )}
+      <div className={styles.headerTopContainer}>
+        <div className={styles.container}>
+          <div className={styles.logo}>
+            <LogoLink
+              isSmall={hideLogo ? true : (isXl && isScrolled && !isMenuOpened) || (isMd && isMenuOpened)}
+              isTransparent={isMd && isMenuOpened}
+              isMenuOpened={isMenuOpened}
+            />
           </div>
-        )}
+          {isLK && (
+            <>
+              {token ? (
+                <div className={styles.personalCabinetLink}>
+                  <TextLink href={'/lk'} title='Личный кабинет' />
+                </div>
+              ) : (
+                <div className={styles.personalCabinetLink}>
+                  <TextLink onClick={() => setOpenAuth(!isOpenAuth)} href={'/lk'} title='Личный кабинет' />
+                </div>
+              )}
 
-        {!isLoadingCount && (
-          <>
+              {token && (
+                <div className={styles.logoutButton}>
+                  <LogoutButton handleLogout={handleLogout} />
+                </div>
+              )}
+            </>
+          )}
+          <div className={styles.phoneLink}>
+            <TextLink href={'tel:+71231234567'} title='+ 7 (123) 123-45-67' />
+          </div>
+          <div className={styles.phoneIcon}>
+            <Link href={'tel:+71231234567'}>
+              <PhoneIconSVG />
+            </Link>
+          </div>
+          {!isLoadingCount && (
+            <>
+              <div className={styles.compareLink}>
+                <LinkWithIconAndCount
+                  href={dashboard ? '/lk/sravnenie' : '/sravnenie'}
+                  isMenuOpened={isMenuOpened}
+                  count={compareCount}
+                >
+                  <CompareSVG className={clsx(styles.icon)} />
+                </LinkWithIconAndCount>
+              </div>
+              <div className={styles.favoriteLink}>
+                <LinkWithIconAndCount
+                  href={dashboard ? '/lk/izbrannoe' : '/izbrannoe'}
+                  isMenuOpened={isMenuOpened}
+                  count={favoritesCount}
+                >
+                  <FavoriteSVG className={clsx(styles.icon)} />
+                </LinkWithIconAndCount>
+              </div>
+            </>
+          )}
+          <div className={clsx(styles.findApartment, isLoadingCount ? styles.alignRight : '')}>
+            {dashboard ? <DashboardActions onClick={handleClick} /> : <FindApartmentButton onClick={handleClick} />}
+          </div>
+          <div className={styles.toggleMenuButton}>
+            <ToggleMenuButton isMenuOpened={isMenuOpened} onClick={() => setIsMenuOpened((prev) => !prev)} />
+          </div>
+        </div>
+        <div className={styles.mobileMenu}>
+          <div className={styles.mobilePersonalCabinetLink}>
+            <TextLink href={'/lk'} title='Личный кабинет' />
+          </div>
+          {dashboard && (
             <div className={styles.mobileCompareLink}>
-              <LinkWithIconAndCount
-                href={dashboard ? '/lk/sravnenie' : '/sravnenie'}
-                isMenuOpened={isMenuOpened}
-                count={compareCount}
-              >
-                <CompareSVG className={clsx(styles.icon)} />
-              </LinkWithIconAndCount>
+              {token ? (
+                <Link href={'/lk'}>
+                  <UserSVG className={styles.user} />
+                </Link>
+              ) : (
+                <button type='button' onClick={() => setOpenAuth(!isOpenAuth)}>
+                  <UserSVG className={styles.user} />
+                </button>
+              )}
             </div>
-            <div className={styles.mobielFavoriteLink}>
-              <LinkWithIconAndCount
-                href={dashboard ? '/lk/izbrannoe' : '/izbrannoe'}
-                isMenuOpened={isMenuOpened}
-                count={favoritesCount}
-              >
-                <FavoriteSVG className={clsx(styles.icon)} />
-              </LinkWithIconAndCount>
-            </div>
-          </>
-        )}
-      </div>
+          )}
 
+          {!isLoadingCount && (
+            <>
+              <div className={styles.mobileCompareLink}>
+                <LinkWithIconAndCount
+                  href={dashboard ? '/lk/sravnenie' : '/sravnenie'}
+                  isMenuOpened={isMenuOpened}
+                  count={compareCount}
+                >
+                  <CompareSVG className={clsx(styles.icon)} />
+                </LinkWithIconAndCount>
+              </div>
+              <div className={styles.mobileFavoriteLink}>
+                <LinkWithIconAndCount
+                  href={dashboard ? '/lk/izbrannoe' : '/izbrannoe'}
+                  isMenuOpened={isMenuOpened}
+                  count={favoritesCount}
+                >
+                  <FavoriteSVG className={clsx(styles.icon)} />
+                </LinkWithIconAndCount>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
       <div className={styles.menu}>
-        <HeaderMenu onClose={() => setIsMenuOpened(false)} setIsMenuOpened={setIsMenuOpened} />
-        <div className={styles.headerMenuBottom}>
-          <HeaderMenuBottom handleFindApartment={handleClick} />
+        <div className={styles.menu_inner}>
+          <HeaderMenu onClose={() => setIsMenuOpened(false)} setIsMenuOpened={setIsMenuOpened} />
+
+          <div className={styles.headerMenuBottom}>
+            <HeaderMenuBottom handleFindApartment={handleClick} />
+          </div>
         </div>
       </div>
     </header>

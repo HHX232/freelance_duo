@@ -1,7 +1,6 @@
 export interface IFooterNavigationProps {
   linksGroups: IFooterNavigationLinksGroup[]
   secondaryLinks: IFooterNavigationLink[]
-  mobileLinksGroup: IMobileFooterNavigationLinksGroup[]
 }
 
 export interface IFooterNavigationLinksGroup {

@@ -1,4 +1,5 @@
 @import '../../../../../../../scss/variables';
+@import '../../../../../../../fonts/fonts';
 
 .container {
   display: flex;
@@ -9,7 +10,6 @@
   gap: 57px;
 
   &_mobile {
-    max-height: 80vh;
     padding-right: 20px;
     padding-left: 20px;
 
@@ -17,8 +17,6 @@
       padding-right: 0;
       padding-left: 0;
     }
-
-    // overflow-y: auto;
   }
 
   @include custom(0, 1150px) {
@@ -36,8 +34,14 @@
   }
 
   a {
-    @include font(1, 14, 18, 400);
+    @include font(1, 20, 26, 400);
   }
+}
+
+.romul_text {
+  font-family: $font-romul;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .main_accordion_box {
@@ -85,7 +89,7 @@
 }
 
 .accordion_header_active {
-  &>div:first-child {
+  & > div:first-child {
     margin-bottom: 12px;
   }
 }
@@ -109,87 +113,16 @@
   display: flex;
   flex-direction: column;
 
-  &>li {
+  & > li {
     padding: 6px 0;
     color: #fff;
 
-    &>a {
+    & > a {
       font-size: 18px !important;
       line-height: 26px;
       text-transform: none;
     }
   }
-}
-
-.mobile_text_box {
-  display: flex;
-  flex-direction: column;
-}
-
-.mobile_text_title {
-  margin-bottom: 24px;
-  color: #fff !important;
-  font-family: $font-primary !important;
-  font-size: 14px !important;
-  font-weight: 300 !important;
-  line-height: 18px !important;
-}
-
-.mobile_inner_text {
-  display: flex;
-  flex-direction: column;
-  font-family: $font-primary !important;
-}
-
-.mobile_text {
-  color: #fff !important;
-  font-family: $font-primary !important;
-  font-size: 20px !important;
-  font-weight: 500 !important;
-  line-height: 30px !important;
-}
-
-.mobile_text_adress {
-  margin-top: 26px;
-  margin-bottom: 20px !important;
-  color: #fff !important;
-  font-family: $font-primary !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-}
-
-.time_block {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 54px;
-  gap: 6px;
-
-  &>p {
-    color: #fff !important;
-    font-family: $font-primary !important;
-    font-size: 14px !important;
-    font-weight: 300 !important;
-    opacity: 0.6;
-  }
-}
-
-.social_box {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.social_box_text {
-  color: #fff !important;
-  font-family: $font-primary !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-}
-
-.vk,
-.inst {
-  width: 40px;
-  height: 40px;
 }
 
 @include custom(0, map-get($breakpoints, sm) - 1px) {
@@ -211,20 +144,12 @@
   }
 
   .accordion_mobile_list_default {
-    &>li>a {
+    & > li > a {
       font-size: 14px !important;
     }
 
-    &>li {
+    & > li {
       font-size: 14px !important;
     }
   }
 }
-
-@include custom(0, map-get($breakpoints, xs) - 1px) {
-  .mobile_text_title {
-    margin-bottom: 28px;
-  }
-}
-
-// max-height: 45px;

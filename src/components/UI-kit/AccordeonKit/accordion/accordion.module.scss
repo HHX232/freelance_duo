@@ -64,10 +64,41 @@
 
 .content {
   width: 100%;
-  max-height: 0;
+  height: 0;
   margin-top: 10px;
   opacity: 0;
-  overflow-y: auto;
+  transition: height 0.2s ease-in-out;
+
+  span {
+    .accordion:first-child {
+      padding-bottom: 18px;
+    }
+
+    li {
+      a,
+      .header {
+        @include font(1, 20, 30);
+
+        font-size: 20px !important;
+      }
+
+      &:not(:has(.header)) {
+        &:first-child {
+          margin-top: 12px;
+        }
+
+        &:last-child {
+          margin-bottom: 12px;
+        }
+
+        padding: 18px 0;
+      }
+
+      .header {
+        color: #fdf1cd;
+      }
+    }
+  }
 }
 
 .arrow_right {
@@ -151,12 +182,12 @@
 }
 
 .contentActive {
-  max-height: 5000px;
+  height: 100%;
   opacity: 1; // Плавное появление
 }
 
 .open {
-  padding-bottom: 24px;
+  padding-bottom: 4px;
 
   .arrow {
     transform: rotate(-180deg); // Поворот стрелки

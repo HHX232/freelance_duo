@@ -1,6 +1,6 @@
 .header {
   position: fixed;
-  z-index: 4;
+  z-index: 11;
   width: 100%;
   height: 96px;
   padding: 0 40px;
@@ -17,14 +17,37 @@
     color: #fff !important;
   }
 
+  .headerTopContainer {
+    width: 100%;
+    height: 100%;
+  }
+
   &.menuOpened {
-    padding-right: 46px;
+    height: fit-content;
+    padding: 0;
     background-color: #11627d;
+
+    .headerTopContainer {
+      width: 100%;
+      height: 96px;
+      padding: 0 40px;
+      padding-right: 46px;
+      background-color: transparent;
+      background-color: #11627d;
+      transition: background-color 0.2s ease-in-out;
+    }
 
     .container,
     .container a {
       background-color: #11627d !important;
       color: #fff;
+
+      .favoriteLink,
+      .compareLink {
+        span {
+          background-color: #fd7628;
+        }
+      }
 
       .toggleMenuButton {
         svg {
@@ -128,13 +151,12 @@
   .mobileMenu {
     display: none;
     width: 100%;
-    height: 48px;
+    height: fit-content;
     flex-wrap: wrap;
-    padding-left: 18px;
-    margin-top: 20px;
+    padding-top: 20px;
     background-color: #11627d;
     gap: 10px;
-    transition: all .3s;
+    transition: all 0.3s;
 
     .mobilePersonalCabinetLink {
       display: grid;
@@ -168,7 +190,7 @@
     }
 
     .mobileCompareLink,
-    .mobielFavoriteLink {
+    .mobileFavoriteLink {
       display: flex;
       width: 48px;
       height: 48px;
@@ -188,6 +210,7 @@
 
       span {
         margin-left: 6px;
+        background-color: #fd7628;
       }
     }
   }
@@ -201,10 +224,12 @@
     width: 100%;
     height: fit-content;
     min-height: 100dvh;
+    max-height: 100dvh;
     padding-top: 96px;
     background-color: #11627d;
     grid-template-rows: 1fr auto;
     opacity: 0;
+    overflow-y: auto;
     transform: translateY(-100%);
     transition:
       transform 0.6s ease-in-out,
@@ -222,10 +247,25 @@
       padding-top: 134px;
     }
 
-    .headerMenuBottom {
-      z-index: -1;
+    @include custom(0, map-get($breakpoints, sm) - 1px) {
+      padding-top: 174px;
+    }
+
+    @include custom(0, map-get($breakpoints, xs) - 1px) {
+      padding-top: 130px;
+    }
+
+    .menu_inner {
+      position: relative;
+      display: grid;
       width: 100%;
-      height: fit-content;
+      height: 100%;
+      grid-template-rows: 1fr auto;
+
+      .headerMenuBottom {
+        width: 100%;
+        height: fit-content;
+      }
     }
   }
 }
@@ -235,7 +275,10 @@
     height: 86px;
 
     &.menuOpened {
-      padding: 0 40px;
+      .headerTopContainer {
+        height: 86px;
+        padding: 0 40px;
+      }
 
       .container {
         .toggleMenuButton {
@@ -286,9 +329,13 @@
     height: 68px;
 
     &.menuOpened {
-      // padding: 0 40px;
+      .headerTopContainer {
+        height: 156px;
+      }
 
       .container {
+        height: 68px;
+
         .toggleMenuButton {
           margin-right: 0;
           margin-left: 42px;
@@ -317,7 +364,7 @@
       }
 
       .logo {
-        margin-left: -8px;
+        margin-left: -26px;
 
         a {
           width: 68px !important;
@@ -336,9 +383,15 @@
     padding: 0 12px;
 
     &.menuOpened {
-      padding: 0 12px;
+      height: fit-content;
+
+      .headerTopContainer {
+        padding: 0 12px;
+      }
 
       .container {
+        height: 68px !important;
+
         .toggleMenuButton {
           margin-left: 23px;
         }
@@ -379,7 +432,13 @@
 @include custom(0, map-get($breakpoints, sm) - 1px) {
   .header {
     &.menuOpened {
+      .headerTopContainer {
+        height: 124px;
+      }
+
       .container {
+        height: 64px !important;
+
         .toggleMenuButton {
           margin-left: 12px !important;
 
@@ -390,6 +449,10 @@
             margin-right: 1px;
           }
         }
+      }
+
+      .menu {
+        padding-top: 160px;
       }
 
       .mobileMenu {
@@ -408,7 +471,7 @@
         }
 
         .mobileCompareLink,
-        .mobielFavoriteLink {
+        .mobileFavoriteLink {
           width: 36px;
           height: 36px;
 

@@ -18,7 +18,7 @@
     "@ant-design/cssinjs": "^1.6.1",
     "@next/env": "^15.2.1",
     "@next/third-parties": "^14.2.4",
-    "@pbe/react-yandex-maps": "^1.1.8",
+    "@pbe/react-yandex-maps": "^1.2.5",
     "@phosphor-icons/react": "^2.1.7",
     "@types/react-transition-group": "^4.4.12",
     "antd": "^5.18.0",

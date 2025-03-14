@@ -10,7 +10,7 @@ export default function FooterNavigation(props: IFooterNavigationProps) {
         <DesktopFooterNavigation linksGroups={props.linksGroups} secondaryLinks={props.secondaryLinks} />
       </div>
       <div className={styles.mobile}>
-        <MobileFooterNavigation mobileLinksGroup={props.mobileLinksGroup} />
+        <MobileFooterNavigation />
       </div>
     </div>
   )
