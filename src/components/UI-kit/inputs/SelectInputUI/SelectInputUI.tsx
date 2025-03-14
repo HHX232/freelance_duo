@@ -250,20 +250,22 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
       </div>
 
       {isDropdownOpen && !disabled && (
-        <div className={styles.selectDropdown}>
-          {options.map((option) => (
-            <div
-              key={option.value}
-              className={cn(styles.selectOption, optionClassName, {
-                [styles.selectOptionSelected]: option.value === value
-              })}
-              onClick={() => handleSelect(option.value)}
-            >
-              <RadioUI value={option.value} checked={option.value === value}>
-                {option.label}
-              </RadioUI>
-            </div>
-          ))}
+        <div className={styles.selectDropdownContainer}>
+          <div className={styles.selectDropdown}>
+            {options.map((option) => (
+              <div
+                key={option.value}
+                className={cn(styles.selectOption, optionClassName, {
+                  [styles.selectOptionSelected]: option.value === value
+                })}
+                onClick={() => handleSelect(option.value)}
+              >
+                <RadioUI value={option.value} checked={option.value === value}>
+                  {option.label}
+                </RadioUI>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
