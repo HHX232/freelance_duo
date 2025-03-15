@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: kronfort
-          image: my-registry.com/my-app:latest  # Will be updated dynamically in CI/CD
+          image: kronfort:latest  # Will be updated dynamically in CI/CD
           ports:
             - containerPort: 3000
           env:
