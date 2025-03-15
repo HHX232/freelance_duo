@@ -1,27 +1,7 @@
 .blocks_container {
+    display: flex;
+    flex-direction: column;
     background-color: #11627D;
-
-    @layer base {
-        display: flex;
-        flex-direction: column;
-        padding-top: 70px;
-        padding-bottom: 70px;
-      }
-    
-      @include sm {
-        padding-top: 80px;
-        padding-bottom: 80px;;
-      }
-    
-      @include md {
-        padding-top: 90px;
-        padding-bottom: 90px;
-      }
-    
-      @include xxl {
-        padding-top: 110px;
-        padding-bottom: 110px;
-      }
   
     @include content-container;
       

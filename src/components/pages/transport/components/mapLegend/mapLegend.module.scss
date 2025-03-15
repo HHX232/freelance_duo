@@ -1,0 +1,71 @@
+.maplegend-wrapper {
+    position: absolute;
+    width: 320px;
+    height: 60px;
+    background-color: #FFF;
+
+    @layer base {
+        display: none;
+    }
+
+    @include md {
+        bottom: 45px;
+        left: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .maplegend-container {
+        position: relative;
+    }
+
+    .maplegend-info-icon {
+        width: 20px;
+        height: 20px;
+        padding: 5px;
+        border: 2px solid #1b5c74;
+        border-radius: 50%;
+        color: #1b5c74;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: 600;
+        text-align: center;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .maplegend-info-icon:hover ~ .maplegend-legend {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .maplegend-legend {
+        position: absolute;
+        bottom: 90px;
+        left: 0;
+        display: block;
+        width: 320px;
+        background-color: #FFF;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        visibility: hidden;
+
+        .maplegend-legend-item {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: left;
+            padding: 10px;
+
+            p {
+                margin-left: 10px;
+            }
+        }
+    }
+}

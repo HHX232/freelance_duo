@@ -1,0 +1,72 @@
+.sidebar {
+    position: absolute;
+    top: 0;
+
+    // width: 460px;
+    height: 100%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 2px 0 10px rgb(0 0 0 / 20%);
+    transition: left 0.3s ease-in-out;
+
+    @layer base {
+        width: 100%;
+
+        // right: -460px;
+    }
+
+    @include md {
+        right: -380px;
+        width: 380px;
+    }
+
+    @include lg {
+        right: -460px;
+        width: 460px;
+    }
+  
+    &.open {
+      right: 0;
+    }
+  
+    .toggleButton {
+      position: absolute;
+      top: 20px;
+      left: -80px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 5px;
+      background: #FFF;
+      color: #111;
+      cursor: pointer;
+      font-family: $font-primary;
+      font-size: 14px;
+    }
+  
+    .content {
+      h2 {
+        margin-bottom: 10px;
+        color: #1b5c74;
+        font-size: 22px;
+      }
+  
+      ul {
+        padding: 0;
+        list-style: none;
+  
+        li {
+          position: relative;
+          padding-left: 20px;
+          margin-bottom: 10px;
+  
+          &::before {
+            position: absolute;
+            left: 0;
+            color: #1b5c74;
+            content: "•";
+          }
+        }
+      }
+    }
+  }

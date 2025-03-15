@@ -2,7 +2,7 @@
 import styles from './TransportWrapper.module.scss'
 import Head from '@pages/transport/components/head/Head'
 import Information from '@pages/transport/components/information/Information'
-// import TransportMap from '@pages/transport/components/transportMap/transportMap'
+import TransportMap from '@pages/transport/components/transportMap/transportMap'
 import Infoblock from '@pages/transport/components/infoblock/Infoblock'
 import Blocks from '@pages/transport/components/blocks/Blocks'
 import Subscription from '@pages/transport/components/subscription/Subscription'
@@ -15,8 +15,8 @@ const TransportWrapper = () => {
     <div className={styles['wrapper']}>
       <Head />
       <Information />
-      {/* <TransportMap /> */}
       <div className={styles.transport_content}>
+        <TransportMap />
         <Infoblock />
         <Blocks setShowModal={setModalView}/>
         <Subscription />
