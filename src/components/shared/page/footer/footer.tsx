@@ -8,7 +8,6 @@ import FooterContacts from './components/FooterContacts/FooterContacts'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {Backcall} from '@shared/back-call-popup/backcall'
 import {MiniButton} from '@src/components/UI-kit/buttons/MiniButton/MiniButton'
-import {SelectExample} from '@src/components/UI-kit/inputs/SelectExample/SelectExample'
 import CheckBoxUI from '@src/components/UI-kit/CheckBoxUI/CheckBoxUI'
 
 const PRIMARY_LINKS: IFooterNavigationLinksGroup[] = [
@@ -66,80 +65,6 @@ const Footer = ({dashboard}: {dashboard?: boolean}) => {
 
   return (
     <div className={styles.footer}>
-      <div style={{backgroundColor: '#ffffff', padding: '20px', margin: '20px'}}>
-        <SelectExample />
-
-        <br />
-
-        <CheckBoxUI>Checkbox 1.1</CheckBoxUI>
-        <CheckBoxUI uiSize={'md'}>Checkbox 1.2</CheckBoxUI>
-        <CheckBoxUI uiSize={'sm'}>Checkbox 1.3</CheckBoxUI>
-
-        <br />
-
-        <CheckBoxUI typeMark={'dash'}>Checkbox 2.1</CheckBoxUI>
-        <CheckBoxUI typeMark={'dash'} uiSize={'md'}>
-          Checkbox 2.2
-        </CheckBoxUI>
-        <CheckBoxUI typeMark={'dash'} uiSize={'sm'}>
-          Checkbox 2.3
-        </CheckBoxUI>
-
-        <br />
-
-        <CheckBoxUI error={'Error!'}>Checkbox 3.1</CheckBoxUI>
-        <CheckBoxUI error={'Error!'} uiSize={'md'}>
-          Checkbox 3.2
-        </CheckBoxUI>
-        <CheckBoxUI error={'Error!'} uiSize={'sm'}>
-          Checkbox 3.3
-        </CheckBoxUI>
-
-        <br />
-
-        <CheckBoxUI disabled>Checkbox 1.1</CheckBoxUI>
-        <CheckBoxUI uiSize={'md'} disabled>
-          Checkbox 1.2
-        </CheckBoxUI>
-        <CheckBoxUI uiSize={'sm'} disabled>
-          Checkbox 1.3
-        </CheckBoxUI>
-
-        <br />
-
-        <CheckBoxUI disabled checked>
-          Checkbox 1.1
-        </CheckBoxUI>
-        <CheckBoxUI uiSize={'md'} disabled checked>
-          Checkbox 1.2
-        </CheckBoxUI>
-        <CheckBoxUI uiSize={'sm'} disabled checked>
-          Checkbox 1.3
-        </CheckBoxUI>
-
-        <br />
-
-        <CheckBoxUI typeMark={'dash'} disabled checked>
-          Checkbox 1.1
-        </CheckBoxUI>
-        <CheckBoxUI typeMark={'dash'} uiSize={'md'} disabled checked>
-          Checkbox 1.2
-        </CheckBoxUI>
-        <CheckBoxUI typeMark={'dash'} uiSize={'sm'} disabled checked>
-          Checkbox 1.3
-        </CheckBoxUI>
-
-        <br />
-        <CheckBoxUI error={'Error!'} disabled>
-          Checkbox 3.1
-        </CheckBoxUI>
-        <CheckBoxUI error={'Error!'} uiSize={'md'} disabled>
-          Checkbox 3.2
-        </CheckBoxUI>
-        <CheckBoxUI error={'Error!'} uiSize={'sm'} disabled>
-          Checkbox 3.3
-        </CheckBoxUI>
-      </div>
       <span style={{position: 'relative'}}></span>
       <div className={styles.footer_inner}>
         <div className={`${styles.side} ${styles.side_left}`}>
