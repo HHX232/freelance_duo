@@ -12,9 +12,9 @@ interface SelectOption {
 // ! Не использовать CustomSelect, используйте CustomSelectWithDropdown
 interface CustomSelectProps {
   options: SelectOption[]
-  value: string
+  value?: string
   values?: string[]
-  onChange: (value: string) => void
+  onChange?: (value: string) => void
   onMultipleChange?: (value: string[]) => void
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
@@ -174,6 +174,7 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const [selectedValues, setSelectedValues] = useState<string[]>(values)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -187,18 +188,24 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   }, [])
 
   const handleSelect = (optionValue: string) => {
-    onChange(optionValue)
+    if (onChange) {
+      onChange(optionValue)
+    }
+
     setIsDropdownOpen(false)
   }
 
   const handleMultipleSelect = (optionValue: string) => {
-    if (values.includes(optionValue)) {
-      values = values.filter((v) => v !== optionValue)
-    } else {
-      values.push(optionValue)
-    }
+    setSelectedValues((v) => {
+      if (v.includes(optionValue)) {
+        v = v.filter((prevValue) => prevValue !== optionValue)
+      } else {
+        v = [...v, optionValue]
+      }
 
-    onMultipleChange(values)
+      onMultipleChange(v)
+      return v
+    })
   }
 
   const selectedOption = options.find((opt) => opt.value === value)
@@ -278,13 +285,14 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
               >
                 {multiple ? (
                   <CheckBoxUI
-                    label={option.label}
-                    defaultChecked={values.includes(option.value)}
-                    size='medium'
+                    uiSize={'md'}
                     typeMark='check'
-                    theme='dark'
+                    value={option.value}
                     onChange={() => handleMultipleSelect(option.value)}
-                  />
+                    checked={selectedValues.includes(option.value)}
+                  >
+                    {option.label}
+                  </CheckBoxUI>
                 ) : (
                   <RadioUI
                     onChange={() => handleSelect(option.value)}
