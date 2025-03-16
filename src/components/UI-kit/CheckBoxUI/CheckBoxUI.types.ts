@@ -1,19 +1,13 @@
-import React from 'react'
+import React, {ComponentPropsWithRef} from 'react'
 type TCheckBoxUIProps = 'dash' | 'check'
-type TCheckSize = 'large' | 'medium' | 'small'
-export interface CheckBoxUIProps {
-  label: React.ReactNode
-  name: string
-  value: string
-  onChange?: (checked: boolean) => void
-  defaultChecked?: boolean
-  disabled?: boolean
+type TCheckSize = 'lg' | 'md' | 'sm'
+export interface CheckBoxUIProps extends ComponentPropsWithRef<'input'> {
+  children?: React.ReactNode
   error?: string
-  [key: string]: any
   extraClass?: string
   extraStyle?: React.CSSProperties
   typeMark?: TCheckBoxUIProps
-  size?: TCheckSize
+  uiSize?: TCheckSize
   labelExtraClass?: string
   errorExtraClass?: string
 }

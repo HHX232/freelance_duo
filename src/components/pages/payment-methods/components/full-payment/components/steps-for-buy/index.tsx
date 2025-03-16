@@ -6,6 +6,7 @@ import styles from './steps-for-buy.module.scss'
 import useRouterNext from '@src/lib/hooks/useRouter'
 import {NextButton, PrevButton} from '@pages/storerooms/components/carousel/components/EmblaCarouselArrowButtons'
 import {Pagination} from 'swiper/modules'
+import clsx from 'clsx'
 
 export const StepsForBuy = () => {
   const {push} = useRouterNext()
@@ -29,7 +30,7 @@ export const StepsForBuy = () => {
   }
 
   return (
-    <div className={styles.stepsForBuy}>
+    <div className={clsx(styles.stepsForBuy, styles.content_container)}>
       <div className={styles.stepsForBuyHead}>
         <h3 className={styles.stepsForBuyHeadTitle}>ШАГИ ДО ПОКУПКИ КВАРТИРЫ</h3>
 
@@ -46,7 +47,6 @@ export const StepsForBuy = () => {
           bulletActiveClass: styles.stepsForBuySliderPaginationActive
         }}
         modules={[Pagination]}
-        spaceBetween={24}
         slidesPerView={'auto'}
         className={styles.stepsForBuySlider}
         onSwiper={setSwiper}
@@ -62,9 +62,11 @@ export const StepsForBuy = () => {
             </div>
             <h4 className={styles.stepsForBuySlideTitle}>{slide.title}</h4>
             {slide.isSelectApartment && (
-              <FilledButton onClick={handleSelectApartmentClick} className={styles.stepsForBuySlideButton}>
-                Выбрать квартиру
-              </FilledButton>
+              <div className={styles.button_wrapper}>
+                <FilledButton onClick={handleSelectApartmentClick} className={styles.stepsForBuySlideButton}>
+                  <span>Выбрать квартиру</span>
+                </FilledButton>
+              </div>
             )}
           </SwiperSlide>
         ))}

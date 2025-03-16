@@ -13,7 +13,7 @@
       background-color: #bf5673 !important;
     }
 
-    input:checked + label .button {
+    input:checked+label .button {
       background-color: #d36281 !important;
     }
 
@@ -26,11 +26,11 @@
     display: none;
 
     &:checked {
-      &:not(:disabled) :hover + label .button {
+      &:not(:disabled) :hover+label .button {
         background-color: #1b5c74;
       }
 
-      + label .button {
+      +label .button {
         background-color: $accent-blue;
 
         .circle {
@@ -40,7 +40,7 @@
       }
     }
 
-    &:disabled + label {
+    &:disabled+label {
       cursor: not-allowed;
 
       .button {

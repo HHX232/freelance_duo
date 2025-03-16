@@ -1,7 +1,8 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styles from './SelectInput.module.scss'
 import cn from 'clsx'
-import LinkUI from '../../Typography/Link/LinkUI'
+import RadioUI from '../../RadioUI/RadioUI'
+import CheckBoxUI from '../../CheckBoxUI/CheckBoxUI'
 
 interface SelectOption {
   value: string
@@ -11,8 +12,10 @@ interface SelectOption {
 // ! Не использовать CustomSelect, используйте CustomSelectWithDropdown
 interface CustomSelectProps {
   options: SelectOption[]
-  value: string
-  onChange: (value: string) => void
+  value?: string
+  values?: string[]
+  onChange?: (value: string) => void
+  onMultipleChange?: (value: string[]) => void
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
   containerClassName?: string
@@ -26,7 +29,8 @@ interface CustomSelectProps {
   theme?: 'white' | 'dark'
   error?: string
   labelTopText?: string
-  renderCheckbox?: (checked: boolean) => React.ReactNode
+  dropdownDirection?: 'down' | 'up'
+  multiple?: boolean
 }
 
 const CustomSelect = React.forwardRef<HTMLSelectElement, CustomSelectProps>(
@@ -58,7 +62,7 @@ const CustomSelect = React.forwardRef<HTMLSelectElement, CustomSelectProps>(
 
     // Handle the native select onChange
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      onChange(e.target.value)
+      onChange?.(e.target.value)
     }
 
     // Custom dropdown toggle (visual only)
@@ -146,11 +150,15 @@ const CustomSelect = React.forwardRef<HTMLSelectElement, CustomSelectProps>(
   }
 )
 
+CustomSelect.displayName = 'CustomSelect'
+
 // ! Используется
-export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
+const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   options,
   value,
+  values = [],
   onChange,
+  onMultipleChange = () => { },
   leftIcon,
   rightIcon,
   containerClassName,
@@ -161,10 +169,12 @@ export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   theme = 'white',
   error,
   labelTopText = '',
-  renderCheckbox
+  dropdownDirection = 'down',
+  multiple
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const [selectedValues, setSelectedValues] = useState<string[]>(values)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -178,12 +188,28 @@ export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   }, [])
 
   const handleSelect = (optionValue: string) => {
-    onChange(optionValue)
+    if (onChange) {
+      onChange(optionValue)
+    }
+
     setIsDropdownOpen(false)
   }
 
+  const handleMultipleSelect = (optionValue: string) => {
+    setSelectedValues((v) => {
+      if (v.includes(optionValue)) {
+        v = v.filter((prevValue) => prevValue !== optionValue)
+      } else {
+        v = [...v, optionValue]
+      }
+
+      onMultipleChange(v)
+      return v
+    })
+  }
+
   const selectedOption = options.find((opt) => opt.value === value)
-  const hasError = (error?.length ? error?.length : 0) > 0
+  const hasError: boolean = !!error?.length
 
   return (
     <div
@@ -191,7 +217,9 @@ export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
       className={cn(styles.selectWithDropdown, containerClassName, {
         [styles.selectDisabled]: disabled,
         [styles.selectWhiteTheme]: theme === 'white',
-        [styles.selectWhiteError]: hasError
+        [styles.selectDarkTheme]: theme === 'dark',
+        [styles.selectWhiteError]: hasError,
+        [styles.directionUp]: dropdownDirection === 'up'
       })}
     >
       <label
@@ -217,7 +245,9 @@ export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
         })}
         onClick={() => !disabled && setIsDropdownOpen(!isDropdownOpen)}
       >
-        {leftIcon && <div className={styles.selectIconLeft}>{leftIcon}</div>}
+        {leftIcon && (
+          <div className={cn(styles.selectIconLeft, selectedOption?.value ? styles.iconWhite : '')}>{leftIcon}</div>
+        )}
 
         <div className={styles.selectValue} data-placeholder={placeholder || 'Select an option'}>
           {selectedOption?.label || ''}
@@ -235,7 +265,7 @@ export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
               strokeWidth='2'
               strokeLinecap='round'
               strokeLinejoin='round'
-              className={cn(styles.selectArrow, {[styles.selectArrowUp]: isDropdownOpen})}
+              className={cn(styles.selectArrow, { [styles.selectArrowUp]: isDropdownOpen })}
             >
               <polyline points='6 9 12 15 18 9'></polyline>
             </svg>
@@ -244,41 +274,46 @@ export const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
       </div>
 
       {isDropdownOpen && !disabled && (
-        <div className={styles.selectDropdown}>
-          {options.map((option) => (
-            <div
-              key={option.value}
-              className={cn(styles.selectOption, optionClassName, {
-                [styles.selectOptionSelected]: option.value === value
-              })}
-              onClick={() => handleSelect(option.value)}
-            >
-              <div className={styles.selectCheckboxContainer}>
-                {renderCheckbox ? (
-                  renderCheckbox(option.value === value)
+        <div className={styles.selectDropdownContainer}>
+          <div className={styles.selectDropdown}>
+            {options.map((option) => (
+              <div
+                key={option.value}
+                className={cn(styles.selectOption, optionClassName, {
+                  [styles.selectOptionSelected]: option.value === value
+                })}
+              >
+                {multiple ? (
+                  <CheckBoxUI
+                    uiSize={'md'}
+                    typeMark='check'
+                    value={option.value}
+                    onChange={() => handleMultipleSelect(option.value)}
+                    checked={selectedValues.includes(option.value)}
+                  >
+                    {option.label}
+                  </CheckBoxUI>
                 ) : (
-                  <div
-                    className={cn(styles.selectCheckboxDefault, {
-                      [styles.selectCheckboxChecked]: option.value === value
-                    })}
-                  />
+                  <RadioUI
+                    onChange={() => handleSelect(option.value)}
+                    value={option.value}
+                    checked={option.value === value}
+                  >
+                    {option.label}
+                  </RadioUI>
                 )}
               </div>
-              <LinkUI size='md' weight='regular' href=''>
-                {option.label}
-              </LinkUI>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
-      {hasError && <p className={styles.selectError}>{error}</p>}
     </div>
   )
 }
 
-CustomSelect.displayName = 'CustomSelect'
+CustomSelectWithDropdown.displayName = 'CustomSelectWithDropdown'
 
-export default CustomSelect
+export default CustomSelectWithDropdown
 
 // const SelectExample = () => {
 //    const [selectedValue, setSelectedValue] = useState('')
