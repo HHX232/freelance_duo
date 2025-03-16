@@ -8,6 +8,7 @@ import FooterContacts from './components/FooterContacts/FooterContacts'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {Backcall} from '@shared/back-call-popup/backcall'
 import {MiniButton} from '@src/components/UI-kit/buttons/MiniButton/MiniButton'
+import CheckBoxUI from '@src/components/UI-kit/CheckBoxUI/CheckBoxUI'
 
 const PRIMARY_LINKS: IFooterNavigationLinksGroup[] = [
   {

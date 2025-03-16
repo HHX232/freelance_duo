@@ -10,7 +10,6 @@ import {IField} from './InputTextUI.types'
   /* <InputTextUI placeholder='Вводите...' labelText='Вводите...' theme='white' disabled={false} /> */
 }
 
-// ! Адаптировать перерендер
 const InputTextUI = forwardRef<HTMLInputElement, IField>(
   (
     {
