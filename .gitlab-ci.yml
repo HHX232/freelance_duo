@@ -15,6 +15,7 @@ build:
   script:
     - docker build -t "$IMAGE_NAME" .
     - docker push "$IMAGE_NAME"
+  allow_failure: false
 
 deploy:
   stage: deploy
@@ -23,8 +24,26 @@ deploy:
     - export KUBECONFIG=/home/test-perimeter/.kube/config
     - kubectl config set-cluster minikube --server=https://$(minikube ip):8443 --insecure-skip-tls-verify=true
     - kubectl cluster-info
-
   script:
     - kubectl apply -f k8s/deployment.yml
     - kubectl apply -f k8s/service.yml
     - kubectl rollout restart deployment kronfort
+  when: on_success
+
+telegram_alert_failure:
+  stage: notify
+  script:
+    - curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+      -d "chat_id=$TELEGRAM_CHAT_ID" \
+      -d "text=🚨 *GitLab CI/CD Job FAILED* 🚨%0A🛑 Repo: *$CI_PROJECT_NAME*%0A📛 Job: *$CI_JOB_NAME*%0A📌 Status: *$CI_JOB_STATUS*%0A🔗 [View Job]($CI_JOB_URL)" \
+      -d "parse_mode=Markdown"
+  when: on_failure  # Runs only if a job fails
+
+telegram_alert_success:
+  stage: notify
+  script:
+    - curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+      -d "chat_id=$TELEGRAM_CHAT_ID" \
+      -d "text=✅ *GitLab CI/CD Pipeline SUCCESS* 🎉%0A🚀 Repo: *$CI_PROJECT_NAME*%0A💚 Status: *Pipeline Succeeded*%0A🔗 [View Pipeline]($CI_PIPELINE_URL)" \
+      -d "parse_mode=Markdown"
+  when: on_success  # Runs only if the pipeline is successful
