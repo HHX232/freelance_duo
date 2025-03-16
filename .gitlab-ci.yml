@@ -19,8 +19,8 @@ build:
 deploy:
   stage: deploy
   image: bitnami/kubectl:latest
-  before_script:
-    - echo "$KUBECONFIG" > /root/.kube/config
+  # before_script:
+  #   - echo "$KUBECONFIG" > /root/.kube/config
   script:
     - kubectl apply -f k8s/deployment.yml
     - kubectl apply -f k8s/service.yml
