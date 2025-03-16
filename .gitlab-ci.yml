@@ -20,7 +20,10 @@ deploy:
   stage: deploy
   image: bitnami/kubectl:latest
   before_script:
-    - echo "$KUBECONFIG" > /home/test-perimeter/.kube/config
+    - export KUBECONFIG=/home/test-perimeter/.kube/config
+    - kubectl config set-cluster minikube --server=https://$(minikube ip):8443 --insecure-skip-tls-verify=true
+    - kubectl cluster-info
+
   script:
     - kubectl apply -f k8s/deployment.yml
     - kubectl apply -f k8s/service.yml
