@@ -90,7 +90,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
               <div className={styles.head}>
                 <div className={styles.head_icon}>
                   <div className={styles['icon-wrapper']}>
-                    <PercentSVG />
+                    <CalendarSVG />
                   </div>
                 </div>
                 <p className={styles.meta__pages}>

@@ -132,7 +132,26 @@
       margin: 0 40px 0 196px;
     }
   }
+  .poster.poster_full_payment {
+    background:
+      linear-gradient(155deg, rgba(0, 0, 0, 0.4) 23.02%, rgba(0, 0, 0, 0) 104.22%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%),
+      url('/content/payment-methods/full-payment-poster.jpeg') !important;
 
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    @include sm {
+      background-image: none !important;
+      background:
+        linear-gradient(155deg, rgba(0, 0, 0, 0.4) 23.02%, rgba(0, 0, 0, 0) 104.22%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%),
+        url('/content/payment-methods/full-payment-poster.jpeg')  !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+  }
   .poster {
     margin-top: 40px;
     background-size: cover;
@@ -604,5 +623,29 @@
 .send_button {
   @include lg {
     min-width: auto !important;
+  }
+}
+
+.container {
+  @layer base {
+    margin: 0;
+  }
+  @include sm {
+    margin: 0 20px;
+  }
+  @include md {
+    margin: 0 40px;
+  }
+
+  @include xl {
+    margin: 0 40px 0 142px;
+  }
+
+  @include xxl {
+    margin: 0 40px 0 170px;
+  }
+
+  @include xxxl {
+    margin: 0 40px 0 196px;
   }
 }

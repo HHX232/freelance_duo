@@ -5,12 +5,13 @@ import clsx from 'clsx'
 
 export const FullPaymentTab = () => {
   return (
-    <>
+    <div className={styles.container}>
       <section
-        className={styles.poster}
         style={{
-          backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("/content/payment-methods/full-payment-poster.jpeg")`
+          backgroundImage:
+            'linear-gradient(155deg, rgba(0, 0, 0, 0.40) 23.02%, rgba(0, 0, 0, 0.00) 104.22%), linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%),  url("/content/payment-methods/full-payment-poster.jpeg") lightgray -186.45px 0px / 257.781% 100% no-repeat'
         }}
+        className={clsx(styles.poster, styles.poster_full_payment)}
       >
         <h2 className={styles.posterTitle}>100% оплата</h2>
         <p className={styles.subtitle}>Практичный способ приобрести жилье без дополнительных переплат</p>
@@ -36,6 +37,6 @@ export const FullPaymentTab = () => {
         <p className={styles['poster-meta__title']}>Есть вопросы? Свяжитесь с нами!</p>
         <button className={clsx([styles['tab-button']])}>Получить консультацию</button>
       </div>
-    </>
+    </div>
   )
 }

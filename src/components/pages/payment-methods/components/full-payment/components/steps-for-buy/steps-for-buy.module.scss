@@ -36,93 +36,180 @@
   }
 
   &-slider {
-    position: relative;
-    overflow: hidden;
+    @layer base {
+      position: relative;
 
-    &-wrapper {
-      display: flex;
-    }
-
-    &-pagination {
-      height: 48px;
-      bottom: 0;
-
-      margin-top: 40px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &-active {
-        border-radius: 40px !important;
-        background-color: #3c8ca6 !important;
-        width: 25px !important;
+      &-wrapper {
+        display: flex;
+        margin-left: calc(20px * -1);
       }
 
-      &-bullet {
-        width: 15px;
-        height: 15px;
-        border: none;
-        border-radius: 100%;
-        background-color: #11627d4d;
-        transition: 200ms;
+      &-pagination {
+        height: 31px;
+        bottom: 0;
 
-        &:not(:last-child) {
-          margin-right: 16px !important;
+        margin-top: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-active {
+          border-radius: 40px !important;
+          background-color: #3c8ca6 !important;
+          width: 25px !important;
+        }
+
+        &-bullet {
+          width: 15px;
+          height: 15px;
+          border: none;
+          border-radius: 100%;
+          background-color: #11627d4d;
+          transition: 200ms;
+
+          &:not(:last-child) {
+            margin-right: 16px !important;
+          }
         }
       }
 
-      @media (min-width: 769px) {
-        display: none;
+      @include xxl {
+        &-pagination {
+          display: none !important;
+        }
       }
-    }
-
-    @media (max-width: 768px) {
-      margin-left: -40px;
-      margin-right: -40px;
-      padding-right: 40px;
-      padding-left: 40px;
     }
   }
 
   &-slide {
-    overflow: hidden;
+    @layer base {
+      overflow: hidden;
 
-    background: #ffffff;
-    padding: 40px;
+      background: #ffffff;
 
-    min-width: 441px;
-    max-width: 441px;
-    height: 441px;
+      flex: 0 0 87%;
 
-    display: flex;
-    flex-direction: column;
+      padding: 20px;
+      margin-left: 20px;
 
-    @media (max-width: 1024px) {
-      padding: 36px 24px;
-    }
-
-    &-title {
-      @include font(3, 32, 44);
-    }
-
-    &-count {
-      background-color: #11627d14;
-      color: #11627d;
-
-      border-radius: 100%;
-
-      width: 48px;
-      height: 48px;
+      height: 320px;
 
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: auto;
+      flex-direction: column;
+
+      &-title {
+        @include font(3, 22, 34);
+      }
+
+      &-count {
+        background-color: #11627d14;
+        color: #11627d;
+
+        border-radius: 100%;
+
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: auto;
+      }
+
+      .button_wrapper {
+        padding-top: 24px;
+      }
+
+      &-button {
+      }
     }
 
-    &-button {
-      margin-top: 40px;
+    @include sm {
+      flex: 0 0 70%;
     }
+
+    @include md {
+      padding: 24px;
+      flex: 0 0 55%;
+      height: 380px;
+
+      &-title {
+        @include font(3, 26, 36);
+      }
+
+      .button_wrapper {
+        padding-top: 40px;
+      }
+      &-count {
+        margin-bottom: auto;
+      }
+    }
+
+    @include lg {
+      padding: 24px 24px 36px 24px;
+      flex: 0 0 42%;
+      height: 380px;
+
+      &-title {
+        @include font(3, 26, 36);
+      }
+
+      .button_wrapper {
+        padding-top: 40px;
+      }
+      &-count {
+        margin-bottom: auto;
+      }
+    }
+
+    @include xl {
+      padding: 40px;
+      flex: 0 0 42%;
+      height: 441px;
+
+      &-title {
+        @include font(3, 32, 44);
+      }
+
+      button span {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
+    @include xxl {
+      padding: 40px;
+      flex: 0 0 32%;
+    }
+
+    @include xxxl {
+      padding: 40px;
+      flex: 0 0 29%;
+    }
+  }
+}
+
+.content_container {
+  @layer base {
+    margin: 0 20px;
+  }
+  @include sm {
+    margin: 0 20px;
+  }
+  @include md {
+    margin: 0 40px;
+  }
+
+  @include xl {
+    margin: 0 40px 0 142px;
+  }
+
+  @include xxl {
+    margin: 0 40px 0 170px;
+  }
+
+  @include xxxl {
+    margin: 0 40px 0 196px;
   }
 }

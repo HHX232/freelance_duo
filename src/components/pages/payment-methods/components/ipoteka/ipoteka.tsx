@@ -2,9 +2,9 @@ import FastForwardSVG from '@icons/fast_forward.svg'
 import MonitorSVG from '@icons/monitor.svg'
 import FilledButton from '@shared/filledButton/FilledButton'
 import BorderedButton from '@shared/borderedButton/BorderedButton'
+import ipotekaStyles from './ipoteka.module.scss'
 import styles from '../../payment-methods.module.scss'
 import clsx from 'clsx'
-import ipotekaStyles from './ipoteka.module.scss'
 import {FC} from 'react'
 import Image from 'next/image'
 
@@ -51,17 +51,17 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
         </div>
       </div>
 
-      <section className={styles.variants}>
+      <section className={clsx(styles.variants, ipotekaStyles.variants)}>
         <div className={styles['variant-items']}>
           <div className={styles['variant-row']}>
             <div
-              className={styles.cover}
+              className={clsx(ipotekaStyles.cover, styles.cover)}
               style={{backgroundImage: `url("/content/payment-methods/ipoteka_second.jpeg")`}}
             />
-            <div className={styles.meta}>
-              <div className={styles.meta__info}>
-                <div className={styles['meta__info-inner']}>
-                  <h3 className={styles['meta__title']}>
+            <div className={clsx(ipotekaStyles.meta, styles.meta)}>
+              <div className={clsx(ipotekaStyles.meta__info, styles.meta__info)}>
+                <div className={clsx(styles['meta__info-inner'], ipotekaStyles.info_content)}>
+                  <h3 className={clsx(styles['meta__title'], ipotekaStyles.meta_title)}>
                     Одобрение ипотеки
                     <br />
                     <span>по 2 документам</span>
@@ -71,19 +71,21 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
                     Бесплатная консультация с кредитным специалистом по номеру
                   </p>
                   <div>
-                    <p className={clsx(styles['meta__info-inner__phone'])}>8 (812) 660–82–71</p>
+                    <p className={clsx(ipotekaStyles.contacts, styles['meta__info-inner__phone'])}>8 (812) 660–82–71</p>
                     <p className={clsx(styles['meta__info-inner__caption'])} style={{color: '#A0A3A8', marginTop: 10}}>
                       ежедневно с 9:00 до 18:00
                     </p>
                   </div>
                 </div>
-                <div className={styles['meta-buttons']}>
-                  <FilledButton>Подать заявку онлайн</FilledButton>
+                <div className={clsx(styles['meta-buttons'], ipotekaStyles.controls)}>
+                  <FilledButton>
+                    <span>Подать заявку онлайн</span>
+                  </FilledButton>
                   <BorderedButton
                     className={styles['meta-buttons__bordered']}
                     onClick={() => setShownRequestCallBack(true)}
                   >
-                    Связаться с нами
+                    <span style={{color: '#555'}}>Связаться с нами</span>
                   </BorderedButton>
                 </div>
               </div>
