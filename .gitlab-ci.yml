@@ -1,6 +1,7 @@
 stages:
   - build
   - deploy
+  - notify
 
 variables:
   IMAGE_NAME: "yernazarq747/kronfort-frontend:latest"
