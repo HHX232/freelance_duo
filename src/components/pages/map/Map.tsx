@@ -20,6 +20,7 @@ import ContactFormPage from './Components/contact-form/ContactForm'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 import TransportPage from './Components/transport/Transport'
+import Swipe from '@src/components/UI-kit/Swipe/Swipe'
 const Compass = dynamic(() => import('./Components/card/Compass'), {ssr: false})
 
 const directionHints: DirectionHint[] = [
@@ -266,6 +267,7 @@ const MapContent = () => {
                     <PhoneSlider slides={mobileSlides} />
                   </div>
                 </div>
+                <Swipe className={styles.swipe} maxVisibleWidth={768} />
                 <MouseMover
                   className={clsx(styles.wrapper)}
                   isMobile={isMobile}
@@ -273,7 +275,6 @@ const MapContent = () => {
                   disableMove={false}
                 >
                   {/*--------------------------- */}
-
                   <div className={styles.pointsWrapper}>
                     {pins &&
                       pins.map((pin) => (

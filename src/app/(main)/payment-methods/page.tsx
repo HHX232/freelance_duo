@@ -5,7 +5,7 @@ import PaymentMethodsPage from '@pages/payment-methods/payment-methods'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Кладовые – ЖК «Кронфорт», Кронштадт',
+    title: 'Способы оплаты – ЖК «Кронфорт», Кронштадт',
     description: 'Способы оплаты',
     alternates: {
       canonical: new URL('/payment-methods', process.env.NEXT_PUBLIC_SITE_URL).toString()

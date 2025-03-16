@@ -132,7 +132,26 @@
       margin: 0 40px 0 196px;
     }
   }
+  .poster.poster_full_payment {
+    background:
+      linear-gradient(155deg, rgba(0, 0, 0, 0.4) 23.02%, rgba(0, 0, 0, 0) 104.22%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%),
+      url('/content/payment-methods/full-payment-poster.jpeg') !important;
 
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    @include sm {
+      background-image: none !important;
+      background:
+        linear-gradient(155deg, rgba(0, 0, 0, 0.4) 23.02%, rgba(0, 0, 0, 0) 104.22%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%),
+        url('/content/payment-methods/full-payment-poster.jpeg')  !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+  }
   .poster {
     margin-top: 40px;
     background-size: cover;
@@ -144,7 +163,7 @@
       padding: 60px 16px 40px 16px;
     }
 
-    @include xxxl {
+    @include xxl {
       padding: 54px;
     }
 
@@ -163,40 +182,54 @@
     }
 
     &-title {
-      @include RomulH2();
+      @layer base {
+        @include font(3, 40, 50);
+      }
+
+      @include md {
+        @include font(3, 52, 58);
+      }
+
+      @include xl {
+        @include font(3, 64, 80);
+      }
 
       color: #fff;
     }
 
     .subtitle {
-      @include font(1, 24, 34);
-
       @layer base {
+        @include font(1, 16, 20);
         max-width: 300px;
         color: #fff;
         padding-top: 24px;
+        width: 50%;
       }
 
-      @include xxl {
-        margin-top: 40px;
-      }
-
-      @media (max-width: map_get($breakpoints, lg)) {
+      @include md {
         @include font(1, 20, 26);
       }
 
-      @media (max-width: map_get($breakpoints, sm)) {
-        @include font(1, 16, 20);
+      @include xl {
+        @include font(1, 24, 34);
+      }
+
+      @include xxxl {
+        padding-top: 40px;
       }
     }
 
     .cards {
       display: flex;
-      margin-top: 134px;
       gap: 20px;
 
-      @media (max-width: map-get($breakpoints, md)) {
+      @layer base {
+        margin-top: 110px;
         flex-direction: column;
+      }
+
+      @include lg {
+        flex-direction: row;
       }
 
       .card {
@@ -209,18 +242,27 @@
 
         @layer base {
           padding: 14px 16px;
+
+          .card-title {
+            @include font(3, 18, 26);
+          }
         }
 
         @include md {
           padding: 16px;
+          .card-title {
+            @include font(3, 20, 30);
+          }
         }
 
         @include xl {
           padding: 24px 36px;
+          .card-title {
+            @include font(3, 24, 36);
+          }
         }
-
-        .card-title {
-          @include RomulH5();
+        @include xxxl {
+          padding: 36px;
         }
       }
     }
@@ -320,7 +362,6 @@
       padding: 110px 40px 0 170px;
     }
 
-    
     @include xxxl {
       padding: 110px 40px 0 196px;
     }
@@ -423,6 +464,7 @@
         &__title {
           @include RomulH4();
           margin-bottom: 40px;
+          color: $grey;
 
           @include bp-xl {
             margin-bottom: 36px;
@@ -453,23 +495,19 @@
           &-inner {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            @layer base {
+              gap: 24px;
+            }
 
             &__caption {
               @include font(1, 16, 22);
 
-              margin-bottom: 58px;
-
-              @include bp-xl {
-                margin-bottom: 54px;
+              @layer base {
+                margin-bottom: 24px;
               }
 
-              @include bp-lg {
-                margin-bottom: 44px;
-              }
-
-              @include bp-md {
-                margin-bottom: 40px;
+              @include xxl {
+                margin-bottom: 36px;
               }
             }
 
@@ -585,5 +623,29 @@
 .send_button {
   @include lg {
     min-width: auto !important;
+  }
+}
+
+.container {
+  @layer base {
+    margin: 0;
+  }
+  @include sm {
+    margin: 0 20px;
+  }
+  @include md {
+    margin: 0 40px;
+  }
+
+  @include xl {
+    margin: 0 40px 0 142px;
+  }
+
+  @include xxl {
+    margin: 0 40px 0 170px;
+  }
+
+  @include xxxl {
+    margin: 0 40px 0 196px;
   }
 }

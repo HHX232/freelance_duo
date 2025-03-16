@@ -76,6 +76,17 @@
   height: 100vh;
   min-height: 653px !important;
   scale: 1;
+
+}
+.swipe {
+  position: absolute;
+  z-index: 10;
+  top: 98px;
+  right: 34px;
+
+  svg path {
+    fill: #fff;
+  }
 }
 
 .mobileImage {

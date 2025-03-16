@@ -1,0 +1,28 @@
+$max-icon-width: 30px;
+$wrapper-x-padding: 10px;
+
+.wrapper {
+
+  @layer base {
+    max-width: calc($max-icon-width + $wrapper-x-padding + $wrapper-x-padding);
+    animation: swipeAnimation 3s infinite;
+    padding: 0 calc($wrapper-x-padding);
+
+    svg {
+      width: 100%;
+    }
+  }
+}
+
+@keyframes swipeAnimation {
+  0% {
+    translate: 0;
+  }
+
+  50% {
+    translate: calc($wrapper-x-padding);
+  }
+  100% {
+    translate: 0px;
+  }
+}
