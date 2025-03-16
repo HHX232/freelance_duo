@@ -17,6 +17,9 @@ build:
     - docker build -t "$IMAGE_NAME" .
     - docker push "$IMAGE_NAME"
   allow_failure: false
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'  # Runs on main branch
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'  
 
 deploy:
   stage: deploy
@@ -30,6 +33,8 @@ deploy:
     - kubectl apply -f k8s/service.yml
     - kubectl rollout restart deployment kronfort
   when: on_success
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
 
 telegram_alert_failure:
   stage: notify
@@ -40,6 +45,8 @@ telegram_alert_failure:
       -d "text=🚨 *GitLab CI/CD Job FAILED* 🚨%0A🛑 Repo: *$CI_PROJECT_NAME*%0A📛 Job: *$CI_JOB_NAME*%0A📌 Status: *$CI_JOB_STATUS*%0A🔗 [View Job]($CI_JOB_URL)" \
       -d "parse_mode=Markdown"
   when: on_failure  # Runs only if a job fails
+  only:
+    - main
 
 telegram_alert_success:
   stage: notify
@@ -50,3 +57,29 @@ telegram_alert_success:
       -d "text=✅ *GitLab CI/CD Pipeline SUCCESS* 🎉%0A🚀 Repo: *$CI_PROJECT_NAME*%0A💚 Status: *Pipeline Succeeded*%0A🔗 [View Pipeline]($CI_PIPELINE_URL)" \
       -d "parse_mode=Markdown"
   when: on_success  # Runs only if the pipeline is successful
+  only:
+    - main
+
+telegram_alert_failure_slave:
+  stage: notify
+  script:
+    - |
+      curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+      -d "chat_id=$TELEGRAM_CHAT_ID" \
+      -d "text=🚨 *GitLab CI/CD Job FAILED* 🚨%0A🛑 Repo: *$CI_PROJECT_NAME*%0A🔀 Merge Request: [!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)%0A📌 Status: *$CI_JOB_STATUS*%0A🔗 [View Job]($CI_JOB_URL)" \
+      -d "parse_mode=Markdown"
+  when: on_failure  # Runs only if a job fails
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+telegram_alert_success_slave:
+  stage: notify
+  script:
+    - |
+      curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+      -d "chat_id=$TELEGRAM_CHAT_ID" \
+      -d "text=✅ *GitLab CI/CD Pipeline SUCCESS* 🎉%0A🚀 Repo: *$CI_PROJECT_NAME*%0A🔀 Merge Request: [!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)%0A💚 Status: *Pipeline Succeeded*%0A🔗 [View Pipeline]($CI_PIPELINE_URL)" \
+      -d "parse_mode=Markdown"
+  when: on_success  # Runs only if the pipeline is successful
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
