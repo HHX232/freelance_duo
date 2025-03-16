@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styles from './SelectInput.module.scss'
 import cn from 'clsx'
 import RadioUI from '../../RadioUI/RadioUI'
@@ -62,7 +62,7 @@ const CustomSelect = React.forwardRef<HTMLSelectElement, CustomSelectProps>(
 
     // Handle the native select onChange
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      onChange(e.target.value)
+      onChange?.(e.target.value)
     }
 
     // Custom dropdown toggle (visual only)
@@ -158,7 +158,7 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   value,
   values = [],
   onChange,
-  onMultipleChange = () => {},
+  onMultipleChange = () => { },
   leftIcon,
   rightIcon,
   containerClassName,
@@ -265,7 +265,7 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
               strokeWidth='2'
               strokeLinecap='round'
               strokeLinejoin='round'
-              className={cn(styles.selectArrow, {[styles.selectArrowUp]: isDropdownOpen})}
+              className={cn(styles.selectArrow, { [styles.selectArrowUp]: isDropdownOpen })}
             >
               <polyline points='6 9 12 15 18 9'></polyline>
             </svg>
