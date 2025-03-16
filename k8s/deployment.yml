@@ -16,9 +16,12 @@ spec:
     spec:
       containers:
         - name: kronfort
-          image: kronfort:latest  # Will be updated dynamically in CI/CD
+          image: yernazarq747/kronfort-frontend:latest  # Will be updated dynamically in CI/CD
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           env:
             - name: NODE_ENV
               value: "production"
+      imagePullSecrets:
+        - name: dockerhub-secret
