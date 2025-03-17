@@ -32,6 +32,7 @@ deploy:
   script:
     - |
       sed -i 's#image: .*#image: $IMAGE_NAME#g' k8s/deployment.yml
+      cat k8s/deployment.yml
       kubectl apply -f k8s/deployment.yml
       kubectl apply -f k8s/service.yml
       kubectl rollout restart deployment kronfort
