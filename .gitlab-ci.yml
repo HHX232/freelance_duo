@@ -64,7 +64,7 @@ telegram_alert_failure_slave:
   stage: notify
   script:
     - |
-      echo "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage"
+      echo "$TELEGRAM_BOT_TOKEN"
       curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
       -d "chat_id=$TELEGRAM_CHAT_ID" \
       -d "text=🚨 *GitLab CI/CD Job FAILED* 🚨%0A🛑 Repo: *$CI_PROJECT_NAME*%0A🔀 Merge Request: [!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)%0A📌 Status: *$CI_JOB_STATUS*%0A🔗 [View Job]($CI_JOB_URL)" \
