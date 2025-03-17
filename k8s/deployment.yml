@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: kronfort
-          image: yernazarq747/kronfort-frontend:latest  # Will be updated dynamically in CI/CD
+          image: kronfort-frontend:latest  # Will be updated dynamically in CI/CD
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
