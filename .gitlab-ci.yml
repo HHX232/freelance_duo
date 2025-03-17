@@ -2,9 +2,10 @@ stages:
   - build
   - deploy
   - notify
+  - cleanup
 
 variables:
-  IMAGE_NAME: "yernazarq747/kronfort-frontend:latest"
+  IMAGE_NAME: "$CI_REGISTRY_IMAGE/kronfort-frontend:latest"
 
 build:
   stage: build
@@ -12,7 +13,7 @@ build:
   services:
     - docker:dind
   before_script:
-    - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
   script:
     - docker build -t "$IMAGE_NAME" .
     - docker push "$IMAGE_NAME"
@@ -29,9 +30,11 @@ deploy:
     - kubectl config set-cluster minikube --server=https://$(minikube ip):8443 --insecure-skip-tls-verify=true
     - kubectl cluster-info
   script:
-    - kubectl apply -f k8s/deployment.yml
-    - kubectl apply -f k8s/service.yml
-    - kubectl rollout restart deployment kronfort
+    - |
+      sed -i 's#image: .*#image: $IMAGE_NAME#g' k8s/deployment.yml
+      kubectl apply -f k8s/deployment.yml
+      kubectl apply -f k8s/service.yml
+      kubectl rollout restart deployment kronfort
   when: on_success
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
@@ -83,3 +86,12 @@ telegram_alert_success_slave:
   when: on_success  # Runs only if the pipeline is successful
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+cleanup_untagged_images:
+  stage: cleanup
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker images --filter "dangling=true" -q | xargs -r docker rmi -f
+  when: always  
