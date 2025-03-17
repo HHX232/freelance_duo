@@ -170,6 +170,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
               buttonFill={'none'}
               buttonElementColor={'black'}
               buttonText={''}
+              extraClass={styles.extra_weight}
             >
               <PhoneIconSVG />
             </FullButton>
