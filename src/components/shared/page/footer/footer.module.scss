@@ -72,11 +72,27 @@
   // overflow: hidden;
   width: 100%;
   height: fit-content;
-  padding: 36px 40px 40px;
+  padding: 36px 196px;
   background-color: #165167;
 
-  @include bp-sm {
-    padding: 36px 20px;
+  @include custom(0, map-get($breakpoints, xxxl) - 1px) {
+    padding: 36px 170px;
+  }
+
+  @include custom(0, map-get($breakpoints, xxl) - 1px) {
+    padding: 36px 142px;
+  }
+
+  @include custom(0, map-get($breakpoints, xl) - 1px) {
+    padding: 36px 40px;
+  }
+
+  @include custom(0, map-get($breakpoints, md) - 1px) {
+    padding: 40px 20px;
+  }
+
+  @include custom(0, map-get($breakpoints, sm) - 1px) {
+    padding: 40px 16px;
   }
 
   .footer_inner {
