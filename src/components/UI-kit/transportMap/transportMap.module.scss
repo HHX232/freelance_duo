@@ -1,0 +1,60 @@
+.trmap_container {
+    position: relative;
+    display: flex;
+    width: 100%;
+
+    @layer base {
+        height: 700px;
+    }
+
+    @include xs {
+        height: 700px;
+    }
+    
+    @include xl {
+        height: 800px;
+    }
+
+    @include xxl {
+        height: 850px;
+    }
+
+    @include xxxl {
+        height: 1000px;
+    }
+
+    .trmap_map {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.sidebar_button_show {
+    position: absolute;
+    top: 20px;
+    right: 500px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: #FFF;
+    color: #111;
+    cursor: pointer;
+    font-family: $font-primary;
+    font-size: 14px;
+}
+
+.sidebar_button_hide {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: #FFF;
+    color: #111;
+    cursor: pointer;
+    font-family: $font-primary;
+    font-size: 14px;
+}

@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { FC } from "react";
 import styles from "./mapSidebar.module.scss";
 
-const MapSidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface IMapSidebar {
+  isOpen: boolean
+}
+
+const MapSidebar: FC<IMapSidebar> = ({isOpen}) => {
 
   return (
     <div className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
-      <button className={styles.toggleButton} onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? '>>' : '<<'}
-      </button>
       <div className={styles.content}>
         <h2>ДОСТУПНОСТЬ</h2>
         <p>25 минут до Курортного района</p>

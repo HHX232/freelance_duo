@@ -9,7 +9,11 @@ interface IMapLegend {
 
 const MapLegend: FC<IMapLegend> = ({switchVisibility}) => {
 
+    const [isChecked, setIsChecked] = useState(true);
+
     const handleSwitch = (event: ChangeEvent<HTMLInputElement>) => {
+        console.log('CLC-1->', event.target.checked);
+        setIsChecked(event.target.checked)
         switchVisibility(event.target.checked)
     }
 
@@ -28,7 +32,7 @@ const MapLegend: FC<IMapLegend> = ({switchVisibility}) => {
   return (
     <section className={styles['maplegend-wrapper']}>
         <div className={styles['maplegend-container']}>
-            <SwitchUI checked onChange={handleSwitch}/>
+            <SwitchUI checked={isChecked} onChange={handleSwitch}/>
         </div>
         <p className={styles['maplegend-name']}>Инфраструктура</p>
         <span className={styles['maplegend-info-icon']}>i</span>
