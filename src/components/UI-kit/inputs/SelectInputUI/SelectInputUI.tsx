@@ -1,8 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import styles from './SelectInput.module.scss'
-import cn from 'clsx'
+import cn, {clsx} from 'clsx'
 import RadioUI from '../../RadioUI/RadioUI'
 import CheckBoxUI from '../../CheckBoxUI/CheckBoxUI'
+import {Golos_Text} from 'next/font/google'
+
+const golos = Golos_Text({subsets: ['cyrillic']})
 
 interface SelectOption {
   value: string
@@ -86,7 +89,14 @@ const CustomSelect = React.forwardRef<HTMLSelectElement, CustomSelectProps>(
     const selectedOption = options.find((option) => option.value === value)
 
     return (
-      <div className={`${styles.selectContainer} ${containerClassName} ${disabled ? styles.selectDisabled : ''}`}>
+      <div
+        className={clsx(
+          styles.selectContainer,
+          containerClassName,
+          {[styles.selectDisabled]: disabled},
+          golos.className
+        )}
+      >
         {/* Custom styled select appearance */}
         <div
           className={`${styles.selectStyled} ${selectClassName} ${isOpen ? styles.selectOpen : ''}`}
@@ -158,7 +168,7 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
   value,
   values = [],
   onChange,
-  onMultipleChange = () => { },
+  onMultipleChange = () => {},
   leftIcon,
   rightIcon,
   containerClassName,
@@ -265,7 +275,7 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
               strokeWidth='2'
               strokeLinecap='round'
               strokeLinejoin='round'
-              className={cn(styles.selectArrow, { [styles.selectArrowUp]: isDropdownOpen })}
+              className={cn(styles.selectArrow, {[styles.selectArrowUp]: isDropdownOpen})}
             >
               <polyline points='6 9 12 15 18 9'></polyline>
             </svg>
