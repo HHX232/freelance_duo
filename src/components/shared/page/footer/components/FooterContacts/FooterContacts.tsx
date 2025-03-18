@@ -60,7 +60,7 @@ export default function FooterContacts(props: IFooterContactsProps) {
         </FullButton>
 
         <div className={styles.phone}>
-          <LinkUI extraClass={styles.phone} href={'tel:+78126022010'} size={'sm'}>
+          <LinkUI extraClass={styles.phone} href={'tel:+78126022010'} size={'sm'} weight={'medium'}>
             Тел: + 7 (123) 123-45-67
           </LinkUI>
         </div>
@@ -70,11 +70,13 @@ export default function FooterContacts(props: IFooterContactsProps) {
         {props.navProps.secondaryLinks.map((link, linkIndex) => (
           <li key={linkIndex}>
             {link.href ? (
-              <LinkUI href={link.href} size={'sm'}>
+              <LinkUI href={link.href} size={'sm'} weight={'regular'}>
                 {link.name}
               </LinkUI>
             ) : (
-              <LinkUI size={'sm'}>{link.name}</LinkUI>
+              <LinkUI size={'sm'} weight={'regular'}>
+                {link.name}
+              </LinkUI>
             )}
           </li>
         ))}
