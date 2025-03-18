@@ -16,4 +16,5 @@ export interface IField extends InputHTMLAttributes<HTMLInputElement> {
   isNeedToClear?: boolean
   textAfterValue?: string
   isNeedToClear?: boolean
+  textAfterValue?: string
 }
