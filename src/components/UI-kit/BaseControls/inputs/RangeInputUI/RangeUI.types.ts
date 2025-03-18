@@ -15,4 +15,5 @@ export interface IField extends InputHTMLAttributes<HTMLInputElement> {
   maxValue?: number
   isNeedToClear?: boolean
   textAfterValue?: string
+  isNeedToClear?: boolean
 }
