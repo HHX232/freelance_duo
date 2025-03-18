@@ -26,6 +26,7 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
       maxValue = 100,
       isNeedToClear,
       textAfterValue = '',
+      isNeedToClear,
       ...rest
     },
     ref
