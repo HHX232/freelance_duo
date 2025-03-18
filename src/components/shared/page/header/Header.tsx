@@ -150,20 +150,9 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
             <TelLink typeDecorNumber={'classic'} extraClass={styles.phone} />
           </div>
           <div className={styles.phoneIcon}>
-            <FullButton
-              type={'Link'}
-              href={'tel:+71231234567'}
-              activeButton={true}
-              border={false}
-              borderColor={''}
-              onClick={() => setOpenAuth(!isOpenAuth)}
-              buttonFill={'none'}
-              buttonElementColor={'black'}
-              buttonText={''}
-              extraClass={styles.extra_weight}
-            >
+            <TelLink hideDefaultNumber typeDecorNumber={'classic'} extraStyle={{fontWeight: '400'}}>
               <PhoneIconSVG />
-            </FullButton>
+            </TelLink>
           </div>
           {!isLoadingCount && (
             <>
