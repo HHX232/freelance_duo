@@ -13,4 +13,5 @@ export interface IField extends InputHTMLAttributes<HTMLInputElement> {
   theme?: TTheme
   minValue?: number
   maxValue?: number
+  textAfterValue?: string
 }

@@ -21,6 +21,7 @@ import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMen
 import FindApartmentButton from './components/FindApartmentButton/FindApartmentButton'
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 import TelLink from '@src/components/UI-kit/TelLink/TelLink'
+import InputRangeUI from '@src/components/UI-kit/inputs/RangeInputUI/RangeInputUI'
 
 export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
@@ -97,6 +98,9 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
     <header
       className={clsx(styles.header, {[styles.dark]: dark}, isMenuOpened ? `${styles.menuOpened} no-scroll` : '')}
     >
+      <div style={{backgroundColor: 'gray', padding: '20px', margin: '20px', width: '300px'}}>
+        <InputRangeUI theme='white' />
+      </div>
       <div className={styles.headerTopContainer}>
         <div className={styles.container}>
           <div className={styles.logo}>

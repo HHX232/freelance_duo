@@ -24,15 +24,15 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
       theme,
       minValue = 0,
       maxValue = 100,
+      textAfterValue = '',
       ...rest
     },
     ref
   ) => {
     const [inputText, setInputText] = useState('')
-    // Initialize rangeValue with maxValue
     const [rangeValue, setRangeValue] = useState(maxValue)
     const id = useId()
-    const rangeRef = useRef<HTMLInputElement>(null)
+    const textInputRef = useRef<HTMLInputElement>(null)
     const progressRef = useRef<HTMLDivElement>(null)
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,9 +47,8 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
       updateProgressWidth(newValue)
     }
 
-    // Update progress width based on range value
     const updateProgressWidth = (value: number) => {
-      if (progressRef.current && rangeRef.current) {
+      if (progressRef.current) {
         const percentage = ((value - minValue) / (maxValue - minValue)) * 100
         progressRef.current.style.width = `${percentage}%`
       }
@@ -131,11 +130,11 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
                 [styles.input_white]: theme === 'white',
                 [styles.input_dark]: theme === 'dark'
               })}
-              ref={ref}
+              ref={textInputRef}
               type={type}
               {...rest}
               disabled={true}
-              value={inputText}
+              value={inputText + textAfterValue}
               onChange={onInputChange}
               autoComplete={type === 'text' ? 'off' : undefined}
             />
@@ -172,9 +171,8 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
                   [styles.range_progress_disabled]: disabled
                 })}
               ></div>
-
               <input
-                ref={rangeRef}
+                ref={ref}
                 type='range'
                 min={minValue}
                 max={maxValue}
