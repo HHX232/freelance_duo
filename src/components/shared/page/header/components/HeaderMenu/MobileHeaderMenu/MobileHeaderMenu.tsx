@@ -573,7 +573,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                   weight={'regular'}
                   extraStyle={{color: '#FFFFFF'}}
                   onClick={onClose}
-                  href={'/ipotechniy-kalkulator'}
+                  href={'/mortgage-calculate'}
                 >
                   <Accordion
                     animationOn={false}

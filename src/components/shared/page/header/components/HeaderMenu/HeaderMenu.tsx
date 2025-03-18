@@ -405,7 +405,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               />
 
               {/* TODO: Проверить ссылки */}
-              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/ipotechniy-kalkulator'}>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/mortgage-calculate'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -487,7 +487,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </LinkUI>
             </div>
           </div>
-          {/* 
+          {/*
         ------------------------------------------------------------------------------------
         */}
         </div>
