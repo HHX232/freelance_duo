@@ -13,7 +13,7 @@ const MakeTicket = () => {
         <div className={styles['title']}>
           <div>Нужна помощь {isSm && <br/>}с выбором?</div>
         </div>
-        <TicketForm />
+        <TicketForm formContainerClassName={styles['ticketFormWrapper']}/>
       </div>
     </div>
   )

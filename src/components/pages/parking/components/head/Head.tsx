@@ -20,7 +20,7 @@ const Head = () => {
       <section className={styles['head-wrapper']}>
         <div className={styles.routerWrapper}>
           {/*<Title breadcrumbs={breadcrumbItems} dashboard={true} darkTheme={true} />*/}
-          <Breadcrumbs items={breadcrumbItems} darkTheme={true} className={styles['router']}  />
+          <Breadcrumbs items={breadcrumbItems} darkTheme={true} className={styles['router']}  iconStyles={styles['routerIcon']} />
         </div>
         <div className={styles.container}>
           <div className={styles.title_wrap}>
