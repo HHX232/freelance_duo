@@ -2,7 +2,7 @@ FROM node:20-alpine AS builder
 
 EXPOSE 3000
 ENV NEXT_TELEMETRY_DISABLED 1
-ENV BACKEND_URL https://back.kronfort.ru
+ENV BACKEND_URL https://kronfort.quantum747.tech
 ENV NEXT_PUBLIC_SITE_URL https://kronfort.quantum747.tech
 
 WORKDIR /app
