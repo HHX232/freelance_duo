@@ -17,7 +17,7 @@ const Scheme = () => {
       <div className={styles.info}>
         <div className={styles.title}>Схема типового этажа</div>
         <div className={styles['download-wrapper']}>
-          <DownloadButton/>
+          <DownloadButton text={"Скачайте схему паркинга"}/>
         </div>
       </div>
       <div className={styles.schemeWrapper}>{isXl ? isLg ? <SchemeIcon className={styles.icon}/> : <SchemeIcon className={styles.icon} /> : isXXXL ? <SchemeXXXL className={styles.icon}/> : <SchemeDesctop /> }</div>

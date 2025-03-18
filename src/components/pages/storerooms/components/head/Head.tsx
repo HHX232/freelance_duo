@@ -20,7 +20,7 @@ const Head = () => {
             items={breadcrumbItems}
             darkTheme={true}
             className={styles['router']}
-            iconStyles={styles.iconStyles}
+            iconStyles={styles.routerIcon}
           />
         </div>
         <div className={`${styles['text-wrapper']}`}>

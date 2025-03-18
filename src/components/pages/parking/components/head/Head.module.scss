@@ -160,8 +160,16 @@
 .router{
   @layer base {
     display: flex!important;
-    @include font(3, 14, 20, 400);
+    @include font(1, 14, 14, 400);
     align-items: center;
+  }
+}
+
+.routerIcon {
+  @layer base {
+    path {
+      stroke: #FFFFFF!important;
+    }
   }
 }
 

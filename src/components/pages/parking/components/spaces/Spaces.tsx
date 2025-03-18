@@ -1,5 +1,5 @@
 import styles from './spaces.module.scss'
-import FilledButton from '@shared/filledButton/FilledButton'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 const Spaces = () => {
   return (
@@ -20,10 +20,20 @@ const Spaces = () => {
           <div className={`${styles['tile']} ${styles['bg-3']}`}>
             <div className={`${styles['text_wrapper']}`}>
               <div className={`${styles['title_text']}`}>места хватит всем</div>
-              <div className={`${styles['desc']}`}>для установки зарядных станций электромобилей.</div>
+              <div className={`${styles['desc']}`}>Места для автомобилей, мотоциклов и велосипедов</div>
             </div>
             <div className={`${styles['button_wrapper']}`}>
-              <FilledButton style={{height: 'fit-content'}}>Подобрать Парковку</FilledButton>
+              <FullButton
+                type={'Button'}
+                buttonText={'Подобрать Парковку'}
+                activeButton={true}
+                border={false}
+                borderColor={''}
+                extraClass={styles.button}
+                buttonFill='bronze-500'
+                buttonElementColor='white'
+                buttonBorderRadius={'6px'}
+              />
             </div>
           </div>
         </div>

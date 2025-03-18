@@ -84,7 +84,9 @@
     @include font(3, 26, 36, 400);
   }
 
-
+  @include xl {
+    @include font(3, 32, 44, 400);
+  }
 
 }
 
@@ -147,6 +149,7 @@
   @include md{
     .tile {
       height: 240px;
+      @include font(3, 24, 36, 400);
     }
 
     .tile:last-of-type{
@@ -200,6 +203,7 @@
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xs.png') no-repeat center center;
     background-size: 100% 100%;
     justify-content: space-between;
+    @include font(3, 22, 34, 400);
   }
 
   @include sm {

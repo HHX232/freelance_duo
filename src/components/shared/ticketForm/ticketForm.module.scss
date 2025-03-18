@@ -89,7 +89,7 @@
     .caption {
       @include font(1, 12, 14, 300);
       padding-top: 20px;
-      
+
       & a {
         color: $grey-text !important;
         text-decoration: underline !important;
