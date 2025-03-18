@@ -14,11 +14,11 @@
 
 .container {
   display: flex;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   flex-direction: column;
   gap: 58px;
-  overflow: hidden;
 
   @include bp-md {
     gap: 57px;
@@ -29,9 +29,6 @@
   }
 
   a {
-    color: #fff;
-    font-size: 12px;
-    font-weight: 400;
     line-height: 14px;
   }
 
@@ -78,10 +75,11 @@
       width: fit-content;
     }
 
-    .phone {
+    .phone,
+    .phone a {
       margin-bottom: 2px;
       margin-left: 8px;
-      text-align: center;
+      color: #fff !important;
     }
   }
 }
