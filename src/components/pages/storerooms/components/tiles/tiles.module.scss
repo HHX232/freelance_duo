@@ -101,13 +101,18 @@
 
   @include md{
     padding: 40px;
+
+    .title {
+      @include font(3, 26, 36, 400);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
   }
 
   @include xl {
     height: 300px;
-  }
-
-  @include lg {
 
     .title {
       @include font(3, 32, 44, 400);
@@ -169,6 +174,7 @@
   @include xxxl {
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxxl.png') no-repeat;
     background-size: 100% 100%;
+    padding: 60px;
   }
 
 }
@@ -195,6 +201,10 @@
   @include md{
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_md.png') no-repeat center center;
     background-size: 100% 100%;
+
+    .title {
+      @include font(3, 52, 58, 400);
+    }
   }
 
   @include lg {
@@ -202,13 +212,17 @@
     background-size: 100% 100%;
 
     .title {
-      @include font(3, 64, 80, 400);
+      @include font(3, 52, 58, 400);
     }
   }
 
   @include xl {
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xl.png') no-repeat center center;
     background-size: 100% 100%;
+
+    .title {
+      @include font(3, 64, 80, 400);
+    }
   }
 
   @include xxl {
@@ -234,8 +248,20 @@
     }
   }
 
+  @include md{
+    .title {
+      @include font(3, 52, 58, 400);
+    }
+  }
+
   @include lg {
 
+    .title {
+      @include font(3, 64, 80, 400);
+    }
+  }
+
+  @include xl {
     .title {
       @include font(3, 64, 80, 400);
     }
