@@ -2,11 +2,11 @@
 import Accordion from '@src/components/UI-kit/AccordeonKit/accordion/Accordion'
 import styles from './HeaderMenu.module.scss'
 import {IHeaderMenuProps} from './HeaderMenu.types'
-import Link from 'next/link'
 import {useWindowWidth} from './hooks/useWindowWidth'
 import {MobileHeaderMenu} from './MobileHeaderMenu/MobileHeaderMenu'
 import Image from '@src/components/UI-kit/image/Image'
 import MobileHeaderInfoBlock from '../MobileHeaderInfoBlock/MobileHeaderInfoBlock'
+import LinkUI from '@src/components/UI-kit/Typography/Link/LinkUI'
 
 export default function HeaderMenu({onClose}: IHeaderMenuProps) {
   const windowWidth = useWindowWidth()
@@ -33,45 +33,59 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          <Link href={'/odnokomnatnye'}>Однокомнатные</Link>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/odnokomnatnye'}>
+                            Однокомнатные
+                          </LinkUI>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          <Link href={'/dvuhkomnatnye'}>Двухкомнатные</Link>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/dvuhkomnatnye'}>
+                            Двухкомнатные
+                          </LinkUI>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          <Link href={'/3-komnatnye'}>Трехкомнатные</Link>
-                        </li>
-                        <li
-                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
-                          onClick={onClose}
-                        >
-                          {/* TODO: Проверить ссылку */}
-                          <Link href={'/4-komnatnye'}>Четырехкомнатые</Link>
-                        </li>
-                        <li
-                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
-                          onClick={onClose}
-                        >
-                          <Link href={'/lofty'}>Лофты</Link>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/3-komnatnye'}>
+                            Трехкомнатные
+                          </LinkUI>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
                           {/* TODO: Проверить ссылку */}
-                          <Link href={'/planirovki-i-ceny'}>Апартаменты</Link>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/4-komnatnye'}>
+                            Четырехкомнатые
+                          </LinkUI>
                         </li>
                         <li
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          <Link href={'/kvartiry-s-balkonom'}>С балконом</Link>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/lofty'}>
+                            Лофты
+                          </LinkUI>
+                        </li>
+                        <li
+                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
+                          onClick={onClose}
+                        >
+                          {/* TODO: Проверить ссылку */}
+                          <LinkUI size={'sm'} weight={'regular'} href={'/planirovki-i-ceny'}>
+                            Апартаменты
+                          </LinkUI>
+                        </li>
+                        <li
+                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
+                          onClick={onClose}
+                        >
+                          <LinkUI size={'sm'} weight={'regular'} href={'/kvartiry-s-balkonom'}>
+                            С балконом
+                          </LinkUI>
                         </li>
                       </ul>
                     ),
@@ -79,7 +93,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   }
                 ]}
               />
-              <Link onClick={onClose} href={'/parking'}>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/parking'}>
                 <Accordion
                   animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
@@ -93,9 +107,9 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
+              </LinkUI>
               {/* TODO: Проверить ссылку */}
-              <Link onClick={onClose} href={'/commerce'}>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/commerce'}>
                 <Accordion
                   animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
@@ -109,8 +123,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/storerooms'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/storerooms'}>
                 <Accordion
                   animationOn={false}
                   extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent}`}
@@ -124,7 +138,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
+              </LinkUI>
             </div>
           </div>
           <div className={`${styles.container_item} ${styles.container_item_default}`}>
@@ -145,7 +159,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     children: (
                       <ul className={styles.accrodeon_inner_list}>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          <Link href={'/o-proekte'}>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/o-proekte'}>
                             <Image
                               className={styles.accordeon_inner_item_image}
                               src='/content/about/about-new.png'
@@ -155,10 +169,10 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                               quality={10}
                             />
                             «Кронфорт»
-                          </Link>
+                          </LinkUI>
                         </li>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          <Link href={'/tsentralnyi'}>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/tsentralnyi'}>
                             <Image
                               className={styles.accordeon_inner_item_image}
                               src='/content/about/central-1.png'
@@ -168,7 +182,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                               quality={10}
                             />
                             «Кронфорт. Центральный»
-                          </Link>
+                          </LinkUI>
                         </li>
                       </ul>
                     ),
@@ -177,7 +191,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   }
                 ]}
               />
-              <Link onClick={onClose} href={'/raspolozhenie'}>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/raspolozhenie'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -192,8 +206,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/infrastruktura'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/infrastruktura'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -208,8 +222,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/transport'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/transport'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -224,8 +238,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/blagoustroistvo'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/blagoustroistvo'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -240,8 +254,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/otdelka'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/otdelka'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -256,8 +270,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/gallery'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/gallery'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -272,8 +286,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/news'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/news'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -288,8 +302,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/stocks'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/stocks'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -304,7 +318,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
+              </LinkUI>
             </div>
           </div>
           <div className={`${styles.container_item} ${styles.container_item_default}`}>
@@ -314,7 +328,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               style={{paddingTop: '13px', maxHeight: '680px', overflowY: 'scroll'}}
               className={`${styles.item_inner} ${styles.item_inner_default}`}
             >
-              <Link onClick={onClose} href={'/alkor'}>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/alkor'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -331,9 +345,9 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
+              </LinkUI>
               {/* TODO: Проверить ссылку */}
-              <Link onClick={onClose} href={'/plan-razvitiya'}>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/plan-razvitiya'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -348,7 +362,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
+              </LinkUI>
               <Accordion
                 animationOn={false}
                 extraClass={styles.accordion_extra}
@@ -363,16 +377,24 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                       <ul className={styles.accrodeon_inner_list}>
                         {/* TODO: Проверить ссылки */}
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          <Link href={'/payment-methods'}>Ипотека</Link>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/payment-methods'}>
+                            Ипотека
+                          </LinkUI>
                         </li>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          <Link href={'/payment-methods'}>Рассрочка</Link>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/payment-methods'}>
+                            Рассрочка
+                          </LinkUI>
                         </li>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          <Link href={'/payment-methods'}>100% оплата</Link>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/payment-methods'}>
+                            100% оплата
+                          </LinkUI>
                         </li>
                         <li className={styles.accordeon_inner_item} onClick={onClose}>
-                          <Link href={'/payment-methods'}>Trade In</Link>
+                          <LinkUI size={'sm'} weight={'regular'} href={'/payment-methods'}>
+                            Trade In
+                          </LinkUI>
                         </li>
                       </ul>
                     ),
@@ -383,7 +405,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               />
 
               {/* TODO: Проверить ссылки */}
-              <Link onClick={onClose} href={'/ipotechniy-kalkulator'}>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/ipotechniy-kalkulator'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -398,8 +420,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/investicii'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/investicii'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -414,8 +436,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/docs'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/docs'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -430,8 +452,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/contacts'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/contacts'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -446,8 +468,8 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
-              <Link onClick={onClose} href={'/faq'}>
+              </LinkUI>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/faq'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -462,7 +484,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </Link>
+              </LinkUI>
             </div>
           </div>
           {/* 
