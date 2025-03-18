@@ -1,3 +1,4 @@
+/* stylelint-disable scss/no-global-function-names */
 .header {
   position: fixed;
   z-index: 11;
@@ -30,6 +31,10 @@
     height: fit-content;
     padding: 0;
     background-color: #11627d;
+
+    .phoneLink a {
+      color: #fff !important;
+    }
 
     .headerTopContainer {
       width: 100%;
@@ -114,8 +119,11 @@
       text-transform: uppercase;
     }
 
-    .phoneLink {
+    .phoneLink,
+    .phoneLink a {
       margin-left: 40px;
+      color: #555;
+      font-weight: 400;
     }
 
     .logoutButton {

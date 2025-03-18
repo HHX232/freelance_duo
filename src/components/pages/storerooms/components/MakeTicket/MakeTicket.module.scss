@@ -53,15 +53,22 @@
 
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_md.png') no-repeat;
     background-size: 100% 100%;
+    @include font(3, 36, 50, 400);
   }
 
   @include lg {
     text-wrap: nowrap;
+    height: 440px;
+    width: 440px;
     padding: 20px 0;
-    @include font(3, 42, 54, 400);
-    height: 570px;
     background: none;
     align-items: start;
+  }
+
+  @include xl{
+    @include font(3, 42, 54, 400);
+    height: 460px;
+    width: 544px;
   }
 }
 
@@ -74,9 +81,10 @@
   }
 
   @include lg {
-    padding: 40px;
+    padding: 20px 20px 20px 40px;
     gap: 10px;
     flex-direction: row;
+    justify-content: space-between;
 
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_lg.png') no-repeat;
     background-size: 100% 100%;
@@ -90,11 +98,33 @@
   @include xxl{
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_xxl.png') no-repeat;
     background-size: 100% 100%;
+    padding: 40px 40px 40px 60px;
   }
 
   @include xxxl{
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/basket_xxxl.png') no-repeat;
     background-size: 100% 100%;
+  }
+}
+
+.ticketFormWrapper{
+  @layer base {
+
+  }
+
+  @include xl{
+    width: 484px;
+    height: 460px;
+  }
+
+  @include xxl{
+    width: 451px;
+    height: 520px;
+  }
+
+  @include xxxl{
+    width: 577px;
+    height: 570px;
   }
 }
 

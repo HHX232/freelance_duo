@@ -1,14 +1,15 @@
 import Header from '@shared/page/header/Header'
 import Footer from '@shared/page/footer/footer'
 import {Metadata} from 'next'
-import ParkingWrapper from '@pages/parking/ParkingWrapper'
+import MortgageCalculateWrapper
+  from '@pages/mortgage-calculate/MortgageCalculateWrapper'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Паркинг – ЖК «Кронфорт», Кронштадт',
+    title: 'Ипотечный калькулятор – ЖК «Кронфорт», Кронштадт',
     description: '',
     alternates: {
-      canonical: new URL('/parking', process.env.NEXT_PUBLIC_SITE_URL).toString()
+      canonical: new URL('/mortgage-calculate', process.env.NEXT_PUBLIC_SITE_URL).toString()
     }
   }
 }
@@ -18,7 +19,7 @@ export default function Parking() {
     <div>
       <Header />
       <main>
-        <ParkingWrapper />
+        <MortgageCalculateWrapper />
       </main>
       <Footer />
     </div>

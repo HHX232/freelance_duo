@@ -9,6 +9,7 @@ import PrivateOfficeButton from './buttons/PrivateOfficeButton/PrivateOfficeButt
 import FooterNavigation from '../FooterNavigation/FooterNavigation'
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 import LinkUI from '@src/components/UI-kit/Typography/Link/LinkUI'
+import TelLink from '@src/components/UI-kit/TelLink/TelLink'
 
 export default function FooterContacts(props: IFooterContactsProps) {
   return (
@@ -60,8 +61,8 @@ export default function FooterContacts(props: IFooterContactsProps) {
         </FullButton>
 
         <div className={styles.phone}>
-          <LinkUI extraClass={styles.phone} href={'tel:+78126022010'} size={'sm'}>
-            Тел: + 7 (123) 123-45-67
+          <LinkUI size={'sm'} weight={'medium'} extraStyle={{color: '#fff'}}>
+            Тел: <TelLink typeDecorNumber={'classic'} linkSize={'sm'} extraStyle={{fontWeight: '600', color: '#fff'}} />
           </LinkUI>
         </div>
       </div>
@@ -70,11 +71,13 @@ export default function FooterContacts(props: IFooterContactsProps) {
         {props.navProps.secondaryLinks.map((link, linkIndex) => (
           <li key={linkIndex}>
             {link.href ? (
-              <LinkUI href={link.href} size={'sm'}>
+              <LinkUI href={link.href} size={'sm'} weight={'regular'}>
                 {link.name}
               </LinkUI>
             ) : (
-              <LinkUI size={'sm'}>{link.name}</LinkUI>
+              <LinkUI size={'sm'} weight={'regular'}>
+                {link.name}
+              </LinkUI>
             )}
           </li>
         ))}
