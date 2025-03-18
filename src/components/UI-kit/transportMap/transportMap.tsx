@@ -1,18 +1,19 @@
 'use client'
 import styles from './transportMap.module.scss'
-import {YMaps, Map, Placemark, ZoomControl} from '@pbe/react-yandex-maps'
+import {YMaps, Map, Placemark, ZoomControl, GeoObject} from '@pbe/react-yandex-maps'
 import MapLegend from './mapLegend/mapLegend'
 import MapSidebar from './mapSidebar/mapSidebar'
 import {FC, useState, useEffect, useRef, ReactNode} from 'react'
 
 interface ITransportMap {
   customPoi?: any[],
+  customRoutes?: any[],
   withLegend?: boolean,
   withSidebar?: boolean,
   customSidebar?: ReactNode
 }
 
-const TransportMap: FC<ITransportMap> = ({customPoi, withLegend, withSidebar, customSidebar}) => {
+const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, withSidebar, customSidebar}) => {
   const [showLegend, setShowLegend] = useState(true)
   const [showSidebar, setShowSidebar] = useState(false)
   const [ymaps, setYmaps] = useState<any | null>(null)
@@ -44,7 +45,7 @@ const TransportMap: FC<ITransportMap> = ({customPoi, withLegend, withSidebar, cu
 
           map.controls.add(searchControl);
           
-          // Выполняем поиск POI детский сад, поликлинника, больница, набережная, ТРЦ, молл, парк, ресторан, магазин, стадион, спорт
+          // Выполняем поиск POI школа, детский сад, поликлинника, больница, набережная, ТРЦ, молл, парк, ресторан, магазин, стадион, спорт
           searchControl.search("школа").then(() => {
             const results = searchControl.getResultsArray();
             const points: Array<{ name: string; icon: string; coords: number[] }> = results.map((result: ymaps.Placemark) => ({
@@ -55,6 +56,34 @@ const TransportMap: FC<ITransportMap> = ({customPoi, withLegend, withSidebar, cu
             setPoi(points);
             map.controls.remove(searchControl);//прячем с карты поле поиска
           });
+
+          //возможная реализация маршрутов, но отрисовывает только один и невозможно с карты спрятать панель поиска маршрута
+          // if(customRoutes) {
+          //   const routePanelControl = new ymaps.control.RoutePanel({
+          //     options: {
+          //       float: "right",
+          //     },
+          //   });
+          //   map.controls.add(routePanelControl);
+          //   // Указываем начальную и конечную точки маршрута
+          //   for (let route of customRoutes) {
+          //     routePanelControl.routePanel.state.set({
+          //       from: route.points[0],
+          //       to: route.points[1],
+          //       type: "auto",
+          //     });
+              
+          //     routePanelControl.routePanel.getRouteAsync().then((route: any) => {
+          //       route.options.set({
+          //         strokeColor: route.color,
+          //         strokeWidth: route.lineWidth,
+          //         strokeStyle: "dash", // Делаем пунктирный маршрут
+          //       });
+          //     });
+          //   }
+          //   //прячем с карты панель маршрута
+          //   map.controls.remove(routePanelControl);
+          // }
         });
       } catch(err) {
         console.error('MAPS-ERR->', err);
@@ -104,7 +133,12 @@ const TransportMap: FC<ITransportMap> = ({customPoi, withLegend, withSidebar, cu
             <Map
                 defaultState={{center: [59.999685, 29.746311], zoom: 14, controls: []}}
                 options={{ suppressMapOpenBlock: true }}
-                modules={["control.ZoomControl", "control.FullscreenControl", "control.SearchControl"]}
+                modules={[
+                  "control.ZoomControl",
+                  "control.FullscreenControl",
+                  "control.SearchControl",
+                  "control.RoutePanel"
+                ]}
                 instanceRef={mapRef}
                 onLoad={(ymapsInstance) => {
                   setYmaps(ymapsInstance)
@@ -124,6 +158,21 @@ const TransportMap: FC<ITransportMap> = ({customPoi, withLegend, withSidebar, cu
                     }}
                   />
                 })}
+
+                {showLegend && customRoutes && customRoutes.map((route, index) => (
+                  <GeoObject
+                    key={index}
+                    geometry={{
+                      type: "LineString",
+                      coordinates: route.points,
+                    }}
+                    options={{
+                      strokeColor: route.color,
+                      strokeWidth: route.lineWidth,
+                      strokeStyle: "dash", // Пунктирная линия
+                    }}
+                  />
+                ))}
                 <ZoomControl options={{ position:{ right: '24px', top: '200px'}, adjustMapMargin: true, size: 'small'}} />
             </Map>
             {withLegend ? <MapLegend switchVisibility={(show) => setShowLegend(show)}/> : null}

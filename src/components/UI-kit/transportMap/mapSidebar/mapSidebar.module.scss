@@ -1,3 +1,5 @@
+@import '../../../../fonts/fonts';
+
 .sidebar {
     position: absolute;
     top: 0;
@@ -29,42 +31,88 @@
       right: 0;
     }
   
-    .toggleButton {
-      position: absolute;
-      top: 20px;
-      left: -80px;
-      width: 40px;
-      height: 40px;
-      border: none;
-      border-radius: 5px;
-      background: #FFF;
-      color: #111;
-      cursor: pointer;
-      font-family: $font-primary;
-      font-size: 14px;
-    }
-  
     .content {
-      h2 {
-        margin-bottom: 10px;
-        color: #1b5c74;
-        font-size: 22px;
+      @layer base {
+        padding: 16px;
       }
-  
-      ul {
-        padding: 0;
-        list-style: none;
-  
-        li {
-          position: relative;
-          padding-left: 20px;
-          margin-bottom: 10px;
-  
-          &::before {
-            position: absolute;
-            left: 0;
-            color: #1b5c74;
-            content: "•";
+
+      @include md {
+        padding: 40px;
+      }
+
+      .content_block {
+        display: block;
+        padding: auto;
+        margin: 0;
+
+        .content_title {
+          font-family: $font-romul;
+          font-weight: 400;
+          text-align: left;
+
+          &.blue {
+            color: #11627D;
+          }
+
+          &.orange {
+            color: #D38F6D;
+          }
+
+          @layer base {
+            margin: 24px 0 !important;
+            font-size: 26px;
+          }
+
+          @include lg {
+            margin: 36px 0 !important;
+            font-size: 36px;
+          }
+
+          @include md {
+            margin: 34px 0 !important;
+            font-size: 32px;
+          }
+        }
+
+        .content_block_row {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+
+          .content_block_column {
+            display: block;
+            width: 60%;
+            box-sizing: border-box;
+            padding: 20px 10px 20px 0;
+            text-wrap: wrap;
+            word-break: break-all;
+
+            &.left_blue {
+              width: 40%;
+              border-top: 3px dotted #11627D;
+            }
+
+            &.left_orange {
+              width: 40%;
+              border-top: 3px dotted #D38F6D;
+            }
+
+            p {
+              font-family: $font-gotham-pro;
+              font-weight: 300;
+
+              @layer base {
+                font-size: 16px;
+              }
+
+              @include lg {
+                font-size: 18px;
+              }
+
+              @include md {
+                font-size: 17px;
+              }
+            }
           }
         }
       }

@@ -10,19 +10,47 @@ const MapSidebar: FC<IMapSidebar> = ({isOpen}) => {
   return (
     <div className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
       <div className={styles.content}>
-        <h2>ДОСТУПНОСТЬ</h2>
-        <p>25 минут до Курортного района</p>
-        <p>30 минут до «Лахта Центра»</p>
-        <p>40 минут до центра Петербурга</p>
-        <p>50 минут до аэропорта Пулково</p>
-        <p>60 минут на «Метеоре» до Дворцовой набережной</p>
-        <h2>ОБЪЕКТЫ ТУРИЗМА</h2>
-        <ul>
-          <li>Музейно-исторический парк «Остров фортов»</li>
-          <li>Комплекс Музея военно-морской славы</li>
-          <li>Никольский морской собор</li>
-          <li>Океанариум</li>
-        </ul>
+        <div className={styles.content_block}>
+          <h2 className={`${styles.content_title} ${styles.blue}`}>ДОСТУПНОСТЬ</h2>
+          <div className={styles.content_block_row}>
+            <div className={`${styles.content_block_column} ${styles.left_blue}`}>
+              <p>25 минут до</p>
+              <p>30 минут до</p>
+              <p>40 минут до</p>
+            </div>
+            <div className={styles.content_block_column}>
+              <p>Курортного района</p>
+              <p>«Лахта Центра»</p>
+              <p>центра Петербурга</p>
+            </div>
+          </div>
+          <div className={styles.content_block_row}>
+            <div className={`${styles.content_block_column} ${styles.left_orange}`}>
+              <p>50 минут до</p>
+            </div>
+            <div className={styles.content_block_column}>
+              <p>аэропорта Пулково</p>
+            </div>
+          </div>
+          <div className={styles.content_block_row}>
+            <div className={`${styles.content_block_column} ${styles.left_blue}`}>
+              <p>60 минут на «Метеоре» или яхте до</p>
+            </div>
+            <div className={styles.content_block_column}>
+              <p>причала на Дворцовой набережной</p>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.content_block}>
+          <h2 className={`${styles.content_title} ${styles.orange}`}>ОБЪЕКТЫ ТУРИЗМА</h2>
+          <ol className={styles.content_list}>
+            <li>Музейно-исторический парк «Остров фортов»</li>
+            <li>Комплекс Музея военно-морской славы</li>
+            <li>Никольский морской собор</li>
+            <li>Океанариум</li>
+          </ol>
+        </div>
       </div>
     </div>
   );
