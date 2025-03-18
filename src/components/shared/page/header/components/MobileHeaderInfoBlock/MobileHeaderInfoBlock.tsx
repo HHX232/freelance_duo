@@ -1,15 +1,14 @@
 import styles from './MobileHeaderInfoBlock.module.scss'
 import Inst from '@icons/inst.svg'
 import Vk from '@icons/vk.svg'
+import TelLink from '@src/components/UI-kit/TelLink/TelLink'
 
 export default function MobileHeaderInfoBlock() {
   return (
     <div className={styles.mobile_text_box}>
       <p className={styles.mobile_text_title}>Головной офис продаж</p>
       <div className={styles.mobile_inner_text}>
-        <a className={styles.mobile_text} href={'tel:+7 812 602 20 10'}>
-          +7 (812) 270-50-73
-        </a>
+        <TelLink typeDecorNumber={'classic'} />
         <p className={styles.mobile_text_adress}>
           ст. м. «Старая деревня», ул. Оптиков, 4, корпус 3, лит. А, бизнес-центр «Лахта-2»
         </p>

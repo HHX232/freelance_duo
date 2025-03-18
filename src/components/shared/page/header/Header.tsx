@@ -20,6 +20,7 @@ import PhoneIconSVG from './components/icons/PhoneIconSVG/PhoneIconSVG'
 import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMenuBottom'
 import FindApartmentButton from './components/FindApartmentButton/FindApartmentButton'
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import TelLink from '@src/components/UI-kit/TelLink/TelLink'
 
 export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
@@ -146,34 +147,12 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
             </>
           )}
           <div className={styles.phoneLink}>
-            <FullButton
-              extraClass={styles.buttonTextFont}
-              type={'Link'}
-              href={'tel:+71231234567'}
-              activeButton={true}
-              border={false}
-              borderColor={''}
-              onClick={() => setOpenAuth(!isOpenAuth)}
-              buttonFill={'none'}
-              buttonElementColor={'black'}
-              buttonText={'+ 7 (123) 123-45-67'}
-            />
+            <TelLink typeDecorNumber={'classic'} extraStyle={{fontWeight: '400'}} />
           </div>
           <div className={styles.phoneIcon}>
-            <FullButton
-              type={'Link'}
-              href={'tel:+71231234567'}
-              activeButton={true}
-              border={false}
-              borderColor={''}
-              onClick={() => setOpenAuth(!isOpenAuth)}
-              buttonFill={'none'}
-              buttonElementColor={'black'}
-              buttonText={''}
-              extraClass={styles.extra_weight}
-            >
+            <TelLink hideDefaultNumber typeDecorNumber={'classic'} extraStyle={{fontWeight: '400'}}>
               <PhoneIconSVG />
-            </FullButton>
+            </TelLink>
           </div>
           {!isLoadingCount && (
             <>
