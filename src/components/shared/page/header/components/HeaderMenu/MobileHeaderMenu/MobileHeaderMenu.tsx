@@ -211,6 +211,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
 
         <MobileAccordionMain header='О проекте'>
           <span
+            className={styles.text_transform}
             onClick={(e: any) => {
               e.stopPropagation()
             }}
@@ -220,9 +221,10 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
               <li>
                 <Accordion
                   animationOn={false}
+                  extraClass={styles.second_header}
                   leftArrow={false}
                   rightArrow={true}
-                  arrowSize='medium'
+                  arrowSize='large'
                   arrowColor='#fff'
                   items={[
                     {
@@ -452,6 +454,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
 
         <MobileAccordionMain header='Информация'>
           <span
+            className={styles.text_transform}
             onClick={(e: any) => {
               e.stopPropagation()
             }}
@@ -511,7 +514,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                   animationOn={false}
                   leftArrow={false}
                   rightArrow={true}
-                  arrowSize='medium'
+                  arrowSize='large'
                   arrowColor='#fff'
                   items={[
                     {

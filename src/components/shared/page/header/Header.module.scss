@@ -19,12 +19,19 @@
   }
 
   .buttonTextFont {
-    @include font(1, 16, 14, 400);
+    @include font(1, 16, 14, 500);
   }
 
   .headerTopContainer {
     width: 100%;
     height: 100%;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .phone {
+    color: #555;
+    font-weight: 500 !important;
+    transition: color 0.2s ease-in-out;
   }
 
   &.menuOpened {
@@ -43,7 +50,6 @@
       padding-right: 46px;
       background-color: transparent;
       background-color: #11627d;
-      transition: background-color 0.2s ease-in-out;
     }
 
     .container,

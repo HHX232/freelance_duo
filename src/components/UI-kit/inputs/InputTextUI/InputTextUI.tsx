@@ -5,10 +5,13 @@ import styles from './InputTextUI.module.scss'
 import {InputTextDefaultIcon} from './InputTextDefaultIcon'
 import InputClearIcon from './InputClearIcon'
 import {IField} from './InputTextUI.types'
+import {Golos_Text} from 'next/font/google'
 
 {
   /* <InputTextUI placeholder='Вводите...' labelText='Вводите...' theme='white' disabled={false} /> */
 }
+
+const golos = Golos_Text({subsets: ['cyrillic']})
 
 const InputTextUI = forwardRef<HTMLInputElement, IField>(
   (
@@ -40,7 +43,7 @@ const InputTextUI = forwardRef<HTMLInputElement, IField>(
     }, [])
 
     return (
-      <div className={cn(styles.input_box, extraClass)} style={extraStyle}>
+      <div className={(cn(styles.input_box, extraClass), golos.className)} style={extraStyle}>
         {labelText.length > 0 && (
           <label
             className={cn({

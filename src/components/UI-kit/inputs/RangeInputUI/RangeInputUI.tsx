@@ -5,6 +5,9 @@ import styles from './RangeInputUI.module.scss'
 import {InputTextDefaultIcon as InputRangeDefaultIcon} from './InputRangeDefaultIcon'
 import InputClearIcon from './InputClearIcon'
 import {IField} from './RangeUI.types'
+import {Golos_Text} from 'next/font/google'
+
+const golos = Golos_Text({subsets: ['cyrillic']})
 
 const InputRangeUI = forwardRef<HTMLInputElement, IField>(
   (
@@ -68,7 +71,7 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
     }, [maxValue, minValue])
 
     return (
-      <div className={cn(styles.input_box, extraClass)} style={extraStyle}>
+      <div className={cn(styles.input_box, extraClass, golos.className)} style={extraStyle}>
         {labelText.length > 0 && (
           <label
             className={cn({

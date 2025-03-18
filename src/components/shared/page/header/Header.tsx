@@ -147,7 +147,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
             </>
           )}
           <div className={styles.phoneLink}>
-            <TelLink typeDecorNumber={'classic'} extraStyle={{fontWeight: '400'}} />
+            <TelLink typeDecorNumber={'classic'} extraClass={styles.phone} />
           </div>
           <div className={styles.phoneIcon}>
             <TelLink hideDefaultNumber typeDecorNumber={'classic'} extraStyle={{fontWeight: '400'}}>
