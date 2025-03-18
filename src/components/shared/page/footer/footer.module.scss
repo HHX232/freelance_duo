@@ -17,7 +17,7 @@
 }
 
 .accordion_extra_to_div {
-  & > div > div > a {
+  &>div>div>a {
     font-size: 20px !important;
     line-height: 30px !important;
     text-transform: none;
@@ -37,7 +37,7 @@
     font-size: 18px !important;
   }
 
-  & > div {
+  &>div {
     font-size: 20px !important;
     line-height: 26px !important;
 
@@ -62,14 +62,14 @@
   text-transform: none;
 
   // ссылка третий слой
-  & > a {
+  &>a {
     font-size: 18px !important;
     line-height: 26px !important;
   }
 }
 
 .footer {
-  // overflow: hidden;
+  overflow: hidden;
   width: 100%;
   height: fit-content;
   padding: 36px 196px;
@@ -87,11 +87,11 @@
     padding: 36px 40px;
   }
 
-  @include custom(0, map-get($breakpoints, md) - 1px) {
+  @include custom(0, map-get($breakpoints, sm) - 1px) {
     padding: 40px 20px;
   }
 
-  @include custom(0, map-get($breakpoints, sm) - 1px) {
+  @include custom(0, map-get($breakpoints, xs) - 1px) {
     padding: 40px 16px;
   }
 
@@ -102,7 +102,7 @@
     max-width: 1512px;
     height: fit-content;
     margin: 0 auto;
-    gap: 40px;
+    gap: 20px;
     grid-template-columns: auto 1fr;
 
     @include custom(0, map-get($breakpoints, lg)) {
@@ -127,7 +127,7 @@
     .accordion_extra {
       color: #fff;
 
-      & > div:first-child {
+      &>div:first-child {
         padding: 0 20px 10px 0;
 
         @include custom(0, map-get($breakpoints, lg)) {
@@ -138,7 +138,7 @@
       }
     }
 
-    @include custom(0, 900px) {
+    @include custom(0, 980px) {
       grid-template-columns: auto;
 
       .side.side_right {

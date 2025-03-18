@@ -19,12 +19,18 @@
   }
 
   .buttonTextFont {
-    @include font(1, 16, 14, 400);
+    @include font(1, 16, 14, 500);
   }
 
   .headerTopContainer {
     width: 100%;
     height: 100%;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .phone {
+    color: #555;
+    transition: color 0.2s ease-in-out;
   }
 
   &.menuOpened {
@@ -32,8 +38,8 @@
     padding: 0;
     background-color: #11627d;
 
-    .phoneLink a {
-      color: #fff !important;
+    .phone {
+      color: #fff;
     }
 
     .headerTopContainer {
@@ -43,7 +49,6 @@
       padding-right: 46px;
       background-color: transparent;
       background-color: #11627d;
-      transition: background-color 0.2s ease-in-out;
     }
 
     .container,
@@ -119,11 +124,8 @@
       text-transform: uppercase;
     }
 
-    .phoneLink,
-    .phoneLink a {
+    .phoneLink {
       margin-left: 40px;
-      color: #555;
-      font-weight: 400;
     }
 
     .logoutButton {

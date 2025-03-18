@@ -44,7 +44,7 @@ const TelLink: FC<ITelLinkProps> = ({
   const href = customHref || `tel:+${plainTel}`
 
   return (
-    <LinkUI size={linkSize} href={href} className={extraClass} style={extraStyle}>
+    <LinkUI size={linkSize} href={href} extraClass={extraClass} extraStyle={extraStyle}>
       {hideDefaultNumber ? null : formattedTel}
       {children}
     </LinkUI>
