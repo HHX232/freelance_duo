@@ -1,4 +1,5 @@
 stages:
+  - build_mr
   - build
   - deploy
   - notify
@@ -20,6 +21,18 @@ build:
   allow_failure: false
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'  # Runs on main branch
+
+build_mr:
+  stage: build_mr
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+  script:
+    - docker build -t "$CI_REGISTRY_IMAGE/kronfort-frontend:mr-$CI_MERGE_REQUEST_ID" .
+  allow_failure: false
+  rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'  
 
 deploy:
