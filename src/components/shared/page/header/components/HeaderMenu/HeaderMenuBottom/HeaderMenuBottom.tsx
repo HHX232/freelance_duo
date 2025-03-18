@@ -1,4 +1,4 @@
-import Link from 'next/link'
+'use client'
 import styles from './HeaderMenuBottom.module.scss'
 import FindApartmentButton from '../../FindApartmentButton/FindApartmentButton'
 import {IHeaderMenuBottomProps} from './HeaderMenuBottom.types'
@@ -7,7 +7,6 @@ import PhoneIconSVG from '../../icons/PhoneIconSVG/PhoneIconSVG'
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 import HeaderMenuBottomPhoneButton from './buttons/HeaderMenuBottomPhoneButton/HeaderMenuBottomPhoneButton'
 import HeaderMenuBottomMessageButton from './buttons/HeaderMenuBottomMessageButton/HeaderMenuBottomMessageButton'
-import TelLink from '@src/components/UI-kit/TelLink/TelLink'
 
 export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBottomProps) {
   return (
@@ -30,7 +29,7 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
         </div>
         {/* TODO: replace link with FullButton type Link */}
 
-        <Link href={'tel:+71231234567'}>
+        <span>
           <FullButton
             activeButton={true}
             type='Button'
@@ -40,10 +39,8 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
             buttonBorderRadius='6px'
             buttonFill='white'
             extraClass={styles.phoneButton}
-            buttonText={''}
-          >
-            <TelLink hideDefaultNumber>Заказать звонок</TelLink>
-          </FullButton>
+            buttonText={'Заказать звонок'}
+          ></FullButton>
           <FullButton
             borderColor='none'
             activeButton={true}
@@ -57,7 +54,7 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
           >
             <PhoneIconSVG />
           </FullButton>
-        </Link>
+        </span>
       </div>
     </div>
   )
