@@ -7,6 +7,7 @@ import PhoneIconSVG from '../../icons/PhoneIconSVG/PhoneIconSVG'
 import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 import HeaderMenuBottomPhoneButton from './buttons/HeaderMenuBottomPhoneButton/HeaderMenuBottomPhoneButton'
 import HeaderMenuBottomMessageButton from './buttons/HeaderMenuBottomMessageButton/HeaderMenuBottomMessageButton'
+import TelLink from '@src/components/UI-kit/TelLink/TelLink'
 
 export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBottomProps) {
   return (
@@ -39,8 +40,10 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
             buttonBorderRadius='6px'
             buttonFill='white'
             extraClass={styles.phoneButton}
-            buttonText={'Заказать звонок'}
-          />
+            buttonText={''}
+          >
+            <TelLink hideDefaultNumber>Заказать звонок</TelLink>
+          </FullButton>
           <FullButton
             borderColor='none'
             activeButton={true}
