@@ -21,6 +21,7 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
       theme,
       minValue = 0,
       maxValue = 100,
+      isNeedToClear,
       ...rest
     },
     ref
@@ -136,7 +137,7 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
               onChange={onInputChange}
               autoComplete={type === 'text' ? 'off' : undefined}
             />
-            {inputText && inputText.length > 0 ? (
+            {isNeedToClear && inputText && inputText.length > 0 ? (
               <InputClearIcon
                 gOpacity={theme === 'white' ? (disabled ? '0.24' : '0.6') : '0.6'}
                 color={theme === 'white' ? '#FFFFFF' : '#000000'}
