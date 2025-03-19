@@ -1,0 +1,145 @@
+@import '../../../../fonts/fonts';
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    overflow: auto;
+
+    // width: 460px;
+    height: 100%;
+
+    // padding: 20px;
+    background-color: white;
+    box-shadow: 2px 0 10px rgb(0 0 0 / 20%);
+    transition: left 0.3s ease-in-out;
+
+    @layer base {
+        visibility: hidden;
+
+        // right: -460px;
+    }
+
+    @include md {
+        right: -380px;
+        width: 380px;
+        visibility: visible;
+    }
+
+    @include lg {
+        right: -460px;
+        width: 460px;
+    }
+  
+    &.open {
+      right: 0;
+    }
+
+    &.mobile {
+      position: relative;
+      width: 100% !important;
+      height: auto !important;
+      padding-left: 15px;
+      box-shadow: none;
+      visibility: visible;
+    }
+  
+    .content {
+      @layer base {
+        padding: 16px;
+      }
+
+      @include md {
+        padding: 40px;
+      }
+
+      .content_block {
+        display: block;
+        padding: auto;
+        margin: 0;
+
+        .content_title {
+          font-family: $font-romul;
+          font-weight: 400;
+          text-align: left;
+
+          &.blue {
+            color: #11627D;
+          }
+
+          &.orange {
+            color: #D38F6D;
+          }
+
+          @layer base {
+            margin: 24px 0 !important;
+            font-size: 24px;
+          }
+
+          @include md {
+            margin: 34px 0 !important;
+            font-size: 32px;
+          }
+        }
+
+        .content_hr {
+          width: 45%;
+          border: none;
+          border-top: 2px dotted #11627D;
+          margin: 10px 0;
+        }
+
+        .content_block_row {
+          display: flex;
+          width: 100%;
+          padding: 8px 0;
+          gap: 10px;
+
+          p:first-child {
+            min-width: 40%;
+          }
+
+          p {
+            font-family: $font-gotham-pro;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 22px;
+            text-align: left;
+          }
+
+        }
+
+        .content_list {
+          counter-reset: custom-counter;
+          list-style: none;
+
+          li {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            counter-increment: custom-counter;
+            font-family: $font-gotham-pro;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 22px;
+            text-align: left;
+
+            &::before {
+              display: flex;
+              width: 36px;
+              min-width: 36px;
+              height: 36px;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              margin-right: 15px;
+              background-color: #D38F6D;
+              color: #FFF;
+              content: counter(custom-counter);
+              font-size: 14px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }

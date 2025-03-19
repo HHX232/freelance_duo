@@ -22,19 +22,37 @@
     background-color: #11627D;
 
     @layer base {
-        padding-top: 70px;
+      display: flex;
+      flex-direction: column;
+      gap: 70px;
     }
-
+  
     @include sm {
-        padding-top: 80px;;
+      gap: 80px;;
     }
-
+  
     @include md {
-        padding-top: 90px;
+      gap: 90px;
+    }
+  
+    @include xxl {
+      gap: 110px;
     }
 
-    @include xxl {
-        padding-top: 110px;
-    }
+    // @layer base {
+    //     padding-top: 70px;
+    // }
+
+    // @include sm {
+    //     padding-top: 80px;;
+    // }
+
+    // @include md {
+    //     padding-top: 90px;
+    // }
+
+    // @include xxl {
+    //     padding-top: 110px;
+    // }
 }
   

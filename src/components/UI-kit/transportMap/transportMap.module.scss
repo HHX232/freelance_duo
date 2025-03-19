@@ -1,0 +1,178 @@
+@import '../../../fonts/fonts';
+
+.trmap_container {
+    position: relative;
+    display: flex;
+    width: 100%;
+
+    @layer base {
+        height: 700px;
+    }
+
+    @include xs {
+        height: 700px;
+    }
+    
+    @include xl {
+        height: 800px;
+    }
+
+    @include xxl {
+        height: 850px;
+    }
+
+    @include xxxl {
+        height: 1000px;
+    }
+
+    .trmap_map {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.sidebar_button_show {
+    position: absolute;
+    top: 15px;
+    border: none;
+    border-radius: 5px;
+    background: #FFF;
+    color: #111;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #c3c3c3;
+    }
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+
+    @layer base {
+        visibility: hidden;
+    }
+
+    @include md {
+        right: 400px;
+        width: 36px;
+        height: 36px;
+        visibility: visible;
+    }
+
+    @include lg {
+        right: 480px;
+        width: 44px;
+        height: 44px;
+    }
+}
+
+.sidebar_button_hide {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: none;
+    border-radius: 5px;
+    background: #FFF;
+    color: #111;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #c3c3c3;
+    }
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+
+    @layer base {
+        visibility: hidden;
+    }
+
+    @include md {
+        width: 36px;
+        height: 36px;
+        visibility: visible;
+    }
+
+    @include lg {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+.zoom_controls {
+    position: absolute;
+    top: 45%;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    &.zoom_controls_expand {
+        right: 400px;
+
+        @include lg {
+            right: 480px !important;
+        }
+    }
+
+    @layer base {
+        visibility: hidden;
+    }
+
+    @include md {
+        visibility: visible;
+    }
+
+    .zoom_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0 0 50% 50%;
+        background-color: #FFF;
+        color: #111;
+        font-size: 20px;
+        text-align: center;
+
+        &:hover {
+            background-color: #c3c3c3;
+        }
+
+        &:first-child {
+            border-radius: 50% 50% 0 0;
+        }
+    
+        @include md {
+            width: 36px;
+            height: 36px;
+        }
+    
+        @include lg {
+            width: 44px;
+            height: 44px;
+        }
+    }
+}
+
+.mobile_expand_btn {
+    position: absolute;
+    bottom: 45px;
+    left: 5%;
+    width: 90%;
+    border-radius: 6px;
+    background-color: #FFF;
+    font-family: $font-gotham-pro;
+    font-weight: 400;
+
+    @include md {
+        visibility: hidden;
+    }
+
+    @include xs {
+        height: 48px;
+        font-size: 16px;
+        visibility: visible;
+    }
+}
