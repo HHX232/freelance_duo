@@ -1,16 +1,15 @@
-"use client"
+'use client'
 import styles from './Head.module.scss'
-import Breadcrumbs from '@shared/Breadcrumbs/Breadcrumbs'
+import Breadcrumbs from '@src/components/UI-kit/Navigation/Breadcrumbs/Breadcrumbs'
 
 const Head = () => {
-
   const breadcrumbItems = [
-      {title: 'Главная', href: '/'},
-      {
-        title: 'Коммерческие помещения',
-        href: '/commerce'
-      }
-    ]
+    {title: 'Главная', href: '/'},
+    {
+      title: 'Коммерческие помещения',
+      href: '/commerce'
+    }
+  ]
 
   return (
     <section className={`${styles['head-wrapper']}`}>
@@ -18,7 +17,9 @@ const Head = () => {
         <Breadcrumbs items={breadcrumbItems} darkTheme={true} className={styles['router']} />
       </div>
       <div className={`${styles['text-wrapper']}`}>
-        <div className={styles.title}>Коммерческие <br/> помещения</div>
+        <div className={styles.title}>
+          Коммерческие <br /> помещения
+        </div>
       </div>
     </section>
   )
