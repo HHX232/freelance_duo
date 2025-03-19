@@ -1,7 +1,7 @@
 import {CSSProperties, FC} from 'react'
 import styles from './MakeTicket.module.scss'
 import TicketForm from '@shared/ticketForm/ticketForm'
-import {HeadTitle} from '@src/components/UI-kit/TextKit/head-title'
+import {HeadTitle} from '@src/components/UI-kit/Text-Elements/TextKit/head-title'
 
 const MakeTicket: FC<{style?: CSSProperties}> = ({style}) => {
   return (

@@ -2,7 +2,7 @@
 import {useState, useEffect, useRef, forwardRef} from 'react'
 import styles from './news.module.scss'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import {breadcrumbItems} from './config/breadcrumbs'
 import clsx from 'clsx'
 import Image from 'next/image'

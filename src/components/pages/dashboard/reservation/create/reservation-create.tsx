@@ -6,18 +6,19 @@ import {IProfile} from '@src/types/profile.interface'
 import {useEffect, useState} from 'react'
 import {formatDateString, formatInputValue, isValidDate, isValidDigit} from '@src/lib/utils/profile/format-input'
 import styles from './create.module.scss'
-import {InputField} from '@src/components/UI-kit/inputs/input-field/input-field'
+
 import {Col, Modal, Row} from 'antd'
 import {getInputStyle, setContainerStyle} from '@src/lib/utils/profile/input-style'
 import {breadcrumbItems} from '@pages/dashboard/reservation/create/config/breadcrumbs'
-import FilledButton from '@shared/filledButton/FilledButton'
+import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import {Agree} from '@shared/agree/agree'
 import {useStore} from '@src/lib/store/store'
 import {ReservationInterface} from '@src/types/reservation.interface'
 import {createReservation} from '@src/actions/reservation'
 import {useRouter} from 'next/navigation'
+import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 
 export const ReservationCreate = ({id}: {id: string}) => {
   const {
