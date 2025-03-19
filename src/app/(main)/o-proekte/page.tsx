@@ -1,8 +1,8 @@
 import {Metadata} from 'next'
 
 import {aboutData} from '@src/contentData/about_data'
-import {ContentPageWithSlider} from '@shared/ContentPageWithSlider/ContentPageWithSlider'
-import Header from '@shared/page/header/Header'
+import {ContentPageWithSlider} from '@shared/ContentPages/ContentPageWithSlider/ContentPageWithSlider'
+import Header from '@shared/pageDefault/header/Header'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -20,7 +20,7 @@ export default function Map() {
     <>
       <Header />
       <main>
-        <ContentPageWithSlider data={aboutData} title="О проекте"/>
+        <ContentPageWithSlider data={aboutData} title='О проекте' />
       </main>
     </>
   )

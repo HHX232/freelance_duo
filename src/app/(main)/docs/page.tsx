@@ -1,6 +1,6 @@
 import {Metadata} from 'next'
-import Header from '@shared/page/header/Header'
-import ContentPageWithSlider from '@shared/ContentPageWithSlider/ContentPageWithSlider'
+import Header from '@shared/pageDefault/header/Header'
+import ContentPageWithSlider from '@shared/ContentPages/ContentPageWithSlider/ContentPageWithSlider'
 import {documentsData} from '@src/contentData/documents_data'
 
 export async function generateMetadata(): Promise<Metadata> {

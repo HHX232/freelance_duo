@@ -1,5 +1,5 @@
-import Header from '@shared/page/header/Header'
-import Footer from '@shared/page/footer/footer'
+import Header from '@shared/pageDefault/header/Header'
+import Footer from '@shared/pageDefault/footer/footer'
 import {Metadata} from 'next'
 import StoreRooms from '@pages/storerooms/StoreRooms'
 
@@ -17,7 +17,7 @@ export default function StoreRoomes() {
     <div>
       <Header />
       <main>
-        <StoreRooms/>
+        <StoreRooms />
       </main>
       <Footer />
     </div>

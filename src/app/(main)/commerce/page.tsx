@@ -1,5 +1,5 @@
-import Header from '@shared/page/header/Header'
-import Footer from '@shared/page/footer/footer'
+import Header from '@shared/pageDefault/header/Header'
+import Footer from '@shared/pageDefault/footer/footer'
 import {Metadata} from 'next'
 import CommerceWrapper from '@pages/commerce/CommerceWrapper'
 
@@ -17,7 +17,7 @@ export default function CommercePage() {
     <div>
       <Header />
       <main>
-        <CommerceWrapper/>
+        <CommerceWrapper />
       </main>
       <Footer />
     </div>
