@@ -1,0 +1,84 @@
+@import '../../../../../scss/variables';
+
+
+
+.link {
+   color: #000;
+   font-family: $font-primary;
+}
+
+.link_lg {
+   font-size: 20px;
+   line-height: 30px;
+
+   @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 18px;
+      line-height: 26px;
+   }
+
+   @include custom(0, map-get($breakpoints, sm)) {
+      font-size: 18px;
+      line-height: 26px;
+   }
+}
+
+.link_md {
+   font-size: 16px;
+   line-height: 18px;
+
+   @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 16px;
+      line-height: 18px;
+   }
+
+   @include custom(0, map-get($breakpoints, sm)) {
+      font-size: 16px;
+      line-height: 18px;
+   }
+}
+
+.link_sm {
+   font-size: 14px;
+   line-height: 14px;
+
+   @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 14px;
+      line-height: 14px;
+   }
+
+   @include custom(0, map-get($breakpoints, sm)) {
+      font-size: 14px;
+      line-height: 14px;
+   }
+}
+
+.link_xs {
+   font-size: 12px;
+   line-height: 14px;
+
+   @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 12px;
+      line-height: 14px;
+   }
+
+   @include custom(0, map-get($breakpoints, sm)) {
+      font-size: 12px;
+      line-height: 14px;
+   }
+}
+
+.link_light {
+   font-weight: 300;
+}
+
+.link_regular {
+   font-weight: 400;
+}
+
+.link_medium {
+   font-weight: 500;
+}
+
+.link_bold {
+   font-weight: 700;
+}

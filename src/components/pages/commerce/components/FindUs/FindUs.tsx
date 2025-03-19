@@ -8,7 +8,7 @@ import LineWhite from '@icons/line_white.svg'
 import {useIsMinWidth} from '@utils/useIsMobile'
 import CommerceMap from '@pages/commerce/components/FindUs/map'
 import {FC} from 'react'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface Props {
   openMapModal: () => void
