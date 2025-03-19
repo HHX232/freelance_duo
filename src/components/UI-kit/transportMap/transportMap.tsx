@@ -4,7 +4,7 @@ import {YMaps, Map, Placemark, GeoObject, Clusterer} from '@pbe/react-yandex-map
 import MapLegend from './mapLegend/mapLegend'
 import MapSidebar from './mapSidebar/mapSidebar'
 import MobilePopup from './mobilePopup/mobilePopup'
-import {FC, useState, useEffect, useRef, ReactNode} from 'react'
+import {FC, useState, useEffect, useRef} from 'react'
 
 interface ITransportMap {
   customPoi?: any[],
