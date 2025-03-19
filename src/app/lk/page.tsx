@@ -1,4 +1,4 @@
-import Header from '@shared/page/header/Header'
+import Header from '@shared/pageDefault/header/Header'
 import {Dashboard} from '@pages/dashboard/dashboard'
 import {Metadata} from 'next'
 

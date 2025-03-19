@@ -2,12 +2,12 @@
 import styles from './contacts.module.scss'
 import {Metadata} from 'next'
 import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps'
-import FilledButton from '@shared/filledButton/FilledButton'
+import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import {MainContainer} from '@shared/containers/main/main-container'
 import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import Link from 'next/link'
 import {useState} from 'react'
-import {Backcall} from '@shared/back-call-popup/backcall'
+import {Backcall} from '@shared/Popups/back-call-popup/backcall'
 
 const breadcrumbItems = [{title: 'Главная', href: '/'}, {title: 'Контакты'}]
 
