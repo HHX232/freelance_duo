@@ -8,7 +8,7 @@ import ClassNames from 'embla-carousel-class-names'
 import Gallery from './bg-slider/Gallery'
 import {DotButton, useDotButton} from './bg-slider/EmblaCarouselDotButton'
 import {NextButton, PrevButton, usePrevNextButtons} from './bg-slider/EmblaCarouselArrowButtons'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 const slidesSubTitles = [
   'Море меняет все, Море здесь – главная доминанта, наполняющая энергией все пространство вокруг.',

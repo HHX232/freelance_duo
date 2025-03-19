@@ -11,7 +11,7 @@ import NextImage from 'next/image'
 import Head from 'next/head'
 import ArrowUpSVG from '@icons/arrow_up.svg'
 import CornerSVG from '@icons/corner.svg'
-import Page from '@shared/page/Page'
+import Page from '@shared/pageDefault/Page'
 import AreasPage from './Components/areas/Areas'
 import FortovPage from './Components/fortov/Fortov'
 // import TransportPage from './Components/transport/Transport'
@@ -20,7 +20,7 @@ import ContactFormPage from './Components/contact-form/ContactForm'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 import TransportPage from './Components/transport/Transport'
-import Swipe from '@src/components/UI-kit/Swipe/Swipe'
+import Swipe from '@src/components/UI-kit/BaseControls/Swipe/Swipe'
 const Compass = dynamic(() => import('./Components/card/Compass'), {ssr: false})
 
 const directionHints: DirectionHint[] = [

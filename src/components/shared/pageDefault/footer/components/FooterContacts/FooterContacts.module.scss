@@ -1,0 +1,91 @@
+@import '../../../../../../scss/breakpoints';
+
+.lk_media {
+  @include bp-md {
+    display: none;
+  }
+}
+
+.logo {
+  @include bp-sm {
+    margin-bottom: 10px;
+  }
+}
+
+.container {
+  z-index: 10;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  gap: 58px;
+
+  * {
+    z-index: 10;
+  }
+
+  @include bp-md {
+    gap: 57px;
+  }
+
+  @include bp-sm {
+    gap: 53px;
+  }
+
+  a {
+    color: #fff;
+    line-height: 14px;
+  }
+
+  .links,
+  .secondaryLinks {
+    display: none;
+
+    @include custom(0, 980px) {
+      display: block;
+
+      &.secondaryLinks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 37px;
+      }
+    }
+
+    @include bp-sm {
+      position: relative;
+      top: -15px;
+    }
+  }
+
+  .contacts {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    margin-top: 4px;
+    margin-right: 1px;
+    gap: 12px;
+
+    @include bp-md {
+      position: relative;
+      top: -16px;
+      margin-bottom: 17px;
+    }
+
+    @include bp-sm {
+      margin-bottom: 0;
+    }
+
+    .contactsButton {
+      width: fit-content;
+    }
+
+    .phone,
+    .phone a {
+      margin-bottom: 2px;
+      margin-left: 8px;
+      color: #fff !important;
+    }
+  }
+}

@@ -1,5 +1,5 @@
-import Header from '@shared/page/header/Header'
-import Footer from '@shared/page/footer/footer'
+import Header from '@shared/pageDefault/header/Header'
+import Footer from '@shared/pageDefault/footer/footer'
 import {getAllProgress} from '@src/actions/progress'
 import {Progress} from '@pages/progress/progress'
 import {Metadata} from 'next'
