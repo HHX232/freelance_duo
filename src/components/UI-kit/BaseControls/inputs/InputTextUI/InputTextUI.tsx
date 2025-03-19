@@ -43,10 +43,10 @@ const InputTextUI = forwardRef<HTMLInputElement, IField>(
     }, [])
 
     return (
-      <div className={(cn(styles.input_box, extraClass), golos.className)} style={extraStyle}>
+      <div className={cn(styles.input_box, extraClass, golos.className)} style={extraStyle}>
         {labelText.length > 0 && (
           <label
-            className={cn({
+            className={cn(styles.label, {
               [styles.disabled_top_label_white]: theme === 'white' && disabled === true,
               [styles.disabled_top_label_white_error]: !!error && theme === 'white' && disabled === true,
               [styles.disabled_top_label_dark]: theme === 'dark' && disabled === true,
