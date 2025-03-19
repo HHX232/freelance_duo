@@ -1,7 +1,7 @@
 'use client'
 import {Breadcrumb} from 'antd'
 import Link from 'next/link'
-import styles from './index.module.scss'
+import styles from './Breadcrumbs.module.scss'
 import {useRouter} from 'next/navigation'
 import clsx from 'clsx'
 import BackIcon from '@icons/back.svg'
