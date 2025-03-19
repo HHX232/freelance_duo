@@ -2,7 +2,7 @@
 import {FC} from 'react'
 
 import ITelLinkProps, {TTypeDecorNumber} from './TelLink.types'
-import LinkUI from '../Typography/Link/LinkUI'
+import LinkUI from '../../Text-Elements/Typography/Link/LinkUI'
 
 const TelLink: FC<ITelLinkProps> = ({
   customNumber,

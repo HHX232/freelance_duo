@@ -8,12 +8,20 @@ import {IField} from './InputTextUI.types'
 import {Golos_Text} from 'next/font/google'
 
 {
-  /* <InputTextUI placeholder='Вводите...' labelText='Вводите...' theme='white' disabled={false} /> */
+  /* <InputTextUI placeholder='Вводите...' theme='white' />
+
+<InputTextUI placeholder='Только текст...' theme='white' onlyType='onlyText' />
+
+<InputTextUI placeholder='Только цифры...' theme='white' onlyType='onlyNumbers' /> */
 }
 
 const golos = Golos_Text({subsets: ['cyrillic']})
 
-const InputTextUI = forwardRef<HTMLInputElement, IField>(
+interface IFieldExtended extends IField {
+  onlyType?: 'all' | 'onlyText' | 'onlyNumbers'
+}
+
+const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
   (
     {
       placeholder = 'Вводите...',
@@ -26,6 +34,7 @@ const InputTextUI = forwardRef<HTMLInputElement, IField>(
       extraClassClearIcon,
       disabled = false,
       theme,
+      onlyType = 'all',
       ...rest
     },
     ref
@@ -34,13 +43,40 @@ const InputTextUI = forwardRef<HTMLInputElement, IField>(
     const id = useId()
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setInputText(event.target.value)
-      console.log(inputText)
+      const value = event.target.value
+
+      let newValue = value
+      if (onlyType === 'onlyText') {
+        newValue = value.replace(/[0-9]/g, '')
+      } else if (onlyType === 'onlyNumbers') {
+        newValue = value.replace(/[^0-9]/g, '')
+      }
+
+      setInputText(newValue)
+
+      if (rest.onChange) {
+        const newEvent = {
+          ...event,
+          target: {
+            ...event.target,
+            value: newValue
+          }
+        }
+        rest.onChange(newEvent as React.ChangeEvent<HTMLInputElement>)
+      }
     }
 
     const clearInput = useCallback(() => {
       setInputText('')
-    }, [])
+      if (rest.onChange) {
+        const event = {
+          target: {
+            value: ''
+          }
+        }
+        rest.onChange(event as React.ChangeEvent<HTMLInputElement>)
+      }
+    }, [rest])
 
     return (
       <div className={cn(styles.input_box, extraClass, golos.className)} style={extraStyle}>
