@@ -1,13 +1,12 @@
 'use client'
-
 import styles from './HeaderMenu.module.scss'
 import {IHeaderMenuProps} from './HeaderMenu.types'
 import {useWindowWidth} from './hooks/useWindowWidth'
 import {MobileHeaderMenu} from './MobileHeaderMenu/MobileHeaderMenu'
 import Image from '@src/components/UI-kit/image/Image'
 import MobileHeaderInfoBlock from '../MobileHeaderInfoBlock/MobileHeaderInfoBlock'
-import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
 import Accordion from '@src/components/UI-kit/Popups-Modals/AccordeonKit/accordion/Accordion'
+import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
 
 export default function HeaderMenu({onClose}: IHeaderMenuProps) {
   const windowWidth = useWindowWidth()
@@ -406,7 +405,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               />
 
               {/* TODO: Проверить ссылки */}
-              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/mortgage-calculate'}>
+              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/ipotechniy-kalkulator'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -488,7 +487,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
               </LinkUI>
             </div>
           </div>
-          {/*
+          {/* 
         ------------------------------------------------------------------------------------
         */}
         </div>

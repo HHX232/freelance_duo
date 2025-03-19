@@ -1,6 +1,6 @@
+import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
 import styles from './PrivateOfficeButton.module.scss'
 import {IPrivateOfficeButton} from './PrivateOfficeButton.types'
-import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
 
 export default function PrivateOfficeButton(props: IPrivateOfficeButton) {
   if (props.isAuth) {
