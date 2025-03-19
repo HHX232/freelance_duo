@@ -66,12 +66,9 @@
     color: #213C4E;
   }
 
-  @include md{
-    @include font(3, 36, 50, 400);
-  }
-
-  @include xl{
+  @include lg {
     @include font(3, 42, 54, 400);
+    word-break: break-all;
   }
 
   @include xl {
@@ -87,11 +84,7 @@
     line-height: 20px;
   }
 
-  @include md{
-    @include font(1, 20, 26);
-  }
-
-  @include xl {
+  @include lg {
     @include font(1, 24, 34);
   }
 

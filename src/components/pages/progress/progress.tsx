@@ -1,6 +1,6 @@
 import {IProgress} from '@src/types/progress.interface'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
+import {Title} from '@src/components/UI-kit/TextKit/title/title'
 import {breadcrumbItems} from './config/breadcrumbs'
 import styles from './progress.module.scss'
 import NextImage from 'next/image'

@@ -1,5 +1,5 @@
 'use client'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
+import FilledButton from '@shared/filledButton/FilledButton'
 import styles from './Subscription.module.scss'
 
 const Subscription = () => {
@@ -10,7 +10,7 @@ const Subscription = () => {
           <div className={styles.wrapper}>
             <h3 className={styles.title}>Узнайте больше</h3>
             <p className={styles.description}>
-              Оставьте заявку на обратный звонок и персональный менеджер свяжется с вами для уточнения деталей
+              Оставьте заявку на обратный звонок и  персональный менеджер свяжется с вами для уточнения деталей
             </p>
             <form>
               <div className={styles['input-wrapper']}>

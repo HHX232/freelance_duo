@@ -1,10 +1,10 @@
 'use client'
 
-import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
-import {HeadTitle} from '@src/components/UI-kit/Text-Elements/TextKit/head-title'
+import {Title} from '@src/components/UI-kit/TextKit/title/title'
+import {HeadTitle} from '@src/components/UI-kit/TextKit/head-title'
 
 import './index.scss'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
+import FilledButton from '@shared/filledButton/FilledButton'
 import {StockItem} from '@shared/stock-item'
 import {useState} from 'react'
 import RefreshIcon from '@icons/refresh-cw.svg'
