@@ -1,6 +1,8 @@
-import Header from '@shared/pageDefault/header/Header'
+import Header from '@shared/page/header/Header'
+import Footer from '@shared/page/footer/footer'
 import {Metadata} from 'next'
-import MortgageCalculateWrapper from '@pages/mortgage-calculate/MortgageCalculateWrapper'
+import MortgageCalculateWrapper
+  from '@pages/mortgage-calculate/MortgageCalculateWrapper'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -19,6 +21,7 @@ export default function Parking() {
       <main>
         <MortgageCalculateWrapper />
       </main>
+      <Footer />
     </div>
   )
 }

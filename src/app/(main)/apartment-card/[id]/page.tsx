@@ -3,7 +3,7 @@ import {Metadata} from 'next'
 import {ApartmentCardPageParams} from './model'
 import {parseData} from './data'
 import {getFlatsById, getPdf, getReservation} from '@src/actions/flats'
-import Header from '@shared/pageDefault/header/Header'
+import Header from '@shared/page/header/Header'
 
 export const revalidate = 3600
 

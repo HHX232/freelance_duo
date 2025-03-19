@@ -254,6 +254,13 @@
     }
   }
 
+  @include lg {
+
+    .title {
+      @include font(3, 64, 80, 400);
+    }
+  }
+
   @include xl {
     .title {
       @include font(3, 64, 80, 400);

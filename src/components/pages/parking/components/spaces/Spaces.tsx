@@ -1,5 +1,5 @@
 import styles from './spaces.module.scss'
-import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 
 const Spaces = () => {
   return (

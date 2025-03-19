@@ -1,7 +1,7 @@
 import {Swiper, SwiperClass, SwiperSlide} from 'swiper/react'
 import {useState} from 'react'
 import {stepsForBuySlides} from '@pages/payment-methods/components/full-payment/components/steps-for-buy/content'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
+import FilledButton from '@shared/filledButton/FilledButton'
 import styles from './steps-for-buy.module.scss'
 import useRouterNext from '@src/lib/hooks/useRouter'
 import {NextButton, PrevButton} from '@pages/storerooms/components/carousel/components/EmblaCarouselArrowButtons'
