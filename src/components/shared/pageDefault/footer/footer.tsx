@@ -6,9 +6,8 @@ import FooterNavigation from './components/FooterNavigation/FooterNavigation'
 import {IFooterNavigationLink, IFooterNavigationLinksGroup} from './components/FooterNavigation/FooterNavigation.types'
 import FooterContacts from './components/FooterContacts/FooterContacts'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
-import {Backcall} from '@shared/Popups/back-call-popup/backcall'
 import {MiniButton} from '@src/components/UI-kit/BaseControls/buttons/MiniButton/MiniButton'
-import SaleBlock from '@shared/SaleBlock/SaleBlock'
+import {Backcall} from '@shared/Popups/back-call-popup/backcall'
 
 const PRIMARY_LINKS: IFooterNavigationLinksGroup[] = [
   {
@@ -25,7 +24,7 @@ const PRIMARY_LINKS: IFooterNavigationLinksGroup[] = [
       {name: 'Выбрать кладовую', href: '#vibrat-kladovuyu'},
       {name: 'Отделка', href: '/otdelka'},
       {name: 'Инвестиции', href: '#investicii'},
-      {name: 'Ипотечный калькулятор', href: '#mortgage-calculate'},
+      {name: 'Ипотечный калькулятор', href: '#ipotechniy-kalkulator'},
       {name: 'Способы покупки', href: '#sposobi-pokupki'}
     ]
   },
@@ -81,6 +80,9 @@ const Footer = ({dashboard}: {dashboard?: boolean}) => {
         <div className={`${styles.side} ${styles.side_right}`}>
           <FooterNavigation linksGroups={PRIMARY_LINKS} secondaryLinks={SECONDARY_LINKS} />
         </div>
+        {/* <div>
+          <TelLink typeDecorNumber='classic' />
+        </div> */}
         {isOpenAuth && <AuthPopup onClose={() => setOpenAuth(false)} />}
         {callBackModal && <Backcall onClose={() => setCallBackModal(false)} />}
 

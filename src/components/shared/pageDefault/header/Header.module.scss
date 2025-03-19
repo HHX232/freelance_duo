@@ -30,7 +30,6 @@
 
   .phone {
     color: #555;
-    font-weight: 500 !important;
     transition: color 0.2s ease-in-out;
   }
 
@@ -39,8 +38,8 @@
     padding: 0;
     background-color: #11627d;
 
-    .phoneLink a {
-      color: #fff !important;
+    .phone {
+      color: #fff;
     }
 
     .headerTopContainer {
@@ -125,11 +124,8 @@
       text-transform: uppercase;
     }
 
-    .phoneLink,
-    .phoneLink a {
+    .phoneLink {
       margin-left: 40px;
-      color: #555;
-      font-weight: 400;
     }
 
     .logoutButton {

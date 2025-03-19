@@ -1,6 +1,6 @@
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import styles from './HeaderMenuBottomSettingsButton.module.scss'
 import SettingsSVG from '@icon/Menu point.svg'
-import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 export default function HeaderMenuBottomSettingsButton() {
   return (

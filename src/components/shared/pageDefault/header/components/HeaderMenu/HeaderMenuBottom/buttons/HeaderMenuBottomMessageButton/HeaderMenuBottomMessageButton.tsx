@@ -1,5 +1,5 @@
-import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import MessageSVG from '@icon/message.svg'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 export default function HeaderMenuBottomMessageButton() {
   return (
