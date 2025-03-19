@@ -97,9 +97,9 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
     <header
       className={clsx(styles.header, {[styles.dark]: dark}, isMenuOpened ? `${styles.menuOpened} no-scroll` : '')}
     >
-      <div style={{backgroundColor: 'gray', padding: '20px', margin: '20px', width: '300px'}}>
+      {/* <div style={{backgroundColor: 'gray', padding: '20px', margin: '20px', width: '300px'}}>
         <InputRangeUI theme='white' />
-      </div>
+      </div> */}
       <div className={styles.headerTopContainer}>
         <div className={styles.container}>
           <div className={styles.logo}>
