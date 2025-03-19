@@ -1,6 +1,6 @@
 'use client'
 import styles from './transportMap.module.scss'
-import {YMaps, Map, Placemark, ZoomControl, GeoObject, Clusterer} from '@pbe/react-yandex-maps'
+import {YMaps, Map, Placemark, GeoObject, Clusterer} from '@pbe/react-yandex-maps'
 import MapLegend from './mapLegend/mapLegend'
 import MapSidebar from './mapSidebar/mapSidebar'
 import MobilePopup from './mobilePopup/mobilePopup'
@@ -10,11 +10,10 @@ interface ITransportMap {
   customPoi?: any[],
   customRoutes?: any[],
   withLegend?: boolean,
-  withSidebar?: boolean,
-  customSidebar?: ReactNode
+  withSidebar?: boolean
 }
 
-const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, withSidebar, customSidebar}) => {
+const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, withSidebar}) => {
   const [showLegend, setShowLegend] = useState(true)
   const [showSidebar, setShowSidebar] = useState(false)
   const [ymaps, setYmaps] = useState<any | null>(null)
@@ -135,6 +134,7 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
   }
 
   const toggleSidebar = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
    setShowSidebar(!showSidebar)
   }
 
