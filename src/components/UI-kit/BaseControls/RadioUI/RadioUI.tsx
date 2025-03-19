@@ -2,7 +2,7 @@ import {forwardRef, useId} from 'react'
 import styles from './RadioUI.module.scss'
 import {IRadioUIProps} from './RadioUI.types'
 import clsx from 'clsx'
-import LinkUI from '../Typography/Link/LinkUI'
+import LinkUI from '../../Text-Elements/Typography/Link/LinkUI'
 
 const RadioUI = forwardRef<HTMLInputElement, IRadioUIProps>(
   ({children, error, uiSize = 'lg', extraClass, extraStyles, ...rest}, forwardedRef) => {

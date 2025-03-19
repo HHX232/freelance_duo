@@ -4,7 +4,7 @@ import FindApartmentButton from '../../FindApartmentButton/FindApartmentButton'
 import {IHeaderMenuBottomProps} from './HeaderMenuBottom.types'
 import SettingsButton from './buttons/HeaderMenuBottomSettingsButton/HeaderMenuBottomSettingsButton'
 import PhoneIconSVG from '../../icons/PhoneIconSVG/PhoneIconSVG'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import HeaderMenuBottomPhoneButton from './buttons/HeaderMenuBottomPhoneButton/HeaderMenuBottomPhoneButton'
 import HeaderMenuBottomMessageButton from './buttons/HeaderMenuBottomMessageButton/HeaderMenuBottomMessageButton'
 

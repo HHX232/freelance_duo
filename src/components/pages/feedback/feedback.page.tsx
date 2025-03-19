@@ -3,8 +3,8 @@ import styles from './feedback.module.scss'
 import {Metadata} from 'next'
 import Link from 'next/link'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
-import {InputField} from '@src/components/UI-kit/inputs/input-field/input-field'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
+
 import {IProfile} from '@src/types/profile.interface'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import FilledButton from '@shared/filledButton/FilledButton'
@@ -15,7 +15,8 @@ import {LightBorder} from '@shared/light-border/light-border'
 import NextImage from 'next/image'
 import {sendCallBack} from '@src/actions/contacts'
 import {SuccessContactPopup} from '@shared/success-contact-popup/success-contact-popup'
-import {TextBox} from '@src/components/UI-kit/inputs/textbox/textbox'
+import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
+import {TextBox} from '@src/components/UI-kit/BaseControls/inputs/textbox/textbox'
 
 const breadcrumbItems = [{title: 'Главная', href: '/'}, {title: 'Служба доверия'}]
 

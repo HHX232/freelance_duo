@@ -7,12 +7,12 @@ import clsx from 'clsx'
 import {CSSProperties, MouseEventHandler, useEffect, useState} from 'react'
 import {CompassProps} from './model'
 import dynamic from 'next/dynamic'
-import PopupWrapper from '@src/components/UI-kit/Popup/popup'
+import PopupWrapper from '@src/components/UI-kit/Popups-Modals/Popup/popup'
 import {useWindowWidth} from '@shared/page/header/components/HeaderMenu/hooks/useWindowWidth'
 import Logo from '@icon/card.svg'
 import BorderedButton from '@shared/borderedButton/BorderedButton'
 import {useRouter} from 'next/navigation'
-import ParagraphUI from '@src/components/UI-kit/Typography/Paragraph/Paragraph'
+import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
 
 const CompassCard = dynamic(() => import('./CompassCard'), {ssr: false})
 

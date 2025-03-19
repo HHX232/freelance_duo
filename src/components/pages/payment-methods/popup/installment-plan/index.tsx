@@ -7,7 +7,7 @@ import {CloseButton} from '@shared/close-button'
 import clsx from 'clsx'
 import {useMedia} from '@src/lib/utils/useMedia'
 import {useRouter} from 'next/navigation'
-import Swipe from '@src/components/UI-kit/Swipe/Swipe'
+import Swipe from '@src/components/UI-kit/BaseControls/Swipe/Swipe'
 
 interface IInstallmentPlanDrawerProps {
   shown: boolean

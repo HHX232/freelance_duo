@@ -20,7 +20,7 @@ import ContactFormPage from './Components/contact-form/ContactForm'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 import TransportPage from './Components/transport/Transport'
-import Swipe from '@src/components/UI-kit/Swipe/Swipe'
+import Swipe from '@src/components/UI-kit/BaseControls/Swipe/Swipe'
 const Compass = dynamic(() => import('./Components/card/Compass'), {ssr: false})
 
 const directionHints: DirectionHint[] = [

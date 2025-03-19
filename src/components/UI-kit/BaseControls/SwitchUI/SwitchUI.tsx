@@ -2,7 +2,7 @@ import styles from './SwitchUI.module.scss'
 import {forwardRef, useId} from 'react'
 import {ISwitchUIProps} from './SwitchUI.types'
 import clsx from 'clsx'
-import LinkUI from '../Typography/Link/LinkUI'
+import LinkUI from '../../Text-Elements/Typography/Link/LinkUI'
 
 const SwitchUI = forwardRef<HTMLInputElement, ISwitchUIProps>(
   ({type = 'checkbox', uiSize = 'lg', error, children, extraClass, extraStyles, ...rest}, forwardedRef) => {
