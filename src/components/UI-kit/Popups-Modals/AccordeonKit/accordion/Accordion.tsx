@@ -7,7 +7,6 @@ import {AccordionArrow} from '../accordionArrow/accordionArrow'
 
 // TODO допроверить пропсы
 const AccordionTabCustom = ({
-  key,
   header,
   className,
   style,
@@ -24,6 +23,7 @@ const AccordionTabCustom = ({
   arrowColor,
   children
 }: AccordionTabCustomProps & {children: React.ReactNode}) => {
+  const id = useId()
   return (
     <div
       className={cn(styles.li_item, className, {
@@ -32,7 +32,7 @@ const AccordionTabCustom = ({
         [styles.animationOff]: !animationOn
       })}
       style={style}
-      key={key}
+      key={id}
     >
       <div className={styles.header} onClick={onClick}>
         {header}

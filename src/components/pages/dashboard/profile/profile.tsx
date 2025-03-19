@@ -12,7 +12,7 @@ import {MainContainer} from '@shared/containers/main/main-container'
 import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {getInputStyle, setContainerStyle} from '@src/lib/utils/profile/input-style'
-import FilledButton from '@shared/filledButton/FilledButton'
+import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 
 export const Profile = () => {

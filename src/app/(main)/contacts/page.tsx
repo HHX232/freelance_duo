@@ -1,8 +1,8 @@
 import {Metadata} from 'next'
 
 import ContactsPage from '@pages/contacts/contacts.page'
-import Header from '@shared/page/header/Header'
-import Footer from '@shared/page/footer/footer'
+import Header from '@shared/pageDefault/header/Header'
+import Footer from '@shared/pageDefault/footer/footer'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

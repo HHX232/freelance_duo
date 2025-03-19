@@ -4,7 +4,7 @@ import {useState} from 'react'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import {useIsMaxWidth} from '@utils/useIsMobile'
 import StarIcon from '@icons/white_star.svg'
-import {RequestBackCallDrawer} from '@shared/request-back-call-drawer'
+import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
 import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 import InputRangeUI from '@src/components/UI-kit/BaseControls/inputs/RangeInputUI/RangeInputUI'
 
