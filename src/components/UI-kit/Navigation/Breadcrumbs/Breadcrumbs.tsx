@@ -5,6 +5,9 @@ import styles from './Breadcrumbs.module.scss'
 import {useRouter} from 'next/navigation'
 import clsx from 'clsx'
 import BackIcon from '@icons/back.svg'
+import {Golos_Text} from 'next/font/google'
+
+const golos = Golos_Text({subsets: ['cyrillic']})
 
 export interface BreadcrumbItem {
   title: string
@@ -24,7 +27,7 @@ const Breadcrumbs = ({items, darkTheme, className, iconStyles}: BreadcrumbsProps
   const router = useRouter()
 
   return (
-    <section className={clsx(styles.breadcrumbs, className, {[styles.dark]: darkTheme})}>
+    <section className={clsx(styles.breadcrumbs, className, {[styles.dark]: darkTheme}, golos.className)}>
       <Link className={styles.mobile_version} href={'#'} onClick={() => router.back()}>
         <BackIcon className={iconStyles} />
         <span>{items.length >= 2 ? items[items.length - 2]?.title : 'Назад'}</span>
