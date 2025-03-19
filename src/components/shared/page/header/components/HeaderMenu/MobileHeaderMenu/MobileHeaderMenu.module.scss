@@ -94,6 +94,10 @@
   }
 }
 
+.accordion_header:nth-child(2) {
+  text-decoration: none !important;
+}
+
 .extra_box {
   gap: 8px;
 }
@@ -107,6 +111,10 @@
 
 .accordion_mobile_100 {
   width: 100%;
+}
+
+.text_transform {
+  text-transform: none;
 }
 
 .accordion_mobile_list_default {

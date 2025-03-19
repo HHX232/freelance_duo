@@ -42,7 +42,7 @@
   .secondaryLinks {
     display: none;
 
-    @include custom(0, 900px) {
+    @include custom(0, 980px) {
       display: block;
 
       &.secondaryLinks {
