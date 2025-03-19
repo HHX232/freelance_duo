@@ -1,5 +1,5 @@
 import styles from './title.module.scss'
-import Breadcrumbs, { BreadcrumbItem } from '@shared/Breadcrumbs/Breadcrumbs'
+import Breadcrumbs, {BreadcrumbItem} from '@src/components/UI-kit/Navigation/Breadcrumbs/Breadcrumbs'
 interface IProps {
   breadcrumbs?: BreadcrumbItem[]
   title?: string
