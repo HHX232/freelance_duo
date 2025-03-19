@@ -1,7 +1,7 @@
 'use client'
 import styles from './dashboard.module.scss'
 import {MainContainer} from '@shared/containers/main/main-container'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
+import FilledButton from '@shared/filledButton/FilledButton'
 import Link from 'next/link'
 import ReservSVG from '@icons/reserv.svg'
 
