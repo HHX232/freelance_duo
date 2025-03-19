@@ -2,7 +2,7 @@ import {FC, ReactElement} from 'react'
 import s from './swipe.module.scss'
 import SwipeIcon from '@icons/swipe.svg'
 import clsx from 'clsx'
-import {useWindowWidth} from '@shared/page/header/components/HeaderMenu/hooks/useWindowWidth'
+import {useWindowWidth} from '@shared/pageDefault/header/components/HeaderMenu/hooks/useWindowWidth'
 
 interface ISwipeProps {
   className?: string

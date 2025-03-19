@@ -1,8 +1,8 @@
 import {Metadata} from 'next'
 
 import {infrastructureData} from '@src/contentData/infrastructure_data'
-import {ContentPageWi1thNumbers} from '@shared/ContentPageWithNumbers/ContentPageWithNumbers'
-import Header from '@shared/page/header/Header'
+import Header from '@shared/pageDefault/header/Header'
+import {ContentPageWithNumbers} from '@shared/ContentPages/ContentPageWithNumbers/ContentPageWithNumbers'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -20,7 +20,7 @@ export default function Map() {
     <>
       <Header />
       <main>
-        <ContentPageWi1thNumbers data={infrastructureData} title='Инфраструктура' />
+        <ContentPageWithNumbers data={infrastructureData} title='Инфраструктура' />
       </main>
     </>
   )

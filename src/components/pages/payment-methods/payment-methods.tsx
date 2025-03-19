@@ -10,10 +10,10 @@ import {FullPaymentTab} from './components/full-payment/full-payment'
 import {IpotekaTab} from './components/ipoteka/ipoteka'
 import {StepsForBuy} from '@pages/payment-methods/components/full-payment/components/steps-for-buy'
 import {InstallmentPlanDrawer} from '@pages/payment-methods/popup/installment-plan'
-import {RequestBackCallDrawer} from '@shared/request-back-call-drawer'
+import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
 import {HeadTitle} from '@src/components/UI-kit/Text-Elements/TextKit/head-title'
 import useEmblaCarousel from 'embla-carousel-react'
-import {useWindowWidth} from '@shared/page/header/components/HeaderMenu/hooks/useWindowWidth'
+import {useWindowWidth} from '@shared/pageDefault/header/components/HeaderMenu/hooks/useWindowWidth'
 
 const PaymentMethodsPage = () => {
   const [active, setActive] = useState(0)
