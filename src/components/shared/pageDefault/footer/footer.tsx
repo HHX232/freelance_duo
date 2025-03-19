@@ -8,7 +8,6 @@ import FooterContacts from './components/FooterContacts/FooterContacts'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {Backcall} from '@shared/Popups/back-call-popup/backcall'
 import {MiniButton} from '@src/components/UI-kit/BaseControls/buttons/MiniButton/MiniButton'
-// import TelLink from '@src/components/UI-kit/Text-Elements/TelLink/TelLink'
 
 const PRIMARY_LINKS: IFooterNavigationLinksGroup[] = [
   {

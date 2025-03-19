@@ -8,8 +8,8 @@ import LogoIcon from '@icons/logo-accent-footer.svg'
 import PrivateOfficeButton from './buttons/PrivateOfficeButton/PrivateOfficeButton'
 import FooterNavigation from '../FooterNavigation/FooterNavigation'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
-import TelLink from '@src/components/UI-kit/Text-Elements/TelLink/TelLink'
 import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
+import TelLink from '@src/components/UI-kit/Navigation/TelLink/TelLink'
 
 export default function FooterContacts(props: IFooterContactsProps) {
   return (
