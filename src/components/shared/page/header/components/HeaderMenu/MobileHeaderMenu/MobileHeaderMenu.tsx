@@ -1,10 +1,11 @@
 import React, {FC, useState} from 'react'
 import styles from './MobileHeaderMenu.module.scss'
-import Accordion from '@src/components/UI-kit/AccordeonKit/accordion/Accordion'
+
 import cn, {clsx} from 'clsx'
 import {useWindowWidth} from '../hooks/useWindowWidth'
 import Image from '@src/components/UI-kit/image/Image'
-import LinkUI from '@src/components/UI-kit/Typography/Link/LinkUI'
+import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
+import Accordion from '@src/components/UI-kit/Popups-Modals/AccordeonKit/accordion/Accordion'
 
 interface IMobileHeaderMenuProps {
   onClose: () => void

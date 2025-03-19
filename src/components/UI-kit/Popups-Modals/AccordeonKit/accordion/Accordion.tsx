@@ -3,7 +3,7 @@ import {useState, useMemo, useCallback, useId} from 'react'
 import styles from './accordion.module.scss'
 import {AccordionProps, AccordionTabCustomProps} from './accordion.types'
 import cn from 'clsx'
-import {AccordionArrow} from '@src/components/UI-kit/AccordeonKit/accordionArrow/accordionArrow'
+import {AccordionArrow} from '../accordionArrow/accordionArrow'
 
 // TODO допроверить пропсы
 const AccordionTabCustom = ({

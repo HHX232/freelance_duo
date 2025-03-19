@@ -1,4 +1,4 @@
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import PhoneSVG from '@icon/phone.svg'
 
 export default function HeaderMenuBottomPhoneButton() {

@@ -1,7 +1,7 @@
 'use client'
 import styles from './FindApartmentButton.module.scss'
 import {IFindApartmentButtonProps} from './FindApartmentButton.types'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 export default function FindApartmentButton({onClick, style}: IFindApartmentButtonProps) {
   return (

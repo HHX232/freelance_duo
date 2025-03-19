@@ -1,12 +1,13 @@
 'use client'
-import Accordion from '@src/components/UI-kit/AccordeonKit/accordion/Accordion'
+
 import styles from './HeaderMenu.module.scss'
 import {IHeaderMenuProps} from './HeaderMenu.types'
 import {useWindowWidth} from './hooks/useWindowWidth'
 import {MobileHeaderMenu} from './MobileHeaderMenu/MobileHeaderMenu'
 import Image from '@src/components/UI-kit/image/Image'
 import MobileHeaderInfoBlock from '../MobileHeaderInfoBlock/MobileHeaderInfoBlock'
-import LinkUI from '@src/components/UI-kit/Typography/Link/LinkUI'
+import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
+import Accordion from '@src/components/UI-kit/Popups-Modals/AccordeonKit/accordion/Accordion'
 
 export default function HeaderMenu({onClose}: IHeaderMenuProps) {
   const windowWidth = useWindowWidth()

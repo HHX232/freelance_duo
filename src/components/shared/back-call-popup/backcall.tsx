@@ -2,7 +2,6 @@
 import styles from './backcall.module.scss'
 import {ConfigProvider, Modal, TimePicker} from 'antd'
 import {ChangeEvent, useEffect, useState} from 'react'
-import {InputField} from '@src/components/UI-kit/inputs/input-field/input-field'
 import FilledButton from '@shared/filledButton/FilledButton'
 import dayjs from 'dayjs'
 import {Agree} from '@shared/agree/agree'
@@ -11,6 +10,7 @@ import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {useForm} from 'react-hook-form'
 import {sendCallTouch} from '@src/actions/contacts'
 import {SuccessContactPopup} from '@shared/success-contact-popup/success-contact-popup'
+import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 
 export const Backcall = ({onClose}: {onClose: () => void}) => {
   const [openSuccess, setOpenSuccess] = useState(false)

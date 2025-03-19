@@ -1,7 +1,7 @@
 import styles from './MobileHeaderInfoBlock.module.scss'
 import Inst from '@icons/inst.svg'
 import Vk from '@icons/vk.svg'
-import TelLink from '@src/components/UI-kit/TelLink/TelLink'
+import TelLink from '@src/components/UI-kit/Text-Elements/TelLink/TelLink'
 
 export default function MobileHeaderInfoBlock() {
   return (
