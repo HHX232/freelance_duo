@@ -1,8 +1,9 @@
 'use client'
 import styles from './transportMap.module.scss'
-import {YMaps, Map, Placemark, ZoomControl, GeoObject} from '@pbe/react-yandex-maps'
+import {YMaps, Map, Placemark, ZoomControl, GeoObject, Clusterer} from '@pbe/react-yandex-maps'
 import MapLegend from './mapLegend/mapLegend'
 import MapSidebar from './mapSidebar/mapSidebar'
+import MobilePopup from './mobilePopup/mobilePopup'
 import {FC, useState, useEffect, useRef, ReactNode} from 'react'
 
 interface ITransportMap {
@@ -19,6 +20,16 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
   const [ymaps, setYmaps] = useState<any | null>(null)
   const [poi, setPoi] = useState<any[]>()
   const mapRef = useRef<ymaps.Map | undefined>(undefined)
+  const [zoom, setZoom] = useState(14);
+  const [modalView, setModalView] = useState(false);
+
+  const handleZoom = (delta: number) => {
+    if (mapRef.current) {
+      const newZoom = Math.max(2, Math.min(19, zoom + delta));
+      setZoom(newZoom);
+      mapRef.current.setZoom(newZoom, { duration: 200 });
+    }
+  };
 
   useEffect(() => {
     if (!mapRef.current || !ymaps) return;
@@ -127,14 +138,19 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
    setShowSidebar(!showSidebar)
   }
 
+  const handleExpandMap = () => {
+    setModalView(true)
+  }
+
   return (
     <div className={styles.trmap_container}>
         <YMaps query={{lang: "ru_RU", apikey: "f4f9faf3-0ce8-4dd2-9b67-7843cfeff30f"}}>
             <Map
                 defaultState={{center: [59.999685, 29.746311], zoom: 14, controls: []}}
+                defaultOptions={{}}
                 options={{ suppressMapOpenBlock: true }}
+                controls={[]}
                 modules={[
-                  "control.ZoomControl",
                   "control.FullscreenControl",
                   "control.SearchControl",
                   "control.RoutePanel"
@@ -145,6 +161,15 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
                 }}
                 className={styles.trmap_map}
             >
+              <Clusterer 
+                options={{
+                  preset: "islands#invertedVioletClusterIcons",
+                  groupByCoordinates: true, // Группировать точки с одинаковыми координатами
+                  clusterDisableClickZoom: false, // Разрешить зум на кластере
+                  clusterHideIconOnBalloonOpen: false,
+                  geoObjectHideIconOnBalloonOpen: false,
+                }}
+              >
                 {showLegend && poi && poi.map((place, index) => {
                     return <Placemark
                     key={index}
@@ -158,6 +183,7 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
                     }}
                   />
                 })}
+              </Clusterer>
 
                 {showLegend && customRoutes && customRoutes.map((route, index) => (
                   <GeoObject
@@ -173,14 +199,20 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
                     }}
                   />
                 ))}
-                <ZoomControl options={{ position:{ right: '24px', top: '200px'}, adjustMapMargin: true, size: 'small'}} />
             </Map>
+            {/* Кастомные zoom кнопки */}
+            <div className={`${styles.zoom_controls} ${showSidebar ? styles.zoom_controls_expand : ''}`}>
+              <button className={styles.zoom_btn} onClick={() => handleZoom(1)}>+</button>
+              <button className={styles.zoom_btn} onClick={() => handleZoom(-1)}>−</button>
+            </div>
+            <button className={styles.mobile_expand_btn} onClick={handleExpandMap}>СМОТРЕТЬ НА КАРТЕ</button>
             {withLegend ? <MapLegend switchVisibility={(show) => setShowLegend(show)}/> : null}
             {withSidebar ? <MapSidebar isOpen={showSidebar}/> : null}
             {withSidebar ? <button className={showSidebar ? styles.sidebar_button_show : styles.sidebar_button_hide} onClick={toggleSidebar}>
-              {showSidebar ? '>>' : '<<'}
+              {showSidebar ? <img src='/map/icons/shevron_icon_right.svg' /> : <img src='/map/icons/shevron_icon_left.svg' />}
             </button> : null}
         </YMaps>
+        <MobilePopup shown={modalView} onClose={() => setModalView(false)} />
     </div>
   )
 }

@@ -3,42 +3,38 @@ import styles from "./mapSidebar.module.scss";
 
 interface IMapSidebar {
   isOpen: boolean
+  isMobile?: boolean
 }
 
-const MapSidebar: FC<IMapSidebar> = ({isOpen}) => {
+const MapSidebar: FC<IMapSidebar> = ({isOpen, isMobile}) => {
 
   return (
-    <div className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
+    <div className={`${styles.sidebar} ${isOpen ? styles.open : ""} ${isMobile ? styles.mobile : ''}`}>
       <div className={styles.content}>
         <div className={styles.content_block}>
           <h2 className={`${styles.content_title} ${styles.blue}`}>ДОСТУПНОСТЬ</h2>
+          <hr className={styles.content_hr} />
           <div className={styles.content_block_row}>
-            <div className={`${styles.content_block_column} ${styles.left_blue}`}>
-              <p>25 минут до</p>
-              <p>30 минут до</p>
-              <p>40 минут до</p>
-            </div>
-            <div className={styles.content_block_column}>
-              <p>Курортного района</p>
-              <p>«Лахта Центра»</p>
-              <p>центра Петербурга</p>
-            </div>
+            <p>25 минут до</p>
+            <p>Курортного района</p>
           </div>
           <div className={styles.content_block_row}>
-            <div className={`${styles.content_block_column} ${styles.left_orange}`}>
-              <p>50 минут до</p>
-            </div>
-            <div className={styles.content_block_column}>
-              <p>аэропорта Пулково</p>
-            </div>
+            <p>30 минут до</p>
+            <p>«Лахта Центра»</p>
           </div>
           <div className={styles.content_block_row}>
-            <div className={`${styles.content_block_column} ${styles.left_blue}`}>
-              <p>60 минут на «Метеоре» или яхте до</p>
-            </div>
-            <div className={styles.content_block_column}>
-              <p>причала на Дворцовой набережной</p>
-            </div>
+            <p>40 минут до</p>
+            <p>центра Петербурга</p>
+          </div>
+          <hr className={styles.content_hr} style={{borderColor: '#D38F6D'}} />
+          <div className={styles.content_block_row}>
+            <p>50 минут до</p>
+            <p>аэропорта Пулково</p>
+          </div>
+          <hr className={styles.content_hr} />
+          <div className={styles.content_block_row}>
+            <p>60 минут на «Метеоре» или яхте до</p>
+            <p>причала на Дворцовой набережной</p>
           </div>
         </div>
 

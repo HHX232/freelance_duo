@@ -1,0 +1,64 @@
+@import '../../../../fonts/fonts';
+
+.head {
+    position: absolute;
+    z-index: 999;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+  
+.headClose {
+    // margin: 16px 16px 0 0;
+}
+  
+.mobile_content {
+    display: flex;
+    flex-direction: column;
+
+    .mobile_map {
+        width: 100%;
+        height: 90vh;
+    }
+
+    .mobile_infoblock {
+        width: 100%;
+
+        .infoblock_line {
+            width: 20%;
+            border-top: 3px solid #11627D;
+            margin: 15px auto;
+        }
+
+        h4.infoblock_title {
+            margin: 15px;
+            font-family: $font-romul;
+            font-size: 32px;
+            font-weight: 400;
+        }
+
+        .maplegend-legend {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #FFF;
+            pointer-events: none;
+    
+            .maplegend-legend-item {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: left;
+                padding: 10px;
+    
+                p {
+                    margin-left: 10px;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+  

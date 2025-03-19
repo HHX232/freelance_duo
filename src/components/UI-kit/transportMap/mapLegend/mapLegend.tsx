@@ -33,8 +33,8 @@ const MapLegend: FC<IMapLegend> = ({switchVisibility}) => {
     <section className={styles['maplegend-wrapper']}>
         <div className={styles['maplegend-container']}>
             <SwitchUI checked={isChecked} onChange={handleSwitch}/>
+            <p className={styles['maplegend-name']}>Инфраструктура</p>
         </div>
-        <p className={styles['maplegend-name']}>Инфраструктура</p>
         <span className={styles['maplegend-info-icon']}>i</span>
         <div className={styles['maplegend-legend']}>
             {legendItems.map(item => {
