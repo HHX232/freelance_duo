@@ -13,8 +13,8 @@
       text-align: center;
 
       &:hover {
-        background-color: transparent;
-        color: #555;
+        background-color: transparent !important;
+        color: #555 !important;
       }
     }
   }
@@ -58,7 +58,6 @@
 }
 
 .mobile_version {
-
   display: flex;
   align-items: center;
   gap: 10px;
@@ -70,8 +69,6 @@
   svg path {
     width: 18px;
     height: 18px;
-  }
-  svg path {
     stroke: #555 !important;
   }
 
