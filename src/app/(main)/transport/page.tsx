@@ -1,6 +1,6 @@
 import {Metadata} from 'next'
-import Header from '@shared/pageDefault/header/Header'
-import Footer from '@shared/pageDefault/footer/footer'
+import Header from '@shared/page/header/Header'
+import Footer from '@shared/page/footer/footer'
 import TransportWrapper from '@pages/transport/TransportWrapper'
 
 export async function generateMetadata(): Promise<Metadata> {

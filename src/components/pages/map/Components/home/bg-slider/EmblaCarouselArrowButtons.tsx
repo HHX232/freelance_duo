@@ -1,6 +1,6 @@
 import {ComponentPropsWithRef, useCallback, useEffect, useState} from 'react'
 import {EmblaCarouselType} from 'embla-carousel'
-import {MiniButton} from '@src/components/UI-kit/BaseControls/buttons/MiniButton/MiniButton'
+import {MiniButton} from '@src/components/UI-kit/buttons/MiniButton/MiniButton'
 
 interface UsePrevNextButtonsType {
   prevBtnDisabled: boolean

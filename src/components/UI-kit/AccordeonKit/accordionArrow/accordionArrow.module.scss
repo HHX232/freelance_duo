@@ -1,0 +1,13 @@
+@import '../../../../fonts/fonts';
+
+.arrow {
+  position: absolute;
+  z-index: 1;
+  top: 39%;
+  left: 0;
+}
+
+.arrow_right {
+  right: 0 !important;
+  left: auto;
+}

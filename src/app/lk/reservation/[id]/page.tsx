@@ -1,4 +1,4 @@
-import Header from '@shared/pageDefault/header/Header'
+import Header from '@shared/page/header/Header'
 import {ReservationCreate} from '@pages/dashboard/reservation/create/reservation-create'
 import {Metadata} from 'next'
 

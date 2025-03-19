@@ -3,7 +3,7 @@ import styles from './ticketForm.module.scss'
 import {useState} from 'react'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {FC} from 'react'
-import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 import clsx from 'clsx'
 
 interface ITicketFormProps {

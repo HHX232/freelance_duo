@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form'
 
 import styles from './form-code.module.scss'
 import {ResendCode} from '@pages/dashboard/auth/form-code/components/resend-code'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
+import FilledButton from '@shared/filledButton/FilledButton'
 import {Modal, Skeleton} from 'antd'
 import VerificationCode from '@pages/dashboard/auth/form-code/components/verification-code'
 

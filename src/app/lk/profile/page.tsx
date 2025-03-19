@@ -1,5 +1,5 @@
 import {Profile} from '@pages/dashboard/profile/profile'
-import Header from '@shared/pageDefault/header/Header'
+import Header from '@shared/page/header/Header'
 import {Metadata} from 'next'
 
 export async function generateMetadata(): Promise<Metadata> {
