@@ -1,5 +1,5 @@
 import styles from './comfort.module.scss'
-import DownloadButton from '@src/components/UI-kit/BaseControls/buttons/old/downloadButton'
+import DownloadButton from '@shared/downloadButton'
 
 const Comfort = () => {
   return (
@@ -7,17 +7,18 @@ const Comfort = () => {
       <div className={styles['info-wrapper']}>
         <div className={styles['title']}>удобство хранения на территории комплекса</div>
         <div className={styles.innerWrapper}>
-          <p className={styles['description']}>
-            Индивидуальные кладовые различных размеров от 2,89 до 6,15 кв.м, расположенные на — 1 этаже дома, с общим
-            коридором и системами контроля доступа и пожаротушения.
-          </p>
 
-          <div className={styles['table-img-wrapper']}></div>
+        <p className={styles['description']}>
+          Индивидуальные кладовые различных размеров от 2,89 до 6,15 кв.м, расположенные на — 1 этаже дома, с общим
+          коридором и системами контроля доступа и пожаротушения.
+        </p>
 
-          <div className={styles['download-wrapper']}>
-            <DownloadButton />
-          </div>
-        </div>
+         <div className={styles['table-img-wrapper']}></div>
+
+         <div className={styles['download-wrapper']}>
+           <DownloadButton/>
+         </div>
+       </div>
       </div>
 
       <div className={styles['img-wrapper']}></div>

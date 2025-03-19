@@ -1,7 +1,7 @@
 import {Metadata} from 'next'
 import {aboutCentralData} from '@src/contentData/about_central_data'
-import Header from '@shared/pageDefault/header/Header'
-import ContentPageWithMultiSlider from '@shared/ContentPages/ContentPageWithMultiSlider/ContentPageWithMultiSlider'
+import Header from '@shared/page/header/Header'
+import ContentPageWithMultiSlider from '@shared/ContentPageWithMultiSlider/ContentPageWithMultiSlider'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -19,7 +19,7 @@ export default function Map() {
     <>
       <Header />
       <main>
-        <ContentPageWithMultiSlider data={aboutCentralData} title={'"Кронфорт.<br/>Центральный"'} />
+        <ContentPageWithMultiSlider data={aboutCentralData} title={'"Кронфорт.<br/>Центральный"'}/>
       </main>
     </>
   )

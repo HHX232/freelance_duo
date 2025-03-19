@@ -1,7 +1,7 @@
 'use client'
 import {IProgressItem} from '@src/types/progress.interface'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
+import {Title} from '@src/components/UI-kit/TextKit/title/title'
 import styles from './item.module.scss'
 import {Carousel, ConfigProvider, Select} from 'antd'
 import {useEffect, useRef, useState} from 'react'

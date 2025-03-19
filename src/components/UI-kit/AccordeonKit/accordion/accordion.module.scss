@@ -1,0 +1,195 @@
+@import '../../../../fonts/fonts';
+
+.accordion {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-family: $font-romul;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+
+  // transition: all .3s !important;
+}
+
+.decor_line {
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  opacity: 0.3;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  padding: 8px 20px 8px 0;
+  cursor: pointer; // Добавляем курсор для интерактивности
+}
+
+.li_item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.none {
+  display: none;
+}
+
+.arrow {
+  position: absolute;
+  z-index: 1;
+  top: 39%;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.animationOn {
+  transition:
+    all 0.3s ease,
+    opacity 0.3s ease !important;
+}
+
+.animationOff {
+  transition: none !important;
+}
+
+.content {
+  width: 100%;
+  height: 0;
+  margin-top: 10px;
+  opacity: 0;
+  transition: height 0.2s ease-in-out;
+
+  span {
+    .accordion:first-child {
+      padding-bottom: 18px;
+    }
+
+    li {
+      a,
+      .header {
+        @include font(1, 20, 30);
+
+        font-size: 20px !important;
+      }
+
+      &:not(:has(.header)) {
+        &:first-child {
+          margin-top: 12px;
+        }
+
+        &:last-child {
+          margin-bottom: 12px;
+        }
+
+        padding: 18px 0;
+      }
+
+      .header {
+        color: #fdf1cd;
+      }
+    }
+  }
+}
+
+.arrow_right {
+  right: 0 !important;
+  left: auto;
+}
+
+.item::before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 10px;
+  color: #fff;
+  content: '';
+}
+
+.white_text {
+  color: #fff;
+}
+
+.accent_text {
+  color: #fdf1cd;
+}
+
+.romul_text {
+  font-family: $font-romul;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.gotham_text {
+  font-family: $font-gotham-pro;
+  font-weight: 400;
+}
+
+.accentSmall_text {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.accentMedium_text {
+  font-size: 26px;
+  line-height: 1.4;
+}
+
+.accentLarge_text {
+  font-size: 32px;
+  line-height: 1.4;
+}
+
+// Стили для стандартного шрифта
+.defaultXXL {
+  font-size: 24px;
+  line-height: 1.8;
+}
+
+.defaultXL {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.defaultL {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.defaultM {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.defaultS {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.defaultXS {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.contentActive {
+  height: 100%;
+  opacity: 1; // Плавное появление
+}
+
+.open {
+  padding-bottom: 4px;
+
+  .arrow {
+    transform: rotate(-180deg); // Поворот стрелки
+  }
+}
