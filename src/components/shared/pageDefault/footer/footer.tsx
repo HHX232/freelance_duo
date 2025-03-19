@@ -80,9 +80,6 @@ const Footer = ({dashboard}: {dashboard?: boolean}) => {
         <div className={`${styles.side} ${styles.side_right}`}>
           <FooterNavigation linksGroups={PRIMARY_LINKS} secondaryLinks={SECONDARY_LINKS} />
         </div>
-        {/* <div>
-          <TelLink typeDecorNumber='classic' />
-        </div> */}
         {isOpenAuth && <AuthPopup onClose={() => setOpenAuth(false)} />}
         {callBackModal && <Backcall onClose={() => setCallBackModal(false)} />}
 
