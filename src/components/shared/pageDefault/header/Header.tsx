@@ -21,7 +21,6 @@ import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMen
 import FindApartmentButton from './components/FindApartmentButton/FindApartmentButton'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import TelLink from '@src/components/UI-kit/Text-Elements/TelLink/TelLink'
-import Swipe from '@src/components/UI-kit/BaseControls/Swipe/Swipe'
 
 export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
@@ -151,9 +150,20 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
             <TelLink typeDecorNumber={'classic'} extraClass={styles.phone} />
           </div>
           <div className={styles.phoneIcon}>
-            <TelLink hideDefaultNumber typeDecorNumber={'classic'} extraStyle={{fontWeight: '400'}}>
+            <FullButton
+              type={'Link'}
+              href={'tel:+71231234567'}
+              activeButton={true}
+              border={false}
+              borderColor={''}
+              onClick={() => setOpenAuth(!isOpenAuth)}
+              buttonFill={'none'}
+              buttonElementColor={'black'}
+              buttonText={''}
+              extraClass={styles.extra_weight}
+            >
               <PhoneIconSVG />
-            </TelLink>
+            </FullButton>
           </div>
           {!isLoadingCount && (
             <>
