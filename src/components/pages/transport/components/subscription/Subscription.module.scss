@@ -111,11 +111,15 @@
         margin-top: 36px;
       }
   
-      & .input-wrapper {
+      & .subscription_input {
         display: flex;
         flex-direction: column;
         margin: 15px 0;
         gap: 4px;
+
+        > span {
+          color: #FFF;
+        }
       }
   
       & .input {
@@ -188,10 +192,7 @@
     }
   }
   
-  .wrapper {
-    @layer {
-    }
-  
+  .wrapper {  
     @include xl {
       min-width: 472px;
     }
