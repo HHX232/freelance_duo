@@ -1,7 +1,7 @@
 'use client'
 
 import styles from '@pages/storerooms/components/head/Head.module.scss'
-import Breadcrumbs from '@shared/Breadcrumbs/Breadcrumbs'
+import Breadcrumbs from '@src/components/UI-kit/Navigation/Breadcrumbs/Breadcrumbs'
 
 const Head = () => {
   const breadcrumbItems = [
