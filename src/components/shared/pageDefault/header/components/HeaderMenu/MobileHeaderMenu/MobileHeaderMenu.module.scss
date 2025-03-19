@@ -43,6 +43,10 @@
   font-size: 26px !important;
   font-weight: 400;
   text-transform: uppercase;
+
+  @include custom(0, 759px) {
+    font-size: 22px !important;
+  }
 }
 
 .main_accordion_box {
