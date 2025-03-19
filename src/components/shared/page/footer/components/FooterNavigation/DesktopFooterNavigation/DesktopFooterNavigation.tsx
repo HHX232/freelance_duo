@@ -2,7 +2,7 @@ import Link from 'next/link'
 import {IFooterNavigationLink, IFooterNavigationLinksGroup} from '../FooterNavigation.types'
 import styles from './DesktopFooterNavigation.module.scss'
 import {IDesktopFooterNavigationProps} from './DesktopFooterNavigation.types'
-import LinkUI from '@src/components/UI-kit/Typography/Link/LinkUI'
+import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
 
 export default function DesktopFooterNavigation(props: IDesktopFooterNavigationProps) {
   return (

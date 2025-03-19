@@ -1,58 +1,43 @@
-@import '../../../../scss/variables';
+@import '../../../../../scss/variables';
 
 
 
-.link {
+.paragraph {
    color: #000;
    font-family: $font-primary;
 }
 
-.link_lg {
-   font-size: 20px;
-   line-height: 30px;
+.paragraph_lg {
+   font-size: 24px;
+   line-height: 34px;
 
    @include custom(0, map-get($breakpoints, lg)) {
-      font-size: 18px;
+      font-size: 20px;
       line-height: 26px;
    }
 
    @include custom(0, map-get($breakpoints, sm)) {
-      font-size: 18px;
-      line-height: 26px;
+      font-size: 16px;
+      line-height: 20px;
    }
 }
 
-.link_md {
+.paragraph_md {
    font-size: 16px;
-   line-height: 18px;
+   line-height: 22px;
 
    @include custom(0, map-get($breakpoints, lg)) {
-      font-size: 16px;
+      font-size: 14px;
       line-height: 18px;
    }
 
    @include custom(0, map-get($breakpoints, sm)) {
-      font-size: 16px;
+      font-size: 14px;
       line-height: 18px;
    }
 }
 
-.link_sm {
-   font-size: 14px;
-   line-height: 14px;
-
-   @include custom(0, map-get($breakpoints, lg)) {
-      font-size: 14px;
-      line-height: 14px;
-   }
-
-   @include custom(0, map-get($breakpoints, sm)) {
-      font-size: 14px;
-      line-height: 14px;
-   }
-}
-
-.link_xs {
+.paragraph_sm {
    font-size: 12px;
    line-height: 14px;
 
@@ -67,18 +52,33 @@
    }
 }
 
-.link_light {
+.paragraph_xs {
+   font-size: 10px;
+   line-height: 12px;
+
+   @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 10px;
+      line-height: 12px;
+   }
+
+   @include custom(0, map-get($breakpoints, sm)) {
+      font-size: 10px;
+      line-height: 12px;
+   }
+}
+
+.paragraph_light {
    font-weight: 300;
 }
 
-.link_regular {
+.paragraph_regular {
    font-weight: 400;
 }
 
-.link_medium {
+.paragraph_medium {
    font-weight: 500;
 }
 
-.link_bold {
+.paragraph_bold {
    font-weight: 700;
 }

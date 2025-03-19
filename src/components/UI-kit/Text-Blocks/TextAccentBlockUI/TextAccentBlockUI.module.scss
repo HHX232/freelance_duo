@@ -1,0 +1,99 @@
+/* stylelint-disable scss/no-global-function-names */
+.container {
+   position: relative;
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+}
+
+.theme_white {
+   color: #FDF1CD;
+}
+
+.theme_dark {
+   color: #213C4E;
+}
+
+.text_box {
+   display: flex;
+   margin-right: 20px;
+   gap: 8px;
+}
+
+.decor_el {
+   position: absolute;
+   top: 0;
+   right: 0;
+   content: '';
+}
+
+.title_white {
+   margin-bottom: 18px;
+   color: #FDF1CD !important;
+
+   @include custom(0, map-get($breakpoints, lg)) {
+      margin-bottom: 14px;
+   }
+
+   @include custom(0, map-get($breakpoints, sm)) {
+      margin-bottom: 10px;
+   }
+}
+
+.title_dark {
+   margin-bottom: 18px;
+   color: #213C4E !important;
+
+   @include custom(0, map-get($breakpoints, lg)) {
+      margin-bottom: 14px;
+   }
+
+   @include custom(0, map-get($breakpoints, sm)) {
+      margin-bottom: 10px;
+   }
+
+}
+
+.subTitle_white {
+   color: #FDF1CD !important;
+}
+
+.subTitle_dark {
+   color: #213C4E !important;
+}
+
+.decor_underline {
+   width: 100%;
+   max-width: 82px;
+   height: 1.5px;
+   background-color: #FD7628;
+}
+
+.text_white {
+   margin-top: 16px;
+   color: #FDF1CD !important;
+
+   @include custom(0, map-get($breakpoints, lg)) {
+      margin-top: 12px;
+   }
+
+   @include custom(0, map-get($breakpoints, sm)) {
+      margin-top: 8px;
+   }
+
+}
+
+.text_dark {
+   margin-top: 16px;
+   color: #213C4E !important;
+
+   @include custom(0, map-get($breakpoints, lg)) {
+      margin-top: 12px;
+   }
+
+   @include custom(0, map-get($breakpoints, sm)) {
+      margin-top: 8px;
+   }
+
+   /* Стили для текста в теме "dark" */
+}

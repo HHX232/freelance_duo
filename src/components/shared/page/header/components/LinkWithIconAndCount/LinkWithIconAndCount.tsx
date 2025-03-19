@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styles from './LinkWithIconAndCount.module.scss'
 import {ILinkWithIconAndCountProps} from './LinkWithIconAndCount.types'
-import Badge from '@src/components/UI-kit/Badge/badge'
+import Badge from '@src/components/UI-kit/Indicators/Badge/badge'
 
 export default function LinkWithIconAndCount(props: ILinkWithIconAndCountProps) {
   return (

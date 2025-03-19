@@ -4,16 +4,16 @@ import {useForm} from 'react-hook-form'
 import {IProfile} from '@src/types/profile.interface'
 import {breadcrumbItems} from './config/breadcrumbs'
 import styles from './profile.module.scss'
-import {InputField} from '@src/components/UI-kit/inputs/input-field/input-field'
 import {Col, Row} from 'antd'
 import {useStore} from '@src/lib/store/store'
 import {GetProfile, UpdateProfile} from '@src/actions/profile'
 import {IUser} from '@src/types/auth.interface'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {getInputStyle, setContainerStyle} from '@src/lib/utils/profile/input-style'
 import FilledButton from '@shared/filledButton/FilledButton'
+import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 
 export const Profile = () => {
   const {

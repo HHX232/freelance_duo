@@ -4,7 +4,8 @@ import cn from 'clsx'
 import styles from './CheckBoxUI.module.scss'
 import {CheckIcon} from './icons/CheckIcon'
 import {DashIcon} from './icons/DashIcon'
-import LinkUI from '../Typography/Link/LinkUI'
+import LinkUI from '../../Text-Elements/Typography/Link/LinkUI'
+
 
 const CheckBoxUI = forwardRef<HTMLInputElement, CheckBoxUIProps>(
   (

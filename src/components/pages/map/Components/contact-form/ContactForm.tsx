@@ -1,7 +1,7 @@
 import styles from './ContactForm.module.scss'
 import {useState} from 'react'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 const ContactFormPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
