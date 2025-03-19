@@ -73,20 +73,6 @@
       margin-bottom: 36px;
     }
 
-    .input {
-      @include font(1, 16, 18);
-
-      display: block;
-      padding: 15px;
-      border: 1px solid rgb(205 208 211 / 100%);
-      border-radius: 6px;
-      background-color: transparent;
-
-      &::placeholder {
-        color: rgb(205 208 211 / 100%);
-      }
-    }
-
     .caption {
       @include font(1, 12, 14, 300);
 
