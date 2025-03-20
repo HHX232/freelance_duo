@@ -1,8 +1,8 @@
 type TTextTheme = 'white' | 'dark'
 interface ITextAccentBlockUIProps {
-  textTitle: string
-  textSubTitle: string
-  textMainContent: string
+  textTitle: string | React.ReactNode
+  textSubTitle: string | React.ReactNode
+  textMainContent: string | React.ReactNode
   hideTitle?: boolean
   hideSubTitle?: boolean
   hideMainContent?: boolean

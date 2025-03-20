@@ -1,3 +1,15 @@
+.max_width {
+  max-width: 370px;
+}
+
+.title_color {
+  color: #FDF1CD;
+}
+
+.subtitle_color {
+  color: #fff;
+}
+
 .section {
   background-size: cover;
   background-position: center;
@@ -22,6 +34,7 @@
     justify-content: end;
     padding: 40px 20px;
   }
+
   .caption_sub_title {
     @layer base {
       @include font(1, 16, 34, 200);
@@ -63,7 +76,7 @@
   @include xl {
     padding: 90px 0 64px 142px;
 
-    
+
     .caption_sub_title {
       font-size: 24px;
     }
@@ -165,6 +178,7 @@
       br {
         display: none;
       }
+
       color: $yellow-text;
 
       &.number_title {
@@ -223,6 +237,7 @@
       br {
         display: block;
       }
+
       &.number_title {
         @include font(3, 64, 80);
       }
@@ -266,6 +281,7 @@
       max-width: none;
       @include font(1, 16, 22, 200);
     }
+
     @include xxl {
       max-width: 347px;
     }
@@ -297,10 +313,10 @@
 }
 
 .mobile_captions {
-    .mobile_slide {
-      width: fit-content;
-      flex: 0 0 75% !important;
-    }
+  .mobile_slide {
+    width: fit-content;
+    flex: 0 0 75% !important;
+  }
 
   @include sm {
     .mobile_slide {
@@ -313,8 +329,9 @@
 .phone_slider_container {
   width: 100%;
 }
+
 .captions-title {
   margin-bottom: 8px;
 }
-.phone_slider_wrapper {
-}
+
+.phone_slider_wrapper {}
