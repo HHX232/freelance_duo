@@ -5,6 +5,7 @@ import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton
 import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
 import {Golos_Text} from 'next/font/google'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 const golos = Golos_Text({subsets: ['cyrillic']})
 
@@ -52,7 +53,7 @@ const ContactFormPage = () => {
               />
               <p className={styles.caption}>
                 Нажимая кнопку «Отправить», вы даёте согласие на{' '}
-                <a href='/consent'>обработку своих персональных данных</a>
+                <Link href='/consent'>обработку своих персональных данных</Link>
               </p>
             </form>
           </div>
