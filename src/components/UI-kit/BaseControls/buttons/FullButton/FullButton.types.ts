@@ -28,6 +28,8 @@ type TButtonFill =
 
 type TButtonElementColor = 'white' | 'black' | 'orange' | 'blue'
 type TButtonBorderRadius = '0' | '6px' | '12px' | 'circle'
+type TButtonTextSize = 'md' | 'sm'
+type IButtonTextWeight = 'regular' | 'medium'
 
 interface IArrowProps {
   arrowExtraClass?: string
@@ -51,6 +53,8 @@ export interface IFullButtonProps extends IArrowProps {
   disabled?: boolean
   href?: string
   buttonText: string | React.ReactNode
+  textSize?: TButtonTextSize
+  textWeight?: IButtonTextWeight
   extraClass?: string
   containArrow?: boolean
   children?: React.ReactNode

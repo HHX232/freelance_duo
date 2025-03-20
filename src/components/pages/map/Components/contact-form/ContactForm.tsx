@@ -3,7 +3,6 @@ import {useState} from 'react'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
-import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
 import {Golos_Text} from 'next/font/google'
 import clsx from 'clsx'
 
@@ -23,7 +22,7 @@ const ContactFormPage = () => {
             </p>
             <form>
               <div className={styles['input-wrapper']}>
-                <InputTextUI theme={'white'} labelText={'Имя'} placeholder='Введите имя' />
+                <InputTextUI icon={<></>} theme={'white'} labelText={'Имя'} placeholder='Введите имя' />
               </div>
               <div className={styles['input-wrapper']}>
                 <span className={clsx(styles['input-label'], golos.className)}>Телефон</span>
@@ -46,11 +45,7 @@ const ContactFormPage = () => {
                 border={false}
                 borderColor={''}
                 buttonFill={'bronze-500'}
-                buttonText={
-                  <LinkUI size={'md'} weight={'regular'} extraStyle={{color: '#fff', textTransform: 'uppercase'}}>
-                    Отправить
-                  </LinkUI>
-                }
+                buttonText={'Отправить'}
                 buttonElementColor={'white'}
                 buttonBorderRadius={'6px'}
                 extraClass={styles['button-send']}

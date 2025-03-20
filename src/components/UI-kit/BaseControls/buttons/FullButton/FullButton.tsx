@@ -4,6 +4,7 @@ import Link from 'next/link'
 import cn from 'clsx'
 import styles from './FullButton.module.scss'
 import {ArrowIcon} from '../old/ButtonIcons/ArrowIcon'
+import ButtonTextUI from '@src/components/UI-kit/Text-Elements/Typography/Button/ButtonText'
 
 // ! ЕСЛИ РАМКА НЕ ОТОБРАЖАЕТСЯ, ТО ОБЕРНИТЕ В СПАН С Z-INDEX++
 
@@ -49,6 +50,8 @@ export const FullButton: FC<IFullButtonProps> = ({
   href = '/',
   onClick,
   buttonText = 'Подобрать квартиру',
+  textSize = 'md',
+  textWeight = 'regular',
   extraClass,
   arrowExtraClass,
   arrowColor = '#000000',
@@ -110,7 +113,9 @@ export const FullButton: FC<IFullButtonProps> = ({
           strokeWidth={arrowStrokeWidth}
         />
       )}
-      {buttonText}
+      <ButtonTextUI size={textSize} weight={textWeight}>
+        {buttonText}
+      </ButtonTextUI>
       {children}
       {containArrow && (
         <ArrowIcon
