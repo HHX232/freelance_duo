@@ -14,6 +14,7 @@ interface ITextAccentBlockUIProps {
   extraMainContentClass?: string
   extraDecorElementClass?: string
   extraUnderlineClass?: string
+  extraContainerClass?: string
 }
 
 export default ITextAccentBlockUIProps

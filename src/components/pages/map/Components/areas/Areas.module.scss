@@ -1,3 +1,7 @@
+.max_width {
+  max-width: 320px !important;
+}
+
 .section {
   @layer base {
     position: relative;
@@ -186,9 +190,11 @@
 .phone_slider_container {
   width: 100% !important;
   backface-visibility: hidden;
+
   .caption-items:nth-child(1) {
     flex: 0 0 56% !important;
   }
+
   .caption-items:nth-child(2) {
     flex: 0 0 80% !important;
   }
@@ -201,6 +207,7 @@
     .caption-items:nth-child(2) {
       flex: 0 0 54% !important;
     }
+
     .caption-items:nth-child(1) {
       flex: 0 0 40% !important;
     }
