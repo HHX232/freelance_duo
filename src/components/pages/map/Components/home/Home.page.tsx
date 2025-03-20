@@ -9,7 +9,7 @@ import Gallery from './bg-slider/Gallery'
 import {DotButton, useDotButton} from './bg-slider/EmblaCarouselDotButton'
 import {NextButton, PrevButton, usePrevNextButtons} from './bg-slider/EmblaCarouselArrowButtons'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
-import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
+import ButtonTextUI from '@src/components/UI-kit/Text-Elements/Typography/Button/ButtonText'
 
 const slidesSubTitles = [
   'Море меняет все, Море здесь – главная доминанта, наполняющая энергией все пространство вокруг.',
@@ -59,13 +59,12 @@ const HomePage = () => {
             borderColor={''}
             buttonFill={'bronze-500'}
             buttonElementColor={'white'}
-            extraClass={styles['button_find_apartment']}
             buttonText={''}
           >
-            <MenuPoint className={styles['icon']} />
-            <LinkUI size={'md'} weight={'regular'} extraStyle={{color: '#fff'}}>
+            <ButtonTextUI size={'md'} extraClass={styles.findApartmentButtonInner}>
+              <MenuPoint className={styles['icon']} />
               Подобрать квартиру
-            </LinkUI>
+            </ButtonTextUI>
           </FullButton>
         </div>
         <div className={styles['slider_outer_wrapper']}>
