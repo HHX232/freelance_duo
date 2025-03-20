@@ -6,6 +6,7 @@ import {InputTextDefaultIcon} from './InputTextDefaultIcon'
 import InputClearIcon from './InputClearIcon'
 import {IField} from './InputTextUI.types'
 import {Golos_Text} from 'next/font/google'
+import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
 
 {
   /* <InputTextUI placeholder='Вводите...' theme='white' />
@@ -108,7 +109,9 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
             })}
             htmlFor={id}
           >
-            {labelText}
+            <ParagraphUI size={'md'} weight={'regular'} extraStyle={{color: '#fff'}} extraClass={golos.className}>
+              {labelText}
+            </ParagraphUI>
           </label>
         )}
         <label
