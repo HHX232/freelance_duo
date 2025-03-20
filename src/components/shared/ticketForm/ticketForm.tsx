@@ -26,7 +26,7 @@ const TicketForm: FC<ITicketFormProps> = (props) => {
       </div>
       <form className={clsx(styles['info'])}>
         <div className={styles['input-wrapper']}>
-          <InputTextUI theme={'dark'} labelText={'Имя'} icon={true} placeholder='Введите имя' />
+          <InputTextUI theme={'dark'} labelText={'Имя'} onlyType='onlyText' icon={true} placeholder='Введите имя' />
         </div>
         <div className={styles['input-wrapper']}>
           <InputTextUI
@@ -39,7 +39,7 @@ const TicketForm: FC<ITicketFormProps> = (props) => {
               setPhoneNumber(formattedValue)
             }}
             maxLength={18}
-            pattern={'/^\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}$/'}
+            // customPattern={/^\+7(\s\(\d{0,3}\))?(\s\d{0,3})?(-\d{0,2})?(-\d{0,2})?$/}
             value={phoneNumber}
           />
         </div>

@@ -7,6 +7,7 @@ import ToRight from '@icons/toRight_2.svg'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
+import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
 
 interface TicketFormProps {
   OpenModal: () => void
@@ -35,7 +36,8 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
         {step === 1 ? (
           <div className={styles.formWrapper}>
             <div className={styles.inputsWrapper}>
-              <InputField
+              <InputTextUI placeholder='Введите бренд компании' icon={<></>} labelText='Бренд' theme='dark' />
+              {/* <InputField
                 title={'Бренд'}
                 type={'text'}
                 placeholder={'Введите бренд компании'}
@@ -43,8 +45,10 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
-              />
-              <InputField
+              /> */}
+              <InputTextUI placeholder='Введите направление компании' icon={<></>} labelText='Профиль' theme='dark' />
+
+              {/* <InputField
                 title={'Профиль'}
                 type={'text'}
                 placeholder={'Введите направление бизнеса'}
@@ -52,8 +56,16 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+
+              <InputTextUI
+                placeholder='Введите кол-во магазинов'
+                icon={<></>}
+                labelText='Существующие магазины'
+                theme='dark'
               />
-              <InputField
+
+              {/* <InputField
                 title={'Существующие магазины'}
                 type={'text'}
                 placeholder={'Введите кол-во магазинов'}
@@ -61,8 +73,15 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+
+              <InputTextUI
+                placeholder='Введите кол-во метров'
+                icon={<></>}
+                labelText='Необходимый метраж помещения, м2'
+                theme='dark'
               />
-              <InputField
+              {/* <InputField
                 title={'Необходимый метраж помещения, м2'}
                 type={'text'}
                 placeholder={'Введите кол-во метров'}
@@ -70,7 +89,7 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
-              />
+              /> */}
             </div>
             <FullButton
               type={'Button'}
