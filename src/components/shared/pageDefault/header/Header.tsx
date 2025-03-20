@@ -14,7 +14,7 @@ import DashboardActions from './components/DashboardActions/DashboardActions'
 import useRouterNext from '@src/lib/hooks/useRouter'
 import {usePathname, useRouter} from 'next/navigation'
 import UserSVG from '@icons/user.svg'
-import {useIsXl, useIsMd} from '@utils/useIsMobile'
+import {useIsMd} from '@utils/useIsMobile'
 import LogoutButton from './components/LogoutButton/LogoutButton'
 import PhoneIconSVG from './components/icons/PhoneIconSVG/PhoneIconSVG'
 import HeaderMenuBottom from './components/HeaderMenu/HeaderMenuBottom/HeaderMenuBottom'
@@ -25,9 +25,7 @@ import TelLink from '@src/components/UI-kit/Navigation/TelLink/TelLink'
 
 export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
 
-  const isXl = useIsXl()
   const isMd = useIsMd()
 
   const {favorites, compare} = useStore()
@@ -51,20 +49,6 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
       query: {}
     })
   }
-
-  const handleScroll = (): void => setIsScrolled(window.scrollY > 0)
-
-  useEffect(() => {
-    window.document.body.style.overflowY = isMenuOpened ? 'hidden' : 'auto'
-  }, [isMenuOpened])
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
 
   useEffect(() => {
     if (favorites) {
@@ -98,14 +82,11 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
     <header
       className={clsx(styles.header, {[styles.dark]: dark}, isMenuOpened ? `${styles.menuOpened} no-scroll` : '')}
     >
-      {/* <div style={{backgroundColor: 'gray', padding: '20px', margin: '20px', width: '300px'}}>
-        <InputRangeUI theme='white' />
-      </div> */}
       <div className={styles.headerTopContainer}>
         <div className={styles.container}>
           <div className={styles.logo}>
             <LogoLink
-              isSmall={hideLogo ? true : (isXl && isScrolled && !isMenuOpened) || (isMd && isMenuOpened)}
+              isSmall={hideLogo ? true : isMd && isMenuOpened}
               isTransparent={isMd && isMenuOpened}
               isMenuOpened={isMenuOpened}
             />
