@@ -2,6 +2,7 @@ import styles from './ContactForm.module.scss'
 import {useState} from 'react'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
 
 const ContactFormPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -17,13 +18,13 @@ const ContactFormPage = () => {
             </p>
             <form>
               <div className={styles['input-wrapper']}>
-                <span className={`${styles['input-label']} ${styles.zero_margin}`}>Имя</span>
-                <input className={styles.input} placeholder='Введите имя' />
+                <InputTextUI theme={'white'} labelText={'Имя'} placeholder='Введите имя' />
               </div>
               <div className={styles['input-wrapper']}>
-                <span className={styles['input-label']}>Телефон</span>
-                <input
-                  className={styles.input}
+                <InputTextUI
+                  extraClass={styles.marginTop}
+                  theme={'white'}
+                  labelText={'Телефон'}
                   placeholder='+7 (___) ___-__-__'
                   onChange={(e) => {
                     const formattedValue = formatPhoneNumber(e.target.value)
