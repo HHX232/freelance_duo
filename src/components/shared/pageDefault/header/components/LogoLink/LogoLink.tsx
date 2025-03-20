@@ -7,18 +7,37 @@ import {ILogoLinkProps} from './LogoLink.types'
 import clsx from 'clsx'
 import {useWindowWidth} from '../HeaderMenu/hooks/useWindowWidth'
 import {usePathname} from 'next/navigation'
+import {useEffect, useState} from 'react'
 
 export default function LogoLink({isMenuOpened, isSmall, isTransparent}: ILogoLinkProps) {
   const windowWidth = useWindowWidth()
   const pathname = usePathname()
 
-  const isNotHomePageAndSmallScreen = pathname !== '/' && windowWidth && windowWidth < 1280
+  const [isLogoSmall, setIsLogoSmall] = useState<boolean>(false)
+
+  const handleScroll = (): void => setIsLogoSmall(window.scrollY > 0)
+
+  useEffect(() => {
+    window.document.body.style.overflowY = isMenuOpened ? 'hidden' : 'auto'
+  }, [isMenuOpened])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    setIsLogoSmall(!!(pathname !== '/' && windowWidth && windowWidth < 1280))
+  }, [windowWidth, pathname])
 
   return (
     <div
       className={clsx(styles.logoLink, isMenuOpened ? styles.menuOpened : '', isTransparent ? styles.transparent : '')}
     >
-      {isSmall || isNotHomePageAndSmallScreen ? (
+      {isSmall || isLogoSmall ? (
         <Link className={clsx(styles.icon, styles.small)} href={'/'}>
           <LogoLgSVG />
         </Link>
