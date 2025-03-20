@@ -127,6 +127,15 @@
       input {
         line-height: 18px;
       }
+
+      .input {
+        border: 1px solid #b5d3df;
+
+        &:hover,
+        &:focus {
+          border-color: #dcebf1;
+        }
+      }
     }
 
     & .input {
