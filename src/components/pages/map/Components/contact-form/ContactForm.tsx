@@ -2,6 +2,8 @@ import styles from './ContactForm.module.scss'
 import {useState} from 'react'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
+import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
 
 const ContactFormPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -17,8 +19,7 @@ const ContactFormPage = () => {
             </p>
             <form>
               <div className={styles['input-wrapper']}>
-                <span className={`${styles['input-label']} ${styles.zero_margin}`}>Имя</span>
-                <input className={styles.input} placeholder='Введите имя' />
+                <InputTextUI theme={'white'} labelText={'Имя'} placeholder='Введите имя' />
               </div>
               <div className={styles['input-wrapper']}>
                 <span className={styles['input-label']}>Телефон</span>
@@ -41,7 +42,11 @@ const ContactFormPage = () => {
                 border={false}
                 borderColor={''}
                 buttonFill={'bronze-500'}
-                buttonText={'Отправить'}
+                buttonText={
+                  <LinkUI size={'md'} weight={'regular'} extraStyle={{color: '#fff', textTransform: 'uppercase'}}>
+                    Отправить
+                  </LinkUI>
+                }
                 buttonElementColor={'white'}
                 buttonBorderRadius={'6px'}
                 extraClass={styles['button-send']}
