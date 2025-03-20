@@ -12,13 +12,16 @@ import {Golos_Text} from 'next/font/google'
 
 <InputTextUI placeholder='Только текст...' theme='white' onlyType='onlyText' />
 
-<InputTextUI placeholder='Только цифры...' theme='white' onlyType='onlyNumbers' /> */
+<InputTextUI placeholder='Только цифры...' theme='white' onlyType='onlyNumbers' />
+
+<InputTextUI placeholder='+7 (___) ___-__-__' theme='white' customPattern={/^\+7 \(\d{0,3}\) \d{0,3}-\d{0,2}-\d{0,2}$/} /> */
 }
 
 const golos = Golos_Text({subsets: ['cyrillic']})
 
 interface IFieldExtended extends IField {
   onlyType?: 'all' | 'onlyText' | 'onlyNumbers'
+  customPattern?: RegExp
 }
 
 const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
@@ -35,6 +38,7 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
       disabled = false,
       theme,
       onlyType = 'all',
+      customPattern,
       ...rest
     },
     ref
@@ -46,13 +50,23 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
       const value = event.target.value
 
       let newValue = value
+
+      // Apply onlyType filters first
       if (onlyType === 'onlyText') {
         newValue = value.replace(/[0-9]/g, '')
       } else if (onlyType === 'onlyNumbers') {
         newValue = value.replace(/[^0-9]/g, '')
       }
 
-      setInputText(newValue)
+      if (customPattern) {
+        if (customPattern.test(newValue) || newValue === '') {
+          setInputText(newValue)
+        } else {
+          return
+        }
+      } else {
+        setInputText(newValue)
+      }
 
       if (rest.onChange) {
         const newEvent = {

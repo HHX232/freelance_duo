@@ -11,4 +11,5 @@ export interface IField extends InputHTMLAttributes<HTMLInputElement> {
   extraClassClearIcon?: string
   disabled?: boolean
   theme?: TTheme
+  customPattern?: RegExp
 }
