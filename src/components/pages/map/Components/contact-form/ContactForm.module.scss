@@ -123,6 +123,20 @@
       gap: 4px;
     }
 
+    & .input {
+      @include font(1, 14, 18);
+
+      display: block;
+      padding: 15px;
+      border: 1px solid #fff;
+      border-radius: 6px;
+      background-color: transparent;
+
+      &::placeholder {
+        color: rgb(255 255 255 / 60%);
+      }
+    }
+
     & .caption {
       @include font(1, 12, 14, 300);
 

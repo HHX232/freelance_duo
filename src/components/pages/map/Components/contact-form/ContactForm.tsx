@@ -22,10 +22,9 @@ const ContactFormPage = () => {
                 <InputTextUI theme={'white'} labelText={'Имя'} placeholder='Введите имя' />
               </div>
               <div className={styles['input-wrapper']}>
-                <InputTextUI
-                  extraClass={styles.marginTop}
-                  theme={'white'}
-                  labelText={'Телефон'}
+                <span className={styles['input-label']}>Телефон</span>
+                <input
+                  className={styles.input}
                   placeholder='+7 (___) ___-__-__'
                   onChange={(e) => {
                     const formattedValue = formatPhoneNumber(e.target.value)
