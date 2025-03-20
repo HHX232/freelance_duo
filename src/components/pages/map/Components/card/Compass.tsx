@@ -2,9 +2,8 @@
 import styles from './Card.module.scss'
 import CompassSVG from '@icons/compass.svg'
 import PulseSVG from '@icons/pulse.svg'
-import {Coords} from '@src/components/model'
 import clsx from 'clsx'
-import {CSSProperties, MouseEventHandler, useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {CompassProps} from './model'
 import dynamic from 'next/dynamic'
 import PopupWrapper from '@src/components/UI-kit/Popup/popup'
@@ -24,20 +23,20 @@ const CARD_HEIGHT = 327
 
 const TIME_TO_SHOW_CARD = 300
 
-export interface CardProps {
-  name: string
-  text?: string
-  color: string
-  coords?: Coords
-  onEnterCard?: MouseEventHandler<HTMLDivElement> | undefined
-  onLeaveCard?: MouseEventHandler<HTMLDivElement> | undefined
-  onClickCloseCard?: MouseEventHandler<SVGElement> | undefined
-  isVisible: boolean
-  style?: CSSProperties
-  coords_mob?: Coords
-}
-
-const Compass = ({name, text, color, coords, isMobile = false, onClickCompass, coords_mob, link}: CompassProps) => {
+const Compass = ({
+  name,
+  text,
+  color,
+  coords,
+  isMobile = false,
+  onClickCompass,
+  coords_mob,
+  link,
+  disablePopup,
+  CustomStar,
+  className,
+  id
+}: CompassProps) => {
   const [compassLocation, setCompassLocation] = useState({x: 0, y: 0})
   const [isTimeoutActive, setIsTimeoutActive] = useState<undefined | NodeJS.Timeout>(undefined)
   const [isHovered, setIsHovered] = useState(false)
@@ -79,26 +78,29 @@ const Compass = ({name, text, color, coords, isMobile = false, onClickCompass, c
 
   return (
     <>
-      <PopupWrapper isOpen={moblilePopUpIsOpen} setIsOpen={(value) => setMobilePopUpIsOpen(value)}>
-        <div className={styles.mobile_modal}>
-          <div className={styles.modal_logo_wrapper}>
-            <Logo style={{color}} className={styles.popup_logo} />
-            <span className={styles.modal_name}>{name}</span>
+      {!disablePopup && (
+        <PopupWrapper isOpen={moblilePopUpIsOpen} setIsOpen={(value) => setMobilePopUpIsOpen(value)}>
+          <div className={styles.mobile_modal}>
+            <div className={styles.modal_logo_wrapper}>
+              <Logo style={{color}} className={styles.popup_logo} />
+              <span className={styles.modal_name}>{name}</span>
+            </div>
+            <div className={styles.mobile_modal_content}>
+              <ParagraphUI weight={'regular'} extraClass={styles.modal_text} size='md'>
+                {text}
+              </ParagraphUI>
+              {link && (
+                <BorderedButton className={styles.modal_button} onClick={() => router.push(link.href)}>
+                  <span style={{color: color}}>{link.title}</span>
+                </BorderedButton>
+              )}
+            </div>
           </div>
-          <div className={styles.mobile_modal_content}>
-            <ParagraphUI weight={'regular'} extraClass={styles.modal_text} size='md'>
-              {text}
-            </ParagraphUI>
-            {link && (
-              <BorderedButton className={styles.modal_button} onClick={() => router.push(link.href)}>
-                <span style={{color: color}}>{link.title}</span>
-              </BorderedButton>
-            )}
-          </div>
-        </div>
-      </PopupWrapper>
+        </PopupWrapper>
+      )}
       <div
-        className={styles.cardWrapper}
+        className={clsx(styles.cardWrapper, className)}
+        id={id}
         style={{
           top: `${isMobile ? coords_mob?.y : coords.y}%`,
           left: `${isMobile ? coords_mob?.x : coords.x}%`,
@@ -107,19 +109,21 @@ const Compass = ({name, text, color, coords, isMobile = false, onClickCompass, c
       >
         <div className={styles.compassLink}>
           <button onClick={openMobilePopUpAction} className={clsx(styles.compass_button)}>
-            <CompassSVG
-              onMouseEnter={onEnterInnerCompass}
-              onMouseLeave={onLeaveInnerCompass}
-              onClick={onClickCompass}
-              style={{color}}
-              className={styles.compass}
-            />
+            {CustomStar?.(styles.compass) || (
+              <CompassSVG
+                onMouseEnter={onEnterInnerCompass}
+                onMouseLeave={onLeaveInnerCompass}
+                onClick={onClickCompass}
+                style={{color}}
+                className={styles.compass}
+              />
+            )}
             <PulseSVG className={clsx(styles.pulse1, styles.pulse)} />
             <PulseSVG className={clsx(styles.pulse2, styles.pulse)} />
             <PulseSVG className={clsx(styles.pulse3, styles.pulse)} />
           </button>
         </div>
-        {!isMobile && (
+        {!isMobile && !disablePopup && (
           <CompassCard
             color={color}
             name={name}
@@ -128,6 +132,7 @@ const Compass = ({name, text, color, coords, isMobile = false, onClickCompass, c
             isVisible={isHovered}
             onEnterCard={onEnterCard}
             onLeaveCard={onLeaveCard}
+            disablePopup={disablePopup}
           />
         )}
       </div>

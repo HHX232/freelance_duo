@@ -5,7 +5,7 @@ import CancelSVG from '@icon/cancel.svg'
 import CardLeftSide from '@icon/card.svg'
 import Link from 'next/link'
 import BorderedButton from '@shared/borderedButton/BorderedButton'
-import {CardProps} from './Compass'
+import {CardProps} from './model'
 
 const CompassCard = ({
   name,
@@ -22,6 +22,7 @@ const CompassCard = ({
   return (
     <div
       className={clsx(styles.wrapper, {[styles.wrapperVisible]: isVisible})}
+      //@ts-ignore
       style={{top: !isMobile ? `${coords?.y}px` : '', left: !isMobile ? `${coords?.x}px` : '', ...style}}
       onMouseEnter={onEnterCard}
       onMouseLeave={onLeaveCard}
