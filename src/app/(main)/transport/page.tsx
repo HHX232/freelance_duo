@@ -15,12 +15,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Transport() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <TransportWrapper />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

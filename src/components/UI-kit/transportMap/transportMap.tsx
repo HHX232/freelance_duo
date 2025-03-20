@@ -33,15 +33,17 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
   useEffect(() => {
     if (!mapRef.current || !ymaps) return;
 
-    if(customPoi) {
-      //если точки интереса переданы как пропсы, то не ищем на карте
-      setPoi(customPoi)
-    } else {
-      try {
-        ymaps.ready(() => {
-          if (!mapRef.current) return;
-          const map = mapRef.current;
-          
+    ymaps.ready(() => {
+      if (!mapRef.current) return;
+      const map = mapRef.current;
+
+      map.behaviors.disable('scrollZoom');
+
+      if(customPoi) {
+        //если точки интереса переданы как пропсы, то не ищем на карте
+        setPoi(customPoi)
+      } else {
+        try {
           //Создаем поиск по карте
           const searchControl = new ymaps.control.SearchControl({
             options: {
@@ -94,11 +96,11 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
           //   //прячем с карты панель маршрута
           //   map.controls.remove(routePanelControl);
           // }
-        });
-      } catch(err) {
-        console.error('MAPS-ERR->', err);
+        } catch(err) {
+          console.error('MAPS-ERR->', err);
+        }
       }
-    }
+    });
   }, [mapRef.current]);
   
   const getIconName = (name: string) => {
@@ -147,7 +149,6 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
         <YMaps query={{lang: "ru_RU", apikey: "f4f9faf3-0ce8-4dd2-9b67-7843cfeff30f"}}>
             <Map
                 defaultState={{center: [59.999685, 29.746311], zoom: 14, controls: []}}
-                defaultOptions={{}}
                 options={{ suppressMapOpenBlock: true }}
                 controls={[]}
                 modules={[
