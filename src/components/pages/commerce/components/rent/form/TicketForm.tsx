@@ -4,9 +4,9 @@ import {FC, useState} from 'react'
 import ProgressBar from '@src/components/UI-kit/Indicators/ProgressBar/progressBar'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import ToRight from '@icons/toRight_2.svg'
-import Link from 'next/link'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
+import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
 
 interface TicketFormProps {
   OpenModal: () => void
@@ -154,9 +154,15 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
             />
             <div className={styles.subtext}>
               Нажимая кнопку «Отправить», вы даёте согласие на
-              <Link href={'/consent'} target='_blank'>
+              <LinkUI
+                size={'xs'}
+                weight={'regular'}
+                extraStyle={{color: 'rgb(116, 118, 121)'}}
+                href={'/consent'}
+                target='_blank'
+              >
                 <span> обработку своих персональных данных</span>
-              </Link>
+              </LinkUI>
             </div>
           </div>
         )}
