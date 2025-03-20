@@ -75,6 +75,8 @@
 .selectValue {
   overflow: hidden;
   flex-grow: 1;
+  font-size: 14px;
+  line-height: 18px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
