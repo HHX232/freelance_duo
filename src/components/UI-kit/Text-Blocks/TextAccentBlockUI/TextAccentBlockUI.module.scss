@@ -12,12 +12,24 @@
 
 .theme_dark {
    color: #213C4E;
+
 }
 
 .text_box {
    display: flex;
    margin-right: 20px;
+   align-items: end;
    gap: 8px;
+
+   margin-bottom: 18px;
+
+   @include custom(0, map-get($breakpoints, lg)) {
+      margin-bottom: 14px;
+   }
+
+   @include custom(0, map-get($breakpoints, sm)) {
+      margin-bottom: 10px;
+   }
 }
 
 .decor_el {
@@ -28,34 +40,20 @@
 }
 
 .title_white {
-   margin-bottom: 18px;
+   // margin-bottom: 18px;
    color: #FDF1CD !important;
-
-   @include custom(0, map-get($breakpoints, lg)) {
-      margin-bottom: 14px;
-   }
-
-   @include custom(0, map-get($breakpoints, sm)) {
-      margin-bottom: 10px;
-   }
 }
 
 .title_dark {
-   margin-bottom: 18px;
+   // margin-bottom: 18px;
    color: #213C4E !important;
 
-   @include custom(0, map-get($breakpoints, lg)) {
-      margin-bottom: 14px;
-   }
-
-   @include custom(0, map-get($breakpoints, sm)) {
-      margin-bottom: 10px;
-   }
 
 }
 
 .subTitle_white {
    color: #FDF1CD !important;
+
 }
 
 .subTitle_dark {

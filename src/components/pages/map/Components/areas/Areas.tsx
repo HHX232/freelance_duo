@@ -1,9 +1,9 @@
 'use client'
 import {Suspense} from 'react'
 import styles from './Areas.module.scss'
-import CornerSVG from '@icons/corner.svg'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
+import TextAccentBlockUI from '@src/components/UI-kit/Text-Blocks/TextAccentBlockUI/TextAccentBlockUI'
 
 const AreasContent = () => {
   const mobileSlides: React.ReactNode[] = [
@@ -45,30 +45,25 @@ const AreasContent = () => {
               От Уютных студий <br /> до просторных лофтов
             </h2>
             <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
-              <div className={styles['caption']}>
-                <CornerSVG />
-                <h2 className={styles['caption__title']}>
-                  <span>&#62;3</span> м
-                </h2>
-                <hr className={styles['caption__divider']} />
-                <p className={styles['caption__description']}>высота потолков</p>
-              </div>
-              <div className={styles['caption']}>
-                <CornerSVG />
-                <h2 className={styles['caption__title']}>
-                  <span>24-100</span> м2
-                </h2>
-                <hr className={styles['caption__divider']} />
-                <p className={styles['caption__description']}>площадь квартир</p>
-              </div>
-              <div className={styles['caption']}>
-                <CornerSVG />
-                <h2 className={styles['caption__title']}>
-                  <span>10</span>
-                </h2>
-                <hr className={styles['caption__divider']} />
-                <p className={styles['caption__description']}>корпусов в проекте</p>
-              </div>
+              <TextAccentBlockUI
+                extraContainerClass={styles.max_width}
+                textTitle='>3'
+                textSubTitle='М'
+                textMainContent='высота потолков'
+              />
+              <TextAccentBlockUI
+                extraContainerClass={styles.max_width}
+                textTitle='24-100'
+                textSubTitle='м2'
+                textMainContent='площадь квартир'
+              />
+              <TextAccentBlockUI
+                extraContainerClass={styles.max_width}
+                textTitle='10'
+                textSubTitle=''
+                hideSubTitle
+                textMainContent='корпусов в проекте'
+              />
             </div>
           </div>
           <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>

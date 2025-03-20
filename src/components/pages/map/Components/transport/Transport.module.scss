@@ -1,3 +1,15 @@
+.under_class {
+  margin-top: 18px !important;
+
+  @include custom(0, map-get($breakpoints, lg)) {
+    margin-top: 14px;
+  }
+
+  @include custom(0, map-get($breakpoints, sm)) {
+    margin-top: 10px;
+  }
+}
+
 .section {
   @layer base {
     position: relative;
@@ -41,9 +53,11 @@
   @include xl {
     padding: 90px 142px;
   }
+
   @include xxl {
     padding: 90px 170px;
   }
+
   @include xxxl {
     padding: 130px 190px;
   }
@@ -58,11 +72,11 @@
   width: 100%;
   height: 100%;
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .mapIsActive {
-    pointer-events: all !important;
+  pointer-events: all !important;
 }
 
 .captions {
@@ -136,8 +150,7 @@
     }
   }
 
-  @include md {
-  }
+  @include md {}
 
   &__title {
     @layer base {
@@ -230,8 +243,8 @@
       @include font(3, 26, 36, 400);
       color: #213c4e;
     }
-    .caption__divider {
-    }
+
+    .caption__divider {}
   }
 
   @include xl {

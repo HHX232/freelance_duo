@@ -44,10 +44,11 @@ const TextAccentBlockUI: FC<ITextAccentBlockUIProps> = ({
   extraSubTitleClass,
   extraMainContentClass,
   extraDecorElementClass,
-  extraUnderlineClass
+  extraUnderlineClass,
+  extraContainerClass
 }) => {
   return (
-    <div className={cn(styles.container, styles[`theme_${theme}`])}>
+    <div className={cn(styles.container, extraContainerClass, styles[`theme_${theme}`])}>
       {!hideDecorElement && <TextAccentDecorElement decorClass={cn(styles.decor_el, extraDecorElementClass)} />}
       <span className={styles.text_box}>
         {!hideTitle && (

@@ -1,51 +1,47 @@
-@import '../../../../scss/variables';
+ .button {
+    color: #000;
+    font-family: $font-primary;
+ }
 
 
+ .button_md {
+    font-size: 16px;
+    line-height: 24px;
 
-.button {
-   color: #000;
-   font-family: $font-primary;
-}
+    @include custom(0, map-get($breakpoints, lg)) {
+       font-size: 16px;
+       line-height: 24px;
+    }
 
+    @include custom(0, map-get($breakpoints, sm)) {
+       font-size: 16px;
+       line-height: 24px;
+    }
+ }
 
-.button_md {
-   font-size: 16px;
-   line-height: 24px;
+ .button_sm {
+    font-size: 14px;
+    line-height: 18px;
 
-   @include custom(0, map-get($breakpoints, lg)) {
-      font-size: 16px;
-      line-height: 24px;
-   }
+    @include custom(0, map-get($breakpoints, lg)) {
+       font-size: 14px;
+       line-height: 18px;
+    }
 
-   @include custom(0, map-get($breakpoints, sm)) {
-      font-size: 16px;
-      line-height: 24px;
-   }
-}
-
-.button_sm {
-   font-size: 14px;
-   line-height: 18px;
-
-   @include custom(0, map-get($breakpoints, lg)) {
-      font-size: 14px;
-      line-height: 18px;
-   }
-
-   @include custom(0, map-get($breakpoints, sm)) {
-      font-size: 14px;
-      line-height: 18px;
-   }
-}
+    @include custom(0, map-get($breakpoints, sm)) {
+       font-size: 14px;
+       line-height: 18px;
+    }
+ }
 
 
 
 
 
-.button_regular {
-   font-weight: 400;
-}
+ .button_regular {
+    font-weight: 400;
+ }
 
-.button_medium {
-   font-weight: 500;
-}
+ .button_medium {
+    font-weight: 500;
+ }

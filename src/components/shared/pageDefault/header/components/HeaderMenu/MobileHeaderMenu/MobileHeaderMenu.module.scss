@@ -94,7 +94,7 @@
 }
 
 .accordion_header_active {
-  & > div:first-child {
+  &>div:first-child {
     margin-bottom: 12px;
   }
 }
@@ -126,11 +126,11 @@
   display: flex;
   flex-direction: column;
 
-  & > li {
+  &>li {
     padding: 6px 0;
     color: #fff;
 
-    & > a {
+    &>a {
       font-size: 18px !important;
       line-height: 26px;
       text-transform: none;
@@ -157,11 +157,11 @@
   }
 
   .accordion_mobile_list_default {
-    & > li > a {
+    &>li>a {
       font-size: 14px !important;
     }
 
-    & > li {
+    &>li {
       font-size: 14px !important;
     }
   }
