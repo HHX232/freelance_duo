@@ -6,6 +6,7 @@ import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/
 import {Golos_Text} from 'next/font/google'
 import clsx from 'clsx'
 import Link from 'next/link'
+import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
 
 const golos = Golos_Text({subsets: ['cyrillic']})
 
@@ -26,7 +27,12 @@ const ContactFormPage = () => {
                 <InputTextUI icon={<></>} theme={'white'} labelText={'Имя'} placeholder='Введите имя' />
               </div>
               <div className={styles['input-wrapper']}>
-                <span className={clsx(styles['input-label'], golos.className)}>Телефон</span>
+                <span className={styles['input-label']}>
+                  <ParagraphUI size={'md'} weight={'regular'} extraStyle={{color: '#fff'}} extraClass={golos.className}>
+                    Телефон
+                  </ParagraphUI>
+                </span>
+
                 <input
                   className={clsx(styles.input, golos.className)}
                   placeholder='+7 (___) ___-__-__'
