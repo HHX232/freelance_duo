@@ -6,6 +6,7 @@ import {InputTextDefaultIcon as InputRangeDefaultIcon} from './InputRangeDefault
 import InputClearIcon from './InputClearIcon'
 import {IField} from './RangeUI.types'
 import {Golos_Text} from 'next/font/google'
+import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
 
 const golos = Golos_Text({subsets: ['cyrillic']})
 
@@ -85,7 +86,9 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
             })}
             htmlFor={id}
           >
-            {labelText}
+            <ParagraphUI size={'md'} weight={'regular'} extraStyle={{color: '#fff'}} extraClass={golos.className}>
+              labelText
+            </ParagraphUI>
           </label>
         )}
         <div className={styles.input_wrapper}>
