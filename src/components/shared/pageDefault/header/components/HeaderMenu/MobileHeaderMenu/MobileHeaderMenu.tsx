@@ -457,7 +457,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 />
               </li>
               <li>
-                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/ipotechniy-kalkulator'}>
+                <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/mortgage-calculate'}>
                   <Accordion
                     animationOn={false}
                     leftArrow={false}

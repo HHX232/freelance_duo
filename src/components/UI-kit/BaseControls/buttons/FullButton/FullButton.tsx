@@ -113,7 +113,15 @@ export const FullButton: FC<IFullButtonProps> = ({
           strokeWidth={arrowStrokeWidth}
         />
       )}
-      <ButtonTextUI size={textSize} weight={textWeight}>
+      <ButtonTextUI
+        size={textSize}
+        weight={textWeight}
+        extraClass={cn({
+          [styles[`button-element-color-${buttonElementColor}`]]: buttonElementColor,
+          [styles.animationOn]: animationOn,
+          [styles[`butron-border-radius-${buttonBorderRadius}`]]: buttonBorderRadius
+        })}
+      >
         {buttonText}
       </ButtonTextUI>
       {children}

@@ -5,9 +5,6 @@ import styles from './RangeInputUI.module.scss'
 import {InputTextDefaultIcon as InputRangeDefaultIcon} from './InputRangeDefaultIcon'
 import InputClearIcon from './InputClearIcon'
 import {IField} from './RangeUI.types'
-import {Golos_Text} from 'next/font/google'
-
-const golos = Golos_Text({subsets: ['cyrillic']})
 
 const InputRangeUI = forwardRef<HTMLInputElement, IField>(
   (
@@ -25,15 +22,15 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
       minValue = 0,
       maxValue = 100,
       isNeedToClear,
-      textAfterValue = '',
       ...rest
     },
     ref
   ) => {
     const [inputText, setInputText] = useState('')
+    // Initialize rangeValue with maxValue
     const [rangeValue, setRangeValue] = useState(maxValue)
     const id = useId()
-    const textInputRef = useRef<HTMLInputElement>(null)
+    const rangeRef = useRef<HTMLInputElement>(null)
     const progressRef = useRef<HTMLDivElement>(null)
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,8 +45,9 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
       updateProgressWidth(newValue)
     }
 
+    // Update progress width based on range value
     const updateProgressWidth = (value: number) => {
-      if (progressRef.current) {
+      if (progressRef.current && rangeRef.current) {
         const percentage = ((value - minValue) / (maxValue - minValue)) * 100
         progressRef.current.style.width = `${percentage}%`
       }
@@ -70,7 +68,7 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
     }, [maxValue, minValue])
 
     return (
-      <div className={cn(styles.input_box, extraClass, golos.className)} style={extraStyle}>
+      <div className={cn(styles.input_box, extraClass)} style={extraStyle}>
         {labelText.length > 0 && (
           <label
             className={cn({
@@ -131,11 +129,11 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
                 [styles.input_white]: theme === 'white',
                 [styles.input_dark]: theme === 'dark'
               })}
-              ref={textInputRef}
+              ref={ref}
               type={type}
               {...rest}
               disabled={true}
-              value={inputText + textAfterValue}
+              value={inputText}
               onChange={onInputChange}
               autoComplete={type === 'text' ? 'off' : undefined}
             />
@@ -172,8 +170,9 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
                   [styles.range_progress_disabled]: disabled
                 })}
               ></div>
+
               <input
-                ref={ref}
+                ref={rangeRef}
                 type='range'
                 min={minValue}
                 max={maxValue}
