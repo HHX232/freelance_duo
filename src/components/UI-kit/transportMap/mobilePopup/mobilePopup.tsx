@@ -1,6 +1,6 @@
 "use client"
 import {Drawer} from 'antd'
-import {FC, useState} from 'react'
+import {FC, useState, useEffect} from 'react'
 import styles from './mobilePopup.module.scss'
 import {YMaps, Map, Placemark, GeoObject, Clusterer} from '@pbe/react-yandex-maps'
 import MapSidebar from '../mapSidebar/mapSidebar'
@@ -25,10 +25,13 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
     {icon: 'park', text: 'Парки'},
     {icon: 'coast', text: 'Набережная'}
   ]
-
+    const [hasTouch, setHasTouch] = useState(false);
     const [y, setY] = useState(0);
     const [open, setOpen] = useState(false);
-    const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+    useEffect(() => {
+        if (window && "ontouchstart" in window || navigator && navigator.maxTouchPoints > 0) setHasTouch(true)
+    },[])
 
     const handleTouchMove = (e: React.TouchEvent) => {
         const touch = e.touches[0];
@@ -36,7 +39,7 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
     };
 
     const handleTouchEnd = () => {
-        if (y < window.innerHeight / 2) {
+        if (typeof window !== undefined && y < window.innerHeight / 2) {
         setOpen(true);
         } else {
         setOpen(false);
