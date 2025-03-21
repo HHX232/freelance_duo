@@ -72,7 +72,6 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
               /> */}
 
               <InputTextUI
-                extraLabelClass={styles.label_in_box_color}
                 placeholder='Введите кол-во магазинов'
                 icon={<></>}
                 labelText='Существующие магазины'
@@ -91,7 +90,6 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
               /> */}
 
               <InputTextUI
-                extraLabelClass={styles.label_in_box_color}
                 placeholder='Введите кол-во метров'
                 icon={<></>}
                 labelText='Необходимый метраж помещения, м2'

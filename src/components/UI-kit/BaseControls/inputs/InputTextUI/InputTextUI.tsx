@@ -41,7 +41,6 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
       theme,
       onlyType = 'all',
       customPattern,
-      extraLabelClass,
       ...rest
     },
     ref
