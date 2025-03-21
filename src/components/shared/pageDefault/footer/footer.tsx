@@ -24,7 +24,7 @@ const PRIMARY_LINKS: IFooterNavigationLinksGroup[] = [
       {name: 'Выбрать кладовую', href: '#vibrat-kladovuyu'},
       {name: 'Отделка', href: '/otdelka'},
       {name: 'Инвестиции', href: '#investicii'},
-      {name: 'Ипотечный калькулятор', href: '#ipotechniy-kalkulator'},
+      {name: 'Ипотечный калькулятор', href: '#mortgage-calculate'},
       {name: 'Способы покупки', href: '#sposobi-pokupki'}
     ]
   },

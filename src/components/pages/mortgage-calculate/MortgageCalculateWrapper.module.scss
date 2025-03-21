@@ -370,6 +370,10 @@
 
 }
 
+.selected{
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .sum{
   @layer base{
     @include font(1,16, 20, 400);

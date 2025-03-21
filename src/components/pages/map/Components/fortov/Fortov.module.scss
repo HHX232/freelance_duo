@@ -14,8 +14,6 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;
-  height: fit-content;
 
   @layer base {
     background:
@@ -28,6 +26,7 @@
     height: 100vh;
     background-position: center;
     background-size: cover;
+    max-height: 640px;
 
     display: flex;
     flex-direction: column;
@@ -44,6 +43,7 @@
 
   @include sm {
     padding: 40px 20px;
+    max-height: 875px;
   }
 
   @include md {
@@ -53,6 +53,8 @@
       linear-gradient(44deg, rgba(30, 56, 73, 0.9) 4.95%, rgba(30, 56, 73, 0) 67.43%),
       linear-gradient(90deg, #1e3849 -28.39%, rgba(0, 0, 0, 0) 93.62%),
       url('/content/cluster.png') lightgray 50% / cover no-repeat;
+
+    max-height: 1000px;
 
     .caption_sub_title {
       font-size: 20px;
@@ -216,7 +218,7 @@
       }
 
       br {
-        display: none
+        display: none;
       }
 
       &.number_title {

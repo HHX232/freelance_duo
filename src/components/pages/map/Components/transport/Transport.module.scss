@@ -12,8 +12,8 @@
 
 .section {
   @layer base {
-    position: relative;
     background: linear-gradient(121deg, rgba(255, 255, 255, 0.4) 18.87%, rgba(255, 255, 255, 0) 66.38%);
+    position: relative;
     object-fit: cover;
     background-size: cover !important;
     background-position: center;
@@ -24,8 +24,26 @@
     display: flex;
     align-items: flex-end;
     height: 100vh;
+    max-height: 640px;
 
     padding: 16px 16px 24px 16px;
+
+    background: linear-gradient(48deg, rgba(30, 56, 73, 0.5) 6.94%, rgba(30, 56, 73, 0) 83.47%),
+      linear-gradient(180deg, rgba(38, 57, 69, 0) 18.3%, rgba(38, 57, 69, 0.47) 49.35%, #263945 100%),
+      linear-gradient(90deg, rgba(30, 56, 73, 0.7) -5.13%, rgba(0, 0, 0, 0) 94.23%);
+
+    .overflow {
+      background: linear-gradient(48deg, rgba(30, 56, 73, 0.5) 6.94%, rgba(30, 56, 73, 0) 83.47%),
+        linear-gradient(180deg, rgba(38, 57, 69, 0) 18.3%, rgba(38, 57, 69, 0.47) 49.35%, #263945 100%),
+        linear-gradient(90deg, rgba(30, 56, 73, 0.7) -5.13%, rgba(0, 0, 0, 0) 94.23%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
   }
 
   @include sm {
@@ -33,12 +51,20 @@
 
     background-position-y: -100px;
     background-position-x: -480px;
+    max-height: 875px;
+
   }
 
   @include md {
     padding: 90px 40px;
     background-position-x: -250px;
     background-position-y: 0;
+    max-height: 1000px;
+
+
+    .overflow {
+      background: none;
+    }
 
     &::after {
       background: linear-gradient(121deg, rgba(255, 255, 255, 0.4) 18.87%, rgba(255, 255, 255, 0) 66.38%);
@@ -48,6 +74,7 @@
   @include lg {
     background-size: 100% 100%;
     background-position: top left;
+    max-height: none;
   }
 
   @include xl {
@@ -81,14 +108,12 @@
 
 .captions {
   @layer base {
-    z-index: 1;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     gap: 40px;
 
     width: 100%;
-
-    pointer-events: none;
 
     justify-content: center;
 
@@ -103,6 +128,8 @@
     justify-content: space-between;
     height: 100%;
     gap: 100px;
+    pointer-events: none;
+
   }
 
   @include lg {

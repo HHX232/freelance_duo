@@ -54,13 +54,16 @@
 
   @include lg {
     padding: 20px 0 ;
-    height: 570px;
+    height: 440px;
+    width: 440px;
     background: none;
     align-items: start;
   }
 
   @include xl{
     @include font(3, 42, 54, 400);
+    height: 460px;
+    width: 544px;
   }
 
 }
@@ -77,6 +80,8 @@
     padding: 20px 20px 20px 40px;
     gap: 10px;
     flex-direction: row;
+    justify-content: space-between;
+
 
     background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), linear-gradient(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.1)), url('/content/parking/t_lg.png') no-repeat;
     background-size: 100% 100%;
@@ -101,5 +106,32 @@
   }
 
 }
+
+.ticketFormWrapper{
+  @layer base {
+
+  }
+
+  @include lg{
+    width: 434px;
+    height: 440px;
+  }
+
+  @include xl{
+    width: 484px;
+    height: 460px;
+  }
+
+  @include xxl{
+    width: 451px;
+    height: 520px;
+  }
+
+  @include xxxl{
+    width: 577px;
+    height: 570px;
+  }
+}
+
 
 

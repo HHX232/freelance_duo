@@ -20,10 +20,14 @@ const MortgageCalculateWrapper = () => {
   const [time, setTime] = useState<string>('10')
   const isSx = useIsMaxWidth(320)
 
+  const addSpace = (num: number | string) =>
+    num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  const removeNonNumeric = (num: number | string) => num.toString().replace(/[^0-9]/g, "");
+
   const addSymbol = (value: string) =>
     value
       .split('')
-      .filter((val) => val !== '₽' && val !== ' ')
+      .filter((val) => val !== '₽')
       .join('')
 
   const [shownRequestCallBack, setShownRequestCallBack] = useState(false)
@@ -53,7 +57,7 @@ const MortgageCalculateWrapper = () => {
 
               <FullButton
                 type={'Button'}
-                buttonText={`Семейная от 5.5%`}
+                buttonText={`Семейная от 3,5%`}
                 activeButton={true}
                 border={false}
                 borderColor={''}
@@ -74,7 +78,7 @@ const MortgageCalculateWrapper = () => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
-                onChange={(e) => setCost(addSymbol(e.target.value))}
+                onChange={(e) => setCost(addSymbol(addSpace(removeNonNumeric(e.target.value))))}
               />
               <InputField
                 title={'Первоначальный взнос'}
@@ -85,13 +89,13 @@ const MortgageCalculateWrapper = () => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
-                onChange={(e) => setDownPayment(addSymbol(e.target.value))}
+                onChange={(e) => setDownPayment(addSymbol(addSpace(removeNonNumeric(e.target.value))))}
               />
 
               <InputRangeUI
                 labelText={'Срок кредита'}
                 placeholder={'введите срок кредите'}
-                value={time}
+                value={Number(time)}
                 min={1}
                 max={100}
                 extraClass={styles.rangeInput}
@@ -114,7 +118,7 @@ const MortgageCalculateWrapper = () => {
 
             <div className={styles.infoWrapper}>
               <div className={styles.lineWrapper}>
-                <div className={styles.infoBlock}>
+                <div className={`${styles.infoBlock} ${styles.selected}`}>
                   <div className={styles.sum}>14 900 ₽</div>
                   <div className={styles.infoText}>Ежемесячный платеж</div>
                 </div>
