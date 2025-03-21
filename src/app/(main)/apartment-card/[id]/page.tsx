@@ -4,7 +4,6 @@ import {ApartmentCardPageParams} from './model'
 import {parseData} from './data'
 import {getFlatsById, getPdf, getReservation} from '@src/actions/flats'
 import Header from '@shared/pageDefault/header/Header'
-
 export const revalidate = 3600
 
 export async function generateMetadata({params}: ApartmentCardPageParams): Promise<Metadata> {
@@ -62,7 +61,8 @@ export default async function ApartmentCardPage({params}: ApartmentCardPageParam
 
   const pdf = await getPdf({guid: parsedData.ext_guid})
 
-  console.log(parsedData)
+  console.log('parsedData', parsedData)
+  console.log('parsedData.rvalue', parsedData.rvalue)
 
   return (
     <>

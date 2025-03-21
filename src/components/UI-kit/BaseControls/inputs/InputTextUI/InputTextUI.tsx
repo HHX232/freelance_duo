@@ -23,6 +23,7 @@ const golos = Golos_Text({subsets: ['cyrillic']})
 interface IFieldExtended extends IField {
   onlyType?: 'all' | 'onlyText' | 'onlyNumbers'
   customPattern?: RegExp
+  extraLabelClass?: string
 }
 
 const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
@@ -40,6 +41,7 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
       theme,
       onlyType = 'all',
       customPattern,
+      extraLabelClass,
       ...rest
     },
     ref
