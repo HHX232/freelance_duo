@@ -61,6 +61,7 @@
 
 .input_white {
   color: #fff;
+  line-height: 18px !important;
 
   &::placeholder {
     color: rgb(255 255 255 / 60%);
@@ -71,6 +72,7 @@
 
 .input_dark {
   color: #747679;
+  line-height: 18px !important;
 
   &::placeholder {
     color: #b5b9be;
