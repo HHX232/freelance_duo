@@ -1,0 +1,47 @@
+.icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    display: flex;
+    width: 18px;
+    min-width: 18px;
+    height: 18px;
+    min-height: 18px;
+    align-items: center;
+    justify-content: center;
+    border: 1.83px solid #fff;
+    border-radius: 50%;
+    background-color: $accent-color;
+    color: #fff;
+    font-family: $font-primary;
+    font-size: 12.83px;
+    font-weight: 500;
+
+    @media (max-width: 504px) {
+      top: -5px;
+      right: -5px;
+      width: 12px;
+      min-width: 12px;
+      height: 12px;
+      min-height: 12px;
+      font-size: 7px;
+    }
+  }
+
+  svg {
+    z-index: -1;
+  }
+
+  &.brown {
+    span {
+      background-color: rgb(211 143 109 / 100%);
+    }
+  }
+}

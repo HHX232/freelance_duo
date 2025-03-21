@@ -1,14 +1,13 @@
 'use client'
-import FilledButton from '@shared/filledButton/FilledButton'
-import { InputField } from '@src/components/UI-kit/inputs/input-field/input-field'
+import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import styles from './Subscription.module.scss'
 import {IProfile} from '@src/types/profile.interface'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {useForm} from 'react-hook-form'
-import { useState, useEffect, ChangeEvent } from 'react'
+import {useState, useEffect, ChangeEvent} from 'react'
+import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 
 const Subscription = () => {
-
   const {
     register,
     handleSubmit,
@@ -20,54 +19,54 @@ const Subscription = () => {
   const modId = 'bh8by9g8' // Ваш modId
 
   useEffect(() => {
-      const checkCT = () => {
-        if (typeof window !== 'undefined' && window.ct) {
-          // Если window.ct доступен, получить sessionId
-          const sessionId = window.ct('calltracking_params', modId)?.sessionId
-          console.log('Session ID:', sessionId)
-          setSessionID(sessionId)
-        } else {
-          // Попробуем еще раз через небольшую задержку
-          setTimeout(checkCT, 1000) // Повторяем проверку через 1 секунду
-        }
-      }
-  
-      // Запускаем первоначальную проверку
-      checkCT()
-    }, [modId])
-
-  const onSubmit = handleSubmit(async (data: IProfile) => {
-      console.log(data)
-      if (!sessionID) {
-        console.error('Session ID is not available. Please wait until it is loaded.')
-        return // Прерываем выполнение, если sessionID еще не получен
-      }
-      const reqForm = {
-        phone: data.phone,
-        name: data.name,
-        sessionID: sessionID as string
-      }
-  
-      const res = {success: 'todo'}; //await sendCallBack(reqForm.phone, reqForm.name, reqForm.sessionID, reqForm.comment)
-  
-      if (res.success) {
-        console.log('FORM SENT', reqForm)
-      }
-    })
-  
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const {name, value} = e.target
-  
-      const formattedValue = value
-  
-      const validNames = ['name']
-  
-      if (validNames.includes(name)) {
-        setValue(name as keyof IProfile, formattedValue, {shouldValidate: true})
+    const checkCT = () => {
+      if (typeof window !== 'undefined' && window.ct) {
+        // Если window.ct доступен, получить sessionId
+        const sessionId = window.ct('calltracking_params', modId)?.sessionId
+        console.log('Session ID:', sessionId)
+        setSessionID(sessionId)
       } else {
-        console.error(`Ошибка: некорректное имя '${name}'`)
+        // Попробуем еще раз через небольшую задержку
+        setTimeout(checkCT, 1000) // Повторяем проверку через 1 секунду
       }
     }
+
+    // Запускаем первоначальную проверку
+    checkCT()
+  }, [modId])
+
+  const onSubmit = handleSubmit(async (data: IProfile) => {
+    console.log(data)
+    if (!sessionID) {
+      console.error('Session ID is not available. Please wait until it is loaded.')
+      return // Прерываем выполнение, если sessionID еще не получен
+    }
+    const reqForm = {
+      phone: data.phone,
+      name: data.name,
+      sessionID: sessionID as string
+    }
+
+    const res = {success: 'todo'} //await sendCallBack(reqForm.phone, reqForm.name, reqForm.sessionID, reqForm.comment)
+
+    if (res.success) {
+      console.log('FORM SENT', reqForm)
+    }
+  })
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = e.target
+
+    const formattedValue = value
+
+    const validNames = ['name']
+
+    if (validNames.includes(name)) {
+      setValue(name as keyof IProfile, formattedValue, {shouldValidate: true})
+    } else {
+      console.error(`Ошибка: некорректное имя '${name}'`)
+    }
+  }
 
   return (
     <div>
@@ -76,7 +75,7 @@ const Subscription = () => {
           <div className={styles.wrapper}>
             <h3 className={styles.title}>Узнайте больше</h3>
             <p className={styles.description}>
-              Оставьте заявку на обратный звонок и  персональный менеджер свяжется с вами для уточнения деталей
+              Оставьте заявку на обратный звонок и персональный менеджер свяжется с вами для уточнения деталей
             </p>
             <form onSubmit={onSubmit}>
               {/* <div className={styles['input-wrapper']}>

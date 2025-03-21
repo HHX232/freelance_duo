@@ -1,5 +1,5 @@
 import styles from './comfort.module.scss'
-import DownloadButton from '@shared/downloadButton'
+import DownloadButton from '@src/components/UI-kit/BaseControls/buttons/old/downloadButton'
 
 const Comfort = () => {
   return (
@@ -13,7 +13,7 @@ const Comfort = () => {
               В каждом корпусе пре дусмотрен подземный паркинг для автомобилей и мотоциклов с доступом из лифтов жилой
               части дома. Также здесь будет размещена велопарковка.
             </p>
-            <br/>
+            <br />
             <p className={styles['description']}>
               Проведена подготовка под установку зарядных станций для электромобилей. В подземной части каждого корпуса
               для жильцов будут доступны индивидуальные кладовые различных размеров.
@@ -22,7 +22,7 @@ const Comfort = () => {
         </div>
 
         <div className={styles['download-wrapper']}>
-          <DownloadButton/>
+          <DownloadButton />
         </div>
       </div>
 
@@ -31,7 +31,7 @@ const Comfort = () => {
           В каждом корпусе пре дусмотрен подземный паркинг для автомобилей и мотоциклов с доступом из лифтов жилой части
           дома. Также здесь будет размещена велопарковка.
         </p>
-        <br/>
+        <br />
         <p className={styles['description']}>
           Проведена подготовка под установку зарядных станций для электромобилей. В подземной части каждого корпуса для
           жильцов будут доступны индивидуальные кладовые различных размеров.

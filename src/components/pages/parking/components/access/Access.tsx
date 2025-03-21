@@ -1,6 +1,6 @@
 import styles from './Access.module.scss'
 import CircleLineDivider from '@shared/circleLineDivider/CircleLineDivider'
-import FilledButton from '@shared/filledButton/FilledButton'
+import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 
 const Access = () => {
   return (

@@ -1,7 +1,13 @@
 import styles from './ContactForm.module.scss'
 import {useState} from 'react'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
+import {Golos_Text} from 'next/font/google'
+import clsx from 'clsx'
+import Link from 'next/link'
+
+const golos = Golos_Text({subsets: ['cyrillic']})
 
 const ContactFormPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -17,13 +23,12 @@ const ContactFormPage = () => {
             </p>
             <form>
               <div className={styles['input-wrapper']}>
-                <span className={`${styles['input-label']} ${styles.zero_margin}`}>Имя</span>
-                <input className={styles.input} placeholder='Введите имя' />
+                <InputTextUI icon={<></>} theme={'white'} labelText={'Имя'} placeholder='Введите имя' />
               </div>
               <div className={styles['input-wrapper']}>
-                <span className={styles['input-label']}>Телефон</span>
+                <span className={clsx(styles['input-label'], golos.className)}>Телефон</span>
                 <input
-                  className={styles.input}
+                  className={clsx(styles.input, golos.className)}
                   placeholder='+7 (___) ___-__-__'
                   onChange={(e) => {
                     const formattedValue = formatPhoneNumber(e.target.value)
@@ -48,7 +53,7 @@ const ContactFormPage = () => {
               />
               <p className={styles.caption}>
                 Нажимая кнопку «Отправить», вы даёте согласие на{' '}
-                <a href='/consent'>обработку своих персональных данных</a>
+                <Link href='/consent'>обработку своих персональных данных</Link>
               </p>
             </form>
           </div>
