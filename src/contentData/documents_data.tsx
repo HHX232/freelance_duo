@@ -1,5 +1,5 @@
 import {ReactNode} from 'react'
-import FilledButton from '@shared/filledButton/FilledButton'
+import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 
 export interface AboutItem {
   img: string

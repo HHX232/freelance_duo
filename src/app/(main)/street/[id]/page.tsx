@@ -1,5 +1,5 @@
 import {Metadata} from 'next'
-import Page from '@shared/page/Page'
+import Page from '@shared/pageDefault/Page'
 import StreetPage from '@pages/street/Street.page'
 
 export async function generateMetadata(): Promise<Metadata> {

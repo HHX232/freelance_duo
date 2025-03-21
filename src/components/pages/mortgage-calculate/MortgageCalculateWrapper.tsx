@@ -1,12 +1,12 @@
 'use client'
 import styles from './MortgageCalculateWrapper.module.scss'
 import {useState} from 'react'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
-import {InputField} from '@src/components/UI-kit/inputs/input-field/input-field'
-import InputRangeUI from '@src/components/UI-kit/inputs/RangeInputUI/RangeInputUI'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import {useIsMaxWidth} from '@utils/useIsMobile'
 import StarIcon from '@icons/white_star.svg'
-import {RequestBackCallDrawer} from '@shared/request-back-call-drawer'
+import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
+import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
+import InputRangeUI from '@src/components/UI-kit/BaseControls/inputs/RangeInputUI/RangeInputUI'
 
 const PercantTypes = {
   base: 5.5,
@@ -18,7 +18,7 @@ const MortgageCalculateWrapper = () => {
   const [cost, setCost] = useState('4 000 000')
   const [downPayment, setDownPayment] = useState('2 000 000')
   const [time, setTime] = useState<string>('10')
-  const isSx = useIsMaxWidth(320);
+  const isSx = useIsMaxWidth(320)
 
   const addSymbol = (value: string) =>
     value
@@ -103,7 +103,7 @@ const MortgageCalculateWrapper = () => {
             </div>
           </div>
           <div className={styles.conditions}>
-            <StarIcon className={styles.star}/>
+            <StarIcon className={styles.star} />
             <div className={styles.subTitle}>
               Базовая ипотека
               <div className={styles.showPercentWrapper}>
@@ -115,61 +115,36 @@ const MortgageCalculateWrapper = () => {
             <div className={styles.infoWrapper}>
               <div className={styles.lineWrapper}>
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>
-                    14 900 ₽
-                  </div>
-                  <div className={styles.infoText}>
-                    Ежемесячный платеж
-                  </div>
+                  <div className={styles.sum}>14 900 ₽</div>
+                  <div className={styles.infoText}>Ежемесячный платеж</div>
                 </div>
 
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>
-                    2 094 168 ₽
-                  </div>
-                  <div className={styles.infoText}>
-                    Переплата по кредиту
-                  </div>
+                  <div className={styles.sum}>2 094 168 ₽</div>
+                  <div className={styles.infoText}>Переплата по кредиту</div>
                 </div>
 
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>
-                    49 951 ₽
-                  </div>
-                  <div className={styles.infoText}>
-                    Рекомендуемый доход
-                  </div>
+                  <div className={styles.sum}>49 951 ₽</div>
+                  <div className={styles.infoText}>Рекомендуемый доход</div>
                 </div>
               </div>
 
               <div className={styles.lineWrapper}>
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>
-                    1 500 000 ₽
-                  </div>
-                  <div className={styles.infoText}>
-                    Сумма {isSx && <br/>}кредита
-                  </div>
+                  <div className={styles.sum}>1 500 000 ₽</div>
+                  <div className={styles.infoText}>Сумма {isSx && <br />}кредита</div>
                 </div>
 
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>
-                    3 594 168 ₽
-                  </div>
-                  <div className={styles.infoText}>
-                    Общая {isSx && <br/>}выплата
-                  </div>
+                  <div className={styles.sum}>3 594 168 ₽</div>
+                  <div className={styles.infoText}>Общая {isSx && <br />}выплата</div>
                 </div>
 
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>
-                    532 242 ₽
-                  </div>
-                  <div className={styles.infoText}>
-                    Налоговый {isSx && <br/>}вычет
-                  </div>
+                  <div className={styles.sum}>532 242 ₽</div>
+                  <div className={styles.infoText}>Налоговый {isSx && <br />}вычет</div>
                 </div>
-
               </div>
             </div>
 
@@ -183,14 +158,13 @@ const MortgageCalculateWrapper = () => {
               buttonFill={`white`}
               buttonElementColor={`black`}
               buttonBorderRadius={'6px'}
-              onClick={ () => setShownRequestCallBack(true)}
+              onClick={() => setShownRequestCallBack(true)}
             />
           </div>
         </div>
       </div>
 
       <RequestBackCallDrawer shown={shownRequestCallBack} onClose={handleRequestCallBackDrawerClose} />
-
     </div>
   )
 }

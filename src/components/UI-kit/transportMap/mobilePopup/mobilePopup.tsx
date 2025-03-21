@@ -2,11 +2,11 @@
 import {Drawer} from 'antd'
 import {FC, useState} from 'react'
 import styles from './mobilePopup.module.scss'
-import {CloseButton} from '@shared/close-button'
 import {YMaps, Map, Placemark, GeoObject, Clusterer} from '@pbe/react-yandex-maps'
 import MapSidebar from '../mapSidebar/mapSidebar'
 import { mapPoi, mapRoutes, mapKFPoi } from '@src/lib/utils/catalog/mapMockData'
 import MapPoint from '@shared/mapPoint/mapPoint'
+import {CloseButton} from '../../BaseControls/buttons/close-button'
 
 interface ITransportModalProps {
   shown: boolean
@@ -14,18 +14,17 @@ interface ITransportModalProps {
 }
 
 const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
-
-    const legendItems = [
-        {icon: 'school', text: 'Школы'},
-        {icon: 'kindergarden', text: 'Детские сады'},
-        {icon: 'medicine', text: 'Медицина'},
-        {icon: 'sport', text: 'Спорт'},
-        {icon: 'store', text: 'Магазины'},
-        {icon: 'mall', text: 'ТРК'},
-        {icon: 'restorant', text: 'Рестораны'},
-        {icon: 'park', text: 'Парки'},
-        {icon: 'coast', text: 'Набережная'}
-    ]
+  const legendItems = [
+    {icon: 'school', text: 'Школы'},
+    {icon: 'kindergarden', text: 'Детские сады'},
+    {icon: 'medicine', text: 'Медицина'},
+    {icon: 'sport', text: 'Спорт'},
+    {icon: 'store', text: 'Магазины'},
+    {icon: 'mall', text: 'ТРК'},
+    {icon: 'restorant', text: 'Рестораны'},
+    {icon: 'park', text: 'Парки'},
+    {icon: 'coast', text: 'Набережная'}
+  ]
 
     const [y, setY] = useState(0);
     const [open, setOpen] = useState(false);
