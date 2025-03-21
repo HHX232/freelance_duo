@@ -109,7 +109,12 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
             })}
             htmlFor={id}
           >
-            <ParagraphUI size={'md'} weight={'regular'} extraStyle={{color: '#fff'}} extraClass={golos.className}>
+            <ParagraphUI
+              size={'md'}
+              weight={'regular'}
+              extraStyle={{color: error?.length ? '#D36281' : theme === 'white' ? '#fff' : '#B5B9BE'}}
+              extraClass={golos.className}
+            >
               {labelText}
             </ParagraphUI>
           </label>
