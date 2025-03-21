@@ -4,7 +4,7 @@
   @layer base {
     position: relative;
     display: flex;
-    height: 640px;
+    max-height: 640px;
     flex-direction: column;
     justify-content: flex-end;
     padding: 130px 16px 24px;
@@ -15,21 +15,22 @@
     background-size: cover;
     color: #fff;
   }
-
   @include xs {
     padding: 130px 20px 79px 16px;
   }
-
   @include sm {
     padding: 130px 20px 111px;
+    max-height: 875px;
   }
 
   @include md {
     padding: 130px 20px 111px 40px;
+    max-height: 1000px;
   }
 
   @include lg {
     padding: 130px 20px 120px 40px;
+    max-height: none;
   }
 
   @include xl {
@@ -113,6 +114,13 @@
 
   @layer base {
     z-index: 3;
+  }
+  @include lg {
+    height: 180px;
+    width: 60%;
+  }
+  @include xl {
+    height: 230px;
   }
 }
 
