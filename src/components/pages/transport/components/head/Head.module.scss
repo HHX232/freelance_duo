@@ -98,25 +98,62 @@
   
   .head_title {
     @layer base {
-      @include font(3, 44, 54, 400);
+      @include font(3, 40, 50, 400);
+
+      z-index: 2;
+      width: 288px;
+      height: 200px;
+      color: #FFF;
+      text-transform: uppercase;
+      word-break: break-all;
+    }
+
+    @include sm {
+      width: 440px;
+      height: 100px;
     }
   
     @include md {
-      @include font(3, 48, 58, 400);
+      @include font(3, 52, 58, 400);
+
+      width: 688px;
+      height: 116px;
+    }
+
+    @include lg {
+      width: 944px;
+      height: 116px;
     }
   
     @include xl {
       @include font(3, 64, 80, 400);
+
+      width: 1098px;
+      height: 160px;
+    }
+
+    @include xxl {
+      width: 1390px;
+      height: 160px;
     }
 
     @include xxxl {
-        @include font(3, 100, 116, 400);
+        @include font(3, 64, 80, 400);
+
+        width: 1684px;
+        height: 160px;
     }
   }
   
   .routerWrapper{
-    @layer base {
-    }
+    /* Транспортная доступность */
+
+// margin: 0 auto;
+// width: 288px;
+// height: 200px;
+
+    // @layer base {
+    // }
   }
   
   .router{

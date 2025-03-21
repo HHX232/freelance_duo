@@ -20,7 +20,7 @@ const Head = () => {
         </div>
         <div className={styles.container}>
           <div className={styles.title_wrap}>
-            <h2 className={styles.head_title}>Транспортная доступность</h2>
+            <h2 className={styles.head_title}>Транспортная <br />доступность</h2>
           </div>
         </div>
       </section>

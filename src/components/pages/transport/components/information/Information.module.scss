@@ -140,12 +140,10 @@
     }
   
     @include xl {
-      .description {
-        @include font(1, 24, 34);
+      @include font(1, 24, 34);
 
-        margin-top: 12px;
-        color: #555;
-      }
+      margin-top: 12px;
+      color: #555;
     }
   }
   
