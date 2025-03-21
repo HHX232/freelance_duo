@@ -41,7 +41,6 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
       theme,
       onlyType = 'all',
       customPattern,
-      extraLabelClass,
       ...rest
     },
     ref
@@ -115,7 +114,7 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
               size={'md'}
               weight={'regular'}
               extraStyle={{color: error?.length ? '#D36281' : theme === 'white' ? '#fff' : '#B5B9BE'}}
-              extraClass={golos.className}
+              // extraClass={golos.className}
             >
               {labelText}
             </ParagraphUI>

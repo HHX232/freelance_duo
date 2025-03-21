@@ -8,6 +8,7 @@ import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton
 // import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
 import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
+import InputPhoneUI from '@src/components/UI-kit/BaseControls/inputs/InputPhoneUI/InputPhoneUI'
 
 interface TicketFormProps {
   OpenModal: () => void
@@ -41,7 +42,7 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 icon={<></>}
                 labelText='Бренд'
                 theme='dark'
-                extraLabelClass={styles.label_in_box_color}
+                extraStyle={{lineHeight: '18px'}}
               />
               {/* <InputField
                 title={'Бренд'}
@@ -53,11 +54,11 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 styleContainer={{gridGap: '4px'}}
               /> */}
               <InputTextUI
-                extraLabelClass={styles.label_in_box_color}
                 placeholder='Введите направление компании'
                 icon={<></>}
                 labelText='Профиль'
                 theme='dark'
+                extraStyle={{lineHeight: '18px'}}
               />
 
               {/* <InputField
@@ -71,11 +72,11 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
               /> */}
 
               <InputTextUI
-                extraLabelClass={styles.label_in_box_color}
                 placeholder='Введите кол-во магазинов'
                 icon={<></>}
                 labelText='Существующие магазины'
                 theme='dark'
+                extraStyle={{lineHeight: '18px'}}
               />
 
               {/* <InputField
@@ -89,11 +90,11 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
               /> */}
 
               <InputTextUI
-                extraLabelClass={styles.label_in_box_color}
                 placeholder='Введите кол-во метров'
                 icon={<></>}
                 labelText='Необходимый метраж помещения, м2'
                 theme='dark'
+                extraStyle={{lineHeight: '18px'}}
               />
               {/* <InputField
                 title={'Необходимый метраж помещения, м2'}
@@ -140,7 +141,7 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 styleContainer={{gridGap: '4px'}}
               /> */}
               <InputTextUI
-                extraLabelClass={styles.label_in_box_color}
+                extraStyle={{lineHeight: '18px'}}
                 placeholder='Введите имя'
                 icon={<></>}
                 labelText='Имя'
@@ -168,8 +169,8 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 value={phoneNumber}
                 styleContainer={{gridGap: '4px'}}
               /> */}
-              <InputTextUI
-                extraLabelClass={styles.label_in_box_color}
+              <InputPhoneUI
+                extraStyle={{lineHeight: '18px'}}
                 placeholder={'+7 (___) ___-__-__'}
                 icon={<></>}
                 labelText='Телефон'
@@ -182,22 +183,8 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                   setPhoneNumber(formattedValue)
                 }}
               />
-              {/* <InputField
-                title={'E-mail'}
-                type={'text'}
-                placeholder={'Введите электронную почту'}
-                variety={'secondary'}
-                inputStyles={styles.inputStyles}
-                stylesLabel={styles.labelStyles}
-                maxLength={18}
-                onChange={(e) => {
-                  setMail(e.target.value)
-                }}
-                value={mail}
-                styleContainer={{gridGap: '4px'}}
-              /> */}
               <InputTextUI
-                extraLabelClass={styles.label_in_box_color}
+                extraStyle={{lineHeight: '18px'}}
                 placeholder={'Введите электронную почту'}
                 icon={<></>}
                 labelText='E-mail'

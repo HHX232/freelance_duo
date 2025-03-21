@@ -92,11 +92,6 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                         </LinkUI>
                       </li>
                       <li>
-                        <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/4-komnatnye'}>
-                          Четырехкомнатые
-                        </LinkUI>
-                      </li>
-                      <li>
                         <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/lofty'}>
                           Лофты
                         </LinkUI>

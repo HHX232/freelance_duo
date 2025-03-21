@@ -65,7 +65,7 @@
   &::placeholder {
     color: rgb(255 255 255 / 60%);
     font-size: 14px;
-    line-height: 18px;
+    line-height: 18px !important;
   }
 }
 
@@ -75,7 +75,7 @@
   &::placeholder {
     color: #b5b9be;
     font-size: 14px;
-    line-height: 18px;
+    line-height: 18px !important;
   }
 }
 
