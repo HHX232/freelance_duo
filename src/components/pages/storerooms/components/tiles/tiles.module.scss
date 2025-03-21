@@ -248,7 +248,7 @@
     }
   }
 
-  @include md{
+  @include md {
     .title {
       @include font(3, 52, 58, 400);
     }
