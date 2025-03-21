@@ -14,6 +14,7 @@
 }
   
 .mobile_content {
+    position: relative;
     display: flex;
     flex-direction: column;
 
@@ -23,10 +24,28 @@
     }
 
     .mobile_infoblock {
+        position: absolute;
+        z-index: 9999;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: auto;
+        background-color: #FFF;
+        transition: transform 0.3s ease-in-out;
+
+        &.ib_open {
+            height: 100vh;
+            transform: translate(0, 0);
+        }
+
+        &.ib_close {
+            height: 10vh;
+            transform: translate(0, 90vh);
+        }
 
         .infoblock_line {
             width: 20%;
+            height: 9vh;
             border-top: 3px solid #11627D;
             margin: 15px auto;
         }
