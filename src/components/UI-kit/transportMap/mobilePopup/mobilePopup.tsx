@@ -39,7 +39,7 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
     };
 
     const handleTouchEnd = () => {
-        if (typeof window !== undefined && y < window.innerHeight / 2) {
+        if (y < window.innerHeight / 2) {
         setOpen(true);
         } else {
         setOpen(false);
