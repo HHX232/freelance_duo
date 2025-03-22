@@ -4,10 +4,10 @@ import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import {HeadTitle} from '@src/components/UI-kit/Text-Elements/TextKit/head-title'
 
 import './index.scss'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import {StockItem} from '@shared/stock-item'
 import {useState} from 'react'
 import RefreshIcon from '@icons/refresh-cw.svg'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 const breadcrumbItems = [
   {title: 'Главная', href: '/'},
@@ -75,13 +75,21 @@ export const StocksList = () => {
 
         <div className='stocks__more'>
           {itemsForRender.length >= maxMockItemsLength ? null : (
-            <FilledButton
+            <FullButton
+              activeButton={true}
+              border={false}
+              borderColor={''}
+              buttonFill={'bronze-500'}
+              buttonElementColor={'white'}
               onClick={() => setItemsForRender((items) => [...items, ...MOCK_ITEMS])}
-              className='stocks__more-button'
-            >
-              <RefreshIcon />
-              <span>Показать еще (6)</span>
-            </FilledButton>
+              extraClass='stocks__more-button'
+              buttonText={
+                <>
+                  <RefreshIcon />
+                  <span>Показать еще (6)</span>
+                </>
+              }
+            />
           )}
         </div>
       </div>
