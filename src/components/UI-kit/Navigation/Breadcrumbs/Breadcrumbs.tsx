@@ -26,39 +26,39 @@ interface BreadcrumbsProps {
 const Breadcrumbs = ({items, darkTheme, className, iconStyles}: BreadcrumbsProps) => {
   const router = useRouter()
 
+  // Create items array for Ant Design's Breadcrumb component
+  const breadcrumbItems = items.map((item, index) => ({
+    key: index,
+    title: item.back ? (
+      <>
+        {item.href ? (
+          <Link href={'#'} onClick={() => router.back()}>
+            {item.title}
+          </Link>
+        ) : (
+          item.title
+        )}
+      </>
+    ) : (
+      <>
+        {item.href ? (
+          <Link href={item.href} className={styles.fitContent}>
+            {item.title}
+          </Link>
+        ) : (
+          item.title
+        )}
+      </>
+    )
+  }))
+
   return (
     <section className={clsx(styles.breadcrumbs, className, {[styles.dark]: darkTheme}, golos.className)}>
       <Link className={styles.mobile_version} href={'#'} onClick={() => router.back()}>
         <BackIcon className={iconStyles} />
         <span>{items.length >= 2 ? items[items.length - 2]?.title : 'Назад'}</span>
       </Link>
-      <Breadcrumb className={styles.desktop_version} separator={<>|</>}>
-        {items.map((item, index) => (
-          <Breadcrumb.Item key={index}>
-            {item.back ? (
-              <>
-                {item.href ? (
-                  <Link href={'#'} onClick={() => router.back()}>
-                    {item.title}
-                  </Link>
-                ) : (
-                  item.title
-                )}
-              </>
-            ) : (
-              <>
-                {item.href ? (
-                  <Link href={item.href} className={styles.fitContent}>
-                    {item.title}
-                  </Link>
-                ) : (
-                  item.title
-                )}
-              </>
-            )}
-          </Breadcrumb.Item>
-        ))}
-      </Breadcrumb>
+      <Breadcrumb className={styles.desktop_version} items={breadcrumbItems} separator={<>|</>} />
     </section>
   )
 }
