@@ -12,11 +12,11 @@
 
   & .info {
     @include content-container;
-    background-color: rgb(17 98 125 / 100%);
-    color: #fff;
 
     display: flex;
     justify-content: center;
+    background-color: rgb(17 98 125 / 100%);
+    color: #fff;
 
     @layer base {
       width: 100%;
@@ -29,7 +29,7 @@
 
     @include sm {
       width: 100%;
-      padding: 90px 36px 60px 36px;
+      padding: 90px 36px 60px;
     }
 
     @include md {
@@ -153,8 +153,8 @@
 
   & .bg {
     @layer base {
-      height: 240px;
       width: 100%;
+      height: 240px;
     }
 
     @include sm {
@@ -162,8 +162,8 @@
     }
 
     @include md {
-      height: auto;
       width: 100%;
+      height: auto;
     }
 
     @include lg {
@@ -186,8 +186,6 @@
 }
 
 .wrapper {
-  @layer {}
-
   @include xl {
     min-width: 472px;
   }
@@ -199,4 +197,9 @@
 
 .zero_margin {
   margin: 0 !important;
+}
+
+.subscribe-button {
+  height: 48px !important;
+  border-radius: 6px !important;
 }
