@@ -51,7 +51,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
         <h2 className={styles.title}>Варианты рассрочки</h2>
         <div className={styles['variant-items']}>
           <div className={styles['variant-row']}>
-            <div className={styles.cover} style={{backgroundImage: `url("/content/payment-methods/1.jpeg")`}} />
+            <div className={styles.cover} style={{backgroundImage: `url("/content/payment-methods/1.webp")`}} />
             <div className={styles.meta}>
               <div className={styles.head}>
                 <div className={styles.head_icon}>
@@ -84,7 +84,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
           </div>
 
           <div className={styles['variant-row']}>
-            <div className={styles.cover} style={{backgroundImage: `url("/content/payment-methods/2.jpeg")`}} />
+            <div className={styles.cover} style={{backgroundImage: `url("/content/payment-methods/2.webp")`}} />
 
             <div className={styles.meta}>
               <div className={styles.head}>
@@ -120,7 +120,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
             </div>
           </div>
           <div className={styles['variant-row']}>
-            <div className={styles.cover} style={{backgroundImage: `url("/content/payment-methods/3.jpeg")`}} />
+            <div className={styles.cover} style={{backgroundImage: `url("/content/payment-methods/3.webp")`}} />
             <div className={styles.meta}>
               <div className={styles.head}>
                 <div className={styles.head_icon}>

@@ -26,32 +26,32 @@ interface IMockItem {
 const MOCK_ITEMS: IMockItem[] = [
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image.png',
+    imageSrc: '/stocks-example/preview-image.webp',
     title: 'Рассрочка на все готовое!'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-1.png',
+    imageSrc: '/stocks-example/preview-image-1.webp',
     title: 'Готовые квартиры со скидкой!'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-2.png',
+    imageSrc: '/stocks-example/preview-image-2.webp',
     title: 'Семейная ипотека: сейчас или никогда!'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-3.png',
+    imageSrc: '/stocks-example/preview-image-3.webp',
     title: 'покупай паркинг в рассрочку!'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-4.png',
+    imageSrc: '/stocks-example/preview-image-4.webp',
     title: '10,83% - главная скидка этого года на квартиры в «Кронфорт»'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-5.png',
+    imageSrc: '/stocks-example/preview-image-5.webp',
     title: 'Лучше, чем ипотека: гибкая рассрочка с ежемесячным платежом от 30 тысяч рублей!'
   }
 ]

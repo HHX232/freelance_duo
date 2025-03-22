@@ -9,15 +9,17 @@
     justify-content: flex-end;
     padding: 130px 16px 24px;
 
-    //background-image: linear-gradient(180deg, rgba(38, 57, 69, 0) 50.45%, rgba(38, 57, 69, 1) 87.97%), url("/content/banner.png");
+    //background-image: linear-gradient(180deg, rgba(38, 57, 69, 0) 50.45%, rgba(38, 57, 69, 1) 87.97%), url("/content/banner.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
   }
+
   @include xs {
     padding: 130px 20px 79px 16px;
   }
+
   @include sm {
     padding: 130px 20px 111px;
     max-height: 875px;
@@ -47,7 +49,7 @@
     justify-content: flex-end;
 
     //padding-bottom: 124px;
-    //background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.png");
+    //background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.webp");
     padding: 90px 40px 124px 196px;
   }
 }
@@ -115,10 +117,12 @@
   @layer base {
     z-index: 3;
   }
+
   @include lg {
     height: 180px;
     width: 60%;
   }
+
   @include xl {
     height: 230px;
   }

@@ -40,7 +40,7 @@ const Content = () => {
 
 export const documentsData: {img: string; alt: string; text: ReactNode | string; title: string}[] = [
   {
-    img: `/content/docs/docs1.png`,
+    img: `/content/docs/docs1.webp`,
     alt: `map`,
     title: `ДОКУМЕНТЫ`,
     text: <Content />

@@ -3,11 +3,11 @@
     padding: 0 16px;
   }
 
-  @include sm{
+  @include sm {
     padding: 0 20px;
   }
 
-  @include md{
+  @include md {
     padding: 0 40px;
   }
 
@@ -97,7 +97,7 @@
     gap: 24px;
   }
 
-  @include md{
+  @include md {
     margin-top: 40px;
   }
 }
@@ -125,7 +125,7 @@
   }
 
   @include xxxl {
-    .tile{
+    .tile {
       padding: 60px;
     }
   }
@@ -146,13 +146,13 @@
 
 
 
-  @include md{
+  @include md {
     .tile {
       height: 240px;
       @include font(3, 24, 36, 400);
     }
 
-    .tile:last-of-type{
+    .tile:last-of-type {
       height: 204px;
       padding-bottom: 0;
     }
@@ -163,7 +163,7 @@
       height: 204px;
     }
 
-    .tile:last-of-type{
+    .tile:last-of-type {
       height: 348px;
     }
   }
@@ -191,7 +191,7 @@
   }
 
   @include xxxl {
-    .tile{
+    .tile {
       height: 240px;
     }
   }
@@ -200,39 +200,39 @@
 
 .bg1 {
   @layer base {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xs.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xs.webp') no-repeat center center;
     background-size: 100% 100%;
     justify-content: space-between;
     @include font(3, 22, 34, 400);
   }
 
   @include sm {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_sm.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_sm.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 
-  @include md{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_md.png') no-repeat center center;
+  @include md {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_md.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 
   @include lg {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_lg.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_lg.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 
   @include xl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xl.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xl.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 
   @include xxl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xxl.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xxl.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 
   @include xxxl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xxxl.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/bucket_xxxl.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 }
@@ -249,5 +249,3 @@
   }
 
 }
-
-

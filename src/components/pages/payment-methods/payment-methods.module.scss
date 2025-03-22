@@ -32,6 +32,7 @@
   @include xl {
     padding-top: 142px;
     padding-bottom: 90px;
+
     .header_content {
       padding: 0 40px 0 142px;
     }
@@ -40,6 +41,7 @@
   @include xxl {
     padding-top: 142px;
     padding-bottom: 90px;
+
     .header_content {
       padding: 0 40px 0 170px;
     }
@@ -60,8 +62,7 @@
     color: $deep-blue !important;
   }
 
-  .tabs_section {
-  }
+  .tabs_section {}
 
   .tabs {
     @layer base {
@@ -80,6 +81,7 @@
     display: flex;
     gap: 8px;
   }
+
   .tab-button {
     @include font(1, 16, 14);
 
@@ -128,35 +130,39 @@
     @include xxl {
       margin: 0 40px 0 170px;
     }
+
     @include xxxl {
       margin: 0 40px 0 196px;
     }
   }
+
   .poster.poster_full_payment {
     background:
       linear-gradient(155deg, rgba(0, 0, 0, 0.4) 23.02%, rgba(0, 0, 0, 0) 104.22%),
       linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%),
-      url('/content/payment-methods/full-payment-poster.jpeg') !important;
+      url('/content/payment-methods/full-payment-poster.webp') !important;
 
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
+
     @include sm {
       background-image: none !important;
       background:
         linear-gradient(155deg, rgba(0, 0, 0, 0.4) 23.02%, rgba(0, 0, 0, 0) 104.22%),
         linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%),
-        url('/content/payment-methods/full-payment-poster.jpeg')  !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
+        url('/content/payment-methods/full-payment-poster.webp') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
     }
   }
+
   .poster {
     margin-top: 40px;
     background-size: cover;
     background-image: linear-gradient(90deg, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 0%) 100%),
-      url('/content/payment-methods/poster_mobile.jpg');
+      url('/content/payment-methods/poster_mobile.webp');
     background-position: center;
 
     @layer base {
@@ -174,7 +180,7 @@
     @include sm {
       padding: 60px 20px 40px 20px;
       background-image: linear-gradient(90deg, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 0%) 100%),
-        url('/content/payment-methods/poster.jpeg') !important;
+        url('/content/payment-methods/poster.webp') !important;
     }
 
     @include xs {
@@ -250,6 +256,7 @@
 
         @include md {
           padding: 16px;
+
           .card-title {
             @include font(3, 20, 30);
           }
@@ -257,10 +264,12 @@
 
         @include xl {
           padding: 24px 36px;
+
           .card-title {
             @include font(3, 24, 36);
           }
         }
+
         @include xxxl {
           padding: 36px;
         }
@@ -293,6 +302,7 @@
       padding: 24px 40px;
       flex-direction: row;
       align-items: center;
+
       .tab-button {
         min-width: auto !important;
         padding: 12px 36px !important;
@@ -321,6 +331,7 @@
 
     & button {
       @include font(1, 16, 24);
+
       @layer base {
         min-width: 100%;
       }
@@ -385,6 +396,7 @@
 
       @include lg {
         gap: 24px;
+
         .cover {
           width: 100%;
           max-width: 299px;
@@ -393,6 +405,7 @@
 
       @include xl {
         gap: 24px;
+
         .cover {
           width: 100%;
           max-width: 384px;
@@ -402,6 +415,7 @@
 
       @include xxl {
         gap: 24px;
+
         .cover {
           width: 100%;
           max-width: 618px;
@@ -411,6 +425,7 @@
 
       @include xxxl {
         gap: 24px;
+
         .cover {
           width: 100%;
           min-width: 907px;
@@ -487,6 +502,7 @@
             @layer base {
               display: none;
             }
+
             @include md {
               display: block;
             }
@@ -495,6 +511,7 @@
           &-inner {
             display: flex;
             flex-direction: column;
+
             @layer base {
               gap: 24px;
             }
@@ -611,9 +628,11 @@
     @include xl {
       padding: 90px 40px 0 142px;
     }
+
     @include xxl {
       padding: 110px 40px 0 170px;
     }
+
     @include xxxl {
       padding: 110px 40px 0 196px;
     }
@@ -630,9 +649,11 @@
   @layer base {
     margin: 0;
   }
+
   @include sm {
     margin: 0 20px;
   }
+
   @include md {
     margin: 0 40px;
   }
