@@ -5,6 +5,7 @@ import MapLegend from './mapLegend/mapLegend'
 import MapSidebar from './mapSidebar/mapSidebar'
 import MobilePopup from './mobilePopup/mobilePopup'
 import {FC, useState, useEffect, useRef} from 'react'
+import { mapKFPoi } from '@src/lib/utils/catalog/mapMockData'
 
 interface ITransportMap {
   customPoi?: any[],
@@ -165,7 +166,7 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
               <Clusterer 
                 options={{
                   preset: "islands#invertedVioletClusterIcons",
-                  groupByCoordinates: true, // Группировать точки с одинаковыми координатами
+                  groupByCoordinates: false, // Группировать точки с одинаковыми координатами
                   clusterDisableClickZoom: false, // Разрешить зум на кластере
                   clusterHideIconOnBalloonOpen: false,
                   geoObjectHideIconOnBalloonOpen: false,
@@ -173,7 +174,7 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
               >
                 {showLegend && poi && poi.map((place, index) => {
                     return <Placemark
-                    key={index}
+                    key={place.name + index}
                     geometry={place.coords}
                     properties={{ hintContent: place.name, balloonContentBody: place.name }}
                     modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
@@ -184,21 +185,49 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
                     }}
                   />
                 })}
+                { mapKFPoi && mapKFPoi.map((place, index) => {
+                    return <Placemark
+                    key={index}
+                    geometry={place.coords}
+                    properties={{ hintContent: place.name, balloonContentBody: place.name }}
+                    modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                    options={{
+                      iconLayout: "default#image",
+                      iconImageHref: `/map/icons/${place.icon}`,
+                      iconImageSize: [60, 60],
+                    }}
+                  />
+                })}
               </Clusterer>
 
                 {showLegend && customRoutes && customRoutes.map((route, index) => (
-                  <GeoObject
-                    key={index}
-                    geometry={{
-                      type: "LineString",
-                      coordinates: route.points,
-                    }}
-                    options={{
-                      strokeColor: route.color,
-                      strokeWidth: route.lineWidth,
-                      strokeStyle: "dash", // Пунктирная линия
-                    }}
-                  />
+                  <>
+                    <GeoObject
+                      key={route.hint}
+                      properties={{hintContent: route.hint}}
+                      geometry={{
+                        type: "LineString",
+                        coordinates: route.points,
+                      }}
+                      options={{
+                        strokeColor: route.color,
+                        strokeWidth: route.lineWidth,
+                        strokeStyle: "dash", // Пунктирная линия
+                      }}
+                    />
+                    <Placemark
+                      key={index}
+                      geometry={route.arrow.coords}
+                      modules={['geoObject.addon.balloon']}
+                      options={{
+                        iconLayout: "default#image",
+                        iconImageHref: `/map/icons/arrow_${route.arrow.direction}.svg`,
+                        iconColor: route.color,
+                        iconImageSize: [20, 20],
+                        iconImageOffset: [-10, -10]
+                      }}
+                    />
+                  </>
                 ))}
             </Map>
             {/* Кастомные zoom кнопки */}
