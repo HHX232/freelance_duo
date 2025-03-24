@@ -70,11 +70,12 @@ telegram_alert_success:
   script:
     - |
       TEXT=$(cat <<-END
-        Project: *Frontend \\- Kronfort*
-        🚀 Repo: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
-        📝 Commit: *$CI_COMMIT_MESSAGE*
-        💚 Status: *Pipeline Succeeded*
-        🔗 [View Pipeline]($CI_PIPELINE_URL)
+      Project: *Frontend \\- Kronfort*
+
+      🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
+      📝 Commit: *$CI_COMMIT_MESSAGE*
+      💚 Status: *Pipeline Succeeded*
+      🔗 [View Pipeline]($CI_PIPELINE_URL)
       END
       )
 
