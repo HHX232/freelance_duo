@@ -17,12 +17,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Map() {
   return (
-    <>
+    <div>
       <Header />
       <main style={{background: '#11627d', overflow: 'hidden', minHeight: '100vh'}}>
         <ContactsPage />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

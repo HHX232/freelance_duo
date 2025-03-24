@@ -15,12 +15,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function FavoritesPage() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <Favorites />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

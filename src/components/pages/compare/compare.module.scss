@@ -1,3 +1,15 @@
+.extra_button {
+  font-size: 16px !important;
+  line-height: 24px !important;
+  max-width: 282px;
+
+  &>p {
+    font-size: 16px !important;
+    line-height: 24px !important;
+    padding: 12px;
+  }
+}
+
 .compare {
   display: flex;
   min-height: 100vh;

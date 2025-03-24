@@ -694,7 +694,7 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
                       {remainingItemsCount > 0 && (
                         <FullButton
                           onClick={showMoreItems}
-                          borderColor={''}
+                          borderColor={'none'}
                           buttonElementColor={'white'}
                           buttonFill={'bronze-500'}
                           buttonText={`Показать еще ${Math.min(remainingItemsCount, visibleItemsCount)} вариантов из${' '}${remainingItemsCount}`}

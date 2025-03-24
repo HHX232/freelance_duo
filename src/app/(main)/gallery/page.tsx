@@ -18,12 +18,12 @@ export default async function ProgressPage() {
   const progress = await getAllProgress()
 
   return (
-    <>
+    <div>
       <Header />
       <main>
         <Progress progress={progress} />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

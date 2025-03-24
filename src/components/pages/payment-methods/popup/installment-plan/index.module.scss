@@ -3,6 +3,10 @@
   justify-content: flex-end;
 }
 
+.button_extra {
+  padding: 12px;
+}
+
 .headClose {
   margin: 16px 16px 0 0;
 }
@@ -56,6 +60,7 @@
 .table_wrapper {
   width: 100%;
   overflow: auto;
+
   &::-webkit-scrollbar {
     height: 0;
   }

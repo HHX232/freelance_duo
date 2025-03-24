@@ -106,22 +106,24 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 styleContainer={{gridGap: '4px'}}
               /> */}
             </div>
-            <FullButton
-              type={'Button'}
-              buttonText={'ДАЛЕЕ'}
-              onClick={() => {
-                setStep(2)
-              }}
-              activeButton={true}
-              border={false}
-              borderColor={''}
-              extraClass={styles.button}
-              buttonFill='bronze-500'
-              buttonElementColor='white'
-              buttonBorderRadius={'6px'}
-            >
-              <ToRight />
-            </FullButton>
+            <span style={{zIndex: '10'}}>
+              <FullButton
+                type={'Button'}
+                buttonText={'ДАЛЕЕ'}
+                onClick={() => {
+                  setStep(2)
+                }}
+                activeButton={true}
+                border={false}
+                borderColor={'none'}
+                extraClass={styles.button}
+                buttonFill='bronze-500'
+                buttonElementColor='white'
+                buttonBorderRadius={'6px'}
+              >
+                <ToRight />
+              </FullButton>
+            </span>
           </div>
         ) : (
           <div className={styles.formWrapper}>
@@ -196,21 +198,23 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 value={mail}
               />
             </div>
-            <FullButton
-              type={'Button'}
-              buttonText={'ОТПРАВИТЬ'}
-              onClick={() => {
-                setStep(1)
-                OpenModal()
-              }}
-              activeButton={true}
-              border={false}
-              borderColor={''}
-              extraClass={styles.button}
-              buttonFill='bronze-500'
-              buttonElementColor='white'
-              buttonBorderRadius={'6px'}
-            />
+            <span style={{zIndex: '10'}}>
+              <FullButton
+                type={'Button'}
+                buttonText={'ОТПРАВИТЬ'}
+                onClick={() => {
+                  setStep(1)
+                  OpenModal()
+                }}
+                activeButton={true}
+                border={false}
+                borderColor={'none'}
+                extraClass={styles.button}
+                buttonFill='bronze-500'
+                buttonElementColor='white'
+                buttonBorderRadius={'6px'}
+              />
+            </span>
             <div className={styles.subtext}>
               Нажимая кнопку «Отправить», вы даёте согласие на
               <LinkUI

@@ -152,7 +152,7 @@
 }
 
 .butron-border-radius-6px {
-  border-radius: 6px !important;
+  border-radius: 6px;
 }
 
 .butron-border-radius-12px {
@@ -205,7 +205,7 @@
   &::before {
     position: absolute;
     z-index: -1;
-    border-radius: 7px;
+    border-radius: 8px;
     background-color: #936147;
     content: '';
     inset: -2px;
@@ -243,7 +243,7 @@
   &::before {
     position: absolute;
     z-index: -1;
-    border-radius: 7px;
+    border-radius: 8px;
     background-color: #e35d08;
     content: '';
     inset: -2px;
@@ -282,7 +282,7 @@
   &::before {
     position: absolute;
     z-index: -1;
-    border-radius: 7px;
+    border-radius: 8px;
     background-color: #11627d4d;
     content: '';
     inset: -2px;
@@ -415,7 +415,7 @@
     position: absolute;
     z-index: -1;
     border: 1px solid #fd7628;
-    border-radius: 7px;
+    border-radius: 8px;
     content: '';
     inset: -1px;
   }
@@ -459,7 +459,7 @@
     position: absolute;
     z-index: -1;
     border: none;
-    border-radius: 7px;
+    border-radius: 8px;
     background-color: rgb(255 255 255 / 16%);
     content: '';
     inset: -1px;
@@ -503,23 +503,16 @@
     background-color: #11627d;
     color: #fff !important;
 
+
+
     .arrow_active>path {
       stroke: #fff !important;
-    }
-
-
-    &>p {
-      color: #555 !important;
     }
   }
 
   &:focus:hover {
     background-color: #11627d;
     color: #fff !important;
-
-    // &>p {
-    //   color: #fff !important;
-    // }
 
     .arrow_active>path {
       stroke: #fff !important;
@@ -529,14 +522,10 @@
   &:focus:hover::before {
     border: none !important;
     background-color: transparent;
-    color: #fff !important;
   }
 
   &:focus:not(:active)::before {
     background-color: #11627d;
-    color: #fff !important;
-
-
   }
 
   &:focus:not(:active, :hover)::before {
@@ -546,10 +535,6 @@
   &:focus:not(:active) {
     color: #fff !important;
 
-    &>p {
-      color: #fff !important;
-    }
-
     .arrow_active>path {
       stroke: #fff !important;
     }
@@ -558,37 +543,26 @@
   &:active:hover::before {
     border: 3px solid #66a2b6 !important;
     background-color: transparent !important;
-    color: #fff !important;
   }
 
-  &:focus:not(:active) {
+  &:focus:not(:active, :hover) {
     color: #555 !important;
 
+
+    .arrow_active>path {
+      stroke: #555 !important;
+    }
+  }
+
+  &:focus:hover:not(:active) {
     &>p {
       color: #fff !important;
-    }
-
-    .arrow_active>path {
-      stroke: #555 !important;
-    }
-  }
-
-  &:focus:not(:hover) {
-    color: #555 !important;
-
-    &>p {
-      color: #555 !important;
-    }
-
-    .arrow_active>path {
-      stroke: #555 !important;
     }
   }
 
   &:active:focus {
     background-color: transparent !important;
     color: #555 !important;
-
 
 
     .arrow_active>path {
@@ -598,16 +572,15 @@
 
   &:focus:not(:focus-visible) {
     background-color: transparent;
-
   }
 
   &::before {
     position: absolute;
     z-index: -1;
     border: 1px solid #b5b9be;
-    border-radius: 7px;
+    border-radius: 8px;
     content: '';
-    inset: 0px;
+    inset: -1px;
     transition:
       border-color 0.2s,
       border-width 0.2s,
