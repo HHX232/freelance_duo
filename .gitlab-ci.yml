@@ -58,7 +58,7 @@ telegram_alert_failure:
   script:
     - |
       TEXT=$(cat <<-END
-      Project: *Frontend \- Kronfort*
+      Project: *Frontend - Kronfort*
 
       🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
       📝 Commit: *$CI_COMMIT_MESSAGE*
@@ -69,7 +69,7 @@ telegram_alert_failure:
       curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto" \
       -F "chat_id=$TELEGRAM_CHAT_ID" \
       -F "caption=$TEXT" \
-      -F "parse_mode=MarkdownV2" \
+      -F "parse_mode=Markdown" \
       -F "photo=@/home/test-perimeter/devops-assets/kronfort-frontend/error.png"
   when: on_failure  # Runs only if a job fails
   only:
@@ -80,7 +80,7 @@ telegram_alert_success:
   script:
     - |
       TEXT=$(cat <<-END
-      Project: *Frontend \- Kronfort*
+      Project: *Frontend - Kronfort*
 
       🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
       📝 Commit: *$CI_COMMIT_MESSAGE*
@@ -92,7 +92,7 @@ telegram_alert_success:
       curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto" \
       -F "chat_id=$TELEGRAM_CHAT_ID" \
       -F "caption=$TEXT" \
-      -F "parse_mode=MarkdownV2" \
+      -F "parse_mode=Markdown" \
       -F "photo=@/home/test-perimeter/devops-assets/kronfort-frontend/success.png"
   when: on_success  # Runs only if the pipeline is successful
   only:
@@ -103,7 +103,7 @@ telegram_alert_failure_slave:
   script:
     - |
       TEXT=$(cat <<-END
-      Project: *Frontend \- Kronfort*
+      Project: *Frontend - Kronfort*
 
       🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
       🔀 Merge Request: [\!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
@@ -116,7 +116,7 @@ telegram_alert_failure_slave:
       curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto" \
       -F "chat_id=$TELEGRAM_CHAT_ID" \
       -F "caption=$TEXT" \
-      -F "parse_mode=MarkdownV2" \
+      -F "parse_mode=Markdown" \
       -F "photo=@/home/test-perimeter/devops-assets/kronfort-frontend/mr-error.png"
   when: on_failure  # Runs only if a job fails
   rules:
@@ -127,7 +127,7 @@ telegram_alert_success_slave:
   script:
     - |
       TEXT=$(cat <<-END
-      Project: *Frontend \- Kronfort*
+      Project: *Frontend - Kronfort*
 
       🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
       🔀 Merge Request: [\!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
@@ -140,7 +140,7 @@ telegram_alert_success_slave:
       curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto" \
       -F "chat_id=$TELEGRAM_CHAT_ID" \
       -F "caption=$TEXT" \
-      -F "parse_mode=MarkdownV2" \
+      -F "parse_mode=Markdown" \
       -F "photo=@/home/test-perimeter/devops-assets/kronfort-frontend/mr-success.png"
   when: on_success  # Runs only if the pipeline is successful
   rules:
