@@ -1,3 +1,30 @@
+.button_extra {
+  padding: 12px 0;
+  border-radius: 6px !important;
+}
+
+.tabs_extra_item {
+  text-wrap: nowrap;
+}
+
+.button_extra_2 {
+  padding: 12px 36px;
+  // width: fit-content !important;
+  max-width: fit-content !important;
+  min-width: auto;
+  border-radius: 6px !important;
+
+  @include custom(0, map-get($breakpoints, lg) - 1px) {
+    max-width: 100% !important;
+  }
+
+  &>p {
+    width: fit-content !important;
+    max-width: fit-content !important;
+  }
+
+}
+
 .payment-methods {
   overflow-x: hidden;
 

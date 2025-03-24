@@ -2,11 +2,12 @@ import PieChartSVG from '@icons/pie_chart.svg'
 import ClockSVG from '@icons/clock.svg'
 import CalendarSVG from '@icons/calendar.svg'
 import PercentSVG from '@icons/percent.svg'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
-import BorderedButton from '@src/components/UI-kit/BaseControls/buttons/old/borderedButton/BorderedButton'
+// import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
+// import BorderedButton from '@src/components/UI-kit/BaseControls/buttons/old/borderedButton/BorderedButton'
 import styles from '../../payment-methods.module.scss'
-import clsx from 'clsx'
+// import clsx from 'clsx'
 import {FC} from 'react'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface IZeroPercentTabProps {
   setShownInstallmentPlan: (flag: boolean) => void
@@ -41,9 +42,18 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
         </section>
         <div className={styles['poster-meta']}>
           <p className={styles['poster-meta__title']}>Есть вопросы? Свяжитесь с нами!</p>
-          <button className={clsx([styles['poster-meta__question_button']], styles['tab-button'])}>
+          {/* <button className={clsx([styles['poster-meta__question_button']], styles['tab-button'])}>
             Получить консультацию
-          </button>
+          </button> */}
+          <FullButton
+            extraClass={styles.button_extra_2}
+            activeButton={false}
+            buttonBorderRadius='6px'
+            buttonFill='white'
+            border={false}
+            borderColor='none'
+            buttonText={'Получить консультацию'}
+          />
         </div>
       </div>
 
@@ -74,10 +84,36 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
                   <p className={styles['meta__description']}>Первый взнос не менее 20% от базовой стоимости</p>
                 </div>
                 <div className={styles['meta-buttons']}>
-                  <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton>
-                  <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
+                  {/* <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton> */}
+                  <span style={{width: '100%', zIndex: '7'}}>
+                    <FullButton
+                      extraClass={styles.button_extra}
+                      onClick={handleInstallmentPlan}
+                      buttonElementColor='white'
+                      buttonText={'Узнать подробнее'}
+                      activeButton
+                      buttonBorderRadius='6px'
+                      buttonFill='bronze-500'
+                      border={false}
+                      borderColor='none'
+                    />
+                  </span>
+                  {/* <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
                     Связаться с нами
-                  </BorderedButton>
+                  </BorderedButton> */}
+                  <span style={{width: '100%', zIndex: '7'}}>
+                    <FullButton
+                      extraClass={styles.button_extra}
+                      buttonFill='none'
+                      activeButton
+                      border={true}
+                      borderColor={'gray-dark'}
+                      borderWidth='1px'
+                      buttonBorderRadius='6px'
+                      buttonText={'Подобрать квартиру'}
+                      onClick={handleRequestCallBack}
+                    />
+                  </span>
                 </div>
               </div>
             </div>
@@ -111,10 +147,37 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
                   </p>
                 </div>
                 <div className={styles['meta-buttons']}>
-                  <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton>
-                  <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
+                  {/* <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton> */}
+                  <span style={{width: '100%', zIndex: '7'}}>
+                    <FullButton
+                      extraClass={styles.button_extra}
+                      onClick={handleInstallmentPlan}
+                      buttonElementColor='white'
+                      buttonText={'Узнать подробнее'}
+                      activeButton
+                      buttonBorderRadius='6px'
+                      buttonFill='bronze-500'
+                      border={false}
+                      borderColor='none'
+                    />
+                  </span>
+                  {/* <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
                     Связаться с нами
-                  </BorderedButton>
+                  </BorderedButton> */}
+
+                  <span style={{width: '100%', zIndex: '7'}}>
+                    <FullButton
+                      extraClass={styles.button_extra}
+                      buttonFill='none'
+                      activeButton
+                      border={true}
+                      borderColor={'gray-dark'}
+                      borderWidth='1px'
+                      buttonBorderRadius='6px'
+                      buttonText={'Подобрать квартиру'}
+                      onClick={handleRequestCallBack}
+                    />
+                  </span>
                 </div>
               </div>
             </div>
@@ -147,10 +210,36 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
                   </p>
                 </div>
                 <div className={styles['meta-buttons']}>
-                  <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton>
-                  <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
+                  {/* <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton> */}
+                  <span style={{width: '100%', zIndex: '7'}}>
+                    <FullButton
+                      extraClass={styles.button_extra}
+                      onClick={handleInstallmentPlan}
+                      buttonElementColor='white'
+                      buttonText={'Узнать подробнее'}
+                      activeButton
+                      buttonBorderRadius='6px'
+                      buttonFill='bronze-500'
+                      border={false}
+                      borderColor='none'
+                    />
+                  </span>
+                  {/* <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
                     Связаться с нами
-                  </BorderedButton>
+                  </BorderedButton> */}
+                  <span style={{width: '100%', zIndex: '7'}}>
+                    <FullButton
+                      extraClass={styles.button_extra}
+                      buttonFill='none'
+                      activeButton
+                      border={true}
+                      borderColor={'gray-dark'}
+                      borderWidth='1px'
+                      buttonBorderRadius='6px'
+                      buttonText={'Подобрать квартиру'}
+                      onClick={handleRequestCallBack}
+                    />
+                  </span>
                 </div>
               </div>
             </div>

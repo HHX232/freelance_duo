@@ -7,4 +7,5 @@ export interface TabsUIProps {
   disabled?: boolean
   activeIndex: number
   size?: TTabsSize
+  extraClass?: string
 }

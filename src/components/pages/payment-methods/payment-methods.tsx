@@ -14,6 +14,8 @@ import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
 import {HeadTitle} from '@src/components/UI-kit/Text-Elements/TextKit/head-title'
 import useEmblaCarousel from 'embla-carousel-react'
 import {useWindowWidth} from '@shared/pageDefault/header/components/HeaderMenu/hooks/useWindowWidth'
+import {TabsUIItem} from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
+// import TabsUI from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
 
 const PaymentMethodsPage = () => {
   const [active, setActive] = useState(0)
@@ -48,13 +50,56 @@ const PaymentMethodsPage = () => {
         <section className={clsx('embla', styles.tabs_section)}>
           <div className='embla__viewport' ref={emblaRef}>
             <div className={clsx('embla__container', styles.tabs_container)}>
-              <button
+              {/* <TabsUI
+                fill={'white'}
+                tabsNames={['Рассрочка', 'Ипотека', '100% оплата', 'trade-in']}
+                setActiveTabIndex={setActive}
+                activeIndex={active}
+                extraClass={styles.tabs_extra}
+              /> */}
+              {/* <button
                 className={clsx([styles['tab-button']], {[styles.active]: active === 0}, 'embla__slide')}
                 onClick={() => setActive(0)}
               >
                 Рассрочка
-              </button>
-              <button
+              </button> */}
+              <TabsUIItem
+                extraClass={styles.tabs_extra_item}
+                size='md'
+                tabName='Рассрочка'
+                index={0}
+                setActiveTabIndex={setActive}
+                activeIndex={active}
+                fill='white'
+              />
+              <TabsUIItem
+                extraClass={styles.tabs_extra_item}
+                size='md'
+                tabName='Ипотека'
+                index={1}
+                setActiveTabIndex={setActive}
+                activeIndex={active}
+                fill='white'
+              />
+              <TabsUIItem
+                extraClass={styles.tabs_extra_item}
+                size='md'
+                tabName='100% оплата'
+                index={2}
+                setActiveTabIndex={setActive}
+                activeIndex={active}
+                fill='white'
+              />
+              <TabsUIItem
+                extraClass={styles.tabs_extra_item}
+                size='md'
+                tabName='trade-in'
+                index={3}
+                setActiveTabIndex={setActive}
+                activeIndex={active}
+                fill='white'
+              />
+              {/* <button
                 className={clsx([styles['tab-button']], {[styles.active]: active === 1}, 'embla__slide')}
                 onClick={() => setActive(1)}
               >
@@ -71,7 +116,7 @@ const PaymentMethodsPage = () => {
                 onClick={() => setActive(3)}
               >
                 trade-in
-              </button>
+              </button> */}
             </div>
           </div>
         </section>

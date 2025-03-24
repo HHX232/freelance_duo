@@ -5,7 +5,6 @@ import styles from './RangeInputUI.module.scss'
 import {InputTextDefaultIcon as InputRangeDefaultIcon} from './InputRangeDefaultIcon'
 import InputClearIcon from './InputClearIcon'
 import {IField} from './RangeUI.types'
-
 import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
 
 const InputRangeUI = forwardRef<HTMLInputElement, IField>(
@@ -24,6 +23,7 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
       minValue = 0,
       maxValue = 100,
       isNeedToClear,
+      textAfterValue = '',
       ...rest
     },
     ref
@@ -142,7 +142,7 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
               type={type}
               {...rest}
               disabled={true}
-              value={inputText}
+              value={inputText + textAfterValue}
               onChange={onInputChange}
               autoComplete={type === 'text' ? 'off' : undefined}
             />
