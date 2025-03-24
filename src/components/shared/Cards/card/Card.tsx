@@ -202,7 +202,7 @@ export default function Card(item: Flat) {
           <FullButton
             type={'Link'}
             href={`/apartment-card/${data.id}`}
-            borderColor={''}
+            borderColor={'none'}
             buttonElementColor={'white'}
             buttonFill={'bronze-500'}
             buttonText={'Забронировать'}
