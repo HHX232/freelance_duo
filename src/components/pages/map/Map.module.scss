@@ -1,0 +1,295 @@
+.page {
+  min-height: 743px;
+}
+
+.pointsWrapper {
+  &::before {
+    position: absolute;
+    z-index: 1;
+    top: 70vh;
+    right: -36vw;
+    display: none;
+    height: 100vh;
+    aspect-ratio: 2.1152;
+    background: linear-gradient(180deg, #1e3849 0%, rgb(30 56 73 / 0%) 100%);
+    content: '';
+    transform: rotate(105deg);
+    min-height: 653px !important;
+  }
+
+  @include mobile {
+    overflow: hidden;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &::after {
+    position: fixed;
+    z-index: 1;
+    //top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+    pointer-events: none;
+
+    @layer base {
+      background: linear-gradient(180deg, rgba(38, 57, 69, 0) 43.85%, rgba(38, 57, 69, 0.47) 57.88%, #263945 100%),
+        linear-gradient(90deg, rgba(19, 36, 47, 0.7) 0%, rgba(30, 56, 73, 0) 50%),
+        radial-gradient(41.9% 13.62% at 48.44% 26.85%, rgba(255, 255, 255, 0) 0%, rgba(30, 56, 73, 0.1) 100%);
+    }
+
+    @include md {
+      background: linear-gradient(90deg, rgba(19, 36, 47, 0.7) 0%, rgba(30, 56, 73, 0) 50%),
+        radial-gradient(64.3% 48.24% at 55.31% 48.9%, rgba(255, 255, 255, 0) 0%, rgba(30, 56, 73, 0.1) 66.49%);
+      top: 0;
+      bottom: unset;
+    }
+  }
+}
+
+.mapImage {
+  @layer base {
+    position: absolute !important;
+    z-index: 0;
+    top: 0;
+    right: 0px;
+    left: 0;
+    bottom: 0;
+    contain: paint;
+    object-fit: cover;
+    object-position: bottom;
+  }
+
+  @include md {
+    z-index: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.wrapper {
+  height: 100vh;
+  min-height: 653px !important;
+  scale: 1;
+
+
+}
+.swipe {
+  position: absolute;
+  z-index: 10;
+  top: 98px;
+  right: 34px;
+
+  svg path {
+    fill: #fff;
+  }
+}
+
+.mobileImage {
+  overflow: hidden;
+}
+
+.direction-hint {
+  @include font(1, 16, 22, 700);
+
+  color: #fff;
+  text-shadow: 0 4px 13.5px rb(0 0 0 / 100%) g;
+
+  &-wrapper {
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+  }
+}
+
+.captions {
+  &-title {
+    @layer base {
+      @include font(3, 30, 40, 400);
+      color: $yellow-text;
+    }
+
+    @include md {
+      @include font(3, 36, 50, 400);
+    }
+
+    @include xl {
+      @include font(3, 42, 54, 400);
+    }
+  }
+
+  @layer base {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    padding-bottom: 24px;
+  }
+
+  @include sm {
+    gap: 60px;
+    padding-bottom: 40px;
+  }
+
+  @include md {
+    //top: 50%;
+    //bottom: initial;
+    //gap: 366px;
+    //transform: translateY(-50%);
+    bottom: 0px;
+    height: 100%;
+    width: fit-content;
+    justify-content: space-between;
+    padding: 90px 40px;
+  }
+
+  @include lg {
+    gap: 60px;
+    justify-content: start;
+  }
+
+  @include content-container;
+
+  @include xxxl {
+    padding-left: 196px;
+    padding-top: 130px;
+  }
+
+  @include xxl {
+    padding-left: 170px;
+    padding-top: 90px;
+  }
+
+  @include xl {
+    padding-top: 60px;
+  }
+
+  @include lg {
+    padding-top: 60px;
+  }
+}
+
+.caption-items {
+  @layer base {
+    display: flex;
+    gap: 60px;
+  }
+
+  @include md {
+    flex-direction: column;
+    gap: 48px;
+  }
+}
+
+.caption {
+  position: relative;
+  max-width: 245px;
+
+  @include xl {
+    width: 245px;
+  }
+
+  & svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  @include md {
+    min-width: 215px;
+  }
+
+  &__title {
+    @layer base {
+      color: $yellow-text;
+      @include font(3, 40, 50, 400);
+
+      span {
+        @include font(3, 22, 34, 400);
+        color: $yellow-text;
+        padding-left: 8px;
+      }
+    }
+
+    @include md {
+      @include font(3, 52, 58, 400);
+
+      span {
+        @include font(3, 26, 36, 400);
+      }
+    }
+
+    @include md {
+      @include font(3, 64, 80, 400);
+
+      span {
+        @include font(3, 32, 44, 400);
+      }
+    }
+  }
+
+  &__divider {
+    width: 83px;
+    height: 2px;
+    border: 0;
+    margin-left: 0;
+    background-color: $orange-bg-500;
+
+    @layer base {
+      margin: 8px 0;
+    }
+
+    @include md {
+      margin: 12px 0;
+    }
+    @include md {
+      margin: 16px 0;
+    }
+  }
+
+  &__description {
+    @layer base {
+      @include font(1, 14, 18, 200);
+
+      color: $yellow-text;
+    }
+
+    @include md {
+      max-width: 190px;
+    }
+
+    @include md {
+      max-width: 220px;
+      @include font(1, 16, 23, 200);
+    }
+  }
+}
+
+.desktop_captions {
+  @layer base {
+    display: none;
+  }
+
+  @include md {
+    display: flex;
+  }
+}
+
+.mobile_captions {
+  @layer base {
+    display: flex;
+  }
+
+  @include md {
+    display: none;
+  }
+}
