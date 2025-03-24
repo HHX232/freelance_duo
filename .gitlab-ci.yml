@@ -106,7 +106,7 @@ telegram_alert_failure_slave:
       Project: *Frontend \\- Kronfort*
 
       🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
-      🔀 Merge Request: [!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
+      🔀 Merge Request: [\!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
       📝 Commit: *$CI_COMMIT_MESSAGE*
       🛑 Status: *Error*
       🔗 [View Pipeline]($CI_PIPELINE_URL)
@@ -130,7 +130,7 @@ telegram_alert_success_slave:
       Project: *Frontend \\- Kronfort*
 
       🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
-      🔀 Merge Request: [!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
+      🔀 Merge Request: [\!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
       📝 Commit: *$CI_COMMIT_MESSAGE*
       💚 Status: *Success*
       🔗 [View Pipeline]($CI_PIPELINE_URL)
