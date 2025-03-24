@@ -133,8 +133,6 @@ telegram_alert_success_slave:
       🔀 Merge Request: [\!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
       📝 Commit: *$CI_COMMIT_MESSAGE*
       💚 Status: *Success*
-
-      🌿 Mentions: @sas135510 @yarnduffold \- Ready to MERGE\!
       🔗 [View Pipeline]($CI_PIPELINE_URL)
       END
       )
