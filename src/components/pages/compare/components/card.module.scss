@@ -105,7 +105,6 @@
   @media (min-width: 491px) {
     &:hover {
       .reservation {
-        top: 14px;
         opacity: 1;
       }
     }
@@ -156,7 +155,7 @@
 }
 
 .reservation {
-  position: absolute;
+  position: absolute !important;
   top: 155px;
   left: 0;
   width: 100% !important;
