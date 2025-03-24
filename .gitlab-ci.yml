@@ -69,10 +69,11 @@ telegram_alert_success:
   stage: notify
   script:
     - |
-      curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
-      -d "chat_id=$TELEGRAM_CHAT_ID" \
-      -d "text=【 *Frontend* 】【 *Kronfort* 】%0A✅ *GitLab CI/CD Pipeline SUCCESS* 🎉%0A🚀 Repo: *$CI_PROJECT_NAME*%0A📝 Commit: *$CI_COMMIT_MESSAGE*%0A💚 Status: *Pipeline Succeeded*%0A🔗 [View Pipeline]($CI_PIPELINE_URL)" \
-      -d "parse_mode=Markdown"
+      curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto" \
+      -F "chat_id=$TELEGRAM_CHAT_ID" \
+      -F "caption=Project: *Frontend | Kronfort*%0A🚀 Repo: [$CI_PROJECT_NAME]($CI_PROJECT_URL)%0A📝 Commit: *$CI_COMMIT_MESSAGE*%0A💚 Status: *Pipeline Succeeded*%0A🔗 [View Pipeline]($CI_PIPELINE_URL)" \
+      -F "parse_mode=Markdown"
+      -F "photo=@/k8s/cover/success.png"
   when: on_success  # Runs only if the pipeline is successful
   only:
     - main
