@@ -134,7 +134,7 @@ telegram_alert_success_slave:
       📝 Commit: *$CI_COMMIT_MESSAGE*
       💚 Status: *Success*
 
-      🌿 Mentions: @sas135510 @yarnduffold \- Ready to merge\!
+      🌿 Mentions: @sas135510 @yarnduffold \- Ready to MERGE\!
       🔗 [View Pipeline]($CI_PIPELINE_URL)
       END
       )
