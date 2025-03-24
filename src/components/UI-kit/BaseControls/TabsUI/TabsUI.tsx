@@ -34,18 +34,14 @@ export const TabsUIItem: FC<TabsUIItemProps> = ({
 
   return (
     <div
-      className={cn(
-        styles.tabItem,
-        {
-          [styles.active]: isActive,
-          [styles.disabled]: disabled,
-          [styles.fill_white]: fill === 'white',
-          [styles.fill_transparent]: fill === 'transparent',
-          [styles.size_sm]: size === 'sm',
-          [styles.size_md]: size === 'md'
-        },
-        extraClass
-      )}
+      className={cn(styles.tabItem, extraClass, {
+        [styles.active]: isActive,
+        [styles.disabled]: disabled,
+        [styles.fill_white]: fill === 'white',
+        [styles.fill_transparent]: fill === 'transparent',
+        [styles.size_sm]: size === 'sm',
+        [styles.size_md]: size === 'md'
+      })}
       onClick={handleClick}
       role='tab'
       aria-selected={isActive}
@@ -88,6 +84,7 @@ const TabsUI: FC<TabsUIProps> = ({
           setActiveTabIndex={setActiveTabIndex}
           disabled={disabled}
           activeIndex={activeIndex}
+          extraClass={extraClass}
         />
       ))}
     </div>
