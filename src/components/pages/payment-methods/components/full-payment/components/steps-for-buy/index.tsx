@@ -67,7 +67,7 @@ export const StepsForBuy = () => {
               //     <span>Выбрать квартиру</span>
               //   </FilledButton>
               // </div>
-              <span className={styles.button_wrapper} style={{width: '100%', zIndex: '100'}}>
+              <span className={styles.button_wrapper} style={{width: '100%', zIndex: '7'}}>
                 <FullButton
                   extraClass={styles.button_extra}
                   onClick={handleSelectApartmentClick}

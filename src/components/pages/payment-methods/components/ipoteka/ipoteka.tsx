@@ -91,7 +91,7 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
                   {/* <FilledButton>
                     <span>Подать заявку онлайн</span>
                   </FilledButton> */}
-                  <span style={{width: '100%', zIndex: '100'}}>
+                  <span style={{width: '100%', zIndex: '7'}}>
                     <FullButton
                       extraClass={styles.button_extra}
                       buttonElementColor='white'
@@ -109,7 +109,7 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
                   >
                     <span style={{color: '#555'}}>Связаться с нами</span>
                   </BorderedButton> */}
-                  <span style={{width: '100%', zIndex: '100'}}>
+                  <span style={{width: '100%', zIndex: '7'}}>
                     <FullButton
                       extraClass={styles.button_extra}
                       buttonFill='none'

@@ -85,7 +85,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
                 </div>
                 <div className={styles['meta-buttons']}>
                   {/* <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton> */}
-                  <span style={{width: '100%', zIndex: '100'}}>
+                  <span style={{width: '100%', zIndex: '7'}}>
                     <FullButton
                       extraClass={styles.button_extra}
                       onClick={handleInstallmentPlan}
@@ -101,7 +101,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
                   {/* <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
                     Связаться с нами
                   </BorderedButton> */}
-                  <span style={{width: '100%', zIndex: '100'}}>
+                  <span style={{width: '100%', zIndex: '7'}}>
                     <FullButton
                       extraClass={styles.button_extra}
                       buttonFill='none'
@@ -148,7 +148,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
                 </div>
                 <div className={styles['meta-buttons']}>
                   {/* <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton> */}
-                  <span style={{width: '100%', zIndex: '100'}}>
+                  <span style={{width: '100%', zIndex: '7'}}>
                     <FullButton
                       extraClass={styles.button_extra}
                       onClick={handleInstallmentPlan}
@@ -165,7 +165,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
                     Связаться с нами
                   </BorderedButton> */}
 
-                  <span style={{width: '100%', zIndex: '100'}}>
+                  <span style={{width: '100%', zIndex: '7'}}>
                     <FullButton
                       extraClass={styles.button_extra}
                       buttonFill='none'
@@ -211,7 +211,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
                 </div>
                 <div className={styles['meta-buttons']}>
                   {/* <FilledButton onClick={handleInstallmentPlan}>Узнать подробнее</FilledButton> */}
-                  <span style={{width: '100%', zIndex: '100'}}>
+                  <span style={{width: '100%', zIndex: '7'}}>
                     <FullButton
                       extraClass={styles.button_extra}
                       onClick={handleInstallmentPlan}
@@ -227,7 +227,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
                   {/* <BorderedButton className={styles['meta-buttons__bordered']} onClick={handleRequestCallBack}>
                     Связаться с нами
                   </BorderedButton> */}
-                  <span style={{width: '100%', zIndex: '100'}}>
+                  <span style={{width: '100%', zIndex: '7'}}>
                     <FullButton
                       extraClass={styles.button_extra}
                       buttonFill='none'
