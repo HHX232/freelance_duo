@@ -58,7 +58,7 @@ telegram_alert_failure:
   script:
     - |
       TEXT=$(cat <<-END
-      Project: *API \\- Kronfort*
+      Project: *Frontend \- Kronfort*
 
       🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
       📝 Commit: *$CI_COMMIT_MESSAGE*
@@ -80,7 +80,7 @@ telegram_alert_success:
   script:
     - |
       TEXT=$(cat <<-END
-      Project: *Frontend \\- Kronfort*
+      Project: *Frontend \- Kronfort*
 
       🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
       📝 Commit: *$CI_COMMIT_MESSAGE*
@@ -103,7 +103,7 @@ telegram_alert_failure_slave:
   script:
     - |
       TEXT=$(cat <<-END
-      Project: *Frontend \\- Kronfort*
+      Project: *Frontend \- Kronfort*
 
       🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
       🔀 Merge Request: [\!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
@@ -127,7 +127,7 @@ telegram_alert_success_slave:
   script:
     - |
       TEXT=$(cat <<-END
-      Project: *Frontend \\- Kronfort*
+      Project: *Frontend \- Kronfort*
 
       🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
       🔀 Merge Request: [\!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
