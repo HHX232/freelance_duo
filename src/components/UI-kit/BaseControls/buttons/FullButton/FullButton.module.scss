@@ -131,11 +131,11 @@
 
 /* Button Element Color */
 .button-element-color-white {
-  color: #fff!important;
+  color: #fff !important;
 }
 
 .button-element-color-black {
-  color: #555!important;
+  color: #555 !important;
 }
 
 .button-element-color-orange {
@@ -152,7 +152,7 @@
 }
 
 .butron-border-radius-6px {
-  border-radius: 6px;
+  border-radius: 6px !important;
 }
 
 .butron-border-radius-12px {
@@ -173,7 +173,7 @@
 }
 
 .animationOn {
-  &:hover > .arrow {
+  &:hover>.arrow {
     transform: rotate(-45deg);
   }
 }
@@ -205,7 +205,7 @@
   &::before {
     position: absolute;
     z-index: -1;
-    border-radius: 8px;
+    border-radius: 7px;
     background-color: #936147;
     content: '';
     inset: -2px;
@@ -243,7 +243,7 @@
   &::before {
     position: absolute;
     z-index: -1;
-    border-radius: 8px;
+    border-radius: 7px;
     background-color: #e35d08;
     content: '';
     inset: -2px;
@@ -264,7 +264,7 @@
   &:hover {
     color: #11627d !important;
 
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #11627d !important;
     }
   }
@@ -282,7 +282,7 @@
   &::before {
     position: absolute;
     z-index: -1;
-    border-radius: 8px;
+    border-radius: 7px;
     background-color: #11627d4d;
     content: '';
     inset: -2px;
@@ -297,7 +297,7 @@
     background-color: #11627d;
     color: #fff !important;
 
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #fff !important;
     }
   }
@@ -306,7 +306,7 @@
     background-color: #fff;
     color: #555 !important;
 
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #555 !important;
     }
   }
@@ -314,7 +314,7 @@
   &:active:focus {
     color: #11627d !important;
 
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #11627d !important;
     }
   }
@@ -327,12 +327,12 @@
   color: #fd7628;
   outline: none;
 
-  .arrow_active > path {
+  .arrow_active>path {
     stroke: #f06710 !important;
   }
 
   &:hover {
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #f06710 !important;
     }
   }
@@ -355,7 +355,7 @@
     background-color: #fd7628;
     color: #fd7628 !important;
 
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #fd7628 !important;
     }
   }
@@ -364,7 +364,7 @@
     background-color: #fd7628;
     color: #fff !important;
 
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #fff !important;
     }
   }
@@ -385,7 +385,7 @@
   &:focus:not(:active) {
     color: #fff !important;
 
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #fff !important;
     }
   }
@@ -393,7 +393,7 @@
   &:focus:not(:active, :hover) {
     color: #fd7628 !important;
 
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #fd7628 !important;
     }
   }
@@ -402,7 +402,7 @@
     background-color: transparent !important;
     color: #fd7628 !important;
 
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #fd7628 !important;
     }
   }
@@ -415,7 +415,7 @@
     position: absolute;
     z-index: -1;
     border: 1px solid #fd7628;
-    border-radius: 8px;
+    border-radius: 7px;
     content: '';
     inset: -1px;
   }
@@ -459,7 +459,7 @@
     position: absolute;
     z-index: -1;
     border: none;
-    border-radius: 8px;
+    border-radius: 7px;
     background-color: rgb(255 255 255 / 16%);
     content: '';
     inset: -1px;
@@ -474,12 +474,12 @@
   outline: none;
   transition: all 0.2s;
 
-  .arrow_active > path {
+  .arrow_active>path {
     stroke: #555 !important;
   }
 
   &:hover {
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #555 !important;
     }
   }
@@ -503,8 +503,13 @@
     background-color: #11627d;
     color: #fff !important;
 
-    .arrow_active > path {
+    .arrow_active>path {
       stroke: #fff !important;
+    }
+
+
+    &>p {
+      color: #555 !important;
     }
   }
 
@@ -512,7 +517,11 @@
     background-color: #11627d;
     color: #fff !important;
 
-    .arrow_active > path {
+    // &>p {
+    //   color: #fff !important;
+    // }
+
+    .arrow_active>path {
       stroke: #fff !important;
     }
   }
@@ -520,10 +529,14 @@
   &:focus:hover::before {
     border: none !important;
     background-color: transparent;
+    color: #fff !important;
   }
 
   &:focus:not(:active)::before {
     background-color: #11627d;
+    color: #fff !important;
+
+
   }
 
   &:focus:not(:active, :hover)::before {
@@ -533,7 +546,11 @@
   &:focus:not(:active) {
     color: #fff !important;
 
-    .arrow_active > path {
+    &>p {
+      color: #fff !important;
+    }
+
+    .arrow_active>path {
       stroke: #fff !important;
     }
   }
@@ -541,12 +558,29 @@
   &:active:hover::before {
     border: 3px solid #66a2b6 !important;
     background-color: transparent !important;
+    color: #fff !important;
   }
 
-  &:focus:not(:active, :hover) {
+  &:focus:not(:active) {
     color: #555 !important;
 
-    .arrow_active > path {
+    &>p {
+      color: #fff !important;
+    }
+
+    .arrow_active>path {
+      stroke: #555 !important;
+    }
+  }
+
+  &:focus:not(:hover) {
+    color: #555 !important;
+
+    &>p {
+      color: #555 !important;
+    }
+
+    .arrow_active>path {
       stroke: #555 !important;
     }
   }
@@ -555,22 +589,25 @@
     background-color: transparent !important;
     color: #555 !important;
 
-    .arrow_active > path {
+
+
+    .arrow_active>path {
       stroke: #555 !important;
     }
   }
 
   &:focus:not(:focus-visible) {
     background-color: transparent;
+
   }
 
   &::before {
     position: absolute;
     z-index: -1;
     border: 1px solid #b5b9be;
-    border-radius: 8px;
+    border-radius: 7px;
     content: '';
-    inset: -1px;
+    inset: 0px;
     transition:
       border-color 0.2s,
       border-width 0.2s,
@@ -587,7 +624,7 @@
   pointer-events: none !important;
   user-select: none !important;
 
-  .arrow_active > path {
+  .arrow_active>path {
     stroke: #fff !important;
   }
 }
@@ -599,7 +636,7 @@
   pointer-events: none !important;
   user-select: none !important;
 
-  .arrow_active > path {
+  .arrow_active>path {
     stroke: #fff !important;
   }
 }
@@ -611,7 +648,7 @@
   pointer-events: none !important;
   user-select: none !important;
 
-  .arrow_active > path {
+  .arrow_active>path {
     stroke: #b5b9be !important;
   }
 }
@@ -629,7 +666,7 @@
     display: none !important;
   }
 
-  .arrow_active > path {
+  .arrow_active>path {
     stroke: #b5b9be !important;
   }
 }
@@ -646,7 +683,7 @@
     display: none !important;
   }
 
-  .arrow_active > path {
+  .arrow_active>path {
     stroke: rgb(255 255 255 / 24%) !important;
   }
 }

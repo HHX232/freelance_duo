@@ -1,12 +1,13 @@
 import FastForwardSVG from '@icons/fast_forward.svg'
 import MonitorSVG from '@icons/monitor.svg'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
-import BorderedButton from '@src/components/UI-kit/BaseControls/buttons/old/borderedButton/BorderedButton'
+// import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
+// import BorderedButton from '@src/components/UI-kit/BaseControls/buttons/old/borderedButton/BorderedButton'
 import ipotekaStyles from './ipoteka.module.scss'
 import styles from '../../payment-methods.module.scss'
 import clsx from 'clsx'
 import {FC} from 'react'
 import Image from 'next/image'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface IIpotekaTabProps {
   setShownRequestCallBack: (flag: boolean) => void
@@ -47,7 +48,16 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
         </section>
         <div className={styles['poster-meta']}>
           <p className={styles['poster-meta__title']}>Есть вопросы? Свяжитесь с нами!</p>
-          <button className={clsx([styles['tab-button']])}>Получить консультацию</button>
+          {/* <button className={clsx([styles['tab-button']])}>Получить консультацию</button> */}
+          <FullButton
+            extraClass={styles.button_extra_2}
+            activeButton={false}
+            buttonBorderRadius='6px'
+            buttonFill='white'
+            border={false}
+            borderColor='none'
+            buttonText={'Получить консультацию'}
+          />
         </div>
       </div>
 
@@ -78,15 +88,40 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
                   </div>
                 </div>
                 <div className={clsx(styles['meta-buttons'], ipotekaStyles.controls)}>
-                  <FilledButton>
+                  {/* <FilledButton>
                     <span>Подать заявку онлайн</span>
-                  </FilledButton>
-                  <BorderedButton
+                  </FilledButton> */}
+                  <span style={{width: '100%', zIndex: '100'}}>
+                    <FullButton
+                      extraClass={styles.button_extra}
+                      buttonElementColor='white'
+                      buttonText={'Узнать подробнее'}
+                      activeButton
+                      buttonBorderRadius='6px'
+                      buttonFill='bronze-500'
+                      border={false}
+                      borderColor='none'
+                    />
+                  </span>
+                  {/* <BorderedButton
                     className={styles['meta-buttons__bordered']}
                     onClick={() => setShownRequestCallBack(true)}
                   >
                     <span style={{color: '#555'}}>Связаться с нами</span>
-                  </BorderedButton>
+                  </BorderedButton> */}
+                  <span style={{width: '100%', zIndex: '100'}}>
+                    <FullButton
+                      extraClass={styles.button_extra}
+                      buttonFill='none'
+                      activeButton
+                      border={true}
+                      borderColor={'gray-dark'}
+                      borderWidth='1px'
+                      buttonBorderRadius='6px'
+                      buttonText={'Подобрать квартиру'}
+                      onClick={() => setShownRequestCallBack(true)}
+                    />
+                  </span>
                 </div>
               </div>
             </div>

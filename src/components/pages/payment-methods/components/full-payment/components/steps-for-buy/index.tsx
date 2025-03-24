@@ -1,12 +1,12 @@
 import {Swiper, SwiperClass, SwiperSlide} from 'swiper/react'
 import {useState} from 'react'
 import {stepsForBuySlides} from '@pages/payment-methods/components/full-payment/components/steps-for-buy/content'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import styles from './steps-for-buy.module.scss'
 import useRouterNext from '@src/lib/hooks/useRouter'
 import {NextButton, PrevButton} from '@pages/storerooms/components/carousel/components/EmblaCarouselArrowButtons'
 import {Pagination} from 'swiper/modules'
 import clsx from 'clsx'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 export const StepsForBuy = () => {
   const {push} = useRouterNext()
@@ -62,11 +62,24 @@ export const StepsForBuy = () => {
             </div>
             <h4 className={styles.stepsForBuySlideTitle}>{slide.title}</h4>
             {slide.isSelectApartment && (
-              <div className={styles.button_wrapper}>
-                <FilledButton onClick={handleSelectApartmentClick} className={styles.stepsForBuySlideButton}>
-                  <span>Выбрать квартиру</span>
-                </FilledButton>
-              </div>
+              // <div className={styles.button_wrapper}>
+              //   <FilledButton onClick={handleSelectApartmentClick} className={styles.stepsForBuySlideButton}>
+              //     <span>Выбрать квартиру</span>
+              //   </FilledButton>
+              // </div>
+              <span className={styles.button_wrapper} style={{width: '100%', zIndex: '100'}}>
+                <FullButton
+                  extraClass={styles.button_extra}
+                  onClick={handleSelectApartmentClick}
+                  buttonElementColor='white'
+                  buttonText={'Узнать подробнее'}
+                  activeButton
+                  buttonBorderRadius='6px'
+                  buttonFill='bronze-500'
+                  border={false}
+                  borderColor='none'
+                />
+              </span>
             )}
           </SwiperSlide>
         ))}
