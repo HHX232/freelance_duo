@@ -3,9 +3,9 @@ import cn from 'clsx'
 import {FC, PropsWithChildren} from 'react'
 import {ITitleProps} from './Headers.type'
 
-const H4Title: FC<PropsWithChildren<ITitleProps>> = ({children, className, extraStyle}) => {
+const H4Title: FC<PropsWithChildren<ITitleProps>> = ({children, className, extraStyle, extraClass}) => {
   return (
-    <h4 className={cn(styles.h4Title, className)} style={extraStyle}>
+    <h4 className={cn(styles.h4Title, className, extraClass)} style={extraStyle}>
       {children}
     </h4>
   )

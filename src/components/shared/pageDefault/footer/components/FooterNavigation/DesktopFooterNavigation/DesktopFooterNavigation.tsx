@@ -3,6 +3,7 @@ import {IFooterNavigationLink, IFooterNavigationLinksGroup} from '../FooterNavig
 import styles from './DesktopFooterNavigation.module.scss'
 import {IDesktopFooterNavigationProps} from './DesktopFooterNavigation.types'
 import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
+import React from 'react'
 
 export default function DesktopFooterNavigation(props: IDesktopFooterNavigationProps) {
   return (
@@ -13,14 +14,14 @@ export default function DesktopFooterNavigation(props: IDesktopFooterNavigationP
             {group.links.map((link: IFooterNavigationLink, linkIndex: number) => {
               if (linksGroupIndex < 2 && linkIndex >= group.links.length - 1) {
                 return (
-                  <>
-                    <li key={linkIndex}>{link.href ? <Link href={link.href}>{link.name}</Link> : link.href}</li>
-                    <li className={styles.secondary_link} key={linkIndex + '_secondary'}>
+                  <React.Fragment key={linkIndex}>
+                    <li>{link.href ? <Link href={link.href}>{link.name}</Link> : link.name}</li>
+                    <li className={styles.secondary_link} key={`secondary-${linksGroupIndex}-${linkIndex}`}>
                       <LinkUI href={props.secondaryLinks[linksGroupIndex].href as string} size={'sm'}>
                         {props.secondaryLinks[linksGroupIndex].name}
                       </LinkUI>
                     </li>
-                  </>
+                  </React.Fragment>
                 )
               }
 
@@ -31,7 +32,7 @@ export default function DesktopFooterNavigation(props: IDesktopFooterNavigationP
                       {link.name}
                     </LinkUI>
                   ) : (
-                    link.href
+                    link.name
                   )}
                 </li>
               )

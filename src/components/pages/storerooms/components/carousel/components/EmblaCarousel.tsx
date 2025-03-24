@@ -14,10 +14,10 @@ interface PropType {
 const EmblaCarousel: FC<PropType> = (props) => {
   const {slides, emblaRef, emblaApi} = props
   const imgArr = [
-    '/content/storerooms/carousel/st_1.jpeg',
-    '/content/storerooms/carousel/st_2.jpeg',
-    '/content/storerooms/carousel/st_3.jpeg',
-    '/content/storerooms/carousel/st_4.jpeg'
+    '/content/storerooms/carousel/st_1.webp',
+    '/content/storerooms/carousel/st_2.webp',
+    '/content/storerooms/carousel/st_3.webp',
+    '/content/storerooms/carousel/st_4.webp'
   ]
 
   const tweenFactor = useRef(0)

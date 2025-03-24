@@ -10,6 +10,7 @@ import {DotButton, useDotButton} from './bg-slider/EmblaCarouselDotButton'
 import {NextButton, PrevButton, usePrevNextButtons} from './bg-slider/EmblaCarouselArrowButtons'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import ButtonTextUI from '@src/components/UI-kit/Text-Elements/Typography/Button/ButtonText'
+import H1Title from '@src/components/UI-kit/Text-Elements/Typography/Headers/H1Title'
 
 const slidesSubTitles = [
   'Море меняет все, Море здесь – главная доминанта, наполняющая энергией все пространство вокруг.',
@@ -29,7 +30,7 @@ const HomePage = () => {
     <div>
       <section className={styles['home-wrapper']}>
         <div className={styles['text_wrapper']}>
-          <div className={styles.title}>Кронфорт</div>
+          <H1Title extraClass={styles.extra_title}>Кронфорт</H1Title>
           {slidesSubTitles.map((_, index) => {
             if (index !== selectedIndex) return null
 

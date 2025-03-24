@@ -1,6 +1,7 @@
 import styles from './Access.module.scss'
 import CircleLineDivider from '@shared/circleLineDivider/CircleLineDivider'
 import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
+import ButtonTextUI from '@src/components/UI-kit/Text-Elements/Typography/Button/ButtonText'
 
 const Access = () => {
   return (
@@ -18,7 +19,9 @@ const Access = () => {
                 padding: '12px 36px'
               }}
             >
-              ПОДОБРАТЬ парковку
+              <ButtonTextUI extraStyle={{color: '#fff'}} size='md'>
+                ПОДОБРАТЬ парковку
+              </ButtonTextUI>
             </FilledButton>
           </div>
         </div>

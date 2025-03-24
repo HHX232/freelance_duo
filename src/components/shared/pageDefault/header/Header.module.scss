@@ -38,6 +38,11 @@
     padding: 0;
     background-color: #11627d;
 
+    .personalCabinetLink>a {
+      color: #fff !important;
+      transition: color 0.2s ease-in-out;
+    }
+
     .phone {
       color: #fff;
     }

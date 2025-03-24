@@ -6,6 +6,8 @@ import {InputTextDefaultIcon as InputRangeDefaultIcon} from './InputRangeDefault
 import InputClearIcon from './InputClearIcon'
 import {IField} from './RangeUI.types'
 
+import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
+
 const InputRangeUI = forwardRef<HTMLInputElement, IField>(
   (
     {
@@ -83,7 +85,14 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
             })}
             htmlFor={id}
           >
-            {labelText}
+            <ParagraphUI
+              size={'md'}
+              weight={'regular'}
+              extraStyle={{color: '#fff'}}
+              //  extraClass={golos.className}
+            >
+              {labelText}
+            </ParagraphUI>
           </label>
         )}
         <div className={styles.input_wrapper}>

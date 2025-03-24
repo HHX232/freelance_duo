@@ -7,7 +7,7 @@ import {AccordionArrow} from '../accordionArrow/accordionArrow'
 
 // TODO допроверить пропсы
 const AccordionTabCustom = ({
-  key,
+  // key,
   header,
   className,
   style,
@@ -32,7 +32,6 @@ const AccordionTabCustom = ({
         [styles.animationOff]: !animationOn
       })}
       style={style}
-      key={key}
     >
       <div className={styles.header} onClick={onClick}>
         {header}
@@ -88,7 +87,7 @@ export default function Accordion({
   const tabs = useMemo(() => {
     return items.map((tab, i) => (
       <AccordionTabCustom
-        key={id}
+        key={`${id}-${i}`}
         arrowColor={arrowColor}
         arrowComponent={arrowComponent}
         leftArrow={leftArrow}

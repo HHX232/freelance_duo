@@ -6,8 +6,8 @@
     height: 640px;
     flex-direction: column;
     justify-content: space-between;
-    //background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/storerooms_1.jpeg");
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_base.png");
+    //background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/storerooms_1.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_base.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-position-x: 80%;
@@ -16,56 +16,56 @@
     padding: 90px 16px 40px 16px;
   }
 
-  @include sm{
+  @include sm {
     height: 875px;
     padding: 90px 20px 90px 20px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_sm.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_sm.webp");
   }
 
-  @include md{
+  @include md {
     height: 1000px;
     padding: 130px 40px 90px 40px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_md.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_md.webp");
   }
 
-  @include lg{
+  @include lg {
     height: 600px;
     //background-position-x: 70%;
     //background-position-y: 60%;
     padding: 130px 40px 60px 40px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_lg.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_lg.webp");
   }
 
-  @include xl{
+  @include xl {
     height: 650px;
     padding: 130px 40px 60px 142px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xl.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xl.webp");
   }
 
-  @include xxl{
+  @include xxl {
     height: 750px;
     padding: 130px 40px 60px 170px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xxl.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xxl.webp");
   }
 
-  @include xxxl{
+  @include xxxl {
     height: 800px;
     padding: 142px 40px 110px 196px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xxl.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xxl.webp");
   }
 }
 
 .title {
-  @layer base{
+  @layer base {
     @include font(3, 44, 54, 400);
-    color: rgba(255,255,255, 1);
+    color: rgba(255, 255, 255, 1);
   }
 
-  @include md{
+  @include md {
     @include font(3, 90, 100, 400);
   }
 
-  @include xl{
+  @include xl {
     @include font(3, 124, 150, 400);
   }
 }
@@ -74,21 +74,22 @@
   @layer base {
     max-width: 780px;
     @include font(1, 16, 20, 400);
-    color: rgba(255,255,255, 0.8);
+    color: rgba(255, 255, 255, 0.8);
   }
+
   @include md {
     @include font(1, 20, 26, 400);
   }
 
   @include xl {
     @include font(1, 24, 34);
-    color: rgba(255,255,255, 1);
+    color: rgba(255, 255, 255, 1);
   }
 }
 
-.router{
+.router {
   @layer base {
-    display: flex!important;
+    display: flex !important;
     @include font(1, 14, 14, 400);
     align-items: center;
   }
@@ -97,13 +98,13 @@
 .routerIcon {
   @layer base {
     path {
-      stroke: #FFFFFF!important;
+      stroke: #FFFFFF !important;
     }
   }
 }
 
 
-.text-wrapper{
+.text-wrapper {
   display: flex;
   flex-direction: column;
   gap: 24px;

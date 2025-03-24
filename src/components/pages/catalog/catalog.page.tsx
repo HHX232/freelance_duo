@@ -13,7 +13,6 @@ import DropdownIcon from '@icons/dropdown_arrow.svg'
 import {IObj} from '@src/types/object.interface'
 import {matchType} from '@src/lib/utils/catalog/matchType'
 import {useIsTablet} from '@utils/useIsMobile'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import {usePathname, useRouter} from 'next/navigation'
 import {useSearchParams} from 'next/navigation'
 import {transliterate} from '@utils/transliterate'
@@ -23,6 +22,7 @@ import {useResetFilters} from './hooks/useResetFilters'
 import useFilteredAndSortedItems from './hooks/useFilteredAndSortedItems'
 import RangeFilter from '@src/components/UI-kit/BaseControls/inputs/RangeFilter/RangeFilter'
 import {ExtraOptions} from '@src/components/UI-kit/BaseControls/inputs/extra-options/extra-options'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 const onChange = (key: string) => {
   console.log(key)
@@ -692,10 +692,15 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
                     </div>
                     <div className={styles.showMoreContainer}>
                       {remainingItemsCount > 0 && (
-                        <FilledButton onClick={showMoreItems} variety='primary'>
-                          Показать еще {Math.min(remainingItemsCount, visibleItemsCount)} вариантов из{' '}
-                          {remainingItemsCount}
-                        </FilledButton>
+                        <FullButton
+                          onClick={showMoreItems}
+                          borderColor={''}
+                          buttonElementColor={'white'}
+                          buttonFill={'bronze-500'}
+                          buttonText={`Показать еще ${Math.min(remainingItemsCount, visibleItemsCount)} вариантов из${' '}${remainingItemsCount}`}
+                          activeButton={true}
+                          border={false}
+                        />
                       )}
 
                       <div className={styles.scroll_up}>

@@ -5,8 +5,10 @@ import ProgressBar from '@src/components/UI-kit/Indicators/ProgressBar/progressB
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import ToRight from '@icons/toRight_2.svg'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
-import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
+// import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
+import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
+import InputPhoneUI from '@src/components/UI-kit/BaseControls/inputs/InputPhoneUI/InputPhoneUI'
 
 interface TicketFormProps {
   OpenModal: () => void
@@ -35,7 +37,14 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
         {step === 1 ? (
           <div className={styles.formWrapper}>
             <div className={styles.inputsWrapper}>
-              <InputField
+              <InputTextUI
+                placeholder='Введите бренд компании'
+                icon={<></>}
+                labelText='Бренд'
+                theme='dark'
+                extraStyle={{lineHeight: '18px'}}
+              />
+              {/* <InputField
                 title={'Бренд'}
                 type={'text'}
                 placeholder={'Введите бренд компании'}
@@ -43,8 +52,16 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+              <InputTextUI
+                placeholder='Введите направление компании'
+                icon={<></>}
+                labelText='Профиль'
+                theme='dark'
+                extraStyle={{lineHeight: '18px'}}
               />
-              <InputField
+
+              {/* <InputField
                 title={'Профиль'}
                 type={'text'}
                 placeholder={'Введите направление бизнеса'}
@@ -52,8 +69,17 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+
+              <InputTextUI
+                placeholder='Введите кол-во магазинов'
+                icon={<></>}
+                labelText='Существующие магазины'
+                theme='dark'
+                extraStyle={{lineHeight: '18px'}}
               />
-              <InputField
+
+              {/* <InputField
                 title={'Существующие магазины'}
                 type={'text'}
                 placeholder={'Введите кол-во магазинов'}
@@ -61,8 +87,16 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+
+              <InputTextUI
+                placeholder='Введите кол-во метров'
+                icon={<></>}
+                labelText='Необходимый метраж помещения, м2'
+                theme='dark'
+                extraStyle={{lineHeight: '18px'}}
               />
-              <InputField
+              {/* <InputField
                 title={'Необходимый метраж помещения, м2'}
                 type={'text'}
                 placeholder={'Введите кол-во метров'}
@@ -70,7 +104,7 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
-              />
+              /> */}
             </div>
             <FullButton
               type={'Button'}
@@ -92,7 +126,7 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
         ) : (
           <div className={styles.formWrapper}>
             <div className={styles.inputsWrapper}>
-              <InputField
+              {/* <InputField
                 title={'Имя'}
                 type={'text'}
                 placeholder={'Введите имя'}
@@ -105,8 +139,21 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 }}
                 value={name}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+              <InputTextUI
+                extraStyle={{lineHeight: '18px'}}
+                placeholder='Введите имя'
+                icon={<></>}
+                labelText='Имя'
+                theme='dark'
+                maxLength={18}
+                onlyType='onlyText'
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value)
+                }}
               />
-              <InputField
+              {/* <InputField
                 title={'Телефон'}
                 type={'text'}
                 placeholder={'+7 (___) ___-__-__'}
@@ -121,20 +168,32 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 }}
                 value={phoneNumber}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+              <InputPhoneUI
+                extraStyle={{lineHeight: '18px'}}
+                placeholder={'+7 (___) ___-__-__'}
+                icon={<></>}
+                labelText='Телефон'
+                theme='dark'
+                maxLength={18}
+                onlyType='onlyNumbers'
+                value={phoneNumber}
+                onChange={(e) => {
+                  const formattedValue = formatPhoneNumber(e.target.value)
+                  setPhoneNumber(formattedValue)
+                }}
               />
-              <InputField
-                title={'E-mail'}
-                type={'text'}
+              <InputTextUI
+                extraStyle={{lineHeight: '18px'}}
                 placeholder={'Введите электронную почту'}
-                variety={'secondary'}
-                inputStyles={styles.inputStyles}
-                stylesLabel={styles.labelStyles}
+                icon={<></>}
+                labelText='E-mail'
+                theme='dark'
                 maxLength={18}
                 onChange={(e) => {
                   setMail(e.target.value)
                 }}
                 value={mail}
-                styleContainer={{gridGap: '4px'}}
               />
             </div>
             <FullButton

@@ -4,6 +4,7 @@ import cn, {clsx} from 'clsx'
 import RadioUI from '../../RadioUI/RadioUI'
 import CheckBoxUI from '../../CheckBoxUI/CheckBoxUI'
 import {Golos_Text} from 'next/font/google'
+import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
 
 const golos = Golos_Text({subsets: ['cyrillic']})
 
@@ -244,7 +245,14 @@ const CustomSelectWithDropdown: React.FC<CustomSelectProps> = ({
           [styles.top_label_dark]: theme === 'dark'
         })}
       >
-        {labelTopText}
+        <ParagraphUI
+          size={'md'}
+          weight={'regular'}
+          extraStyle={{color: theme === 'white' ? '#fff' : '#555'}}
+          extraClass={golos.className}
+        >
+          {labelTopText}
+        </ParagraphUI>
       </label>
 
       <div

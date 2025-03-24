@@ -225,7 +225,7 @@ const MapContent = () => {
     <div>
       <Head>
         {/* eslint-disable-next-line react/no-unknown-property */}
-        <link rel='preload' href='/map/map.png' as='image' fetchPriority='high' />
+        <link rel='preload' href='/map/map.webp' as='image' fetchPriority='high' />
       </Head>
 
       {
@@ -315,7 +315,7 @@ const MapContent = () => {
                     ))}
                   </div>
                   <NextImage
-                    src='/map/map.png'
+                    src='/map/map.webp'
                     alt='map'
                     className={styles.mapImage}
                     layout='responsive'

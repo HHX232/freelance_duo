@@ -57,15 +57,6 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                           className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
                           onClick={onClose}
                         >
-                          {/* TODO: Проверить ссылку */}
-                          <LinkUI size={'sm'} weight={'regular'} href={'/4-komnatnye'}>
-                            Четырехкомнатые
-                          </LinkUI>
-                        </li>
-                        <li
-                          className={`${styles.accordeon_inner_item} ${styles.accordeon_inner_item_accent}`}
-                          onClick={onClose}
-                        >
                           <LinkUI size={'sm'} weight={'regular'} href={'/lofty'}>
                             Лофты
                           </LinkUI>
@@ -162,7 +153,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                           <LinkUI size={'sm'} weight={'regular'} href={'/o-proekte'}>
                             <Image
                               className={styles.accordeon_inner_item_image}
-                              src='/content/about/about-new.png'
+                              src='/content/about/about-new.webp'
                               alt='Кронфорт'
                               loading='lazy'
                               fill={true}
@@ -175,7 +166,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                           <LinkUI size={'sm'} weight={'regular'} href={'/tsentralnyi'}>
                             <Image
                               className={styles.accordeon_inner_item_image}
-                              src='/content/about/central-1.png'
+                              src='/content/about/central-1.webp'
                               alt='Кронфорт'
                               loading='lazy'
                               fill={true}

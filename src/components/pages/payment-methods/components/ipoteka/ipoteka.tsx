@@ -22,7 +22,7 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
             alt='ipoteka'
             quality={90}
             fill
-            src={'/content/payment-methods/ipoteka.jpeg'}
+            src={'/content/payment-methods/ipoteka.webp'}
           />
           <div className={ipotekaStyles.overflow} />
           <h2 className={styles.posterTitle}>Ипотека</h2>
@@ -56,7 +56,7 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
           <div className={styles['variant-row']}>
             <div
               className={clsx(ipotekaStyles.cover, styles.cover)}
-              style={{backgroundImage: `url("/content/payment-methods/ipoteka_second.jpeg")`}}
+              style={{backgroundImage: `url("/content/payment-methods/ipoteka_second.webp")`}}
             />
             <div className={clsx(ipotekaStyles.meta, styles.meta)}>
               <div className={clsx(ipotekaStyles.meta__info, styles.meta__info)}>

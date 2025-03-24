@@ -1,6 +1,7 @@
 'use client'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import styles from './index.module.scss'
+import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 export const NewsletterForm = () => {
   return (
@@ -14,10 +15,17 @@ export const NewsletterForm = () => {
             </p>
             <form>
               <div className={styles['input-wrapper']}>
-                <span className={`${styles['input-label']} ${styles.zero_margin}`}>Eamil</span>
-                <input className={styles.input} placeholder='Введите email' />
+                <InputTextUI theme={'white'} icon={<></>} labelText={'Email'} placeholder={'Введите email'} />
               </div>
-              <FilledButton>Подписаться</FilledButton>
+              <FullButton
+                activeButton={true}
+                border={false}
+                buttonText={'Подписаться'}
+                borderColor={''}
+                buttonFill={'bronze-500'}
+                buttonElementColor={'white'}
+                extraClass={styles['subscribe-button']}
+              />
               <p className={styles.caption}>
                 Нажимая кнопку «Подписаться», вы даёте согласие на{' '}
                 <a href='/consent'>обработку своих персональных данных</a>
