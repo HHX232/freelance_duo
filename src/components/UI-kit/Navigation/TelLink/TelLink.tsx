@@ -14,7 +14,7 @@ const TelLink: FC<ITelLinkProps> = ({
   typeDecorNumber = 'spaces',
   linkSize = 'md'
 }) => {
-  const tel = customNumber || process.env.NEXT_PUBLIC_TELEPHONE_NUMBER
+  const tel = customNumber || process.env.NEXT_PUBLIC_TELEPHONE_NUMBER || '71231234567'
 
   const formatPhoneNumber = (phoneNumber: string, format: TTypeDecorNumber): string => {
     const digits = phoneNumber.replace(/\D/g, '')

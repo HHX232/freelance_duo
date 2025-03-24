@@ -92,11 +92,6 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                         </LinkUI>
                       </li>
                       <li>
-                        <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/4-komnatnye'}>
-                          Четырехкомнатые
-                        </LinkUI>
-                      </li>
-                      <li>
                         <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/lofty'}>
                           Лофты
                         </LinkUI>
@@ -202,7 +197,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                             <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} href={'/o-proekte'}>
                               <Image
                                 className={styles.accordeon_inner_item_image}
-                                src='/content/about/about-new.png'
+                                src='/content/about/about-new.webp'
                                 alt='Кронфорт'
                                 loading='lazy'
                                 fill={true}
@@ -215,7 +210,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                             <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} href={'/tsentralnyi'}>
                               <Image
                                 className={styles.accordeon_inner_item_image}
-                                src='/content/about/central-1.png'
+                                src='/content/about/central-1.webp'
                                 alt='Кронфорт'
                                 loading='lazy'
                                 fill={true}

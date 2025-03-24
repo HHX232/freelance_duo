@@ -7,11 +7,11 @@
     padding: 60px 16px;
   }
 
-  @include sm{
+  @include sm {
     padding: 60px 20px;
   }
 
-  @include md{
+  @include md {
     padding: 60px 40px;
   }
 
@@ -45,12 +45,10 @@
 
 .main-wrapper {
 
-  @layer base {
-
-  }
+  @layer base {}
 
   @include xxl {
-    height: 720px!important;
+    height: 720px !important;
     flex-direction: row;
   }
 }
@@ -64,6 +62,7 @@
     .wrapper {
       flex-direction: row;
     }
+
     .tile {
       width: 100%;
     }
@@ -95,11 +94,11 @@
     }
   }
 
-  @include sm{
+  @include sm {
     padding: 36px;
   }
 
-  @include md{
+  @include md {
     padding: 40px;
 
     .title {
@@ -128,7 +127,7 @@
   }
 
   @include xxl {
-    height: 100%!important;
+    height: 100% !important;
     width: 100%;
     padding: 40px;
   }
@@ -137,42 +136,42 @@
 
 .tile-bg1 {
   @layer base {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xs.png') no-repeat;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xs.webp') no-repeat;
     background-size: 100% 100%;
 
     gap: 24px;
     justify-content: flex-end;
   }
 
-  @include sm{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_sm.png') no-repeat;
+  @include sm {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_sm.webp') no-repeat;
     background-size: 100% 100%;
   }
 
   @include md {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_md.png') no-repeat;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_md.webp') no-repeat;
     background-size: 100% 100%;
 
     justify-content: flex-end;
   }
 
-  @include lg{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_lg.png') no-repeat;
+  @include lg {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_lg.webp') no-repeat;
     background-size: 100% 100%;
   }
 
-  @include xl{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xl.png') no-repeat;
+  @include xl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xl.webp') no-repeat;
     background-size: 100% 100%;
   }
 
   @include xxl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxl.png') no-repeat;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxl.webp') no-repeat;
     background-size: 100% 100%;
   }
 
   @include xxxl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxxl.png') no-repeat;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxxl.webp') no-repeat;
     background-size: 100% 100%;
     padding: 60px;
   }
@@ -184,8 +183,8 @@
 }
 
 .tile-bg3 {
-  @layer base{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xs.png') no-repeat center center;
+  @layer base {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xs.webp') no-repeat center center;
     background-size: 100% 100%;
 
     .title {
@@ -193,13 +192,13 @@
     }
   }
 
-  @include sm{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_sm.png') no-repeat center center;
+  @include sm {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_sm.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 
-  @include md{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_md.png') no-repeat center center;
+  @include md {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_md.webp') no-repeat center center;
     background-size: 100% 100%;
 
     .title {
@@ -208,7 +207,7 @@
   }
 
   @include lg {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_lg.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_lg.webp') no-repeat center center;
     background-size: 100% 100%;
 
     .title {
@@ -217,7 +216,7 @@
   }
 
   @include xl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xl.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xl.webp') no-repeat center center;
     background-size: 100% 100%;
 
     .title {
@@ -226,12 +225,12 @@
   }
 
   @include xxl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xxl.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xxl.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 
   @include xxxl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xxxl.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xxxl.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 }
@@ -298,4 +297,3 @@
     }
   }
 }
-

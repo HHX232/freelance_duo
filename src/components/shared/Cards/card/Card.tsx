@@ -3,7 +3,6 @@ import styles from './Card.module.scss'
 import {formatPrice} from '@src/lib/utils/formatPrice'
 import CompareIcon from '@icon/compare_icon.svg'
 import BookmarkIcon from '@icon/bookmark_icon.svg'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import {useStore} from '@src/lib/store/store'
 import clsx from 'clsx'
 import Link from 'next/link'
@@ -15,6 +14,7 @@ import Sale2Icon from '@icon/sale.svg'
 import {useIsTablet} from '@utils/useIsMobile'
 import {Tooltip} from 'antd'
 import {sendTmrEvent} from '@utils/tmrTracker'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 export interface Flat {
   data: {
@@ -199,21 +199,29 @@ export default function Card(item: Flat) {
 
       {!item.cancel ? (
         <div className={styles.buttonWrap}>
-          <Link href={`/apartment-card/${data.id}`}>
-            <FilledButton className={styles.button} variety={!item.dashboard ? 'primary' : 'primary'}>
-              Забронировать
-            </FilledButton>
-          </Link>
+          <FullButton
+            type={'Link'}
+            href={`/apartment-card/${data.id}`}
+            borderColor={''}
+            buttonElementColor={'white'}
+            buttonFill={'bronze-500'}
+            buttonText={'Забронировать'}
+            extraClass={styles.button}
+            activeButton={true}
+            border={false}
+          />
         </div>
       ) : (
         <div className={styles.buttonWrap}>
-          <FilledButton
-            className={styles.button}
-            variety={!item.dashboard ? 'primary' : 'primary'}
+          <FullButton
+            borderColor={'bronze'}
+            buttonFill={'bronze-500'}
+            buttonText={'Отменить'}
+            extraClass={styles.button}
             onClick={() => showCancelModal(!isCancel)}
-          >
-            Отменить
-          </FilledButton>
+            activeButton
+            border
+          />
         </div>
       )}
 

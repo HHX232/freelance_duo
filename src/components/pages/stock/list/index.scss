@@ -2,6 +2,7 @@
   &__list {
     display: grid;
     grid-template-rows: repeat(auto-fill, auto);
+
     @layer base {
       gap: 24px;
       grid-template-columns: repeat(1, 1fr);
@@ -17,47 +18,53 @@
   }
 
   &__more {
-    margin-top: 60px;
-
     display: flex;
     justify-content: center;
+    margin-top: 60px;
 
     @include bp-lg {
       margin-top: 40px;
     }
 
     &-button {
-      max-width: 273px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      width: 100% !important;
+      max-width: 273px !important;
+      height: 48px !important;
+      border-radius: 6px !important;
+
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
 
       @include bp-md {
-        max-width: 100%;
+        max-width: 100% !important;
       }
     }
   }
 }
 
 .promotion-page_title {
-  color: #213C4E;
+  color: #213c4e;
 }
 
 .promotion-page-container {
   @layer base {
-    padding: 80px 16px 60px 16px;
+    padding: 80px 16px 60px;
   }
+
   @include sm {
-    padding: 90px 20px 90px 20px;
+    padding: 90px 20px;
   }
 
   @include md {
-    padding: 90px 40px 90px 40px;
+    padding: 90px 40px;
   }
 
   @include lg {
-    padding: 130px 40px 90px 40px;
+    padding: 130px 40px 90px;
   }
 
   @include xl {

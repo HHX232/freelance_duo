@@ -13,7 +13,7 @@ interface PhoneSliderProps {
 
 const Gallery: FC<PhoneSliderProps> = (props) => {
   const {slides, emblaRef} = props
-  const imgArr = ['/content/banner.png', '/content/banner2.png']
+  const imgArr = ['/content/banner.webp', '/content/banner2.webp']
 
   return (
     <div className={emblaStyle['embla']}>

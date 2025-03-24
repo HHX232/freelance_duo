@@ -1,11 +1,10 @@
 'use client'
 import styles from './ticketForm.module.scss'
-import {useState} from 'react'
-import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {FC} from 'react'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import clsx from 'clsx'
 import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
+import InputPhoneUI from '@src/components/UI-kit/BaseControls/inputs/InputPhoneUI/InputPhoneUI'
 
 interface ITicketFormProps {
   description?: string
@@ -17,8 +16,6 @@ interface ITicketFormProps {
 const TicketForm: FC<ITicketFormProps> = (props) => {
   const {description = 'Оставьте заявку и мы поможем вам с выбором кладовой', formContainerClassName} = props
 
-  const [phoneNumber, setPhoneNumber] = useState('')
-
   return (
     <div className={clsx(formContainerClassName, styles['ticketForm'])}>
       <div className='header'>
@@ -26,22 +23,10 @@ const TicketForm: FC<ITicketFormProps> = (props) => {
       </div>
       <form className={clsx(styles['info'])}>
         <div className={styles['input-wrapper']}>
-          <InputTextUI theme={'dark'} labelText={'Имя'} icon={true} placeholder='Введите имя' />
+          <InputTextUI theme={'dark'} labelText={'Имя'} onlyType='onlyText' icon={true} placeholder='Введите имя' />
         </div>
         <div className={styles['input-wrapper']}>
-          <InputTextUI
-            theme={'dark'}
-            labelText={'Телефон'}
-            icon={true}
-            placeholder='+7 (___) ___-__-__'
-            onChange={(e) => {
-              const formattedValue = formatPhoneNumber(e.target.value)
-              setPhoneNumber(formattedValue)
-            }}
-            maxLength={18}
-            pattern={'/^\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}$/'}
-            value={phoneNumber}
-          />
+          <InputPhoneUI theme={'dark'} labelText={'Телефон'} icon={<></>} />
         </div>
         <FullButton
           type={'Button'}

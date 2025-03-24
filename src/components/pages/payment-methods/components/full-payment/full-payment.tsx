@@ -9,7 +9,7 @@ export const FullPaymentTab = () => {
       <section
         style={{
           backgroundImage:
-            'linear-gradient(155deg, rgba(0, 0, 0, 0.40) 23.02%, rgba(0, 0, 0, 0.00) 104.22%), linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%),  url("/content/payment-methods/full-payment-poster.jpeg") lightgray -186.45px 0px / 257.781% 100% no-repeat'
+            'linear-gradient(155deg, rgba(0, 0, 0, 0.40) 23.02%, rgba(0, 0, 0, 0.00) 104.22%), linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%),  url("/content/payment-methods/full-payment-poster.webp") lightgray -186.45px 0px / 257.781% 100% no-repeat'
         }}
         className={clsx(styles.poster, styles.poster_full_payment)}
       >

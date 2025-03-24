@@ -55,7 +55,7 @@ const Card = ({title, type, coords, size}: CardProps) => {
         className={styles.content}
         style={{top: elementsLocation.content.y, left: elementsLocation.content.x}}
       >
-        <Image className={styles.image} src={'/street/point-1.png'} alt='point image' />
+        <Image className={styles.image} src={'/street/point-1.webp'} alt='point image' />
         <p className={styles.title}>{title}</p>
       </div>
     </div>

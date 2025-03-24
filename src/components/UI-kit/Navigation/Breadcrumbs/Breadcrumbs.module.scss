@@ -3,6 +3,15 @@
     align-items: center;
     gap: 10px;
 
+    &.dark li a {
+      text-align: center;
+
+      &:hover {
+        background-color: transparent !important;
+        color: #fff !important;
+      }
+    }
+
     li span {
       @include font(1, 14, 14, 400);
 
