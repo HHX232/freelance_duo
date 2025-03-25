@@ -2,24 +2,22 @@
   position: relative;
   display: flex;
   width: 100vw;
-  height: 100vh !important;
+  min-height: 800px;
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 1469px) { 
+  @media (max-width: 1469px) {
     padding-right: 150px;
   }
-
 
   @media (max-width: 1280px) {
     &::-webkit-scrollbar {
       height: 0 !important;
     }
-    
+
+    overflow: auto hidden; // Включить горизонтальный скролл // Отключить вертикальный скролл
+    padding-right: 0 !important;
     padding-left: 150px;
-    padding-right:0 !important;
-    overflow-x: auto; // Включить горизонтальный скролл
-    overflow-y: hidden; // Отключить вертикальный скролл
   }
 }
 
@@ -27,7 +25,7 @@
   position: absolute;
   overflow: hidden;
   width: 100vw;
-  height: 100vh !important;
+  min-height: 800px;
   scale: 1 !important;
   transform: none !important;
 }

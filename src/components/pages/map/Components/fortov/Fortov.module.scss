@@ -3,7 +3,7 @@
 }
 
 .title_color {
-  color: #FDF1CD;
+  color: #fdf1cd;
 }
 
 .subtitle_color {
@@ -11,50 +11,45 @@
 }
 
 .section {
-  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 
   @layer base {
-    background:
-      linear-gradient(180deg, rgba(38, 57, 69, 0) 18.3%, rgba(38, 57, 69, 0.47) 49.35%, #263945 100%),
-      linear-gradient(48deg, rgba(30, 56, 73, 0.7) 25.09%, rgba(30, 56, 73, 0) 100.35%),
-      linear-gradient(44deg, rgba(30, 56, 73, 0.5) 4.95%, rgba(30, 56, 73, 0) 67.43%),
-      url('/content/cluster.webp') lightgray 50% / cover no-repeat;
-
     position: relative;
-    height: 100vh;
-    background-position: center;
-    background-size: cover;
-    max-height: 640px;
-
     display: flex;
+    min-height: 800px;
     flex-direction: column;
     justify-content: end;
     padding: 40px 20px;
+    background:
+      linear-gradient(180deg, rgb(38 57 69 / 0%) 18.3%, rgb(38 57 69 / 47%) 49.35%, #263945 100%),
+      linear-gradient(48deg, rgb(30 56 73 / 70%) 25.09%, rgb(30 56 73 / 0%) 100.35%),
+      linear-gradient(44deg, rgb(30 56 73 / 50%) 4.95%, rgb(30 56 73 / 0%) 67.43%),
+      url('/content/cluster.webp') lightgray 50% / cover no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 
   .caption_sub_title {
     @layer base {
       @include font(1, 16, 34, 200);
+
       color: $white;
     }
   }
 
   @include sm {
     padding: 40px 20px;
-    max-height: 875px;
   }
 
   @include md {
-    padding: 90px 40px;
     justify-content: space-between !important;
+    padding: 90px 40px;
     background:
-      linear-gradient(44deg, rgba(30, 56, 73, 0.9) 4.95%, rgba(30, 56, 73, 0) 67.43%),
-      linear-gradient(90deg, #1e3849 -28.39%, rgba(0, 0, 0, 0) 93.62%),
+      linear-gradient(44deg, rgb(30 56 73 / 90%) 4.95%, rgb(30 56 73 / 0%) 67.43%),
+      linear-gradient(90deg, #1e3849 -28.39%, rgb(0 0 0 / 0%) 93.62%),
       url('/content/cluster.webp') lightgray 50% / cover no-repeat;
-
-    max-height: 1000px;
 
     .caption_sub_title {
       font-size: 20px;
@@ -64,10 +59,9 @@
 
   @include lg {
     padding: 60px 0 60px 40px;
-
     background:
-      linear-gradient(142deg, rgba(30, 56, 73, 0.9) 11.78%, rgba(30, 56, 73, 0) 55.41%),
-      linear-gradient(90deg, #1e3849 0%, rgba(10, 18, 24, 0.33) 44.44%, rgba(0, 0, 0, 0) 74.06%),
+      linear-gradient(142deg, rgb(30 56 73 / 90%) 11.78%, rgb(30 56 73 / 0%) 55.41%),
+      linear-gradient(90deg, #1e3849 0%, rgb(10 18 24 / 33%) 44.44%, rgb(0 0 0 / 0%) 74.06%),
       url('/content/cluster.webp') lightgray 50% / cover no-repeat;
 
     .caption_sub_title {
@@ -78,19 +72,17 @@
   @include xl {
     padding: 90px 0 64px 142px;
 
-
     .caption_sub_title {
       font-size: 24px;
     }
   }
 
   @include xxl {
-    background:
-      linear-gradient(156deg, rgba(30, 56, 73, 0.9) 6.63%, rgba(30, 56, 73, 0) 43.47%),
-      linear-gradient(90deg, #1e3849 0%, rgba(0, 0, 0, 0) 62.08%),
-      url('/content/cluster.webp') lightgray 50% / cover no-repeat;
-
     padding: 90px 0 26px 170px;
+    background:
+      linear-gradient(156deg, rgb(30 56 73 / 90%) 6.63%, rgb(30 56 73 / 0%) 43.47%),
+      linear-gradient(90deg, #1e3849 0%, rgb(0 0 0 / 0%) 62.08%),
+      url('/content/cluster.webp') lightgray 50% / cover no-repeat;
   }
 
   @include xxxl {
@@ -111,9 +103,9 @@
   }
 
   @include md {
-    justify-content: space-between;
     height: 100%;
     flex: 100%;
+    justify-content: space-between;
   }
 
   @include lg {
@@ -121,9 +113,12 @@
   }
 
   &-title {
+    margin-bottom: 8px;
+
     @layer base {
-      color: $yellow-text;
       @include font(3, 30, 40, 400);
+
+      color: $yellow-text;
     }
 
     @include md {
@@ -139,8 +134,8 @@
 .caption-items {
   @layer base {
     display: flex;
-    gap: 40px;
     flex-direction: column;
+    gap: 40px;
   }
 
   @include xl {
@@ -165,8 +160,8 @@
   }
 
   @include xl {
-    max-width: 456px;
     width: 100%;
+    max-width: 456px;
   }
 
   @include xxl {
@@ -263,25 +258,27 @@
     background-color: $orange-bg-500;
 
     @layer base {
-      margin: 12px 0 12px 0;
+      margin: 12px 0;
     }
 
     @include xl {
-      margin: 16px 0 16px 0;
+      margin: 16px 0;
     }
   }
 
   &__description {
     @layer base {
       @include font(1, 14, 18, 200);
-      margin-top: 16px;
+
       max-width: 360px;
+      margin-top: 16px;
       color: $yellow-text;
     }
 
     @include xl {
-      max-width: none;
       @include font(1, 16, 22, 200);
+
+      max-width: none;
     }
 
     @include xxl {
@@ -301,6 +298,18 @@
 }
 
 .mobile_captions {
+  .mobile_slide {
+    width: fit-content;
+    flex: 0 0 75% !important;
+  }
+
+  @include sm {
+    .mobile_slide {
+      width: fit-content;
+      flex: 0 0 65% !important;
+    }
+  }
+
   .number_title {
     font-size: 40px;
   }
@@ -314,26 +323,6 @@
   }
 }
 
-.mobile_captions {
-  .mobile_slide {
-    width: fit-content;
-    flex: 0 0 75% !important;
-  }
-
-  @include sm {
-    .mobile_slide {
-      width: fit-content;
-      flex: 0 0 65% !important;
-    }
-  }
-}
-
 .phone_slider_container {
   width: 100%;
 }
-
-.captions-title {
-  margin-bottom: 8px;
-}
-
-.phone_slider_wrapper {}
