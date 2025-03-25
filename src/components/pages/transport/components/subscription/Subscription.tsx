@@ -101,6 +101,7 @@ const Subscription = () => {
                 }}
                 value={watch('phone')}
               />
+
               <FullButton
                 border={false}
                 buttonElementColor='white'
@@ -112,6 +113,7 @@ const Subscription = () => {
                 activeButton={true}
                 extraClass={styles.button_extra}
               ></FullButton>
+
               <p className={styles.caption}>
                 Нажимая кнопку «Отправить», вы даёте согласие на{' '}
                 <a href='/consent'>обработку своих персональных данных</a>

@@ -17,6 +17,7 @@ import Link from 'next/link'
 import {GetProfile} from '@src/actions/profile'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {useRouter} from 'next/navigation'
+import { FullButton } from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 export const Compare = ({dashboard}: {dashboard?: boolean}) => {
   const [isDifferences, setDifferences] = useState(false)
@@ -219,9 +220,20 @@ export const Compare = ({dashboard}: {dashboard?: boolean}) => {
           <NoObjects>
             <p>Вы пока ничего не добавили в сравнение</p>
             <Link href={'/planirovki-i-ceny'}>
-              <FilledButton style={{maxWidth: '284px'}} variety={!dashboard ? 'primary' : 'primary'}>
+              {/* <FilledButton style={{maxWidth: '284px'}} variety={!dashboard ? 'primary' : 'primary'}>
                 Добавить квартиру
-              </FilledButton>
+              </FilledButton> */}
+              <FullButton
+                type='Button'
+                extraClass={styles.extra_button}
+                buttonBorderRadius='6px'
+                buttonElementColor='white'
+                activeButton
+                buttonText='Добавить квартиру'
+                buttonFill='bronze-500'
+                border={false}
+                borderColor='none'
+              />
             </Link>
           </NoObjects>
         ) : (

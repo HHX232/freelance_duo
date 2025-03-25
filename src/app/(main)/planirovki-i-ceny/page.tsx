@@ -23,12 +23,12 @@ export default async function CatalogObjectsPage() {
   console.log(filters)
 
   return (
-    <>
+    <div>
       <Header />
       <main>
         <CatalogPageWrapper data={data} filters_data={filters} />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

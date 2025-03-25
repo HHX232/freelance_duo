@@ -43,7 +43,7 @@ export interface IFullButtonProps extends IArrowProps {
   activeButton: boolean
   type?: TFullButton
   border: boolean
-  borderColor: TBorderColor | string
+  borderColor: TBorderColor
   borderWidth?: TBorderWidth
   buttonFill: TButtonFill
   buttonElementColor?: TButtonElementColor

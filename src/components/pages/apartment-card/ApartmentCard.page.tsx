@@ -28,6 +28,7 @@ import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import {Share} from '@shared/share-object/share'
 import Link from 'next/link'
 import {sendTmrEvent} from '@utils/tmrTracker'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface Tabs {
   name: string
@@ -691,7 +692,23 @@ const ApartmentCard = ({
                     <>
                       {isReservation && (
                         <>
-                          <FilledButton
+                          <FullButton
+                            activeButton={true}
+                            border={false}
+                            borderColor={'none'}
+                            buttonFill={'bronze-500'}
+                            buttonText={'Забронировать'}
+                            buttonBorderRadius={'6px'}
+                            buttonElementColor={'white'}
+                            extraClass={styles.reservationBtn}
+                            onClick={() => {
+                              !isAuth ? setVisibleReservation(true) : setInfoModal(true)
+                              sendTmrEvent('book', id, fvalue)
+                            }}
+                          />
+                          <span>Бронь платная, срок 3 дня после подтверждения</span>
+
+                          {/* <FilledButton
                             className={styles.reservationBtn}
                             variety='primary'
                             onClick={() => {
@@ -700,8 +717,7 @@ const ApartmentCard = ({
                             }}
                           >
                             Забронировать
-                          </FilledButton>
-                          <span>Бронь платная, срок 3 дня после подтверждения</span>
+                          </FilledButton> */}
                         </>
                       )}
                     </>

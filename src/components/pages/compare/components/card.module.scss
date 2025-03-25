@@ -155,25 +155,19 @@
 }
 
 .reservation {
-  position: absolute;
+  position: absolute !important;
   top: 155px;
   left: 0;
-  display: flex;
-  width: 100%;
+  width: 100% !important;
   max-width: 180px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #f47422;
-  border-radius: 4px;
-  background: #f47422;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 500;
+  height: 30px !important;
   opacity: 0;
-  text-align: center;
-  text-transform: uppercase;
   transition: opacity 0.3s ease;
+
+  p {
+    font-size: 10px !important;
+    font-weight: 500 !important;
+  }
 
   @media (max-width: 616px) {
     background: transparent !important;

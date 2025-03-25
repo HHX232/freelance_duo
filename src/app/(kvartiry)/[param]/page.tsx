@@ -115,7 +115,7 @@ export default async function Kvartiry({params}: {params: {param: string}}) {
     : undefined
 
   return (
-    <>
+    <div>
       <Header />
       <main>
         <MainContainer>
@@ -123,6 +123,6 @@ export default async function Kvartiry({params}: {params: {param: string}}) {
         </MainContainer>
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

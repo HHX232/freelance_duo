@@ -15,12 +15,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function OfertaPage() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <Oferta />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

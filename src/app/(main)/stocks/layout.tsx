@@ -5,12 +5,12 @@ import {NewsletterForm} from '@shared/newsletter-form'
 
 const StocksLayout: FC<PropsWithChildren> = (props) => {
   return (
-    <>
+    <div>
       <Header hideLogo />
       <main>{props.children}</main>
       <NewsletterForm />
       <Footer />
-    </>
+    </div>
   )
 }
 

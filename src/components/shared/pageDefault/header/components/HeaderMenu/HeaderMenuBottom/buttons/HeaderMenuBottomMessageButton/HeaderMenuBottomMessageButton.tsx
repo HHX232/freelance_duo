@@ -8,7 +8,7 @@ export default function HeaderMenuBottomMessageButton() {
       href={'/#messages'}
       activeButton={true}
       border={false}
-      borderColor={''}
+      borderColor={'none'}
       buttonFill={'none'}
       buttonElementColor={'white'}
       buttonText={''}

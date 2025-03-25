@@ -101,7 +101,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
                     href={'/lk'}
                     activeButton={true}
                     border={false}
-                    borderColor={''}
+                    borderColor={'none'}
                     buttonFill={'none'}
                     buttonElementColor={'black'}
                     buttonText={'Личный кабинет'}
@@ -115,7 +115,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
                     href={'/lk'}
                     activeButton={true}
                     border={false}
-                    borderColor={''}
+                    borderColor={'none'}
                     onClick={() => setOpenAuth(!isOpenAuth)}
                     buttonFill={'none'}
                     buttonElementColor={'black'}
@@ -140,7 +140,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
               href={'tel:+71231234567'}
               activeButton={true}
               border={false}
-              borderColor={''}
+              borderColor={'none'}
               onClick={() => setOpenAuth(!isOpenAuth)}
               buttonFill={'none'}
               buttonElementColor={'black'}
@@ -187,7 +187,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
               href={'/lk'}
               activeButton={true}
               border={false}
-              borderColor={''}
+              borderColor={'none'}
               buttonFill={'none'}
               buttonElementColor={'white'}
               buttonText={'Личный кабинет'}
@@ -202,7 +202,7 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
                   href={'/lk'}
                   activeButton={true}
                   border={false}
-                  borderColor={''}
+                  borderColor={'none'}
                   buttonFill={'none'}
                   buttonElementColor={'white'}
                   buttonText={'Личный кабинет'}

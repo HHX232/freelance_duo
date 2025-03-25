@@ -31,7 +31,7 @@ const FindUs: FC<Props> = ({openMapModal}) => {
             }}
             activeButton={true}
             border={false}
-            borderColor={''}
+            borderColor={'none'}
             extraClass={styles.mobileButton}
             buttonFill={'white'}
           />
