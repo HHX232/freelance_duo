@@ -11,7 +11,6 @@ const MapLegend: FC<IMapLegend> = ({switchVisibility}) => {
   const [isChecked, setIsChecked] = useState(true)
 
   const handleSwitch = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log('CLC-1->', event.target.checked)
     setIsChecked(event.target.checked)
     switchVisibility(event.target.checked)
   }
@@ -34,7 +33,8 @@ const MapLegend: FC<IMapLegend> = ({switchVisibility}) => {
         <SwitchUI checked={isChecked} onChange={handleSwitch} />
         <p className={styles['maplegend-name']}>Инфраструктура</p>
       </div>
-      <span className={styles['maplegend-info-icon']}>i</span>
+      <img src={`/map/icons/legend_icon.svg`} alt='info' className={styles['maplegend-info-icon']} />
+      {/* <span className={styles['maplegend-info-icon']}>i</span> */}
       <div className={styles['maplegend-legend']}>
         {legendItems.map((item) => {
           return (

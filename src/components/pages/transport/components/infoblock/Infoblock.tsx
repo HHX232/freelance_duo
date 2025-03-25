@@ -5,7 +5,7 @@ const Infoblock = () => {
     <section className={styles['comfort-wrapper']}>
       <div className={styles['info-wrapper']}>
         <div className={styles['info']}>
-          <div className={styles['title']}>Преимущество инфраструктуры</div>
+          <div className={styles['title']}>Преимуществa инфраструктуры</div>
 
           <div className={styles['table-desc-wrapper']}>
             <p className={styles['description']}>

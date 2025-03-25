@@ -4,19 +4,19 @@
     @layer base {
       display: flex;
       flex-direction: column;
-      gap: 70px;
+      gap: 60px;
     }
   
     @include sm {
-      gap: 80px;;
+      gap: 60px;;
     }
   
     @include md {
-      gap: 90px;
+      gap: 60px;
     }
   
-    @include xxl {
-      gap: 110px;
+    @include lg {
+      gap: 80px;
     }
 }
 
@@ -26,19 +26,19 @@
     @layer base {
       display: flex;
       flex-direction: column;
-      gap: 70px;
+      gap: 60px;
     }
   
     @include sm {
-      gap: 80px;;
+      gap: 60px;;
     }
   
     @include md {
-      gap: 90px;
+      gap: 60px;
     }
   
-    @include xxl {
-      gap: 110px;
+    @include lg {
+      gap: 80px;
     }
 
     // @layer base {
