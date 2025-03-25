@@ -78,7 +78,7 @@ export const StocksList = () => {
             <FullButton
               activeButton={true}
               border={false}
-              borderColor={''}
+              borderColor={'none'}
               buttonFill={'bronze-500'}
               buttonElementColor={'white'}
               onClick={() => setItemsForRender((items) => [...items, ...MOCK_ITEMS])}

@@ -9,7 +9,7 @@ export default function HeaderMenuBottomSettingsButton() {
       extraClass={styles.settingsButton}
       activeButton={true}
       border={false}
-      borderColor={''}
+      borderColor={'none'}
       buttonFill={'bronze-500'}
       buttonText={''}
     >

@@ -8,7 +8,7 @@ export default function HeaderMenuBottomPhoneButton() {
       href={'tel:+71231234567'}
       activeButton={true}
       border={false}
-      borderColor={''}
+      borderColor={'none'}
       buttonFill={'none'}
       buttonElementColor={'white'}
       buttonText={''}

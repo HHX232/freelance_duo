@@ -14,12 +14,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 export default function ComparePage() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <Compare />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

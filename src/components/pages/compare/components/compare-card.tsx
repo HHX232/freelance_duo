@@ -11,7 +11,8 @@ import {CompareCheckBox} from '@pages/compare/components/checkbox-compare'
 import {useStore} from '@src/lib/store/store'
 import NextImage from 'next/image'
 import Link from 'next/link'
-import {sendTmrEvent} from "@utils/tmrTracker";
+import {sendTmrEvent} from '@utils/tmrTracker'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface IProps {
   items: IObj[]
@@ -177,26 +178,20 @@ export const CompareCard = (props: IProps) => {
                       </Link>
 
                       {props.isReservation && (
-                        <>
-                          <button
-                            type='button'
-                            className={styles.reservation}
-                            onClick={() => {
-                              !props.isAuth
-                                ? props.setVisibleReservation(true)
-                                : props.setInfoModal(true, data.ext_guid)
-
-                              sendTmrEvent('book', data.id, data.Fvalue);
-                            }}
-                            style={
-                              props.dashboard
-                                ? {background: '#D38F6D', border: '1px solid #D38F6D'}
-                                : {background: '#D38F6D'}
-                            }
-                          >
-                            Забронировать
-                          </button>
-                        </>
+                        <FullButton
+                          borderColor={'none'}
+                          buttonFill={'bronze-500'}
+                          buttonText={'Забронировать'}
+                          buttonElementColor={'white'}
+                          buttonBorderRadius={'6px'}
+                          extraClass={styles.reservation}
+                          activeButton={true}
+                          onClick={() => {
+                            !props.isAuth ? props.setVisibleReservation(true) : props.setInfoModal(true, data.ext_guid)
+                            sendTmrEvent('book', data.id, data.Fvalue)
+                          }}
+                          border={false}
+                        />
                       )}
 
                       <ul className={styles.list}>

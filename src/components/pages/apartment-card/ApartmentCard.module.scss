@@ -443,6 +443,7 @@
       justify-content: center;
       gap: 6px;
     }
+
     @include mobile {
       flex-direction: column-reverse;
       align-items: flex-start;
@@ -462,20 +463,22 @@
         font-size: 18px;
       }
     }
+
     .old_price {
-      color: #BABABA;
+      color: #bababa;
+      font-family: 'Gotham Pro', sans-serif;
       font-size: 20px;
       font-weight: 400;
       line-height: 19.14px;
-      font-family: "Gotham Pro", sans-serif;
       text-decoration: line-through;
+
       @media (max-width: 990px) {
         font-size: 14px;
         font-weight: 500;
         line-height: 17.07px;
-
       }
     }
+
     s {
       @include font(1, 20--14, 20--14, 100--500);
 
@@ -722,4 +725,9 @@
   background-color: $accent-color;
   cursor: pointer;
   transform: translate(-50%, -50%);
+}
+
+.reservationBtn {
+  width: 300px !important;
+  height: 46px !important;
 }

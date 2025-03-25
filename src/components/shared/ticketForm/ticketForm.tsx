@@ -33,7 +33,7 @@ const TicketForm: FC<ITicketFormProps> = (props) => {
           buttonText={'ОТПРАВИТЬ'}
           activeButton={true}
           border={false}
-          borderColor={''}
+          borderColor={'none'}
           extraClass={styles.button}
           buttonFill='bronze-500'
           buttonElementColor='white'

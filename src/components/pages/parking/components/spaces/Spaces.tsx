@@ -28,7 +28,7 @@ const Spaces = () => {
                 buttonText={'Подобрать Парковку'}
                 activeButton={true}
                 border={false}
-                borderColor={''}
+                borderColor={'none'}
                 extraClass={styles.button}
                 buttonFill='bronze-500'
                 buttonElementColor='white'

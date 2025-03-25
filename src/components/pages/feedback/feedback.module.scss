@@ -1,3 +1,7 @@
+.extra_button {
+  padding: 12px;
+}
+
 .feedback {
   width: 100%;
   min-height: 100vh;
@@ -26,10 +30,7 @@
   grid-gap: 100px;
 
   @media (min-width: 1440px) {
-    padding: calc(100px + (241 - 100) * ((100vw - 1440px) / (2560 - 1440)))
-      calc(198px + (400 - 198) * ((100vw - 1440px) / (2560 - 1440)))
-      calc(60px + (409 - 60) * ((100vw - 1440px) / (2560 - 1440)))
-      calc(163px + (280 - 163) * ((100vw - 1440px) / (2560 - 1440)));
+    padding: calc(100px + (241 - 100) * ((100vw - 1440px) / (2560 - 1440))) calc(198px + (400 - 198) * ((100vw - 1440px) / (2560 - 1440))) calc(60px + (409 - 60) * ((100vw - 1440px) / (2560 - 1440))) calc(163px + (280 - 163) * ((100vw - 1440px) / (2560 - 1440)));
   }
 
   @media (max-width: 504px) {

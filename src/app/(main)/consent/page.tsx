@@ -15,12 +15,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ConsentPage() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <Consent />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
