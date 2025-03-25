@@ -6,6 +6,7 @@ import {InputTextDefaultIcon} from './InputTextDefaultIcon'
 import InputClearIcon from './InputClearIcon'
 import {IField} from './InputTextUI.types'
 import {Golos_Text} from 'next/font/google'
+import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
 
 {
   /* <InputTextUI placeholder='Вводите...' theme='white' />
@@ -22,6 +23,7 @@ const golos = Golos_Text({subsets: ['cyrillic']})
 interface IFieldExtended extends IField {
   onlyType?: 'all' | 'onlyText' | 'onlyNumbers'
   customPattern?: RegExp
+  extraLabelClass?: string
 }
 
 const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
@@ -108,7 +110,14 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
             })}
             htmlFor={id}
           >
-            {labelText}
+            <ParagraphUI
+              size={'md'}
+              weight={'regular'}
+              extraStyle={{color: error?.length ? '#D36281' : theme === 'white' ? '#fff' : '#B5B9BE'}}
+              // extraClass={golos.className}
+            >
+              {labelText}
+            </ParagraphUI>
           </label>
         )}
         <label

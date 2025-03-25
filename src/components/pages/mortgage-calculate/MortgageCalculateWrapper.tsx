@@ -1,12 +1,13 @@
 'use client'
 import styles from './MortgageCalculateWrapper.module.scss'
-import {useState} from 'react'
+import {useRef, useState} from 'react'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import {useIsMaxWidth} from '@utils/useIsMobile'
 import StarIcon from '@icons/white_star.svg'
 import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
 import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 import InputRangeUI from '@src/components/UI-kit/BaseControls/inputs/RangeInputUI/RangeInputUI'
+import {TabsUIItem} from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
 
 const PercantTypes = {
   base: 5.5,
@@ -19,10 +20,10 @@ const MortgageCalculateWrapper = () => {
   const [downPayment, setDownPayment] = useState('2 000 000')
   const [time, setTime] = useState<string>('10')
   const isSx = useIsMaxWidth(320)
+  const timeRef = useRef<HTMLInputElement>(null)
 
-  const addSpace = (num: number | string) =>
-    num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-  const removeNonNumeric = (num: number | string) => num.toString().replace(/[^0-9]/g, "");
+  const addSpace = (num: number | string) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+  const removeNonNumeric = (num: number | string) => num.toString().replace(/[^0-9]/g, '')
 
   const addSymbol = (value: string) =>
     value
@@ -42,31 +43,23 @@ const MortgageCalculateWrapper = () => {
         <div className={styles.mainContent}>
           <div className={styles.dataInputOuter}>
             <div className={styles.selectorsWrapper}>
-              <FullButton
-                type={'Button'}
-                buttonText={`Базовая от 5.5%`}
-                activeButton={true}
-                border={false}
-                borderColor={''}
+              <TabsUIItem
+                tabName={'Базовая от 5.5%'}
+                setActiveTabIndex={() => setPercent(PercantTypes.base)}
+                activeIndex={percent == PercantTypes.base ? 1 : 2}
+                index={1}
+                fill={'white'}
                 extraClass={styles.button}
-                buttonFill={`${percent === PercantTypes.base ? 'blue' : 'white'}`}
-                buttonElementColor={`${percent === PercantTypes.base ? 'white' : 'black'}`}
-                buttonBorderRadius={'6px'}
-                onClick={() => setPercent(PercantTypes.base)}
+              />
+              <TabsUIItem
+                tabName={'Семейная от 3.5%'}
+                setActiveTabIndex={() => setPercent(PercantTypes.family)}
+                activeIndex={percent == PercantTypes.base ? 1 : 2}
+                index={2}
+                fill={'white'}
+                extraClass={styles.button}
               />
 
-              <FullButton
-                type={'Button'}
-                buttonText={`Семейная от 3,5%`}
-                activeButton={true}
-                border={false}
-                borderColor={''}
-                extraClass={styles.button}
-                buttonFill={`${percent === PercantTypes.family ? 'blue' : 'white'}`}
-                buttonElementColor={`${percent === PercantTypes.family ? 'white' : 'black'}`}
-                buttonBorderRadius={'6px'}
-                onClick={() => setPercent(PercantTypes.family)}
-              />
             </div>
             <div className={styles.dataInputWrapper}>
               <InputField
@@ -103,6 +96,8 @@ const MortgageCalculateWrapper = () => {
                 icon={true}
                 isNeedToClear={false}
                 onChange={(e) => setTime(e.target.value)}
+                ref={timeRef}
+                textAfterValue={'лет'}
               />
             </div>
           </div>

@@ -11,6 +11,7 @@ interface TabsUIItemProps {
   disabled?: boolean
   activeIndex: number
   size?: 'sm' | 'md'
+  extraClass?: string
 }
 
 export const TabsUIItem: FC<TabsUIItemProps> = ({
@@ -20,7 +21,8 @@ export const TabsUIItem: FC<TabsUIItemProps> = ({
   setActiveTabIndex,
   disabled = false,
   activeIndex,
-  size
+  size,
+  extraClass
 }) => {
   const isActive = activeIndex === index
 
@@ -32,7 +34,7 @@ export const TabsUIItem: FC<TabsUIItemProps> = ({
 
   return (
     <div
-      className={cn(styles.tabItem, {
+      className={cn(styles.tabItem, extraClass, {
         [styles.active]: isActive,
         [styles.disabled]: disabled,
         [styles.fill_white]: fill === 'white',
@@ -56,15 +58,20 @@ const TabsUI: FC<TabsUIProps> = ({
   tabsNames,
   disabled = false,
   activeIndex = 0,
-  size = 'md'
+  size = 'md',
+  extraClass
 }) => {
   return (
     <div
-      className={cn(styles.tabsContainer, {
-        [styles.size_box_sm]: size === 'sm',
-        [styles.size_box_md]: size === 'md',
-        [styles.fill_box_transparent]: fill === 'transparent'
-      })}
+      className={cn(
+        styles.tabsContainer,
+        {
+          [styles.size_box_sm]: size === 'sm',
+          [styles.size_box_md]: size === 'md',
+          [styles.fill_box_transparent]: fill === 'transparent'
+        },
+        extraClass
+      )}
       role='tablist'
     >
       {tabsNames.map((name, index) => (
@@ -77,6 +84,7 @@ const TabsUI: FC<TabsUIProps> = ({
           setActiveTabIndex={setActiveTabIndex}
           disabled={disabled}
           activeIndex={activeIndex}
+          extraClass={extraClass}
         />
       ))}
     </div>

@@ -1,17 +1,11 @@
 import styles from './ContactForm.module.scss'
-import {useState} from 'react'
-import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
-import {Golos_Text} from 'next/font/google'
-import clsx from 'clsx'
 import Link from 'next/link'
-
-const golos = Golos_Text({subsets: ['cyrillic']})
+import InputPhoneUI from '@src/components/UI-kit/BaseControls/inputs/InputPhoneUI/InputPhoneUI'
+import clsx from 'clsx'
 
 const ContactFormPage = () => {
-  const [phoneNumber, setPhoneNumber] = useState('')
-
   return (
     <div>
       <section className={styles['contact-form-wrapper']}>
@@ -25,20 +19,10 @@ const ContactFormPage = () => {
               <div className={styles['input-wrapper']}>
                 <InputTextUI icon={<></>} theme={'white'} labelText={'Имя'} placeholder='Введите имя' />
               </div>
-              <div className={styles['input-wrapper']}>
-                <span className={clsx(styles['input-label'], golos.className)}>Телефон</span>
-                <input
-                  className={clsx(styles.input, golos.className)}
-                  placeholder='+7 (___) ___-__-__'
-                  onChange={(e) => {
-                    const formattedValue = formatPhoneNumber(e.target.value)
-                    setPhoneNumber(formattedValue)
-                  }}
-                  maxLength={18}
-                  pattern={'/^\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}$/'}
-                  value={phoneNumber}
-                />
+              <div className={clsx(styles['input-wrapper'], styles.marginTop)}>
+                <InputPhoneUI icon={<></>} theme={'white'} labelText={'Телефон'} />
               </div>
+
               <FullButton
                 type={'Button'}
                 onClick={() => {}}

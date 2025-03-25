@@ -1,3 +1,26 @@
+.button_extra {
+  padding: 12px 0;
+  border-radius: 6px !important;
+}
+
+.button_extra_2 {
+  padding: 12px 36px;
+  // width: fit-content !important;
+  max-width: fit-content !important;
+  min-width: auto;
+  border-radius: 6px !important;
+
+  @include custom(0, map-get($breakpoints, lg) - 1px) {
+    max-width: 100% !important;
+  }
+
+  &>p {
+    width: fit-content !important;
+    max-width: fit-content !important;
+  }
+
+}
+
 .steps-for-buy {
   margin-top: 110px;
 
@@ -121,8 +144,7 @@
         padding-top: 24px;
       }
 
-      &-button {
-      }
+      &-button {}
     }
 
     @include sm {
@@ -141,6 +163,7 @@
       .button_wrapper {
         padding-top: 40px;
       }
+
       &-count {
         margin-bottom: auto;
       }
@@ -158,6 +181,7 @@
       .button_wrapper {
         padding-top: 40px;
       }
+
       &-count {
         margin-bottom: auto;
       }
@@ -194,9 +218,11 @@
   @layer base {
     margin: 0 20px;
   }
+
   @include sm {
     margin: 0 20px;
   }
+
   @include md {
     margin: 0 40px;
   }

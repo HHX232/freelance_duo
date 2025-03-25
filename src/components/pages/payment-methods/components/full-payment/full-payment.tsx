@@ -2,6 +2,7 @@ import TrendingUpSVG from '@icons/trending_up.svg'
 import BankCardSVG from '@icons/bank_card.svg'
 import styles from '../../payment-methods.module.scss'
 import clsx from 'clsx'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 export const FullPaymentTab = () => {
   return (
@@ -9,7 +10,7 @@ export const FullPaymentTab = () => {
       <section
         style={{
           backgroundImage:
-            'linear-gradient(155deg, rgba(0, 0, 0, 0.40) 23.02%, rgba(0, 0, 0, 0.00) 104.22%), linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%),  url("/content/payment-methods/full-payment-poster.jpeg") lightgray -186.45px 0px / 257.781% 100% no-repeat'
+            'linear-gradient(155deg, rgba(0, 0, 0, 0.40) 23.02%, rgba(0, 0, 0, 0.00) 104.22%), linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%),  url("/content/payment-methods/full-payment-poster.webp") lightgray -186.45px 0px / 257.781% 100% no-repeat'
         }}
         className={clsx(styles.poster, styles.poster_full_payment)}
       >
@@ -35,7 +36,15 @@ export const FullPaymentTab = () => {
 
       <div className={styles['poster-meta']}>
         <p className={styles['poster-meta__title']}>Есть вопросы? Свяжитесь с нами!</p>
-        <button className={clsx([styles['tab-button']])}>Получить консультацию</button>
+        <FullButton
+          extraClass={styles.button_extra_2}
+          activeButton={false}
+          buttonBorderRadius='6px'
+          buttonFill='white'
+          border={false}
+          borderColor='none'
+          buttonText={'Получить консультацию'}
+        />
       </div>
     </div>
   )

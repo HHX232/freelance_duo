@@ -4,7 +4,6 @@ import {ApartmentCardPageParams} from './model'
 import {parseData} from './data'
 import {getFlatsById, getPdf, getReservation} from '@src/actions/flats'
 import Header from '@shared/pageDefault/header/Header'
-
 export const revalidate = 3600
 
 export async function generateMetadata({params}: ApartmentCardPageParams): Promise<Metadata> {
@@ -18,28 +17,24 @@ export async function generateMetadata({params}: ApartmentCardPageParams): Promi
 
   switch (parsedData.type) {
     case '1-комнатная':
-      title = 'Купить однокомнатную квартиру комфорт-класса в ЖК «Кронфорт Центральный», Кронштадт'
-      description =
-        'Выбрать и купить 1-комнатную квартиру комфорт-класса в строящемся доме квартала «Кронфорт Центральный», продажа однокомнатных квартир в новостройках по цене от 12 млн руб в Кронштадте недалеко от Острова фортов, 60 мин от СПб'
+      title = `Купить однокомнатную квартиру комфорт-класса в ЖК «Кронфорт Центральный», Кронштадт.`
+      description = `Купить 1-комнатную квартиру комфорт-класса в ЖК «Кронфорт Центральный». Площадь: ${parsedData.tsquare} м². Цена: ${cost} руб. Этаж: ${parsedData.floor}, корпус ${parsedData.building}. Срок сдачи: ${parsedData.ready}. Квартира с ${parsedData.attributes.join(', ')}.`
       break
     case '2-комнатная':
       title = 'Купить двухкомнатную квартиру комфорт-класса в ЖК «Кронфорт Центральный», Кронштадт'
-      description =
-        'Купить двухкомнатную квартиру в новостройке комфорт-класса ЖК «Кронфорт Центральный», продажа двухкомнатных квартир в строящемся доме от 16 млн руб. в Кронштадте недалеко от Острова фортов, 60 мин от СПБ.'
+      description = `Купить 2-комнатную квартиру комфорт-класса в ЖК «Кронфорт Центральный». Площадь: ${parsedData.tsquare} м². Цена: ${cost} руб. Этаж: ${parsedData.floor}, корпус ${parsedData.building}. Срок сдачи: ${parsedData.ready}. Квартира с ${parsedData.attributes.join(', ')}.`
       break
     case '3-комнатная':
-      title = 'Купить квартиру-лофт в ЖК «Кронфорт Центральный», Кронштадт'
-      description =
-        'Купить квартиру в стиле лофт со свободной планировкой в новостройке комфорт-класса ЖК «Кронфорт Центральный», продажа квартир лофтов в строящемся доме от 23 млн рублей недалеко от Острова фортов в Кронштадте, 60 мин от СПб.'
+      title = 'Купить трёхкомнатную квартиру комфорт-класса в ЖК «Кронфорт Центральный», Кронштадт'
+      description = `Купить 3-комнатную квартиру комфорт-класса в ЖК «Кронфорт Центральный». Площадь: ${parsedData.tsquare} м². Цена: ${cost} руб. Этаж: ${parsedData.floor}, корпус ${parsedData.building}. Срок сдачи: ${parsedData.ready}. Квартира с ${parsedData.attributes.join(', ')}.`
       break
     case 'Студия':
-      title = 'Квартиры-студии купить от застройщика в ЖК «Кронфорт», Кронштадт'
-      description =
-        'Купить квартиру студию в новостройке от застройщика по выгодным ценам; продажа студий  на этапе строительства в 40 минутах езды от Санкт-Петербурга в ЖК «Кронфорт» в Кронштадте.'
+      title = 'Купить квартиру-студию комфорт-класса в ЖК «Кронфорт Центральный», Кронштадт'
+      description = `Купить квартиру-студию комфорт-класса в ЖК «Кронфорт Центральный». Площадь: ${parsedData.tsquare} м². Цена: ${cost} руб. Этаж: ${parsedData.floor}, корпус ${parsedData.building}. Срок сдачи: ${parsedData.ready}. Квартира с ${parsedData.attributes.join(', ')}.`
       break
     default:
-      title = `${parsedData.type} - ${parsedData.tsquare} м2 в ЖК «Кронфорт.Центральный»`
-      description = `Квартира ${parsedData.type} - ${parsedData.tsquare} м2 в ЖК «Кронфорт.Центральный» купить по цене ${cost} руб.`
+      title = `${parsedData.type} - ${parsedData.tsquare} м² в ЖК «Кронфорт Центральный»`
+      description = `Купить квартиру ${parsedData.type} в ЖК «Кронфорт Центральный». Площадь: ${parsedData.tsquare} м². Цена: ${cost} руб. Этаж: ${parsedData.floor}, корпус ${parsedData.building}. Срок сдачи: ${parsedData.ready}. Квартира с ${parsedData.attributes.join(', ')}.`
       break
   }
 
@@ -50,6 +45,16 @@ export async function generateMetadata({params}: ApartmentCardPageParams): Promi
     description,
     alternates: {
       canonical: canonicalUrl
+    },
+    openGraph: {
+      images: [
+        {
+          url: parsedData.images[0],
+          width: 500,
+          height: 500,
+          alt: `План квартиры ${parsedData.type} в ЖК «Кронфорт Центральный»`
+        }
+      ]
     }
   }
 }
@@ -62,7 +67,8 @@ export default async function ApartmentCardPage({params}: ApartmentCardPageParam
 
   const pdf = await getPdf({guid: parsedData.ext_guid})
 
-  console.log(parsedData)
+  console.log('parsedData', parsedData)
+  console.log('parsedData.rvalue', parsedData.rvalue)
 
   return (
     <>

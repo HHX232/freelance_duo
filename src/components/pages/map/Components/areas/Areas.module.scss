@@ -18,7 +18,7 @@
 
     background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
       linear-gradient(180deg, rgb(38 57 69 / 0%) 18.3%, rgb(38 57 69 / 47%) 49.35%, #263945 100%),
-      linear-gradient(47.64deg, rgb(30 56 73 / 50%) 6.94%, rgb(30 56 73 / 0%) 83.47%), url('/content/areas.jpg');
+      linear-gradient(47.64deg, rgb(30 56 73 / 50%) 6.94%, rgb(30 56 73 / 0%) 83.47%), url('/content/areas.webp');
   }
 
   @include sm {
@@ -29,14 +29,14 @@
 
   @include md {
     background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
-      linear-gradient(37.52deg, rgb(30 56 73 / 70%) 25.4%, rgb(30 56 73 / 0%) 65.67%), url('/content/areas.jpg');
+      linear-gradient(37.52deg, rgb(30 56 73 / 70%) 25.4%, rgb(30 56 73 / 0%) 65.67%), url('/content/areas.webp');
     padding: 90px 40px;
     max-height: 1000px;
   }
 
   @include lg {
     background: linear-gradient(115deg, rgba(30, 56, 73, 0.7) 21.9%, rgba(30, 56, 73, 0) 66.78%),
-      linear-gradient(90deg, rgba(30, 56, 73, 0.7) 0.01%, rgba(0, 0, 0, 0) 35.63%), url('/content/areas.jpg');
+      linear-gradient(90deg, rgba(30, 56, 73, 0.7) 0.01%, rgba(0, 0, 0, 0) 35.63%), url('/content/areas.webp');
 
     background-size: cover;
     padding: 60px 40px;

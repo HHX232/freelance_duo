@@ -14,6 +14,7 @@ export default function LogoLink({isMenuOpened, isSmall, isTransparent}: ILogoLi
   const pathname = usePathname()
 
   const [isLogoSmall, setIsLogoSmall] = useState<boolean>(false)
+  const [isNotHomePage, setIsNotHomePage] = useState<boolean>(false)
 
   const handleScroll = (): void => setIsLogoSmall(window.scrollY > 0)
 
@@ -30,14 +31,14 @@ export default function LogoLink({isMenuOpened, isSmall, isTransparent}: ILogoLi
   }, [])
 
   useEffect(() => {
-    setIsLogoSmall(!!(pathname !== '/' && windowWidth && windowWidth < 1280))
+    setIsNotHomePage(!!(pathname !== '/' && windowWidth && windowWidth < 1280))
   }, [windowWidth, pathname])
 
   return (
     <div
       className={clsx(styles.logoLink, isMenuOpened ? styles.menuOpened : '', isTransparent ? styles.transparent : '')}
     >
-      {isSmall || isLogoSmall ? (
+      {isSmall || isLogoSmall || isNotHomePage ? (
         <Link className={clsx(styles.icon, styles.small)} href={'/'}>
           <LogoLgSVG />
         </Link>

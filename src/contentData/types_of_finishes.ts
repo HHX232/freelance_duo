@@ -9,7 +9,7 @@ export interface AboutItem {
 
 // export const typesOfFinishesData: AboutItem[] = [
 //   {
-//     img: `/content/types-of-finishes/types-of-finishes1.png`,
+//     img: `/content/types-of-finishes/types-of-finishes1.webp`,
 //     alt: `map`,
 //     title: `Виды отделки`,
 //     text: `Для того, чтобы сохранить ценное время и силы жителей, большинство квартир в комплексе сдаются с отделкой. Все «грязные» ремонтные процессы уже выполнены. Отделка доступна в двух цветах: темный и светлый. В каждом варианте отделки используются высококачественные материалы универсальных оттенков, позволяющих меблировать интерьер на свой вкус: на полу ламинат/керамогранит (в зависимости от назначения помещения) с текстурой дерева светлого или темного оттенка, износостойкая краска, надежные двери, сантехника и современные инженерные системы. Для воплощения любых дизайнерских и планировочных решений в 4 корпусе представлены квартиры со свободной планировкой без отделки, позволяющие сделать ремонт самостоятельно.`
@@ -19,11 +19,11 @@ export interface AboutItem {
 export const typesOfFinishesData: ISliderItem[] = [
   {
     imgs: [
-      '/content/types-of-finishes/1.png',
-      '/content/types-of-finishes/new1.png',
-      '/content/types-of-finishes/new2.png',
-      '/content/types-of-finishes/3.png',
-      '/content/types-of-finishes/4.png'
+      '/content/types-of-finishes/1.webp',
+      '/content/types-of-finishes/new1.webp',
+      '/content/types-of-finishes/new2.webp',
+      '/content/types-of-finishes/3.webp',
+      '/content/types-of-finishes/4.webp'
     ],
     title: `Отделка`,
     texts: [

@@ -7,11 +7,15 @@
 
   @include sm {
     padding: 0 20px;
-  };
+  }
+
+  ;
 
   @include md {
     padding: 0 40px;
-  };
+  }
+
+  ;
 
   @include xl {
     padding: 0 40px 0 142px;
@@ -27,7 +31,7 @@
 
 }
 
-.innerWrapper{
+.innerWrapper {
   @layer base {
     display: flex;
     flex-direction: column;
@@ -39,23 +43,23 @@
     flex-direction: row;
     justify-content: space-between;
 
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_lg.png') no-repeat;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_lg.webp') no-repeat;
     background-size: 100% 100%;
   }
 
-  @include xl{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_xl.png') no-repeat;
+  @include xl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_xl.webp') no-repeat;
     background-size: 100% 100%;
   }
 
-  @include xxl{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_xxl.png') no-repeat;
+  @include xxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_xxl.webp') no-repeat;
     background-size: 100% 100%;
     padding: 40px 40px 40px 60px;
   }
 
-  @include xxxl{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_xxxl.png') no-repeat;
+  @include xxxl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_xxxl.webp') no-repeat;
     background-size: 100% 100%;
   }
 }
@@ -68,39 +72,39 @@
     width: 100%;
     height: 240px;
     padding: 20px 16px;
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_xs.png') no-repeat;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_xs.webp') no-repeat;
     background-size: 100% 100%;
     @include font(3, 30, 40, 400);
     word-wrap: break-word;
     word-break: break-all;
   }
 
-  @include sm{
+  @include sm {
     height: 300px;
     padding: 24px 20px;
 
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_sm.png') no-repeat;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_sm.webp') no-repeat;
     background-size: 100% 100%;
   }
 
-  @include md{
+  @include md {
     height: 400px;
     padding: 40px;
     @include font(3, 36, 50, 400);
 
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_md.png') no-repeat;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/commerce/rent_md.webp') no-repeat;
     background-size: 100% 100%;
   }
 
   @include lg {
-    padding: 20px 0 ;
+    padding: 20px 0;
     width: fit-content;
     height: 570px;
     background: none;
     align-items: start;
   }
 
-  @include xl{
+  @include xl {
     @include font(3, 42, 54, 400);
   }
 
