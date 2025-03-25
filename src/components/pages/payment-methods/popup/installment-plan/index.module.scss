@@ -78,6 +78,10 @@
 
   text-wrap: nowrap;
 
+  & th {
+    font-weight: 400 !important;
+  }
+
   & th,
   & td {
     padding: 10px;
