@@ -17,10 +17,20 @@
         display: flex;
         gap: 24px;
   
-        @media (max-width: map-get($breakpoints, md)) {
-          min-height: 283px;
-          gap: 0;
-        }
+        // @media (max-width: map-get($breakpoints, sm)) {
+        //   min-height: 283px;
+        //   gap: 20px;
+        // }
+
+        // @media (max-width: map-get($breakpoints, md)) and (min-width: map-get($breakpoints, sm)) {
+        //   min-height: 283px;
+        //   gap: 40px;
+        // }
+
+        // @media (max-width: map-get($breakpoints, lg)) and (min-width: map-get($breakpoints, md)) {
+        //   min-height: 283px;
+        //   gap: 60px;
+        // }
 
         // колонка (плитка)
         .block-col {
@@ -43,9 +53,10 @@
   
         .cover {
           background-position: center;
+          background-repeat: no-repeat;
           background-size: cover;
 
-          @include lg {
+          @include xl {
             flex: 0 1 65% !important;
           }
         }
@@ -58,7 +69,7 @@
           background-color: rgb(25 108 135);
           gap: 77px;
 
-          @include lg {
+          @include xl {
             flex: 0 1 35%;
           }
   
@@ -188,7 +199,7 @@
   
             @media (max-width: map-get($breakpoints, xl)) {
               flex: 0 0 30%;
-              background-position: -150px center;
+              background-position: center;
             }
   
             @media (max-width: map-get($breakpoints, md)) {

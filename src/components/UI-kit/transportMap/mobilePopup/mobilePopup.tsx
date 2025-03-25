@@ -26,24 +26,25 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
     {icon: 'coast', text: 'Набережная'}
   ]
     const [hasTouch, setHasTouch] = useState(false);
-    const [y, setY] = useState(0);
+    // const [y, setY] = useState(0);
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
         if (window && "ontouchstart" in window || navigator && navigator.maxTouchPoints > 0) setHasTouch(true)
     },[])
 
-    const handleTouchMove = (e: React.TouchEvent) => {
-        const touch = e.touches[0];
-        setY(touch.clientY);
-    };
+    // const handleTouchMove = (e: React.TouchEvent) => {
+    //     const touch = e.touches[0];
+    //     setY(touch.clientY);
+    // };
 
     const handleTouchEnd = () => {
-        if (y < window.innerHeight / 2) {
-        setOpen(true);
-        } else {
-        setOpen(false);
-        }
+      setOpen(!open)
+        // if (y < window.innerHeight / 2) {
+        // setOpen(true);
+        // } else {
+        // setOpen(false);
+        // }
     };
 
     const handleClick = () => {
@@ -156,15 +157,17 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
         <div className={`${styles.mobile_infoblock} ${open ? styles.ib_open : styles.ib_close}`}>
             <div className={styles.infoblock_line}
                 {...(hasTouch ? 
-                    {onTouchMove: handleTouchMove,
-                    onTouchEnd: handleTouchEnd} :
+                    {
+                      //onTouchMove: handleTouchMove,
+                      onTouchEnd: handleTouchEnd
+                    } :
                     {onClick: handleClick})}
             >
             </div>
             {open && <>
                 <h4 className={styles.infoblock_title}>ОБОЗНАЧЕНИЯ</h4>
                 <MapSidebar isOpen={true} isMobile/>
-                <h4 className={styles.infoblock_title}>ИНФРАСТРУКТУРА</h4>
+                <h4 className={styles.infoblock_title_small}>ИНФРАСТРУКТУРА</h4>
                 <div className={styles['maplegend-legend']}>
                     {legendItems.map(item => {
                         return <div key={item.text} className={styles['maplegend-legend-item']}>

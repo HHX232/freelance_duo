@@ -15,26 +15,26 @@ const MapSidebar: FC<IMapSidebar> = ({isOpen, isMobile}) => {
           <h2 className={`${styles.content_title} ${styles.blue}`}>ДОСТУПНОСТЬ</h2>
           <hr className={styles.content_hr} />
           <div className={styles.content_block_row}>
-            <p>25 минут до</p>
-            <p>Курортного района</p>
+            <p className={styles.row_left}>25 минут до</p>
+            <p className={styles.row_right}>Курортного района</p>
           </div>
           <div className={styles.content_block_row}>
-            <p>30 минут до</p>
-            <p>«Лахта Центра»</p>
+            <p className={styles.row_left}>30 минут до</p>
+            <p className={styles.row_right}>«Лахта Центра»</p>
           </div>
           <div className={styles.content_block_row}>
-            <p>40 минут до</p>
-            <p>центра Петербурга</p>
+            <p className={styles.row_left}>40 минут до</p>
+            <p className={styles.row_right}>центра Петербурга</p>
           </div>
           <hr className={styles.content_hr} style={{borderColor: '#D38F6D'}} />
           <div className={styles.content_block_row}>
-            <p>50 минут до</p>
-            <p>аэропорта Пулково</p>
+            <p className={styles.row_left}>50 минут до</p>
+            <p className={styles.row_right}>аэропорта Пулково</p>
           </div>
           <hr className={styles.content_hr} />
           <div className={styles.content_block_row}>
-            <p>60 минут на «Метеоре» или яхте до</p>
-            <p>причала на Дворцовой набережной</p>
+            <p className={styles.row_left}>60 минут на «Метеоре» или яхте до</p>
+            <p className={styles.row_right}>причала на Дворцовой набережной</p>
           </div>
         </div>
 

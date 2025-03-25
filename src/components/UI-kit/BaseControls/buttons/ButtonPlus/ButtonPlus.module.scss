@@ -24,14 +24,17 @@
     }
 
     .btn-plus-icon {
-        width: 20px;
-        height: 20px;
         padding: 0;
         color: #111;
 
+        @layer base {
+            width: 24px;
+            height: 24px;
+        }
+
         @include sm {
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
         }
     }
 }

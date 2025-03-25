@@ -14,8 +14,8 @@ const ButtonPlus: FC<IButtonPlus> = ({
   return (
     <div className={styles['btn-plus-wrapper']} onClick={onClick}>
         <svg
-            width="30"
-            height="30"
+            // width="30"
+            // height="30"
             viewBox={`0 0 30 30`}
             className={`${styles['btn-plus-icon']} ${extraClass}`}
             fill='none'
