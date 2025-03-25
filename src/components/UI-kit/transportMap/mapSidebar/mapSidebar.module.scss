@@ -3,6 +3,7 @@
 .sidebar {
     position: absolute;
     top: 0;
+    display: none;
     overflow: auto;
 
     // width: 460px;
@@ -14,7 +15,7 @@
     transition: left 0.3s ease-in-out;
 
     @layer base {
-        visibility: hidden;
+        // visibility: hidden;
 
         // right: -460px;
     }
@@ -22,7 +23,6 @@
     @include md {
         right: -380px;
         width: 380px;
-        visibility: visible;
     }
 
     @include lg {
@@ -32,6 +32,7 @@
   
     &.open {
       right: 0;
+      display: block;
     }
 
     &.mobile {
@@ -73,16 +74,18 @@
           @layer base {
             margin: 24px 0 !important;
             font-size: 24px;
+            line-height: 36px;
           }
 
-          @include md {
+          @include sm {
             margin: 34px 0 !important;
             font-size: 32px;
+            line-height: 44px;
           }
         }
 
         .content_hr {
-          width: 45%;
+          width: 25%;
           border: none;
           border-top: 2px dotted #11627D;
           margin: 10px 0;
@@ -92,18 +95,23 @@
           display: flex;
           width: 100%;
           padding: 8px 0;
-          gap: 10px;
-
-          p:first-child {
-            min-width: 40%;
-          }
+          gap: 5%;
 
           p {
+            color: #555;
             font-family: $font-gotham-pro;
             font-size: 16px;
             font-weight: 300;
             line-height: 22px;
             text-align: left;
+          }
+
+          p.row_left {
+            width: 35%;
+          }
+
+          p.row_right {
+            width: 60%;
           }
 
         }
@@ -116,6 +124,7 @@
             display: flex;
             align-items: center;
             margin: 8px 0;
+            color: #555;
             counter-increment: custom-counter;
             font-family: $font-gotham-pro;
             font-size: 16px;
