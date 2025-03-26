@@ -3,8 +3,41 @@
     flex-direction: column;
     background-color: #11627D;
   
-    @include content-container;
-      
+    // @include content-container;
+    @layer base {
+      padding-right: 40px;
+      padding-left: 196px;
+    }
+  
+    @include xxl {
+      padding-right: 40px;
+      padding-left: 170px;
+    }
+  
+    @include xl {
+      padding-right: 40px;
+      padding-left: 142px;
+    }
+  
+    @include lg {
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+
+    @include md {
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+  
+    @include sm {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  
+    @include xs {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
   
     .blocks {
       .blocks-items {
@@ -16,6 +49,8 @@
       .blocks-row {
         display: flex;
         gap: 24px;
+
+        
   
         // @media (max-width: map-get($breakpoints, sm)) {
         //   min-height: 283px;
@@ -47,7 +82,14 @@
             }
 
             @include lg {
+                height: 350px;
                 min-height: 350px;
+            }
+
+            @include xs {
+              height: 300px !important;
+              max-height: 300px;
+              padding: 36px 20px !important;
             }
         }
   
@@ -85,16 +127,20 @@
           &__title {
             @include RomulH4;
 
-            margin-bottom: 40px;
+            //margin-bottom: 40px;
             color: #FFF;
   
-            @include bp-xl {
-              margin-bottom: 36px;
-            }
+            // @include lg {
+            //   margin-bottom: 36px;
+            // }
   
-            @include bp-sm {
-              margin-bottom: 24px;
-            }
+            // @include md {
+            //   margin-bottom: 24px;
+            // }
+
+            // @include xs {
+            //   margin-bottom: 0;
+            // }
   
             & span {
               color: $accent-blue;
@@ -195,22 +241,30 @@
           }
   
           .cover {
-            flex: 0 0 60%;
+            @include xl {
+              flex: 0 0 60%;
+            }
   
             @media (max-width: map-get($breakpoints, xl)) {
-              flex: 0 0 30%;
+              // flex: 0 0 30%;
               background-position: center;
             }
   
             @media (max-width: map-get($breakpoints, md)) {
-              min-height: 360px;
-              flex: 1;
+              // min-height: 360px;
+              // flex: 1;
               background-position: center;
+            }
+          }
+
+          .cover, .meta {
+            @include md {
+              flex: 1;
             }
           }
   
           .meta {
-            flex: 1;
+            // flex: 1;
           }
         }
   
@@ -220,7 +274,9 @@
           }
   
           .cover, .meta {
-            flex: 1;
+            @include md {
+              flex: 1;
+            }
           }
         }
       }
