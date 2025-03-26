@@ -86,6 +86,7 @@
   @layer base {
     display: flex;
     width: fit-content;
+    max-height: 320px;
   }
 
   @include md {
