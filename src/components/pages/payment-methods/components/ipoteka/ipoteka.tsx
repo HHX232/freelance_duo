@@ -8,6 +8,9 @@ import clsx from 'clsx'
 import {FC} from 'react'
 import Image from 'next/image'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
+// import H3Title from '@src/components/UI-kit/Text-Elements/Typography/Headers/H3Title'
+import H4Title from '@src/components/UI-kit/Text-Elements/Typography/Headers/H4Title'
 
 interface IIpotekaTabProps {
   setShownRequestCallBack: (flag: boolean) => void
@@ -71,20 +74,38 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
             <div className={clsx(ipotekaStyles.meta, styles.meta)}>
               <div className={clsx(ipotekaStyles.meta__info, styles.meta__info)}>
                 <div className={clsx(styles['meta__info-inner'], ipotekaStyles.info_content)}>
-                  <h3 className={clsx(styles['meta__title'], ipotekaStyles.meta_title)}>
+                  <H4Title extraClass={styles.extra_title_4}>
                     Одобрение ипотеки
                     <br />
                     <span>по 2 документам</span>
                     <br /> за 5 минут
-                  </h3>
-                  <p className={clsx(styles['meta__info-inner__caption'])} style={{color: '#555'}}>
+                  </H4Title>
+
+                  <ParagraphUI extraClass={styles.paragraph_extra} size={'md'} weight={'regular'}>
                     Бесплатная консультация с кредитным специалистом по номеру
-                  </p>
+                  </ParagraphUI>
                   <div>
-                    <p className={clsx(ipotekaStyles.contacts, styles['meta__info-inner__phone'])}>8 (812) 660–82–71</p>
-                    <p className={clsx(styles['meta__info-inner__caption'])} style={{color: '#A0A3A8', marginTop: 10}}>
+                    {/* <p className={clsx(ipotekaStyles.contacts, styles['meta__info-inner__phone'])}>8 (812) 660–82–71</p> */}
+                    <ParagraphUI
+                      extraClass={styles.paragraph_extra_lg}
+                      extraStyle={{color: '#11627D'}}
+                      size={'lg'}
+                      weight='regular'
+                    >
+                      8 (812) 660–82–71
+                    </ParagraphUI>
+                    {/* <p className={clsx(styles['meta__info-inner__caption'])} style={{color: '#A0A3A8', marginTop: 10}}>
                       ежедневно с 9:00 до 18:00
-                    </p>
+                    </p> */}
+                    <ParagraphUI
+                      extraClass={styles.paragraph_extra}
+                      extraStyle={{color: '#A0A3A8', marginTop: 10}}
+                      size='md'
+                      weight='regular'
+                    >
+                      {' '}
+                      ежедневно с 9:00 до 18:00
+                    </ParagraphUI>
                   </div>
                 </div>
                 <div className={clsx(styles['meta-buttons'], ipotekaStyles.controls)}>

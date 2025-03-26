@@ -7,6 +7,97 @@
   text-wrap: nowrap;
 }
 
+.paragraph_extra_lg {
+  @include custom(0, map-get($breakpoints, lg)) {
+    font-size: 24px !important;
+
+  }
+
+  @include custom(0, map-get($breakpoints, md)) {
+    font-size: 24px !important;
+
+  }
+
+  @include custom(0, map-get($breakpoints, sm)) {
+    font-size: 20px !important;
+
+  }
+}
+
+.extra_title_4 {
+  color: #555;
+
+  span {
+    color: #11627D;
+
+    @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 32px !important;
+
+    }
+
+    @include custom(0, map-get($breakpoints, md)) {
+      font-size: 32px !important;
+
+    }
+
+    @include custom(0, map-get($breakpoints, sm) + 80px) {
+      font-size: 22px !important;
+
+    }
+  }
+
+  @include custom(0, map-get($breakpoints, lg)) {
+    font-size: 32px !important;
+
+  }
+
+  @include custom(0, map-get($breakpoints, md)) {
+    font-size: 32px !important;
+
+  }
+
+  @include custom(0, map-get($breakpoints, sm) + 80px) {
+    font-size: 22px !important;
+
+  }
+}
+
+.paragraph_extra {
+
+  @include custom(0, map-get($breakpoints, lg)) {
+    font-size: 16px !important;
+
+  }
+
+  @include custom(0, map-get($breakpoints, md)) {
+    font-size: 16px !important;
+
+  }
+
+  @include custom(0, map-get($breakpoints, sm)) {
+    font-size: 14px !important;
+
+  }
+
+  &>p {
+
+    @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 16px !important;
+
+    }
+
+    @include custom(0, map-get($breakpoints, md)) {
+      font-size: 16px !important;
+
+    }
+
+    @include custom(0, map-get($breakpoints, sm)) {
+      font-size: 14px !important;
+
+    }
+  }
+}
+
 .button_extra_2 {
   padding: 12px 36px;
   // width: fit-content !important;
@@ -484,23 +575,36 @@
 
         background-color: #fff;
 
+
+
         @layer base {
-          padding: 24px 16px;
+
+          padding: 24px 20px;
           gap: 36px;
         }
 
-        @include md {
+        @include xs {
           padding: 24px 16px;
+        }
+
+
+        @include sm {
+          padding: 24px 20px;
+        }
+
+        @include md {
+          padding: 24px 24px 36px 24px;
           gap: 57px;
         }
 
         @include lg {
-          padding: 24px 16px;
+          padding: 24px 24px 36px 24px;
           gap: 39px;
         }
 
         @include xl {
           width: 100%;
+          padding: 40px 40px 60px 40px;
         }
 
         &__title {
@@ -539,8 +643,9 @@
             display: flex;
             flex-direction: column;
 
+            // гэп для одобрения ипотеки
             @layer base {
-              gap: 24px;
+              gap: 40px;
             }
 
             &__caption {
