@@ -3,7 +3,7 @@ import MapPage from '@pages/map/Map'
 //import {RedirectType, redirect} from 'next/navigation'
 
 export async function generateMetadata(): Promise<Metadata> {
-  // TODO заменить данные
+  // TODO заменить данные, иногда есть ошибка с MapPage
   return {
     title: 'Кронфорт – новые жилые кварталы в Кронштадте от застройщика ГК «Алькор»',
     description:
