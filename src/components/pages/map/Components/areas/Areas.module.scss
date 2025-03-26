@@ -11,21 +11,22 @@
       linear-gradient(47.64deg, rgb(30 56 73 / 50%) 6.94%, rgb(30 56 73 / 0%) 83.47%), url('/content/areas.webp');
     background-position: center;
     background-size: cover;
-    gap: 40px;
   }
 
   @include sm {
+    justify-content: space-between;
     padding: 40px 20px;
-    gap: 6 0;
   }
 
   @include md {
+    justify-content: end;
     padding: 90px 40px;
     background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
       linear-gradient(37.52deg, rgb(30 56 73 / 70%) 25.4%, rgb(30 56 73 / 0%) 65.67%), url('/content/areas.webp');
   }
 
   @include lg {
+    justify-content: end;
     padding: 60px 40px;
     background: linear-gradient(115deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%),
       linear-gradient(90deg, rgb(30 56 73 / 70%) 0.01%, rgb(0 0 0 / 0%) 35.63%), url('/content/areas.webp');
@@ -33,54 +34,51 @@
   }
 
   @include xl {
+    justify-content: space-between;
     padding: 90px 142px;
   }
 
   @include xxl {
+    justify-content: space-between;
     padding: 90px 170px;
   }
 
   @include xxxl {
+    justify-content: space-between;
     padding: 130px 190px;
   }
 }
 
-.captions {
+.captions-title {
   @layer base {
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    @include font(3, 30, 40, 400);
+
+    margin-bottom: 60px !important;
+    color: $yellow-text;
+  }
+
+  @include xs {
+    margin-bottom: 60px;
   }
 
   @include sm {
-    gap: 60px;
+    margin-bottom: 60px;
   }
 
   @include md {
-    height: 100%;
-    justify-content: space-between;
+    @include font(3, 36, 50, 400);
+
+    margin-bottom: 60px !important;
   }
 
   @include lg {
-    justify-content: start;
-    gap: 60px;
+    margin-bottom: 60px !important;
   }
 
-  &-title {
-    @layer base {
-      @include font(3, 30, 40, 400);
+  @include xl {
+    @include font(3, 42, 54, 400);
 
-      color: $yellow-text;
-    }
-
-    @include md {
-      @include font(3, 36, 50, 400);
-    }
-
-    @include xl {
-      @include font(3, 42, 54, 400);
-    }
+    margin-bottom: 60px !important;
   }
 }
 
