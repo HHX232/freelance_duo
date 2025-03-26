@@ -53,7 +53,9 @@
     background-position: center;
   }
 
-  @include xxl {}
+  @include xxl {
+    padding: 40px 60px;
+  }
 }
 
 .inner-wrapper {
