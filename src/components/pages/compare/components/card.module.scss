@@ -155,18 +155,33 @@
 }
 
 .reservation {
-  position: absolute !important;
+  position: absolute;
   top: 155px;
   left: 0;
-  width: 100% !important;
+  display: flex;
+  width: 100%;
   max-width: 180px;
-  height: 30px !important;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f47422;
+  border-radius: 4px;
+  background: #f47422;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
 
-  p {
-    font-size: 10px !important;
-    font-weight: 500 !important;
+  &:hover {
+    background-color: #c38566 !important;
+  }
+
+  &:active {
+    border: 2px solid #936147 !important;
+    background-color: #b17759 !important;
   }
 
   @media (max-width: 616px) {
