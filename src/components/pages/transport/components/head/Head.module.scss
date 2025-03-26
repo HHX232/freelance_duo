@@ -5,13 +5,8 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 90px 16px 40px;
-
-    //background-image: linear-gradient(90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0) 10%, rgb(0 0 0 / 0.5) 100%), url("/content/parking/head_bg.webp");
-    //background-position-x: 80%;
     background-image: linear-gradient(90deg, rgb(0 0 0 / 0%) 10%, rgb(0 0 0 / 50%) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0%) 10%, rgb(0 0 0 / 50%) 100%), url("/content/contact-form.webp");
     background-position: center;
-
-    //background-position-y: 15%;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
@@ -63,7 +58,6 @@
 
 .container {
   @layer base {
-    //@include content-container;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -96,6 +90,9 @@
 }
 
 .head_title {
+  word-break: break-all;
+  word-wrap: normal;
+
   @layer base {
     @include font(3, 44, 54, 400);
   }
