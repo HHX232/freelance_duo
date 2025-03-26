@@ -1,3 +1,5 @@
+import {ButtonHTMLAttributes} from 'react'
+
 type TFullButton = 'Link' | 'Button'
 type TBorderColor =
   | 'none'
@@ -39,7 +41,7 @@ interface IArrowProps {
   arrowStrokeWidth?: string
   arrowExtraStyles?: React.CSSProperties
 }
-export interface IFullButtonProps extends IArrowProps {
+export interface IFullButtonProps extends IArrowProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   activeButton: boolean
   type?: TFullButton
   border: boolean

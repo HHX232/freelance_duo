@@ -9,7 +9,7 @@ import {useWindowWidth} from '../HeaderMenu/hooks/useWindowWidth'
 import {usePathname} from 'next/navigation'
 import {useEffect, useState} from 'react'
 
-export default function LogoLink({isMenuOpened, isSmall, isTransparent}: ILogoLinkProps) {
+export default function LogoLink({isMenuOpened, isSmall, isTransparent, ...rest}: ILogoLinkProps) {
   const windowWidth = useWindowWidth()
   const pathname = usePathname()
 
@@ -36,6 +36,7 @@ export default function LogoLink({isMenuOpened, isSmall, isTransparent}: ILogoLi
 
   return (
     <div
+      {...rest}
       className={clsx(styles.logoLink, isMenuOpened ? styles.menuOpened : '', isTransparent ? styles.transparent : '')}
     >
       {isSmall || isLogoSmall || isNotHomePage ? (
