@@ -9,45 +9,27 @@ const AreasContent = () => {
   const mobileSlides: React.ReactNode[] = [
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']} ${styles.mobile_slide}`} key={7891}>
       <div className={`${styles['caption']}`}>
-        <TextAccentBlockUI
-          extraTitleClass={styles['caption__title']}
-          theme='dark'
-          textTitle='3'
-          hideSubTitle
-          hideMainContent
-          textSubTitle='м'
-          textMainContent=''
-        />
+        <h2 className={styles['caption__title']}>
+          <span>&#62;3</span> м
+        </h2>
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>высота потолков</p>
       </div>
     </div>,
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']} ${styles.mobile_slide}`} key={74891}>
       <div className={`${styles['caption']}`}>
-        <TextAccentBlockUI
-          extraTitleClass={styles['caption__title']}
-          theme='dark'
-          textTitle='24-100'
-          hideSubTitle
-          hideMainContent
-          textSubTitle='м2'
-          textMainContent=''
-        />
+        <h2 className={styles['caption__title']}>
+          <span>24-100</span> м2
+        </h2>
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>площадь квартир</p>
       </div>
     </div>,
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']} ${styles.mobile_slide}`} key={222}>
       <div className={`${styles['caption']}`}>
-        <TextAccentBlockUI
-          extraTitleClass={styles['caption__title']}
-          theme='dark'
-          textTitle='10'
-          hideSubTitle
-          hideMainContent
-          textSubTitle=''
-          textMainContent=''
-        />
+        <h2 className={styles['caption__title']}>
+          <span>10</span>
+        </h2>
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>корпусов в проекте</p>
       </div>
