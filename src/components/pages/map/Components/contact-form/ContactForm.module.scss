@@ -1,5 +1,30 @@
+.form_width {}
+
+.extra_subtitle {
+  color: #fff;
+  margin-top: 20px;
+}
+
+.extra_caption {
+  color: #fff;
+
+  @include xs {
+    padding-top: 24px;
+  }
+
+  @include lg {
+    padding-top: 20px;
+  }
+
+  @include xl {
+    padding-top: 36px;
+  }
+}
+
 .contact-form-wrapper {
   display: flex;
+
+
 
   @layer base {
     display: flex;
@@ -12,6 +37,8 @@
 
   & .info {
     @include content-container;
+
+
 
     display: flex;
     justify-content: center;
@@ -169,6 +196,8 @@
       & a {
         display: inline;
         text-decoration: underline !important;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
       }
     }
   }
@@ -209,6 +238,22 @@
 
 .wrapper {
   // @layer {}
+
+  @include custom(0, map-get($breakpoints, xxxl)) {
+    max-width: 470px;
+  }
+
+  @include custom(0, map-get($breakpoints, xxl)) {
+    max-width: 500px;
+  }
+
+  @include custom(0, map-get($breakpoints, xl)) {
+    max-width: 472px;
+  }
+
+  @include custom(0, map-get($breakpoints, lg)) {
+    max-width: 412px;
+  }
 
   @include xl {
     min-width: 472px;
