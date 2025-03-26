@@ -5,7 +5,7 @@ import MapLegend from './mapLegend/mapLegend'
 import MapSidebar from './mapSidebar/mapSidebar'
 import MobilePopup from './mobilePopup/mobilePopup'
 import CustomPlacemark from './customPlacemark'
-import {FC, useState, useEffect, useRef} from 'react'
+import {FC, useState, useEffect, useRef, useCallback} from 'react'
 import { mapKFPoi } from '@src/lib/utils/catalog/mapMockData'
 
 const getIconName = (name: string) => {
@@ -55,6 +55,24 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
   const [ymaps, setYmaps] = useState<any | null>(null)
   const [poi, setPoi] = useState<any[]>()
   const [zoom, setZoom] = useState(14);
+  const [hoveredCoords, setHoveredCoords] = useState<number[] | null>(null);
+  const animationFrameId = useRef<number | null>(null);
+
+  const handleMouseMove = useCallback((e: ymaps.IEvent) => {
+    if (animationFrameId.current) {
+      cancelAnimationFrame(animationFrameId.current);
+    }
+  
+    animationFrameId.current = requestAnimationFrame(() => {
+      const coords = e.get("coords");
+      setHoveredCoords(coords);
+    });
+  }, []);
+
+  const areCoordsClose = (coords1: number[], coords2: number[]) => {
+    const threshold = 0.0018;
+    return Math.abs(coords1[0] - coords2[0]) < threshold && Math.abs(coords1[1] - coords2[1]) < threshold;
+  };
 
   useEffect(() => {
     if (!mapRef.current || !ymaps) return;
@@ -123,6 +141,7 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
         onLoad={(ymapsInstance) => {
           setYmaps(ymapsInstance)
         }}
+        onMouseMove={handleMouseMove}
         className={styles.trmap_map}
     >
       <Clusterer 
@@ -149,17 +168,25 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
         }}
       >
         {showLegend && poi && poi.map((place, index) => {
-            return <Placemark
-            key={place.name + index}
-            geometry={place.coords}
-            properties={{ hintContent: place.name, balloonContentBody: place.name }}
-            modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
-            options={{
-              iconLayout: "default#image",
-              iconImageHref: `/map/icons/${place.icon}`,
-              iconImageSize: /кронфорт/gi.test(place.name) ? [60, 60] : [40, 40],
-            }}
-          />
+            // return <Placemark
+            // key={place.name + index}
+            // geometry={place.coords}
+            // properties={{ hintContent: place.name, balloonContentBody: place.name }}
+            // modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+            // options={{
+            //   iconLayout: "default#image",
+            //   iconImageHref: `/map/icons/${place.icon}`,
+            //   iconImageSize: /кронфорт/gi.test(place.name) ? [60, 60] : [40, 40],
+            // }}
+            return <CustomPlacemark
+              key={index}
+              coordinates={place.coords}
+              hintText={place.name}
+              size={/кронфорт/gi.test(place.name) ? 60 : 40}
+              iconUrl={place.icon}
+              factory={ymapsFactory}
+              foreignHover={hoveredCoords && areCoordsClose(hoveredCoords, place.coords) || false}
+            />
         })}
         { mapKFPoi && mapKFPoi.map((place, index) => {
             return <CustomPlacemark
@@ -169,6 +196,7 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
               size={/кронфорт/gi.test(place.name) ? 60 : 40}
               iconUrl={place.icon}
               factory={ymapsFactory}
+              foreignHover={hoveredCoords && areCoordsClose(hoveredCoords, place.coords) || false}
           />
         })}
       </Clusterer>

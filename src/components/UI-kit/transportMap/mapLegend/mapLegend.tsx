@@ -9,6 +9,7 @@ interface IMapLegend {
 
 const MapLegend: FC<IMapLegend> = ({switchVisibility}) => {
   const [isChecked, setIsChecked] = useState(true)
+  const [iconSrc, setIconSrc] = useState('/map/icons/legend_icon_black.svg')
 
   const handleSwitch = (event: ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked)
@@ -33,7 +34,12 @@ const MapLegend: FC<IMapLegend> = ({switchVisibility}) => {
         <SwitchUI checked={isChecked} onChange={handleSwitch} />
         <p className={styles['maplegend-name']}>Инфраструктура</p>
       </div>
-      <img src={`/map/icons/legend_icon.svg`} alt='info' className={styles['maplegend-info-icon']} />
+      <img 
+        src={iconSrc} 
+        alt='info' 
+        className={styles['maplegend-info-icon']}
+        onMouseEnter={() => setIconSrc('/map/icons/legend_icon.svg')}
+        onMouseLeave={() => setIconSrc('/map/icons/legend_icon_black.svg')} />
       {/* <span className={styles['maplegend-info-icon']}>i</span> */}
       <div className={styles['maplegend-legend']}>
         {legendItems.map((item) => {
