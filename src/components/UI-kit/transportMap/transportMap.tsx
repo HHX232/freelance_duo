@@ -273,8 +273,6 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
             <div className={`${styles.zoom_controls} ${showSidebar ? styles.zoom_controls_expand : ''}`}>
               <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom + 1)}>+</button>
               <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom - 1)}>−</button>
-              <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom + 1)}>+</button>
-              <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom - 1)}>−</button>
             </div>
             <button className={styles.mobile_expand_btn} onClick={handleExpandMap}>СМОТРЕТЬ НА КАРТЕ</button>
             {withLegend ? <MapLegend switchVisibility={(show) => setShowLegend(show)}/> : null}
