@@ -87,7 +87,7 @@
 .caption-items {
   @layer base {
     display: flex;
-    width: 100%;
+    width: fit-content;
   }
 
   @include md {
