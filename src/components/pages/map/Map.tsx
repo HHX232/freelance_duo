@@ -21,6 +21,7 @@ import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 import TransportPage from './Components/transport/Transport'
 import Swipe from '@src/components/UI-kit/BaseControls/Swipe/Swipe'
+import TextAccentBlockUI from '@src/components/UI-kit/Text-Blocks/TextAccentBlockUI/TextAccentBlockUI'
 const Compass = dynamic(() => import('./Components/card/Compass'), {ssr: false})
 
 const directionHints: DirectionHint[] = [
@@ -193,17 +194,29 @@ const MapContent = () => {
   const mobileSlides: React.ReactNode[] = [
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']}`} key={999}>
       <div className={styles['caption']}>
-        <h2 className={styles['caption__title']}>
-          3<span>мин</span>
-        </h2>
+        <TextAccentBlockUI
+          extraTitleClass={styles['caption__title']}
+          theme='dark'
+          textTitle='3'
+          hideSubTitle
+          hideMainContent
+          textSubTitle='мин'
+          textMainContent=''
+        />
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>до моря</p>
       </div>
 
       <div className={styles['caption']}>
-        <h2 className={styles['caption__title']}>
-          10<span>мин</span>
-        </h2>
+        <TextAccentBlockUI
+          extraTitleClass={styles['caption__title']}
+          theme='dark'
+          textTitle='10'
+          hideSubTitle
+          hideMainContent
+          textSubTitle='мин'
+          textMainContent=''
+        />
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>
           до Кронштадского <br /> шоссе и КАД
@@ -212,9 +225,15 @@ const MapContent = () => {
     </div>,
     <div className={`${emblaStyle['embla__slide']} ${styles['caption-items']}`} key={888}>
       <div className={styles['caption']}>
-        <h2 className={styles['caption__title']}>
-          30<span>мин</span>
-        </h2>
+        <TextAccentBlockUI
+          extraTitleClass={styles['caption__title']}
+          theme='dark'
+          textTitle='30'
+          hideSubTitle
+          hideMainContent
+          textSubTitle='мин'
+          textMainContent=''
+        />
         <hr className={styles['caption__divider']} />
         <p className={styles['caption__description']}>до «Лахта Центра»</p>
       </div>
