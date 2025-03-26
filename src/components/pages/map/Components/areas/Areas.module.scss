@@ -36,17 +36,17 @@
   }
 
   @include xl {
-    justify-content: space-between;
+    justify-content: start;
     padding: 90px 142px;
   }
 
   @include xxl {
-    justify-content: space-between;
+    justify-content: start;
     padding: 90px 170px;
   }
 
   @include xxxl {
-    justify-content: space-between;
+    justify-content: start;
     padding: 130px 190px;
   }
 }
