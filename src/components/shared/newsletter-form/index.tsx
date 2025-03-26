@@ -21,7 +21,7 @@ export const NewsletterForm = () => {
                 activeButton={true}
                 border={false}
                 buttonText={'Подписаться'}
-                borderColor={''}
+                borderColor={'none'}
                 buttonFill={'bronze-500'}
                 buttonElementColor={'white'}
                 extraClass={styles['subscribe-button']}

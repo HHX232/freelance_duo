@@ -28,7 +28,7 @@ const ContactFormPage = () => {
                 onClick={() => {}}
                 activeButton={true}
                 border={false}
-                borderColor={''}
+                borderColor={'none'}
                 buttonFill={'bronze-500'}
                 buttonText={'Отправить'}
                 buttonElementColor={'white'}

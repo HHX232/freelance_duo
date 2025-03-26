@@ -1,13 +1,12 @@
 import {Drawer} from 'antd'
 import {FC} from 'react'
 import styles from './index.module.scss'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
-import BorderedButton from '@src/components/UI-kit/BaseControls/buttons/old/borderedButton/BorderedButton'
 import {CloseButton} from '@src/components/UI-kit/BaseControls/buttons/close-button'
 import clsx from 'clsx'
 import {useMedia} from '@src/lib/utils/useMedia'
 import {useRouter} from 'next/navigation'
 import Swipe from '@src/components/UI-kit/BaseControls/Swipe/Swipe'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface IInstallmentPlanDrawerProps {
   shown: boolean
@@ -101,12 +100,36 @@ export const InstallmentPlanDrawer: FC<IInstallmentPlanDrawerProps> = ({shown, o
       </div>
 
       <div className={styles.buttonGroup}>
-        <FilledButton onClick={handleClick}>
+        {/* <FilledButton onClick={handleClick}>
           <span>ПОДОБРАТЬ КВАРТИРУ</span>
-        </FilledButton>
-        <BorderedButton>
+        </FilledButton> */}
+        <span style={{zIndex: 7, width: '100%'}}>
+          <FullButton
+            onClick={handleClick}
+            extraClass={styles.button_extra}
+            buttonBorderRadius='6px'
+            activeButton={true}
+            buttonElementColor={'white'}
+            buttonFill={'bronze-500'}
+            border={false}
+            borderColor='none'
+            buttonText='ПОДОБРАТЬ КВАРТИРУ'
+          />
+        </span>
+        {/* <BorderedButton>
           <span>Получить консультацию</span>
-        </BorderedButton>
+        </BorderedButton> */}
+        <span style={{zIndex: 7, width: '100%'}}>
+          <FullButton
+            borderColor={'gray-dark'}
+            extraClass={styles.button_extra}
+            buttonFill='none'
+            border={true}
+            borderWidth='1px'
+            activeButton={true}
+            buttonText='Получить консультацию'
+          />
+        </span>
       </div>
     </Drawer>
   )

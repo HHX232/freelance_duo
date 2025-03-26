@@ -38,7 +38,7 @@ export default function FooterContacts(props: IFooterContactsProps) {
           href={'/#vkLink'}
           activeButton={true}
           border={false}
-          borderColor={''}
+          borderColor={'none'}
           buttonFill={'none'}
           buttonElementColor={'black'}
           buttonText={''}
@@ -52,7 +52,7 @@ export default function FooterContacts(props: IFooterContactsProps) {
           href={'/instLink'}
           activeButton={true}
           border={false}
-          borderColor={''}
+          borderColor={'none'}
           buttonFill={'none'}
           buttonElementColor={'black'}
           buttonText={''}

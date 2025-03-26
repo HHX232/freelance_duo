@@ -15,12 +15,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function PolicyPage() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <Policy />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

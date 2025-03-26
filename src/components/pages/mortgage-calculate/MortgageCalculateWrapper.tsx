@@ -59,7 +59,6 @@ const MortgageCalculateWrapper = () => {
                 fill={'white'}
                 extraClass={styles.button}
               />
-
             </div>
             <div className={styles.dataInputWrapper}>
               <InputField
@@ -152,7 +151,7 @@ const MortgageCalculateWrapper = () => {
               buttonText={`СВЯЗАТЬСЯ С НАМИ`}
               activeButton={true}
               border={false}
-              borderColor={''}
+              borderColor={'none'}
               extraClass={styles.button}
               buttonFill={`white`}
               buttonElementColor={`black`}

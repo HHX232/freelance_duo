@@ -57,7 +57,7 @@ const HomePage = () => {
             buttonBorderRadius={'6px'}
             activeButton={true}
             border={false}
-            borderColor={''}
+            borderColor={'none'}
             buttonFill={'bronze-500'}
             buttonElementColor={'white'}
             buttonText={''}

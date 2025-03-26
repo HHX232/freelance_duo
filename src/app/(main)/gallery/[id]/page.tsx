@@ -20,12 +20,12 @@ export default async function ProgressObjectPage({params}: {params: {id: string}
   const progress = await getProgressById(params.id)
 
   return (
-    <>
+    <div>
       <Header />
       <main>
         <ProgressObj progress={progress} />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

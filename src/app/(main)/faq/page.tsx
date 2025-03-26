@@ -16,12 +16,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Map() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <FAQ />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

@@ -1,5 +1,4 @@
 import { Placemark } from "@pbe/react-yandex-maps";
-
 interface CustomPlacemarkProps {
   coordinates: number[];
   hintText: string;

@@ -148,7 +148,7 @@ export const FullButton: FC<IFullButtonProps> = ({
           [styles.active_button_transparent_with_orange_border]:
             activeButton && buttonFill === 'none' && borderColor === 'orange-default',
           [styles.active_button_transparent_with_gray_border]:
-            activeButton && buttonFill === 'none' && borderColor === 'gray',
+            activeButton && buttonFill === 'none' && borderColor === 'gray-dark',
           // ! Стили для дизейбл версий
           [styles.disabled]: disabled,
           [styles.disabled_active_button_bronze]: disabled && activeButton && buttonFill === 'bronze-500',
@@ -157,7 +157,7 @@ export const FullButton: FC<IFullButtonProps> = ({
           [styles.disabled_active_button_transparent_with_orange_border]:
             disabled && activeButton && buttonFill === 'none' && borderColor === 'orange-default',
           [styles.disabled_active_button_transparent_with_gray_border]:
-            disabled && activeButton && buttonFill === 'none' && borderColor === 'gray',
+            disabled && activeButton && buttonFill === 'none' && borderColor === 'gray-dark',
           [styles.disabled_active_button_gray_transparent]:
             disabled && activeButton && !border && buttonFill === 'gray-light',
           // ! Ниже идет кастомные отдельные части кнопок

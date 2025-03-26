@@ -1,6 +1,6 @@
 import {ReactNode} from 'react'
-import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
-
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import styles from './contentData.module.scss'
 export interface AboutItem {
   img: string
   alt: string
@@ -10,7 +10,7 @@ export interface AboutItem {
 
 const Content = () => {
   return (
-    <div style={{display: 'flex', flexDirection: 'column', gap: '74px'}}>
+    <div style={{display: 'flex', flexDirection: 'column', gap: '74px', marginLeft: '2px'}}>
       <p style={{fontWeight: '300'}}>
         <span style={{fontWeight: '500'}}>
           Все необходимые документы доступны всем пользователям на сайте{' '}
@@ -30,9 +30,21 @@ const Content = () => {
         target='_blank'
         rel='noreferrer'
       >
-        <FilledButton variety='primary' className={'route_docs'}>
+        {/* <FilledButton variety='primary' className={'route_docs'}>
           Перейти на сайт
-        </FilledButton>
+        </FilledButton> */}
+        <span style={{zIndex: '9'}}>
+          <FullButton
+            activeButton={true}
+            buttonFill={'bronze-500'}
+            border={false}
+            buttonText={'Перейти на сайт'}
+            borderColor='none'
+            buttonElementColor='white'
+            extraClass={styles.extra_button}
+            buttonBorderRadius='6px'
+          />
+        </span>
       </a>
     </div>
   )

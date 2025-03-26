@@ -1,6 +1,7 @@
 'use client'
 import styles from './transportMap.module.scss'
 import {YMaps, Map, Placemark, GeoObject, Clusterer, useYMaps} from '@pbe/react-yandex-maps'
+import {YMaps, Map, Placemark, GeoObject, Clusterer, useYMaps} from '@pbe/react-yandex-maps'
 import MapLegend from './mapLegend/mapLegend'
 import MapSidebar from './mapSidebar/mapSidebar'
 import MobilePopup from './mobilePopup/mobilePopup'
@@ -8,6 +9,50 @@ import CustomPlacemark from './customPlacemark'
 import {FC, useState, useEffect, useRef, useCallback} from 'react'
 import { mapKFPoi } from '@src/lib/utils/catalog/mapMockData'
 
+const getIconName = (name: string) => {
+  const lname = name.toLowerCase();
+  switch (true) {
+    case lname.indexOf('школа') !== -1:
+        return 'school_icon.svg'
+    case lname.indexOf('спорт') !== -1:
+        return 'sport_icon.svg'
+    case lname.indexOf('фитнесс') !== -1:
+        return 'sport_icon.svg'
+    case lname.indexOf('детский сад') !== -1:
+        return 'kindergarden_icon.svg'
+    case lname.indexOf('поликлинника') !== -1:
+        return 'medicine_icon.svg'
+    case lname.indexOf('больница') !== -1:
+        return 'medicine_icon.svg'
+    case lname.indexOf('магазин') !== -1:
+        return 'store_icon.svg'
+    case lname.indexOf('трк') !== -1:
+        return 'mall_icon.svg'
+    case lname.indexOf('молл') !== -1:
+        return 'mall_icon.svg'
+    case lname.indexOf('ресторан') !== -1:
+        return 'restorant_icon.svg'
+    case lname.indexOf('парк') !== -1:
+        return 'park_icon.svg'
+    case lname.indexOf('набережная') !== -1:
+        return 'coast_icon.svg'
+    default:
+        return 'store_icon.svg'
+  }
+}
+
+interface MapWithClustersProps {
+  mapPoi?: Array<{ name: string; coords: number[]; icon: string }>;
+  mapKFPoi?: Array<{ name: string; coords: number[]; icon: string }>;
+  showLegend: boolean;
+  customRoutes: any[];//Array<{ points: number[][]; arrow: any; color: string; lineWidth: number; hint: string}>;
+  mapZoom: number;
+}
+
+const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegend, customRoutes, mapZoom }) => {
+  const ymapsFactory = useYMaps(["templateLayoutFactory"]); // Дожидаемся загрузки API
+
+  const mapRef = useRef<ymaps.Map | undefined>(undefined)
 const getIconName = (name: string) => {
   const lname = name.toLowerCase();
   switch (true) {
@@ -84,7 +129,9 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
       map.behaviors.disable('scrollZoom');
 
       if(mapPoi) {
+      if(mapPoi) {
         //если точки интереса переданы как пропсы, то не ищем на карте
+        setPoi(mapPoi)
         setPoi(mapPoi)
       } else {
         try {
@@ -118,6 +165,14 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
       }
     });
   }, [mapRef.current]);
+
+  useEffect(() => {
+    if (mapRef.current && zoom) {
+      const newZoom = Math.max(2, Math.min(19, mapZoom ));
+      setZoom(newZoom);
+      mapRef.current.setZoom(newZoom, { duration: 200 });
+    }
+  }, [mapZoom]) 
 
   useEffect(() => {
     if (mapRef.current && zoom) {
@@ -269,8 +324,78 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
               mapZoom={propZoom}
 
             />
+        {showLegend && customRoutes && customRoutes.map((route, index) => (
+          <>
+            <GeoObject
+              key={route.hint}
+              properties={{hintContent: route.hint}}
+              geometry={{
+                type: "LineString",
+                coordinates: route.points,
+              }}
+              options={{
+                strokeColor: route.color,
+                strokeWidth: route.lineWidth,
+                strokeStyle: "dash", // Пунктирная линия
+              }}
+            />
+            <Placemark
+              key={index}
+              geometry={route.arrow.coords}
+              modules={['geoObject.addon.balloon']}
+              options={{
+                iconLayout: "default#image",
+                iconImageHref: `/map/icons/arrow_${route.arrow.direction}.svg`,
+                iconColor: route.color,
+                iconImageSize: [20, 20],
+                iconImageOffset: [-10, -10]
+              }}
+            />
+          </>
+        ))}
+    </Map>
+  );
+};
+
+interface ITransportMap {
+  customPoi?: any[],
+  customRoutes?: any[],
+  withLegend?: boolean,
+  withSidebar?: boolean
+}
+
+const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, withSidebar}) => {
+  const [showLegend, setShowLegend] = useState(true)
+  const [showSidebar, setShowSidebar] = useState(false)
+  const [modalView, setModalView] = useState(false);
+  const [propZoom, setPropZoom] = useState(14);
+  
+  
+  
+  const toggleSidebar = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+   setShowSidebar(!showSidebar)
+  }
+
+  const handleExpandMap = () => {
+    setModalView(true)
+  }
+
+  return (
+    <div className={styles.trmap_container}>
+        <YMaps query={{lang: "ru_RU", apikey: "f4f9faf3-0ce8-4dd2-9b67-7843cfeff30f"}}>
+            <MapWithClusters 
+              mapPoi={customPoi} 
+              mapKFPoi={mapKFPoi} 
+              showLegend={showLegend}
+              customRoutes={customRoutes || []}
+              mapZoom={propZoom}
+
+            />
             {/* Кастомные zoom кнопки */}
             <div className={`${styles.zoom_controls} ${showSidebar ? styles.zoom_controls_expand : ''}`}>
+              <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom + 1)}>+</button>
+              <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom - 1)}>−</button>
               <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom + 1)}>+</button>
               <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom - 1)}>−</button>
             </div>
