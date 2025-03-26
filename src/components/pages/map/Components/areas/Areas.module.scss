@@ -15,19 +15,20 @@
   }
 
   @include sm {
-    justify-content: space-between;
+    justify-content: end;
     padding: 40px 20px;
   }
 
   @include md {
-    justify-content: end;
+    justify-content: space-between;
     padding: 90px 40px;
     background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
       linear-gradient(37.52deg, rgb(30 56 73 / 70%) 25.4%, rgb(30 56 73 / 0%) 65.67%), url('/content/areas.webp');
   }
 
   @include lg {
-    justify-content: end;
+    // justify-content: end;
+    justify-content: start;
     padding: 60px 40px;
     background: linear-gradient(115deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%),
       linear-gradient(90deg, rgb(30 56 73 / 70%) 0.01%, rgb(0 0 0 / 0%) 35.63%), url('/content/areas.webp');
@@ -51,36 +52,64 @@
 }
 
 .captions-title {
-  @layer base {
-    @include font(3, 30, 40, 400);
 
-    margin-bottom: 60px !important;
-    color: $yellow-text;
-  }
+  margin-bottom: 60px;
+  color: $yellow-text;
+  @include font(3, 42, 54, 400);
 
-  @include xs {
-    margin-bottom: 60px;
-  }
-
-  @include sm {
-    margin-bottom: 60px;
-  }
-
-  @include md {
-    @include font(3, 36, 50, 400);
-
-    margin-bottom: 60px !important;
-  }
-
-  @include lg {
-    margin-bottom: 60px !important;
-  }
-
-  @include xl {
+  @include custom(0, map-get($breakpoints, xl)) {
     @include font(3, 42, 54, 400);
-
     margin-bottom: 60px !important;
   }
+
+  @include custom(0, map-get($breakpoints, lg)) {
+    margin-bottom: 60px !important;
+  }
+
+  @include custom(0, map-get($breakpoints, md)) {
+    @include font(3, 36, 50, 400);
+    margin-bottom: 60px !important;
+  }
+
+  @include custom(0, map-get($breakpoints, sm) + 20px) {
+    @include font(3, 30, 40, 400);
+    margin-bottom: 40px !important;
+  }
+
+  @include custom(0, map-get($breakpoints, xs)) {
+    margin-bottom: 40px !important;
+  }
+
+  // @layer base {
+  //   @include font(3, 30, 40, 400);
+
+  //   margin-bottom: 60px !important;
+  //   color: $yellow-text;
+  // }
+
+  // @include xs {
+  //   margin-bottom: 40px !important;
+  // }
+
+  // @include sm {
+  //   margin-bottom: 40px !important;
+  // }
+
+  // @include md {
+  //   @include font(3, 36, 50, 400);
+
+  //   margin-bottom: 60px !important;
+  // }
+
+  // @include lg {
+  //   margin-bottom: 60px !important;
+  // }
+
+  // @include xl {
+  //   @include font(3, 42, 54, 400);
+
+  //   margin-bottom: 60px !important;
+  // }
 }
 
 .caption-items {
