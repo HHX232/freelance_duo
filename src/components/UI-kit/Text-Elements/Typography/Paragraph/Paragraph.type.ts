@@ -1,10 +1,10 @@
 type IParagraphSize = 'lg' | 'md' | 'sm' | 'xs'
-type IParagrapgWeight = 'light' | 'regular' | 'medium' | 'bold'
+type IParagraphWeight = 'light' | 'regular' | 'medium' | 'bold'
 
-interface IParagraphProps {
+interface IParagraphProps extends React.HTMLAttributes<HTMLParagraphElement> {
   children: React.ReactNode
-  size: IParagraphSize
-  weight?: IParagrapgWeight
+  size?: IParagraphSize
+  weight?: IParagraphWeight
   extraClass?: string
   extraStyle?: React.CSSProperties
 }

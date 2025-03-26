@@ -8,12 +8,14 @@ const ParagraphUI: FC<PropsWithChildren<IParagraphProps>> = ({
   size = 'lg',
   weight = 'medium',
   extraClass,
-  extraStyle
+  extraStyle,
+  ...rest
 }) => {
   return (
     <p
       className={cn(styles.paragraph, styles[`paragraph_${size}`], styles[`paragraph_${weight}`], extraClass)}
       style={extraStyle}
+      {...rest}
     >
       {children}
     </p>

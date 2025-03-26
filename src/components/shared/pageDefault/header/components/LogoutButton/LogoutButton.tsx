@@ -1,9 +1,9 @@
 import styles from './LogoutButton.module.scss'
 import {ILogoutButtonProps} from './LogoutButton.types'
 
-export default function LogoutButton({handleLogout, style}: ILogoutButtonProps) {
+export default function LogoutButton({handleLogout, style, ...rest}: ILogoutButtonProps) {
   return (
-    <div style={style} className={styles.logoutButton}>
+    <div {...rest} style={style} className={styles.logoutButton}>
       <button type='button' onClick={handleLogout}>
         <svg width='12' height='12' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <path
