@@ -155,17 +155,18 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
             </Map>
         </YMaps>
         <div className={`${styles.mobile_infoblock} ${open ? styles.ib_open : styles.ib_close}`}>
-            <div className={styles.infoblock_line}
-                {...(hasTouch ? 
-                    {
-                      //onTouchMove: handleTouchMove,
-                      onTouchEnd: handleTouchEnd
-                    } :
-                    {onClick: handleClick})}
+            <div className={styles.line_container}
+              {...(hasTouch ? 
+                {
+                  //onTouchMove: handleTouchMove,
+                  onTouchEnd: handleTouchEnd
+                } :
+                {onClick: handleClick})}
             >
+                <div className={styles.infoblock_line}></div>
+                <h4 className={styles.infoblock_title}>ОБОЗНАЧЕНИЯ</h4>
             </div>
             {open && <>
-                <h4 className={styles.infoblock_title}>ОБОЗНАЧЕНИЯ</h4>
                 <MapSidebar isOpen={true} isMobile/>
                 <h4 className={styles.infoblock_title_small}>ИНФРАСТРУКТУРА</h4>
                 <div className={styles['maplegend-legend']}>
