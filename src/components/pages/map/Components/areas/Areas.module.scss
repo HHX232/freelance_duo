@@ -122,7 +122,12 @@
     max-width: 320px;
   }
 
+  @include sm {
+    max-width: none;
+  }
+
   @include md {
+    max-width: none;
     flex-direction: column;
     gap: 40px;
   }
