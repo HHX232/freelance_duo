@@ -9,7 +9,8 @@
     top: 70vh;
     right: -36vw;
     display: none;
-    min-height: 653px;
+    height: 100vh;
+    max-height: 1000px;
     background: linear-gradient(180deg, #1e3849 0%, rgb(30 56 73 / 0%) 100%);
     content: '';
     transform: rotate(105deg);
@@ -190,10 +191,6 @@
     position: absolute;
     top: 0;
     right: 0;
-  }
-
-  @include md {
-    min-width: 215px;
   }
 
   &__title {
