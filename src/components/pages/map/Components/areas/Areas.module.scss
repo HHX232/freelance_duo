@@ -142,6 +142,10 @@
   position: relative;
   max-width: 320px;
 
+  @include custom(0, map-get($breakpoints, md)) {
+    max-width: none;
+  }
+
   & svg {
     position: absolute;
     top: 0;
