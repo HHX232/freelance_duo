@@ -3,6 +3,7 @@
     position: relative;
     display: flex;
     height: 100vh;
+    min-height: 800px;
     max-height: 1000px;
     flex-direction: column;
     justify-content: end;
@@ -117,6 +118,10 @@
     display: flex;
     width: 100%;
     max-width: 320px;
+  }
+
+  @include custom(0, map-get($breakpoints, md)) {
+    max-width: none;
   }
 
   @include md {
