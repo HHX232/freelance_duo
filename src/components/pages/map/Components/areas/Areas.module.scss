@@ -4,7 +4,6 @@
     display: flex;
     height: 100vh;
     min-height: 800px;
-    max-height: 1000px;
     flex-direction: column;
     justify-content: end;
     padding: 40px 16px;
@@ -53,13 +52,14 @@
 }
 
 .captions-title {
+  @include font(3, 42, 54, 400);
 
   margin-bottom: 60px;
   color: $yellow-text;
-  @include font(3, 42, 54, 400);
 
   @include custom(0, map-get($breakpoints, xl)) {
     @include font(3, 42, 54, 400);
+
     margin-bottom: 60px !important;
   }
 
@@ -69,11 +69,13 @@
 
   @include custom(0, map-get($breakpoints, md)) {
     @include font(3, 36, 50, 400);
+
     margin-bottom: 60px !important;
   }
 
   @include custom(0, map-get($breakpoints, sm) + 20px) {
     @include font(3, 30, 40, 400);
+
     margin-bottom: 40px !important;
   }
 
@@ -125,6 +127,7 @@
   }
 
   @include md {
+    max-width: none;
     flex-direction: column;
     gap: 40px;
   }
