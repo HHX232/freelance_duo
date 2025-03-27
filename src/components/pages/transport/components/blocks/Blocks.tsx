@@ -15,7 +15,13 @@ const Blocks: FC<IBlocksProps> = ({setShowModal}) => {
           <div className={styles['blocks-row']}>
             <div
               className={`${styles.cover} ${styles.meta} ${styles['block-col']}`}
-              style={{backgroundImage: `url("/content/transport/blocks_1.webp")`}}
+              style={{
+                background: 'linear-gradient(230.26deg, rgba(0, 0, 0, 0) 4.73%, rgba(0, 0, 0, 0.5) 65.67%), url(/content/transport/blocks_1.webp)',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover'
+                // backgroundImage: `url("/content/transport/blocks_1.webp")`
+              }}
             >
               <ButtonPlus onClick={() => setShowModal(1)} />
               <div className={styles.meta__info}>
@@ -38,7 +44,13 @@ const Blocks: FC<IBlocksProps> = ({setShowModal}) => {
             </div>
             <div
               className={`${styles.cover} ${styles.meta} ${styles['block-col']}`}
-              style={{backgroundImage: `url("/content/transport/blocks_2.webp")`}}
+              style={{
+                //backgroundImage: `url("/content/transport/blocks_2.webp")`,
+                background: 'linear-gradient(230.26deg, rgba(0, 0, 0, 0) 4.73%, rgba(0, 0, 0, 0.5) 65.67%), url(/content/transport/blocks_2.webp)',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover'
+              }}
             >
               <ButtonPlus onClick={() => setShowModal(4)} />
               <div className={styles.meta__info}>

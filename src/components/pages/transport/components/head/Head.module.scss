@@ -13,22 +13,27 @@
 
   }
 
+  @include xs {
+    padding: 90px 16px 40px;
+  }
+
   @include sm {
     height: 875px;
-    padding: 90px 20px 40px;
+    padding: 90px 20px;
     background-image: linear-gradient(90deg, rgb(0 0 0 / 0%) 10%, rgb(0 0 0 / 50%) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0%) 10%, rgb(0 0 0 / 50%) 100%), url("/content/transport/b_lg.webp");
     background-position: 15% center;
   }
 
   @include md {
     height: 1000px;
-    padding: 130px 40px 60px;
+    padding: 90px 20px;
     background-image: linear-gradient(90deg, rgb(0 0 0 / 0%) 10%, rgb(0 0 0 / 50%) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0%) 10%, rgb(0 0 0 / 50%) 100%), url("/content/transport/b_lg.webp");
     background-position: 17% center;
   }
 
   @include lg {
     height: 600px;
+    padding: 130px 40px 60px;
     background-image: linear-gradient(90deg, rgb(0 0 0 / 0%) 10%, rgb(0 0 0 / 50%) 100%), linear-gradient(-90deg, rgb(0 0 0 / 0%) 10%, rgb(0 0 0 / 50%) 100%), url("/content/transport/b_lg.webp");
 
   }

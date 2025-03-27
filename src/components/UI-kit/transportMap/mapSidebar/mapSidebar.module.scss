@@ -64,17 +64,34 @@
           text-align: left;
 
           &.blue {
-            color: #11627D;
+            @include xs {
+              color:#555;
+            }
+
+            @include md {
+              color: #11627D;
+            }
           }
 
           &.orange {
-            color: #D38F6D;
+            @include xs {
+              color:#555;
+            }
+
+            @include md {
+              color: #D38F6D;
+            }
           }
 
           @layer base {
             margin: 24px 0 !important;
             font-size: 24px;
             line-height: 36px;
+          }
+
+          @include xs {
+            color: #555;
+            font-size: 18px;
           }
 
           @include sm {
