@@ -117,10 +117,11 @@
 }
 
 .caption-items {
+  max-width: 320px;
+
   @layer base {
     display: flex;
     width: 100%;
-    max-width: 320px;
   }
 
   @include custom(0, map-get($breakpoints, md)) {
@@ -140,11 +141,6 @@
 
 .caption {
   position: relative;
-  max-width: 320px;
-
-  @include custom(0, map-get($breakpoints, md)) {
-    max-width: none;
-  }
 
   & svg {
     position: absolute;
