@@ -13,13 +13,15 @@ import TelLink from '@src/components/UI-kit/Navigation/TelLink/TelLink'
 
 export default function FooterContacts(props: IFooterContactsProps) {
   return (
-    <div className={styles.container}>
-      <div className={styles.logo}>
-        <Link href={'/'}>
-          <div className={styles.logo}>{props.isDashboard ? <LogoFooterDashboard /> : <LogoIcon />}</div>
+    <div itemScope itemType='http://schema.org/WPFooter' className={styles.container}>
+      <div itemScope itemType='http://schema.org/Organization' className={styles.logo}>
+        <Link itemProp='url' href={'/'}>
+          <div itemProp='logo' className={styles.logo}>
+            {props.isDashboard ? <LogoFooterDashboard /> : <LogoIcon />}
+          </div>
         </Link>
       </div>
-      <div className={styles.links}>
+      <div itemScope itemType='http://schema.org/SiteNavigationElement' className={styles.links}>
         <FooterNavigation linksGroups={props.navProps.linksGroups} secondaryLinks={props.navProps.secondaryLinks} />
       </div>
       <div className={`${styles.account} ${styles.lk_media}`}>
@@ -29,7 +31,7 @@ export default function FooterContacts(props: IFooterContactsProps) {
           </div>
         )}
       </div>
-      <div className={styles.contacts}>
+      <div itemScope itemType='http://schema.org/ContactPoint' className={styles.contacts}>
         {/* TODO: Поменять ссылки */}
 
         <FullButton
@@ -60,7 +62,7 @@ export default function FooterContacts(props: IFooterContactsProps) {
           <InstIcon width={40} height={40} />
         </FullButton>
 
-        <div className={styles.phone}>
+        <div itemProp='telephone' className={styles.phone}>
           <LinkUI size={'sm'} weight={'medium'} extraStyle={{color: '#fff'}}>
             Тел: <TelLink typeDecorNumber={'classic'} linkSize={'sm'} extraStyle={{fontWeight: '600', color: '#fff'}} />
           </LinkUI>
@@ -69,13 +71,13 @@ export default function FooterContacts(props: IFooterContactsProps) {
 
       <ul className={styles.secondaryLinks}>
         {props.navProps.secondaryLinks.map((link, linkIndex) => (
-          <li key={linkIndex}>
+          <li itemScope itemType='http://schema.org/SiteNavigationElement' key={linkIndex}>
             {link.href ? (
-              <LinkUI href={link.href} size={'sm'} weight={'regular'}>
+              <LinkUI itemProp='url' href={link.href} size={'sm'} weight={'regular'}>
                 {link.name}
               </LinkUI>
             ) : (
-              <LinkUI size={'sm'} weight={'regular'}>
+              <LinkUI itemProp='url' size={'sm'} weight={'regular'}>
                 {link.name}
               </LinkUI>
             )}
