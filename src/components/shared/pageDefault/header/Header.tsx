@@ -81,20 +81,32 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
   return (
     <header
       className={clsx(styles.header, {[styles.dark]: dark}, isMenuOpened ? `${styles.menuOpened} no-scroll` : '')}
+      itemScope
+      itemType='https://schema.org/WPHeader'
     >
       <div className={styles.headerTopContainer}>
         <div className={styles.container}>
-          <div className={styles.logo}>
+          {/* Логотип с разметкой организации */}
+          <div className={styles.logo} itemScope itemType='https://schema.org/Organization' itemProp='publisher'>
             <LogoLink
               isSmall={hideLogo ? true : isMd && isMenuOpened}
               isTransparent={isMd && isMenuOpened}
               isMenuOpened={isMenuOpened}
+              itemProp='logo'
             />
+            <meta itemProp='name' content='Кронфорт' />
+            <meta itemProp='url' content='https://вашсайт.ru' />
           </div>
+
           {isLK && (
             <>
               {token ? (
-                <div className={styles.personalCabinetLink}>
+                <div
+                  className={styles.personalCabinetLink}
+                  itemScope
+                  itemType='https://schema.org/Person'
+                  itemProp='account'
+                >
                   <FullButton
                     extraClass={styles.buttonTextFont}
                     type={'Link'}
@@ -105,7 +117,9 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
                     buttonFill={'none'}
                     buttonElementColor={'black'}
                     buttonText={'Личный кабинет'}
+                    itemProp='url'
                   />
+                  <meta itemProp='name' content='Личный кабинет' />
                 </div>
               ) : (
                 <div className={styles.personalCabinetLink}>
@@ -120,20 +134,30 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
                     buttonFill={'none'}
                     buttonElementColor={'black'}
                     buttonText={'Личный кабинет'}
+                    itemProp='potentialAction'
+                    itemType='https://schema.org/AuthenticateAction'
                   />
                 </div>
               )}
 
               {token && (
                 <div className={styles.logoutButton}>
-                  <LogoutButton handleLogout={handleLogout} />
+                  <LogoutButton
+                    handleLogout={handleLogout}
+                    itemProp='potentialAction'
+                    itemType='https://schema.org/LogoutAction'
+                  />
                 </div>
               )}
             </>
           )}
-          <div className={styles.phoneLink}>
-            <TelLink typeDecorNumber={'classic'} extraClass={styles.phone} />
+
+          {/* Контактная информация */}
+          <div className={styles.phoneLink} itemScope itemType='https://schema.org/ContactPoint'>
+            <TelLink typeDecorNumber={'classic'} extraClass={styles.phone} itemProp='telephone' />
+            <meta itemProp='contactType' content='customer service' />
           </div>
+
           <div className={styles.phoneIcon}>
             <FullButton
               type={'Link'}
@@ -146,41 +170,63 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
               buttonElementColor={'black'}
               buttonText={''}
               extraClass={styles.extra_weight}
+              itemProp='telephone'
             >
               <PhoneIconSVG />
             </FullButton>
           </div>
+
           {!isLoadingCount && (
             <>
-              <div className={styles.compareLink}>
+              <div
+                className={styles.compareLink}
+                itemProp='potentialAction'
+                itemType='https://schema.org/CompareAction'
+              >
                 <LinkWithIconAndCount
                   href={dashboard ? '/lk/sravnenie' : '/sravnenie'}
                   isMenuOpened={isMenuOpened}
                   count={compareCount}
+                  itemProp='url'
                 >
                   <CompareSVG className={clsx(styles.icon)} />
                 </LinkWithIconAndCount>
               </div>
-              <div className={styles.favoriteLink}>
+              <div className={styles.favoriteLink} itemProp='potentialAction' itemType='https://schema.org/SaveAction'>
                 <LinkWithIconAndCount
                   href={dashboard ? '/lk/izbrannoe' : '/izbrannoe'}
                   isMenuOpened={isMenuOpened}
                   count={favoritesCount}
+                  itemProp='url'
                 >
                   <FavoriteSVG className={clsx(styles.icon)} />
                 </LinkWithIconAndCount>
               </div>
             </>
           )}
+
           <div className={clsx(styles.findApartment, isLoadingCount ? styles.alignRight : '')}>
             {dashboard ? <DashboardActions onClick={handleClick} /> : <FindApartmentButton onClick={handleClick} />}
           </div>
+
           <div className={styles.toggleMenuButton}>
-            <ToggleMenuButton isMenuOpened={isMenuOpened} onClick={() => setIsMenuOpened((prev) => !prev)} />
+            <ToggleMenuButton
+              isMenuOpened={isMenuOpened}
+              onClick={() => setIsMenuOpened((prev) => !prev)}
+              aria-label={isMenuOpened ? 'Закрыть меню' : 'Открыть меню'}
+              aria-expanded={isMenuOpened}
+            />
           </div>
         </div>
+
+        {/* Мобильное меню */}
         <div className={styles.mobileMenu}>
-          <div className={styles.mobilePersonalCabinetLink}>
+          <div
+            className={styles.mobilePersonalCabinetLink}
+            itemScope
+            itemType='https://schema.org/Person'
+            itemProp='account'
+          >
             <FullButton
               extraClass={styles.buttonTextFont}
               type={'Link'}
@@ -191,8 +237,10 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
               buttonFill={'none'}
               buttonElementColor={'white'}
               buttonText={'Личный кабинет'}
+              itemProp='url'
             />
           </div>
+
           {dashboard && (
             <div className={styles.mobileCompareLink}>
               {token ? (
@@ -206,11 +254,17 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
                   buttonFill={'none'}
                   buttonElementColor={'white'}
                   buttonText={'Личный кабинет'}
+                  itemProp='url'
                 >
                   <UserSVG className={styles.user} />
                 </FullButton>
               ) : (
-                <button type='button' onClick={() => setOpenAuth(!isOpenAuth)}>
+                <button
+                  type='button'
+                  onClick={() => setOpenAuth(!isOpenAuth)}
+                  itemProp='potentialAction'
+                  itemType='https://schema.org/AuthenticateAction'
+                >
                   <UserSVG className={styles.user} />
                 </button>
               )}
@@ -219,20 +273,30 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
 
           {!isLoadingCount && (
             <>
-              <div className={styles.mobileCompareLink}>
+              <div
+                className={styles.mobileCompareLink}
+                itemProp='potentialAction'
+                itemType='https://schema.org/CompareAction'
+              >
                 <LinkWithIconAndCount
                   href={dashboard ? '/lk/sravnenie' : '/sravnenie'}
                   isMenuOpened={isMenuOpened}
                   count={compareCount}
+                  itemProp='url'
                 >
                   <CompareSVG className={clsx(styles.icon)} />
                 </LinkWithIconAndCount>
               </div>
-              <div className={styles.mobileFavoriteLink}>
+              <div
+                className={styles.mobileFavoriteLink}
+                itemProp='potentialAction'
+                itemType='https://schema.org/SaveAction'
+              >
                 <LinkWithIconAndCount
                   href={dashboard ? '/lk/izbrannoe' : '/izbrannoe'}
                   isMenuOpened={isMenuOpened}
                   count={favoritesCount}
+                  itemProp='url'
                 >
                   <FavoriteSVG className={clsx(styles.icon)} />
                 </LinkWithIconAndCount>
@@ -241,6 +305,8 @@ export default function Header({dark, dashboard, hideLogo}: IHeaderProps) {
           )}
         </div>
       </div>
+
+      {/* Основное меню навигации */}
       <div className={styles.menu}>
         <div className={styles.menu_inner}>
           <HeaderMenu onClose={() => setIsMenuOpened(false)} setIsMenuOpened={setIsMenuOpened} />

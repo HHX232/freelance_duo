@@ -7,17 +7,31 @@ import React from 'react'
 
 export default function DesktopFooterNavigation(props: IDesktopFooterNavigationProps) {
   return (
-    <div className={styles.nav}>
+    <div itemScope itemType='http://schema.org/SiteNavigationElement' className={styles.nav}>
       <div className={styles.links}>
         {props.linksGroups.map((group: IFooterNavigationLinksGroup, linksGroupIndex: number) => (
-          <ul key={linksGroupIndex}>
+          <ul itemScope itemType='http://schema.org/ItemList' key={linksGroupIndex}>
             {group.links.map((link: IFooterNavigationLink, linkIndex: number) => {
               if (linksGroupIndex < 2 && linkIndex >= group.links.length - 1) {
                 return (
                   <React.Fragment key={linkIndex}>
-                    <li>{link.href ? <Link href={link.href}>{link.name}</Link> : link.name}</li>
-                    <li className={styles.secondary_link} key={`secondary-${linksGroupIndex}-${linkIndex}`}>
-                      <LinkUI href={props.secondaryLinks[linksGroupIndex].href as string} size={'sm'}>
+                    <li>
+                      {link.href ? (
+                        <Link itemProp='url' href={link.href}>
+                          {link.name}
+                        </Link>
+                      ) : (
+                        link.name
+                      )}
+                    </li>
+                    <li
+                      itemProp='itemListElement'
+                      itemScope
+                      itemType='http://schema.org/ListItem'
+                      className={styles.secondary_link}
+                      key={`secondary-${linksGroupIndex}-${linkIndex}`}
+                    >
+                      <LinkUI itemProp='url' href={props.secondaryLinks[linksGroupIndex].href as string} size={'sm'}>
                         {props.secondaryLinks[linksGroupIndex].name}
                       </LinkUI>
                     </li>
@@ -26,9 +40,9 @@ export default function DesktopFooterNavigation(props: IDesktopFooterNavigationP
               }
 
               return (
-                <li key={linkIndex}>
+                <li key={linkIndex} itemProp='itemListElement' itemScope itemType='http://schema.org/ListItem'>
                   {link.href ? (
-                    <LinkUI href={link.href} size={'sm'}>
+                    <LinkUI itemProp='url' href={link.href} size={'sm'}>
                       {link.name}
                     </LinkUI>
                   ) : (

@@ -21,7 +21,7 @@
   }
 
   @include xs {
-    padding: 130px 20px 79px 16px;
+    padding: 130px 16px 79px 16px;
   }
 
   @include sm {
@@ -30,12 +30,12 @@
   }
 
   @include md {
-    padding: 130px 20px 111px 40px;
+    padding: 130px 40px 111px 40px;
     max-height: 1000px;
   }
 
   @include lg {
-    padding: 130px 20px 120px 40px;
+    padding: 130px 40px 120px 40px;
     max-height: none;
   }
 

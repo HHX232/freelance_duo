@@ -40,31 +40,32 @@ const AreasContent = () => {
     <div>
       {
         <section className={styles.section}>
-          <div className={styles.captions}>
-            <h2 className={styles['captions-title']}>
-              От Уютных студий <br /> до просторных лофтов
-            </h2>
-            <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
-              <TextAccentBlockUI
-                extraContainerClass={styles.max_width}
-                textTitle='>3'
-                textSubTitle='М'
-                textMainContent='высота потолков'
-              />
-              <TextAccentBlockUI
-                extraContainerClass={styles.max_width}
-                textTitle='24-100'
-                textSubTitle='м2'
-                textMainContent='площадь квартир'
-              />
-              <TextAccentBlockUI
-                extraContainerClass={styles.max_width}
-                textTitle='10'
-                textSubTitle=''
-                hideSubTitle
-                textMainContent='корпусов в проекте'
-              />
-            </div>
+          <h2 className={styles['captions-title']}>
+            От Уютных студий <br /> до просторных лофтов
+          </h2>
+          <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
+            <TextAccentBlockUI
+              extraContainerClass={styles.max_width}
+              extraTitleClass={styles.text_font_weight_300}
+              textTitle='>3'
+              textSubTitle='М'
+              textMainContent='высота потолков'
+            />
+            <TextAccentBlockUI
+              extraContainerClass={styles.max_width}
+              extraTitleClass={styles.text_font_weight_300}
+              textTitle='24-100'
+              textSubTitle='м2'
+              textMainContent='площадь квартир'
+            />
+            <TextAccentBlockUI
+              extraContainerClass={styles.max_width}
+              extraTitleClass={styles.text_font_weight_300}
+              textTitle='10'
+              textSubTitle=''
+              hideSubTitle
+              textMainContent='корпусов в проекте'
+            />
           </div>
           <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
             <PhoneSlider

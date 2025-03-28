@@ -12,7 +12,8 @@ const TelLink: FC<ITelLinkProps> = ({
   children,
   hideDefaultNumber,
   typeDecorNumber = 'spaces',
-  linkSize = 'md'
+  linkSize = 'md',
+  ...rest
 }) => {
   const tel = customNumber || process.env.NEXT_PUBLIC_TELEPHONE_NUMBER || '71231234567'
 
@@ -45,7 +46,7 @@ const TelLink: FC<ITelLinkProps> = ({
   const href = customHref || `tel:+${plainTel}`
 
   return (
-    <LinkUI size={linkSize} href={href} extraClass={extraClass} extraStyle={extraStyle}>
+    <LinkUI {...rest} size={linkSize} href={href} extraClass={extraClass} extraStyle={extraStyle}>
       {hideDefaultNumber ? null : formattedTel}
       {children}
     </LinkUI>
