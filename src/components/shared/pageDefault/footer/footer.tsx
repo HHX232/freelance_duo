@@ -63,9 +63,9 @@ const Footer = ({dashboard}: {dashboard?: boolean}) => {
   const [callBackModal, setCallBackModal] = useState(false)
 
   return (
-    <div className={styles.footer}>
+    <div itemScope itemType='https://schema.org/WPFooter' className={styles.footer}>
       <div className={styles.footer_inner}>
-        <div className={`${styles.side} ${styles.side_left}`}>
+        <div itemScope itemType='https://schema.org/ContactPoint' className={`${styles.side} ${styles.side_left}`}>
           <FooterContacts
             navProps={{
               linksGroups: PRIMARY_LINKS,

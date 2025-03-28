@@ -1,6 +1,6 @@
-import {ReactNode} from 'react'
+import {HTMLAttributes, ReactNode} from 'react'
 
-export interface ILinkWithIconAndCountProps {
+export interface ILinkWithIconAndCountProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
   href: string
   count: number
   isMenuOpened: boolean

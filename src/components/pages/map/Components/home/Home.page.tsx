@@ -27,15 +27,17 @@ const HomePage = () => {
   const {prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick} = usePrevNextButtons(emblaApi)
 
   return (
-    <div>
+    <div itemScope>
       <section className={styles['home-wrapper']}>
         <div className={styles['text_wrapper']}>
-          <H1Title extraClass={styles.extra_title}>Кронфорт</H1Title>
+          <H1Title itemProp='name' extraClass={styles.extra_title}>
+            Кронфорт
+          </H1Title>
           {slidesSubTitles.map((_, index) => {
             if (index !== selectedIndex) return null
 
             return (
-              <p key={index} className={`${styles.description}`}>
+              <p itemProp='description' key={index} className={`${styles.description}`}>
                 {slidesSubTitles[selectedIndex]}
               </p>
             )
@@ -68,7 +70,12 @@ const HomePage = () => {
             </ButtonTextUI>
           </FullButton>
         </div>
-        <div className={styles['slider_outer_wrapper']}>
+        <div
+          className={styles['slider_outer_wrapper']}
+          itemProp='image'
+          itemScope
+          itemType='https://schema.org/ImageGallery'
+        >
           <Gallery slides={SLIDES} options={OPTIONS} emblaRef={emblaRef} />
         </div>
         <div className={styles['slider_controls']}>
