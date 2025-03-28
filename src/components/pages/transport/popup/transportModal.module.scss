@@ -1,232 +1,231 @@
 .head {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .headClose {
-    margin: 16px 16px 0 0;
-  }
-  
-  .content {
-    padding: 60px;
-  
-    @include bp-xl {
-      padding: 20px 40px;
-    }
-  
-    @include bp-sm {
-      padding: 20px;
-    }
-  
-    @include bp-xs {
-      padding: 16px 10px;
-    }
-  }
-  
-  .content_title {
-    @include RomulH4;
+  display: flex;
+  justify-content: flex-end;
+}
 
-    color: #555;
+.headClose {
+  margin: 16px 16px 0 0;
+}
+
+.content {
+  padding: 60px;
+
+  @include bp-xl {
+    padding: 20px 40px;
   }
 
-  .content_text {
-    @include font(1, 16, 22, 400);
-
-    color: #555;
+  @include bp-sm {
+    padding: 20px;
   }
 
-  .contentImg {
+  @include bp-xs {
+    padding: 16px 10px;
+  }
+}
+
+.content_title {
+  @include RomulH4;
+
+  color: #555;
+}
+
+.content_text {
+  @include font(1, 16, 22, 400);
+
+  color: #555;
+}
+
+.contentImg {
+  @layer base {
+    min-height: 200px;
+    margin-bottom: 20px;
+  }
+
+  @include xs {
+    width: 100%;
+    height: auto !important;
+    margin-bottom: 20px;
+  }
+
+  @include sm {
+    min-height: 300px;
+    margin-bottom: 30px;
+  }
+
+  @include md {
+    min-height: 350px;
+    margin-bottom: 40px;
+  }
+
+  @include xxl {
+    min-height: 400px;
+    margin-bottom: 50px;
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(286deg, rgb(0 0 0 / 0%) 37.9%, rgb(0 0 0 / 10%) 77.25%);
+    content: '';
+  }
+
+  > img {
     @layer base {
-        min-height: 200px;
-        margin-bottom: 20px;
+      min-height: 200px;
     }
 
     @include xs {
-        width: 100%;
-        height: auto !important;
-        margin-bottom: 20px;
+      max-width: 288px;
+      max-height: 200px;
     }
 
     @include sm {
-        min-height: 300px;
-        margin-bottom: 30px;
+      max-width: 440px;
+      max-height: 300px;
     }
 
     @include md {
-        min-height: 350px;
-        margin-bottom: 40px;
+      max-width: 688px;
+      max-height: 350px;
+    }
+
+    @include lg {
+      max-width: 822px;
+    }
+
+    @include xl {
+      max-width: 751px;
     }
 
     @include xxl {
-        min-height: 400px;
-        margin-bottom: 50px;
+      max-width: 797px;
+      max-height: 400px;
     }
 
-    &::after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(286deg, rgb(0 0 0 / 0%) 37.9%, rgb(0 0 0 / 10%) 77.25%);
-      content: "";
-    }
-
-    > img {
-      @layer base {
-          min-height: 200px;
-      }
-
-      @include xs {
-          max-width: 288px;
-          max-height: 200px;
-      }
-
-      @include sm {
-          max-width: 440px;
-          max-height: 300px;
-      }
-
-      @include md {
-          max-width: 688px;
-          max-height: 350px;
-      }
-
-      @include lg {
-          max-width: 822px;
-      }
-
-      @include xl {
-          max-width: 751px;
-      }
-
-      @include xxl {
-          max-width: 797px;
-          max-height: 400px;
-      }
-
-      @include xxxl {
-          max-width: 828px;
-      }
+    @include xxxl {
+      max-width: 828px;
     }
   }
-  
-  .bottom-indent {
-    margin-bottom: 60px;
-  
-    @include bp-xl {
-      margin-bottom: 40px;
-    }
-  
-    @include bp-xs {
-      margin-bottom: 36px;
-    }
+}
+
+.bottom-indent {
+  margin-bottom: 60px;
+
+  @include bp-xl {
+    margin-bottom: 40px;
   }
 
-  .slider_controls {
-    @layer base {
-      z-index: 3;
-      display: flex;
-      width: 100%;
-      justify-content: center;
-    }
-  
-    @include lg {
-      justify-content: space-between;
-    }
+  @include bp-xs {
+    margin-bottom: 36px;
   }
-  
-  .embla__buttons {
-    @layer base {
-      position: absolute;
-      right: 40px;
-      bottom: 40px;
-      left: auto;
-      display: none;
-      align-items: center;
-      gap: 8px;
-      grid-template-columns: repeat(2, 1fr);
-    }
-  
-    @include lg {
-      display: flex;
-      align-items: center;
-    }
+}
 
-    .embla_arrow_btns {
-      border-radius: 6px;
-      background-color: #11627D14 !important;
-    }
+.slider_controls {
+  @layer base {
+    z-index: 3;
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
-  
-  .dots_wrapper {
+
+  @include lg {
+    justify-content: space-between;
+  }
+}
+
+.embla__buttons {
+  @layer base {
     position: absolute;
-    right: 0;
-    left: 0;
-    display: flex;
-    width: fit-content;
-    width: 100%;
-    justify-content: center;
-    margin: auto;
-  
-    @include md {
-      bottom: 56px;
-    }
-  
-    @include xs {
-      bottom: 32px;
-    }
-  }
-  
-  .findApartmentButtonInner {
-    display: flex;
-    gap: 10px;
+    right: 40px;
+    bottom: 40px;
+    left: auto;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .embla__dots {
+  @include lg {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
   }
-  
-  .embla__dot {
+
+  .embla_arrow_btns {
+    border-radius: 6px;
+    background-color: #11627d14 !important;
+  }
+}
+
+.dots_wrapper {
+  position: absolute;
+  right: 0;
+  left: 0;
+  display: flex;
+  width: fit-content;
+  width: 100%;
+  justify-content: center;
+  margin: auto;
+
+  @include md {
+    bottom: 56px;
+  }
+
+  @include xs {
+    bottom: 32px;
+  }
+}
+
+.findApartmentButtonInner {
+  display: flex;
+  gap: 10px;
+}
+
+.embla__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.embla__dot {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 100px;
+  margin: 0;
+  appearance: none;
+  background-color: #11627d4d;
+  cursor: pointer;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: all 0.5s ease-in-out;
+
+  &::after {
     display: flex;
-    width: 100%;
+    width: 15px;
+    height: 15px;
     align-items: center;
-    justify-content: center;
-    padding: 0;
-    border-radius: 50%;
-    margin: 0;
-    appearance: none;
-    background-color: #11627D4D;
-    cursor: pointer;
-    text-decoration: none;
-    touch-action: manipulation;
-    transition: all .5s ease-in-out;
-
-    &::after {
-      display: flex;
-      width: 15px;
-      height: 15px;
-      align-items: center;
-      border: 1px solid #fff;
-      border-radius: 50%;
-      background-color: rgb(255 255 255 / 30%);
-      content: '';
-    }
+    border: 1px solid #fff;
+    border-radius: 100px;
+    background-color: rgb(255 255 255 / 30%);
+    content: '';
   }
-  
-  .embla__dot--selected {
-    background-color: #3C8CA6;
+}
 
-    &::after {
-      width: 25px;
-      border-radius: 30%;
-      background-color: #3C8CA6;
+.embla__dot--selected {
+  background-color: #3c8ca6;
 
-      // background-color: rgb(255 255 255 / 100%);
-      transition: all .5s ease-in-out;
-    }
+  &::after {
+    width: 25px;
+    border-radius: 100px;
+    background-color: #3c8ca6;
+
+    // background-color: rgb(255 255 255 / 100%);
+    transition: all 0.5s ease-in-out;
   }
-  
+}
