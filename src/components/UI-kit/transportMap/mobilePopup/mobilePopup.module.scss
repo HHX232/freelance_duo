@@ -20,7 +20,7 @@
 
     .mobile_map {
         width: 100%;
-        height: 90vh;
+        height: 80vh;
     }
 
     .mobile_infoblock {
@@ -39,12 +39,22 @@
         }
 
         &.ib_close {
-            height: 10vh;
-            transform: translate(0, 90vh);
+            height: 20vh;
+            transform: translate(0, 80vh);
         }
 
         .line_container {
-            height: 9vh;
+            @layer base {
+                height: 9vh;
+            }
+
+            @include xs {
+                height: 65px;
+            }
+
+            @include sm {
+                height: 9vh;
+            }
 
             .infoblock_line {
                 width: 20%;
@@ -69,8 +79,16 @@
                     font-size: 22px;
                     line-height: 34px;
                 }
-    
+
                 @include sm {
+                    padding-left: 15px;
+                    margin-left: 0 !important;
+                    font-size: 36px;
+                    line-height: 48px;
+                }
+    
+                @include md {
+                    padding-left: 20px;
                     font-size: 42px;
                     line-height: 54px;
                 }
@@ -89,8 +107,15 @@
             }
 
             @include xs {
+                padding-left: 10px;
                 font-size: 22px;
                 line-height: 34px;
+            }
+
+            @include sm {
+                padding-left: 20px;
+                margin-left: 0 !important;
+                font-size: 26px;
             }
         }
 
@@ -98,16 +123,46 @@
             position: relative;
             display: block;
             width: 100%;
-            padding: 15px;
             background-color: #FFF;
             pointer-events: none;
+
+            @layer base {
+                padding: 15px;
+            }
+
+            @include xs {
+                padding: 0;
+            }
+
+            @include sm {
+                padding: 10px;
+            }
+
+            @include md {
+                padding: 20px;
+            }
     
             .maplegend-legend-item {
                 display: flex;
                 width: 100%;
                 align-items: center;
                 justify-content: left;
-                padding: 10px;
+                
+                @layer base {
+                    padding: 10px 20px;
+                }
+
+                @include xs {
+                    padding: 10px 20px;
+                }
+
+                @include sm {
+                    padding: 10px;
+                }
+
+                @include md {
+                    padding: 10px 20px;
+                }
     
                 p {
                     margin-left: 10px;

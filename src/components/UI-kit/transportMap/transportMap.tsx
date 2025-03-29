@@ -7,6 +7,7 @@ import MobilePopup from './mobilePopup/mobilePopup'
 import CustomPlacemark from './customPlacemark'
 import {FC, useState, useEffect, useRef, useCallback} from 'react'
 import { mapKFPoi } from '@src/lib/utils/catalog/mapMockData'
+import {useIsMobile, useIsTablet} from '@utils/useIsMobile'
 
 const getIconName = (name: string) => {
   const lname = name.toLowerCase();
@@ -46,9 +47,10 @@ interface MapWithClustersProps {
   showLegend: boolean;
   customRoutes: any[];//Array<{ points: number[][]; arrow: any; color: string; lineWidth: number; hint: string}>;
   mapZoom: number;
+  wrapperClass?: string;
 }
 
-const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegend, customRoutes, mapZoom }) => {
+export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegend, customRoutes, mapZoom, wrapperClass }) => {
   const ymapsFactory = useYMaps(["templateLayoutFactory"]); // Дожидаемся загрузки API
 
   const mapRef = useRef<ymaps.Map | undefined>(undefined)
@@ -57,6 +59,8 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
   const [zoom, setZoom] = useState(14);
   const [hoveredCoords, setHoveredCoords] = useState<number[] | null>(null);
   const animationFrameId = useRef<number | null>(null);
+  const isMobile = useIsMobile();
+  const isTablet = useIsTablet(768);
 
   const handleMouseMove = useCallback((e: ymaps.IEvent) => {
     if (animationFrameId.current) {
@@ -80,8 +84,13 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
     ymaps.ready(() => {
       if (!mapRef.current) return;
       const map = mapRef.current;
+      //дизейблим скролл и перетаскивание карты на мобильных устройствах
+      if (isMobile || isTablet) {
+        map.behaviors.disable(['scrollZoom', 'drag']);
+      } else {
+        map.behaviors.disable('scrollZoom');
 
-      map.behaviors.disable('scrollZoom');
+      }
 
       if(mapPoi) {
         //если точки интереса переданы как пропсы, то не ищем на карте
@@ -142,7 +151,7 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
           setYmaps(ymapsInstance)
         }}
         onMouseMove={handleMouseMove}
-        className={styles.trmap_map}
+        className={styles[`${wrapperClass}`]}
     >
       <Clusterer 
         options={{
@@ -188,7 +197,8 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
               foreignHover={hoveredCoords && areCoordsClose(hoveredCoords, place.coords) || false}
             />
         })}
-        { mapKFPoi && mapKFPoi.map((place, index) => {
+      </Clusterer>
+      { mapKFPoi && mapKFPoi.map((place, index) => {
             return <CustomPlacemark
               key={index}
               coordinates={place.coords}
@@ -199,8 +209,6 @@ const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegen
               foreignHover={hoveredCoords && areCoordsClose(hoveredCoords, place.coords) || false}
           />
         })}
-      </Clusterer>
-
         {showLegend && customRoutes && customRoutes.map((route, index) => (
           <>
             <GeoObject
@@ -267,7 +275,7 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
               showLegend={showLegend}
               customRoutes={customRoutes || []}
               mapZoom={propZoom}
-
+              wrapperClass='trmap_map'
             />
             {/* Кастомные zoom кнопки */}
             <div className={`${styles.zoom_controls} ${showSidebar ? styles.zoom_controls_expand : ''}`}>

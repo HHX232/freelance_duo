@@ -2,11 +2,12 @@
 import {Drawer} from 'antd'
 import {FC, useState, useEffect} from 'react'
 import styles from './mobilePopup.module.scss'
-import {YMaps, Map, Placemark, GeoObject, Clusterer} from '@pbe/react-yandex-maps'
+import {YMaps} from '@pbe/react-yandex-maps'
 import MapSidebar from '../mapSidebar/mapSidebar'
 import { mapPoi, mapRoutes, mapKFPoi } from '@src/lib/utils/catalog/mapMockData'
 import MapPoint from '@shared/mapPoint/mapPoint'
 import {CloseButton} from '../../BaseControls/buttons/close-button'
+import { MapWithClusters } from '../transportMap'
 
 interface ITransportModalProps {
   shown: boolean
@@ -32,11 +33,6 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
     useEffect(() => {
         if (window && "ontouchstart" in window || navigator && navigator.maxTouchPoints > 0) setHasTouch(true)
     },[])
-
-    // const handleTouchMove = (e: React.TouchEvent) => {
-    //     const touch = e.touches[0];
-    //     setY(touch.clientY);
-    // };
 
     const handleTouchEnd = () => {
       setOpen(!open)
@@ -73,7 +69,15 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
 
       <div className={styles.mobile_content}>
         <YMaps query={{lang: "ru_RU", apikey: "f4f9faf3-0ce8-4dd2-9b67-7843cfeff30f"}}>
-            <Map
+          <MapWithClusters
+            mapPoi={mapPoi} 
+            mapKFPoi={mapKFPoi} 
+            showLegend={true}
+            customRoutes={mapRoutes || []}
+            mapZoom={14}
+            wrapperClass='mobile_map'
+          />
+            {/* <Map
                 defaultState={{center: [59.999685, 29.746311], zoom: 14, controls: []}}
                 defaultOptions={{}}
                 options={{ suppressMapOpenBlock: true }}
@@ -152,7 +156,7 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
                         />
                     </>
                 ))}
-            </Map>
+            </Map> */}
         </YMaps>
         <div className={`${styles.mobile_infoblock} ${open ? styles.ib_open : styles.ib_close}`}>
             <div className={styles.line_container}
