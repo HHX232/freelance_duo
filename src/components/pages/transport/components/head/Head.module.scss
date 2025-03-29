@@ -102,6 +102,10 @@
     @include font(3, 44, 54, 400);
   }
 
+  @include xs {
+    @include font(3, 40, 50, 400);
+  }
+
   @include md {
     @include font(3, 48, 58, 400);
   }

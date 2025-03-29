@@ -20,6 +20,14 @@
         // right: -460px;
     }
 
+    @include xs {
+      padding-left: 0 !important;
+    }
+
+    @include sm {
+      padding-left: 20px;
+    }
+
     @include md {
         right: -380px;
         width: 380px;
@@ -49,6 +57,10 @@
         padding: 16px;
       }
 
+      @include xs {
+        padding: 0 20px 20px;
+      }
+
       @include md {
         padding: 40px;
       }
@@ -65,16 +77,19 @@
 
           &.blue {
             @include xs {
+              margin-bottom: 24px !important;
               color:#555;
             }
 
             @include md {
+              margin: 34px 0 !important;
               color: #11627D;
             }
           }
 
           &.orange {
             @include xs {
+              margin: 24px 0 !important;
               color:#555;
             }
 
@@ -84,17 +99,22 @@
           }
 
           @layer base {
-            margin: 24px 0 !important;
             font-size: 24px;
             line-height: 36px;
           }
 
           @include xs {
+            margin-bottom: 24px;
             color: #555;
             font-size: 18px;
           }
 
           @include sm {
+            font-size: 26px;
+            line-height: 38px;
+          }
+
+          @include md {
             margin: 34px 0 !important;
             font-size: 32px;
             line-height: 44px;
