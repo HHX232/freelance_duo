@@ -60,7 +60,10 @@ export const FullButton: FC<IFullButtonProps> = ({
   children,
   arrowStrokeWidth = '1.5',
   arrowExtraStyles,
-  containArrow = false
+  containArrow = false,
+  alternativeBorderOnActive = false,
+  alternativeBorderColor = 'orange',
+  alternativeBorderWidth = '3px'
 }) => {
   return type === 'Button' ? (
     <button
@@ -98,6 +101,14 @@ export const FullButton: FC<IFullButtonProps> = ({
           [styles.active_button_bronze]: activeButton && buttonFill === 'bronze-500',
           [styles.active_button_orange]: activeButton && buttonFill === 'orange-500',
           [styles.active_button_white]: activeButton && buttonFill === 'white'
+        },
+        // ! Ниже идут sos варианты для отображения рамок
+        {
+          [styles.alternative_border]: activeButton && alternativeBorderOnActive,
+          [styles[`alternative_border_color-${alternativeBorderColor}`]]:
+            activeButton && alternativeBorderOnActive && alternativeBorderColor,
+          [styles[`alternative_border_width-${alternativeBorderWidth}`]]:
+            activeButton && alternativeBorderOnActive && alternativeBorderWidth
         },
         extraClass
       )}

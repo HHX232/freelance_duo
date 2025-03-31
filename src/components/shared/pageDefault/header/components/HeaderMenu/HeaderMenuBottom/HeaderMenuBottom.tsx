@@ -31,7 +31,7 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
 
         <span>
           <FullButton
-            activeButton={true}
+            activeButton={false}
             type='Button'
             href='tel:+71231234567'
             border={false}
@@ -40,6 +40,9 @@ export default function HeaderMenuBottom({handleFindApartment}: IHeaderMenuBotto
             buttonFill='white'
             extraClass={styles.phoneButton}
             buttonText={'Заказать звонок'}
+            alternativeBorderOnActive
+            alternativeBorderWidth='3px'
+            alternativeBorderColor='blue'
           ></FullButton>
           <FullButton
             borderColor='none'
