@@ -79,6 +79,9 @@ const ContactsPage = () => {
                     onClick={() => setCallBackModal(!callBackModal)}
                     activeButton={true}
                     border={false}
+                    alternativeBorderOnActive
+                    alternativeBorderColor='bronze'
+                    alternativeBorderWidth='3px'
                   ></FullButton>
                   <FullButton
                     type={'Link'}
@@ -91,6 +94,9 @@ const ContactsPage = () => {
                     extraClass={styles.button}
                     activeButton={true}
                     border={false}
+                    alternativeBorderOnActive
+                    alternativeBorderColor='blue'
+                    alternativeBorderWidth='3px'
                   ></FullButton>
                 </div>
               </YMaps>

@@ -52,6 +52,9 @@ const TicketForm: FC<ITicketFormProps> = (props) => {
           buttonElementColor='white'
           buttonBorderRadius={'6px'}
           itemProp='potentialAction'
+          alternativeBorderOnActive
+          alternativeBorderColor='bronze'
+          alternativeBorderWidth='3px'
         />
         <p className={styles.caption}>
           Нажимая кнопку «Отправить», вы даёте согласие на{' '}

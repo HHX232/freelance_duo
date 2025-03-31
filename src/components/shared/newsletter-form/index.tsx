@@ -25,6 +25,9 @@ export const NewsletterForm = () => {
                 buttonFill={'bronze-500'}
                 buttonElementColor={'white'}
                 extraClass={styles['subscribe-button']}
+                alternativeBorderOnActive
+                alternativeBorderColor='bronze'
+                alternativeBorderWidth='3px'
               />
               <p className={styles.caption}>
                 Нажимая кнопку «Подписаться», вы даёте согласие на{' '}

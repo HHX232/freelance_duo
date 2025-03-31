@@ -104,11 +104,11 @@ export const FullButton: FC<IFullButtonProps> = ({
         },
         // ! Ниже идут sos варианты для отображения рамок
         {
-          [styles.alternative_border]: activeButton && alternativeBorderOnActive,
+          [styles.alternative_border]: alternativeBorderOnActive,
           [styles[`alternative_border_color-${alternativeBorderColor}`]]:
-            activeButton && alternativeBorderOnActive && alternativeBorderColor,
+            alternativeBorderOnActive && alternativeBorderColor,
           [styles[`alternative_border_width-${alternativeBorderWidth}`]]:
-            activeButton && alternativeBorderOnActive && alternativeBorderWidth
+            alternativeBorderOnActive && alternativeBorderWidth
         },
         extraClass
       )}

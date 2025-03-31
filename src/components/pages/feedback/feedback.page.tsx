@@ -194,6 +194,9 @@ const FeedbackPage = () => {
                   border={false}
                   borderColor='none'
                   onClick={onSubmit} // Add onClick handler to trigger form submission
+                  alternativeBorderOnActive
+                  alternativeBorderColor='bronze'
+                  alternativeBorderWidth='3px'
                 />
               </div>
             </form>
