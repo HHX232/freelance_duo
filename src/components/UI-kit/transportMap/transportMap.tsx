@@ -209,7 +209,7 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, sh
               foreignHover={hoveredCoords && areCoordsClose(hoveredCoords, place.coords) || false}
           />
         })}
-        {showLegend && customRoutes && customRoutes.map((route, index) => (
+        {customRoutes && customRoutes.map((route, index) => (
           <>
             <GeoObject
               key={route.hint}
@@ -246,11 +246,12 @@ interface ITransportMap {
   customPoi?: any[],
   customRoutes?: any[],
   withLegend?: boolean,
-  withSidebar?: boolean
+  withSidebar?: boolean,
+  wrapperClass?: string
 }
 
-const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, withSidebar}) => {
-  const [showLegend, setShowLegend] = useState(true)
+const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, withSidebar, wrapperClass}) => {
+  const [showLegend, setShowLegend] = useState(withLegend || false)
   const [showSidebar, setShowSidebar] = useState(false)
   const [modalView, setModalView] = useState(false);
   const [propZoom, setPropZoom] = useState(14);
@@ -267,7 +268,7 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
   }
 
   return (
-    <div className={styles.trmap_container}>
+    <div className={`${styles.trmap_container} ${wrapperClass}`}>
         <YMaps query={{lang: "ru_RU", apikey: "f4f9faf3-0ce8-4dd2-9b67-7843cfeff30f"}}>
             <MapWithClusters 
               mapPoi={customPoi} 
