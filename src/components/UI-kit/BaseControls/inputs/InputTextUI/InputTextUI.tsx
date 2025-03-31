@@ -101,6 +101,7 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
 
     // Calculate how many spaces were added by formatting up to a specific position
     const countAddedSpacesUpToPosition = (original: string, formatted: string, position: number) => {
+      formatted.toLowerCase()
       if (position <= 0) return 0
 
       let originalSubstring = original.substring(0, position)
