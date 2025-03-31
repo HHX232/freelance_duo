@@ -14,7 +14,7 @@ const TransportWrapper = () => {
   const [modalView, setModalView] = useState(0);
 
   return (
-    <div className={styles['wrapper']}>
+    <div className={`${styles.wrapper} no-scroll`}>
       <Head />
       <Information />
       <div className={styles.transport_content}>
