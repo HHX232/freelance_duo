@@ -1,10 +1,10 @@
 'use client'
-import {Suspense, useEffect, useState} from 'react'
+import {Suspense} from 'react'
 import styles from './Transport.module.scss'
 // import CornerSVG from '@icons/corner.svg'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
-import clsx from 'clsx'
+//import clsx from 'clsx'
 import TextAccentBlockUI from '@src/components/UI-kit/Text-Blocks/TextAccentBlockUI/TextAccentBlockUI'
 import TransportMap from '@src/components/UI-kit/transportMap/transportMap'
 import {mapRoutes} from '@src/lib/utils/catalog/mapMockData'
@@ -81,26 +81,27 @@ const TransportContent = () => {
     </div>
   ]
 
-  const [mapIsActive, setMapIsActive] = useState(false)
+  //поменял карту, слушатель не нужен
+  // const [mapIsActive, setMapIsActive] = useState(false)
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return
+  // useEffect(() => {
+  //   if (typeof window === 'undefined') return
 
-    const action = (e: MouseEvent) => {
-      //@ts-ignore
-      if (e.target.id === 'MapWrapper') return setMapIsActive(true)
+  //   const action = (e: MouseEvent) => {
+  //     //@ts-ignore
+  //     if (e.target.id === 'MapWrapper') return setMapIsActive(true)
 
-      //@ts-ignore
-      if (e?.target?.localName === 'iframe') return
-      setMapIsActive(false)
-    }
+  //     //@ts-ignore
+  //     if (e?.target?.localName === 'iframe') return
+  //     setMapIsActive(false)
+  //   }
 
-    window.addEventListener('click', action)
+  //   window.addEventListener('click', action)
 
-    return () => {
-      window.removeEventListener('click', action)
-    }
-  })
+  //   return () => {
+  //     window.removeEventListener('click', action)
+  //   }
+  // })
 
   return (
     <div>
