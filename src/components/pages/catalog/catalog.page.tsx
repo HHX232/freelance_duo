@@ -31,7 +31,7 @@ const onChange = (key: string) => {
 const ObjParams: Record<string, string> = {
   Терраса: 'kvartiry-s-terrasoi',
   'с балконом': 'kvartiry-s-balkonom',
-  Кладовая: 'kvartiry-s-kladovoi',
+  Кладовая: 'storerooms',
   'Раздельный СУ': 'kvartiry-s-razdelnym-su',
   Лоджия: 'kvartiry-s-lodzhiei',
   'Гардеробная в спальне': 'kvartiry-s-garderobnoi',
@@ -453,7 +453,7 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
     {key: 'studii', title: 'Студии', h1: 'Студии'},
     {key: 'lofty', title: 'Лофты', h1: 'Лофты'},
     {key: 'kvartiry-s-garderobnoi', title: 'Квартиры с гардеробной', h1: 'Квартиры с гардеробной'},
-    {key: 'kvartiry-s-kladovoi', title: 'Квартиры с кладовой', h1: 'Квартиры с кладовой'},
+    {key: 'storerooms', title: 'Квартиры с кладовой', h1: 'Квартиры с кладовой'},
     {key: 'kvartiry-s-razdelnym-su', title: 'Квартиры с раздельным СУ', h1: 'Квартиры с раздельным санузлом'},
     {key: 'kvartiry-s-terrasoi', title: 'Квартиры с терассой', h1: 'Квартиры с терассой'},
     {key: 'kvartiry-s-balkonom', title: 'Квартиры с балконом', h1: 'Квартиры с балконом'},

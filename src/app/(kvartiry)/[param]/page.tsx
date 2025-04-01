@@ -10,7 +10,7 @@ import Footer from '@shared/pageDefault/footer/footer'
 
 const validParams = [
   'kvartiry-s-garderobnoi',
-  'kvartiry-s-kladovoi',
+  'storerooms',
   'kvartiry-s-razdelnym-su',
   'kvartiry-s-terrasoi',
   'kvartiry-s-balkonom',
@@ -37,7 +37,7 @@ export async function generateMetadata({params}: {params: {param: string}}): Pro
       description =
         'Купить однокомнатные и двухкомнатные квартиры с гардеробной в ЖК «Кронфорт» от застройщика; выбрать планировки квартир с гардеробной по выгодной цене в строящемся доме в Кронштадте, 40 мин от Санкт-Петербурга'
       break
-    case 'kvartiry-s-kladovoi':
+    case 'storerooms':
       title = 'Квартиры с кладовой – купить в ЖК «Кронфорт», Кронштадт'
       description =
         'Купить квартиры с кладовой в строящемся доме от застройщика; продажа квартир с кладовыми по выгодным ценам в новостройке ЖК «Кронфорт», Кронштадт, в 40 мин от Санкт-Петербурга'
