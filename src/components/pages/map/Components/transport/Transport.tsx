@@ -1,11 +1,13 @@
 'use client'
-import {Suspense, useEffect, useState} from 'react'
+import {Suspense} from 'react'
 import styles from './Transport.module.scss'
 // import CornerSVG from '@icons/corner.svg'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
-import clsx from 'clsx'
+//import clsx from 'clsx'
 import TextAccentBlockUI from '@src/components/UI-kit/Text-Blocks/TextAccentBlockUI/TextAccentBlockUI'
+import TransportMap from '@src/components/UI-kit/transportMap/transportMap'
+import {mapRoutes} from '@src/lib/utils/catalog/mapMockData'
 
 // const mobileSlides: React.ReactNode[] = [
 //   <TextAccentBlockUI
@@ -79,38 +81,41 @@ const TransportContent = () => {
     </div>
   ]
 
-  const [mapIsActive, setMapIsActive] = useState(false)
+  //поменял карту, слушатель не нужен
+  // const [mapIsActive, setMapIsActive] = useState(false)
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return
+  // useEffect(() => {
+  //   if (typeof window === 'undefined') return
 
-    const action = (e: MouseEvent) => {
-      //@ts-ignore
-      if (e.target.id === 'MapWrapper') return setMapIsActive(true)
+  //   const action = (e: MouseEvent) => {
+  //     //@ts-ignore
+  //     if (e.target.id === 'MapWrapper') return setMapIsActive(true)
 
-      //@ts-ignore
-      if (e?.target?.localName === 'iframe') return
-      setMapIsActive(false)
-    }
+  //     //@ts-ignore
+  //     if (e?.target?.localName === 'iframe') return
+  //     setMapIsActive(false)
+  //   }
 
-    window.addEventListener('click', action)
+  //   window.addEventListener('click', action)
 
-    return () => {
-      window.removeEventListener('click', action)
-    }
-  })
+  //   return () => {
+  //     window.removeEventListener('click', action)
+  //   }
+  // })
 
   return (
     <div>
       {
         <section id='MapWrapper' className={styles.section}>
           <div className={styles.overflow} />
-          <iframe
+          <TransportMap customRoutes={mapRoutes} wrapperClass={styles.map} withLegend={false}/>
+          {/* поменял карту на наш компонент + в стиле pointer-events none убрал */}
+          {/* <iframe
             src='https://yandex.ru/map-widget/v1/?um=constructor%3Ac0b8ef20c1a292fb67601e097be7374975c9a1f18327bc55a43516c3e5155808&amp;source=constructor'
             className={clsx(mapIsActive ? styles.mapIsActive : '', styles.map)}
             height='100%'
             width='100%'
-          ></iframe>
+          ></iframe> */}
           <div className={styles.captions}>
             <h2 className={styles['captions-title']}>Транспортная доступность</h2>
             <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>

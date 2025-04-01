@@ -40,7 +40,7 @@ const PaymentMethodsPage = () => {
   const [emblaRef] = useEmblaCarousel({dragFree: true, active: !!width && width < 768})
 
   return (
-    <div className={clsx(styles['payment-methods'])}>
+    <div className={clsx(styles['payment-methods'], 'no-scroll')}>
       <div className={styles.header_content}>
         <div className={styles.header_main_content}>
           <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
