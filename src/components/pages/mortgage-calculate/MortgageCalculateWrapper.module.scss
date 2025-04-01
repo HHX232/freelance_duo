@@ -1,3 +1,7 @@
+.extra_input {
+  gap: 0px !important;
+}
+
 .wrapper {
   @layer base {
     display: flex;
@@ -16,7 +20,7 @@
     padding: 90px 40px;
   }
 
-  @include xl{
+  @include xl {
     gap: 90px;
     padding: 90px 40px 90px 142px;
   }
@@ -32,7 +36,7 @@
   }
 }
 
-.innerWrapper{
+.innerWrapper {
   @layer base {
     display: flex;
     flex-direction: column;
@@ -40,29 +44,29 @@
   }
 }
 
-.title{
+.title {
   @layer base {
     color: rgba(33, 60, 78, 1);
     @include font(3, 30, 40, 400);
   }
 
-  @include md{
+  @include md {
     @include font(3, 36, 50, 400);
   }
 
-  @include xl{
+  @include xl {
     @include font(3, 42, 54, 400);
   }
 }
 
-.mainContent{
+.mainContent {
   @layer base {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
-  @include sm{
+  @include sm {
     gap: 24px;
   }
 
@@ -72,7 +76,7 @@
 }
 
 
-.dataInputOuter{
+.dataInputOuter {
   @layer base {
     display: flex;
     flex-direction: column;
@@ -96,28 +100,28 @@
   }
 }
 
-.selectorsWrapper{
+.selectorsWrapper {
   @layer base {
     display: flex;
     gap: 8px;
   }
 }
 
-.button{
-  @layer base{
+.button {
+  @layer base {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     gap: 10px;
     width: 100%;
-    padding: 14px 20px!important;
+    padding: 14px 20px !important;
     transition: all 0.5s ease-in-out;
     border-radius: 6px;
   }
 }
 
-.dataInputWrapper{
+.dataInputWrapper {
   @layer base {
     display: flex;
     flex-direction: column;
@@ -131,7 +135,7 @@
     padding: 24px;
   }
 
-  @include md{
+  @include md {
     padding: 36px;
   }
 
@@ -149,47 +153,47 @@
   }
 }
 
-.inputStyles{
-  @layer base{
-    height: auto!important;
-    border-radius: 6px!important;
-    padding: 14px!important;
-    border-color: rgba(205, 208, 211, 1)!important;
-    color: rgba(116, 118, 121, 1)!important;
+.inputStyles {
+  @layer base {
+    height: auto !important;
+    border-radius: 6px !important;
+    padding: 14px !important;
+    border-color: rgba(205, 208, 211, 1) !important;
+    color: rgba(116, 118, 121, 1) !important;
 
-    &::placeholder{
-      color: rgba(181, 185, 190, 1)!important;
+    &::placeholder {
+      color: rgba(181, 185, 190, 1) !important;
     }
   }
 }
 
-.labelStyles{
-  @layer base{
-    color: rgba(181, 185, 190, 1)!important;
-    @include font(1,14, 18, 400)
+.labelStyles {
+  @layer base {
+    color: rgba(181, 185, 190, 1) !important;
+    @include font(1, 14, 18, 400)
   }
 
-  @include xl{
-    @include font(1,16, 22, 400)
+  @include xl {
+    @include font(1, 16, 22, 400)
   }
 }
 
 
-.rangeInput{
-  @layer base{
-    height: auto!important;
-    border-radius: 6px!important;
-    border-color: rgba(205, 208, 211, 1)!important;
-    color: rgba(116, 118, 121, 1)!important;
+.rangeInput {
+  @layer base {
+    height: auto !important;
+    border-radius: 6px !important;
+    border-color: rgba(205, 208, 211, 1) !important;
+    color: rgba(116, 118, 121, 1) !important;
 
-    &::placeholder{
-      color: rgba(181, 185, 190, 1)!important;
+    &::placeholder {
+      color: rgba(181, 185, 190, 1) !important;
     }
   }
 }
 
-.conditions{
-  @layer base{
+.conditions {
+  @layer base {
     overflow: hidden;
     position: relative;
     display: flex;
@@ -201,20 +205,20 @@
     border-radius: 10px;
   }
 
-  @include sm{
+  @include sm {
     padding: 24px;
   }
 
-  @include md{
+  @include md {
     padding: 36px;
   }
 
-  @include lg{
+  @include lg {
     padding: 24px;
     width: 541px;
   }
 
-  @include xl{
+  @include xl {
     width: 690px;
   }
 
@@ -230,8 +234,8 @@
   }
 }
 
-.star{
-  @layer base{
+.star {
+  @layer base {
     position: absolute;
     top: -70px;
     right: -100px;
@@ -239,7 +243,7 @@
     height: 237px;
   }
 
-  @include xl{
+  @include xl {
     top: -40px;
     right: -60px;
   }
@@ -252,30 +256,30 @@
   }
 }
 
-.subTitle{
-  @layer base{
+.subTitle {
+  @layer base {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    @include font(3,22, 34, 400)
+    @include font(3, 22, 34, 400)
   }
 
-  @include sm{
+  @include sm {
     flex-direction: row;
   }
 
-  @include md{
-    @include font(3,26, 36, 400)
+  @include md {
+    @include font(3, 26, 36, 400)
   }
 
-  @include xl{
-    @include font(3,32, 44, 400)
+  @include xl {
+    @include font(3, 32, 44, 400)
   }
 }
 
-.showPercentWrapper{
-  @layer base{
-    @include font(1 ,14, 18, 400);
+.showPercentWrapper {
+  @layer base {
+    @include font(1, 14, 18, 400);
     padding: 4px 14px;
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 6px;
@@ -284,70 +288,68 @@
     gap: 6px;
     width: fit-content;
 
-    span{
-      @include font(3,18, 26, 400);
+    span {
+      @include font(3, 18, 26, 400);
     }
   }
 
-  @include md{
-    @include font(1 ,16, 22, 400);
+  @include md {
+    @include font(1, 16, 22, 400);
 
-    span{
-      @include font(3,24, 36, 400)
+    span {
+      @include font(3, 24, 36, 400)
     }
   }
 
-  @include xl{
-    span{
-
-    }
+  @include xl {
+    span {}
   }
 }
 
-.infoWrapper{
-  @layer base{
+.infoWrapper {
+  @layer base {
     display: flex;
     gap: 16px;
   }
 
-  @include md{
+  @include md {
     flex-direction: column;
   }
 
-  @include lg{
+  @include lg {
     flex-direction: row;
   }
 
-  @include xl{
+  @include xl {
     flex-direction: column;
   }
 }
 
-.lineWrapper{
-  @layer base{
+.lineWrapper {
+  @layer base {
     display: flex;
     flex-direction: column;
     gap: 16px;
     width: 100%;
   }
 
-  @include md{
+  @include md {
     flex-direction: row;
     gap: 20px;
   }
 
-  @include lg{
+  @include lg {
     flex-direction: column;
     gap: 16px;
   }
 
-  @include xl{
+  @include xl {
     flex-direction: row;
   }
 }
 
-.infoBlock{
-  @layer base{
+.infoBlock {
+  @layer base {
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -356,11 +358,11 @@
     width: 120px;
   }
 
-  @include sm{
+  @include sm {
     width: 100%;
   }
 
-  @include xl{
+  @include xl {
     padding: 10px 16px;
     width: 200px;
   }
@@ -371,34 +373,33 @@
 
 }
 
-.selected{
+.selected {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.sum{
-  @layer base{
-    @include font(1,16, 20, 400);
+.sum {
+  @layer base {
+    @include font(1, 16, 20, 400);
   }
 
-  @include md{
-    @include font(1,20, 26, 400);
+  @include md {
+    @include font(1, 20, 26, 400);
   }
 
-  @include xl{
-    @include font(1,24, 34, 400);
+  @include xl {
+    @include font(1, 24, 34, 400);
   }
 }
 
-.infoText{
-  @layer base{
-    @include font(1,14, 18, 400);
+.infoText {
+  @layer base {
+    @include font(1, 14, 18, 400);
     color: rgba(255, 255, 255, 0.6);
     word-break: break-all;
   }
 
-  @include xl{
-    @include font(1,16, 22, 400);
+  @include xl {
+    @include font(1, 16, 22, 400);
     word-break: normal;
   }
 }
-

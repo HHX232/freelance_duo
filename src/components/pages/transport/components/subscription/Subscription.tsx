@@ -112,6 +112,9 @@ const Subscription = () => {
                 buttonBorderRadius='6px'
                 activeButton={true}
                 extraClass={styles.button_extra}
+                alternativeBorderOnActive
+                alternativeBorderWidth='3px'
+                alternativeBorderColor='bronze'
               ></FullButton>
 
               <p className={styles.caption}>

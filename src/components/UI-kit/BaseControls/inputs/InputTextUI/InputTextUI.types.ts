@@ -12,4 +12,7 @@ export interface IField extends InputHTMLAttributes<HTMLInputElement> {
   disabled?: boolean
   theme?: TTheme
   customPattern?: RegExp
+  textAfterValue?: string
+  value?: string
+  spacesBetwenNumbers?: boolean
 }

@@ -194,7 +194,7 @@
   }
 
   &:focus:not(:hover) {
-    border: none !important;
+    border: none;
     background-color: #d38f6d;
   }
 
@@ -261,8 +261,16 @@
   background-color: #fff;
   color: #555;
 
+  &>p {
+    color: #555;
+  }
+
   &:hover {
     color: #11627d !important;
+
+    &>p {
+      color: #11627d !important;
+    }
 
     .arrow_active>path {
       stroke: #11627d !important;
@@ -293,18 +301,33 @@
     opacity: 1;
   }
 
+  &:focus:hover:not(:active) {
+    color: #fff !important;
+
+    &>p {
+      color: #fff !important;
+    }
+
+  }
+
   &:focus {
     background-color: #11627d;
     color: #fff !important;
 
+
     .arrow_active>path {
       stroke: #fff !important;
     }
+
   }
 
   &:focus:not(:hover) {
     background-color: #fff;
     color: #555 !important;
+
+    &>p {
+      color: #555 !important;
+    }
 
     .arrow_active>path {
       stroke: #555 !important;
@@ -313,6 +336,10 @@
 
   &:active:focus {
     color: #11627d !important;
+
+    &>p {
+      color: #11627d !important;
+    }
 
     .arrow_active>path {
       stroke: #11627d !important;
@@ -355,6 +382,10 @@
     background-color: #fd7628;
     color: #fd7628 !important;
 
+    &>p {
+      color: #fd7628 !important;
+    }
+
     .arrow_active>path {
       stroke: #fd7628 !important;
     }
@@ -364,6 +395,10 @@
     background-color: #fd7628;
     color: #fff !important;
 
+    &>p {
+      color: #fff !important;
+    }
+
     .arrow_active>path {
       stroke: #fff !important;
     }
@@ -372,6 +407,10 @@
   &:focus:hover::before {
     background-color: transparent;
     color: #fd7628 !important;
+
+    &>p {
+      color: #fd7628 !important;
+    }
   }
 
   &:focus:not(:active)::before {
@@ -385,6 +424,10 @@
   &:focus:not(:active) {
     color: #fff !important;
 
+    &>p {
+      color: #fff !important;
+    }
+
     .arrow_active>path {
       stroke: #fff !important;
     }
@@ -392,6 +435,10 @@
 
   &:focus:not(:active, :hover) {
     color: #fd7628 !important;
+
+    &>p {
+      color: #fd7628 !important;
+    }
 
     .arrow_active>path {
       stroke: #fd7628 !important;
@@ -401,6 +448,10 @@
   &:active:focus {
     background-color: transparent !important;
     color: #fd7628 !important;
+
+    &>p {
+      color: #fd7628 !important;
+    }
 
     .arrow_active>path {
       stroke: #fd7628 !important;
@@ -428,6 +479,10 @@
   color: #fff;
   outline: none;
 
+  &>p {
+    color: #fff;
+  }
+
   &:hover::before {
     background-color: rgb(255 255 255 / 24%);
   }
@@ -444,6 +499,10 @@
   &:focus {
     background-color: transparent;
     color: #fff;
+
+    &>p {
+      color: #fff;
+    }
   }
 
   &:focus:not(:active)::before {
@@ -658,5 +717,85 @@
 
   .arrow_active>path {
     stroke: rgb(255 255 255 / 24%) !important;
+  }
+}
+
+
+// ! Альтернативные рамки
+
+.alternative_border {
+  border-color: transparent !important;
+  border-style: solid !important;
+}
+
+
+.alternative_border_color-orange {
+
+  &:focus {
+    border-color: #E35D08 !important;
+  }
+
+  &:focus:not(:hover) {
+    border-color: transparent !important;
+  }
+}
+
+.alternative_border_color-blue {
+
+
+  &:focus {
+    border-color: #11627D4D !important;
+  }
+
+  &:focus:not(:hover) {
+    border-color: transparent !important;
+  }
+}
+
+.alternative_border_color-bronze {
+
+
+  &:focus {
+    border-color: #936147 !important;
+  }
+
+  &:focus:not(:hover) {
+    border-color: transparent !important;
+  }
+}
+
+.alternative_border_width-1px {
+  border-width: 1px !important;
+
+  &:focus {
+    border-width: 1px !important;
+  }
+
+  &:focus:not(:hover) {
+    border-width: 1px !important;
+  }
+}
+
+.alternative_border_width-2px {
+  border-width: 2px !important;
+
+  &:focus {
+    border-width: 2px !important;
+  }
+
+  &:focus:not(:hover) {
+    border-width: 2px !important;
+  }
+}
+
+.alternative_border_width-3px {
+  border-width: 3px !important;
+
+  &:focus {
+    border-width: 3px !important;
+  }
+
+  &:focus:not(:hover) {
+    border-width: 3px !important;
   }
 }

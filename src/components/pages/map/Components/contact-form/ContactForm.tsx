@@ -53,7 +53,10 @@ const ContactFormPage = () => {
                 buttonElementColor={'white'}
                 buttonBorderRadius={'6px'}
                 extraClass={styles['button-send']}
-                itemProp='action' // Действие (кнопка отправки)
+                itemProp='action'
+                alternativeBorderOnActive
+                alternativeBorderWidth='3px'
+                alternativeBorderColor='bronze'
               />
 
               <p className={styles.caption}>

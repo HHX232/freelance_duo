@@ -5,9 +5,10 @@ import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton
 import {useIsMaxWidth} from '@utils/useIsMobile'
 import StarIcon from '@icons/white_star.svg'
 import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
-import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
+// import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 import InputRangeUI from '@src/components/UI-kit/BaseControls/inputs/RangeInputUI/RangeInputUI'
 import {TabsUIItem} from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
+import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
 
 const PercantTypes = {
   base: 5.5,
@@ -22,14 +23,14 @@ const MortgageCalculateWrapper = () => {
   const isSx = useIsMaxWidth(320)
   const timeRef = useRef<HTMLInputElement>(null)
 
-  const addSpace = (num: number | string) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-  const removeNonNumeric = (num: number | string) => num.toString().replace(/[^0-9]/g, '')
+  // const addSpace = (num: number | string) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+  // const removeNonNumeric = (num: number | string) => num.toString().replace(/[^0-9]/g, '')
 
-  const addSymbol = (value: string) =>
-    value
-      .split('')
-      .filter((val) => val !== '₽')
-      .join('')
+  // const addSymbol = (value: string) =>
+  //   value
+  //     .split('')
+  //     .filter((val) => val !== '₽')
+  //     .join('')
 
   const [shownRequestCallBack, setShownRequestCallBack] = useState(false)
   const handleRequestCallBackDrawerClose = () => {
@@ -59,10 +60,9 @@ const MortgageCalculateWrapper = () => {
                 fill={'white'}
                 extraClass={styles.button}
               />
-
             </div>
             <div className={styles.dataInputWrapper}>
-              <InputField
+              {/* <InputField
                 title={'Стоимость недвижимости'}
                 type={'text'}
                 placeholder={'Введите стоимость недвижимости'}
@@ -72,8 +72,20 @@ const MortgageCalculateWrapper = () => {
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
                 onChange={(e) => setCost(addSymbol(addSpace(removeNonNumeric(e.target.value))))}
+              /> */}
+              <InputTextUI
+                value={`${cost}`}
+                textAfterValue=' ₽'
+                labelText={'Стоимость недвижимости'}
+                placeholder={'Введите стоимость недвижимости'}
+                onChange={(e) => setCost(e.target.value)}
+                icon={<></>}
+                theme={'dark'}
+                extraClass={styles.extra_input}
+                spacesBetwenNumbers
+                onlyType={'onlyNumbers'}
               />
-              <InputField
+              {/* <InputField
                 title={'Первоначальный взнос'}
                 type={'text'}
                 placeholder={'Введите первоначальный взнос'}
@@ -83,8 +95,20 @@ const MortgageCalculateWrapper = () => {
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
                 onChange={(e) => setDownPayment(addSymbol(addSpace(removeNonNumeric(e.target.value))))}
-              />
+              /> */}
 
+              <InputTextUI
+                value={`${downPayment}`}
+                textAfterValue=' ₽'
+                labelText={'Первоначальный взнос'}
+                placeholder={'Введите первоначальный взнос'}
+                onChange={(e) => setDownPayment(e.target.value)}
+                icon={<></>}
+                theme={'dark'}
+                extraClass={styles.extra_input}
+                spacesBetwenNumbers
+                onlyType={'onlyNumbers'}
+              />
               <InputRangeUI
                 labelText={'Срок кредита'}
                 placeholder={'введите срок кредите'}
@@ -97,7 +121,7 @@ const MortgageCalculateWrapper = () => {
                 isNeedToClear={false}
                 onChange={(e) => setTime(e.target.value)}
                 ref={timeRef}
-                textAfterValue={'лет'}
+                textAfterValue={' лет'}
               />
             </div>
           </div>

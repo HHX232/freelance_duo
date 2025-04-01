@@ -33,6 +33,9 @@ const Spaces = () => {
                 buttonFill='bronze-500'
                 buttonElementColor='white'
                 buttonBorderRadius={'6px'}
+                alternativeBorderOnActive
+                alternativeBorderColor='bronze'
+                alternativeBorderWidth='3px'
               />
             </div>
           </div>

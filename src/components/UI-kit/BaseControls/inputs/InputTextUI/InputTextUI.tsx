@@ -1,5 +1,6 @@
+/* eslint-disable prefer-const */
 'use client'
-import {forwardRef, useCallback, useId, useState} from 'react'
+import {forwardRef, useCallback, useEffect, useId, useRef, useState} from 'react'
 import cn from 'clsx'
 import styles from './InputTextUI.module.scss'
 import {InputTextDefaultIcon} from './InputTextDefaultIcon'
@@ -15,6 +16,8 @@ import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragra
 
 <InputTextUI placeholder='Только цифры...' theme='white' onlyType='onlyNumbers' />
 
+<InputTextUI placeholder='Только цифры с пробелами...' theme='white' onlyType='onlyNumbers' spacesBetwenNumbers />
+
 <InputTextUI placeholder='+7 (___) ___-__-__' theme='white' customPattern={/^\+7 \(\d{0,3}\) \d{0,3}-\d{0,2}-\d{0,2}$/} /> */
 }
 
@@ -24,6 +27,7 @@ interface IFieldExtended extends IField {
   onlyType?: 'all' | 'onlyText' | 'onlyNumbers'
   customPattern?: RegExp
   extraLabelClass?: string
+  spacesBetwenNumbers?: boolean
 }
 
 const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
@@ -41,23 +45,145 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
       theme,
       onlyType = 'all',
       customPattern,
+      value = '',
+      textAfterValue = '',
+      spacesBetwenNumbers = false,
       ...rest
     },
     ref
   ) => {
-    const [inputText, setInputText] = useState('')
+    const [inputText, setInputText] = useState(value)
     const id = useId()
+    const internalRef = useRef<HTMLInputElement | null>(null)
+    const cursorPositionRef = useRef<number | null>(null)
+
+    // Function to get the current input element
+    const getInputElement = () => {
+      // If a ref was passed through props, use it first
+      if (ref) {
+        if (typeof ref === 'function') {
+          // Can't directly access the element with function refs
+          return internalRef.current
+        } else {
+          // For RefObject
+          return ref.current
+        }
+      }
+      // Fall back to internal ref
+      return internalRef.current
+    }
+
+    // Handle ref merging for React Hook Form compatibility
+    const setRefs = (element: HTMLInputElement | null) => {
+      // Update our internal ref
+      internalRef.current = element
+
+      // Forward to the external ref
+      if (ref) {
+        if (typeof ref === 'function') {
+          ref(element)
+        } else {
+          ref.current = element
+        }
+      }
+    }
+
+    // Function to add spaces between groups of three digits
+    const addSpaces = (value: string) => {
+      if (!spacesBetwenNumbers) return value
+      return value.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+    }
+
+    // Function to remove spaces (used when processing input value)
+    const removeSpaces = (value: string) => {
+      return value.replace(/\s/g, '')
+    }
+
+    // Calculate how many spaces were added by formatting up to a specific position
+    const countAddedSpacesUpToPosition = (original: string, formatted: string, position: number) => {
+      formatted.toLowerCase()
+      if (position <= 0) return 0
+
+      let originalSubstring = original.substring(0, position)
+      let spacesInOriginal = (originalSubstring.match(/\s/g) || []).length
+
+      // Find how long this substring would be after formatting
+      let formattedSubstring = addSpaces(removeSpaces(originalSubstring))
+      let spacesInFormatted = (formattedSubstring.match(/\s/g) || []).length
+
+      return spacesInFormatted - spacesInOriginal
+    }
+
+    // Update inputText when value prop changes
+    useEffect(() => {
+      if (spacesBetwenNumbers && onlyType === 'onlyNumbers') {
+        const cleanValue = removeSpaces(value.toString())
+        setInputText(addSpaces(cleanValue))
+      } else {
+        setInputText(value.toString())
+      }
+    }, [value, spacesBetwenNumbers, onlyType])
+
+    // Restore cursor position after state update
+    useEffect(() => {
+      if (cursorPositionRef.current !== null) {
+        const inputElement = getInputElement()
+        if (inputElement) {
+          // Ensure cursor position doesn't go beyond the actual input text
+          const position = Math.min(cursorPositionRef.current, inputText.length)
+          inputElement.setSelectionRange(position, position)
+          cursorPositionRef.current = null
+        }
+      }
+    }, [inputText])
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      // Save current cursor position
+      const cursorPosition = event.target.selectionStart
+
       const value = event.target.value
+      const valueWithoutSuffix =
+        textAfterValue && value.endsWith(textAfterValue) ? value.slice(0, value.length - textAfterValue.length) : value
 
-      let newValue = value
+      let newValue = valueWithoutSuffix
 
-      // Apply onlyType filters first
+      // Remove spaces for processing if handling number formatting
+      const valueForProcessing =
+        spacesBetwenNumbers && onlyType === 'onlyNumbers' ? removeSpaces(valueWithoutSuffix) : valueWithoutSuffix
+
+      // Apply onlyType filters
       if (onlyType === 'onlyText') {
-        newValue = value.replace(/[0-9]/g, '')
+        newValue = valueForProcessing.replace(/[0-9]/g, '')
       } else if (onlyType === 'onlyNumbers') {
-        newValue = value.replace(/[^0-9]/g, '')
+        const cleaned = valueForProcessing.replace(/[^0-9]/g, '')
+
+        // Calculate cursor position adjustment before formatting
+        if (cursorPosition !== null && spacesBetwenNumbers) {
+          // Store original text for comparison
+          const originalValue = inputText
+          const originalCleaned = removeSpaces(originalValue)
+
+          // Calculate new cursor position
+          const cleanedBeforeCursor = valueForProcessing.substring(0, cursorPosition).replace(/[^0-9]/g, '')
+          cursorPositionRef.current = cleanedBeforeCursor.length
+
+          // Adjust cursor position for added/removed spaces
+          if (cleaned.length > originalCleaned.length) {
+            // Text was added
+            const newFormattedValue = addSpaces(cleaned)
+            const spacesAdded = countAddedSpacesUpToPosition(cleaned, newFormattedValue, cursorPositionRef.current)
+            cursorPositionRef.current += spacesAdded
+          } else {
+            // Text was removed or replaced
+            const newFormattedValue = addSpaces(cleaned)
+            const spacesAdded = countAddedSpacesUpToPosition(cleaned, newFormattedValue, cursorPositionRef.current)
+            cursorPositionRef.current += spacesAdded
+          }
+        }
+
+        newValue = spacesBetwenNumbers ? addSpaces(cleaned) : cleaned
+      } else {
+        newValue = valueForProcessing
       }
 
       if (customPattern) {
@@ -67,15 +193,25 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
           return
         }
       } else {
+        // Preserve cursor position relative to the text content
+        if (cursorPosition !== null && !spacesBetwenNumbers) {
+          // For basic inputs without special formatting
+          cursorPositionRef.current = Math.min(cursorPosition, newValue.length)
+        }
+
         setInputText(newValue)
       }
 
       if (rest.onChange) {
+        // For the onChange handler, we need to decide whether to pass the formatted or raw value
+        // If spacesBetwenNumbers is true, we pass the raw value without spaces
+        const valueToEmit = spacesBetwenNumbers && onlyType === 'onlyNumbers' ? removeSpaces(newValue) : newValue
+
         const newEvent = {
           ...event,
           target: {
             ...event.target,
-            value: newValue
+            value: valueToEmit
           }
         }
         rest.onChange(newEvent as React.ChangeEvent<HTMLInputElement>)
@@ -84,6 +220,8 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
 
     const clearInput = useCallback(() => {
       setInputText('')
+      cursorPositionRef.current = 0
+
       if (rest.onChange) {
         const event = {
           target: {
@@ -162,10 +300,10 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
               [styles.input_white]: theme === 'white',
               [styles.input_dark]: theme === 'dark'
             })}
-            ref={ref}
+            ref={setRefs}
             type={type}
             {...rest}
-            value={inputText}
+            value={inputText + textAfterValue}
             onChange={onInputChange}
             autoComplete={type === 'text' ? 'off' : undefined}
           />
