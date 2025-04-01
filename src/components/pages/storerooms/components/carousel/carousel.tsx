@@ -1,5 +1,5 @@
 'use client'
-
+import { useEffect, useRef, useState } from 'react'
 import styles from './carousel.module.scss'
 import {EmblaOptionsType} from 'embla-carousel'
 import EmblaCarousel from '@pages/storerooms/components/carousel/components/EmblaCarousel'
@@ -20,11 +20,34 @@ const Carousel = () => {
 
   const {prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick} = usePrevNextButtons(emblaApi)
   const {selectedIndex, scrollSnaps, onDotButtonClick} = useDotButton(emblaApi)
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
-    <div className={styles['block-wrapper']}>
+    <div className={styles['block-wrapper']} ref={sectionRef}>
       <div className={styles['gallery-wrapper']}>
-        <div className={styles['title']}>
+        <div className={`${styles['title']} ${isVisible ? styles.visible : ''}`}>
           Типовые решения кладовых{' '}
           <div className={styles['button_wrapper']}>
             <div className={styles['embla__buttons']}>

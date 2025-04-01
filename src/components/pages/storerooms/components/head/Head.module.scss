@@ -1,64 +1,80 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .head-wrapper {
   @layer base {
     //position: relative;
     display: flex;
+    overflow: hidden;
+
     //height: 100vh;
     height: 640px;
     flex-direction: column;
     justify-content: space-between;
+    padding: 90px 16px 40px;
+
     //background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/storerooms_1.webp");
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_base.webp");
+    background-image: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("/content/storerooms/b_base.webp");
     background-position: center;
-    background-repeat: no-repeat;
     background-position-x: 80%;
+    background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden;
-    padding: 90px 16px 40px 16px;
   }
 
   @include sm {
     height: 875px;
-    padding: 90px 20px 90px 20px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_sm.webp");
+    padding: 90px 20px;
+    background-image: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("/content/storerooms/b_sm.webp");
   }
 
   @include md {
     height: 1000px;
-    padding: 130px 40px 90px 40px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_md.webp");
+    padding: 130px 40px 90px;
+    background-image: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("/content/storerooms/b_md.webp");
   }
 
   @include lg {
     height: 600px;
+
     //background-position-x: 70%;
     //background-position-y: 60%;
-    padding: 130px 40px 60px 40px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_lg.webp");
+    padding: 130px 40px 60px;
+    background-image: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("/content/storerooms/b_lg.webp");
   }
 
   @include xl {
     height: 650px;
     padding: 130px 40px 60px 142px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xl.webp");
+    background-image: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("/content/storerooms/b_xl.webp");
   }
 
   @include xxl {
     height: 750px;
     padding: 130px 40px 60px 170px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xxl.webp");
+    background-image: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("/content/storerooms/b_xxl.webp");
   }
 
   @include xxxl {
     height: 800px;
     padding: 142px 40px 110px 196px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/storerooms/b_xxl.webp");
+    background-image: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("/content/storerooms/b_xxl.webp");
   }
 }
 
 .title {
   @layer base {
     @include font(3, 44, 54, 400);
-    color: rgba(255, 255, 255, 1);
+
+    color: rgb(255 255 255 / 100%);
   }
 
   @include md {
@@ -72,9 +88,10 @@
 
 .description {
   @layer base {
-    max-width: 780px;
     @include font(1, 16, 20, 400);
-    color: rgba(255, 255, 255, 0.8);
+
+    max-width: 780px;
+    color: rgb(255 255 255 / 80%);
   }
 
   @include md {
@@ -83,14 +100,16 @@
 
   @include xl {
     @include font(1, 24, 34);
-    color: rgba(255, 255, 255, 1);
+
+    color: rgb(255 255 255 / 100%);
   }
 }
 
 .router {
   @layer base {
-    display: flex !important;
     @include font(1, 14, 14, 400);
+
+    display: flex !important;
     align-items: center;
   }
 }
@@ -98,7 +117,7 @@
 .routerIcon {
   @layer base {
     path {
-      stroke: #FFFFFF !important;
+      stroke: #FFF !important;
     }
   }
 }
@@ -108,4 +127,11 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  opacity: 0; // По умолчанию скрыто
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 }

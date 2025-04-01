@@ -1,10 +1,36 @@
+"use client"
+import { useEffect, useRef, useState } from 'react'
 import styles from './comfort.module.scss'
 import DownloadButton from '@src/components/UI-kit/BaseControls/buttons/old/downloadButton'
 
 const Comfort = () => {
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.3 } // Анимация сработает, когда 30% блока появится в зоне видимости
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <section className={styles['comfort-wrapper']}>
-      <div className={styles['info-wrapper']}>
+    <section className={styles['comfort-wrapper']} ref={sectionRef}>
+      <div className={`${styles['info-wrapper']} ${isVisible ? styles.visible : ''}`}>
         <div className={styles['title']}>удобство хранения на территории комплекса</div>
         <div className={styles.innerWrapper}>
           <p className={styles['description']}>
