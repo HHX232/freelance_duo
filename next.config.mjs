@@ -4,6 +4,7 @@ const nextConfig = {
     BACKEND_URL: process.env.BACKEND_URL,
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL
   },
+  transpilePackages: ['leaflet'],
   async redirects() {
     return [
       {

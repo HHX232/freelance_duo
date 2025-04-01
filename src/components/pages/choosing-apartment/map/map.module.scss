@@ -1,0 +1,285 @@
+.root {
+  @layer base {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    .header {
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding: 90px 16px 0 16px;
+      z-index: 3;
+    }
+
+    .controls {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      padding: 0 16px 40px 16px;
+
+      display: flex;
+      gap: 10px;
+    }
+
+    .controls .button {
+      padding: 8px 0;
+      border-radius: 6px;
+      width: 100%;
+      flex: 0 0 1;
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      span {
+        text-transform: uppercase;
+      }
+    }
+
+    .controls .arrow_button {
+      width: fit-content !important;
+      padding: 0;
+      background: none !important;
+      height: 36px;
+      width: 36px;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+      background: linear-gradient(223deg, rgba(30, 56, 73, 0.6) -0.13%, rgba(30, 56, 73, 0) 27.38%),
+        linear-gradient(152deg, rgba(30, 56, 73, 0.5) 22.92%, rgba(30, 56, 73, 0) 45.88%),
+        linear-gradient(166deg, rgba(0, 0, 0, 0.5) 14.78%, rgba(0, 0, 0, 0) 50.09%);
+      pointer-events: none;
+    }
+    .header_title {
+      color: $yellow-text;
+      margin: 0 !important;
+      padding: 27px 0 0 0;
+    }
+
+    .breadcrumbs {
+      span,
+      a,
+      li {
+        color: #fff !important;
+      }
+
+      svg path {
+        stroke: #fff !important;
+      }
+    }
+
+    .container {
+      height: 100vh;
+      position: relative;
+      z-index: 2 !important;
+    }
+    .star_pin {
+      position: relative;
+      z-index: 9 !important;
+
+      path {
+        fill: #fff;
+      }
+
+      span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+
+        display: block;
+        width: fit-content;
+        height: fit-content;
+        padding-bottom: 5px;
+
+        color: #263945;
+        text-align: center;
+
+        @include font(3, 42, 54, 400);
+        text-transform: uppercase;
+      }
+    }
+    .star_pin.active {
+      path {
+        fill: #ed6b0b;
+      }
+    }
+    .vector {
+      opacity: 0;
+      transition: all 0.3s;
+    }
+    .vector_active {
+      opacity: 1 !important;
+    }
+
+    .compass {
+      display: none;
+
+      position: absolute;
+      right: 50px;
+      bottom: 50px;
+      width: fit-content;
+      height: fit-content;
+      z-index: 10;
+    }
+  }
+
+  @include sm {
+    .header {
+      padding: 90px 20px 0 20px;
+    }
+
+    .header_title {
+      padding-top: 24px;
+    }
+
+    .controls {
+      gap: 16px;
+      padding: 0 20px 40px 20px;
+    }
+
+    .controls .button {
+      padding: 12px 0;
+    }
+
+    .controls .arrow_button svg {
+      height: 48px;
+      width: 48px;
+    }
+  }
+
+  @include md {
+    .header {
+      padding: 130px 40px 0 40px;
+    }
+
+    .overlay {
+      background: linear-gradient(223deg, rgba(30, 56, 73, 0.6) -0.13%, rgba(30, 56, 73, 0) 27.38%),
+        linear-gradient(152deg, rgba(30, 56, 73, 0.5) 22.92%, rgba(30, 56, 73, 0) 45.88%),
+        linear-gradient(166deg, rgba(0, 0, 0, 0.5) 14.78%, rgba(0, 0, 0, 0) 50.09%);
+    }
+  }
+
+  @include lg {
+    .overlay {
+      background: linear-gradient(223deg, rgba(30, 56, 73, 0.6) -0.13%, rgba(30, 56, 73, 0) 27.38%),
+        linear-gradient(142deg, rgba(30, 56, 73, 0.5) 18.07%, rgba(30, 56, 73, 0) 46.99%),
+        linear-gradient(122deg, rgba(0, 0, 0, 0.5) 3.74%, rgba(0, 0, 0, 0) 44.39%);
+    }
+
+    .paragraph_embankment {
+      display: flex;
+      gap: 10px;
+
+      svg {
+        margin-top: 10px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .controls .button {
+      width: fit-content !important;
+      padding: 12px 36px;
+    }
+
+    .controls {
+      padding: 0 0 60px 40px;
+    }
+
+    .compass {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      gap: 22px;
+      right: 40px;
+      bottom: 40px;
+      img {
+        max-width: 80px;
+        max-height: 80px;
+      }
+    }
+
+    .compass .paragraph {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      svg {
+        max-width: 20px;
+        max-height: 20px;
+        transform: rotate(90deg);
+      }
+    }
+
+    .paragraph {
+      color: $white !important;
+    }
+  }
+
+  @include xl {
+    .header {
+      padding-left: 142px;
+    }
+
+    .controls {
+      padding-left: 142px;
+    }
+
+    .compass {
+      right: 20px;
+      bottom: 20px;
+
+      img {
+        max-width: 150px;
+        max-height: 150px;
+      }
+    }
+
+    .paragraph {
+      font-size: 16px;
+    }
+  }
+
+  @include xxl {
+    .controls,
+    .header {
+      padding-left: 170px;
+    }
+
+    .compass {
+      right: 40px;
+      bottom: 40px;
+    }
+  }
+
+  @include xxxl {
+    .controls,
+    .header {
+      padding-left: 196px;
+    }
+
+    .compass {
+      right: 40px;
+      bottom: 40px;
+    }
+  }
+}
