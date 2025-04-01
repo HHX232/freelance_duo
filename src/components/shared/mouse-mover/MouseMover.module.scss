@@ -28,4 +28,8 @@
   min-height: 1000px;
   scale: 1 !important;
   transform: none !important;
+
+  @media (min-height: 1200px) {
+    max-height: 1200px;
+  }
 }

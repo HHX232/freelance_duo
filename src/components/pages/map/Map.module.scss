@@ -49,6 +49,10 @@
 }
 
 .mapImage {
+  @media (min-height: 1200px) {
+    margin-top: min(calc(100vh - 1200px), 100px);
+  }
+
   @layer base {
     position: absolute !important;
     z-index: 0;
