@@ -1,9 +1,21 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .comfort-wrapper {
   @layer base {
     display: flex;
     justify-content: space-between;
-    gap: 40px;
     padding: 0 16px;
+    gap: 40px;
   }
 
   @include sm {
@@ -22,8 +34,8 @@
   @include xl {
     display: flex;
     justify-content: space-between;
-    gap: 60px;
     padding: 0 40px 0 142px;
+    gap: 60px;
   }
 
   @include xxl {
@@ -37,6 +49,9 @@
 }
 
 .info-wrapper {
+  opacity: 0; // По умолчанию скрыто
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  
   @layer base {
     display: flex;
     flex-direction: column;
@@ -54,8 +69,13 @@
   }
 
   @include xxxl {
-    height: 420px;
     width: 774px;
+    height: 420px;
+  }
+
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
   }
 }
 
@@ -82,9 +102,10 @@
 .description {
   @layer base {
     @include font(1, 16, 20);
-    text-align: left;
-    color: rgba(85, 85, 85, 1);
+
+    color: rgb(85 85 85 / 100%);
     line-height: 20px;
+    text-align: left;
   }
 
   @include md {
@@ -117,7 +138,6 @@
   @include xxl {
     width: 748px;
     height: 488px;
-
     background: url("/content/storerooms/comf_xxl.webp") no-repeat top center;
     background-size: 100% 100%;
   }
@@ -125,8 +145,6 @@
   @include xxxl {
     width: 830px;
     height: 420px;
-
-
     background: url("/content/storerooms/comf_xxxl.webp") no-repeat top center;
     background-size: 100% 100%;
   }
@@ -134,28 +152,26 @@
 }
 
 .download-wrapper {
-
   @layer base {
     width: 100%;
     padding-top: 40px;
-    border-top: 1px solid rgba(17, 98, 125, 0.3);
+    border-top: 1px solid rgb(17 98 125 / 30%);
 
   }
 
   @include xl {
     padding: 0;
-    border-top: 0 solid rgba(17, 98, 125, 0.3);
+    border-top: 0 solid rgb(17 98 125 / 30%);
   }
 
 }
 
 .table-img-wrapper {
-
   @layer base {
     display: block;
-    background: url("/content/storerooms/comf_xs.webp") no-repeat top center;
-    height: 220px;
     width: 100%;
+    height: 220px;
+    background: url("/content/storerooms/comf_xs.webp") no-repeat top center;
     background-size: cover;
   }
 
@@ -193,8 +209,8 @@
 
 
   @include xl {
-    gap: 60px;
-    justify-content: space-between;
     height: 100%;
+    justify-content: space-between;
+    gap: 60px;
   }
 }
