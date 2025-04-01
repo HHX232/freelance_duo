@@ -19,7 +19,7 @@
     position: relative;
     display: flex;
     height: 100vh;
-    min-height: 800px;
+    min-height: 850px;
     max-height: 1000px;
     flex-direction: column;
     justify-content: end;
@@ -89,6 +89,7 @@
 
   @include xxxl {
     padding: 130px 0 26px 190px;
+    min-height: 900px;
   }
 }
 

@@ -151,7 +151,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                 ]}
               />
             </LinkUI>
-            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/kvartiry-s-kladovoi'}>
+            <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/storerooms'}>
               <Accordion
                 animationOn={false}
                 extraClass={`${styles.accordion_extra} ${styles.accordion_extra__accent} ${styles.romul_text}`}
