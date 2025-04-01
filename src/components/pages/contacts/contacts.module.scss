@@ -148,6 +148,11 @@
 
 .button {
   max-width: 270px;
+
+  @media (max-width: 574px) {
+    max-width: none;
+  }
+
   height: 44px !important;
 }
 
