@@ -2,11 +2,11 @@ $color_1: var(--text-body);
 $color_2: var(--detail-high-contrast);
 $background-color_1: transparent;
 
-.phone-slider-wrapper{
+.phone-slider-wrapper {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 20px;
-  width: 100%;
 }
 
 .embla {
@@ -17,167 +17,176 @@ $background-color_1: transparent;
     --slide-size: 100%;
   }
 
-  @include sm{
+  @include sm {
     --slide-height: 260px;
   }
 
-  @include md{
+  @include md {
     --slide-height: 400px;
   }
 
-  @include lg{
+  @include lg {
     --slide-height: 500px;
   }
 
-  @include xl{
+  @include xl {
     --slide-height: 600px;
   }
 
-  @include xxl{
+  @include xxl {
     --slide-height: 700px;
   }
 
-  @include xxxl{
+  @include xxxl {
     --slide-height: 800px;
   }
-
-
 }
+
 .embla__viewport {
   overflow: hidden;
 }
 
 .embla__viewport.show_viewport {
-
   overflow: visible !important;
-
 }
 
 .embla__container {
   @layer base {
     display: flex;
-    touch-action: pan-y pinch-zoom;
-    margin-left: calc(var(--slide-spacing) * -1);
+
     //width: 100%;
     //width: 540px;
     width: fit-content;
+    margin-left: calc(var(--slide-spacing) * -1);
+    touch-action: pan-y pinch-zoom;
   }
 
-  @include md{
-
+  @include md {
   }
 }
+
 .embla__slide {
-  transform: translate3d(0, 0, 0);
-  flex: 0 0 var(--slide-size);
   min-width: 0;
+  flex: 0 0 var(--slide-size);
   padding-left: var(--slide-spacing);
+  transform: translate3d(0, 0, 0);
   transition: opacity 0.2s ease-in-out;
+
   //&:not(.is-snapped) {
   //  opacity: 0.16;
   //}
 }
+
 .embla__slide__img {
   display: block;
+  width: 500px;
   height: var(--slide-height);
+
   //width: 100%;
   object-fit: cover;
-  width: 500px;
 }
+
 .embla__controls {
   display: grid;
-  grid-template-columns: auto 1fr;
   justify-content: space-between;
-  gap: 1.2rem;
   margin-top: 1.8rem;
+  gap: 1.2rem;
+  grid-template-columns: auto 1fr;
 }
+
 .embla__buttons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem;
   align-items: center;
+  gap: 0.6rem;
+  grid-template-columns: repeat(2, 1fr);
 }
+
 .embla__button {
-  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: $background-color_1;
-  touch-action: manipulation;
+  z-index: 1;
   display: inline-flex;
-  text-decoration: none;
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  display: flex;
   width: 3.6rem;
   height: 3.6rem;
-  z-index: 1;
-  border-radius: 50%;
-  color: $color_1;
-  display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 100px;
+  margin: 0;
+  appearance: none;
+  background-color: $background-color_1;
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  color: $color_1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgb(var(--text-high-contrast-rgb-value) 0.5);
+  text-decoration: none;
+  touch-action: manipulation;
+
   &:disabled {
     color: $color_2;
   }
 }
+
 .embla__button__svg {
   width: 35%;
   height: 35%;
 }
+
 .embla__buttons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem;
   align-items: center;
+  gap: 0.6rem;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .embla__controls {
   display: grid;
-  grid-template-columns: auto 1fr;
   justify-content: space-between;
-  gap: 1.2rem;
   margin-top: 1.8rem;
+  gap: 1.2rem;
+  grid-template-columns: auto 1fr;
 }
 
 .embla__dots {
   display: flex;
+  align-items: center;
+
   //flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   gap: 16px;
+
   //margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
 }
 
 .embla__dot {
-  -webkit-appearance: none;
-  appearance: none;
-  touch-action: manipulation;
-  text-decoration: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: all .5s ease-in-out;
-  &:after {
-    background-color: rgba(255, 255, 255, 0.3);
+  padding: 0;
+  border-radius: 100px;
+  margin: 0;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: all 0.5s ease-in-out;
+
+  &::after {
+    display: flex;
     width: 15px;
     height: 15px;
-    border-radius: 50%;
-    display: flex;
     align-items: center;
+    border-radius: 100px;
+    background-color: rgb(255 255 255 / 30%);
     content: '';
   }
 }
+
 .embla__dot--selected {
-  &:after {
+  &::after {
     width: 20px;
-    border-radius: 30%;
-    background-color: rgba(255, 255, 255, 1);
-    transition: all .5s ease-in-out;
+    border-radius: 100px;
+    background-color: rgb(255 255 255 / 100%);
+    transition: all 0.5s ease-in-out;
   }
 }

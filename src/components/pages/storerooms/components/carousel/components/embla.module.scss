@@ -23,39 +23,37 @@ $background-color_1: transparent;
     --slide-width: 288px;
   }
 
-  @include sm{
+  @include sm {
     --slide-height: 260px;
     --slide-spacing: 24px;
     --slide-width: 421px;
   }
 
-  @include md{
+  @include md {
     --slide-height: 400px;
     --slide-spacing: 24px;
     --slide-width: 688px;
   }
 
-  @include lg{
+  @include lg {
     --slide-height: 500px;
     --slide-width: 944px;
   }
 
-  @include xl{
+  @include xl {
     --slide-height: 600px;
     --slide-width: 1000px;
   }
 
-  @include xxl{
+  @include xxl {
     --slide-height: 650px;
     --slide-width: 1100px;
   }
 
-  @include xxxl{
+  @include xxxl {
     --slide-height: 700px;
     --slide-width: 1217px;
   }
-
-
 }
 
 .embla__viewport {
