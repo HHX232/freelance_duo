@@ -1,3 +1,15 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .head-wrapper {
   @layer base {
     display: flex;
@@ -82,7 +94,14 @@
   @layer base {
     display: flex;
     flex-direction: column;
-    gap: 20px
+    gap: 20px;
+    opacity: 0; // По умолчанию скрыто
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+    &.visible {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 1;
+    }
   }
 
   @include lg {
@@ -216,5 +235,15 @@
 
   @include xxl {
     white-space: nowrap;
+  }
+}
+
+.sale_wrapper{
+  opacity: 0; // По умолчанию скрыто
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
   }
 }

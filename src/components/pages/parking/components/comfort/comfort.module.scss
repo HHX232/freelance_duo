@@ -1,3 +1,15 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .comfort-wrapper {
   @layer base {
     display: flex;
@@ -37,6 +49,9 @@
 .desc-wrapper {
   @layer base {
     display: none;
+
+    opacity: 0; // По умолчанию скрыто
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
   @include xl {
@@ -55,6 +70,10 @@
     width: 890px;
   }
 
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 }
 
 .download-wrapper {
@@ -100,6 +119,9 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+
+    opacity: 0; // По умолчанию скрыто
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
   @include sm{
@@ -117,6 +139,11 @@
 
   @include xxxl{
     width: 714px;
+  }
+
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
   }
 }
 

@@ -1,3 +1,15 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .block-wrapper {
   @layer base {
     padding: 0 16px;
@@ -30,6 +42,9 @@
     padding-bottom: 40px;
     border-bottom: 0 solid rgba(17, 98, 125, 0.3);
     @include font(3, 30, 40, 400);
+
+    opacity: 0; // По умолчанию скрыто
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
   @include md {
@@ -42,6 +57,10 @@
     @include font(3, 42, 54, 400);
   }
 
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 }
 
 
@@ -79,6 +98,9 @@
     color: #FFFFFF;
     padding: 36px 20px;
     word-wrap: break-word;
+
+    opacity: 0; // По умолчанию скрыто
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
   @include sm {
@@ -94,6 +116,10 @@
     height: 100%;
   }
 
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 }
 
 .column {
@@ -164,10 +190,18 @@
   @layer base {
     //height: inherit;
     width: inherit;
+
+    opacity: 0; // По умолчанию скрыто
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
   @include lg {
     width: 280px;
+  }
+
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
   }
 }
 
