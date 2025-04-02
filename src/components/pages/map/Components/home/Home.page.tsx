@@ -11,7 +11,7 @@ import {NextButton, PrevButton, usePrevNextButtons} from './bg-slider/EmblaCarou
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import ButtonTextUI from '@src/components/UI-kit/Text-Elements/Typography/Button/ButtonText'
 import H1Title from '@src/components/UI-kit/Text-Elements/Typography/Headers/H1Title'
-import { useEffect, useRef, useState } from 'react'
+import {useEffect, useRef, useState} from 'react'
 
 const slidesSubTitles = [
   'Море меняет все, Море здесь – главная доминанта, наполняющая энергией все пространство вокруг.',
@@ -33,6 +33,21 @@ const HomePage = () => {
     setTimeout(() => {
       setIsVisible(true)
     }, 500)
+    //прячем слок за другие блоки при скролле
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        if (window.scrollY > window.innerHeight) {
+          sectionRef.current.style.zIndex = '-1'
+        } else {
+          sectionRef.current.style.zIndex = 'auto'
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   return (

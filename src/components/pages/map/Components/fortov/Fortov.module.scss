@@ -10,6 +10,23 @@
   }
 }
 
+@keyframes fadeInScale {
+  0% {
+    background-position: bottom;
+    background-size: 50%;
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    background-position: center;
+    background-size: 100%;
+  }
+}
+
 .max_width {
   max-width: 370px;
 }
@@ -31,6 +48,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   max-height: 100vh;
+
+  &.visible {
+    animation: fadeInScale 2s ease-out forwards;
+  }
 
   @layer base {
     position: relative;
