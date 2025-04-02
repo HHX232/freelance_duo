@@ -1,5 +1,5 @@
 'use client'
-import {Suspense} from 'react'
+import {Suspense, useEffect, useRef, useState} from 'react'
 import styles from './Transport.module.scss'
 // import CornerSVG from '@icons/corner.svg'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
@@ -80,6 +80,30 @@ const TransportContent = () => {
       </div>
     </div>
   ]
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
 
   //поменял карту, слушатель не нужен
   // const [mapIsActive, setMapIsActive] = useState(false)
@@ -106,7 +130,7 @@ const TransportContent = () => {
   return (
     <div>
       {
-        <section id='MapWrapper' className={styles.section}>
+        <section id='MapWrapper' className={styles.section} ref={sectionRef}>
           <div className={styles.overflow} />
           <TransportMap customRoutes={mapRoutes} wrapperClass={styles.map} withLegend={false}/>
           {/* поменял карту на наш компонент + в стиле pointer-events none убрал */}
@@ -116,7 +140,7 @@ const TransportContent = () => {
             height='100%'
             width='100%'
           ></iframe> */}
-          <div className={styles.captions}>
+          <div className={`${styles.captions} ${isVisible ? styles.visible : ''}`}>
             <h2 className={styles['captions-title']}>Транспортная доступность</h2>
             <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
               {/* <div className={styles['caption']}>
@@ -177,7 +201,7 @@ const TransportContent = () => {
                 textMainContent=''
               />
             </div>
-            <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
+            <div className={`${styles['caption-items']} ${styles['mobile_captions']} ${isVisible ? styles.visible : ''}`}>
               <PhoneSlider
                 embalaContainerClassName={styles.phone_slider_container}
                 sliderWrapperClassName={styles.phone_slider_wrapper}

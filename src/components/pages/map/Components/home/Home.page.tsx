@@ -11,6 +11,7 @@ import {NextButton, PrevButton, usePrevNextButtons} from './bg-slider/EmblaCarou
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import ButtonTextUI from '@src/components/UI-kit/Text-Elements/Typography/Button/ButtonText'
 import H1Title from '@src/components/UI-kit/Text-Elements/Typography/Headers/H1Title'
+import { useEffect, useRef, useState } from 'react'
 
 const slidesSubTitles = [
   'Море меняет все, Море здесь – главная доминанта, наполняющая энергией все пространство вокруг.',
@@ -25,11 +26,34 @@ const HomePage = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [ClassNames()])
   const {selectedIndex, scrollSnaps, onDotButtonClick} = useDotButton(emblaApi)
   const {prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick} = usePrevNextButtons(emblaApi)
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsVisible(true)
+    }, 500)
+    //прячем слок за другие блоки при скролле
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        if (window.scrollY > window.innerHeight) {
+          sectionRef.current.style.zIndex = "-1";
+        } else {
+          sectionRef.current.style.zIndex = "auto";
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [])
 
   return (
     <div itemScope>
-      <section className={styles['home-wrapper']}>
-        <div className={styles['text_wrapper']}>
+      <section className={styles['home-wrapper']} ref={sectionRef}>
+        <div className={`${styles['text_wrapper']} ${isVisible ? styles.visible : ''}`}>
           <H1Title itemProp='name' extraClass={styles.extra_title}>
             Кронфорт
           </H1Title>

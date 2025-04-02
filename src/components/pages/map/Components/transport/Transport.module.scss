@@ -1,3 +1,15 @@
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .under_class {
   margin-top: 18px !important;
 
@@ -96,6 +108,11 @@
 }
 
 .captions {
+  &.visible {
+    animation: fadeInRight 0.8s ease-out forwards;
+    opacity: 1;
+  }
+
   @layer base {
     z-index: 10;
     display: flex;
@@ -104,6 +121,8 @@
     justify-content: center;
     color: $yellow-text;
     gap: 40px;
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
   @include sm {
