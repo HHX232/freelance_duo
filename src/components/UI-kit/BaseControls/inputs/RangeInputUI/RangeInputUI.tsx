@@ -45,6 +45,10 @@ const InputRangeUI = forwardRef<HTMLInputElement, IField>(
       setRangeValue(newValue)
       setInputText(newValue.toString())
       updateProgressWidth(newValue)
+      // Вызываем onChange из пропсов, если он есть
+      if (rest.onChange) {
+        rest.onChange(event)
+      }
     }
 
     // Update progress width based on range value

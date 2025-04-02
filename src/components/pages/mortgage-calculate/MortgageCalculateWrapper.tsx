@@ -1,6 +1,6 @@
 'use client'
 import styles from './MortgageCalculateWrapper.module.scss'
-import {useRef, useState} from 'react'
+import {useRef, useState, useEffect} from 'react'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import {useIsMaxWidth} from '@utils/useIsMobile'
 import StarIcon from '@icons/white_star.svg'
@@ -10,16 +10,22 @@ import InputRangeUI from '@src/components/UI-kit/BaseControls/inputs/RangeInputU
 import {TabsUIItem} from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
 import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
 
-const PercantTypes = {
-  base: 5.5,
-  family: 3.5
+interface CalculationResult {
+  monthly_payment: number;
+  total_payment: number;
+  overpayment: number;
+  recommended_income: number;
+  loan_amount: number;
+  tax_deduction: number;
 }
 
 const MortgageCalculateWrapper = () => {
-  const [percent, setPercent] = useState<number>(PercantTypes.base)
+  const [percent, setPercent] = useState<number>(5.5)
   const [cost, setCost] = useState('4 000 000')
   const [downPayment, setDownPayment] = useState('2 000 000')
   const [time, setTime] = useState<string>('10')
+  const [result, setResult] = useState<CalculationResult | null>(null)
+  const [error, setError] = useState<string>('')
   const isSx = useIsMaxWidth(320)
   const timeRef = useRef<HTMLInputElement>(null)
 
@@ -37,6 +43,44 @@ const MortgageCalculateWrapper = () => {
     setShownRequestCallBack(false)
   }
 
+  const calculate = async () => {
+    try {
+      setError('')
+      const response = await fetch('/api/mortgage/calculate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          property_cost: parseFloat(removeNonNumeric(cost)),
+          initial_payment: parseFloat(removeNonNumeric(downPayment)),
+          years: parseInt(time),
+          mortgage_type: percent === 5.5 ? 'basic' : 'family'
+        })
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to calculate mortgage')
+      }
+
+      setResult(data)
+    } catch (err: any) {
+      setError(err.message || 'Ошибка при расчете. Попробуйте позже.')
+      console.error('Calculation error:', err)
+    }
+  }
+
+  // Автоматический расчет при изменении параметров
+  useEffect(() => {
+    calculate()
+  }, [cost, downPayment, time, percent])
+
+  const formatCurrency = (value: number) => {
+    return `${addSpace(Math.round(value))} ₽`
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.innerWrapper}>
@@ -46,16 +90,16 @@ const MortgageCalculateWrapper = () => {
             <div className={styles.selectorsWrapper}>
               <TabsUIItem
                 tabName={'Базовая от 5.5%'}
-                setActiveTabIndex={() => setPercent(PercantTypes.base)}
-                activeIndex={percent == PercantTypes.base ? 1 : 2}
+                setActiveTabIndex={() => setPercent(5.5)}
+                activeIndex={percent === 5.5 ? 1 : 2}
                 index={1}
                 fill={'white'}
                 extraClass={styles.button}
               />
               <TabsUIItem
                 tabName={'Семейная от 3.5%'}
-                setActiveTabIndex={() => setPercent(PercantTypes.family)}
-                activeIndex={percent == PercantTypes.base ? 1 : 2}
+                setActiveTabIndex={() => setPercent(3.5)}
+                activeIndex={percent === 5.5 ? 1 : 2}
                 index={2}
                 fill={'white'}
                 extraClass={styles.button}
@@ -113,13 +157,16 @@ const MortgageCalculateWrapper = () => {
                 labelText={'Срок кредита'}
                 placeholder={'введите срок кредите'}
                 value={Number(time)}
-                min={1}
-                max={100}
+                minValue={1}
+                maxValue={30}
                 extraClass={styles.rangeInput}
                 theme={'dark'}
                 icon={true}
                 isNeedToClear={false}
-                onChange={(e) => setTime(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  console.log('Slider value:', e.target.value)
+                  setTime(e.target.value)
+                }}
                 ref={timeRef}
                 textAfterValue={' лет'}
               />
@@ -128,48 +175,63 @@ const MortgageCalculateWrapper = () => {
           <div className={styles.conditions}>
             <StarIcon className={styles.star} />
             <div className={styles.subTitle}>
-              Базовая ипотека
+              {percent === 5.5 ? 'Базовая' : 'Семейная'} ипотека
               <div className={styles.showPercentWrapper}>
                 от
                 <span>{percent}%</span>
               </div>
             </div>
 
+            {error && <div className={styles.error}>{error}</div>}
+
             <div className={styles.infoWrapper}>
               <div className={styles.lineWrapper}>
                 <div className={`${styles.infoBlock} ${styles.selected}`}>
-                  <div className={styles.sum}>14 900 ₽</div>
+                  <div className={styles.sum}>{result ? formatCurrency(result.monthly_payment) : '14 900 ₽'}</div>
                   <div className={styles.infoText}>Ежемесячный платеж</div>
                 </div>
 
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>2 094 168 ₽</div>
+                  <div className={styles.sum}>{result ? formatCurrency(result.overpayment) : '2 094 168 ₽'}</div>
                   <div className={styles.infoText}>Переплата по кредиту</div>
                 </div>
 
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>49 951 ₽</div>
+                  <div className={styles.sum}>{result ? formatCurrency(result.recommended_income) : '49 951 ₽'}</div>
                   <div className={styles.infoText}>Рекомендуемый доход</div>
                 </div>
               </div>
 
               <div className={styles.lineWrapper}>
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>1 500 000 ₽</div>
+                  <div className={styles.sum}>{result ? formatCurrency(result.loan_amount) : '1 500 000 ₽'}</div>
                   <div className={styles.infoText}>Сумма {isSx && <br />}кредита</div>
                 </div>
 
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>3 594 168 ₽</div>
+                  <div className={styles.sum}>{result ? formatCurrency(result.total_payment) : '3 594 168 ₽'}</div>
                   <div className={styles.infoText}>Общая {isSx && <br />}выплата</div>
                 </div>
 
                 <div className={styles.infoBlock}>
-                  <div className={styles.sum}>532 242 ₽</div>
+                  <div className={styles.sum}>{result ? formatCurrency(result.tax_deduction) : '532 242 ₽'}</div>
                   <div className={styles.infoText}>Налоговый {isSx && <br />}вычет</div>
                 </div>
               </div>
             </div>
+
+            <FullButton
+              type={'Button'}
+              buttonText={`РАССЧИТАТЬ`}
+              activeButton={true}
+              border={false}
+              borderColor={'none'}
+              extraClass={styles.button}
+              buttonFill={`white`}
+              buttonElementColor={`black`}
+              buttonBorderRadius={'6px'}
+              onClick={calculate}
+            />
 
             <FullButton
               type={'Button'}
