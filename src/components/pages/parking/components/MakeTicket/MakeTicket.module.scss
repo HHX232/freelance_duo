@@ -1,3 +1,15 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .content-wrapper {
   @layer base {
     padding: 0 16px;
@@ -37,6 +49,9 @@
     background-size: 100% 100%;
     @include font(3, 30, 40, 400);
     word-wrap: break-word;
+
+    opacity: 0; // По умолчанию скрыто
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
   @include sm {
@@ -66,6 +81,10 @@
     width: 544px;
   }
 
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 }
 
 
