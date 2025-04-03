@@ -7,7 +7,7 @@ import LineBlue from '@icons/line_blue.svg'
 import LineWhite from '@icons/line_white.svg'
 import {useIsMinWidth} from '@utils/useIsMobile'
 import CommerceMap from '@pages/commerce/components/FindUs/map'
-import {FC} from 'react'
+import {FC, useEffect, useRef, useState} from 'react'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface Props {
@@ -16,9 +16,33 @@ interface Props {
 
 const FindUs: FC<Props> = ({openMapModal}) => {
   const isXXl = useIsMinWidth(1600)
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${isVisible ? styles.visible : ""}`} ref={sectionRef}>
       <div className={styles.mapWrapper}>
         <div className={styles.title}>Как нас найти</div>
         <CommerceMap />

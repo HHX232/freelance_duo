@@ -1,6 +1,6 @@
 'use client'
 import styles from './TicketForm.module.scss'
-import {FC, useState} from 'react'
+import {FC, useEffect, useRef, useState} from 'react'
 import ProgressBar from '@src/components/UI-kit/Indicators/ProgressBar/progressBar'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import ToRight from '@icons/toRight_2.svg'
@@ -21,8 +21,33 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
   const [name, setName] = useState('')
   const [mail, setMail] = useState('')
 
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${isVisible ? styles.visible : ""}`} ref={sectionRef}>
       <div className={styles.title}>Оставьте заявку и мы поможем вам с выбором помещения</div>
       <div className={styles.innerWrapper}>
         <div className={styles.steps}>
