@@ -11,7 +11,7 @@ interface IProps {
 
 export const Title = (props: IProps) => {
   return (
-    <div className={styles.title} style={props.style}>
+    <div itemScope className={styles.title} style={props.style}>
       {props.breadcrumbs && <Breadcrumbs items={props.breadcrumbs} darkTheme={props.darkTheme} />}
       {props.h1 ? (
         <>
