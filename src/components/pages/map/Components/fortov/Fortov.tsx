@@ -1,5 +1,5 @@
 'use client'
-import {Suspense} from 'react'
+import {Suspense, useEffect, useRef, useState} from 'react'
 import styles from './Fortov.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
@@ -38,12 +38,35 @@ const FortovContent = () => {
       </div>
     </div>
   ]
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.4 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
     <div>
       {
-        <section className={styles.section}>
-          <div className={styles.captions}>
+        <section className={`${styles.section} ${isVisible ? styles.visible : ''}`} ref={sectionRef}>
+          <div className={`${styles.captions} ${isVisible ? styles.visible : ''}`}>
             <div>
               <H3Title className={styles.title_color}>Часть кластера «Остров фортов»</H3Title>
               {/* <h2 className={styles['captions-title']}></h2> */}

@@ -1,5 +1,93 @@
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInOp {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInSc {
+  from {
+    scale: 0.7;
+  }
+
+  to {
+    scale: 1;
+  }
+}
+
 .page {
   min-height: 743px;
+  background-color: #165167;
+}
+
+.homepage_placeholder {
+  width: 100vw;
+  height: 100vh;
+
+  .extra_title {
+    color: #fff !important;
+  }
+
+  @layer base {
+    position: relative;
+    display: flex;
+    max-height: 640px;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 130px 16px 24px;
+  }
+
+  @include xs {
+    padding: 130px 16px 79px;
+  }
+
+  @include sm {
+    max-height: 875px;
+    padding: 130px 20px 111px;
+  }
+
+  @include md {
+    max-height: 1000px;
+    padding: 130px 40px 111px;
+  }
+
+  @include lg {
+    max-height: none;
+    padding: 130px 40px 120px;
+  }
+
+  @include xl {
+    padding: 60px 40px 124px 142px;
+  }
+
+  @include xxl {
+    padding: 90px 40px 124px 170px;
+  }
+
+  @include xxxl {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    //padding-bottom: 124px;
+    //background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.webp");
+    padding: 90px 40px 124px 196px;
+  }
 }
 
 .pointsWrapper {
@@ -49,8 +137,15 @@
 }
 
 .mapImage {
-  @media (min-height: 1200px) {
-    margin-top: min(calc(100vh - 1200px), 100px);
+  // убрал тк там цветовой фильтр фона на homepage падал
+  // @media (min-height: 1200px) {
+  //   margin-top: min(calc(100vh - 1200px), 100px);
+  // }
+  scale: 0.7;
+
+  &.visible {
+    animation: fadeInSc 1.3s ease-out forwards;
+    scale: 1;
   }
 
   @layer base {
@@ -72,6 +167,25 @@
 
 .wrapper {
   scale: 1;
+
+  @media (max-width: 1469px) {
+    padding-right: 0 !important;
+  }
+
+  @media (max-width: 1280px) {
+    &::-webkit-scrollbar {
+      height: 0 !important;
+    }
+
+    overflow: auto hidden; // Включить горизонтальный скролл // Отключить вертикальный скролл
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+.mm_inner {
+  position: relative !important;
+  background-color: #165167;
 }
 
 .swipe {
@@ -93,7 +207,14 @@
   @include font(1, 16, 22, 700);
 
   color: #fff;
+  opacity: 0;
   text-shadow: 0 4px 13.5px rb(0 0 0 / 100%) g;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInOp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 
   &-wrapper {
     position: absolute;
@@ -105,6 +226,11 @@
 }
 
 .captions {
+  &.visible {
+    animation: fadeInRight 0.8s ease-out forwards;
+    opacity: 1;
+  }
+
   &-title {
     @layer base {
       @include font(3, 30, 40, 400);
@@ -130,6 +256,8 @@
     flex-direction: column;
     padding-bottom: 24px;
     gap: 40px;
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
   @include sm {

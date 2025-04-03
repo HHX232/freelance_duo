@@ -1,5 +1,5 @@
 'use client'
-import {Suspense, useState} from 'react'
+import {Suspense, useState, useEffect, useRef} from 'react'
 import styles from './Map.module.scss'
 import {DirectionHint, PinType, Point} from './Components/pin/model'
 import MouseMover from '@shared/mouse-mover/MouseMover'
@@ -181,6 +181,30 @@ const pins: PinType[] = [
 const MapContent = () => {
   const isMobile = useIsMobile()
   const [activePin, setActivePin] = useState('')
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
 
   const onPinClick = (pin: PinType) => {
     if (activePin === pin.name) {
@@ -233,9 +257,10 @@ const MapContent = () => {
           {/*{preloader && <Preloader />}*/}
           <Page className={styles.page}>
             <HomePage />
-            <div style={{position: 'relative'}}>
+            <div className={styles.homepage_placeholder}></div>
+            <div style={{position: 'relative'}} ref={sectionRef}>
               <div>
-                <div className={styles.captions}>
+                <div className={`${styles.captions} ${isVisible ? styles.visible : ''}`}>
                   <h2 className={styles['captions-title']}>Локация</h2>
                   <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
                     <div className={styles['caption']}>
@@ -270,6 +295,7 @@ const MapContent = () => {
                 <Swipe className={styles.swipe} maxVisibleWidth={768} />
                 <MouseMover
                   className={clsx(styles.wrapper)}
+                  innerClassName={styles.mm_inner}
                   isMobile={isMobile}
                   isMobileCardVisible={false}
                   disableMove={false}
@@ -310,14 +336,14 @@ const MapContent = () => {
                         }}
                       >
                         {hint.icon}
-                        <span className={styles['direction-hint']}>{hint.name}</span>
+                        <span className={`${styles['direction-hint']} ${isVisible ? styles.visible : ''}`}>{hint.name}</span>
                       </div>
                     ))}
                   </div>
                   <NextImage
                     src='/map/map.webp'
                     alt='map'
-                    className={styles.mapImage}
+                    className={`${styles.mapImage} ${isVisible ? styles.visible : ''}`}
                     layout='responsive'
                     width={1980}
                     height={1024}

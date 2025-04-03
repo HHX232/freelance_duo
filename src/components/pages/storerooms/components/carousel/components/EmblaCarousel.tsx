@@ -97,7 +97,7 @@ const EmblaCarousel: FC<PropType> = (props) => {
           setIsVisible(true)
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.5 }
     )
 
     if (sectionRef.current) {

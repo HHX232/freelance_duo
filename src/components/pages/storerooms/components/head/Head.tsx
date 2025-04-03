@@ -21,7 +21,7 @@ const Head = () => {
           setIsVisible(true)
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.5 }
     )
 
     if (sectionRef.current) {

@@ -1,4 +1,20 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .home-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
 
   .extra_title {
@@ -21,22 +37,22 @@
   }
 
   @include xs {
-    padding: 130px 16px 79px 16px;
+    padding: 130px 16px 79px;
   }
 
   @include sm {
-    padding: 130px 20px 111px;
     max-height: 875px;
+    padding: 130px 20px 111px;
   }
 
   @include md {
-    padding: 130px 40px 111px 40px;
     max-height: 1000px;
+    padding: 130px 40px 111px;
   }
 
   @include lg {
-    padding: 130px 40px 120px 40px;
     max-height: none;
+    padding: 130px 40px 120px;
   }
 
   @include xl {
@@ -114,6 +130,14 @@
 }
 
 .text_wrapper {
+  opacity: 0; // По умолчанию скрыто
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
+  
   .description {
     margin-top: 12px;
   }
@@ -123,8 +147,8 @@
   }
 
   @include lg {
-    height: 180px;
     width: 60%;
+    height: 180px;
   }
 
   @include xl {
