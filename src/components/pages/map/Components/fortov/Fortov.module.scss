@@ -10,12 +10,33 @@
   }
 }
 
+@keyframes fadeInScale {
+  0% {
+    background-position: bottom;
+    background-size: 50%;
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    background-position: center;
+    background-size: 100%;
+  }
+}
+
 .max_width {
   max-width: 370px;
 }
 
 .title_color {
-  color: #fdf1cd;
+  color: #fdf1cd !important;
+
+  &>p {
+    color: #fdf1cd !important;
+  }
 }
 
 .subtitle_color {
@@ -26,6 +47,11 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  max-height: 100vh;
+
+  &.visible {
+    animation: fadeInScale 2s ease-out forwards;
+  }
 
   @layer base {
     position: relative;
@@ -41,8 +67,8 @@
       linear-gradient(48deg, rgb(30 56 73 / 70%) 25.09%, rgb(30 56 73 / 0%) 100.35%),
       linear-gradient(44deg, rgb(30 56 73 / 50%) 4.95%, rgb(30 56 73 / 0%) 67.43%),
       url('/content/cluster.webp') lightgray 50% / cover no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-position: center !important;
+    background-size: cover !important;
   }
 
   .caption_sub_title {
@@ -65,6 +91,10 @@
       linear-gradient(90deg, #1e3849 -28.39%, rgb(0 0 0 / 0%) 93.62%),
       url('/content/cluster.webp') lightgray 50% / cover no-repeat;
 
+
+    background-position: center !important;
+    background-size: cover !important;
+
     .caption_sub_title {
       font-size: 20px;
       line-height: 26px;
@@ -77,6 +107,9 @@
       linear-gradient(142deg, rgb(30 56 73 / 90%) 11.78%, rgb(30 56 73 / 0%) 55.41%),
       linear-gradient(90deg, #1e3849 0%, rgb(10 18 24 / 33%) 44.44%, rgb(0 0 0 / 0%) 74.06%),
       url('/content/cluster.webp') lightgray 50% / cover no-repeat;
+
+    background-position: center !important;
+    background-size: cover !important;
 
     .caption_sub_title {
       font-size: 20px;
@@ -98,6 +131,9 @@
       linear-gradient(90deg, #1e3849 0%, rgb(0 0 0 / 0%) 62.08%),
       url('/content/cluster.webp') lightgray 50% / cover no-repeat;
   }
+
+  background-position: center !important;
+  background-size: cover !important;
 
   @include xxxl {
     min-height: 900px;

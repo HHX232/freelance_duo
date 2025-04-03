@@ -26,7 +26,7 @@ interface BreadcrumbsProps {
 
 const Breadcrumbs = ({items, darkTheme, className, iconStyles}: BreadcrumbsProps) => {
   const router = useRouter()
-  const [startAnimation, setStartAnimation] = useState(false);
+  const [startAnimation, setStartAnimation] = useState(false)
 
   useEffect(() => {
     //анимация появления
@@ -67,7 +67,11 @@ const Breadcrumbs = ({items, darkTheme, className, iconStyles}: BreadcrumbsProps
         <BackIcon className={iconStyles} />
         <span>{items.length >= 2 ? items[items.length - 2]?.title : 'Назад'}</span>
       </Link>
-      <Breadcrumb className={`${styles.desktop_version}  ${startAnimation ? styles.visible : ''}`} items={breadcrumbItems} separator={<>|</>} />
+      <Breadcrumb
+        className={`${styles.desktop_version}  ${startAnimation ? styles.visible : ''}`}
+        items={breadcrumbItems}
+        separator={<>|</>}
+      />
     </section>
   )
 }

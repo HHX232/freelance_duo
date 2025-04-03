@@ -132,7 +132,7 @@ const TransportContent = () => {
       {
         <section id='MapWrapper' className={styles.section} ref={sectionRef}>
           <div className={styles.overflow} />
-          <TransportMap customRoutes={mapRoutes} wrapperClass={styles.map} withLegend={false}/>
+          <TransportMap customRoutes={mapRoutes} wrapperClass={styles.map} withLegend={false} />
           {/* поменял карту на наш компонент + в стиле pointer-events none убрал */}
           {/* <iframe
             src='https://yandex.ru/map-widget/v1/?um=constructor%3Ac0b8ef20c1a292fb67601e097be7374975c9a1f18327bc55a43516c3e5155808&amp;source=constructor'

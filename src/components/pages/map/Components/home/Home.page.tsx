@@ -11,7 +11,7 @@ import {NextButton, PrevButton, usePrevNextButtons} from './bg-slider/EmblaCarou
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import ButtonTextUI from '@src/components/UI-kit/Text-Elements/Typography/Button/ButtonText'
 import H1Title from '@src/components/UI-kit/Text-Elements/Typography/Headers/H1Title'
-import { useEffect, useRef, useState } from 'react'
+import {useEffect, useRef, useState} from 'react'
 
 const slidesSubTitles = [
   'Море меняет все, Море здесь – главная доминанта, наполняющая энергией все пространство вокруг.',
@@ -33,11 +33,26 @@ const HomePage = () => {
     setTimeout(() => {
       setIsVisible(true)
     }, 500)
+    //прячем слок за другие блоки при скролле
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        if (window.scrollY > window.innerHeight) {
+          sectionRef.current.style.zIndex = '-1'
+        } else {
+          sectionRef.current.style.zIndex = 'auto'
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   return (
-    <div itemScope>
-      <section className={styles['home-wrapper']} ref={sectionRef}>
+    <div itemType='https://schema.org/Residence' itemScope>
+      <section itemScope itemType='https://schema.org/ImageGallery' className={styles['home-wrapper']} ref={sectionRef}>
         <div className={`${styles['text_wrapper']} ${isVisible ? styles.visible : ''}`}>
           <H1Title itemProp='name' extraClass={styles.extra_title}>
             Кронфорт
@@ -80,28 +95,39 @@ const HomePage = () => {
           </FullButton>
         </div>
         <div
-          className={styles['slider_outer_wrapper']}
-          itemProp='image'
+          itemProp='hasPart'
           itemScope
-          itemType='https://schema.org/ImageGallery'
+          itemType='https://schema.org/ItemList'
+          className={styles['slider_outer_wrapper']}
         >
           <Gallery slides={SLIDES} options={OPTIONS} emblaRef={emblaRef} />
         </div>
         <div className={styles['slider_controls']}>
-          <div className={styles['dots_wrapper']}>
-            <div className={sliderStyle['embla__dots']}>
+          <div itemProp='pagination' className={styles['dots_wrapper']}>
+            <div itemProp='pagination' className={sliderStyle['embla__dots']}>
               {scrollSnaps.map((_, index) => (
                 <DotButton
                   key={index}
                   onClick={() => onDotButtonClick(index)}
                   className={`${sliderStyle['embla__dot']} ${index === selectedIndex && sliderStyle['embla__dot--selected']}`}
+                  aria-label={`Перейти к слайду ${index + 1}`}
                 />
               ))}
             </div>
           </div>
           <div className={styles['embla__buttons']}>
-            <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-            <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+            <PrevButton
+              itemProp='previousItem'
+              aria-label='Предыдущее изображение'
+              onClick={onPrevButtonClick}
+              disabled={prevBtnDisabled}
+            />
+            <NextButton
+              itemProp='nextItem'
+              aria-label='Следующее изображение'
+              onClick={onNextButtonClick}
+              disabled={nextBtnDisabled}
+            />
           </div>
         </div>
       </section>

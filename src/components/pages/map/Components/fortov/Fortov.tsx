@@ -48,7 +48,7 @@ const FortovContent = () => {
           setIsVisible(true)
         }
       },
-      { threshold: 0.4 }
+      {threshold: 0.4}
     )
 
     if (sectionRef.current) {
@@ -65,7 +65,7 @@ const FortovContent = () => {
   return (
     <div>
       {
-        <section className={styles.section} ref={sectionRef}>
+        <section className={`${styles.section} ${isVisible ? styles.visible : ''}`} ref={sectionRef}>
           <div className={`${styles.captions} ${isVisible ? styles.visible : ''}`}>
             <div>
               <H3Title className={styles.title_color}>Часть кластера «Остров фортов»</H3Title>

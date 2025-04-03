@@ -1,22 +1,22 @@
 'use client'
 import styles from './MortgageCalculateWrapper.module.scss'
-import { useRef, useState, useEffect } from 'react'
-import { FullButton } from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
-import { useIsMaxWidth } from '@utils/useIsMobile'
+import {useRef, useState, useEffect} from 'react'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import {useIsMaxWidth} from '@utils/useIsMobile'
 import StarIcon from '@icons/white_star.svg'
-import { RequestBackCallDrawer } from '@shared/Popups/request-back-call-drawer'
+import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
 // import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 import InputRangeUI from '@src/components/UI-kit/BaseControls/inputs/RangeInputUI/RangeInputUI'
-import { TabsUIItem } from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
+import {TabsUIItem} from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
 import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
 
 interface CalculationResult {
-  monthly_payment: number;
-  total_payment: number;
-  overpayment: number;
-  recommended_income: number;
-  loan_amount: number;
-  tax_deduction: number;
+  monthly_payment: number
+  total_payment: number
+  overpayment: number
+  recommended_income: number
+  loan_amount: number
+  tax_deduction: number
 }
 
 const MortgageCalculateWrapper = () => {
@@ -49,7 +49,7 @@ const MortgageCalculateWrapper = () => {
       const response = await fetch('/api/mortgage/calculate', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           property_cost: parseFloat(removeNonNumeric(cost)),
