@@ -257,7 +257,6 @@ const MapContent = () => {
           {/*{preloader && <Preloader />}*/}
           <Page className={styles.page}>
             <HomePage />
-            <div className={styles.homepage_placeholder}></div>
             <div style={{position: 'relative'}} ref={sectionRef}>
               <div>
                 <div className={`${styles.captions} ${isVisible ? styles.visible : ''}`}>
@@ -295,7 +294,6 @@ const MapContent = () => {
                 <Swipe className={styles.swipe} maxVisibleWidth={768} />
                 <MouseMover
                   className={clsx(styles.wrapper)}
-                  innerClassName={styles.mm_inner}
                   isMobile={isMobile}
                   isMobileCardVisible={false}
                   disableMove={false}
@@ -336,14 +334,14 @@ const MapContent = () => {
                         }}
                       >
                         {hint.icon}
-                        <span className={`${styles['direction-hint']} ${isVisible ? styles.visible : ''}`}>{hint.name}</span>
+                        <span className={styles['direction-hint']}>{hint.name}</span>
                       </div>
                     ))}
                   </div>
                   <NextImage
                     src='/map/map.webp'
                     alt='map'
-                    className={`${styles.mapImage} ${isVisible ? styles.visible : ''}`}
+                    className={styles.mapImage}
                     layout='responsive'
                     width={1980}
                     height={1024}

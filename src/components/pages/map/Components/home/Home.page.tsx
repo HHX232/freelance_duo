@@ -33,21 +33,6 @@ const HomePage = () => {
     setTimeout(() => {
       setIsVisible(true)
     }, 500)
-    //прячем слок за другие блоки при скролле
-    const handleScroll = () => {
-      if (sectionRef.current) {
-        if (window.scrollY > window.innerHeight) {
-          sectionRef.current.style.zIndex = "-1";
-        } else {
-          sectionRef.current.style.zIndex = "auto";
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, [])
 
   return (
