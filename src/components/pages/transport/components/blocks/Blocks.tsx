@@ -1,5 +1,5 @@
 'use client'
-import {FC} from 'react'
+import {FC, useEffect, useRef, useState} from 'react'
 import styles from './Blocks.module.scss'
 import ButtonPlus from '@src/components/UI-kit/BaseControls/buttons/ButtonPlus/ButtonPlus'
 
@@ -8,10 +8,35 @@ interface IBlocksProps {
 }
 
 const Blocks: FC<IBlocksProps> = ({setShowModal}) => {
+
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <div className={styles.blocks_container}>
+    <div className={styles.blocks_container} ref={sectionRef}>
       <section className={styles.blocks}>
-        <div className={styles['blocks-items']}>
+        <div className={`${styles['blocks-items']} ${styles.unVisible} ${isVisible ? styles.visible : ''}`}>
           <div className={styles['blocks-row']}>
             <div
               className={`${styles.cover} ${styles.meta} ${styles['block-col']}`}

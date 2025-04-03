@@ -1,3 +1,4 @@
+"use client"
 import FastForwardSVG from '@icons/fast_forward.svg'
 import MonitorSVG from '@icons/monitor.svg'
 // import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
@@ -5,7 +6,7 @@ import MonitorSVG from '@icons/monitor.svg'
 import ipotekaStyles from './ipoteka.module.scss'
 import styles from '../../payment-methods.module.scss'
 import clsx from 'clsx'
-import {FC} from 'react'
+import {FC, useEffect, useRef, useState} from 'react'
 import Image from 'next/image'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
@@ -17,9 +18,35 @@ interface IIpotekaTabProps {
 }
 
 export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
+
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
+
   return (
     <>
-      <div className={ipotekaStyles.container}>
+      <div className={`${ipotekaStyles.container} ${styles.unVisible} ${ isVisible ? styles?.visible : "" }`} ref={sectionRef}>
         <section className={clsx(styles.poster, ipotekaStyles.wrapper)}>
           <Image
             className={ipotekaStyles.bg}
@@ -64,7 +91,7 @@ export const IpotekaTab: FC<IIpotekaTabProps> = ({setShownRequestCallBack}) => {
         </div>
       </div>
 
-      <section className={clsx(styles.variants, ipotekaStyles.variants)}>
+      <section className={clsx(styles.variants, ipotekaStyles.variants, styles.unVisible, isVisible ? styles.visible : "")}>
         <div className={styles['variant-items']}>
           <div className={styles['variant-row']}>
             <div

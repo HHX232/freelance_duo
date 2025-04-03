@@ -5,7 +5,7 @@ import {HeadTitle} from '@src/components/UI-kit/Text-Elements/TextKit/head-title
 
 import './index.scss'
 import {StockItem} from '@shared/stock-item'
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import RefreshIcon from '@icons/refresh-cw.svg'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
@@ -60,14 +60,37 @@ const maxMockItemsLength = 12
 
 export const StocksList = () => {
   const [itemsForRender, setItemsForRender] = useState<IMockItem[]>([...MOCK_ITEMS])
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
-    <div className={'promotion-page-container'}>
+    <div className={'promotion-page-container'} ref={sectionRef}>
       <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
-      <HeadTitle className={'promotion-page_title'}>наши Акции</HeadTitle>
+      <HeadTitle className={`${isVisible ? "promotion-page_title__visible" : "promotion-page_title"}`}>наши Акции</HeadTitle>
 
-      <div className='stocks'>
-        <div className='stocks__list'>
+      <div className={isVisible ? "stocks__visible" : "stocks"}>
+        <div className={"stocks__list"}>
           {itemsForRender.map((item, idx) => (
             <StockItem key={`stock-item-${idx}`} href={'/stocks/1'} {...item} />
           ))}

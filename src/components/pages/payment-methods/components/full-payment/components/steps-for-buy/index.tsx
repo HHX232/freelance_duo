@@ -1,5 +1,6 @@
+'use client'
 import {Swiper, SwiperClass, SwiperSlide} from 'swiper/react'
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {stepsForBuySlides} from '@pages/payment-methods/components/full-payment/components/steps-for-buy/content'
 import styles from './steps-for-buy.module.scss'
 import useRouterNext from '@src/lib/hooks/useRouter'
@@ -28,9 +29,32 @@ export const StepsForBuy = () => {
   const handleSelectApartmentClick = () => {
     push('/planirovki-i-ceny')
   }
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
-    <div className={clsx(styles.stepsForBuy, styles.content_container)}>
+    <div className={clsx(styles.stepsForBuy, styles.content_container, styles.unVisible, `${isVisible ? styles.visible : ""}`)} ref={sectionRef}>
       <div className={styles.stepsForBuyHead}>
         <h3 className={styles.stepsForBuyHeadTitle}>ШАГИ ДО ПОКУПКИ КВАРТИРЫ</h3>
 

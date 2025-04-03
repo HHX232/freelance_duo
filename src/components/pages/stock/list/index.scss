@@ -1,4 +1,25 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .stocks {
+
+  opacity: 0; // По умолчанию скрыто
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &__visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
+
   &__list {
     display: grid;
     grid-template-rows: repeat(auto-fill, auto);
@@ -48,6 +69,13 @@
 
 .promotion-page_title {
   color: #213c4e;
+  opacity: 0; // По умолчанию скрыто
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &__visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 }
 
 .promotion-page-container {

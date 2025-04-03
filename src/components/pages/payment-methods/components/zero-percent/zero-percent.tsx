@@ -1,3 +1,5 @@
+"use client"
+
 import PieChartSVG from '@icons/pie_chart.svg'
 import ClockSVG from '@icons/clock.svg'
 import CalendarSVG from '@icons/calendar.svg'
@@ -6,7 +8,7 @@ import PercentSVG from '@icons/percent.svg'
 // import BorderedButton from '@src/components/UI-kit/BaseControls/buttons/old/borderedButton/BorderedButton'
 import styles from '../../payment-methods.module.scss'
 // import clsx from 'clsx'
-import {FC} from 'react'
+import {FC, useEffect, useRef, useState} from 'react'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface IZeroPercentTabProps {
@@ -18,9 +20,38 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
   const handleInstallmentPlan = () => setShownInstallmentPlan(true)
   const handleRequestCallBack = () => setShownRequestCallBack(true)
 
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const bodyRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    if (bodyRef.current) {
+      observer.observe(bodyRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
     <>
-      <div className={styles.poster_container}>
+      <div className={`${styles.poster_container} ${styles.unVisible} ${ isVisible ? styles?.visible : "" }`} ref={sectionRef}>
         <section className={styles.poster}>
           <h2 className={styles.posterTitle}>Рассрочка</h2>
           <p className={styles.subtitle}>Удобство и выгода в каждой покупке</p>
@@ -57,7 +88,7 @@ export const ZeroPercentTab: FC<IZeroPercentTabProps> = ({setShownInstallmentPla
         </div>
       </div>
 
-      <section className={styles.variants}>
+      <section className={`${styles.variants} ${styles.unVisible} ${ isVisible ? styles?.visible : "" }`} ref={bodyRef}>
         <h2 className={styles.title}>Варианты рассрочки</h2>
         <div className={styles['variant-items']}>
           <div className={styles['variant-row']}>

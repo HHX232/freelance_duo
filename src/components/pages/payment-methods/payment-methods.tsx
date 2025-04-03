@@ -4,7 +4,7 @@ import styles from './payment-methods.module.scss'
 import clsx from 'clsx'
 
 import MakeTicket from './components/MakeTicket/MakeTicket'
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {ZeroPercentTab} from './components/zero-percent/zero-percent'
 import {FullPaymentTab} from './components/full-payment/full-payment'
 import {IpotekaTab} from './components/ipoteka/ipoteka'
@@ -39,16 +39,40 @@ const PaymentMethodsPage = () => {
   const width = useWindowWidth()
   const [emblaRef] = useEmblaCarousel({dragFree: true, active: !!width && width < 768})
 
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
     <div className={clsx(styles['payment-methods'], 'no-scroll')}>
-      <div className={styles.header_content}>
+      <div className={styles.header_content} ref={sectionRef}>
         <div className={styles.header_main_content}>
           <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
 
           <HeadTitle className={styles.head_title}>Способы покупки</HeadTitle>
         </div>
-        <section className={clsx('embla', styles.tabs_section)}>
-          <div className='embla__viewport' ref={emblaRef}>
+        <section className={`embla ${styles.unVisible} ${isVisible ? styles.visible : "" }`}>
+          <div className={`embla__viewport`} ref={emblaRef}>
             <div className={clsx('embla__container', styles.tabs_container)}>
               {/* <TabsUI
                 fill={'white'}
