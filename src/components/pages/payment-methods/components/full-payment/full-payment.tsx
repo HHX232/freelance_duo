@@ -1,12 +1,40 @@
+"use client"
+
 import TrendingUpSVG from '@icons/trending_up.svg'
 import BankCardSVG from '@icons/bank_card.svg'
 import styles from '../../payment-methods.module.scss'
 import clsx from 'clsx'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import {useEffect, useRef, useState} from 'react'
 
 export const FullPaymentTab = () => {
+
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles.unVisible} ${ isVisible ? styles?.visible : ""}`} ref={sectionRef}>
       <section
         style={{
           backgroundImage:
