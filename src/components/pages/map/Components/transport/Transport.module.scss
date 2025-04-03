@@ -23,6 +23,8 @@
 }
 
 .section {
+  max-height: 100vh;
+
   @layer base {
     position: relative;
     display: flex;
@@ -97,7 +99,8 @@
   left: 0;
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  // ! сделал 100vh
+  height: 100vh;
   filter: grayscale(75%);
 
   // pointer-events: none;

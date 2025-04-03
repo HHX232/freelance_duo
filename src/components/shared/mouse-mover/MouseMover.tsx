@@ -62,7 +62,7 @@ const MouseMover = ({
         className={clsx(styles.inner, innerClassName)}
         style={{
           width: `${size.w}px`,
-          height: `${size.h}px`,
+          height: `100vh`,
           transform: isMobile ? 'none' : undefined
         }}
       >

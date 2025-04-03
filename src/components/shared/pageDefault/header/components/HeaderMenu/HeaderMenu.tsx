@@ -338,7 +338,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                 />
               </LinkUI>
               {/* TODO: Проверить ссылку */}
-              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/plan-razvitiya'}>
+              {/* <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/plan-razvitiya'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -353,7 +353,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </LinkUI>
+              </LinkUI> */}
               <Accordion
                 animationOn={false}
                 extraClass={styles.accordion_extra}
@@ -412,7 +412,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                   ]}
                 />
               </LinkUI>
-              <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/investicii'}>
+              {/* <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/investicii'}>
                 <Accordion
                   animationOn={false}
                   extraClass={styles.accordion_extra}
@@ -427,7 +427,7 @@ export default function HeaderMenu({onClose}: IHeaderMenuProps) {
                     }
                   ]}
                 />
-              </LinkUI>
+              </LinkUI> */}
               <LinkUI size={'sm'} weight={'regular'} onClick={onClose} href={'/docs'}>
                 <Accordion
                   animationOn={false}

@@ -15,7 +15,11 @@
 }
 
 .title_color {
-  color: #fdf1cd;
+  color: #fdf1cd !important;
+
+  &>p {
+    color: #fdf1cd !important;
+  }
 }
 
 .subtitle_color {
@@ -26,6 +30,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  max-height: 100vh;
 
   @layer base {
     position: relative;

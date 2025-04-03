@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   width: 100vw;
+  height: 100vh;
   min-height: 1000px;
   align-items: center;
   justify-content: center;
@@ -29,7 +30,7 @@
   scale: 1 !important;
   transform: none !important;
 
-  @media (min-height: 1200px) {
-    max-height: 1200px;
-  }
+  // @media (min-height: 1200px) {
+  //   max-height: 1200px;
+  // }
 }

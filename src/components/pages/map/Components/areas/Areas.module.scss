@@ -11,6 +11,8 @@
 }
 
 .section {
+  max-height: 100vh;
+
   @layer base {
     position: relative;
     display: flex;

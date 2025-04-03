@@ -393,7 +393,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                   />
                 </LinkUI>
               </li>
-              <li>
+              {/* <li>
                 <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/plan-razvitiya'}>
                   <Accordion
                     animationOn={false}
@@ -409,7 +409,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                     ]}
                   />
                 </LinkUI>
-              </li>
+              </li> */}
               <li>
                 <Accordion
                   animationOn={false}
@@ -468,7 +468,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                   />
                 </LinkUI>
               </li>
-              <li>
+              {/* <li>
                 <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/investicii'}>
                   <Accordion
                     animationOn={false}
@@ -484,7 +484,7 @@ export const MobileHeaderMenu: FC<IMobileHeaderMenuProps> = ({onClose, extraClas
                     ]}
                   />
                 </LinkUI>
-              </li>
+              </li> */}
               <li>
                 <LinkUI size={'sm'} extraStyle={{color: '#FFFFFF'}} onClick={onClose} href={'/docs'}>
                   <Accordion
