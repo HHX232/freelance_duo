@@ -1,13 +1,13 @@
 'use client'
 import styles from './MortgageCalculateWrapper.module.scss'
-import {useRef, useState, useEffect} from 'react'
-import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
-import {useIsMaxWidth} from '@utils/useIsMobile'
+import { useRef, useState, useEffect } from 'react'
+import { FullButton } from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import { useIsMaxWidth } from '@utils/useIsMobile'
 import StarIcon from '@icons/white_star.svg'
-import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
+import { RequestBackCallDrawer } from '@shared/Popups/request-back-call-drawer'
 // import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 import InputRangeUI from '@src/components/UI-kit/BaseControls/inputs/RangeInputUI/RangeInputUI'
-import {TabsUIItem} from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
+import { TabsUIItem } from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
 import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
 
 interface CalculationResult {
@@ -29,8 +29,8 @@ const MortgageCalculateWrapper = () => {
   const isSx = useIsMaxWidth(320)
   const timeRef = useRef<HTMLInputElement>(null)
 
-  // const addSpace = (num: number | string) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-  // const removeNonNumeric = (num: number | string) => num.toString().replace(/[^0-9]/g, '')
+  const addSpace = (num: number | string) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+  const removeNonNumeric = (num: number | string) => num.toString().replace(/[^0-9]/g, '')
 
   // const addSymbol = (value: string) =>
   //   value
