@@ -1,56 +1,23 @@
 'use client'
 import styles from './transportMap.module.scss'
-import {YMaps, Map, Placemark, GeoObject, Clusterer, useYMaps} from '@pbe/react-yandex-maps'
+import {YMaps, Map, Clusterer, useYMaps} from '@pbe/react-yandex-maps'
 import MapLegend from './mapLegend/mapLegend'
 import MapSidebar from './mapSidebar/mapSidebar'
 import MobilePopup from './mobilePopup/mobilePopup'
 import CustomPlacemark from './customPlacemark'
 import {FC, useState, useEffect, useRef, useCallback} from 'react'
-import { mapKFPoi } from '@src/lib/utils/catalog/mapMockData'
 import {useIsMobile, useIsTablet} from '@utils/useIsMobile'
-
-const getIconName = (name: string) => {
-  const lname = name.toLowerCase();
-  switch (true) {
-    case lname.indexOf('школа') !== -1:
-        return 'school_icon.svg'
-    case lname.indexOf('спорт') !== -1:
-        return 'sport_icon.svg'
-    case lname.indexOf('фитнесс') !== -1:
-        return 'sport_icon.svg'
-    case lname.indexOf('детский сад') !== -1:
-        return 'kindergarden_icon.svg'
-    case lname.indexOf('поликлинника') !== -1:
-        return 'medicine_icon.svg'
-    case lname.indexOf('больница') !== -1:
-        return 'medicine_icon.svg'
-    case lname.indexOf('магазин') !== -1:
-        return 'store_icon.svg'
-    case lname.indexOf('трк') !== -1:
-        return 'mall_icon.svg'
-    case lname.indexOf('молл') !== -1:
-        return 'mall_icon.svg'
-    case lname.indexOf('ресторан') !== -1:
-        return 'restorant_icon.svg'
-    case lname.indexOf('парк') !== -1:
-        return 'park_icon.svg'
-    case lname.indexOf('набережная') !== -1:
-        return 'coast_icon.svg'
-    default:
-        return 'store_icon.svg'
-  }
-}
 
 interface MapWithClustersProps {
   mapPoi?: Array<{ name: string; coords: number[]; icon: string }>;
-  mapKFPoi?: Array<{ name: string; coords: number[]; icon: string }>;
   showLegend: boolean;
   customRoutes: any[];//Array<{ points: number[][]; arrow: any; color: string; lineWidth: number; hint: string}>;
+  customState?: any;
   mapZoom: number;
   wrapperClass?: string;
 }
 
-export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, showLegend, customRoutes, mapZoom, wrapperClass }) => {
+export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, customRoutes, customState, mapZoom, wrapperClass }) => {
   const ymapsFactory = useYMaps(["templateLayoutFactory"]); // Дожидаемся загрузки API
 
   const mapRef = useRef<ymaps.Map | undefined>(undefined)
@@ -58,6 +25,7 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, sh
   const [poi, setPoi] = useState<any[]>()
   const [zoom, setZoom] = useState(14);
   const [hoveredCoords, setHoveredCoords] = useState<number[] | null>(null);
+  const [calculatedRoutes, setCalculatedRoutes] = useState<any[]>([]);
   const animationFrameId = useRef<number | null>(null);
   const isMobile = useIsMobile();
   const isTablet = useIsTablet(768);
@@ -95,36 +63,20 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, sh
       if(mapPoi) {
         //если точки интереса переданы как пропсы, то не ищем на карте
         setPoi(mapPoi)
-      } else {
-        try {
-          //Создаем поиск по карте
-          const searchControl = new ymaps.control.SearchControl({
-            options: {
-              provider: "yandex#search",
-              noPlacemark: true,
-              noSuggestPanel: true,
-              boundedBy: map.getBounds(), // Искать в пределах видимой области
-              strictBounds: true
-            },
-          });
-
-          map.controls.add(searchControl);
-          
-          // Выполняем поиск POI школа, детский сад, поликлинника, больница, набережная, ТРЦ, молл, парк, ресторан, магазин, стадион, спорт
-          searchControl.search("школа").then(() => {
-            const results = searchControl.getResultsArray();
-            const points: Array<{ name: string; icon: string; coords: number[] }> = results.map((result: ymaps.Placemark) => ({
-              name: result.properties.get("name", {}),
-              coords: result.geometry ? result.geometry.getCoordinates() as number[] : [],
-              icon: getIconName(`${result.properties.get('name', {})}`)
-            }));
-            setPoi(points);
-            map.controls.remove(searchControl);//прячем с карты поле поиска
-          });
-        } catch(err) {
-          console.error('MAPS-ERR->', err);
-        }
       }
+      if (calculatedRoutes.length > 0) {
+        calculatedRoutes.forEach(multiRoute => {
+          map.geoObjects.add(multiRoute);
+        });
+        map.setCenter([59.999685, 29.746311]);
+        map.setZoom(14);
+      }
+
+      return () => {
+        if (calculatedRoutes.length > 0) {
+          calculatedRoutes.forEach(cRoute => map.geoObjects.remove(cRoute));
+        }
+      };
     });
   }, [mapRef.current]);
 
@@ -138,17 +90,43 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, sh
 
   return (
     <Map
-        defaultState={{center: [59.999685, 29.746311], zoom: 14, controls: []}}
+        defaultState={customState ? customState : {center: [59.999685, 29.746311], zoom: 14, controls: []}}
         options={{ suppressMapOpenBlock: true }}
         controls={[]}
         modules={[
           "control.FullscreenControl",
           "control.SearchControl",
-          "control.RoutePanel"
+          "control.RoutePanel",
+          "multiRouter.MultiRoute"
         ]}
         instanceRef={mapRef}
         onLoad={(ymapsInstance) => {
           setYmaps(ymapsInstance)
+          // маршруты
+          const multiRoutes = customRoutes.map(route => {
+            return new ymapsInstance.multiRouter.MultiRoute(
+              {
+                referencePoints: [route.points[0], route.points[1]],
+                params: {
+                  routingMode: "auto",
+                }
+              },
+              {
+                routeHintContent: route.hint,
+                boundsAutoApply: true,
+                routeStrokeWidth: route.lineWidth || 4,
+                wayPointStartIconFillColor: route.color,
+                wayPointFinishIconFillColor: route.color,
+                routeStrokeColor: route.color,
+                routeActiveStrokeColor: route.color,
+                routeStrokeStyle: "dash",
+                routeBoundsAutoApply: false,
+                routePreventDragUpdate: true,
+                routeActiveRouteAutoSelection: false,
+              }
+            );
+          });
+          setCalculatedRoutes(multiRoutes)
         }}
         onMouseMove={handleMouseMove}
         className={styles[`${wrapperClass}`]}
@@ -177,16 +155,6 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, sh
         }}
       >
         {showLegend && poi && poi.map((place, index) => {
-            // return <Placemark
-            // key={place.name + index}
-            // geometry={place.coords}
-            // properties={{ hintContent: place.name, balloonContentBody: place.name }}
-            // modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
-            // options={{
-            //   iconLayout: "default#image",
-            //   iconImageHref: `/map/icons/${place.icon}`,
-            //   iconImageSize: /кронфорт/gi.test(place.name) ? [60, 60] : [40, 40],
-            // }}
             return <CustomPlacemark
               key={index}
               coordinates={place.coords}
@@ -198,46 +166,6 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, sh
             />
         })}
       </Clusterer>
-      { mapKFPoi && mapKFPoi.map((place, index) => {
-            return <CustomPlacemark
-              key={index}
-              coordinates={place.coords}
-              hintText={place.name}
-              size={/кронфорт/gi.test(place.name) ? 60 : 40}
-              iconUrl={place.icon}
-              factory={ymapsFactory}
-              foreignHover={hoveredCoords && areCoordsClose(hoveredCoords, place.coords) || false}
-          />
-        })}
-        {customRoutes && customRoutes.map((route, index) => (
-          <>
-            <GeoObject
-              key={route.hint}
-              properties={{hintContent: route.hint}}
-              geometry={{
-                type: "LineString",
-                coordinates: route.points,
-              }}
-              options={{
-                strokeColor: route.color,
-                strokeWidth: route.lineWidth,
-                strokeStyle: "dash", // Пунктирная линия
-              }}
-            />
-            <Placemark
-              key={index}
-              geometry={route.arrow.coords}
-              modules={['geoObject.addon.balloon']}
-              options={{
-                iconLayout: "default#image",
-                iconImageHref: `/map/icons/arrow_${route.arrow.direction}.svg`,
-                iconColor: route.color,
-                iconImageSize: [20, 20],
-                iconImageOffset: [-10, -10]
-              }}
-            />
-          </>
-        ))}
     </Map>
   );
 };
@@ -245,12 +173,14 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, mapKFPoi, sh
 interface ITransportMap {
   customPoi?: any[],
   customRoutes?: any[],
+  customState?: any,
+  withPoi?: boolean,
   withLegend?: boolean,
   withSidebar?: boolean,
   wrapperClass?: string
 }
 
-const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, withSidebar, wrapperClass}) => {
+const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, withPoi, withLegend, withSidebar, wrapperClass}) => {
   const [showLegend, setShowLegend] = useState(withLegend || false)
   const [showSidebar, setShowSidebar] = useState(false)
   const [modalView, setModalView] = useState(false);
@@ -271,10 +201,10 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, withLegend, w
     <div className={`${styles.trmap_container} ${wrapperClass}`}>
         <YMaps query={{lang: "ru_RU", apikey: "f4f9faf3-0ce8-4dd2-9b67-7843cfeff30f"}}>
             <MapWithClusters 
-              mapPoi={customPoi} 
-              mapKFPoi={mapKFPoi} 
-              showLegend={showLegend}
+              mapPoi={customPoi}
+              showLegend={withPoi ? withPoi : showLegend}
               customRoutes={customRoutes || []}
+              customState={customState}
               mapZoom={propZoom}
               wrapperClass='trmap_map'
             />

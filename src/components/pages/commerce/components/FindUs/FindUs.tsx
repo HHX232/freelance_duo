@@ -6,9 +6,10 @@ import WhiteStar from '@icons/white_star.svg'
 import LineBlue from '@icons/line_blue.svg'
 import LineWhite from '@icons/line_white.svg'
 import {useIsMinWidth} from '@utils/useIsMobile'
-import CommerceMap from '@pages/commerce/components/FindUs/map'
+// import CommerceMap from '@pages/commerce/components/FindUs/map'
 import {FC, useEffect, useRef, useState} from 'react'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+import TransportMap from '@src/components/UI-kit/transportMap/transportMap'
 
 interface Props {
   openMapModal: () => void
@@ -41,11 +42,19 @@ const FindUs: FC<Props> = ({openMapModal}) => {
     }
   }, [])
 
+  const mapPoint = [{ coords: [59.99494649074784, 30.247901999999492], name: "офис Кронфорт", icon: 'Find_Icon_1.svg' }];
+
   return (
     <div className={`${styles.wrapper} ${isVisible ? styles.visible : ""}`} ref={sectionRef}>
       <div className={styles.mapWrapper}>
         <div className={styles.title}>Как нас найти</div>
-        <CommerceMap />
+        {/* <CommerceMap /> */}
+        <TransportMap
+          customPoi={mapPoint}
+          customState={{center: [59.99494649074784, 30.247901999999492], zoom: 9}}
+          wrapperClass={styles.commerce_map}
+          withPoi
+        />
         <div className={styles.mobileButtonWrapper}>
           <FullButton
             type={'Button'}
