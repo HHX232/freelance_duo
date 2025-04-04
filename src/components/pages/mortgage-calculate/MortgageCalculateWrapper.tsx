@@ -9,6 +9,7 @@ import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
 import InputRangeUI from '@src/components/UI-kit/BaseControls/inputs/RangeInputUI/RangeInputUI'
 import {TabsUIItem} from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
 import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
+import {debounce} from 'next/dist/server/utils'
 
 interface CalculationResult {
   monthly_payment: number
@@ -22,7 +23,7 @@ interface CalculationResult {
 const MortgageCalculateWrapper = () => {
   const [percent, setPercent] = useState<number>(5.5)
   const [cost, setCost] = useState('4 000 000')
-  const [downPayment, setDownPayment] = useState('2 000 000')
+  const [downPayment, setDownPayment] = useState<string>('2 000 000')
   const [time, setTime] = useState<string>('10')
   const [result, setResult] = useState<CalculationResult | null>(null)
   const [error, setError] = useState<string>('')
@@ -30,13 +31,7 @@ const MortgageCalculateWrapper = () => {
   const timeRef = useRef<HTMLInputElement>(null)
 
   const addSpace = (num: number | string) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-  const removeNonNumeric = (num: number | string) => num.toString().replace(/[^0-9]/g, '')
-
-  // const addSymbol = (value: string) =>
-  //   value
-  //     .split('')
-  //     .filter((val) => val !== '₽')
-  //     .join('')
+  const removeNonNumeric = (num: number | string) => num.toString().replace(/[^0-9.]/g, '')
 
   const [shownRequestCallBack, setShownRequestCallBack] = useState(false)
   const handleRequestCallBackDrawerClose = () => {
@@ -69,8 +64,39 @@ const MortgageCalculateWrapper = () => {
     } catch (err: any) {
       setError(err.message || 'Ошибка при расчете. Попробуйте позже.')
       console.error('Calculation error:', err)
+      console.error('Calculation error:', error)
     }
   }
+
+  const onCostChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const oldCostNumber = Number(removeNonNumeric(cost))
+    const newValueNumber = Number(removeNonNumeric(e.target.value))
+    const downPaymentNumber = Number(removeNonNumeric(downPayment))
+    const koef = (oldCostNumber <= 0 || downPaymentNumber <= 0 ) ? 0.2 : downPaymentNumber / oldCostNumber
+
+    const newDownPayment = koef * newValueNumber
+
+    setDownPayment(String(newDownPayment))
+    setCost(e.target.value)
+  }
+
+  const onDownPaymentChange = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(removeNonNumeric(e.target.value))
+    const min = Number(removeNonNumeric(cost)) * 0.2
+    const max = Number(removeNonNumeric(cost)) * 0.9
+
+    if(Number(removeNonNumeric(e.target.value)) < min) {
+      setDownPayment(String(min))
+      return
+    }
+
+    if(Number(removeNonNumeric(e.target.value)) > max) {
+      setDownPayment(String(max))
+      return
+    }
+
+    setDownPayment(String(newValue))
+  }, 500)
 
   // Автоматический расчет при изменении параметров
   useEffect(() => {
@@ -106,52 +132,32 @@ const MortgageCalculateWrapper = () => {
               />
             </div>
             <div className={styles.dataInputWrapper}>
-              {/* <InputField
-                title={'Стоимость недвижимости'}
-                type={'text'}
-                placeholder={'Введите стоимость недвижимости'}
-                variety={'secondary'}
-                value={`${cost} ₽`}
-                inputStyles={styles.inputStyles}
-                stylesLabel={styles.labelStyles}
-                styleContainer={{gridGap: '4px'}}
-                onChange={(e) => setCost(addSymbol(addSpace(removeNonNumeric(e.target.value))))}
-              /> */}
               <InputTextUI
                 value={`${cost}`}
                 textAfterValue=' ₽'
                 labelText={'Стоимость недвижимости'}
                 placeholder={'Введите стоимость недвижимости'}
-                onChange={(e) => setCost(e.target.value)}
+                onChange={(e) => onCostChange(e)}
                 icon={<></>}
                 theme={'dark'}
                 extraClass={styles.extra_input}
                 spacesBetwenNumbers
                 onlyType={'onlyNumbers'}
+                min={0}
               />
-              {/* <InputField
-                title={'Первоначальный взнос'}
-                type={'text'}
-                placeholder={'Введите первоначальный взнос'}
-                variety={'secondary'}
-                value={`${downPayment} ₽`}
-                inputStyles={styles.inputStyles}
-                stylesLabel={styles.labelStyles}
-                styleContainer={{gridGap: '4px'}}
-                onChange={(e) => setDownPayment(addSymbol(addSpace(removeNonNumeric(e.target.value))))}
-              /> */}
-
               <InputTextUI
                 value={`${downPayment}`}
                 textAfterValue=' ₽'
                 labelText={'Первоначальный взнос'}
                 placeholder={'Введите первоначальный взнос'}
-                onChange={(e) => setDownPayment(e.target.value)}
+                onChange={(e) => onDownPaymentChange(e)}
                 icon={<></>}
                 theme={'dark'}
                 extraClass={styles.extra_input}
                 spacesBetwenNumbers
                 onlyType={'onlyNumbers'}
+                min={Number(removeNonNumeric(cost)) * 0.2}
+                max={Number(removeNonNumeric(cost)) * 0.9}
               />
               <InputRangeUI
                 labelText={'Срок кредита'}
@@ -182,7 +188,7 @@ const MortgageCalculateWrapper = () => {
               </div>
             </div>
 
-            {error && <div className={styles.error}>{error}</div>}
+            {/*{error && <div className={styles.error}>{error}</div>}*/}
 
             <div className={styles.infoWrapper}>
               <div className={styles.lineWrapper}>
