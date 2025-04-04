@@ -4,7 +4,7 @@ import {FC, useState, useEffect} from 'react'
 import styles from './mobilePopup.module.scss'
 import {YMaps} from '@pbe/react-yandex-maps'
 import MapSidebar from '../mapSidebar/mapSidebar'
-import { mapPoi, mapRoutes, mapKFPoi } from '@src/lib/utils/catalog/mapMockData'
+import { mapPoi, mapRoutes } from '@src/lib/utils/catalog/mapMockData'
 import MapPoint from '@shared/mapPoint/mapPoint'
 import {CloseButton} from '../../BaseControls/buttons/close-button'
 import { MapWithClusters } from '../transportMap'
@@ -44,7 +44,6 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
     };
 
     const handleClick = () => {
-        console.log('CLICK->', open);
         setOpen(!open)
     }
 
@@ -70,8 +69,7 @@ const MobilePopup: FC<ITransportModalProps> = ({shown, onClose}) => {
       <div className={styles.mobile_content}>
         <YMaps query={{lang: "ru_RU", apikey: "f4f9faf3-0ce8-4dd2-9b67-7843cfeff30f"}}>
           <MapWithClusters
-            mapPoi={mapPoi} 
-            mapKFPoi={mapKFPoi} 
+            mapPoi={mapPoi}
             showLegend={true}
             customRoutes={mapRoutes || []}
             mapZoom={14}
