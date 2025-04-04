@@ -112,8 +112,10 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
                 }
               },
               {
+                routePanelTitle: route.hint,
+                routeShowHeader: true,
                 routeHintContent: route.hint,
-                boundsAutoApply: true,
+                boundsAutoApply: false,
                 routeStrokeWidth: route.lineWidth || 4,
                 wayPointStartIconFillColor: route.color,
                 wayPointFinishIconFillColor: route.color,

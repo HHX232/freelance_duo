@@ -10,20 +10,15 @@
   }
 }
 
-@keyframes fadeInScale {
-  0% {
-    background-position: bottom;
-    background-size: 50%;
-    opacity: 0.5;
+@keyframes fadeInSc {
+  from {
+    opacity: 0.7;
+    scale: 0.7;
   }
 
-  50% {
+  to {
     opacity: 1;
-  }
-
-  100% {
-    background-position: center;
-    background-size: 100%;
+    scale: 1;
   }
 }
 
@@ -44,13 +39,16 @@
 }
 
 .section {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   max-height: 100vh;
+  background-position: center !important;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  scale: 0.7;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 
   &.visible {
-    animation: fadeInScale 2s ease-out forwards;
+    animation: fadeInSc 1.4s ease-out forwards;
+    scale: 1;
   }
 
   @layer base {
@@ -90,8 +88,6 @@
       linear-gradient(44deg, rgb(30 56 73 / 90%) 4.95%, rgb(30 56 73 / 0%) 67.43%),
       linear-gradient(90deg, #1e3849 -28.39%, rgb(0 0 0 / 0%) 93.62%),
       url('/content/cluster.webp') lightgray 50% / cover no-repeat;
-
-
     background-position: center !important;
     background-size: cover !important;
 
@@ -107,7 +103,6 @@
       linear-gradient(142deg, rgb(30 56 73 / 90%) 11.78%, rgb(30 56 73 / 0%) 55.41%),
       linear-gradient(90deg, #1e3849 0%, rgb(10 18 24 / 33%) 44.44%, rgb(0 0 0 / 0%) 74.06%),
       url('/content/cluster.webp') lightgray 50% / cover no-repeat;
-
     background-position: center !important;
     background-size: cover !important;
 
@@ -131,9 +126,6 @@
       linear-gradient(90deg, #1e3849 0%, rgb(0 0 0 / 0%) 62.08%),
       url('/content/cluster.webp') lightgray 50% / cover no-repeat;
   }
-
-  background-position: center !important;
-  background-size: cover !important;
 
   @include xxxl {
     min-height: 900px;

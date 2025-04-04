@@ -40,12 +40,16 @@ const FortovContent = () => {
   ]
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [startTextAnimation, setStartTextAnimation] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
+          setTimeout(() => {
+            setStartTextAnimation(true)
+          }, 1100)
         }
       },
       {threshold: 0.4}
@@ -66,7 +70,7 @@ const FortovContent = () => {
     <div>
       {
         <section className={`${styles.section} ${isVisible ? styles.visible : ''}`} ref={sectionRef}>
-          <div className={`${styles.captions} ${isVisible ? styles.visible : ''}`}>
+          <div className={`${styles.captions} ${startTextAnimation ? styles.visible : ''}`}>
             <div>
               <H3Title className={styles.title_color}>Часть кластера «Остров фортов»</H3Title>
               {/* <h2 className={styles['captions-title']}></h2> */}
