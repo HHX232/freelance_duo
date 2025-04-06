@@ -183,15 +183,19 @@ const MapContent = () => {
   const [activePin, setActivePin] = useState('')
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [startTextAnimation, setStartTextAnimation] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
+          setTimeout(() => {
+            setStartTextAnimation(true)
+          }, 1100)
         }
       },
-      {threshold: 0.5}
+      {threshold: 0.3}
     )
 
     if (sectionRef.current) {
@@ -259,7 +263,7 @@ const MapContent = () => {
             <div className={styles.homepage_placeholder}></div>
             <div style={{position: 'relative'}} ref={sectionRef}>
               <div>
-                <div className={`${styles.captions} ${isVisible ? styles.visible : ''}`}>
+                <div className={`${styles.captions} ${startTextAnimation ? styles.visible : ''}`}>
                   <h2 className={styles['captions-title']}>Локация</h2>
                   <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
                     <div className={styles['caption']}>
