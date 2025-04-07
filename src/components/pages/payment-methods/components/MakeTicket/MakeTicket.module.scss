@@ -10,7 +10,7 @@
     margin: 0;
     background:
       linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%),
-      url('/content/payment-methods/form.png') no-repeat;
+      url('/content/payment-methods/form.webp') no-repeat;
     background-position: 28%;
     background-size: cover;
     color: #fff;
@@ -41,19 +41,20 @@
 
     background:
       linear-gradient(285deg, rgba(0, 0, 0, 0) 59.46%, rgba(0, 0, 0, 0.4) 84.87%),
-      url('/content/payment-methods/form.png') lightgray -246.884px 0px / 152.306% 100.625% no-repeat;
+      url('/content/payment-methods/form.webp') lightgray -246.884px 0px / 152.306% 100.625% no-repeat;
     background-size: cover;
   }
 
   @include xl {
     background:
       linear-gradient(285deg, rgba(0, 0, 0, 0) 59.46%, rgba(0, 0, 0, 0.4) 84.87%),
-      url('/content/payment-methods/form.png') lightgray -201.14px 0px / 136.637% 100.8% no-repeat;
+      url('/content/payment-methods/form.webp') lightgray -201.14px 0px / 136.637% 100.8% no-repeat;
     background-size: cover;
     background-position: center;
   }
 
   @include xxl {
+    padding: 40px 60px;
   }
 }
 

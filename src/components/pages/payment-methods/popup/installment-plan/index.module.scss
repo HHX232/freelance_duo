@@ -3,6 +3,10 @@
   justify-content: flex-end;
 }
 
+.button_extra {
+  padding: 12px;
+}
+
 .headClose {
   margin: 16px 16px 0 0;
 }
@@ -42,10 +46,28 @@
 
 .list {
   @include ol-style;
+
+  li {
+    color: $grey !important;
+  }
+}
+
+.swipe {
+  margin-left: auto;
+  margin-bottom: 10px;
+}
+
+.table_wrapper {
+  width: 100%;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    height: 0;
+  }
 }
 
 .table {
-  width: 100%;
+  min-width: fit-content;
   border-collapse: collapse;
 
   @include font(1, 16, 22);
@@ -54,20 +76,27 @@
     @include font(1, 14, 18);
   }
 
+  text-wrap: nowrap;
+
+  & th {
+    font-weight: 400 !important;
+  }
+
   & th,
   & td {
     padding: 10px;
     text-align: left;
-    border: 1px solid #11627D14;
+    border: 1px solid #11627d14;
+    color: $grey;
   }
 
   & th {
-    background-color: #11627D14;
-    color: #66A2B6;
+    background-color: #11627d14;
+    color: #66a2b6;
   }
 
   tr:nth-child(even) {
-    background-color: #0000000A;
+    background-color: #0000000a;
   }
 
   & td:nth-child(2) {
@@ -76,10 +105,20 @@
 }
 
 .buttonGroup {
-  margin-top: auto;
-  display: flex;
-  gap: 20px;
-  padding: 20px 60px 40px 60px;
+  @layer base {
+    margin-top: auto;
+    display: flex;
+    gap: 20px;
+    padding: 20px 60px 40px 60px;
+
+    button span {
+      font-size: 16px;
+    }
+
+    button:last-child span {
+      color: $grey;
+    }
+  }
 
   @include bp-xl {
     padding: 20px 40px 40px;

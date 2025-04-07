@@ -3,19 +3,20 @@ import styles from './feedback.module.scss'
 import {Metadata} from 'next'
 import Link from 'next/link'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
-import {InputField} from '@src/components/UI-kit/inputs/input-field/input-field'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
+
 import {IProfile} from '@src/types/profile.interface'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
-import FilledButton from '@shared/filledButton/FilledButton'
 import {Agree} from '@shared/agree/agree'
 import {useForm} from 'react-hook-form'
 import {ChangeEvent, useEffect, useState} from 'react'
 import {LightBorder} from '@shared/light-border/light-border'
 import NextImage from 'next/image'
 import {sendCallBack} from '@src/actions/contacts'
-import {SuccessContactPopup} from '@shared/success-contact-popup/success-contact-popup'
-import {TextBox} from '@src/components/UI-kit/inputs/textbox/textbox'
+import {SuccessContactPopup} from '@src/components/UI-kit/Popups-Modals/success-contact-popup/success-contact-popup'
+import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
+import {TextBox} from '@src/components/UI-kit/BaseControls/inputs/textbox/textbox'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 const breadcrumbItems = [{title: 'Главная', href: '/'}, {title: 'Служба доверия'}]
 
@@ -183,9 +184,20 @@ const FeedbackPage = () => {
                 className={styles.phone}
               />
               <div className={styles.submit}>
-                <FilledButton variety='primary' type='submit'>
-                  Отправить
-                </FilledButton>
+                <FullButton
+                  extraClass={styles.extra_button}
+                  buttonBorderRadius='6px'
+                  buttonElementColor='white'
+                  activeButton
+                  buttonText='Отправить'
+                  buttonFill='bronze-500'
+                  border={false}
+                  borderColor='none'
+                  onClick={onSubmit} // Add onClick handler to trigger form submission
+                  alternativeBorderOnActive
+                  alternativeBorderColor='bronze'
+                  alternativeBorderWidth='3px'
+                />
               </div>
             </form>
             <Agree className={styles.agree_custom} />

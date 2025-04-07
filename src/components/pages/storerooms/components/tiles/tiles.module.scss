@@ -1,17 +1,28 @@
-.tiles-wrapper {
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tiles-wrapper {
   @layer base {
-    background: #11627D14;
     display: flex;
     align-items: center;
     padding: 60px 16px;
+    background: #11627D14;
   }
 
-  @include sm{
+  @include sm {
     padding: 60px 20px;
   }
 
-  @include md{
+  @include md {
     padding: 60px 40px;
   }
 
@@ -37,20 +48,17 @@
   }
 
   @include xl {
+    display: flex;
     width: 100%;
     height: 100%;
-    display: flex;
   }
 }
 
 .main-wrapper {
-
-  @layer base {
-
-  }
+  @layer base {}
 
   @include xxl {
-    height: 720px!important;
+    height: 720px !important;
     flex-direction: row;
   }
 }
@@ -64,6 +72,7 @@
     .wrapper {
       flex-direction: row;
     }
+
     .tile {
       width: 100%;
     }
@@ -71,46 +80,68 @@
 }
 
 .tile {
+  &.visible > .title {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 1;
+  }
+
+  &.visible > .description {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 
   @layer base {
-    color: #FFFFFF;
-    padding: 36px 20px;
-    height: 280px;
     display: flex;
+    overflow: hidden;
+    height: 280px;
     flex-direction: column;
     justify-content: space-between;
+    padding: 36px 20px;
+    color: #FFF;
     word-break: break-word;
-    overflow: hidden;
 
 
     .title {
       @include font(3, 22, 34, 400);
+
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      opacity: 0;
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .description {
+      @include font(1, 14, 18, 400);
+
+      opacity: 0;
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+  }
+
+  @include sm {
+    padding: 36px;
+  }
+
+  @include md {
+    padding: 40px;
+
+    .title {
+      @include font(3, 26, 36, 400);
+
       display: flex;
       align-items: center;
       gap: 20px;
     }
 
-    .description {
-      @include font(1, 14, 18, 400);
-    }
-  }
-
-  @include sm{
-    padding: 36px;
-  }
-
-  @include md{
-    padding: 40px;
   }
 
   @include xl {
     height: 300px;
-  }
-
-  @include lg {
 
     .title {
       @include font(3, 32, 44, 400);
+
       display: flex;
       align-items: center;
       gap: 20px;
@@ -123,8 +154,8 @@
   }
 
   @include xxl {
-    height: 100%!important;
     width: 100%;
+    height: 100% !important;
     padding: 40px;
   }
 
@@ -132,42 +163,41 @@
 
 .tile-bg1 {
   @layer base {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xs.png') no-repeat;
-    background-size: 100% 100%;
-
-    gap: 24px;
     justify-content: flex-end;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xs.webp') no-repeat;
+    background-size: 100% 100%;
+    gap: 24px;
   }
 
-  @include sm{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_sm.png') no-repeat;
+  @include sm {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_sm.webp') no-repeat;
     background-size: 100% 100%;
   }
 
   @include md {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_md.png') no-repeat;
-    background-size: 100% 100%;
-
     justify-content: flex-end;
-  }
-
-  @include lg{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_lg.png') no-repeat;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_md.webp') no-repeat;
     background-size: 100% 100%;
   }
 
-  @include xl{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xl.png') no-repeat;
+  @include lg {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_lg.webp') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  @include xl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xl.webp') no-repeat;
     background-size: 100% 100%;
   }
 
   @include xxl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxl.png') no-repeat;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxl.webp') no-repeat;
     background-size: 100% 100%;
   }
 
   @include xxxl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxxl.png') no-repeat;
+    padding: 60px;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/vid_xxxl.webp') no-repeat;
     background-size: 100% 100%;
   }
 
@@ -178,8 +208,8 @@
 }
 
 .tile-bg3 {
-  @layer base{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xs.png') no-repeat center center;
+  @layer base {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xs.webp') no-repeat center center;
     background-size: 100% 100%;
 
     .title {
@@ -187,18 +217,31 @@
     }
   }
 
-  @include sm{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_sm.png') no-repeat center center;
+  @include sm {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_sm.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 
-  @include md{
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_md.png') no-repeat center center;
+  @include md {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_md.webp') no-repeat center center;
     background-size: 100% 100%;
+
+    .title {
+      @include font(3, 52, 58, 400);
+    }
   }
 
   @include lg {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_lg.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_lg.webp') no-repeat center center;
+    background-size: 100% 100%;
+
+    .title {
+      @include font(3, 52, 58, 400);
+    }
+  }
+
+  @include xl {
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xl.webp') no-repeat center center;
     background-size: 100% 100%;
 
     .title {
@@ -206,36 +249,35 @@
     }
   }
 
-  @include xl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xl.png') no-repeat center center;
-    background-size: 100% 100%;
-  }
-
   @include xxl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xxl.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xxl.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 
   @include xxxl {
-    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xxxl.png') no-repeat center center;
+    background: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 20%, rgb(0 0 0 / 60%) 65.97%), url('/content/storerooms/sugar_xxxl.webp') no-repeat center center;
     background-size: 100% 100%;
   }
 }
 
 .tile-bg4 {
-
   @layer base {
     position: relative;
-    background: #FFFFFF;
-    color: rgba(85, 85, 85, 1);
+    background: #FFF;
+    color: rgb(85 85 85 / 100%);
 
     .title {
       @include font(3, 40, 50, 400);
     }
   }
 
-  @include lg {
+  @include md {
+    .title {
+      @include font(3, 52, 58, 400);
+    }
+  }
 
+  @include xl {
     .title {
       @include font(3, 64, 80, 400);
     }
@@ -250,33 +292,32 @@
     bottom: 0;
 
     svg {
-      height: 136px;
       width: 136px;
+      height: 136px;
     }
   }
 
   @include sm {
-    right: 0;
     top: 0;
+    right: 0;
     bottom: unset;
     left: unset;
 
     svg {
-      height: 323px;
       width: 323px;
+      height: 323px;
     }
   }
 
   @include md {
-    right: 0;
     top: 0;
+    right: 0;
     bottom: unset;
     left: unset;
 
     svg {
-      height: inherit;
       width: inherit;
+      height: inherit;
     }
   }
 }
-

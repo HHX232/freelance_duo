@@ -7,7 +7,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import {Modal, Skeleton, Tooltip} from 'antd'
-import FilledButton from '@shared/filledButton/FilledButton'
+import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import CompareSVG from '@icons/compare_icon.svg'
 import FavoriteSVG from '@icons/bookmark_icon.svg'
 import DownloadSVG from '@icons/dawnload.svg'
@@ -21,13 +21,14 @@ import {GetProfile} from '@src/actions/profile'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {useRouter} from 'next/navigation'
 import NextImage from 'next/image'
-import Footer from '@shared/page/footer/footer'
+import Footer from '@shared/pageDefault/footer/footer'
 import {Latest} from '@shared/latest/latest'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import {Share} from '@shared/share-object/share'
 import Link from 'next/link'
 import {sendTmrEvent} from '@utils/tmrTracker'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface Tabs {
   name: string
@@ -152,7 +153,7 @@ const ApartmentCard = ({
   console.log('FVALUE: ', fvalue)
 
   return (
-    <MainContainer style={{background: '#d8e7ee'}}>
+    <MainContainer itemScope itemType='https://schema.org/Product' style={{background: '#d8e7ee'}}>
       <Title breadcrumbs={breadcrumbItems2} />
       <>
         <div className={styles.wrapper}>
@@ -161,14 +162,14 @@ const ApartmentCard = ({
           <Modal open={modalInfo} footer={null} onCancel={() => setInfoModal(false)} width={746} centered>
             <div className={styles.start}>
               <div className={styles.text}>
-                <p>
+                <p itemProp='availability'>
                   Обратите внимание,
                   <br />
                   что онлайн бронирование платное
                   <br />
                   <br />
                 </p>
-                <p>Забронировать квартиру и зафиксировать ее стоимость можно на 3 дня</p>
+                <p itemProp='priceSpecification'>Забронировать квартиру и зафиксировать ее стоимость можно на 3 дня</p>
               </div>
 
               <FilledButton onClick={() => router.push(`/lk/reservation/${ext_guid}`)} style={{maxWidth: '271px'}}>
@@ -204,11 +205,13 @@ const ApartmentCard = ({
             centered
           >
             <div className={styles.reservation}>
-              <p className={styles.reservationText}>
+              <p itemProp='availability' className={styles.reservationText}>
                 Бронирование доступно только авторизованным пользователям, авторизуйтесь в личном кабинете и продолжите
                 бронирование
               </p>
-              <p className={styles.subtext}>Обратите внимание, что бронь платная, срок 3 дня после подтверждения.</p>
+              <p itemProp='priceSpecification' className={styles.subtext}>
+                Обратите внимание, что бронь платная, срок 3 дня после подтверждения.
+              </p>
               <FilledButton className={styles.reservationButton} onClick={handleNeedAuth} variety='primary'>
                 Продолжить
               </FilledButton>
@@ -268,6 +271,7 @@ const ApartmentCard = ({
                         className={activeSlideIndex === ind ? styles.active : ''}
                         onClick={() => setActiveSlide(ind)}
                         key={ind}
+                        itemType='name'
                       >
                         {tab.name}
                       </span>
@@ -315,13 +319,37 @@ const ApartmentCard = ({
                   </div>
                 </div>
 
-                <div className={styles.tableInfo}>
+                {/* <div itemScope itemType='https://schema.org/Product' className={styles.tableInfo}>
                   <span className={styles.name}>Корпус</span>
                   <span className={styles.value}>{building}</span>
                   <span className={styles.name}>Этаж</span>
                   <span className={styles.value}>{floor}</span>
                   <span className={styles.name}>Сдача</span>
                   <span className={styles.value}>{ready}</span>
+                </div> */}
+
+                {/* заменить в случае нарушения верстки */}
+                <div className={styles.tableInfo} itemScope itemType='https://schema.org/Product'>
+                  <span className={styles.name} itemProp='additionalProperty' itemScope>
+                    <span itemProp='name'>Корпус</span>
+                    <span className={styles.value} itemProp='value'>
+                      {building}
+                    </span>
+                  </span>
+
+                  <span className={styles.name} itemProp='additionalProperty' itemScope>
+                    <span itemProp='name'>Этаж</span>
+                    <span className={styles.value} itemProp='value'>
+                      {floor}
+                    </span>
+                  </span>
+
+                  <span className={styles.name} itemProp='additionalProperty' itemScope>
+                    <span itemProp='name'>Сдача</span>
+                    <span className={styles.value} itemProp='value'>
+                      {ready}
+                    </span>
+                  </span>
                 </div>
 
                 <div className={styles.additionalParams}>
@@ -356,7 +384,7 @@ const ApartmentCard = ({
                           onOpenChange={() => setSkidka(!isSkida)}
                           open={isSkida}
                         >
-                          <div className={styles.promo}>
+                          <div itemScope className={styles.promo}>
                             <svg
                               width='20'
                               height='20'
@@ -388,7 +416,7 @@ const ApartmentCard = ({
                                 strokeMiterlimit='10'
                               />
                             </svg>
-                            <span>Скидка 15%</span>
+                            <span itemType='https://schema.org/Offer'>Скидка 15%</span>
                           </div>
                         </Tooltip>
                         <Tooltip
@@ -678,10 +706,19 @@ const ApartmentCard = ({
                     )}
                   </div>
 
-                  <div className={styles.prevAndCurPrice}>
-                    <span className={styles.price}>{new Intl.NumberFormat('ru').format(+rvalue)} руб. </span>
+                  <div
+                    itemProp='offers'
+                    itemScope
+                    itemType='https://schema.org/Offer'
+                    className={styles.prevAndCurPrice}
+                  >
+                    <span itemProp='price' className={styles.price}>
+                      {new Intl.NumberFormat('ru').format(+rvalue)} руб.{' '}
+                    </span>
                     {mvalue && (
-                      <span className={styles.old_price}>{new Intl.NumberFormat('ru').format(+mvalue)} руб. </span>
+                      <span itemProp='price' className={styles.old_price}>
+                        {new Intl.NumberFormat('ru').format(+mvalue)} руб.{' '}
+                      </span>
                     )}
                   </div>
                 </div>
@@ -691,7 +728,23 @@ const ApartmentCard = ({
                     <>
                       {isReservation && (
                         <>
-                          <FilledButton
+                          <FullButton
+                            activeButton={true}
+                            border={false}
+                            borderColor={'none'}
+                            buttonFill={'bronze-500'}
+                            buttonText={'Забронировать'}
+                            buttonBorderRadius={'6px'}
+                            buttonElementColor={'white'}
+                            extraClass={styles.reservationBtn}
+                            onClick={() => {
+                              !isAuth ? setVisibleReservation(true) : setInfoModal(true)
+                              sendTmrEvent('book', id, fvalue)
+                            }}
+                          />
+                          <span itemProp='priceSpecification'>Бронь платная, срок 3 дня после подтверждения</span>
+
+                          {/* <FilledButton
                             className={styles.reservationBtn}
                             variety='primary'
                             onClick={() => {
@@ -700,8 +753,7 @@ const ApartmentCard = ({
                             }}
                           >
                             Забронировать
-                          </FilledButton>
-                          <span>Бронь платная, срок 3 дня после подтверждения</span>
+                          </FilledButton> */}
                         </>
                       )}
                     </>

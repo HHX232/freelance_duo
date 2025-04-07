@@ -1,30 +1,78 @@
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInSc {
+  from {
+    opacity: 0.7;
+    scale: 0.7;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.max_width {
+  max-width: 370px;
+}
+
+.title_color {
+  color: #fdf1cd !important;
+
+  &>p {
+    color: #fdf1cd !important;
+  }
+}
+
+.subtitle_color {
+  color: #fff !important;
+}
+
 .section {
-  background-size: cover;
-  background-position: center;
+  max-height: 100vh;
+  background-position: center !important;
   background-repeat: no-repeat;
-  min-height: 100vh;
-  height: fit-content;
+  background-size: cover !important;
+  scale: 0.7;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInSc 1.4s ease-out forwards;
+    scale: 1;
+  }
 
   @layer base {
-    background:
-      linear-gradient(180deg, rgba(38, 57, 69, 0) 18.3%, rgba(38, 57, 69, 0.47) 49.35%, #263945 100%),
-      linear-gradient(48deg, rgba(30, 56, 73, 0.7) 25.09%, rgba(30, 56, 73, 0) 100.35%),
-      linear-gradient(44deg, rgba(30, 56, 73, 0.5) 4.95%, rgba(30, 56, 73, 0) 67.43%),
-      url('/content/cluster.png') lightgray 50% / cover no-repeat;
-
     position: relative;
-    height: 100vh;
-    background-position: center;
-    background-size: cover;
-
     display: flex;
+    height: 100vh;
+    min-height: 850px;
+    max-height: 1000px;
     flex-direction: column;
     justify-content: end;
     padding: 40px 20px;
+    background:
+      linear-gradient(180deg, rgb(38 57 69 / 0%) 18.3%, rgb(38 57 69 / 47%) 49.35%, #263945 100%),
+      linear-gradient(48deg, rgb(30 56 73 / 70%) 25.09%, rgb(30 56 73 / 0%) 100.35%),
+      linear-gradient(44deg, rgb(30 56 73 / 50%) 4.95%, rgb(30 56 73 / 0%) 67.43%),
+      url('/content/cluster.webp') lightgray 50% / cover no-repeat;
+    background-position: center !important;
+    background-size: cover !important;
   }
+
   .caption_sub_title {
     @layer base {
       @include font(1, 16, 34, 200);
+
       color: $white;
     }
   }
@@ -34,12 +82,14 @@
   }
 
   @include md {
-    padding: 90px 40px;
     justify-content: space-between !important;
+    padding: 90px 40px;
     background:
-      linear-gradient(44deg, rgba(30, 56, 73, 0.9) 4.95%, rgba(30, 56, 73, 0) 67.43%),
-      linear-gradient(90deg, #1e3849 -28.39%, rgba(0, 0, 0, 0) 93.62%),
-      url('/content/cluster.png') lightgray 50% / cover no-repeat;
+      linear-gradient(44deg, rgb(30 56 73 / 90%) 4.95%, rgb(30 56 73 / 0%) 67.43%),
+      linear-gradient(90deg, #1e3849 -28.39%, rgb(0 0 0 / 0%) 93.62%),
+      url('/content/cluster.webp') lightgray 50% / cover no-repeat;
+    background-position: center !important;
+    background-size: cover !important;
 
     .caption_sub_title {
       font-size: 20px;
@@ -49,11 +99,12 @@
 
   @include lg {
     padding: 60px 0 60px 40px;
-
     background:
-      linear-gradient(142deg, rgba(30, 56, 73, 0.9) 11.78%, rgba(30, 56, 73, 0) 55.41%),
-      linear-gradient(90deg, #1e3849 0%, rgba(10, 18, 24, 0.33) 44.44%, rgba(0, 0, 0, 0) 74.06%),
-      url('/content/cluster.png') lightgray 50% / cover no-repeat;
+      linear-gradient(142deg, rgb(30 56 73 / 90%) 11.78%, rgb(30 56 73 / 0%) 55.41%),
+      linear-gradient(90deg, #1e3849 0%, rgb(10 18 24 / 33%) 44.44%, rgb(0 0 0 / 0%) 74.06%),
+      url('/content/cluster.webp') lightgray 50% / cover no-repeat;
+    background-position: center !important;
+    background-size: cover !important;
 
     .caption_sub_title {
       font-size: 20px;
@@ -63,27 +114,34 @@
   @include xl {
     padding: 90px 0 64px 142px;
 
-    
     .caption_sub_title {
       font-size: 24px;
     }
   }
 
   @include xxl {
-    background:
-      linear-gradient(156deg, rgba(30, 56, 73, 0.9) 6.63%, rgba(30, 56, 73, 0) 43.47%),
-      linear-gradient(90deg, #1e3849 0%, rgba(0, 0, 0, 0) 62.08%),
-      url('/content/cluster.png') lightgray 50% / cover no-repeat;
-
     padding: 90px 0 26px 170px;
+    background:
+      linear-gradient(156deg, rgb(30 56 73 / 90%) 6.63%, rgb(30 56 73 / 0%) 43.47%),
+      linear-gradient(90deg, #1e3849 0%, rgb(0 0 0 / 0%) 62.08%),
+      url('/content/cluster.webp') lightgray 50% / cover no-repeat;
   }
 
   @include xxxl {
+    min-height: 900px;
     padding: 130px 0 26px 190px;
   }
 }
 
 .captions {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInRight 0.8s ease-out forwards;
+    opacity: 1;
+  }
+
   @layer base {
     z-index: 1;
     display: flex;
@@ -96,9 +154,9 @@
   }
 
   @include md {
-    justify-content: space-between;
     height: 100%;
     flex: 100%;
+    justify-content: space-between;
   }
 
   @include lg {
@@ -106,9 +164,12 @@
   }
 
   &-title {
+    margin-bottom: 8px;
+
     @layer base {
-      color: $yellow-text;
       @include font(3, 30, 40, 400);
+
+      color: $yellow-text;
     }
 
     @include md {
@@ -124,8 +185,8 @@
 .caption-items {
   @layer base {
     display: flex;
-    gap: 40px;
     flex-direction: column;
+    gap: 40px;
   }
 
   @include xl {
@@ -150,8 +211,8 @@
   }
 
   @include xl {
-    max-width: 456px;
     width: 100%;
+    max-width: 456px;
   }
 
   @include xxl {
@@ -165,6 +226,7 @@
       br {
         display: none;
       }
+
       color: $yellow-text;
 
       &.number_title {
@@ -202,7 +264,7 @@
       }
 
       br {
-        display: none
+        display: none;
       }
 
       &.number_title {
@@ -223,6 +285,7 @@
       br {
         display: block;
       }
+
       &.number_title {
         @include font(3, 64, 80);
       }
@@ -246,26 +309,29 @@
     background-color: $orange-bg-500;
 
     @layer base {
-      margin: 12px 0 12px 0;
+      margin: 12px 0;
     }
 
     @include xl {
-      margin: 16px 0 16px 0;
+      margin: 16px 0;
     }
   }
 
   &__description {
     @layer base {
       @include font(1, 14, 18, 200);
-      margin-top: 16px;
+
       max-width: 360px;
+      margin-top: 16px;
       color: $yellow-text;
     }
 
     @include xl {
-      max-width: none;
       @include font(1, 16, 22, 200);
+
+      max-width: none;
     }
+
     @include xxl {
       max-width: 347px;
     }
@@ -283,6 +349,18 @@
 }
 
 .mobile_captions {
+  .mobile_slide {
+    width: fit-content;
+    flex: 0 0 75% !important;
+  }
+
+  @include sm {
+    .mobile_slide {
+      width: fit-content;
+      flex: 0 0 65% !important;
+    }
+  }
+
   .number_title {
     font-size: 40px;
   }
@@ -296,25 +374,6 @@
   }
 }
 
-.mobile_captions {
-    .mobile_slide {
-      width: fit-content;
-      flex: 0 0 75% !important;
-    }
-
-  @include sm {
-    .mobile_slide {
-      width: fit-content;
-      flex: 0 0 65% !important;
-    }
-  }
-}
-
 .phone_slider_container {
   width: 100%;
-}
-.captions-title {
-  margin-bottom: 8px;
-}
-.phone_slider_wrapper {
 }

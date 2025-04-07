@@ -148,9 +148,12 @@
 
 .button {
   max-width: 270px;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  text-align: center;
+
+  @media (max-width: 574px) {
+    max-width: none;
+  }
+
+  height: 44px !important;
 }
 
 .buttonSecondary {

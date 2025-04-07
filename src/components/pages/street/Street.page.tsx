@@ -27,9 +27,9 @@ const StreetPage = () => {
             </div>
             <MouseParallaxContainer className={styles.parallax} globalFactorX={0.5} globalFactorY={0.5}>
               <MouseParallaxChild className={styles.parallaxItem} factorX={0.5} factorY={0.5}>
-                <Image className={styles.cloud} src={'/street/cloud.png'} alt='background' />
+                <Image className={styles.cloud} src={'/street/cloud.webp'} alt='background' />
               </MouseParallaxChild>
-              <Image className={styles.image} src={'/street/street.png'} alt='background' />
+              <Image className={styles.image} src={'/street/street.webp'} alt='background' />
             </MouseParallaxContainer>
           </>
         )}

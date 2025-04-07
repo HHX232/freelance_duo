@@ -2,22 +2,40 @@ $color_1: var(--text-body);
 $color_2: var(--detail-high-contrast);
 $background-color_1: transparent;
 
-.title {
-  @layer base {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: rgba(33, 60, 78, 1);
-    padding: 0 16px;
-
-    @include font(3, 30, 40, 400);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
   }
 
-  @include sm{
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.title {
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
+  
+  @layer base {
+    @include font(3, 30, 40, 400);
+    @include font(3, 30, 40, 400);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+
+  @include sm {
     padding: 0 20px;
   }
 
-  @include md{
+  @include md {
     padding: 0 40px;
   }
 
@@ -26,19 +44,20 @@ $background-color_1: transparent;
   }
 
   @include xl {
-    padding: 0 40px 0 142px;
     @include font(3, 42, 54, 400);
+
+    padding: 0 40px 0 142px;
   }
 
   @include xxl {
-    padding: 0 40px 0 170px;
     @include font(3, 42, 54, 400);
+
+    padding: 0 40px 0 170px;
   }
 
   @include xxxl {
     padding: 0 40px 0 196px;
   }
-
 }
 
 .gallery-wrapper {
@@ -65,56 +84,51 @@ $background-color_1: transparent;
 
 .embla__buttons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem;
   align-items: center;
+  gap: 0.6rem;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .embla__controls {
   display: grid;
-  grid-template-columns: auto 1fr;
   justify-content: space-between;
-  gap: 1.2rem;
   margin-top: 1.8rem;
+  gap: 1.2rem;
+  grid-template-columns: auto 1fr;
 }
 
 .embla__dots {
   display: flex;
+  align-items: center;
+
   //flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   gap: 16px;
+
   //margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
 }
 
 .embla__dot {
-  -webkit-appearance: none;
-  appearance: none;
-  touch-action: manipulation;
-  text-decoration: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   transition: all .5s ease-in-out;
-  &:after {
-    background-color: rgba(17, 98, 125, 0.3);
+
+  &::after {
     width: 15px;
     height: 15px;
-    border-radius: 50%;
-    display: flex;
     align-items: center;
+    background-color: rgb(17 98 125 / 30%);
     content: '';
   }
 }
+
 .embla__dot--selected {
-  &:after {
+  &::after {
     width: 20px;
     border-radius: 30%;
-    background-color: rgba(60, 140, 166, 1);
+    background-color: rgb(60 140 166 / 100%);
     transition: all .5s ease-in-out;
   }
 }

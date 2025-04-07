@@ -1,12 +1,12 @@
 'use client'
 
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
-import {HeadTitle} from '@src/components/UI-kit/TextKit/head-title'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
+import {HeadTitle} from '@src/components/UI-kit/Text-Elements/TextKit/head-title'
 import './index.scss'
-import FilledButton from '@shared/filledButton/FilledButton'
-import BorderedButton from '@shared/borderedButton/BorderedButton'
-import {RequestBackCallDrawer} from '@shared/request-back-call-drawer'
-import {useState} from 'react'
+import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
+import BorderedButton from '@src/components/UI-kit/BaseControls/buttons/old/borderedButton/BorderedButton'
+import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
+import {useEffect, useRef, useState} from 'react'
 
 import TgPrimaryIcon from '@icons/tg-primary.svg'
 import WhatsAppPrimaryIcon from '@icons/whatsapp-primary.svg'
@@ -22,6 +22,8 @@ const breadcrumbItems = [
 
 export const StocksDetail = () => {
   const [backCallShown, setBackCallShown] = useState(false)
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
 
   const handleBackCallShow = () => {
     setBackCallShown(true)
@@ -31,8 +33,29 @@ export const StocksDetail = () => {
     setBackCallShown(false)
   }
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <div className='stocks-detail'>
+    <div className='stocks-detail' ref={sectionRef}>
       <Title
         breadcrumbs={[
           ...breadcrumbItems,
@@ -42,7 +65,7 @@ export const StocksDetail = () => {
         ]}
         style={{position: 'relative', margin: 0}}
       />
-      <HeadTitle className='stocks-detail__title'>Рассрочка на все готовое!</HeadTitle>
+      <HeadTitle className={isVisible ? "stocks-detail__title__visible" : "stocks-detail__title"}>Рассрочка на все готовое!</HeadTitle>
 
       <div className='stocks-detail__tag'>Бессрочная акция</div>
 

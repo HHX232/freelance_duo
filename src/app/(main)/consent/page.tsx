@@ -1,8 +1,8 @@
-import Header from '@shared/page/header/Header'
-import Footer from '@shared/page/footer/footer'
+import Header from '@shared/pageDefault/header/Header'
+import Footer from '@shared/pageDefault/footer/footer'
 import {Metadata} from 'next'
 import {Consent} from '@pages/consent/consent'
-
+// import Footer from '@shared/pageDefault/footer/footer'
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Согласие на обработку персональных данных',
@@ -15,12 +15,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ConsentPage() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <Consent />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

@@ -173,7 +173,16 @@
   opacity: 0;
   text-align: center;
   text-transform: uppercase;
-  transition: opacity 0.3s ease;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #c38566 !important;
+  }
+
+  &:active {
+    border: 2px solid #936147 !important;
+    background-color: #b17759 !important;
+  }
 
   @media (max-width: 616px) {
     background: transparent !important;

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kronfort
+  labels:
+    app: kronfort
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kronfort
+  template:
+    metadata:
+      labels:
+        app: kronfort
+    spec:
+      containers:
+        - name: kronfort
+          image: kronfort-frontend:latest  # Will be updated dynamically in CI/CD
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
+      imagePullSecrets:
+        - name: dockerhub-secret

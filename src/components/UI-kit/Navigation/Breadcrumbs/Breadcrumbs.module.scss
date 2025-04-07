@@ -1,0 +1,102 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.breadcrumbs {
+  @layer base {
+    align-items: center;
+    gap: 10px;
+
+    &.dark li a {
+      text-align: center;
+
+      &:hover {
+        background-color: transparent !important;
+        color: #fff !important;
+      }
+    }
+
+    li span {
+      @include font(1, 14, 14, 400);
+
+      color: #555;
+    }
+
+    li a {
+      text-align: center;
+
+      &:hover {
+        background-color: transparent !important;
+        color: #555 !important;
+      }
+    }
+  }
+}
+
+.backButton {
+  all: unset;
+  position: relative;
+  left: 3px;
+  cursor: pointer;
+}
+
+.dashboard {
+  svg {
+    path {
+      fill: $korichneviy;
+    }
+  }
+}
+
+.dark * {
+  color: #fff !important;
+}
+
+.fitContent {
+  height: fit-content !important;
+}
+
+.desktop_version {
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
+  
+  @layer base {
+    display: none;
+    opacity: 0; // По умолчанию скрыто
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  @include md {
+    display: block;
+  }
+}
+
+.mobile_version {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  span {
+    color: #555;
+  }
+
+  svg path {
+    width: 18px;
+    height: 18px;
+    stroke: #555 !important;
+  }
+
+  @include md {
+    display: none !important;
+  }
+}

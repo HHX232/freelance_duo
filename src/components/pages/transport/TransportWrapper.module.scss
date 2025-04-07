@@ -1,20 +1,22 @@
 .wrapper {
+  background-color: #DCEBF1;
+
     @layer base {
       display: flex;
       flex-direction: column;
-      gap: 70px;
+      gap: 60px;
     }
   
     @include sm {
-      gap: 80px;;
+      gap: 60px;;
     }
   
     @include md {
-      gap: 90px;
+      gap: 60px;
     }
   
-    @include xxl {
-      gap: 110px;
+    @include lg {
+      gap: 80px;
     }
 }
 
@@ -22,19 +24,37 @@
     background-color: #11627D;
 
     @layer base {
-        padding-top: 70px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
     }
-
+  
     @include sm {
-        padding-top: 80px;;
+      gap: 60px;;
     }
-
+  
     @include md {
-        padding-top: 90px;
+      gap: 60px;
+    }
+  
+    @include lg {
+      gap: 80px;
     }
 
-    @include xxl {
-        padding-top: 110px;
-    }
+    // @layer base {
+    //     padding-top: 70px;
+    // }
+
+    // @include sm {
+    //     padding-top: 80px;;
+    // }
+
+    // @include md {
+    //     padding-top: 90px;
+    // }
+
+    // @include xxl {
+    //     padding-top: 110px;
+    // }
 }
   

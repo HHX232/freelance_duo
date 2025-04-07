@@ -1,6 +1,6 @@
 import {Compare} from '@pages/compare/compare'
-import Header from '@shared/page/header/Header'
-import Footer from '@shared/page/footer/footer'
+import Header from '@shared/pageDefault/header/Header'
+import Footer from '@shared/pageDefault/footer/footer'
 import {Metadata} from 'next'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -14,12 +14,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 export default function ComparePage() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <Compare />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

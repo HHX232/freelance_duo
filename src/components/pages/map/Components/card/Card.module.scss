@@ -23,15 +23,13 @@
 }
 
 .compass_button {
-  padding: 0 !important;
-  margin: 0 !important;
-
   display: flex;
-  justify-content: center;
-  align-items: center;
-
   width: 134px;
   height: 134px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  margin: 0 !important;
 
   @include mobile {
     width: 50px;
@@ -65,8 +63,8 @@
     position: absolute;
     z-index: -1;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
     width: 134px;
     height: 134px;
     animation: mymove 1.6s ease-in-out infinite;
@@ -102,14 +100,10 @@
 
 .cardWrapper {
   position: fixed;
-  width: fit-content;
-  height: fit-content;
-
-  left: 0;
-  right: 0;
-  top: auto;
   z-index: 1000;
-  bottom: env(safe-area-inset-bottom, -20px);
+  width: 607px;
+  height: 430px;
+  inset: auto 0 env(safe-area-inset-bottom, -20px) 0;
 
   @include mobile {
     width: 0;
@@ -138,24 +132,23 @@
   @include font(1, 14--14, 21--21, 200);
 
   @layer base {
+    z-index: 10;
+    display: flex;
     width: 100vw;
     height: 100vh;
-    padding: 40px 46px;
-    z-index: 10;
-    background: #fff;
-    gap: 40px;
-
-    display: flex;
     flex-direction: column;
     align-items: start;
+    padding: 40px 46px;
+    background: #fff;
+    gap: 40px;
   }
 
   @include md {
-    flex-direction: row;
     width: 607px;
+    height: fit-content;
+    flex-direction: row;
     justify-content: space-between;
     margin: auto;
-    height: fit-content;
   }
 
   @include mobile {
@@ -168,8 +161,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgb(255 255 255);
-    background: linear-gradient(133deg, rgb(255 255 255 / 100%) 33%, rgb(255 255 255 / 97%) 100%);
+    // заменить на изображение
+    background: url('../../../../../../public/PopupBack.webp') no-repeat center;
+    background-size: cover;
+    // background: linear-gradient(133deg, rgb(255 255 255 / 100%) 33%, rgb(255 255 255 / 97%) 100%);
     content: '';
 
     // @include mobile {
@@ -298,8 +293,8 @@
 
 .mobile_modal {
   display: flex;
-  gap: 40px;
   height: 100%;
+  gap: 40px;
 
   .popup_logo {
     min-width: 107px !important;
@@ -310,8 +305,8 @@
   }
 
   .modal_button {
-    color: inherit;
     padding: 12px 36px;
+    color: inherit;
   }
 
   .modal_logo_wrapper {
@@ -320,19 +315,17 @@
   }
 
   .modal_logo_wrapper .modal_name {
+    margin-top: 18px;
     color: $grey;
-
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 14px;
-
-    margin-top: 18px;
   }
 
   @layer base {
-    flex-direction: column;
     height: 100%;
+    flex-direction: column;
 
     .popup_logo {
       min-width: 107px !important;
@@ -345,25 +338,23 @@
     }
 
     .modal_button {
-      width: calc(100% - 16px - 16px);
       position: fixed;
+      right: 16px;
       bottom: 0;
-
       bottom: 20px;
       left: 16px;
-      right: 16px;
+      width: calc(100% - 16px - 16px);
 
       span {
         font-size: 16px;
         line-height: 24px;
       }
-
     }
   }
 
   @include md {
-    flex-direction: row;
     height: fit-content;
+    flex-direction: row;
 
     .popup_logo {
       min-width: 107px !important;
@@ -382,7 +373,6 @@
   }
 
   @include lg {
-
     .modal_button {
       position: static;
       width: fit-content;

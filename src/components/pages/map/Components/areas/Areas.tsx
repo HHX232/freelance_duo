@@ -1,9 +1,9 @@
 'use client'
-import {Suspense} from 'react'
+import {Suspense, useEffect, useRef, useState} from 'react'
 import styles from './Areas.module.scss'
-import CornerSVG from '@icons/corner.svg'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
+import TextAccentBlockUI from '@src/components/UI-kit/Text-Blocks/TextAccentBlockUI/TextAccentBlockUI'
 
 const AreasContent = () => {
   const mobileSlides: React.ReactNode[] = [
@@ -35,43 +35,62 @@ const AreasContent = () => {
       </div>
     </div>
   ]
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
     <div>
       {
-        <section className={styles.section}>
-          <div className={styles.captions}>
-            <h2 className={styles['captions-title']}>
-              От Уютных студий <br /> до просторных лофтов
-            </h2>
-            <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
-              <div className={styles['caption']}>
-                <CornerSVG />
-                <h2 className={styles['caption__title']}>
-                  <span>&#62;3</span> м
-                </h2>
-                <hr className={styles['caption__divider']} />
-                <p className={styles['caption__description']}>высота потолков</p>
-              </div>
-              <div className={styles['caption']}>
-                <CornerSVG />
-                <h2 className={styles['caption__title']}>
-                  <span>24-100</span> м2
-                </h2>
-                <hr className={styles['caption__divider']} />
-                <p className={styles['caption__description']}>площадь квартир</p>
-              </div>
-              <div className={styles['caption']}>
-                <CornerSVG />
-                <h2 className={styles['caption__title']}>
-                  <span>10</span>
-                </h2>
-                <hr className={styles['caption__divider']} />
-                <p className={styles['caption__description']}>корпусов в проекте</p>
-              </div>
-            </div>
+        <section className={styles.section} ref={sectionRef}>
+          <h2 className={`${styles['captions-title']} ${isVisible ? styles.visible : ''}`}>
+            От Уютных студий <br /> до просторных лофтов
+          </h2>
+          <div className={`${styles['caption-items']} ${styles['desktop_captions']} ${isVisible ? styles.visible : ''}`}>
+            <TextAccentBlockUI
+              extraContainerClass={styles.max_width}
+              extraTitleClass={styles.text_font_weight_300}
+              textTitle='>3'
+              textSubTitle='М'
+              textMainContent='высота потолков'
+            />
+            <TextAccentBlockUI
+              extraContainerClass={styles.max_width}
+              extraTitleClass={styles.text_font_weight_300}
+              textTitle='24-100'
+              textSubTitle='м2'
+              textMainContent='площадь квартир'
+            />
+            <TextAccentBlockUI
+              extraContainerClass={styles.max_width}
+              extraTitleClass={styles.text_font_weight_300}
+              textTitle='10'
+              textSubTitle=''
+              hideSubTitle
+              textMainContent='корпусов в проекте'
+            />
           </div>
-          <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
+          <div className={`${styles['caption-items']} ${styles['mobile_captions']} ${isVisible ? styles.visible : ''}`}>
             <PhoneSlider
               embalaContainerClassName={styles.phone_slider_container}
               sliderWrapperClassName={styles.phone_slider_wrapper}

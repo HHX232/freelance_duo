@@ -1,3 +1,15 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .wrapper {
   @layer base {
     display: flex;
@@ -49,16 +61,24 @@
     justify-content: center;
     align-items: start;
     gap: 40px;
+
+    opacity: 0; // По умолчанию скрыто
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
   @include lg{
     justify-content: start;
   }
+
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 }
 .title {
   @layer base {
     color: rgba(85, 85, 85, 1);
-    @include font(3, 30, 40, 400)
+    @include font(3, 30, 40, 400);
   }
 
   @include md {
@@ -121,6 +141,13 @@
 
 .schemeWrapper {
   position: relative;
+  opacity: 0; // По умолчанию скрыто
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 }
 
 .icon {

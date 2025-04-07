@@ -1,13 +1,13 @@
 'use client'
 
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
-import {HeadTitle} from '@src/components/UI-kit/TextKit/head-title'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
+import {HeadTitle} from '@src/components/UI-kit/Text-Elements/TextKit/head-title'
 
 import './index.scss'
-import FilledButton from '@shared/filledButton/FilledButton'
 import {StockItem} from '@shared/stock-item'
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import RefreshIcon from '@icons/refresh-cw.svg'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 const breadcrumbItems = [
   {title: 'Главная', href: '/'},
@@ -26,32 +26,32 @@ interface IMockItem {
 const MOCK_ITEMS: IMockItem[] = [
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image.png',
+    imageSrc: '/stocks-example/preview-image.webp',
     title: 'Рассрочка на все готовое!'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-1.png',
+    imageSrc: '/stocks-example/preview-image-1.webp',
     title: 'Готовые квартиры со скидкой!'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-2.png',
+    imageSrc: '/stocks-example/preview-image-2.webp',
     title: 'Семейная ипотека: сейчас или никогда!'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-3.png',
+    imageSrc: '/stocks-example/preview-image-3.webp',
     title: 'покупай паркинг в рассрочку!'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-4.png',
+    imageSrc: '/stocks-example/preview-image-4.webp',
     title: '10,83% - главная скидка этого года на квартиры в «Кронфорт»'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-5.png',
+    imageSrc: '/stocks-example/preview-image-5.webp',
     title: 'Лучше, чем ипотека: гибкая рассрочка с ежемесячным платежом от 30 тысяч рублей!'
   }
 ]
@@ -60,14 +60,37 @@ const maxMockItemsLength = 12
 
 export const StocksList = () => {
   const [itemsForRender, setItemsForRender] = useState<IMockItem[]>([...MOCK_ITEMS])
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
-    <div className={'promotion-page-container'}>
+    <div className={'promotion-page-container'} ref={sectionRef}>
       <Title breadcrumbs={breadcrumbItems} style={{position: 'relative', margin: 0}} />
-      <HeadTitle className={'promotion-page_title'}>наши Акции</HeadTitle>
+      <HeadTitle className={`${isVisible ? "promotion-page_title__visible" : "promotion-page_title"}`}>наши Акции</HeadTitle>
 
-      <div className='stocks'>
-        <div className='stocks__list'>
+      <div className={isVisible ? "stocks__visible" : "stocks"}>
+        <div className={"stocks__list"}>
           {itemsForRender.map((item, idx) => (
             <StockItem key={`stock-item-${idx}`} href={'/stocks/1'} {...item} />
           ))}
@@ -75,13 +98,21 @@ export const StocksList = () => {
 
         <div className='stocks__more'>
           {itemsForRender.length >= maxMockItemsLength ? null : (
-            <FilledButton
+            <FullButton
+              activeButton={true}
+              border={false}
+              borderColor={'none'}
+              buttonFill={'bronze-500'}
+              buttonElementColor={'white'}
               onClick={() => setItemsForRender((items) => [...items, ...MOCK_ITEMS])}
-              className='stocks__more-button'
-            >
-              <RefreshIcon />
-              <span>Показать еще (6)</span>
-            </FilledButton>
+              extraClass='stocks__more-button'
+              buttonText={
+                <>
+                  <RefreshIcon />
+                  <span>Показать еще (6)</span>
+                </>
+              }
+            />
           )}
         </div>
       </div>

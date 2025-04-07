@@ -1,100 +1,164 @@
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .section {
+  max-height: 100vh;
+
   @layer base {
     position: relative;
-    height: 100vh;
-
     display: flex;
+    height: 100vh;
+    min-height: 800px;
+    max-height: 1000px;
     flex-direction: column;
     justify-content: end;
     padding: 40px 16px;
-    background-position: center;
-    background-size: cover;
-    gap: 40px;
-
     background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
       linear-gradient(180deg, rgb(38 57 69 / 0%) 18.3%, rgb(38 57 69 / 47%) 49.35%, #263945 100%),
-      linear-gradient(47.64deg, rgb(30 56 73 / 50%) 6.94%, rgb(30 56 73 / 0%) 83.47%), url('/content/areas.jpg');
+      linear-gradient(47.64deg, rgb(30 56 73 / 50%) 6.94%, rgb(30 56 73 / 0%) 83.47%), url('/content/areas.webp');
+    background-position: center;
+    background-size: cover;
   }
 
   @include sm {
+    justify-content: end;
     padding: 40px 20px;
-    gap: 6 0px;
   }
 
   @include md {
-    background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
-      linear-gradient(37.52deg, rgb(30 56 73 / 70%) 25.4%, rgb(30 56 73 / 0%) 65.67%), url('/content/areas.jpg');
+    justify-content: space-between;
     padding: 90px 40px;
+    background-image: linear-gradient(89.93deg, rgb(30 56 73 / 70%) -5.13%, rgb(0 0 0 / 0%) 94.23%),
+      linear-gradient(37.52deg, rgb(30 56 73 / 70%) 25.4%, rgb(30 56 73 / 0%) 65.67%), url('/content/areas.webp');
   }
 
   @include lg {
-    background: linear-gradient(115deg, rgba(30, 56, 73, 0.7) 21.9%, rgba(30, 56, 73, 0) 66.78%),
-      linear-gradient(90deg, rgba(30, 56, 73, 0.7) 0.01%, rgba(0, 0, 0, 0) 35.63%), url('/content/areas.jpg');
-
-    background-size: cover;
+    // justify-content: end;
+    justify-content: start;
     padding: 60px 40px;
-    //height: fit-content;
+    background: linear-gradient(115deg, rgb(30 56 73 / 70%) 21.9%, rgb(30 56 73 / 0%) 66.78%),
+      linear-gradient(90deg, rgb(30 56 73 / 70%) 0.01%, rgb(0 0 0 / 0%) 35.63%), url('/content/areas.webp');
+    background-size: cover;
   }
 
   @include xl {
+    justify-content: start;
     padding: 90px 142px;
   }
 
   @include xxl {
+    justify-content: start;
     padding: 90px 170px;
   }
 
   @include xxxl {
-    padding: 130px 190px;
+    min-height: 850px;
+    justify-content: start;
+    padding: 130px 190px
   }
 }
 
-.captions {
-  @layer base {
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+.captions-title {
+  @include font(3, 42, 54, 400);
+
+  margin-bottom: 60px;
+  color: $yellow-text;
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInRight 0.8s ease-out forwards;
+    opacity: 1;
   }
 
-  @include sm {
-    gap: 60px;
+  @include custom(0, map-get($breakpoints, xl)) {
+    @include font(3, 42, 54, 400);
+
+    margin-bottom: 60px !important;
   }
 
-  @include md {
-    //justify-content: space-between;
-    height: 100%;
-    justify-content: space-between;
+  @include custom(0, map-get($breakpoints, lg)) {
+    margin-bottom: 60px !important;
   }
 
-  @include lg {
-    gap: 60px;
-    justify-content: start;
+  @include custom(0, map-get($breakpoints, md)) {
+    @include font(3, 36, 50, 400);
+
+    margin-bottom: 60px !important;
   }
 
-  &-title {
-    @layer base {
-      color: $yellow-text;
-      @include font(3, 30, 40, 400);
-    }
+  @include custom(0, map-get($breakpoints, sm) + 20px) {
+    @include font(3, 30, 40, 400);
 
-    @include md {
-      @include font(3, 36, 50, 400);
-    }
-
-    @include xl {
-      @include font(3, 42, 54, 400);
-    }
+    margin-bottom: 40px !important;
   }
+
+  @include custom(0, map-get($breakpoints, xs)) {
+    margin-bottom: 40px !important;
+  }
+
+  // @layer base {
+  //   @include font(3, 30, 40, 400);
+
+  //   margin-bottom: 60px !important;
+  //   color: $yellow-text;
+  // }
+
+  // @include xs {
+  //   margin-bottom: 40px !important;
+  // }
+
+  // @include sm {
+  //   margin-bottom: 40px !important;
+  // }
+
+  // @include md {
+  //   @include font(3, 36, 50, 400);
+
+  //   margin-bottom: 60px !important;
+  // }
+
+  // @include lg {
+  //   margin-bottom: 60px !important;
+  // }
+
+  // @include xl {
+  //   @include font(3, 42, 54, 400);
+
+  //   margin-bottom: 60px !important;
+  // }
 }
 
 .caption-items {
+  max-width: 320px;
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInRight 0.8s ease-out forwards;
+    opacity: 1;
+  }
+
   @layer base {
     display: flex;
     width: 100%;
   }
 
+  @include custom(0, map-get($breakpoints, md)) {
+    max-width: none;
+  }
+
   @include md {
+    max-width: none;
     flex-direction: column;
     gap: 40px;
   }
@@ -106,7 +170,6 @@
 
 .caption {
   position: relative;
-  max-width: 320px;
 
   & svg {
     position: absolute;
@@ -186,9 +249,11 @@
 .phone_slider_container {
   width: 100% !important;
   backface-visibility: hidden;
+
   .caption-items:nth-child(1) {
     flex: 0 0 56% !important;
   }
+
   .caption-items:nth-child(2) {
     flex: 0 0 80% !important;
   }
@@ -201,6 +266,7 @@
     .caption-items:nth-child(2) {
       flex: 0 0 54% !important;
     }
+
     .caption-items:nth-child(1) {
       flex: 0 0 40% !important;
     }
@@ -217,4 +283,8 @@
 
 .mobile_slide {
   flex: 0 0 60% !important;
+}
+
+.text_font_weight_300 {
+  font-weight: 300 !important;
 }

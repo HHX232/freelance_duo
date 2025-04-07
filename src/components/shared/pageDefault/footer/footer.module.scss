@@ -1,0 +1,172 @@
+@import '../../../../scss/breakpoints';
+
+
+.secondary_font_prime_color {
+  padding: 14px 0;
+  border-bottom: 1px solid #ffffff4d;
+  color: $yellow-text !important;
+  cursor: pointer;
+  font-family: $font-secondary !important;
+  font-size: 20px !important;
+  line-height: 26px !important;
+  text-transform: none;
+
+  @include custom(0, map-get($breakpoints, md)) {
+    font-size: 18px !important;
+  }
+}
+
+.accordion_extra_to_div {
+  &>div>div>a {
+    font-size: 20px !important;
+    line-height: 30px !important;
+    text-transform: none;
+  }
+}
+
+.secondary_font_prime_color_accordeon {
+  // padding: 14px 0;
+  color: $yellow-text !important;
+  cursor: pointer;
+  font-family: $font-secondary !important;
+  font-size: 20px !important;
+  line-height: 26px !important;
+  text-transform: none;
+
+  @include custom(0, map-get($breakpoints, md)) {
+    font-size: 18px !important;
+  }
+
+  &>div {
+    font-size: 20px !important;
+    line-height: 26px !important;
+
+    @include custom(0, map-get($breakpoints, md)) {
+      font-size: 18px !important;
+    }
+  }
+}
+
+.accordion_extra_font {
+  font-family: $font-accent;
+
+  @include custom(0, map-get($breakpoints, md)) {
+    font-size: 22px;
+  }
+}
+
+.accordeon_inner_item_font {
+  padding: 12px 0;
+  font-family: $font-secondary;
+  font-size: 18px;
+  text-transform: none;
+
+  // ссылка третий слой
+  &>a {
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+}
+
+.footer {
+  overflow: hidden;
+  width: 100%;
+  height: fit-content;
+  padding: 36px 196px;
+  background-color: #165167;
+
+  @include custom(0, map-get($breakpoints, xxxl) - 1px) {
+    padding: 36px 170px;
+  }
+
+  @include custom(0, map-get($breakpoints, xxl) - 1px) {
+    padding: 36px 142px;
+  }
+
+  @include custom(0, map-get($breakpoints, xl) - 1px) {
+    padding: 36px 40px;
+  }
+
+  @include custom(0, map-get($breakpoints, sm) - 1px) {
+    padding: 40px 20px;
+  }
+
+  @include custom(0, map-get($breakpoints, xs) - 1px) {
+    padding: 40px 16px;
+  }
+
+  .footer_inner {
+    position: relative;
+    display: grid;
+    width: 100%;
+    max-width: 1512px;
+    height: fit-content;
+    margin: 0 auto;
+    gap: 20px;
+    grid-template-columns: auto 1fr;
+
+    @include custom(0, map-get($breakpoints, lg)) {
+      font-size: 14px;
+    }
+
+    .accordeon_inner_item {
+      display: flex;
+      align-items: center;
+      padding: 5px 0;
+      color: #fff;
+      gap: 14px;
+
+      .accordeon_inner_item_image {
+        overflow: hidden;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+    }
+
+    .accordion_extra {
+      color: #fff;
+
+      &>div:first-child {
+        padding: 0 20px 10px 0;
+
+        @include custom(0, map-get($breakpoints, lg)) {
+          padding: 6px 20px 6px 0;
+          font-size: 14px !important;
+          line-height: 18px;
+        }
+      }
+    }
+
+    @include custom(0, 980px) {
+      grid-template-columns: auto;
+
+      .side.side_right {
+        display: none;
+      }
+    }
+
+    .side {
+      width: 100%;
+      height: 100%;
+    }
+
+    .side_right {
+      display: flex;
+      justify-content: right;
+    }
+
+    .scrollTopButton {
+      position: absolute;
+      z-index: 10;
+      right: 0;
+      bottom: 0;
+      width: 48px;
+      height: 48px;
+    }
+
+    .scrollTopButtonArrow {
+      transform: rotateZ(-45deg);
+    }
+  }
+}

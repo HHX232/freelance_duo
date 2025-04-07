@@ -1,15 +1,35 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .home-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
+
+  .extra_title {
+    color: #fff !important;
+  }
 
   @layer base {
     position: relative;
     display: flex;
-    height: 640px;
+    max-height: 640px;
     flex-direction: column;
     justify-content: flex-end;
     padding: 130px 16px 24px;
 
-    //background-image: linear-gradient(180deg, rgba(38, 57, 69, 0) 50.45%, rgba(38, 57, 69, 1) 87.97%), url("/content/banner.png");
+    //background-image: linear-gradient(180deg, rgba(38, 57, 69, 0) 50.45%, rgba(38, 57, 69, 1) 87.97%), url("/content/banner.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,19 +37,22 @@
   }
 
   @include xs {
-    padding: 130px 20px 79px 16px;
+    padding: 130px 16px 79px;
   }
 
   @include sm {
+    max-height: 875px;
     padding: 130px 20px 111px;
   }
 
   @include md {
-    padding: 130px 20px 111px 40px;
+    max-height: 1000px;
+    padding: 130px 40px 111px;
   }
 
   @include lg {
-    padding: 130px 20px 120px 40px;
+    max-height: none;
+    padding: 130px 40px 120px;
   }
 
   @include xl {
@@ -46,7 +69,7 @@
     justify-content: flex-end;
 
     //padding-bottom: 124px;
-    //background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.png");
+    //background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.webp");
     padding: 90px 40px 124px 196px;
   }
 }
@@ -107,12 +130,29 @@
 }
 
 .text_wrapper {
+  opacity: 0; // По умолчанию скрыто
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
+  
   .description {
     margin-top: 12px;
   }
 
   @layer base {
     z-index: 3;
+  }
+
+  @include lg {
+    width: 60%;
+    height: 180px;
+  }
+
+  @include xl {
+    height: 230px;
   }
 }
 
@@ -251,4 +291,9 @@
   @include xs {
     bottom: 32px;
   }
+}
+
+.findApartmentButtonInner {
+  display: flex;
+  gap: 10px;
 }

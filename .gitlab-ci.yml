@@ -1,56 +1,159 @@
 stages:
+  - build_mr
   - build
-  - up
-
-before_script:
-  - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin registry.gitlab.com
-
-after_script:
-  - docker logout registry.gitlab.com
+  - deploy
+  - notify
+  - cleanup
 
 variables:
-  TAG: $CI_COMMIT_REF_NAME
+  IMAGE_NAME: "$CI_REGISTRY_IMAGE/kronfort-frontend:latest"
 
-build_prod:
+build:
   stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+  script:
+    - docker build -t "$IMAGE_NAME" .
+    - docker push "$IMAGE_NAME"
+  allow_failure: false
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'  # Runs on main branch
+
+build_mr:
+  stage: build_mr
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+  script:
+    - docker build -t "$CI_REGISTRY_IMAGE/kronfort-frontend" .
+  allow_failure: false
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'  
+
+deploy:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  before_script:
+    - export KUBECONFIG=/home/test-perimeter/.kube/config
+    - kubectl config set-cluster minikube --server=https://$(minikube ip):8443 --insecure-skip-tls-verify=true
+    - kubectl cluster-info
+  script:
+    - |
+      sed -i "s#image: .*#image: $IMAGE_NAME#g" k8s/deployment.yml
+      cat k8s/deployment.yml
+      kubectl apply -f k8s/deployment.yml
+      kubectl apply -f k8s/service.yml
+      kubectl rollout restart deployment kronfort
+  when: on_success
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
-  script:
-    - docker compose build
-    - docker compose push
-  tags:
-    - builder
-    - production
 
-build_dev:
-  stage: build
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "dev"'
+telegram_alert_failure:
+  stage: notify
   script:
-    - docker compose build
-    - docker compose push
-  tags:
-    - builder
-    - development
+    - |
+      TEXT=$(cat <<-END
+      Project: *Frontend - Kronfort*
 
-up_dev:
-  environment: development
-  stage: up
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "dev"'
+      🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
+      📝 Commit: *$CI_COMMIT_MESSAGE*
+      🛑 Status: *Error*
+      🔗 [View Pipeline]($CI_PIPELINE_URL)
+      END
+      )
+      curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto" \
+      -F "chat_id=$TELEGRAM_CHAT_ID" \
+      -F "caption=$TEXT" \
+      -F "parse_mode=Markdown" \
+      -F "photo=@/home/test-perimeter/devops-assets/kronfort-frontend/error.png"
+  when: on_failure  # Runs only if a job fails
+  only:
+    - main
+
+telegram_alert_success:
+  stage: notify
   script:
-    - docker compose pull
-    - docker compose up -d --no-build
-  tags:
-    - development
+    - |
+      TEXT=$(cat <<-END
+      Project: *Frontend - Kronfort*
 
-up_prod:
-  environment: production
-  stage: up
+      🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
+      📝 Commit: *$CI_COMMIT_MESSAGE*
+      💚 Status: *Success*
+      🔗 [View Pipeline]($CI_PIPELINE_URL)
+      END
+      )
+
+      curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto" \
+      -F "chat_id=$TELEGRAM_CHAT_ID" \
+      -F "caption=$TEXT" \
+      -F "parse_mode=Markdown" \
+      -F "photo=@/home/test-perimeter/devops-assets/kronfort-frontend/success.png"
+  when: on_success  # Runs only if the pipeline is successful
+  only:
+    - main
+
+telegram_alert_failure_slave:
+  stage: notify
+  script:
+    - |
+      TEXT=$(cat <<-END
+      Project: *Frontend - Kronfort*
+
+      🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
+      🔀 Merge Request: [\!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
+      📝 Commit: *$CI_COMMIT_MESSAGE*
+      🛑 Status: *Error*
+      🔗 [View Pipeline]($CI_PIPELINE_URL)
+      END
+      )
+
+      curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto" \
+      -F "chat_id=$TELEGRAM_CHAT_ID" \
+      -F "caption=$TEXT" \
+      -F "parse_mode=Markdown" \
+      -F "photo=@/home/test-perimeter/devops-assets/kronfort-frontend/mr-error.png"
+  when: on_failure  # Runs only if a job fails
   rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+telegram_alert_success_slave:
+  stage: notify
+  script:
+    - |
+      TEXT=$(cat <<-END
+      Project: *Frontend - Kronfort*
+
+      🚀 Repository: [$CI_PROJECT_NAME]($CI_PROJECT_URL)
+      🔀 Merge Request: [\!$CI_MERGE_REQUEST_ID]($CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID)
+      📝 Commit: *$CI_COMMIT_MESSAGE*
+      💚 Status: *Success*
+      🔗 [View Pipeline]($CI_PIPELINE_URL)
+      END
+      )
+
+      curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto" \
+      -F "chat_id=$TELEGRAM_CHAT_ID" \
+      -F "caption=$TEXT" \
+      -F "parse_mode=Markdown" \
+      -F "photo=@/home/test-perimeter/devops-assets/kronfort-frontend/mr-success.png"
+  when: on_success  # Runs only if the pipeline is successful
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+cleanup_untagged_images:
+  stage: cleanup
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker images --filter "dangling=true" -q | xargs -r docker rmi -f
+  when: always  
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'  
     - if: '$CI_COMMIT_BRANCH == "main"'
-  script:
-    - docker compose pull
-    - docker compose up -d --no-build
-  tags:
-    - production

@@ -1,3 +1,15 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .head-wrapper {
   @layer base {
     //position: relative;
@@ -6,87 +18,94 @@
     height: 640px;
     flex-direction: column;
     justify-content: space-between;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_xs.png") no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_xs.webp") no-repeat center center;
     background-size: 100% 100%;
     overflow: hidden;
     padding: 90px 16px 40px 16px;
   }
 
-  @include sm{
+  @include sm {
     height: 875px;
     padding: 90px 20px 90px 20px;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_sm.png") no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_sm.webp") no-repeat center center;
     background-size: 100% 100%;
   }
 
-  @include md{
+  @include md {
     height: 1000px;
     padding: 130px 40px 90px 40px;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_md.png") no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_md.webp") no-repeat center center;
     background-size: 100% 100%;
   }
 
-  @include lg{
+  @include lg {
     height: 600px;
     padding: 130px 40px 60px 40px;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_lg.png") no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_lg.webp") no-repeat center center;
     background-size: 100% 100%;
   }
 
-  @include xl{
+  @include xl {
     height: 650px;
     padding: 130px 40px 60px 142px;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_xl.png") no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_xl.webp") no-repeat center center;
     background-size: 100% 100%;
   }
 
-  @include xxl{
+  @include xxl {
     height: 750px;
     padding: 130px 40px 90px 170px;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_xxl.png") no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_xxl.webp") no-repeat center center;
     background-size: 100% 100%;
   }
 
-  @include xxxl{
+  @include xxxl {
     height: 800px;
     padding: 142px 40px 110px 196px;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_xxxl.png") no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/content/commerce/banner_xxxl.webp") no-repeat center center;
     background-size: 100% 100%;
   }
 }
 
 .title {
-  @layer base{
+  @layer base {
     word-break: break-all;
     @include font(3, 40, 50, 400);
-    color: rgba(255,255,255, 1);
+    color: rgba(255, 255, 255, 1);
   }
 
-  @include md{
+  @include md {
     @include font(3, 52, 58, 400);
   }
 
-  @include xl{
+  @include xl {
     @include font(3, 64, 80, 400);
   }
 }
 
-.router{
+.router {
   @layer base {
-    display: flex!important;
+    display: flex !important;
     @include font(3, 14, 20, 400);
     align-items: center;
   }
 }
 
-.text-wrapper{
+.text-wrapper {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  opacity: 0; // По умолчанию скрыто
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 }

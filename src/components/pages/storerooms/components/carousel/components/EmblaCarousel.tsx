@@ -1,7 +1,7 @@
 import {EmblaCarouselType, EmblaEventType, EmblaOptionsType} from 'embla-carousel'
 import {EmblaViewportRefType} from 'embla-carousel-react'
 import emblaStyle from './embla.module.scss'
-import {FC, useCallback, useEffect, useRef} from 'react'
+import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import Image from 'next/image'
 
 interface PropType {
@@ -14,12 +14,14 @@ interface PropType {
 const EmblaCarousel: FC<PropType> = (props) => {
   const {slides, emblaRef, emblaApi} = props
   const imgArr = [
-    '/content/storerooms/carousel/st_1.jpeg',
-    '/content/storerooms/carousel/st_2.jpeg',
-    '/content/storerooms/carousel/st_3.jpeg',
-    '/content/storerooms/carousel/st_4.jpeg'
+    '/content/storerooms/carousel/st_1.webp',
+    '/content/storerooms/carousel/st_2.webp',
+    '/content/storerooms/carousel/st_3.webp',
+    '/content/storerooms/carousel/st_4.webp'
   ]
 
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
   const tweenFactor = useRef(0)
   const tweenNodes = useRef<HTMLElement[]>([])
   const TWEEN_FACTOR_BASE = 0.12
@@ -88,10 +90,31 @@ const EmblaCarousel: FC<PropType> = (props) => {
       .on('slideFocus', tweenScale)
   }, [emblaApi, tweenScale])
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <div className={emblaStyle['embla']}>
-      <div className={emblaStyle['embla__viewport']} ref={emblaRef}>
-        <div className={emblaStyle['embla__container']}>
+    <div className={emblaStyle['embla']} ref={sectionRef}>
+      <div className={`${emblaStyle['embla__viewport']} ${isVisible ? emblaStyle.visible : ''}`} ref={emblaRef}>
+        <div className={`${emblaStyle['embla__container']} ${isVisible ? emblaStyle.visible : ''}`}>
           {slides?.map((index) => (
             <div className={`${emblaStyle['embla__slide']}`} key={index}>
               <Image

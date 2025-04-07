@@ -1,0 +1,189 @@
+.wrapper {
+  @layer base {
+    background: none !important;
+    position: relative;
+
+    .bg {
+      position: absolute;
+      z-index: -2;
+      transform: scale(-1, 1);
+      object-fit: cover;
+      object-position: 70%;
+    }
+
+    .overflow {
+      background: linear-gradient(111deg, rgba(0, 0, 0, 0.4) 27.01%, rgba(0, 0, 0, 0) 98.55%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    .cards {
+      margin-top: 52px;
+    }
+
+    .cards_list {
+      margin: 0 !important;
+    }
+
+    .cards_wrapper {
+      margin-top: 52px;
+    }
+  }
+
+  @include sm {
+    .cards_wrapper {
+      margin-top: 206px;
+    }
+  }
+
+  @include md {
+    .cards_wrapper {
+      margin-top: 182px;
+    }
+
+    .bg {
+      transform: scale(1, 1);
+      object-position: 0;
+    }
+  }
+
+  @include lg {
+    .cards_wrapper {
+      margin-top: 94px;
+    }
+
+    .bg {
+      object-position: 30% 30%;
+    }
+  }
+
+  @include xl {
+    .cards_wrapper {
+      margin-top: 98px;
+    }
+  }
+
+  @include xxl {
+    .cards_wrapper {
+      margin-top: 70px;
+    }
+  }
+
+  @include xxxl {
+    .cards_wrapper {
+      margin-top: 110px;
+    }
+  }
+}
+
+.variants {
+  @layer base {
+    .meta_title {
+      margin-bottom: 0 !important;
+    }
+
+    .controls {
+      margin-top: 40px;
+    }
+
+    .controls button span {
+      font-size: 16px;
+    }
+
+    .meta {
+      padding: 0 !important;
+    }
+
+    .meta__info {
+      padding: 36px 16px;
+    }
+  }
+
+  @include sm {
+    .info_content {}
+
+    .meta__info {
+      padding: 36px 24px;
+    }
+  }
+
+  @include md {
+    .cover {
+      height: 360px;
+    }
+
+    .meta_title {
+      font-size: 32px !important;
+      line-height: 44px !important;
+    }
+  }
+
+  @include lg {
+    .meta__info {
+      padding: 24px 24px 36px 24px;
+    }
+
+    .cover {
+      background-position: 19% !important;
+      height: auto;
+    }
+  }
+
+  @include xl {
+    .meta_title {
+      padding-bottom: 18px;
+    }
+
+    .controls {
+      margin-top: 54px;
+    }
+  }
+
+  @include xxl {
+    .meta__info {
+      padding: 40px 40px 60px 40px;
+    }
+
+    .cover {
+      background-position: 20% !important;
+    }
+  }
+
+  @include xxxl {
+
+    .contacts {
+      padding-top: 12px;
+    }
+
+  }
+}
+
+.container {
+  @layer base {
+    margin: 0;
+  }
+
+  @include sm {
+    margin: 0 20px;
+  }
+
+  @include md {
+    margin: 0 40px;
+  }
+
+  @include xl {
+    margin: 0 40px 0 142px;
+  }
+
+  @include xxl {
+    margin: 0 40px 0 170px;
+  }
+
+  @include xxxl {
+    margin: 0 40px 0 196px;
+  }
+}

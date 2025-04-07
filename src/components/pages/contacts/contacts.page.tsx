@@ -2,12 +2,11 @@
 import styles from './contacts.module.scss'
 import {Metadata} from 'next'
 import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps'
-import FilledButton from '@shared/filledButton/FilledButton'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
-import Link from 'next/link'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import {useState} from 'react'
-import {Backcall} from '@shared/back-call-popup/backcall'
+import {Backcall} from '@shared/Popups/back-call-popup/backcall'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 const breadcrumbItems = [{title: 'Главная', href: '/'}, {title: 'Контакты'}]
 
@@ -70,18 +69,35 @@ const ContactsPage = () => {
                 </Map>
 
                 <div className={styles.buttons}>
-                  <FilledButton
-                    className={styles.button}
-                    variety='primary'
+                  <FullButton
+                    borderColor={'none'}
+                    buttonFill={'bronze-500'}
+                    buttonElementColor={'white'}
+                    buttonBorderRadius={'6px'}
+                    buttonText={'ОБРАТНЫЙ ЗВОНОК'}
+                    extraClass={styles.button}
                     onClick={() => setCallBackModal(!callBackModal)}
-                  >
-                    ОБРАТНЫЙ ЗВОНОК
-                  </FilledButton>
-                  <Link href={'/feedback'}>
-                    <FilledButton className={styles.buttonSecondary} variety='white'>
-                      СЛУЖБА ДОВЕРИЯ
-                    </FilledButton>
-                  </Link>
+                    activeButton={true}
+                    border={false}
+                    alternativeBorderOnActive
+                    alternativeBorderColor='bronze'
+                    alternativeBorderWidth='3px'
+                  ></FullButton>
+                  <FullButton
+                    type={'Link'}
+                    href={'/feedback'}
+                    borderColor={'none'}
+                    buttonFill={'white'}
+                    buttonElementColor={'black'}
+                    buttonBorderRadius={'6px'}
+                    buttonText={'СЛУЖБА ДОВЕРИЯ'}
+                    extraClass={styles.button}
+                    activeButton={true}
+                    border={false}
+                    alternativeBorderOnActive
+                    alternativeBorderColor='blue'
+                    alternativeBorderWidth='3px'
+                  ></FullButton>
                 </div>
               </YMaps>
             </div>

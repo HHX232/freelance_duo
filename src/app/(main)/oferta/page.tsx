@@ -1,5 +1,5 @@
-import Header from '@shared/page/header/Header'
-import Footer from '@shared/page/footer/footer'
+import Header from '@shared/pageDefault/header/Header'
+import Footer from '@shared/pageDefault/footer/footer'
 import {Metadata} from 'next'
 import {Oferta} from '@pages/oferta/oferta'
 
@@ -15,12 +15,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function OfertaPage() {
   return (
-    <>
+    <div>
       <Header />
       <main>
         <Oferta />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

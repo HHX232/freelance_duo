@@ -1,12 +1,14 @@
 'use client'
 import styles from './TicketForm.module.scss'
-import {FC, useState} from 'react'
-import ProgressBar from '@src/components/UI-kit/ProgressBar/progressBar'
-import {InputField} from '@src/components/UI-kit/inputs/input-field/input-field'
+import {FC, useEffect, useRef, useState} from 'react'
+import ProgressBar from '@src/components/UI-kit/Indicators/ProgressBar/progressBar'
 import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
 import ToRight from '@icons/toRight_2.svg'
-import Link from 'next/link'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
+// import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
+import LinkUI from '@src/components/UI-kit/Text-Elements/Typography/Link/LinkUI'
+import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
+import InputPhoneUI from '@src/components/UI-kit/BaseControls/inputs/InputPhoneUI/InputPhoneUI'
 
 interface TicketFormProps {
   OpenModal: () => void
@@ -19,8 +21,33 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
   const [name, setName] = useState('')
   const [mail, setMail] = useState('')
 
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${isVisible ? styles.visible : ""}`} ref={sectionRef}>
       <div className={styles.title}>Оставьте заявку и мы поможем вам с выбором помещения</div>
       <div className={styles.innerWrapper}>
         <div className={styles.steps}>
@@ -35,7 +62,14 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
         {step === 1 ? (
           <div className={styles.formWrapper}>
             <div className={styles.inputsWrapper}>
-              <InputField
+              <InputTextUI
+                placeholder='Введите бренд компании'
+                icon={<></>}
+                labelText='Бренд'
+                theme='dark'
+                extraStyle={{lineHeight: '18px'}}
+              />
+              {/* <InputField
                 title={'Бренд'}
                 type={'text'}
                 placeholder={'Введите бренд компании'}
@@ -43,8 +77,16 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+              <InputTextUI
+                placeholder='Введите направление компании'
+                icon={<></>}
+                labelText='Профиль'
+                theme='dark'
+                extraStyle={{lineHeight: '18px'}}
               />
-              <InputField
+
+              {/* <InputField
                 title={'Профиль'}
                 type={'text'}
                 placeholder={'Введите направление бизнеса'}
@@ -52,8 +94,17 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+
+              <InputTextUI
+                placeholder='Введите кол-во магазинов'
+                icon={<></>}
+                labelText='Существующие магазины'
+                theme='dark'
+                extraStyle={{lineHeight: '18px'}}
               />
-              <InputField
+
+              {/* <InputField
                 title={'Существующие магазины'}
                 type={'text'}
                 placeholder={'Введите кол-во магазинов'}
@@ -61,8 +112,16 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+
+              <InputTextUI
+                placeholder='Введите кол-во метров'
+                icon={<></>}
+                labelText='Необходимый метраж помещения, м2'
+                theme='dark'
+                extraStyle={{lineHeight: '18px'}}
               />
-              <InputField
+              {/* <InputField
                 title={'Необходимый метраж помещения, м2'}
                 type={'text'}
                 placeholder={'Введите кол-во метров'}
@@ -70,29 +129,31 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 inputStyles={styles.inputStyles}
                 stylesLabel={styles.labelStyles}
                 styleContainer={{gridGap: '4px'}}
-              />
+              /> */}
             </div>
-            <FullButton
-              type={'Button'}
-              buttonText={'ДАЛЕЕ'}
-              onClick={() => {
-                setStep(2)
-              }}
-              activeButton={true}
-              border={false}
-              borderColor={''}
-              extraClass={styles.button}
-              buttonFill='bronze-500'
-              buttonElementColor='white'
-              buttonBorderRadius={'6px'}
-            >
-              <ToRight/>
-            </FullButton>
+            <span style={{zIndex: '10'}}>
+              <FullButton
+                type={'Button'}
+                buttonText={'ДАЛЕЕ'}
+                onClick={() => {
+                  setStep(2)
+                }}
+                activeButton={true}
+                border={false}
+                borderColor={'none'}
+                extraClass={styles.button}
+                buttonFill='bronze-500'
+                buttonElementColor='white'
+                buttonBorderRadius={'6px'}
+              >
+                <ToRight />
+              </FullButton>
+            </span>
           </div>
         ) : (
           <div className={styles.formWrapper}>
             <div className={styles.inputsWrapper}>
-              <InputField
+              {/* <InputField
                 title={'Имя'}
                 type={'text'}
                 placeholder={'Введите имя'}
@@ -105,8 +166,21 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 }}
                 value={name}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+              <InputTextUI
+                extraStyle={{lineHeight: '18px'}}
+                placeholder='Введите имя'
+                icon={<></>}
+                labelText='Имя'
+                theme='dark'
+                maxLength={18}
+                onlyType='onlyText'
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value)
+                }}
               />
-              <InputField
+              {/* <InputField
                 title={'Телефон'}
                 type={'text'}
                 placeholder={'+7 (___) ___-__-__'}
@@ -121,42 +195,62 @@ const TicketForm: FC<TicketFormProps> = ({OpenModal}) => {
                 }}
                 value={phoneNumber}
                 styleContainer={{gridGap: '4px'}}
+              /> */}
+              <InputPhoneUI
+                extraStyle={{lineHeight: '18px'}}
+                placeholder={'+7 (___) ___-__-__'}
+                icon={<></>}
+                labelText='Телефон'
+                theme='dark'
+                maxLength={18}
+                onlyType='onlyNumbers'
+                value={phoneNumber}
+                onChange={(e) => {
+                  const formattedValue = formatPhoneNumber(e.target.value)
+                  setPhoneNumber(formattedValue)
+                }}
               />
-              <InputField
-                title={'E-mail'}
-                type={'text'}
+              <InputTextUI
+                extraStyle={{lineHeight: '18px'}}
                 placeholder={'Введите электронную почту'}
-                variety={'secondary'}
-                inputStyles={styles.inputStyles}
-                stylesLabel={styles.labelStyles}
+                icon={<></>}
+                labelText='E-mail'
+                theme='dark'
                 maxLength={18}
                 onChange={(e) => {
                   setMail(e.target.value)
                 }}
                 value={mail}
-                styleContainer={{gridGap: '4px'}}
               />
             </div>
-            <FullButton
-              type={'Button'}
-              buttonText={'ОТПРАВИТЬ'}
-              onClick={() => {
-                setStep(1)
-                OpenModal();
-              }}
-              activeButton={true}
-              border={false}
-              borderColor={''}
-              extraClass={styles.button}
-              buttonFill='bronze-500'
-              buttonElementColor='white'
-              buttonBorderRadius={'6px'}
-            />
+            <span style={{zIndex: '10'}}>
+              <FullButton
+                type={'Button'}
+                buttonText={'ОТПРАВИТЬ'}
+                onClick={() => {
+                  setStep(1)
+                  OpenModal()
+                }}
+                activeButton={true}
+                border={false}
+                borderColor={'none'}
+                extraClass={styles.button}
+                buttonFill='bronze-500'
+                buttonElementColor='white'
+                buttonBorderRadius={'6px'}
+              />
+            </span>
             <div className={styles.subtext}>
               Нажимая кнопку «Отправить», вы даёте согласие на
-              <Link href={'/consent'} target='_blank'>
+              <LinkUI
+                size={'xs'}
+                weight={'regular'}
+                extraStyle={{color: 'rgb(116, 118, 121)'}}
+                href={'/consent'}
+                target='_blank'
+              >
                 <span> обработку своих персональных данных</span>
-              </Link>
+              </LinkUI>
             </div>
           </div>
         )}

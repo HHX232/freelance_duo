@@ -1,8 +1,8 @@
 import {Metadata} from 'next'
 
 import {typesOfFinishesData} from '@src/contentData/types_of_finishes'
-import Header from '@shared/page/header/Header'
-import ContentPageWithMultiSlider from '@shared/ContentPageWithMultiSlider/ContentPageWithMultiSlider'
+import Header from '@shared/pageDefault/header/Header'
+import ContentPageWithMultiSlider from '@shared/ContentPages/ContentPageWithMultiSlider/ContentPageWithMultiSlider'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -21,7 +21,7 @@ export default function Map() {
       <Header />
       <main>
         {/*<ContentPageWithSlider data={typesOfFinishesData} />*/}
-        <ContentPageWithMultiSlider data={typesOfFinishesData} title="Отделка"/>
+        <ContentPageWithMultiSlider data={typesOfFinishesData} title='Отделка' />
       </main>
     </>
   )

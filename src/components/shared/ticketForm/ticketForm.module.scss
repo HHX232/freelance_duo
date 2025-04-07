@@ -1,21 +1,41 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .ticketForm {
   @layer base {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 36px 16px;
     background: rgb(255 255 255 / 100%);
     color: #747679;
     gap: 24px;
-    padding: 36px 16px;
 
     .header__title {
       @include font(1, 16, 20);
+
+      opacity: 0; // По умолчанию скрыто
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+
+      &.visible {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 1;
+      }
     }
 
     .input-label {
+      color: #b5b9be;
       font-size: 14px;
       line-height: 18px;
-      color: #b5b9be;
     }
   }
 
@@ -35,6 +55,7 @@
 
   @include xl {
     gap: 36px;
+
     .header__title {
       @include font(1, 24, 34);
     }
@@ -46,20 +67,27 @@
   }
 
   @include xxl {
-    gap: 18px;
     padding: 40px;
+    gap: 18px;
   }
 
   @include xxxl {
-    gap: 42px;
     padding: 70px;
+    gap: 42px;
   }
 }
 
 .info {
+  &.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 1;
+  }
+  
   @layer base {
     display: flex;
     flex-direction: column;
+    opacity: 0; // По умолчанию скрыто
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 
     .input-wrapper {
       display: flex;
@@ -72,30 +100,17 @@
       margin-bottom: 36px;
     }
 
-    .input {
-      @include font(1, 16, 18);
-
-      display: block;
-      padding: 15px;
-      border: 1px solid rgb(205 208 211 / 100%);
-      border-radius: 6px;
-      background-color: transparent;
-
-      &::placeholder {
-        color: rgb(205 208 211 / 100%);
-      }
-    }
-
     .caption {
       @include font(1, 12, 14, 300);
+
       padding-top: 20px;
-      
+
       & a {
+        display: inline !important;
         color: $grey-text !important;
         text-decoration: underline !important;
-        display: inline !important;
-        text-underline-offset: 2px;
         text-decoration-color: $grey;
+        text-underline-offset: 2px;
       }
     }
   }
@@ -126,23 +141,21 @@
   }
 
   @include xxxl {
-
     .caption {
       padding-top: 36px !important;
     }
   }
 }
 
-.button{
-  @layer base{
+.button {
+  @layer base {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
     width: 100%;
     height: 48px;
-    padding: 12px 36px!important;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 36px !important;
+    gap: 10px;
+    text-align: center;
   }
 }
-

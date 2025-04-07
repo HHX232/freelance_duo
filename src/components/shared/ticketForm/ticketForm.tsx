@@ -1,10 +1,10 @@
 'use client'
 import styles from './ticketForm.module.scss'
-import {useState} from 'react'
-import {formatPhoneNumber} from '@src/lib/utils/auth/phone-mask.helper'
-import {FC} from 'react'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+import {FC, useEffect, useRef, useState} from 'react'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 import clsx from 'clsx'
+import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
+import InputPhoneUI from '@src/components/UI-kit/BaseControls/inputs/InputPhoneUI/InputPhoneUI'
 
 interface ITicketFormProps {
   description?: string
@@ -15,46 +15,76 @@ interface ITicketFormProps {
 
 const TicketForm: FC<ITicketFormProps> = (props) => {
   const {description = 'Оставьте заявку и мы поможем вам с выбором кладовой', formContainerClassName} = props
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
 
-  const [phoneNumber, setPhoneNumber] = useState('')
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
-    <div className={clsx(formContainerClassName, styles['ticketForm'])}>
+    <div
+      className={clsx(formContainerClassName, styles['ticketForm'])}
+      itemScope
+      ref={sectionRef}
+      itemType='http://schema.org/ContactPage'
+    >
       <div className='header'>
-        <p className={styles['header__title']}>{description}</p>
+        <p className={`${styles['header__title']} ${isVisible ? styles.visible : ''}`} itemProp='description'>
+          {description}
+        </p>
       </div>
-      <form className={clsx(styles['info'])}>
+      <form className={clsx(styles['info'], isVisible ? styles.visible : '')} itemScope itemType='http://schema.org/ContactPoint'>
         <div className={styles['input-wrapper']}>
-          <span className={styles['input-label']}>Имя</span>
-          <input className={styles.input} placeholder='Введите имя' />
+          <InputTextUI
+            theme={'dark'}
+            labelText={'Имя'}
+            onlyType='onlyText'
+            icon={true}
+            placeholder='Введите имя'
+            itemProp='name'
+          />
         </div>
         <div className={styles['input-wrapper']}>
-          <span className={styles['input-label']}>Телефон</span>
-          <input
-            className={styles.input}
-            placeholder='+7 (___) ___-__-__'
-            onChange={(e) => {
-              const formattedValue = formatPhoneNumber(e.target.value)
-              setPhoneNumber(formattedValue)
-            }}
-            maxLength={18}
-            pattern={'/^\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}$/'}
-            value={phoneNumber}
-          />
+          <InputPhoneUI theme={'dark'} labelText={'Телефон'} icon={<></>} itemProp='telephone' />
         </div>
         <FullButton
           type={'Button'}
           buttonText={'ОТПРАВИТЬ'}
           activeButton={true}
           border={false}
-          borderColor={''}
+          borderColor={'none'}
           extraClass={styles.button}
           buttonFill='bronze-500'
           buttonElementColor='white'
           buttonBorderRadius={'6px'}
+          itemProp='potentialAction'
+          alternativeBorderOnActive
+          alternativeBorderColor='bronze'
+          alternativeBorderWidth='3px'
         />
         <p className={styles.caption}>
-          Нажимая кнопку «Отправить», вы даёте согласие на <a href='/consent'>обработку своих персональных данных</a>
+          Нажимая кнопку «Отправить», вы даёте согласие на{' '}
+          <a href='/consent' itemProp='url'>
+            обработку своих персональных данных
+          </a>
         </p>
       </form>
     </div>

@@ -4,8 +4,8 @@ import styles from './Card.module.scss'
 import CancelSVG from '@icon/cancel.svg'
 import CardLeftSide from '@icon/card.svg'
 import Link from 'next/link'
-import BorderedButton from '@shared/borderedButton/BorderedButton'
-import {CardProps} from './model'
+import BorderedButton from '@src/components/UI-kit/BaseControls/buttons/old/borderedButton/BorderedButton'
+import {CardProps} from './Compass'
 
 const CompassCard = ({
   name,

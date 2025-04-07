@@ -14,9 +14,9 @@ export interface ISliderItem {
 export const landscapingData: ISliderItem[] = [
   {
     imgs: [
-      '/content/landscaping/image-05-07-24-10-27.jpeg',
-      '/content/landscaping/image-05-07-24-10-27-1.jpeg',
-      '/content/landscaping/image-05-07-24-11-00.jpeg'
+      '/content/landscaping/image-05-07-24-10-27.webp',
+      '/content/landscaping/image-05-07-24-10-27-1.webp',
+      '/content/landscaping/image-05-07-24-11-00.webp'
     ],
     title: `Благоустройство`,
     texts: [

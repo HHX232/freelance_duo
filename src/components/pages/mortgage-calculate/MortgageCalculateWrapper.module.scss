@@ -1,0 +1,405 @@
+.extra_input {
+  gap: 0px !important;
+}
+
+.wrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    padding: 70px 16px;
+  }
+
+  @include sm {
+    gap: 80px;
+    padding: 70px 20px;
+  }
+
+  @include md {
+    gap: 90px;
+    padding: 90px 40px;
+  }
+
+  @include xl {
+    gap: 90px;
+    padding: 90px 40px 90px 142px;
+  }
+
+  @include xxl {
+    gap: 110px;
+    padding: 110px 40px 110px 170px;
+  }
+
+  @include xxxl {
+    gap: 110px;
+    padding: 110px 40px 110px 196px;
+  }
+}
+
+.innerWrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+.title {
+  @layer base {
+    color: rgba(33, 60, 78, 1);
+    @include font(3, 30, 40, 400);
+  }
+
+  @include md {
+    @include font(3, 36, 50, 400);
+  }
+
+  @include xl {
+    @include font(3, 42, 54, 400);
+  }
+}
+
+.mainContent {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @include sm {
+    gap: 24px;
+  }
+
+  @include lg {
+    flex-direction: row;
+  }
+}
+
+
+.dataInputOuter {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @include lg {
+    width: 379px;
+  }
+
+  @include xl {
+    width: 384px;
+  }
+
+  @include xxl {
+    width: 489px;
+  }
+
+  @include xxxl {
+    min-width: 598px;
+  }
+}
+
+.selectorsWrapper {
+  @layer base {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.button {
+  @layer base {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 20px !important;
+    transition: all 0.5s ease-in-out;
+    border-radius: 6px;
+  }
+}
+
+.dataInputWrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    background: #FFFFFF;
+    gap: 20px;
+    border-radius: 10px;
+  }
+
+  @include sm {
+    padding: 24px;
+  }
+
+  @include md {
+    padding: 36px;
+  }
+
+  @include lg {
+    height: 100%;
+  }
+
+  @include xxl {
+    padding: 40px;
+  }
+
+  @include xxxl {
+    gap: 24px;
+    padding: 40px 40px 40px 48px;
+  }
+}
+
+.inputStyles {
+  @layer base {
+    height: auto !important;
+    border-radius: 6px !important;
+    padding: 14px !important;
+    border-color: rgba(205, 208, 211, 1) !important;
+    color: rgba(116, 118, 121, 1) !important;
+
+    &::placeholder {
+      color: rgba(181, 185, 190, 1) !important;
+    }
+  }
+}
+
+.labelStyles {
+  @layer base {
+    color: rgba(181, 185, 190, 1) !important;
+    @include font(1, 14, 18, 400)
+  }
+
+  @include xl {
+    @include font(1, 16, 22, 400)
+  }
+}
+
+
+.rangeInput {
+  @layer base {
+    height: auto !important;
+    border-radius: 6px !important;
+    border-color: rgba(205, 208, 211, 1) !important;
+    color: rgba(116, 118, 121, 1) !important;
+
+    &::placeholder {
+      color: rgba(181, 185, 190, 1) !important;
+    }
+  }
+}
+
+.conditions {
+  @layer base {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    gap: 24px;
+    background: rgba(17, 98, 125, 1);
+    color: #FFFFFF;
+    border-radius: 10px;
+  }
+
+  @include sm {
+    padding: 24px;
+  }
+
+  @include md {
+    padding: 36px;
+  }
+
+  @include lg {
+    padding: 24px;
+    width: 541px;
+  }
+
+  @include xl {
+    width: 690px;
+  }
+
+  @include xxl {
+    width: 877px;
+    padding: 40px;
+    gap: 31px;
+  }
+
+  @include xxxl {
+    min-width: 907px;
+    width: 100%;
+  }
+}
+
+.star {
+  @layer base {
+    position: absolute;
+    top: -70px;
+    right: -100px;
+    width: 237px;
+    height: 237px;
+  }
+
+  @include xl {
+    top: -40px;
+    right: -60px;
+  }
+
+  @include xxl {
+    top: -60px;
+    right: -80px;
+    width: 268px;
+    height: 268px;
+  }
+}
+
+.subTitle {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @include font(3, 22, 34, 400)
+  }
+
+  @include sm {
+    flex-direction: row;
+  }
+
+  @include md {
+    @include font(3, 26, 36, 400)
+  }
+
+  @include xl {
+    @include font(3, 32, 44, 400)
+  }
+}
+
+.showPercentWrapper {
+  @layer base {
+    @include font(1, 14, 18, 400);
+    padding: 4px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+
+    span {
+      @include font(3, 18, 26, 400);
+    }
+  }
+
+  @include md {
+    @include font(1, 16, 22, 400);
+
+    span {
+      @include font(3, 24, 36, 400)
+    }
+  }
+
+  @include xl {
+    span {}
+  }
+}
+
+.infoWrapper {
+  @layer base {
+    display: flex;
+    gap: 16px;
+  }
+
+  @include md {
+    flex-direction: column;
+  }
+
+  @include lg {
+    flex-direction: row;
+  }
+
+  @include xl {
+    flex-direction: column;
+  }
+}
+
+.lineWrapper {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  @include md {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  @include lg {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @include xl {
+    flex-direction: row;
+  }
+}
+
+.infoBlock {
+  @layer base {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-radius: 6px;
+    padding: 10px;
+    width: 120px;
+  }
+
+  @include sm {
+    width: 100%;
+  }
+
+  @include xl {
+    padding: 10px 16px;
+    width: 200px;
+  }
+
+  @include xxl {
+    width: 100%;
+  }
+
+}
+
+.selected {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sum {
+  @layer base {
+    @include font(1, 16, 20, 400);
+  }
+
+  @include md {
+    @include font(1, 20, 26, 400);
+  }
+
+  @include xl {
+    @include font(1, 24, 34, 400);
+  }
+}
+
+.infoText {
+  @layer base {
+    @include font(1, 14, 18, 400);
+    color: rgba(255, 255, 255, 0.6);
+    word-break: break-all;
+  }
+
+  @include xl {
+    @include font(1, 16, 22, 400);
+    word-break: normal;
+  }
+}

@@ -1,12 +1,12 @@
 import {Drawer} from 'antd'
 import {FC} from 'react'
 import styles from './index.module.scss'
-import FilledButton from '@shared/filledButton/FilledButton'
-import BorderedButton from '@shared/borderedButton/BorderedButton'
-import {CloseButton} from '@shared/close-button'
+import {CloseButton} from '@src/components/UI-kit/BaseControls/buttons/close-button'
 import clsx from 'clsx'
 import {useMedia} from '@src/lib/utils/useMedia'
 import {useRouter} from 'next/navigation'
+import Swipe from '@src/components/UI-kit/BaseControls/Swipe/Swipe'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface IInstallmentPlanDrawerProps {
   shown: boolean
@@ -59,45 +59,77 @@ export const InstallmentPlanDrawer: FC<IInstallmentPlanDrawerProps> = ({shown, o
           <li>Первоначальный взнос не менее 20% от базовой стоимости</li>
         </ul>
 
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Платеж</th>
-              <th>Сумма рассрочки</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>50 000 руб.</td>
-              <td>до 500 000 руб.</td>
-            </tr>
-            <tr>
-              <td>80 000 руб.</td>
-              <td>от 500 001 руб. до 1 000 000 руб.</td>
-            </tr>
-            <tr>
-              <td>120 000 руб.</td>
-              <td>от 1 000 001 руб. до 1 500 000 руб.</td>
-            </tr>
-            <tr>
-              <td>160 000 руб.</td>
-              <td>от 1 500 001 руб. до 2 000 000 руб.</td>
-            </tr>
-            <tr>
-              <td>200 000 руб.</td>
-              <td>от 2 000 001 руб. до 2 500 000 руб.</td>
-            </tr>
-            <tr>
-              <td>250 000 руб.</td>
-              <td>от 2 500 001 руб.</td>
-            </tr>
-          </tbody>
-        </table>
+        <Swipe className={styles.swipe} maxVisibleWidth={433} />
+
+        <div className={styles.table_wrapper}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Платеж</th>
+                <th>Сумма рассрочки</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>50 000 руб.</td>
+                <td>до 500 000 руб.</td>
+              </tr>
+              <tr>
+                <td>80 000 руб.</td>
+                <td>от 500 001 руб. до 1 000 000 руб.</td>
+              </tr>
+              <tr>
+                <td>120 000 руб.</td>
+                <td>от 1 000 001 руб. до 1 500 000 руб.</td>
+              </tr>
+              <tr>
+                <td>160 000 руб.</td>
+                <td>от 1 500 001 руб. до 2 000 000 руб.</td>
+              </tr>
+              <tr>
+                <td>200 000 руб.</td>
+                <td>от 2 000 001 руб. до 2 500 000 руб.</td>
+              </tr>
+              <tr>
+                <td>250 000 руб.</td>
+                <td>от 2 500 001 руб.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div className={styles.buttonGroup}>
-        <FilledButton onClick={handleClick}>ПОДОБРАТЬ КВАРТИРУ</FilledButton>
-        <BorderedButton>Получить консультацию</BorderedButton>
+        {/* <FilledButton onClick={handleClick}>
+          <span>ПОДОБРАТЬ КВАРТИРУ</span>
+        </FilledButton> */}
+        <span style={{zIndex: 7, width: '100%'}}>
+          <FullButton
+            onClick={handleClick}
+            extraClass={styles.button_extra}
+            buttonBorderRadius='6px'
+            activeButton={true}
+            buttonElementColor={'white'}
+            buttonFill={'bronze-500'}
+            border={false}
+            borderColor='none'
+            buttonText='ПОДОБРАТЬ КВАРТИРУ'
+          />
+        </span>
+        {/* <BorderedButton>
+          <span>Получить консультацию</span>
+        </BorderedButton> */}
+        <span style={{zIndex: 7, width: '100%'}}>
+          <FullButton
+            borderColor={'gray-dark'}
+            extraClass={styles.button_extra}
+            buttonFill='none'
+            border={true}
+            borderWidth='1px'
+            activeButton={true}
+            buttonText='Получить консультацию'
+          />
+        </span>
       </div>
     </Drawer>
   )

@@ -1,29 +1,28 @@
 'use client'
 import styles from './catalog.module.scss'
 import {Col, Row, ConfigProvider, Select, Tabs, DrawerProps, Drawer} from 'antd'
-import Card from '@shared/card/Card'
+import Card from '@shared/Cards/card/Card'
 import {Suspense, useCallback, useEffect, useMemo, useState} from 'react'
-import RangeFilter from '@src/components/UI-kit/inputs/RangeInput/RangeInput'
 import type {DefaultOptionType} from 'antd/es/select'
 import {ItemLoader} from '@src/components/ItemLoader/ItemLoader'
 import RefreshIcon from '@icon/refresh.svg'
-import {tabs} from '@shared/tabs/tabs'
+import {tabs} from '@src/components/UI-kit/BaseControls/old/tabs/tabs'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import DropdownIcon from '@icons/dropdown_arrow.svg'
-
 import {IObj} from '@src/types/object.interface'
 import {matchType} from '@src/lib/utils/catalog/matchType'
 import {useIsTablet} from '@utils/useIsMobile'
-import FilledButton from '@shared/filledButton/FilledButton'
 import {usePathname, useRouter} from 'next/navigation'
 import {useSearchParams} from 'next/navigation'
 import {transliterate} from '@utils/transliterate'
-import {ExtraOptions} from '@src/components/UI-kit/inputs/extra-options/extra-options'
 import {CatalogPageProps, FilterProps, IFiltersState} from './catalog.types'
 import {useUpdateURL} from './hooks/useUpdateURL'
 import {useResetFilters} from './hooks/useResetFilters'
 import useFilteredAndSortedItems from './hooks/useFilteredAndSortedItems'
+import RangeFilter from '@src/components/UI-kit/BaseControls/inputs/RangeFilter/RangeFilter'
+import {ExtraOptions} from '@src/components/UI-kit/BaseControls/inputs/extra-options/extra-options'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 const onChange = (key: string) => {
   console.log(key)
@@ -32,7 +31,7 @@ const onChange = (key: string) => {
 const ObjParams: Record<string, string> = {
   Терраса: 'kvartiry-s-terrasoi',
   'с балконом': 'kvartiry-s-balkonom',
-  Кладовая: 'kvartiry-s-kladovoi',
+  Кладовая: 'storerooms',
   'Раздельный СУ': 'kvartiry-s-razdelnym-su',
   Лоджия: 'kvartiry-s-lodzhiei',
   'Гардеробная в спальне': 'kvartiry-s-garderobnoi',
@@ -454,7 +453,7 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
     {key: 'studii', title: 'Студии', h1: 'Студии'},
     {key: 'lofty', title: 'Лофты', h1: 'Лофты'},
     {key: 'kvartiry-s-garderobnoi', title: 'Квартиры с гардеробной', h1: 'Квартиры с гардеробной'},
-    {key: 'kvartiry-s-kladovoi', title: 'Квартиры с кладовой', h1: 'Квартиры с кладовой'},
+    {key: 'storerooms', title: 'Квартиры с кладовой', h1: 'Квартиры с кладовой'},
     {key: 'kvartiry-s-razdelnym-su', title: 'Квартиры с раздельным СУ', h1: 'Квартиры с раздельным санузлом'},
     {key: 'kvartiry-s-terrasoi', title: 'Квартиры с терассой', h1: 'Квартиры с терассой'},
     {key: 'kvartiry-s-balkonom', title: 'Квартиры с балконом', h1: 'Квартиры с балконом'},
@@ -541,15 +540,24 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
                         />
                       </svg>
                     </button>
-                    <button type='button' className={styles.filterBtn} onClick={showDrawer}>
+                    <FullButton
+                      borderColor={'none'}
+                      buttonFill={'bronze-500'}
+                      buttonText={'Фильтр параметров'}
+                      extraClass={styles.filterBtn}
+                      buttonBorderRadius={'6px'}
+                      buttonElementColor={'white'}
+                      activeButton={true}
+                      onClick={showDrawer}
+                      border={false}
+                    >
                       <svg width='19' height='20' viewBox='0 0 19 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path
                           d='M13.5714 3.33442C13.5714 4.43961 12.6609 5.33333 11.5358 5.33333C10.4107 5.33333 9.5 4.43961 9.5 3.33442C9.5 2.22923 10.4127 1.33333 11.5358 1.33333C12.659 1.33333 13.5714 2.22923 13.5714 3.33442ZM8.21149 4C8.52503 5.5214 9.89523 6.66667 11.5358 6.66667C13.1764 6.66667 14.5464 5.5214 14.8599 4H18.3214C18.6972 4 19 3.70209 19 3.33442C19 2.96674 18.6972 2.66667 18.3214 2.66667H14.8599C14.5464 1.14527 13.1764 0 11.5358 0C9.89523 0 8.52503 1.14527 8.21149 2.66667H0.678603C0.304953 2.66667 0 2.96458 0 3.33442C0 3.70426 0.304953 4 0.678603 4H8.21149ZM6.78559 10.0011C6.78559 11.1041 5.87513 12 4.75 12C3.62487 12 2.71419 11.1041 2.71419 10.0011C2.71419 8.89806 3.62685 8 4.75 8C5.87315 8 6.78559 8.8959 6.78559 10.0011ZM1.42568 10.6667C1.74142 12.1881 3.10942 13.3333 4.75 13.3333C6.39058 13.3333 7.76056 12.1881 8.0741 10.6667H18.3214C18.6972 10.6667 19 10.3688 19 10.0011C19 9.63341 18.6972 9.33333 18.3214 9.33333H8.0741C7.76056 7.81194 6.39278 6.66667 4.75 6.66667C3.10722 6.66667 1.74142 7.81194 1.42568 9.33333H0.678603C0.304953 9.33333 0 9.63124 0 10.0011C0 10.3709 0.304953 10.6667 0.678603 10.6667H1.42568ZM16.2858 16.6678C16.2858 17.7708 15.3732 18.6667 14.25 18.6667C13.1268 18.6667 12.2144 17.7708 12.2144 16.6678C12.2144 15.5647 13.1268 14.6667 14.25 14.6667C15.3732 14.6667 16.2858 15.5626 16.2858 16.6678ZM10.9259 17.3333C11.2394 18.8547 12.6072 20 14.25 20C15.8928 20 17.2586 18.8547 17.5743 17.3333H18.3214C18.6972 17.3333 19 17.0354 19 16.6678C19 16.3001 18.6972 16 18.3214 16H17.5743C17.2586 14.4786 15.8906 13.3333 14.25 13.3333C12.6094 13.3333 11.2394 14.4786 10.9259 16H0.678603C0.304953 16 0 16.2979 0 16.6678C0 17.0376 0.304953 17.3333 0.678603 17.3333H10.9259Z'
                           fill='white'
                         />
                       </svg>
-                      <span>Фильтр параметров</span>
-                    </button>
+                    </FullButton>
                   </div>
 
                   <Drawer
@@ -693,10 +701,15 @@ const CatalogPage = ({data, filters_data, id, param}: CatalogPageProps) => {
                     </div>
                     <div className={styles.showMoreContainer}>
                       {remainingItemsCount > 0 && (
-                        <FilledButton onClick={showMoreItems} variety='primary'>
-                          Показать еще {Math.min(remainingItemsCount, visibleItemsCount)} вариантов из{' '}
-                          {remainingItemsCount}
-                        </FilledButton>
+                        <FullButton
+                          onClick={showMoreItems}
+                          borderColor={'none'}
+                          buttonElementColor={'white'}
+                          buttonFill={'bronze-500'}
+                          buttonText={`Показать еще ${Math.min(remainingItemsCount, visibleItemsCount)} вариантов из${' '}${remainingItemsCount}`}
+                          activeButton={true}
+                          border={false}
+                        />
                       )}
 
                       <div className={styles.scroll_up}>

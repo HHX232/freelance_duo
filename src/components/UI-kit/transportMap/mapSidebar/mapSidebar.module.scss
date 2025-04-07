@@ -1,0 +1,204 @@
+@import '../../../../fonts/fonts';
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    display: none;
+    overflow: auto;
+
+    // width: 460px;
+    height: 100%;
+
+    // padding: 20px;
+    background-color: white;
+    box-shadow: 2px 0 10px rgb(0 0 0 / 20%);
+    transition: left 0.3s ease-in-out;
+
+    @layer base {
+        // visibility: hidden;
+
+        // right: -460px;
+    }
+
+    @include xs {
+      padding-left: 0 !important;
+    }
+
+    @include sm {
+      padding-left: 20px;
+    }
+
+    @include md {
+        right: -380px;
+        width: 380px;
+    }
+
+    @include lg {
+        right: -460px;
+        width: 460px;
+    }
+  
+    &.open {
+      right: 0;
+      display: block;
+    }
+
+    &.mobile {
+      position: relative;
+      width: 100% !important;
+      height: auto !important;
+      padding-left: 15px;
+      box-shadow: none;
+      visibility: visible;
+    }
+  
+    .content {
+      @layer base {
+        padding: 16px;
+      }
+
+      @include xs {
+        padding: 0 20px 20px;
+      }
+
+      @include md {
+        padding: 40px;
+      }
+
+      .content_block {
+        display: block;
+        padding: auto;
+        margin: 0;
+
+        .content_title {
+          font-family: $font-romul;
+          font-weight: 400;
+          text-align: left;
+
+          &.blue {
+            @include xs {
+              margin-bottom: 24px !important;
+              color:#555;
+            }
+
+            @include md {
+              margin: 34px 0 !important;
+              color: #11627D;
+            }
+          }
+
+          &.orange {
+            @include xs {
+              margin: 24px 0 !important;
+              color:#555;
+            }
+
+            @include md {
+              color: #D38F6D;
+            }
+          }
+
+          @layer base {
+            font-size: 24px;
+            line-height: 36px;
+          }
+
+          @include xs {
+            margin-bottom: 24px;
+            color: #555;
+            font-size: 18px;
+          }
+
+          @include sm {
+            font-size: 26px;
+            line-height: 38px;
+          }
+
+          @include md {
+            margin: 34px 0 !important;
+            font-size: 32px;
+            line-height: 44px;
+          }
+        }
+
+        .content_hr {
+          width: 25%;
+          border: none;
+          border-top: 2px dotted #11627D;
+          margin: 10px 0;
+        }
+
+        .maplegend-legend-item {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          justify-content: left;
+          padding: 10px;
+
+          p {
+              margin-left: 10px;
+              font-size: 16px;
+          }
+        }
+
+        .content_block_row {
+          display: flex;
+          width: 100%;
+          padding: 8px 0;
+          gap: 5%;
+
+          p {
+            color: #555;
+            font-family: $font-gotham-pro;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 22px;
+            text-align: left;
+          }
+
+          p.row_left {
+            width: 35%;
+          }
+
+          p.row_right {
+            width: 60%;
+          }
+
+        }
+
+        .content_list {
+          counter-reset: custom-counter;
+          list-style: none;
+
+          li {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            color: #555;
+            counter-increment: custom-counter;
+            font-family: $font-gotham-pro;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 22px;
+            text-align: left;
+
+            &::before {
+              display: flex;
+              width: 36px;
+              min-width: 36px;
+              height: 36px;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              margin-right: 15px;
+              background-color: #D38F6D;
+              color: #FFF;
+              content: counter(custom-counter);
+              font-size: 14px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }

@@ -2,17 +2,18 @@
 import styles from './favorites.module.scss'
 import {breadcrumbItems} from './config/breadcrumbs'
 import {Col, ConfigProvider, Row, Tabs} from 'antd'
-import Card from '@shared/card/Card'
-import {tabs} from '@shared/tabs/tabs'
+import Card from '@shared/Cards/card/Card'
+import {tabs} from '@src/components/UI-kit/BaseControls/old/tabs/tabs'
 import {IObj} from '@src/types/object.interface'
 import {NoObjects} from '@shared/no-objects/no-objects'
-import FilledButton from '@shared/filledButton/FilledButton'
+// import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import {useEffect, useState} from 'react'
 import {getFlatsById} from '@src/actions/flats'
 import {useStore} from '@src/lib/store/store'
 import {MainContainer} from '@shared/containers/main/main-container'
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import Link from 'next/link'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 export const Favorites = ({dashboard}: {dashboard?: boolean}) => {
   const [isLoading, setLoading] = useState(true)
@@ -60,7 +61,18 @@ export const Favorites = ({dashboard}: {dashboard?: boolean}) => {
           <NoObjects>
             <p>Вы пока ничего не добавили в избранное</p>
             <Link href={'/planirovki-i-ceny'}>
-              <FilledButton style={{maxWidth: '284px'}}>Добавить квартиру</FilledButton>
+              {/* <FilledButton style={{maxWidth: '284px'}}>Добавить квартиру</FilledButton> */}
+              <FullButton
+                type='Button'
+                extraClass={styles.extra_button}
+                buttonBorderRadius='6px'
+                buttonElementColor='white'
+                activeButton
+                buttonText='Добавить квартиру'
+                buttonFill='bronze-500'
+                border={false}
+                borderColor='none'
+              />
             </Link>
           </NoObjects>
         ) : (

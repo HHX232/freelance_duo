@@ -2,21 +2,23 @@
 import styles from './TransportWrapper.module.scss'
 import Head from '@pages/transport/components/head/Head'
 import Information from '@pages/transport/components/information/Information'
-// import TransportMap from '@pages/transport/components/transportMap/transportMap'
+import TransportMap from '@src/components/UI-kit/transportMap/transportMap'
 import Infoblock from '@pages/transport/components/infoblock/Infoblock'
 import Blocks from '@pages/transport/components/blocks/Blocks'
 import Subscription from '@pages/transport/components/subscription/Subscription'
 import TransportModal from '@pages/transport/popup/transportModal'
 import { useState } from 'react'
+import { mapPoi, mapRoutes } from '@src/lib/utils/catalog/mapMockData'
 
 const TransportWrapper = () => {
   const [modalView, setModalView] = useState(0);
+
   return (
-    <div className={styles['wrapper']}>
+    <div className={`${styles.wrapper} no-scroll`}>
       <Head />
       <Information />
-      {/* <TransportMap /> */}
       <div className={styles.transport_content}>
+        <TransportMap customPoi={mapPoi} customRoutes={mapRoutes} withLegend withSidebar />
         <Infoblock />
         <Blocks setShowModal={setModalView}/>
         <Subscription />

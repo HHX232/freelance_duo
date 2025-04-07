@@ -40,6 +40,12 @@ const nextConfig = {
         hostname: 'back.kronfort.ru',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.kronfort.quantum747.tech', // Добавляем новый домен
+        port: '',
+        pathname: '/**'
       }
     ],
     minimumCacheTTL: 604800,
@@ -60,10 +66,10 @@ const nextConfig = {
     })
 
     config.module.rules
-      .find(({oneOf}) => !!oneOf)
-      .oneOf.filter(({use}) => JSON.stringify(use)?.includes('css-loader'))
-      .reduce((acc, {use}) => acc.concat(use), [])
-      .forEach(({options}) => {
+      .find(({ oneOf }) => !!oneOf)
+      .oneOf.filter(({ use }) => JSON.stringify(use)?.includes('css-loader'))
+      .reduce((acc, { use }) => acc.concat(use), [])
+      .forEach(({ options }) => {
         if (options?.modules) {
           options.modules.exportLocalsConvention = 'camelCase'
         }

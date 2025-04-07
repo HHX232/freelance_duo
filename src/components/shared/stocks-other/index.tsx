@@ -6,24 +6,24 @@ import {IStockItemProps} from '@shared/stock-item/types'
 import {FC, useEffect, useState} from 'react'
 import ArrowUpIcon from '@icons/arrow_up.svg'
 
-import {useWindowWidth} from '@shared/page/header/components/HeaderMenu/hooks/useWindowWidth'
+import {useWindowWidth} from '@shared/pageDefault/header/components/HeaderMenu/hooks/useWindowWidth'
 
 const MOCK_DATA: IStockItemProps[] = [
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image.png',
+    imageSrc: '/stocks-example/preview-image.webp',
     title: 'Рассрочка на все готовое!',
     href: '/stocks/1'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-1.png',
+    imageSrc: '/stocks-example/preview-image-1.webp',
     title: 'Готовые квартиры со скидкой!',
     href: '/stocks/1'
   },
   {
     tag: 'Бессрочная акция',
-    imageSrc: '/stocks-example/preview-image-2.png',
+    imageSrc: '/stocks-example/preview-image-2.webp',
     title: 'Семейная ипотека: сейчас или никогда!',
     href: '/stocks/1'
   }

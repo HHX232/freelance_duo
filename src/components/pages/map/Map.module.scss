@@ -1,7 +1,94 @@
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInOp {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInSc {
+  from {
+    scale: 0.7;
+  }
+
+  to {
+    scale: 1;
+  }
+}
 
 .page {
   min-height: 743px;
+  background-color: #165167;
+}
+
+.homepage_placeholder {
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+
+  .extra_title {
+    color: #fff !important;
+  }
+
+  @layer base {
+    position: relative;
+    display: flex;
+    max-height: 640px;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 130px 16px 24px;
+  }
+
+  @include xs {
+    padding: 130px 16px 79px;
+  }
+
+  @include sm {
+    max-height: 875px;
+    padding: 130px 20px 111px;
+  }
+
+  @include md {
+    max-height: 1000px;
+    padding: 130px 40px 111px;
+  }
+
+  @include lg {
+    max-height: none;
+    padding: 130px 40px 120px;
+  }
+
+  @include xl {
+    padding: 60px 40px 124px 142px;
+  }
+
+  @include xxl {
+    padding: 90px 40px 124px 170px;
+  }
+
+  @include xxxl {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    //padding-bottom: 124px;
+    //background-image: linear-gradient(228.37deg, rgb(0 0 0 / 0%) 47.45%, rgb(0 0 0 / 20%) 81.97%), url("/content/banner.webp");
+    padding: 90px 40px 124px 196px;
+  }
 }
 
 .pointsWrapper {
@@ -12,11 +99,10 @@
     right: -36vw;
     display: none;
     height: 100vh;
-    aspect-ratio: 2.1152;
+    max-height: 1000px;
     background: linear-gradient(180deg, #1e3849 0%, rgb(30 56 73 / 0%) 100%);
     content: '';
     transform: rotate(105deg);
-    min-height: 653px !important;
   }
 
   @include mobile {
@@ -30,7 +116,6 @@
   &::after {
     position: fixed;
     z-index: 1;
-    //top: 0;
     display: block;
     width: 100%;
     height: 100%;
@@ -38,44 +123,83 @@
     pointer-events: none;
 
     @layer base {
-      background: linear-gradient(180deg, rgba(38, 57, 69, 0) 43.85%, rgba(38, 57, 69, 0.47) 57.88%, #263945 100%),
-        linear-gradient(90deg, rgba(19, 36, 47, 0.7) 0%, rgba(30, 56, 73, 0) 50%),
-        radial-gradient(41.9% 13.62% at 48.44% 26.85%, rgba(255, 255, 255, 0) 0%, rgba(30, 56, 73, 0.1) 100%);
+      background: linear-gradient(180deg, rgb(38 57 69 / 0%) 43.85%, rgb(38 57 69 / 47%) 57.88%, #263945 100%),
+        linear-gradient(90deg, rgb(19 36 47 / 70%) 0%, rgb(30 56 73 / 0%) 50%),
+        radial-gradient(41.9% 13.62% at 48.44% 26.85%, rgb(255 255 255 / 0%) 0%, rgb(30 56 73 / 10%) 100%);
     }
 
     @include md {
-      background: linear-gradient(90deg, rgba(19, 36, 47, 0.7) 0%, rgba(30, 56, 73, 0) 50%),
-        radial-gradient(64.3% 48.24% at 55.31% 48.9%, rgba(255, 255, 255, 0) 0%, rgba(30, 56, 73, 0.1) 66.49%);
       top: 0;
       bottom: unset;
+      background: linear-gradient(90deg, rgb(19 36 47 / 70%) 0%, rgb(30 56 73 / 0%) 50%),
+        radial-gradient(64.3% 48.24% at 55.31% 48.9%, rgb(255 255 255 / 0%) 0%, rgb(30 56 73 / 10%) 66.49%);
     }
   }
 }
 
 .mapImage {
+  // убрал тк там цветовой фильтр фона на homepage падал
+  // @media (min-height: 1200px) {
+  //   margin-top: min(calc(100vh - 1200px), 100px);
+  // }
+  scale: 0.7;
+
+  &.visible {
+    animation: fadeInSc 1.3s ease-out forwards;
+    scale: 1;
+  }
+
   @layer base {
     position: absolute !important;
     z-index: 0;
-    top: 0;
-    right: 0px;
-    left: 0;
-    bottom: 0;
+    height: 100% !important;
     contain: paint;
+    inset: 0;
     object-fit: cover;
-    object-position: bottom;
+
+    // карта съезжает
+    // object-position: bottom;
   }
 
   @include md {
     z-index: 0;
-    left: 0;
     right: 0;
+    left: 0;
   }
 }
 
 .wrapper {
-  height: 100vh;
-  min-height: 653px !important;
   scale: 1;
+
+  @media (max-width: 1469px) {
+    padding-right: 0 !important;
+  }
+
+  @media (max-width: 1280px) {
+    &::-webkit-scrollbar {
+      height: 0 !important;
+    }
+
+    overflow: auto hidden; // Включить горизонтальный скролл // Отключить вертикальный скролл
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+.mm_inner {
+  position: relative !important;
+  background-color: #165167;
+}
+
+.swipe {
+  position: absolute;
+  z-index: 10;
+  top: 98px;
+  right: 34px;
+
+  svg path {
+    fill: #fff;
+  }
 }
 
 .mobileImage {
@@ -86,23 +210,34 @@
   @include font(1, 16, 22, 700);
 
   color: #fff;
+  opacity: 0;
   text-shadow: 0 4px 13.5px rb(0 0 0 / 100%) g;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: fadeInOp 0.8s ease-out forwards;
+    opacity: 1;
+  }
 
   &-wrapper {
     position: absolute;
-    z-index: 4;
+    z-index: 10;
     display: flex;
     align-items: center;
     gap: 10px;
-    z-index: 10;
   }
 }
 
 .captions {
+  &.visible {
+    animation: fadeInRight 0.8s ease-out forwards;
+    opacity: 1;
+  }
 
   &-title {
     @layer base {
       @include font(3, 30, 40, 400);
+
       color: $yellow-text;
     }
 
@@ -120,48 +255,46 @@
     z-index: 1;
     bottom: 0;
     display: flex;
-    flex-direction: column;
-    gap: 40px;
     width: 100%;
+    flex-direction: column;
     padding-bottom: 24px;
+    gap: 40px;
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
   @include sm {
-    gap: 60px;
     padding-bottom: 40px;
+    gap: 60px;
   }
 
   @include md {
-    //top: 50%;
-    //bottom: initial;
-    //gap: 366px;
-    //transform: translateY(-50%);
-    bottom: 0px;
-    height: 100%;
+    bottom: 0;
     width: fit-content;
+    height: 100%;
     justify-content: space-between;
     padding: 90px 40px;
   }
 
   @include lg {
-    gap: 60px;
     justify-content: start;
+    gap: 60px;
   }
 
   @include content-container;
 
   @include xxxl {
-    padding-left: 196px;
     padding-top: 130px;
+    padding-left: 196px;
   }
 
   @include xxl {
-    padding-left: 170px;
     padding-top: 90px;
+    padding-left: 170px;
   }
 
   @include xl {
-    padding-top: 60px;
+    padding-top: 130px;
   }
 
   @include lg {
@@ -195,19 +328,17 @@
     right: 0;
   }
 
-  @include md {
-    min-width: 215px;
-  }
-
   &__title {
     @layer base {
-      color: $yellow-text;
       @include font(3, 40, 50, 400);
+
+      color: $yellow-text;
 
       span {
         @include font(3, 22, 34, 400);
-        color: $yellow-text;
+
         padding-left: 8px;
+        color: $yellow-text;
       }
     }
 
@@ -242,6 +373,7 @@
     @include md {
       margin: 12px 0;
     }
+
     @include md {
       margin: 16px 0;
     }
@@ -259,8 +391,9 @@
     }
 
     @include md {
-      max-width: 220px;
       @include font(1, 16, 23, 200);
+
+      max-width: 220px;
     }
   }
 }

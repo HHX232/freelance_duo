@@ -58,22 +58,15 @@
 
     .filterBtn {
       display: flex;
-      width: 219px;
-      height: 46px;
+      width: 219px !important;
+      height: 46px !important;
+      flex-direction: row-reverse;
       align-items: center;
-      padding: 0 12px;
-      border-radius: 4px;
-      background: #d38f6d;
-      font-family: $font-primary;
-      grid-gap: 6px;
+      gap: 6px;
 
-      span {
-        width: 100%;
-        color: #fff;
+      p {
         font-size: 12px;
         font-weight: 500;
-        text-align: center;
-        text-transform: uppercase;
       }
 
       @media (max-width: 504px) {
@@ -176,7 +169,7 @@
 .showMoreContainer {
   display: flex;
   width: 100%;
-  max-width: 324px;
+  max-width: 360px;
   margin: 75px auto 107px;
 
   @media (max-width: 990px) {
@@ -188,6 +181,15 @@
   }
 
   button {
+    @include font(1, 16, 14, 400);
+
+    height: 46px;
+    border-radius: 6px;
+    color: #fff;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: opacity 0.5s 0.3s ease-out;
+
     @media (max-width: 504px) {
       font-size: 12px;
     }

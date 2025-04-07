@@ -2,21 +2,22 @@
 import styles from './compare.module.scss'
 import {breadcrumbItems} from './config/breadcrumbs'
 import {Col, ConfigProvider, Modal, Row, Tabs} from 'antd'
-import {tabs} from '@shared/tabs/tabs'
+import {tabs} from '@src/components/UI-kit/BaseControls/old/tabs/tabs'
 import {NoObjects} from '@shared/no-objects/no-objects'
-import FilledButton from '@shared/filledButton/FilledButton'
+import FilledButton from '@src/components/UI-kit/BaseControls/buttons/old/filledButton/FilledButton'
 import {CompareCheckBox} from '@pages/compare/components/checkbox-compare'
 import {useEffect, useState, useCallback} from 'react'
 import {CompareCard} from '@pages/compare/components/compare-card'
 import {IObj} from '@src/types/object.interface'
 import {useStore} from '@src/lib/store/store'
 import {getFlatsById} from '@src/actions/flats'
-import {Title} from '@src/components/UI-kit/TextKit/title/title'
+import {Title} from '@src/components/UI-kit/Text-Elements/TextKit/title/title'
 import {MainContainer} from '@shared/containers/main/main-container'
 import Link from 'next/link'
 import {GetProfile} from '@src/actions/profile'
 import {AuthPopup} from '@pages/dashboard/auth/auth'
 import {useRouter} from 'next/navigation'
+import { FullButton } from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 export const Compare = ({dashboard}: {dashboard?: boolean}) => {
   const [isDifferences, setDifferences] = useState(false)
@@ -219,9 +220,20 @@ export const Compare = ({dashboard}: {dashboard?: boolean}) => {
           <NoObjects>
             <p>Вы пока ничего не добавили в сравнение</p>
             <Link href={'/planirovki-i-ceny'}>
-              <FilledButton style={{maxWidth: '284px'}} variety={!dashboard ? 'primary' : 'primary'}>
+              {/* <FilledButton style={{maxWidth: '284px'}} variety={!dashboard ? 'primary' : 'primary'}>
                 Добавить квартиру
-              </FilledButton>
+              </FilledButton> */}
+              <FullButton
+                type='Button'
+                extraClass={styles.extra_button}
+                buttonBorderRadius='6px'
+                buttonElementColor='white'
+                activeButton
+                buttonText='Добавить квартиру'
+                buttonFill='bronze-500'
+                border={false}
+                borderColor='none'
+              />
             </Link>
           </NoObjects>
         ) : (
