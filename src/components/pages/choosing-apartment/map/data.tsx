@@ -1,3 +1,4 @@
+'use client'
 import {LatLngBoundsExpression} from 'leaflet'
 import {ReactElement} from 'react'
 
@@ -65,7 +66,7 @@ export const pins: Pin[] = [
       width: 539,
       bounds: [
         [260, 110],
-        [260 + 356, 110 + 539],
+        [260 + 356, 110 + 539]
       ]
     }
   },

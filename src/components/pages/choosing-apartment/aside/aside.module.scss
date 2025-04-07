@@ -1,0 +1,121 @@
+.aside {
+  position: fixed;
+  width: 482px;
+  height: 100vh;
+  background: $sireneviy;
+  bottom: 0;
+  top: 0;
+  z-index: 10;
+  right: -100%;
+  transition: all 0.3s;
+
+  padding: 223px 40px 90px 40px;
+}
+.aside.left {
+  left:  -100%;
+  right: auto;
+}
+
+.aside .breadcrumbs {
+  ol,
+  a,
+  li {
+    color: $white !important;
+  }
+
+  ol li:nth-child(2n) {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+}
+
+.aside .mini_map_compass {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 0;
+  top: 200px;
+}
+
+.aside .title {
+  color: $yellow-text;
+  margin-top: 24px;
+}
+
+.aside .prams {
+  margin-top: 60px;
+  position: relative;
+  padding-top: 36px;
+
+  display: flex;
+  gap: 40px;
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  li {
+    display: flex;
+    gap: 40px;
+    color: $white;
+    font-size: 16px;
+    font-weight: 400;
+    width: max-content;
+    display: block;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 112px;
+    height: 2px;
+    background: $yellow-text;
+  }
+}
+
+.mini_map {
+  margin-top: 112px;
+
+  &_title {
+    font-size: 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: $grey-stroke;
+  }
+
+  &_title svg {
+    width: 16px;
+    height: 16px;
+
+    path {
+      stroke: $grey-stroke;
+    }
+  }
+  &_content {
+    position: relative;
+  }
+  &_item {
+    position: absolute;
+  }
+  &_item.active svg path {
+    fill: $yellow-text !important;
+  }
+}
+
+.aside.active {
+  right: 0;
+}
+
+.aside.active.left {
+  right: auto !important;
+  left: 0 !important;
+}
+

@@ -1,6 +1,6 @@
-import ChoosingApartmentPageView from '@pages/choosing-apartment/choosing.apartment';
-import { Metadata, NextPage } from 'next';
-
+import {Metadata} from 'next'
+import dynamic from 'next/dynamic'
+const ChoosingApartmentPageView = dynamic(() => import('@pages/choosing-apartment/choosing.apartment'), {ssr: false})
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -12,12 +12,6 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const ChoosingApartment: NextPage = (  ) => {
-
-
-  return ( <ChoosingApartmentPageView /> )
-
+export default function ChoosingApartment() {
+  return <ChoosingApartmentPageView />
 }
-
-
-export default ChoosingApartment

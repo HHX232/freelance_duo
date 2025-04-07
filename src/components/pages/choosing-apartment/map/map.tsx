@@ -2,7 +2,7 @@
 import L, {divIcon, LatLngBoundsExpression} from 'leaflet'
 import s from './map.module.scss'
 import {FC, useEffect, useState} from 'react'
-import {ImageOverlay, MapContainer, Marker, SVGOverlay, useMap} from 'react-leaflet'
+import {ImageOverlay, MapContainer, Marker, SVGOverlay} from 'react-leaflet'
 import {renderToString} from 'react-dom/server'
 import ReactDOMServer from 'react-dom/server'
 import ClearStarIcon from '@icons/clear_star.svg'
@@ -20,6 +20,9 @@ import SettingsIcon from '@icons/Menu point.svg'
 import ArrowIcon from '@icons/toLeft.svg'
 
 import ArrowUpIcon from '@icons/arrow_up.svg'
+import {ChangeZoom} from '@shared/leaflet-modules/leaflet-modules'
+import {useCreateQueryString} from '@src/lib/hooks/createQueryString'
+import {usePathname, useRouter} from 'next/navigation'
 
 interface CustomIconProps {
   isActive: boolean
@@ -38,7 +41,9 @@ const TextMarker = () => {
     html: ReactDOMServer.renderToString(
       <ParagraphUI extraClass={clsx(s.paragraph, s.paragraph_embankment)} size='lg'>
         <ArrowUpIcon />
-        <span>Набережная <br /> и парк «Остров фортов»</span>
+        <span>
+          Набережная <br /> и парк «Остров фортов»
+        </span>
       </ParagraphUI>
     ),
     className: '', // Убираем стандартные стили маркера
@@ -48,16 +53,11 @@ const TextMarker = () => {
   return <Marker position={[850, 1700]} icon={textIcon}></Marker>
 }
 
-const ChangeZoom: FC<{zoomLevel: number}> = ({zoomLevel}) => {
-  const map = useMap()
-  useEffect(() => {
-    map.setZoom(zoomLevel)
-    map.setMinZoom(zoomLevel)
-  }, [zoomLevel, map])
-  return null
-}
+const MapWidthPins: FC = () => {
+  const router = useRouter()
+  const createQueryString = useCreateQueryString()
+  const pathname = usePathname()
 
-const MapWidthPins = () => {
   const IMAGE_SIZE = {width: 1920, height: 1000}
   const bounds: LatLngBoundsExpression = [
     [0, 0],
@@ -175,6 +175,9 @@ const MapWidthPins = () => {
             type={'Button'}
             extraClass={s.arrow_button}
             buttonBorderRadius={'6px'}
+            onClick={() => {
+              router.push(pathname + '?' + createQueryString('house', activePinIndex))
+            }}
             buttonText={
               <div>
                 <ArrowIcon />

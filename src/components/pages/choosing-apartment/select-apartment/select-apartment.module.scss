@@ -1,0 +1,168 @@
+.root {
+  height: 100vh;
+
+  .content {
+    padding: 220px 40px 54px 0;
+    margin-left: 522px;
+    position: relative;
+    height: 100%;
+
+    .title {
+      color: $grey !important;
+    }
+
+    .select_floor {
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      right: 40px;
+      bottom: 0;
+      top: 0;
+      height: fit-content;
+      margin: auto;
+      gap: 10px;
+
+      &_title {
+        font-size: 16px;
+        color: $grey;
+        font-weight: 400;
+      }
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 48px;
+        height: 48px;
+
+        background: $white;
+
+        border-radius: 6px;
+      }
+
+      button.active {
+        background: $sireneviy;
+        color: $white;
+      }
+    }
+
+    .selector {
+      width: 636px;
+      height: 497px;
+
+      position: relative;
+
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 42px;
+
+      button {
+        position: absolute;
+      }
+
+      button span {
+        position: absolute;
+        @include font(3, 36, 46, 400);
+        color: #213c4e;
+      }
+
+      svg path{
+        transition: all .3s;
+      }
+
+      button:hover svg path {
+        stroke: #d38f6d;
+        fill: #d38f6d;
+        opacity: .7;
+      }
+      button:hover span {
+        color: #d38f6d;
+        opacity: .7;
+      }
+
+      
+      button.active svg path {
+        stroke: #d38f6d;
+        fill: #d38f6d;
+        opacity: 1;
+      }
+      button.active span {
+        color: #d38f6d;
+        opacity: 1;
+      }
+    }
+
+    .controls {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      bottom: 52px;
+      background: $white;
+      padding: 20px 24px;
+      border-radius: 10px;
+
+      display: flex;
+      justify-content: space-between;
+
+      &_back {
+        display: flex;
+        gap: 20px;
+
+        svg path {
+          stroke: #555555;
+        }
+      }
+      &_back_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: center;
+
+        width: 48px;
+        height: 48px;
+
+        background: rgba(17, 98, 125, 0.08);
+        border-radius: 6px;
+
+        svg {
+          transform: rotate(-90deg);
+          width: 24px;
+          height: 24px;
+        }
+      }
+      &_back_text {
+        span {
+          color: $grey-text;
+        }
+        text-align: left;
+        .sub_text {
+          color: #A0A3A8;
+        }
+      }
+
+      .button {
+
+        height: 100%;
+        
+        padding: 12px 36px;
+
+        div {
+          display: flex ;
+          align-items: center ;
+          gap: 10px ;
+        }
+
+      }
+
+      .params {
+        display: flex;
+        gap: 20px;
+
+        .controls_back_box {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
