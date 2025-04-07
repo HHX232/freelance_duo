@@ -18,6 +18,15 @@ html {
   -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
 }
 
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+.leaflet-control-attribution {
+  display: none;
+}
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent !important;

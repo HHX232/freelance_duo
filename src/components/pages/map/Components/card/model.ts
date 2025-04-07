@@ -1,7 +1,9 @@
+import {CSSProperties} from '@ant-design/cssinjs/lib/hooks/useStyleRegister'
 import {Coords} from '@src/components/model'
-import {MouseEventHandler} from 'react'
+import {MouseEventHandler, ReactElement} from 'react'
 
 export interface CompassProps {
+  className?: string
   name: string
   text?: string
   color: string
@@ -15,4 +17,22 @@ export interface CompassProps {
     title: string
     href: string
   }
+  disablePopup?: boolean
+  id?: string
+
+  CustomStar?: (className?: string) => ReactElement | null
+}
+
+export interface CardProps {
+  name: string
+  text?: string
+  color: string
+  coords?: Coords
+  onEnterCard?: MouseEventHandler<HTMLDivElement> | undefined
+  onLeaveCard?: MouseEventHandler<HTMLDivElement> | undefined
+  onClickCloseCard?: MouseEventHandler<SVGElement> | undefined
+  isVisible: boolean
+  style?: CSSProperties
+  coords_mob?: Coords
+  disablePopup?: boolean
 }
