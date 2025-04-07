@@ -3,14 +3,15 @@ import {FC, ReactElement, useState} from 'react'
 import Aside from '../aside/aside'
 
 import s from './select-section.module.scss'
-import H4Title from '@src/components/UI-kit/Typography/Headers/H4Title'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import clsx from 'clsx'
 import {useCreateQueryString} from '@src/lib/hooks/createQueryString'
 import ArrowIconStroke from '@icons/arrow_up.svg'
-import ParagraphUI from '@src/components/UI-kit/Typography/Paragraph/Paragraph'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+
 import SettingsIcon from '@icons/Menu point.svg'
+import H4Title from '@src/components/UI-kit/Text-Elements/Typography/Headers/H4Title'
+import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface ISelectSectionProps {}
 
@@ -269,7 +270,7 @@ const SelectSection: FC<ISelectSectionProps> = () => {
               }
               activeButton={true}
               border={false}
-              borderColor={''}
+              borderColor={'none'}
               buttonElementColor='white'
               buttonFill={'bronze-500'}
             />

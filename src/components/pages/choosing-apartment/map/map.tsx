@@ -11,10 +11,7 @@ import clsx from 'clsx'
 import {pins} from './data'
 
 import Image from 'next/image'
-import ParagraphUI from '@src/components/UI-kit/Typography/Paragraph/Paragraph'
-import {HeadTitle} from '@src/components/UI-kit/TextKit/head-title'
-import Breadcrumbs from '@shared/Breadcrumbs/Breadcrumbs'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
+
 
 import SettingsIcon from '@icons/Menu point.svg'
 import ArrowIcon from '@icons/toLeft.svg'
@@ -23,6 +20,10 @@ import ArrowUpIcon from '@icons/arrow_up.svg'
 import {ChangeZoom} from '@shared/leaflet-modules/leaflet-modules'
 import {useCreateQueryString} from '@src/lib/hooks/createQueryString'
 import {usePathname, useRouter} from 'next/navigation'
+import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
+import Breadcrumbs from '@src/components/UI-kit/Navigation/Breadcrumbs/Breadcrumbs'
+import {HeadTitle} from '@src/components/UI-kit/Text-Elements/TextKit/head-title'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface CustomIconProps {
   isActive: boolean
@@ -166,7 +167,7 @@ const MapWidthPins: FC = () => {
           }
           activeButton={true}
           border={false}
-          borderColor={''}
+          borderColor={'none'}
           buttonElementColor='white'
           buttonFill={'bronze-500'}
         />
@@ -185,7 +186,7 @@ const MapWidthPins: FC = () => {
             }
             activeButton={true}
             border={false}
-            borderColor={''}
+            borderColor={'none'}
             buttonElementColor='white'
             buttonFill={'white'}
           />

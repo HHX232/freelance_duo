@@ -1,6 +1,4 @@
 'use client'
-import Breadcrumbs from '@shared/Breadcrumbs/Breadcrumbs'
-import H3Title from '@src/components/UI-kit/Typography/Headers/H3Title'
 import {FC, ReactElement, useEffect, useState} from 'react'
 
 import s from './aside.module.scss'
@@ -10,6 +8,8 @@ import {useSearchParams} from 'next/navigation'
 
 import ArrowIconStroke from '@icons/arrow_up.svg'
 import {hoversData} from '../select-floor/hover-data'
+import Breadcrumbs from '@src/components/UI-kit/Navigation/Breadcrumbs/Breadcrumbs'
+import H3Title from '@src/components/UI-kit/Text-Elements/Typography/Headers/H3Title'
 
 interface IAsideProps {
   activeFloorIndex?: number | null
@@ -97,7 +97,6 @@ const miniMapData: IMiniMapItem[] = [
 ]
 
 const Aside: FC<IAsideProps> = (props) => {
-  
   const {activeFloorIndex, isLeft} = props
 
   const params = useSearchParams()
@@ -108,7 +107,7 @@ const Aside: FC<IAsideProps> = (props) => {
   useEffect(() => {
     const newFloor = params.get('floor')
 
-    if (!newFloor)  {
+    if (!newFloor) {
       setActiveFloor(activeFloorIndex)
       return
     }

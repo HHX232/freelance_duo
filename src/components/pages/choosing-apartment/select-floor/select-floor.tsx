@@ -5,22 +5,17 @@ import {ImageOverlay, MapContainer, SVGOverlay} from 'react-leaflet'
 import {CRS, LatLngBoundsExpression} from 'leaflet'
 import {ChangeZoom} from '@shared/leaflet-modules/leaflet-modules'
 import clsx from 'clsx'
-import {FullButton} from '@src/components/UI-kit/buttons/FullButton/FullButton'
 import SettingsIcon from '@icons/Menu point.svg'
 import {usePathname, useRouter} from 'next/navigation'
 import {useCreateQueryString} from '@src/lib/hooks/createQueryString'
 import ArrowIcon from '@icons/toLeft.svg'
 import Aside from '../aside/aside'
-import { hoversData } from './hover-data'
+import {hoversData} from './hover-data'
+import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
 
 interface ISelectFloorProps {}
 
-
-
-
-
 const SelectFloor: FC<ISelectFloorProps> = () => {
-
   const router = useRouter()
   const createQueryString = useCreateQueryString()
   const pathname = usePathname()
@@ -86,7 +81,7 @@ const SelectFloor: FC<ISelectFloorProps> = () => {
         <ChangeZoom zoomLevel={zoom} />
         {renderHovers}
       </MapContainer>
-      <Aside activeFloorIndex={activeFloorIndex}/>
+      <Aside activeFloorIndex={activeFloorIndex} />
 
       <div className={s.controls}>
         <FullButton
@@ -101,7 +96,7 @@ const SelectFloor: FC<ISelectFloorProps> = () => {
           }
           activeButton={true}
           border={false}
-          borderColor={''}
+          borderColor={'none'}
           buttonElementColor='white'
           buttonFill={'bronze-500'}
         />
@@ -116,7 +111,7 @@ const SelectFloor: FC<ISelectFloorProps> = () => {
             buttonText={<ArrowIcon />}
             activeButton={true}
             border={false}
-            borderColor={''}
+            borderColor={'none'}
             buttonElementColor='white'
             buttonFill={'white'}
           />
