@@ -226,18 +226,6 @@ const MortgageCalculateWrapper = () => {
               </div>
             </div>
 
-            <FullButton
-              type={'Button'}
-              buttonText={`РАССЧИТАТЬ`}
-              activeButton={true}
-              border={false}
-              borderColor={'none'}
-              extraClass={styles.button}
-              buttonFill={`white`}
-              buttonElementColor={`black`}
-              buttonBorderRadius={'6px'}
-              onClick={calculate}
-            />
 
             <FullButton
               type={'Button'}
