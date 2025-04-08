@@ -1,0 +1,159 @@
+@import "../../../../fonts/fonts";
+
+@keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+.routes-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+
+    @include xxxl {
+        width: 25%;
+    }
+
+    @include xxl {
+        width: 30%;
+    }
+    
+    @include xl {
+        width: 35%;
+    }
+
+    @include lg {
+        width: 40%;
+        justify-content: space-around;
+        padding: 4% 2%;
+        background-color: #ffffff71;
+    }
+
+    @include xs {
+        width: 100vw;
+        justify-content: space-between;
+        padding: 3% 2%;
+        background-color: #fff0;
+    }
+
+    .routes-title {
+        margin-bottom: 6%;
+        color: #555;
+        font-style: $font-romul;
+
+        @layer base {
+            @include font(3, 30, 40, 400);
+        }
+    
+        @include md {
+            @include font(3, 36, 50, 400);
+        }
+    
+        @include xl {
+            @include font(3, 42, 54, 400);
+        }
+    }
+
+    .routes-blocks-container {;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+
+        @include lg {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        @include xs {
+            width: 100vw;
+            height: 20vh;
+            flex-direction: row;
+            overflow-x: scroll;
+        }
+
+        .route-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #DCEBF1;
+            opacity: 0;
+
+            &.active-route {
+                background-color: #277B97;
+                background-image: url('/map/map_route_star.svg');
+                background-position: right bottom;
+                background-repeat: no-repeat;
+
+                .rb-text-minute {
+                    color: #fff;
+                }
+
+                .rb-text-route {
+                    color: #fff;
+                }
+            }
+
+            &.visible {
+                animation: fadeInRight 1s ease-out forwards;
+                opacity: 1;
+            }
+
+            @include lg {
+                width: 100%;
+                height: 30%;
+                padding: 7%;
+            }
+
+            @include xs {
+                width: 70vw;
+                height: 100%;
+                flex-shrink: 0;
+                padding: 15px;
+                margin-right: 15px;
+            }
+
+            .rb-text-minute {
+                margin-bottom: 10px;
+                color: #555;
+            }
+
+            .rb-text-route {
+                color: #555;
+                font-style: $font-romul;
+                font-weight: 300;
+
+                @include xs {
+                    @include font(3, 22, 34, 400);
+                }
+                
+                @include lg {
+                    @include font(3, 26, 36, 400);
+                }
+            }
+
+            .rb-btn {
+                padding: 5px;
+
+                &::after {
+                    padding-left: 10px;
+                    content: url('/map/map_route_btn.svg');
+                }
+            }
+        }
+    }
+}

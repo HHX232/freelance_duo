@@ -99,9 +99,11 @@
   left: 0;
   overflow: hidden;
   width: 100%;
+
   // ! сделал 100vh
   height: 100vh;
-  filter: grayscale(75%);
+
+  //filter: grayscale(75%);
 
   // pointer-events: none;
 }
