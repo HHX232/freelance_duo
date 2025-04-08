@@ -57,40 +57,6 @@
       margin-right: auto;
       margin-top: 42px;
 
-      button {
-        position: absolute;
-      }
-
-      button span {
-        position: absolute;
-        @include font(3, 36, 46, 400);
-        color: #213c4e;
-      }
-
-      svg path{
-        transition: all .3s;
-      }
-
-      button:hover svg path {
-        stroke: #d38f6d;
-        fill: #d38f6d;
-        opacity: .7;
-      }
-      button:hover span {
-        color: #d38f6d;
-        opacity: .7;
-      }
-
-      
-      button.active svg path {
-        stroke: #d38f6d;
-        fill: #d38f6d;
-        opacity: 1;
-      }
-      button.active span {
-        color: #d38f6d;
-        opacity: 1;
-      }
     }
 
     .controls {

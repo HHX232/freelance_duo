@@ -13,7 +13,7 @@ import Image from 'next/image'
 import H4Title from '@src/components/UI-kit/Text-Elements/Typography/Headers/H4Title'
 import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
 import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton/FullButton'
-
+import ImageMapper from 'react-img-mapper'
 interface ISelectApartmentProps {}
 
 const floorsItems: {isDisable: boolean}[] = [
@@ -38,6 +38,31 @@ const SelectApartment: FC<ISelectApartmentProps> = () => {
   const pathname = usePathname()
 
   const createQueryString = useCreateQueryString()
+  const url = '/content/choose-apartment-assets/apartment_drawing.png'
+  const name = 'my-map'
+  // GET JSON FROM BELOW URL AS AN EXAMPLE AND PUT IT HERE
+  const areas = [
+    {
+      id: '469f9800-c45a-483f-b13e-bd24f3fb79f4',
+      title: 'Hardwood',
+      shape: 'poly',
+      name: '1',
+      fillColor: '#eab54d4d',
+      strokeColor: 'black',
+      coords: [74, 326, 206, 326, 207, 461, 76, 457, 76, 389],
+      prefillColor: 'red'
+    },
+    {
+      id: '469f9800-c45a-483f-123-bd24f3fb79f4',
+      title: 'Hardwood',
+      shape: 'poly',
+      name: '12',
+      fillColor: '#eab54d4d',
+      strokeColor: 'black',
+      coords: [5, 162, 209, 162, 209, 288, 123, 287, 120, 322, 76, 323, 75, 460, 6, 460],
+      prefillColor: 'red'
+    }
+  ]
 
   return (
     <div className={s.root}>
@@ -64,12 +89,7 @@ const SelectApartment: FC<ISelectApartmentProps> = () => {
           ))}
         </div>
         <div className={s.selector}>
-          <Image
-            width={636}
-            height={497}
-            src={'/content/choose-apartment-assets/apartment_drawing.png'}
-            alt='apartment_drawing'
-          />
+          <ImageMapper width={636} height={497} ref={null} src={url} name={name} areas={areas} />
         </div>
 
         <div className={s.controls}>
