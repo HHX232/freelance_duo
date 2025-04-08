@@ -5,19 +5,21 @@ import MapLegend from './mapLegend/mapLegend'
 import MapSidebar from './mapSidebar/mapSidebar'
 import MobilePopup from './mobilePopup/mobilePopup'
 import CustomPlacemark from './customPlacemark'
+import RouteButtons from './routeButtons/routeButtons'
 import {FC, useState, useEffect, useRef, useCallback} from 'react'
 import {useIsMobile, useIsTablet} from '@utils/useIsMobile'
 
 interface MapWithClustersProps {
   mapPoi?: Array<{ name: string; coords: number[]; icon: string }>;
   showLegend: boolean;
-  customRoutes: any[];//Array<{ points: number[][]; arrow: any; color: string; lineWidth: number; hint: string}>;
+  customRoutes: any[] | undefined;//Array<{ points: number[][]; arrow: any; color: string; lineWidth: number; hint: string}>;
   customState?: any;
   mapZoom: number;
   wrapperClass?: string;
+  enableRouteFocus?: boolean;
 }
 
-export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, customRoutes, customState, mapZoom, wrapperClass }) => {
+export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, customRoutes, customState, mapZoom, wrapperClass, enableRouteFocus }) => {
   const ymapsFactory = useYMaps(["templateLayoutFactory"]); // Дожидаемся загрузки API
 
   const mapRef = useRef<ymaps.Map | undefined>(undefined)
@@ -64,19 +66,7 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
         //если точки интереса переданы как пропсы, то не ищем на карте
         setPoi(mapPoi)
       }
-      if (calculatedRoutes.length > 0) {
-        calculatedRoutes.forEach(multiRoute => {
-          map.geoObjects.add(multiRoute);
-        });
-        map.setCenter([59.999685, 29.746311]);
-        map.setZoom(14);
-      }
 
-      return () => {
-        if (calculatedRoutes.length > 0) {
-          calculatedRoutes.forEach(cRoute => map.geoObjects.remove(cRoute));
-        }
-      };
     });
   }, [mapRef.current]);
 
@@ -86,7 +76,58 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
       setZoom(newZoom);
       mapRef.current.setZoom(newZoom, { duration: 200 });
     }
-  }, [mapZoom]) 
+  }, [mapZoom])
+
+  useEffect(() => {
+    // маршруты
+    console.log('ROUTES->', customRoutes, ymaps);
+    if (!customRoutes || !ymaps) return;
+    const multiRoutes = customRoutes.map(route => {
+      return new ymaps.multiRouter.MultiRoute(
+        {
+          referencePoints: [route.points[0], route.points[1]],
+          params: {
+            routingMode: "auto",
+          }
+        },
+        {
+          routePanelTitle: route.hint,
+          routeShowHeader: true,
+          routeHintContent: route.hint,
+          boundsAutoApply: enableRouteFocus || false,
+          routeStrokeWidth: route.lineWidth || 4,
+          wayPointStartIconFillColor: route.color,
+          wayPointFinishIconFillColor: route.color,
+          routeStrokeColor: route.color,
+          routeActiveStrokeColor: route.color,
+          routeStrokeStyle: "dash",
+          routeBoundsAutoApply: false,
+          routePreventDragUpdate: true,
+          routeActiveRouteAutoSelection: false,
+        }
+      );
+    });
+    setCalculatedRoutes(multiRoutes)
+  }, [customRoutes, ymaps])
+
+  useEffect(() => {
+    if (!mapRef.current) return;
+    const map = mapRef.current;
+    if (calculatedRoutes.length > 0) {
+      calculatedRoutes.forEach(multiRoute => {
+        map.geoObjects.add(multiRoute);
+      });
+      map.setCenter([59.999685, 29.746311]);
+      map.setZoom(14);
+    }
+
+    return () => {
+      if (calculatedRoutes.length > 0) {
+        calculatedRoutes.forEach(cRoute => map.geoObjects.remove(cRoute));
+      }
+    };
+
+  }, [calculatedRoutes, mapRef.current])
 
   return (
     <Map
@@ -102,33 +143,6 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
         instanceRef={mapRef}
         onLoad={(ymapsInstance) => {
           setYmaps(ymapsInstance)
-          // маршруты
-          const multiRoutes = customRoutes.map(route => {
-            return new ymapsInstance.multiRouter.MultiRoute(
-              {
-                referencePoints: [route.points[0], route.points[1]],
-                params: {
-                  routingMode: "auto",
-                }
-              },
-              {
-                routePanelTitle: route.hint,
-                routeShowHeader: true,
-                routeHintContent: route.hint,
-                boundsAutoApply: false,
-                routeStrokeWidth: route.lineWidth || 4,
-                wayPointStartIconFillColor: route.color,
-                wayPointFinishIconFillColor: route.color,
-                routeStrokeColor: route.color,
-                routeActiveStrokeColor: route.color,
-                routeStrokeStyle: "dash",
-                routeBoundsAutoApply: false,
-                routePreventDragUpdate: true,
-                routeActiveRouteAutoSelection: false,
-              }
-            );
-          });
-          setCalculatedRoutes(multiRoutes)
         }}
         onMouseMove={handleMouseMove}
         className={styles[`${wrapperClass}`]}
@@ -173,20 +187,30 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
 };
 
 interface ITransportMap {
-  customPoi?: any[],
-  customRoutes?: any[],
-  customState?: any,
-  withPoi?: boolean,
-  withLegend?: boolean,
-  withSidebar?: boolean,
-  wrapperClass?: string
+  customPoi?: any[],            //метки карты
+  customRoutes?: any[],         //маршруты
+  customState?: any,            //зум и центр в формате {center: [59.999685, 29.746311], zoom: 14, controls: []}
+  withPoi?: boolean,            //отображение меток
+  withLegend?: boolean,         //отображение переключателей легенды карты
+  withSidebar?: boolean,        //отображение шторки сайдбара
+  withRouteButtons?: boolean,   //отображение блока с переключателями маршрутов
+  wrapperClass?: string         //стиль контейнера, содержащего карту
 }
 
-const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, withPoi, withLegend, withSidebar, wrapperClass}) => {
+const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, withPoi, withLegend, withSidebar, wrapperClass, withRouteButtons}) => {
   const [showLegend, setShowLegend] = useState(withLegend || false)
   const [showSidebar, setShowSidebar] = useState(false)
   const [modalView, setModalView] = useState(false);
   const [propZoom, setPropZoom] = useState(14);
+  const [activeRoute, setActiveRoute] = useState({
+    points: [
+      [60.000921, 29.751304],
+      ["Петербург, курортный район"]
+    ],
+    color: '#148F88',
+    lineWidth: 4,
+    hint: 'До курортного района'
+  });
   
   
   
@@ -205,10 +229,11 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, 
             <MapWithClusters 
               mapPoi={customPoi}
               showLegend={withPoi ? withPoi : showLegend}
-              customRoutes={customRoutes || []}
+              customRoutes={withRouteButtons && activeRoute ? [activeRoute] : customRoutes}
               customState={customState}
               mapZoom={propZoom}
               wrapperClass='trmap_map'
+              enableRouteFocus={withRouteButtons}
             />
             {/* Кастомные zoom кнопки */}
             <div className={`${styles.zoom_controls} ${showSidebar ? styles.zoom_controls_expand : ''}`}>
@@ -216,6 +241,7 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, 
               <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom - 1)}>−</button>
             </div>
             <button className={styles.mobile_expand_btn} onClick={handleExpandMap}>СМОТРЕТЬ НА КАРТЕ</button>
+            {withRouteButtons ? <RouteButtons switchRoute={(route) => setActiveRoute(route)}/> : null}
             {withLegend ? <MapLegend switchVisibility={(show) => setShowLegend(show)}/> : null}
             {withSidebar ? <MapSidebar isOpen={showSidebar}/> : null}
             {withSidebar ? <button className={showSidebar ? styles.sidebar_button_show : styles.sidebar_button_hide} onClick={toggleSidebar}>
