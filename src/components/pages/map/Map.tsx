@@ -48,7 +48,7 @@ const directionHints: DirectionHint[] = [
     icon: <ArrowUpSVG />
   },
   {
-    name: 'Кронштадское шоссе (3 мин.)',
+    name: 'Кронштадтское шоссе (3 мин.)',
     coords: {
       x: 76,
       y: 10
