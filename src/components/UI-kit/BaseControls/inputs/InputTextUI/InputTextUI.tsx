@@ -9,18 +9,6 @@ import {IField} from './InputTextUI.types'
 import {Golos_Text} from 'next/font/google'
 import ParagraphUI from '@src/components/UI-kit/Text-Elements/Typography/Paragraph/Paragraph'
 
-{
-  /* <InputTextUI placeholder='Вводите...' theme='white' />
-
-<InputTextUI placeholder='Только текст...' theme='white' onlyType='onlyText' />
-
-<InputTextUI placeholder='Только цифры...' theme='white' onlyType='onlyNumbers' />
-
-<InputTextUI placeholder='Только цифры с пробелами...' theme='white' onlyType='onlyNumbers' spacesBetwenNumbers />
-
-<InputTextUI placeholder='+7 (___) ___-__-__' theme='white' customPattern={/^\+7 \(\d{0,3}\) \d{0,3}-\d{0,2}-\d{0,2}$/} /> */
-}
-
 const golos = Golos_Text({subsets: ['cyrillic']})
 
 interface IFieldExtended extends IField {
@@ -100,8 +88,7 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
     }
 
     // Calculate how many spaces were added by formatting up to a specific position
-    const countAddedSpacesUpToPosition = (original: string, formatted: string, position: number) => {
-      formatted.toLowerCase()
+    const countAddedSpacesUpToPosition = (original: string, _formatted: string, position: number) => {
       if (position <= 0) return 0
 
       let originalSubstring = original.substring(0, position)
@@ -137,15 +124,69 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
       }
     }, [inputText])
 
+    // Handle mouse clicks to fix cursor positioning with textAfterValue
+    const handleMouseUpOrClick = (event: React.MouseEvent<HTMLInputElement>) => {
+      if (!textAfterValue) return
+
+      const cursorPosition = event.currentTarget.selectionStart
+      const inputWithoutSuffix = inputText
+
+      // If cursor is placed within or after the suffix, move it to the end of the input content
+      if (cursorPosition !== null && cursorPosition >= inputWithoutSuffix.length) {
+        event.currentTarget.setSelectionRange(inputWithoutSuffix.length, inputWithoutSuffix.length)
+      }
+    }
+
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const currentValue = inputText + textAfterValue
+      const newValue = event.target.value
+
       // Save current cursor position
       const cursorPosition = event.target.selectionStart
 
-      const value = event.target.value
-      const valueWithoutSuffix =
-        textAfterValue && value.endsWith(textAfterValue) ? value.slice(0, value.length - textAfterValue.length) : value
+      // Special handling for deletion near textAfterValue
+      if (textAfterValue && currentValue.length > newValue.length) {
+        // Check if we're attempting to delete within or around the suffix
+        const suffixStartPosition = inputText.length
 
-      let newValue = valueWithoutSuffix
+        // If deletion happens at the beginning of or within suffix
+        if (cursorPosition !== null && cursorPosition >= suffixStartPosition) {
+          // User is trying to delete something in the suffix area
+          // We should delete from the actual input text instead
+          if (inputText.length > 0) {
+            const newInputText = inputText.slice(0, -1)
+            setInputText(newInputText)
+            cursorPositionRef.current = newInputText.length
+
+            if (rest.onChange) {
+              const valueToEmit =
+                spacesBetwenNumbers && onlyType === 'onlyNumbers' ? removeSpaces(newInputText) : newInputText
+
+              const newEvent = {
+                ...event,
+                target: {
+                  ...event.target,
+                  value: valueToEmit
+                }
+              }
+              rest.onChange(newEvent as React.ChangeEvent<HTMLInputElement>)
+            }
+            return
+          }
+        }
+      }
+
+      let valueWithoutSuffix = newValue
+      // Remove the suffix if it exists at the end
+      if (textAfterValue && newValue.endsWith(textAfterValue)) {
+        valueWithoutSuffix = newValue.slice(0, newValue.length - textAfterValue.length)
+      } else if (textAfterValue && newValue.includes(textAfterValue)) {
+        // Handle the case where the suffix might be in the middle if user typed after it
+        const suffixIndex = newValue.indexOf(textAfterValue)
+        valueWithoutSuffix = newValue.slice(0, suffixIndex) + newValue.slice(suffixIndex + textAfterValue.length)
+      }
+
+      let processedValue = valueWithoutSuffix
 
       // Remove spaces for processing if handling number formatting
       const valueForProcessing =
@@ -153,7 +194,7 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
 
       // Apply onlyType filters
       if (onlyType === 'onlyText') {
-        newValue = valueForProcessing.replace(/[0-9]/g, '')
+        processedValue = valueForProcessing.replace(/[0-9]/g, '')
       } else if (onlyType === 'onlyNumbers') {
         const cleaned = valueForProcessing.replace(/[^0-9]/g, '')
 
@@ -181,14 +222,14 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
           }
         }
 
-        newValue = spacesBetwenNumbers ? addSpaces(cleaned) : cleaned
+        processedValue = spacesBetwenNumbers ? addSpaces(cleaned) : cleaned
       } else {
-        newValue = valueForProcessing
+        processedValue = valueForProcessing
       }
 
       if (customPattern) {
-        if (customPattern.test(newValue) || newValue === '') {
-          setInputText(newValue)
+        if (customPattern.test(processedValue) || processedValue === '') {
+          setInputText(processedValue)
         } else {
           return
         }
@@ -196,16 +237,17 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
         // Preserve cursor position relative to the text content
         if (cursorPosition !== null && !spacesBetwenNumbers) {
           // For basic inputs without special formatting
-          cursorPositionRef.current = Math.min(cursorPosition, newValue.length)
+          cursorPositionRef.current = Math.min(cursorPosition, processedValue.length)
         }
 
-        setInputText(newValue)
+        setInputText(processedValue)
       }
 
       if (rest.onChange) {
         // For the onChange handler, we need to decide whether to pass the formatted or raw value
         // If spacesBetwenNumbers is true, we pass the raw value without spaces
-        const valueToEmit = spacesBetwenNumbers && onlyType === 'onlyNumbers' ? removeSpaces(newValue) : newValue
+        const valueToEmit =
+          spacesBetwenNumbers && onlyType === 'onlyNumbers' ? removeSpaces(processedValue) : processedValue
 
         const newEvent = {
           ...event,
@@ -232,6 +274,17 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
       }
     }, [rest])
 
+    // Handle keyboard navigation that might place cursor in the suffix area
+    const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (!textAfterValue) return
+
+      const cursorPosition = event.currentTarget.selectionStart
+      // If cursor is placed within or after the suffix, move it to the end of the input content
+      if (cursorPosition !== null && cursorPosition > inputText.length) {
+        event.currentTarget.setSelectionRange(inputText.length, inputText.length)
+      }
+    }
+
     return (
       <div className={cn(styles.input_box, extraClass, golos.className)} style={extraStyle}>
         {labelText.length > 0 && (
@@ -252,7 +305,6 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
               size={'md'}
               weight={'regular'}
               extraStyle={{color: error?.length ? '#D36281' : theme === 'white' ? '#fff' : '#B5B9BE'}}
-              // extraClass={golos.className}
             >
               {labelText}
             </ParagraphUI>
@@ -305,6 +357,9 @@ const InputTextUI = forwardRef<HTMLInputElement, IFieldExtended>(
             {...rest}
             value={inputText + textAfterValue}
             onChange={onInputChange}
+            onMouseUp={handleMouseUpOrClick}
+            onKeyUp={handleKeyUp}
+            onClick={handleMouseUpOrClick}
             autoComplete={type === 'text' ? 'off' : undefined}
           />
           {inputText && inputText.length > 0 ? (
