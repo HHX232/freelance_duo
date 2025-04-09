@@ -34,12 +34,17 @@
 
     @include lg {
         width: 40%;
+    }
+
+    @include md {
+        width: 40%;
         justify-content: space-around;
-        padding: 4% 2%;
+        padding: 4% 0 3% 2%;
         background-color: #ffffff71;
     }
 
     @include xs {
+        z-index: 5;
         width: 100vw;
         justify-content: space-between;
         padding: 3% 2%;
@@ -47,16 +52,25 @@
     }
 
     .routes-title {
+        z-index: 8;
         margin-bottom: 6%;
         color: #555;
         font-style: $font-romul;
+        opacity: 0;
+        text-wrap: wrap;
+        word-break: break-all;
+
+        &.visible {
+            animation: fadeInRight 1s ease-out forwards;
+            opacity: 1;
+        }
 
         @layer base {
             @include font(3, 30, 40, 400);
         }
     
         @include md {
-            @include font(3, 36, 50, 400);
+            @include font(3, 30, 44, 400);
         }
     
         @include xl {
@@ -70,10 +84,10 @@
         justify-content: space-between;
         padding: 0;
 
-        @include lg {
+        @include md {
             bottom: 0;
             left: 0;
-            width: 100%;
+            width: 90%;
             height: 70%;
             flex-direction: column;
             overflow-x: hidden;
@@ -95,9 +109,21 @@
 
             &.active-route {
                 background-color: #277B97;
-                background-image: url('/map/map_route_star.svg');
-                background-position: right bottom;
-                background-repeat: no-repeat;
+
+                @include xs {
+                    background-image: url('/map/map_route_star.svg');
+                    background-position: right bottom;
+                    background-repeat: no-repeat;
+                }
+
+                @include md {
+                    width: 70%;
+                    background-image: none;
+                }
+
+                .rb-texts {
+                    z-index: 7;
+                }
 
                 .rb-text-minute {
                     color: #fff;
@@ -113,14 +139,18 @@
                 opacity: 1;
             }
 
-            @include lg {
+            @include md {
                 width: 100%;
                 height: 30%;
                 padding: 7%;
             }
 
+            @include sm {
+                width: 80vw;
+            }
+
             @include xs {
-                width: 70vw;
+                width: 90vw;
                 height: 100%;
                 flex-shrink: 0;
                 padding: 15px;
@@ -128,8 +158,27 @@
             }
 
             .rb-text-minute {
-                margin-bottom: 10px;
                 color: #555;
+
+                @include xs {
+                    padding-bottom: 2px;
+                }
+
+                @include md {
+                    padding-bottom: 5px;
+                }
+
+                @include lg {
+                    padding-bottom: 8px;
+                }
+
+                @include xxl {
+                    padding-bottom: 10px;
+                }
+
+                @include xxxl {
+                    padding-bottom: 12px;
+                }
             }
 
             .rb-text-route {
@@ -138,20 +187,53 @@
                 font-weight: 300;
 
                 @include xs {
-                    @include font(3, 22, 34, 400);
+                    @include font(3, 18, 28, 400);
                 }
                 
                 @include lg {
-                    @include font(3, 26, 36, 400);
+                    @include font(3, 22, 32, 400);
+                }
+
+                @include xl {
+                    @include font(3, 24, 34, 400);
                 }
             }
 
             .rb-btn {
-                padding: 5px;
+                @include xs {
+                    padding: 5px;
+                }
+
+                @include md {
+                    padding: 7px;
+                }
+
+                @include xl {
+                    padding: 10px;
+                }
 
                 &::after {
                     padding-left: 10px;
                     content: url('/map/map_route_btn.svg');
+                }
+            }
+
+            .rb-star {
+                position: absolute;
+                z-index: 6;
+                top: 0;
+                right: 0;
+                width: auto;
+                height: 100%;
+                aspect-ratio: 1/1;
+                transform: translate(50%, 0);
+
+                @include md {
+                    display: block;
+                }
+
+                @include xs {
+                    display: none;
                 }
             }
         }
