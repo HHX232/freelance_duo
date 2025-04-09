@@ -6,6 +6,8 @@
   width: 6px;
 }
 
+
+
 *::-webkit-scrollbar-track {
   background: rgb(17 98 125 / 4%);
 }
@@ -44,20 +46,15 @@ html {
   @media screen and (min-width: map_get($breakpoints, md)) {
     width: 602px;
     height: fit-content;
-
   }
 
   @media screen and (min-width: map_get($breakpoints, lg)) {
     width: 622px;
-
   }
-
 
   @media screen and (min-width: map_get($breakpoints, lg)) {
     width: 682px;
-
   }
-
 }
 
 .popup-overlay {
