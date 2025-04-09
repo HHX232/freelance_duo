@@ -5,7 +5,11 @@
     padding: 220px 40px 54px 0;
     margin-left: 522px;
     position: relative;
-    height: 100%;
+    height: 100vh;
+    overflow: auto;
+
+    display: flex;
+    flex-direction: column;
 
     .title {
       color: $grey !important;
@@ -49,7 +53,8 @@
 
     .selector {
       width: 458px;
-      height: 498px;
+      min-height: 498px;
+      margin-bottom: 48px;
 
       position: relative;
 
@@ -67,21 +72,20 @@
         color: #213c4e;
       }
 
-      svg path{
-        transition: all .3s;
+      svg path {
+        transition: all 0.3s;
       }
 
       button:hover svg path {
         stroke: #d38f6d;
         fill: #d38f6d;
-        opacity: .7;
+        opacity: 0.7;
       }
       button:hover span {
         color: #d38f6d;
-        opacity: .7;
+        opacity: 0.7;
       }
 
-      
       button.active svg path {
         stroke: #d38f6d;
         fill: #d38f6d;
@@ -94,7 +98,7 @@
     }
 
     .controls {
-      position: absolute;
+      margin-top: auto;
       left: 40px;
       right: 40px;
       bottom: 52px;
@@ -137,22 +141,20 @@
         }
         text-align: left;
         .sub_text {
-          color: #A0A3A8;
+          color: #a0a3a8;
         }
       }
 
       .button {
-
         height: 100%;
-        
+
         padding: 12px 36px;
 
         div {
-          display: flex ;
-          align-items: center ;
-          gap: 10px ;
+          display: flex;
+          align-items: center;
+          gap: 10px;
         }
-
       }
 
       .params {

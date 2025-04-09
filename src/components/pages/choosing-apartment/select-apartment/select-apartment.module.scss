@@ -3,9 +3,13 @@
 
   .content {
     padding: 220px 40px 54px 0;
+    padding-bottom: 30px;
     margin-left: 522px;
-    position: relative;
-    height: 100%;
+    height: fit-content;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
 
     .title {
       color: $grey !important;
@@ -48,28 +52,24 @@
     }
 
     .selector {
-      width: 636px;
-      height: 497px;
-
-      position: relative;
-
       margin-left: auto;
       margin-right: auto;
       margin-top: 42px;
+      z-index: 10;
+      margin-bottom: 48px;
 
+      img {
+        pointer-events: all !important;
+      }
     }
 
     .controls {
-      position: absolute;
-      left: 40px;
-      right: 40px;
-      bottom: 52px;
       background: $white;
       padding: 20px 24px;
       border-radius: 10px;
-
       display: flex;
       justify-content: space-between;
+      margin-top: auto;
 
       &_back {
         display: flex;
@@ -103,22 +103,20 @@
         }
         text-align: left;
         .sub_text {
-          color: #A0A3A8;
+          color: #a0a3a8;
         }
       }
 
       .button {
-
         height: 100%;
-        
+
         padding: 12px 36px;
 
         div {
-          display: flex ;
-          align-items: center ;
-          gap: 10px ;
+          display: flex;
+          align-items: center;
+          gap: 10px;
         }
-
       }
 
       .params {
@@ -129,6 +127,138 @@
           transform: rotate(180deg);
         }
       }
+    }
+  }
+  .annotation {
+    background: $white;
+    width: 240px;
+    height: 162px;
+    z-index: 10;
+
+    position: absolute;
+
+    border-radius: 10px;
+    padding: 18px 14px 14px 14px;
+
+    animation: AnnotationAnimation 0.3s both;
+    transition: all 0.3s;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: auto;
+
+      margin: auto;
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+      background: $white;
+      z-index: -10;
+      transform: rotate(45deg);
+      margin-bottom: -8px;
+    }
+  }
+
+  .annotation span {
+    display: block;
+  }
+  .annotation .description {
+    color: #a0a3a8;
+    @include font(1, 12, 14, 400);
+  }
+  .annotation .price {
+    color: $grey;
+    margin-top: 6px;
+    @include font(1, 16, 22, 400);
+  }
+
+  .annotation .params {
+    display: flex;
+    gap: 28px;
+    color: #a0a3a8;
+    margin-top: 20px;
+    @include font(1, 12, 14, 400);
+
+    li {
+      position: relative;
+    }
+
+    li:not(:last-child)::after {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      background: $grey-stroke;
+      border-radius: 50%;
+
+      position: absolute;
+      right: -17px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    li:last-child {
+      color: #11627d !important;
+    }
+  }
+
+  .annotation .annotation_controls {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    svg path {
+      stroke: $grey;
+    }
+
+    button span {
+      font-size: 14px;
+    }
+    button {
+      width: fit-content;
+      padding: 8px 23px;
+    }
+  }
+  .transform_wrapper {
+    width: 100%;
+    pointer-events: none;
+  }
+
+  .select {
+    height: 100%;
+  }
+  .select div {
+    background: red;
+    min-width: 214px;
+    height: 100%;
+  }
+}
+
+@keyframes AnnotationAnimation {
+  0% {
+    opacity: 0;
+    margin-bottom: 10px;
+  }
+  100% {
+    opacity: 1;
+    margin-bottom: auto;
+  }
+}
+
+@include bp-xxl {
+  .root {
+    .content {
     }
   }
 }
