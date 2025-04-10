@@ -2,6 +2,7 @@ import styles from './routeButtons.module.scss'
 import {FC, useState, useEffect, useRef} from 'react'
 import { FullButton } from '../../BaseControls/buttons/FullButton/FullButton'
 import ParagraphUI from '../../Text-Elements/Typography/Paragraph/Paragraph'
+import Image from 'next/image'
 
 interface IRouteButtons {
   switchRoute: (route: any) => void
@@ -41,7 +42,7 @@ const RouteButtons: FC<IRouteButtons> = ({switchRoute}) => {
   const routeBlocks = [
     {minute: 25, text: 'ДО КУРОРТНОГО РАЙОНА', route: {
         points: [
-          [60.000921, 29.751304],
+          [59.999664, 29.746338],
           ["Петербург, курортный район"]
         ],
         color: '#148F88',
@@ -51,7 +52,7 @@ const RouteButtons: FC<IRouteButtons> = ({switchRoute}) => {
     },
     {minute: 30, text: 'ДО ЛАХТА ЦЕНТРА', route: {
         points: [
-          [60.000921, 29.751304],
+          [59.999664, 29.746338],
           ["Петербург, Лахта-центр"]
         ],
         color: '#148F88',
@@ -61,7 +62,7 @@ const RouteButtons: FC<IRouteButtons> = ({switchRoute}) => {
     },
     {minute: 40, text: 'ДО ЦЕНТРА ПЕТЕРБУРГА', route: {
         points: [
-          [60.000921, 29.751304],
+          [59.999664, 29.746338],
           ["Петербург, Эрмитаж"]
         ],
         color: '#148F88',
@@ -73,7 +74,7 @@ const RouteButtons: FC<IRouteButtons> = ({switchRoute}) => {
 
   return (
     <section className={styles['routes-wrapper']} ref={sectionRef}>
-        <h2 className={styles['routes-title']}>Транспортная доступность</h2>
+        <h2 className={`${styles['routes-title']} ${isVisible ? styles.visible : ''}`}>Транспортная <br/>доступность</h2>
         <div className={styles['routes-blocks-container']}>
             {routeBlocks.map((block, index) => (
                 <div
@@ -86,7 +87,7 @@ const RouteButtons: FC<IRouteButtons> = ({switchRoute}) => {
                         </ParagraphUI>
                         <h4 className={styles['rb-text-route']}>{block.text}</h4>
                     </div>
-                    {activeRoute === index ? null :
+                    {activeRoute === index ? <Image src="/map/map_route_star_fill.svg" alt="selected route" width={200} height={200} className={styles['rb-star']} /> :
                         <FullButton
                             extraClass={styles['rb-btn']}
                             activeButton={false}

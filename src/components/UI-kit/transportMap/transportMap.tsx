@@ -80,7 +80,6 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
 
   useEffect(() => {
     // маршруты
-    console.log('ROUTES->', customRoutes, ymaps);
     if (!customRoutes || !ymaps) return;
     const multiRoutes = customRoutes.map(route => {
       return new ymaps.multiRouter.MultiRoute(
@@ -108,7 +107,7 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
       );
     });
     setCalculatedRoutes(multiRoutes)
-  }, [customRoutes, ymaps])
+  }, [customRoutes])
 
   useEffect(() => {
     if (!mapRef.current) return;
@@ -117,8 +116,6 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
       calculatedRoutes.forEach(multiRoute => {
         map.geoObjects.add(multiRoute);
       });
-      map.setCenter([59.999685, 29.746311]);
-      map.setZoom(14);
     }
 
     return () => {
@@ -127,7 +124,7 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
       }
     };
 
-  }, [calculatedRoutes, mapRef.current])
+  }, [calculatedRoutes])
 
   return (
     <Map
