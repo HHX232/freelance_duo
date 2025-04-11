@@ -16,10 +16,10 @@ interface MapWithClustersProps {
   customState?: any;
   mapZoom: number;
   wrapperClass?: string;
-  enableRouteFocus?: boolean;
+  customWayPoints?: string;
 }
 
-export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, customRoutes, customState, mapZoom, wrapperClass, enableRouteFocus }) => {
+export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, customRoutes, customState, mapZoom, wrapperClass, customWayPoints }) => {
   const ymapsFactory = useYMaps(["templateLayoutFactory"]); // Дожидаемся загрузки API
 
   const mapRef = useRef<ymaps.Map | undefined>(undefined)
@@ -89,17 +89,38 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
             routingMode: "auto",
           }
         },
-        {
+        customWayPoints ? {
           routePanelTitle: route.hint,
           routeShowHeader: true,
           routeHintContent: route.hint,
-          boundsAutoApply: enableRouteFocus || false,
+          boundsAutoApply: false,
+          routeStrokeWidth: route.lineWidth || 4,
+          wayPointStartIconLayout: ymapsFactory && ymapsFactory.templateLayoutFactory && ymapsFactory.templateLayoutFactory.createClass(customWayPoints),
+          wayPointStartIconShape: {
+            type: 'Rectangle',
+            coordinates: [[0, 0], [60, 60]]
+          },
+          wayPointStartIconFillColor: route.color,
+          wayPointFinishIconFillColor: route.color,
+          routeStrokeColor: route.color,
+          routeActiveStrokeColor: route.color,
+          routeStrokeOpacity: 0.1,
+          routeActiveStrokeOpacity: 1,
+          routeStrokeStyle: "solid",
+          routeBoundsAutoApply: false,
+          routePreventDragUpdate: true,
+          routeActiveRouteAutoSelection: true,
+        } : {
+          routePanelTitle: route.hint,
+          routeShowHeader: true,
+          routeHintContent: route.hint,
+          boundsAutoApply: false,
           routeStrokeWidth: route.lineWidth || 4,
           wayPointStartIconFillColor: route.color,
           wayPointFinishIconFillColor: route.color,
           routeStrokeColor: route.color,
           routeActiveStrokeColor: route.color,
-          routeStrokeStyle: "dash",
+          routeStrokeStyle: "solid",
           routeBoundsAutoApply: false,
           routePreventDragUpdate: true,
           routeActiveRouteAutoSelection: false,
@@ -107,7 +128,7 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
       );
     });
     setCalculatedRoutes(multiRoutes)
-  }, [customRoutes])
+  }, [customRoutes, ymaps])
 
   useEffect(() => {
     if (!mapRef.current) return;
@@ -140,6 +161,9 @@ export const MapWithClusters: FC<MapWithClustersProps> = ({ mapPoi, showLegend, 
         instanceRef={mapRef}
         onLoad={(ymapsInstance) => {
           setYmaps(ymapsInstance)
+          if (customState && customState.zoom) {
+            setZoom(customState.zoom);
+          }
         }}
         onMouseMove={handleMouseMove}
         className={styles[`${wrapperClass}`]}
@@ -209,8 +233,6 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, 
     hint: 'До курортного района'
   });
   
-  
-  
   const toggleSidebar = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
    setShowSidebar(!showSidebar)
@@ -219,6 +241,12 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, 
   const handleExpandMap = () => {
     setModalView(true)
   }
+
+  useEffect(() => {
+    if (customState && customState.zoom) {
+      setPropZoom(customState.zoom);
+    }
+  }, [customState])
 
   return (
     <div className={`${styles.trmap_container} ${wrapperClass}`}>
@@ -230,7 +258,7 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, 
               customState={customState}
               mapZoom={propZoom}
               wrapperClass='trmap_map'
-              enableRouteFocus={withRouteButtons}
+              customWayPoints={withRouteButtons ? '<div class="custom-icon" style="background: url(/map/icons/kf_green_icon.svg) no-repeat center center; width: 60px; height: 60px; background-size: contain; transform: translate(-50%, -50%);"></div>' : ''}
             />
             {/* Кастомные zoom кнопки */}
             <div className={`${styles.zoom_controls} ${showSidebar ? styles.zoom_controls_expand : ''}`}>
