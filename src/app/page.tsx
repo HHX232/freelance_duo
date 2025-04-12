@@ -15,8 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       siteName: 'Кронфорт',
       locale: 'ru_RU',
-      phoneNumbers: `${process.env.NEXT_PUBLIC_TELEPHONE_NUMBER ? process.env.NEXT_PUBLIC_TELEPHONE_NUMBER : ''}`,
-      emails: `${process.env.NEXT_PUBLIC_MAIL ? process.env.NEXT_PUBLIC_MAIL : ''}`,
+      phoneNumbers: process.env.NEXT_PUBLIC_TELEPHONE_NUMBER ? [process.env.NEXT_PUBLIC_TELEPHONE_NUMBER] : [],
+      emails: process.env.NEXT_PUBLIC_MAIL ? [process.env.NEXT_PUBLIC_MAIL] : [],
       images: [
         {
           url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/content/KronfortBannerSocial.jpg`,
