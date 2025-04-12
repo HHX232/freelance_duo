@@ -3,7 +3,6 @@ import MapPage from '@pages/map/Map'
 //import {RedirectType, redirect} from 'next/navigation'
 
 export async function generateMetadata(): Promise<Metadata> {
-  // TODO заменить данные, иногда есть ошибка с MapPage
   return {
     title: 'Кронфорт – новые жилые кварталы в Кронштадте от застройщика ГК «Алькор»',
     description:
@@ -16,17 +15,17 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       siteName: 'Кронфорт',
       locale: 'ru_RU',
-      phoneNumbers: '+74951234567',
-      emails: 'kronfort@gmail.com',
+      phoneNumbers: `${process.env.NEXT_PUBLIC_TELEPHONE_NUMBER ? process.env.NEXT_PUBLIC_TELEPHONE_NUMBER : ''}`,
+      emails: `${process.env.NEXT_PUBLIC_MAIL ? process.env.NEXT_PUBLIC_MAIL : ''}`,
       images: [
         {
-          url: 'https://localhost:3000/public/content/KronfortBannerSocial.jpg',
+          url: `${process.env.NEXT_PUBLIC_SITE_URL ? process.env.NEXT_PUBLIC_SITE_URL : ''}/public/content/KronfortBannerSocial.jpg`,
           alt: 'Kronfort - рай, а не жилой комплекс!',
           width: 1850,
           height: 1000
         },
         {
-          url: 'https://localhost:3000/public/content/KronfortBannerSecond.png',
+          url: `${process.env.NEXT_PUBLIC_SITE_URL ? process.env.NEXT_PUBLIC_SITE_URL : ''}/public/content/KronfortBannerSecond.png`,
           alt: 'Kronfort - рай, а не жилой комплекс!',
           width: 1080,
           height: 1080
