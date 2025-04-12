@@ -5,11 +5,11 @@ import {FullButton} from '@src/components/UI-kit/BaseControls/buttons/FullButton
 import {useIsMaxWidth} from '@utils/useIsMobile'
 import StarIcon from '@icons/white_star.svg'
 import {RequestBackCallDrawer} from '@shared/Popups/request-back-call-drawer'
-// import {InputField} from '@src/components/UI-kit/BaseControls/inputs/input-field/input-field'
 import InputRangeUI from '@src/components/UI-kit/BaseControls/inputs/RangeInputUI/RangeInputUI'
 import {TabsUIItem} from '@src/components/UI-kit/BaseControls/TabsUI/TabsUI'
 import InputTextUI from '@src/components/UI-kit/BaseControls/inputs/InputTextUI/InputTextUI'
 import {debounce} from 'next/dist/server/utils'
+import {getCalculatorRules} from '@src/actions/getCalculatorRules'
 
 interface CalculationResult {
   monthly_payment: number
@@ -18,6 +18,21 @@ interface CalculationResult {
   recommended_income: number
   loan_amount: number
   tax_deduction: number
+}
+
+interface Programs {
+  id: number
+  name: string
+  type: string
+  min_sum: number | string
+  max_sum: number | string
+  min_years: number | string
+  max_years: number | string
+}
+
+const PercantTypes = {
+  base: "basic",
+  family: "family",
 }
 
 const MortgageCalculateWrapper = () => {
@@ -29,6 +44,8 @@ const MortgageCalculateWrapper = () => {
   const [error, setError] = useState<string>('')
   const isSx = useIsMaxWidth(320)
   const timeRef = useRef<HTMLInputElement>(null)
+  const [programs, setPrograms] = useState<Programs[]>([])
+  const [activeTab, setActiveTab] = useState<number>(1)
 
   const addSpace = (num: number | string) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
   const removeNonNumeric = (num: number | string) => num.toString().replace(/[^0-9.]/g, '')
@@ -36,6 +53,15 @@ const MortgageCalculateWrapper = () => {
   const [shownRequestCallBack, setShownRequestCallBack] = useState(false)
   const handleRequestCallBackDrawerClose = () => {
     setShownRequestCallBack(false)
+  }
+
+  const getRules = async () => {
+    try {
+      const data = await getCalculatorRules()
+      setPrograms(data);
+    }catch(e: any){
+      setError(e.message || 'Ошибка при получении данных по условиям ипотеки. Попробуйте позже.')
+    }
   }
 
   const calculate = async () => {
@@ -98,6 +124,11 @@ const MortgageCalculateWrapper = () => {
     setDownPayment(String(newValue))
   }, 500)
 
+
+  useEffect(() => {
+    getRules()
+  }, [])
+
   // Автоматический расчет при изменении параметров
   useEffect(() => {
     calculate()
@@ -114,22 +145,21 @@ const MortgageCalculateWrapper = () => {
         <div className={styles.mainContent}>
           <div className={styles.dataInputOuter}>
             <div className={styles.selectorsWrapper}>
-              <TabsUIItem
-                tabName={'Базовая от 5.5%'}
-                setActiveTabIndex={() => setPercent(5.5)}
-                activeIndex={percent === 5.5 ? 1 : 2}
-                index={1}
-                fill={'white'}
-                extraClass={styles.button}
-              />
-              <TabsUIItem
-                tabName={'Семейная от 3.5%'}
-                setActiveTabIndex={() => setPercent(3.5)}
-                activeIndex={percent === 5.5 ? 1 : 2}
-                index={2}
-                fill={'white'}
-                extraClass={styles.button}
-              />
+              {
+                programs?.length > 0 && programs.map((program) =>
+                  <TabsUIItem
+                    key={program.id}
+                    tabName={`${program.name.replace(" ипотека", '')} от ${program.type === PercantTypes.family ? 3.5 : 5.5}`}
+                    setActiveTabIndex={() => {
+                      setActiveTab(program.id)
+                      setPercent(program.type === PercantTypes.family ? 3.5 : 5.5)
+                    }}
+                    activeIndex={activeTab}
+                    index={program.id}
+                    fill={'white'}
+                    extraClass={styles.button}
+                />)
+              }
             </div>
             <div className={styles.dataInputWrapper}>
               <InputTextUI
@@ -143,7 +173,8 @@ const MortgageCalculateWrapper = () => {
                 extraClass={styles.extra_input}
                 spacesBetwenNumbers
                 onlyType={'onlyNumbers'}
-                min={0}
+                min={programs?.find( pr => pr?.id === activeTab)?.min_sum || 0}
+                max={programs?.find( pr => pr?.id === activeTab)?.max_sum || 500000000}
               />
               <InputTextUI
                 value={`${downPayment}`}
@@ -163,8 +194,8 @@ const MortgageCalculateWrapper = () => {
                 labelText={'Срок кредита'}
                 placeholder={'введите срок кредите'}
                 value={Number(time)}
-                minValue={1}
-                maxValue={30}
+                minValue={Number(programs?.find( pr => pr?.id === activeTab)?.min_years) || 1}
+                maxValue={Number(programs?.find( pr => pr?.id === activeTab)?.max_years) || 30}
                 extraClass={styles.rangeInput}
                 theme={'dark'}
                 icon={true}
@@ -175,20 +206,19 @@ const MortgageCalculateWrapper = () => {
                 }}
                 ref={timeRef}
                 textAfterValue={' лет'}
+
               />
             </div>
           </div>
           <div className={styles.conditions}>
             <StarIcon className={styles.star} />
             <div className={styles.subTitle}>
-              {percent === 5.5 ? 'Базовая' : 'Семейная'} ипотека
+              {programs?.find( pr => pr?.id === activeTab)?.name}
               <div className={styles.showPercentWrapper}>
                 от
                 <span>{percent}%</span>
               </div>
             </div>
-
-            {/*{error && <div className={styles.error}>{error}</div>}*/}
 
             <div className={styles.infoWrapper}>
               <div className={styles.lineWrapper}>
