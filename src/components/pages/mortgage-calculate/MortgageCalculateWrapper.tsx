@@ -106,24 +106,32 @@ const MortgageCalculateWrapper = () => {
     setCost(e.target.value)
   }
 
-  const onDownPaymentChange = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = Number(removeNonNumeric(e.target.value))
+  const onDownPaymentChange = debounce(() => {
+    const newValue = Number(removeNonNumeric(downPayment))
     const min = Number(removeNonNumeric(cost)) * 0.2
     const max = Number(removeNonNumeric(cost)) * 0.9
 
-    if(Number(removeNonNumeric(e.target.value)) < min) {
+
+    if(newValue <= min) {
       setDownPayment(String(min))
       return
     }
 
-    if(Number(removeNonNumeric(e.target.value)) > max) {
+    if(newValue >= max) {
       setDownPayment(String(max))
       return
     }
 
     setDownPayment(String(newValue))
-  }, 500)
+  }, 50)
 
+  useEffect(() => {
+    const timer1 = setTimeout(() => onDownPaymentChange(), 1000);
+
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, [downPayment])
 
   useEffect(() => {
     getRules()
@@ -181,7 +189,7 @@ const MortgageCalculateWrapper = () => {
                 textAfterValue=' ₽'
                 labelText={'Первоначальный взнос'}
                 placeholder={'Введите первоначальный взнос'}
-                onChange={(e) => onDownPaymentChange(e)}
+                onChange={(e) => setDownPayment(e.target.value)}
                 icon={<></>}
                 theme={'dark'}
                 extraClass={styles.extra_input}
