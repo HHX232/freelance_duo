@@ -104,7 +104,7 @@ const Compass = ({
         style={{
           top: `${isMobile ? coords_mob?.y : coords.y}%`,
           left: `${isMobile ? coords_mob?.x : coords.x}%`,
-          zIndex: isHovered ? '6' : '2'
+          zIndex: isHovered ? '12' : '2'
         }}
       >
         <div className={styles.compassLink}>
