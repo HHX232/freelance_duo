@@ -18,12 +18,13 @@ const PopupWrapper: FC<IPopUpWrapperProps & PropsWithChildren> = (props) => {
   const closeModal = () => setIsOpen(false)
 
   return (
-    <Popup  lockScroll open={isOpen} onClose={closeModal}>
+    <Popup  lockScroll open={isOpen} onClose={closeModal} contentStyle={{position: "relative"}}>
       <div className={s.header}>
         <button onClick={closeModal} className={s.close_button}>
           <CrossIcon />
         </button>
       </div>
+      <div className={s.iconedBG}></div>
       <div className={clsx(s.modal, modalContentClassName)}>{children}</div>
     </Popup>
   )
