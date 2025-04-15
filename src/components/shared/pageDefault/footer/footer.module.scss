@@ -96,17 +96,25 @@
   }
 
   .footer_inner {
-    position: relative;
-    display: grid;
-    width: 100%;
-    max-width: 1512px;
-    height: fit-content;
-    margin: 0 auto;
-    gap: 20px;
-    grid-template-columns: auto 1fr;
+    @layer base{
+      position: relative;
+      display: grid;
+      width: 100%;
+      max-width: 1512px;
+      height: fit-content;
+      margin: 0 auto;
+      gap: 20px;
+      grid-template-columns: auto 1fr;
+    }
 
     @include custom(0, map-get($breakpoints, lg)) {
       font-size: 14px;
+    }
+
+    @include xxxl {
+      display: flex;
+      justify-content: space-between;
+      max-width: unset;
     }
 
     .accordeon_inner_item {

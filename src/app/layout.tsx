@@ -1,7 +1,7 @@
 import type {Metadata} from 'next'
 import {Main} from './main'
 import {RootStyleRegistry} from '@src/components/RootStyleRegistry/RootStyleRegistry'
-import {Jivo} from '@shared/jivo/jivo'
+// import {Jivo} from '@shared/jivo/jivo'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kronfort.labab.ru'
 
@@ -41,11 +41,11 @@ export default function RootLayout({
         {/* Ваш основной контент */}
         <RootStyleRegistry>
           <Main>{children}</Main>
-          <Jivo />
+          {/*<Jivo />*/}
         </RootStyleRegistry>
 
         {/* Вставка скриптов здесь */}
-        <script type='text/javascript' async src='//smartcallback.ru/api/SmartCallBack.js?t=zc2ZQ6WuzUWcsEZCNMpY' />
+        {/*<script type='text/javascript' async src='//smartcallback.ru/api/SmartCallBack.js?t=zc2ZQ6WuzUWcsEZCNMpY' />*/}
         {/*<script*/}
         {/*  dangerouslySetInnerHTML={{*/}
         {/*    __html: `*/}
