@@ -20,6 +20,10 @@
     padding-right: 0 !important;
     padding-left: 150px;
   }
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 68px);
+  }
 }
 
 .inner {
@@ -33,4 +37,8 @@
   // @media (min-height: 1200px) {
   //   max-height: 1200px;
   // }
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 68px);
+  }
 }

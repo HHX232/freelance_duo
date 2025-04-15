@@ -50,6 +50,7 @@ const MouseMover = ({
     <section
       style={{
         width: isMobile ? '100vw' : 'auto',
+        height: `${isMobile ? "calc(100vh - 68px)" : "100vh"}`,
         ...(isMobile && isMobileCardVisible
           ? {
               filter: 'brightness(0.5)'
@@ -63,7 +64,7 @@ const MouseMover = ({
         style={{
           // ! заменить на width в случае чего
           minWidth: `${size.w}px`,
-          height: `100vh`,
+          height: `${isMobile ? "calc(100vh - 68px)" : "100vh"}`,
           transform: isMobile ? 'none' : undefined
         }}
       >
