@@ -18,7 +18,7 @@ const TransportWrapper = () => {
       <Head />
       <Information />
       <div className={styles.transport_content}>
-        <TransportMap customPoi={mapPoi} customRoutes={mapRoutes} withLegend withSidebar />
+        <TransportMap customPoi={mapPoi} customRoutes={mapRoutes} withLegend withSidebar withExpandBtn/>
         <Infoblock />
         <Blocks setShowModal={setModalView}/>
         <Subscription />

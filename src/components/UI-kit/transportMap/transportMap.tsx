@@ -215,10 +215,11 @@ interface ITransportMap {
   withLegend?: boolean,         //отображение переключателей легенды карты
   withSidebar?: boolean,        //отображение шторки сайдбара
   withRouteButtons?: boolean,   //отображение блока с переключателями маршрутов
+  withExpandBtn?: boolean,      //отображение кнопки "Смотреть на карте"
   wrapperClass?: string         //стиль контейнера, содержащего карту
 }
 
-const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, withPoi, withLegend, withSidebar, wrapperClass, withRouteButtons}) => {
+const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, withPoi, withLegend, withSidebar, wrapperClass, withRouteButtons, withExpandBtn}) => {
   const [showLegend, setShowLegend] = useState(withLegend || false)
   const [showSidebar, setShowSidebar] = useState(false)
   const [modalView, setModalView] = useState(false);
@@ -265,7 +266,7 @@ const TransportMap: FC<ITransportMap> = ({customPoi, customRoutes, customState, 
               <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom + 1)}>+</button>
               <button className={styles.zoom_btn} onClick={() => setPropZoom(propZoom - 1)}>−</button>
             </div>
-            <button className={styles.mobile_expand_btn} onClick={handleExpandMap}>СМОТРЕТЬ НА КАРТЕ</button>
+            {withExpandBtn ? <button className={styles.mobile_expand_btn} onClick={handleExpandMap}>СМОТРЕТЬ НА КАРТЕ</button> : null}
             {withRouteButtons ? <RouteButtons switchRoute={(route) => setActiveRoute(route)}/> : null}
             {withLegend ? <MapLegend switchVisibility={(show) => setShowLegend(show)}/> : null}
             {withSidebar ? <MapSidebar isOpen={showSidebar}/> : null}
