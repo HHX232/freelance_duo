@@ -14,13 +14,12 @@ $background-color_1: transparent;
   }
 }
 
-
 .title {
   &.visible {
     animation: fadeInUp 0.8s ease-out forwards;
     opacity: 1;
   }
-  
+
   @layer base {
     @include font(3, 30, 40, 400);
     @include font(3, 30, 40, 400);
@@ -113,12 +112,13 @@ $background-color_1: transparent;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   &::after {
     width: 15px;
     height: 15px;
     align-items: center;
+    border-radius: 100px;
     background-color: rgb(17 98 125 / 30%);
     content: '';
   }
@@ -127,8 +127,8 @@ $background-color_1: transparent;
 .embla__dot--selected {
   &::after {
     width: 20px;
-    border-radius: 30%;
+    border-radius: 100px;
     background-color: rgb(60 140 166 / 100%);
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 }
