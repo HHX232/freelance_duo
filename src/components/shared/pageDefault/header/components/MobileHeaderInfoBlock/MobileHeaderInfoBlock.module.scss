@@ -2,6 +2,7 @@
   z-index: 101;
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
 }
 
 .mobile_text_title {
@@ -77,5 +78,11 @@
 @include custom(0, map-get($breakpoints, xs) - 1px) {
   .mobile_text_title {
     margin-bottom: 28px;
+  }
+}
+
+@include custom(0, map-get($breakpoints, md) - 1px) {
+  .mobile_text_box {
+    padding: 0;
   }
 }
