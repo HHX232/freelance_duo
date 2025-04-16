@@ -33,7 +33,7 @@
     }
 
     @include lg {
-        width: 40%;
+        width: 35%;
     }
 
     @include md {
@@ -47,7 +47,7 @@
         z-index: 5;
         width: 100vw;
         justify-content: space-between;
-        padding: 3% 2%;
+        padding: 4% 2%;
         background-color: #fff0;
     }
 
@@ -66,11 +66,23 @@
         }
 
         @layer base {
-            @include font(3, 30, 40, 400);
+            @include font(3, 32, 40, 600);
+
+            padding-top: 1vh;
+            padding-left: 1vw;
+            background: radial-gradient(circle,rgb(255 255 255 / 50%) 0%, rgb(255 255 255 / 20%) 50%, rgb(255 255 255 / 1%) 100%);
         }
     
         @include md {
-            @include font(3, 30, 44, 400);
+            @include font(3, 30, 44, 600);
+
+            padding-top: 0;
+            padding-left: 0;
+            background: none
+        }
+
+        @include lg {
+            @include font(3, 36, 48, 600);
         }
     
         @include xl {
@@ -83,6 +95,10 @@
         display: flex;
         justify-content: space-between;
         padding: 0;
+
+        @include xl {
+            height: 75%;
+        }
 
         @include md {
             bottom: 0;
@@ -111,9 +127,14 @@
                 background-color: #277B97;
 
                 @include xs {
+                    width: 85vw;
                     background-image: url('/map/map_route_star.svg');
                     background-position: right bottom;
                     background-repeat: no-repeat;
+                }
+
+                @include sm {
+                    width: 80vw;
                 }
 
                 @include md {
@@ -139,18 +160,26 @@
                 opacity: 1;
             }
 
+            @include xl {
+                padding: 6%;
+            }
+
+            @include lg {
+                padding: 5%;
+            }
+
             @include md {
                 width: 100%;
                 height: 30%;
-                padding: 7%;
+                padding: 3%;
             }
 
             @include sm {
-                width: 80vw;
+                width: 60vw;
             }
 
             @include xs {
-                width: 90vw;
+                width: 60vw;
                 height: 100%;
                 flex-shrink: 0;
                 padding: 15px;
@@ -161,7 +190,7 @@
                 color: #555;
 
                 @include xs {
-                    padding-bottom: 2px;
+                    padding-bottom: 10px;
                 }
 
                 @include md {
@@ -187,10 +216,18 @@
                 font-weight: 300;
 
                 @include xs {
-                    @include font(3, 18, 28, 400);
+                    @include font(3, 24, 32, 400);
+                }
+
+                @include md {
+                    @include font(3, 18, 24, 400);
                 }
                 
                 @include lg {
+                    @include font(3, 22, 32, 400);
+                }
+
+                @include xl {
                     @include font(3, 22, 32, 400);
                 }
 
@@ -202,10 +239,12 @@
             .rb-btn {
                 @include xs {
                     padding: 5px;
+                    visibility: hidden;
                 }
 
                 @include md {
-                    padding: 7px;
+                    padding: 5px;
+                    visibility: visible;
                 }
 
                 @include xl {

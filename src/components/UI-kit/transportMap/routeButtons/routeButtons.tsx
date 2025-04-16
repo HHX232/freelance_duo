@@ -2,6 +2,7 @@ import styles from './routeButtons.module.scss'
 import {FC, useState, useEffect, useRef} from 'react'
 import { FullButton } from '../../BaseControls/buttons/FullButton/FullButton'
 import ParagraphUI from '../../Text-Elements/Typography/Paragraph/Paragraph'
+import { useIsMaxWidth } from '@utils/useIsMobile'
 import Image from 'next/image'
 
 interface IRouteButtons {
@@ -12,6 +13,7 @@ const RouteButtons: FC<IRouteButtons> = ({switchRoute}) => {
   const [activeRoute, setActiveRoute] = useState(0)
   const sectionRef = useRef<HTMLDivElement | null>(null)
     const [isVisible, setIsVisible] = useState(false)
+    const isMobile = useIsMaxWidth(768);
   
     useEffect(() => {
       const observer = new IntersectionObserver(
@@ -79,6 +81,7 @@ const RouteButtons: FC<IRouteButtons> = ({switchRoute}) => {
             {routeBlocks.map((block, index) => (
                 <div
                 key={index}
+                onClick={() => isMobile ? handleClick(block.route, index) : null}
                 className={`${styles['route-block']} ${activeRoute === index ? styles['active-route'] : ''} ${isVisible ? styles.visible : ''}`}
                 >
                     <div className={styles['rb-texts']}>

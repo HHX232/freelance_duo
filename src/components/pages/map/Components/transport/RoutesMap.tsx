@@ -3,11 +3,13 @@ import {Suspense, useRef} from 'react'
 import styles from './Transport.module.scss'
 import TransportMap from '@src/components/UI-kit/transportMap/transportMap'
 import {mapRoutes} from '@src/lib/utils/catalog/mapMockData'
+import { useIsMaxWidth } from '@utils/useIsMobile'
 
 const TransportContent = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   //const customPoi = [{ coords: [59.999664, 29.746338], name: "Кронфорт", icon: 'kf_green_icon.svg' }]
-  const customState = {center: [60.052332, 29.915930], zoom: 11, controls: []};
+  const isMobile = useIsMaxWidth(768);//60.028317, 29.790584
+  const customState = {center: isMobile ? [60.052332, 29.915930] : [60.028317, 29.790584], zoom: isMobile ? 9 : 11, controls: []};
 
   return (
     <div>
