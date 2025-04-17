@@ -1,280 +1,285 @@
-@import "../../../../fonts/fonts";
+@import '../../../../fonts/fonts';
 
 @keyframes fadeInRight {
-    from {
-      opacity: 0;
-      transform: translateX(-100px);
-    }
-  
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .routes-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    height: 100%;
-    flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
 
-    @include xxxl {
-        width: 25%;
+  @include xxxl {
+    width: 25%;
+  }
+
+  @include xxl {
+    width: 30%;
+  }
+
+  @include xl {
+    width: 35%;
+  }
+
+  @include lg {
+    width: 35%;
+  }
+
+  @include md {
+    width: 40%;
+    justify-content: space-around;
+    padding: 4% 0 3% 2%;
+    background-color: #ffffff71;
+  }
+
+  @include xs {
+    z-index: 5;
+    width: 100vw;
+    justify-content: space-between;
+    padding: 4% 2%;
+    background-color: #fff0;
+  }
+
+  .routes-title {
+    z-index: 8;
+    margin-bottom: 6%;
+    color: #555;
+    font-style: $font-romul;
+    opacity: 0;
+    text-wrap: wrap;
+    word-break: break-all;
+
+    &.visible {
+      animation: fadeInRight 1s ease-out forwards;
+      opacity: 1;
     }
 
-    @include xxl {
-        width: 30%;
-    }
-    
-    @include xl {
-        width: 35%;
-    }
+    @layer base {
+      @include font(3, 32, 40, 600);
 
-    @include lg {
-        width: 35%;
+      padding-top: 1vh;
+      padding-left: 1vw;
+      background: radial-gradient(
+        circle,
+        rgb(255 255 255 / 50%) 0%,
+        rgb(255 255 255 / 20%) 50%,
+        rgb(255 255 255 / 1%) 100%
+      );
     }
 
     @include md {
-        width: 40%;
-        justify-content: space-around;
-        padding: 4% 0 3% 2%;
-        background-color: #ffffff71;
+      @include font(3, 30, 44, 600);
+
+      padding-top: 0;
+      padding-left: 0;
+      background: none;
+    }
+
+    @include lg {
+      @include font(3, 36, 48, 600);
+    }
+
+    @include xl {
+      @include font(3, 32, 44, 400);
+    }
+  }
+
+  .routes-blocks-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+
+    @include xl {
+      height: 75%;
+    }
+
+    @include md {
+      bottom: 0;
+      left: 0;
+      width: 90%;
+      height: 70%;
+      flex-direction: column;
+      overflow-x: hidden;
     }
 
     @include xs {
-        z-index: 5;
-        width: 100vw;
-        justify-content: space-between;
-        padding: 4% 2%;
-        background-color: #fff0;
+      width: 100vw;
+      height: 20vh;
+      flex-direction: row;
+      overflow-x: scroll;
     }
 
-    .routes-title {
-        z-index: 8;
-        margin-bottom: 6%;
-        color: #555;
-        font-style: $font-romul;
-        opacity: 0;
-        text-wrap: wrap;
-        word-break: break-all;
+    .route-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #dcebf1;
+      opacity: 0;
 
-        &.visible {
-            animation: fadeInRight 1s ease-out forwards;
-            opacity: 1;
+      &.active-route {
+        background-color: #277b97;
+
+        @include xs {
+          width: 85vw;
+          background-image: url('/map/map_route_star.svg');
+          background-position: right bottom;
+          background-repeat: no-repeat;
         }
 
-        @layer base {
-            @include font(3, 32, 40, 600);
-
-            padding-top: 1vh;
-            padding-left: 1vw;
-            background: radial-gradient(circle,rgb(255 255 255 / 50%) 0%, rgb(255 255 255 / 20%) 50%, rgb(255 255 255 / 1%) 100%);
+        @include sm {
+          width: 80vw;
         }
-    
+
         @include md {
-            @include font(3, 30, 44, 600);
+          width: 70%;
+          background-image: none;
+        }
 
-            padding-top: 0;
-            padding-left: 0;
-            background: none
+        .rb-texts {
+          z-index: 7;
+        }
+
+        .rb-text-minute {
+          color: #fff;
+        }
+
+        .rb-text-route {
+          color: #fff;
+        }
+      }
+
+      &.visible {
+        animation: fadeInRight 1s ease-out forwards;
+        opacity: 1;
+      }
+
+      @include xl {
+        padding: 6%;
+      }
+
+      @include lg {
+        padding: 5%;
+      }
+
+      @include md {
+        width: 100%;
+        height: 30%;
+        padding: 3%;
+      }
+
+      @include sm {
+        width: 60vw;
+      }
+
+      @include xs {
+        width: 60vw;
+        height: 100%;
+        flex-shrink: 0;
+        padding: 15px;
+        margin-right: 15px;
+      }
+
+      .rb-text-minute {
+        color: #555;
+
+        @include xs {
+          padding-bottom: 10px;
+        }
+
+        @include md {
+          padding-bottom: 5px;
         }
 
         @include lg {
-            @include font(3, 36, 48, 600);
+          padding-bottom: 8px;
         }
-    
-        @include xl {
-            @include font(3, 42, 54, 400);
+
+        @include xxl {
+          padding-bottom: 10px;
         }
-    }
 
-    .routes-blocks-container {;
-        position: relative;
-        display: flex;
-        justify-content: space-between;
-        padding: 0;
+        @include xxxl {
+          padding-bottom: 12px;
+        }
+      }
 
-        @include xl {
-            height: 75%;
+      .rb-text-route {
+        color: #555;
+        font-style: $font-romul;
+        font-weight: 300;
+
+        @include xs {
+          @include font(3, 24, 32, 400);
         }
 
         @include md {
-            bottom: 0;
-            left: 0;
-            width: 90%;
-            height: 70%;
-            flex-direction: column;
-            overflow-x: hidden;
+          @include font(3, 18, 24, 400);
+        }
+
+        @include lg {
+          @include font(3, 22, 32, 400);
+        }
+
+        @include xl {
+          @include font(3, 22, 32, 400);
+        }
+
+        @include xl {
+          @include font(3, 24, 34, 400);
+        }
+      }
+
+      .rb-btn {
+        @include xs {
+          padding: 5px;
+          visibility: hidden;
+        }
+
+        @include md {
+          padding: 5px;
+          visibility: visible;
+        }
+
+        @include xl {
+          padding: 10px;
+        }
+
+        &::after {
+          padding-left: 10px;
+          content: url('/map/map_route_btn.svg');
+        }
+      }
+
+      .rb-star {
+        position: absolute;
+        z-index: 6;
+        top: 0;
+        right: 0;
+        width: auto;
+        height: 100%;
+        aspect-ratio: 1/1;
+        transform: translate(50%, 0);
+
+        @include md {
+          display: block;
         }
 
         @include xs {
-            width: 100vw;
-            height: 20vh;
-            flex-direction: row;
-            overflow-x: scroll;
+          display: none;
         }
-
-        .route-block {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background-color: #DCEBF1;
-            opacity: 0;
-
-            &.active-route {
-                background-color: #277B97;
-
-                @include xs {
-                    width: 85vw;
-                    background-image: url('/map/map_route_star.svg');
-                    background-position: right bottom;
-                    background-repeat: no-repeat;
-                }
-
-                @include sm {
-                    width: 80vw;
-                }
-
-                @include md {
-                    width: 70%;
-                    background-image: none;
-                }
-
-                .rb-texts {
-                    z-index: 7;
-                }
-
-                .rb-text-minute {
-                    color: #fff;
-                }
-
-                .rb-text-route {
-                    color: #fff;
-                }
-            }
-
-            &.visible {
-                animation: fadeInRight 1s ease-out forwards;
-                opacity: 1;
-            }
-
-            @include xl {
-                padding: 6%;
-            }
-
-            @include lg {
-                padding: 5%;
-            }
-
-            @include md {
-                width: 100%;
-                height: 30%;
-                padding: 3%;
-            }
-
-            @include sm {
-                width: 60vw;
-            }
-
-            @include xs {
-                width: 60vw;
-                height: 100%;
-                flex-shrink: 0;
-                padding: 15px;
-                margin-right: 15px;
-            }
-
-            .rb-text-minute {
-                color: #555;
-
-                @include xs {
-                    padding-bottom: 10px;
-                }
-
-                @include md {
-                    padding-bottom: 5px;
-                }
-
-                @include lg {
-                    padding-bottom: 8px;
-                }
-
-                @include xxl {
-                    padding-bottom: 10px;
-                }
-
-                @include xxxl {
-                    padding-bottom: 12px;
-                }
-            }
-
-            .rb-text-route {
-                color: #555;
-                font-style: $font-romul;
-                font-weight: 300;
-
-                @include xs {
-                    @include font(3, 24, 32, 400);
-                }
-
-                @include md {
-                    @include font(3, 18, 24, 400);
-                }
-                
-                @include lg {
-                    @include font(3, 22, 32, 400);
-                }
-
-                @include xl {
-                    @include font(3, 22, 32, 400);
-                }
-
-                @include xl {
-                    @include font(3, 24, 34, 400);
-                }
-            }
-
-            .rb-btn {
-                @include xs {
-                    padding: 5px;
-                    visibility: hidden;
-                }
-
-                @include md {
-                    padding: 5px;
-                    visibility: visible;
-                }
-
-                @include xl {
-                    padding: 10px;
-                }
-
-                &::after {
-                    padding-left: 10px;
-                    content: url('/map/map_route_btn.svg');
-                }
-            }
-
-            .rb-star {
-                position: absolute;
-                z-index: 6;
-                top: 0;
-                right: 0;
-                width: auto;
-                height: 100%;
-                aspect-ratio: 1/1;
-                transform: translate(50%, 0);
-
-                @include md {
-                    display: block;
-                }
-
-                @include xs {
-                    display: none;
-                }
-            }
-        }
+      }
     }
+  }
 }

@@ -10,7 +10,7 @@ import dynamic from 'next/dynamic'
 import NextImage from 'next/image'
 import Head from 'next/head'
 import ArrowUpSVG from '@icons/arrow_up.svg'
-import CornerSVG from '@icons/corner.svg'
+// import CornerSVG from '@icons/corner.svg'
 import Page from '@shared/pageDefault/Page'
 import AreasPage from './Components/areas/Areas'
 import FortovPage from './Components/fortov/Fortov'
@@ -20,6 +20,7 @@ import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 import TransportPage from './Components/transport/RoutesMap'
 import Swipe from '@src/components/UI-kit/BaseControls/Swipe/Swipe'
+import TextAccentBlockUI from '@src/components/UI-kit/Text-Blocks/TextAccentBlockUI/TextAccentBlockUI'
 const Compass = dynamic(() => import('./Components/card/Compass'), {ssr: false})
 
 const directionHints: DirectionHint[] = [
@@ -265,30 +266,37 @@ const MapContent = () => {
                 <div className={`${styles.captions} ${startTextAnimation ? styles.visible : ''}`}>
                   <h2 className={styles['captions-title']}>Локация</h2>
                   <div className={`${styles['caption-items']} ${styles['desktop_captions']}`}>
-                    <div className={styles['caption']}>
+                    {/* <div className={styles['caption']}>
                       <CornerSVG />
                       <h2 className={styles['caption__title']}>
                         3<span>мин</span>
                       </h2>
                       <hr className={styles['caption__divider']} />
                       <p className={styles['caption__description']}>до моря</p>
-                    </div>
-                    <div className={styles['caption']}>
+                    </div> */}
+                    <TextAccentBlockUI textTitle='3' textSubTitle='мин' textMainContent='до моря' />
+                    {/* <div className={styles['caption']}>
                       <CornerSVG />
                       <h2 className={styles['caption__title']}>
                         10<span>мин</span>
                       </h2>
                       <hr className={styles['caption__divider']} />
                       <p className={styles['caption__description']}>до Кронштадского шоссе и КАД</p>
-                    </div>
-                    <div className={styles['caption']}>
+                    </div> */}
+                    <TextAccentBlockUI
+                      textTitle='10'
+                      textSubTitle='мин'
+                      textMainContent='до Кронштадского шоссе и КАД'
+                    />
+                    {/* <div className={styles['caption']}>
                       <CornerSVG />
                       <h2 className={styles['caption__title']}>
                         30<span>мин</span>
                       </h2>
                       <hr className={styles['caption__divider']} />
                       <p className={styles['caption__description']}>до «Лахта Центра»</p>
-                    </div>
+                    </div> */}
+                    <TextAccentBlockUI textTitle='30' textSubTitle='мин' textMainContent='до «Лахта Центра»' />
                   </div>
                   <div className={`${styles['caption-items']} ${styles['mobile_captions']}`}>
                     <PhoneSlider slides={mobileSlides} />

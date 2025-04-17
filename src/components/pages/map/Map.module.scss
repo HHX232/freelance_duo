@@ -212,7 +212,9 @@
   color: #fff;
   opacity: 0;
   text-shadow: 0 4px 13.5px rb(0 0 0 / 100%) g;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 
   &.visible {
     animation: fadeInOp 0.8s ease-out forwards;
@@ -260,7 +262,9 @@
     padding-bottom: 24px;
     gap: 40px;
     opacity: 0;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
   }
 
   @include sm {
@@ -351,7 +355,7 @@
     }
 
     @include md {
-      @include font(3, 64, 80, 400);
+      @include font(3, 52, 58, 400);
 
       span {
         @include font(3, 32, 44, 400);
