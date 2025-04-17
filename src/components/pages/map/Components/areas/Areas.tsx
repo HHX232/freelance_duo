@@ -4,6 +4,7 @@ import styles from './Areas.module.scss'
 import emblaStyle from '@shared/phoneSlider/embla.module.scss'
 import PhoneSlider from '@shared/phoneSlider/PhoneSlider'
 import TextAccentBlockUI from '@src/components/UI-kit/Text-Blocks/TextAccentBlockUI/TextAccentBlockUI'
+import H3Title from '@src/components/UI-kit/Text-Elements/Typography/Headers/H3Title'
 
 const AreasContent = () => {
   const mobileSlides: React.ReactNode[] = [
@@ -45,7 +46,7 @@ const AreasContent = () => {
           setIsVisible(true)
         }
       },
-      { threshold: 0.5 }
+      {threshold: 0.5}
     )
 
     if (sectionRef.current) {
@@ -63,10 +64,15 @@ const AreasContent = () => {
     <div>
       {
         <section className={styles.section} ref={sectionRef}>
-          <h2 className={`${styles['captions-title']} ${isVisible ? styles.visible : ''}`}>
+          {/* <h2 className={`${styles['captions-title']} ${isVisible ? styles.visible : ''}`}>
+            От Уютных студий2 <br /> до просторных лофтов
+          </h2> */}
+          <H3Title extraClass={`${styles['captions-title']} ${isVisible ? styles.visible : ''}`}>
             От Уютных студий <br /> до просторных лофтов
-          </h2>
-          <div className={`${styles['caption-items']} ${styles['desktop_captions']} ${isVisible ? styles.visible : ''}`}>
+          </H3Title>
+          <div
+            className={`${styles['caption-items']} ${styles['desktop_captions']} ${isVisible ? styles.visible : ''}`}
+          >
             <TextAccentBlockUI
               extraContainerClass={styles.max_width}
               extraTitleClass={styles.text_font_weight_300}
