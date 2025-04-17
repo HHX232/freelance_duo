@@ -3,7 +3,7 @@ import styles from './Card.module.scss'
 import CompassSVG from '@icons/compass.svg'
 import PulseSVG from '@icons/pulse.svg'
 import clsx from 'clsx'
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useRef} from 'react'
 import {CompassProps} from './model'
 import dynamic from 'next/dynamic'
 import PopupWrapper from '@src/components/UI-kit/Popups-Modals/Popup/popup'
@@ -22,6 +22,7 @@ const CARD_WIDTH = 607
 const CARD_HEIGHT = 327
 
 const TIME_TO_SHOW_CARD = 300
+const SAFE_MARGIN = -50 // Safety margin to ensure the card fits
 
 const Compass = ({
   name,
@@ -40,18 +41,38 @@ const Compass = ({
   const [compassLocation, setCompassLocation] = useState({x: 0, y: 0})
   const [isTimeoutActive, setIsTimeoutActive] = useState<undefined | NodeJS.Timeout>(undefined)
   const [isHovered, setIsHovered] = useState(false)
+  const compassRef = useRef<HTMLDivElement>(null)
 
   const router = useRouter()
+  const windowWidth = useWindowWidth()
 
   useEffect(() => {
+    if (!windowWidth) return
+
+    // Determine which side the compass is on
     const isInTheRightSide = coords.x > 50
     const isInTheBottomSide = coords.y > 50
 
-    const shiftX = isInTheRightSide ? -(CARD_WIDTH + PADDING) + 150 : PADDING + COMPASS_WIDTH
+    // Initial position calculation
+    let shiftX = isInTheRightSide ? -(CARD_WIDTH + PADDING) + 150 : PADDING + COMPASS_WIDTH
     const shiftY = isInTheBottomSide ? -(CARD_HEIGHT + PADDING) : PADDING + COMPASS_WIDTH + 60
 
+    // Only adjust the position for cards that appear on the LEFT side (when compass is on right)
+    if (!isInTheRightSide && compassRef.current) {
+      const compassRect = compassRef.current.getBoundingClientRect()
+      const compassAbsX = compassRect.left + compassRect.width / 2
+
+      // Check if the card would overflow on the right side
+      const rightEdgePosition = compassAbsX + shiftX + CARD_WIDTH + SAFE_MARGIN
+
+      if (rightEdgePosition > windowWidth) {
+        // Adjust the position to make it fit within the screen
+        shiftX = -(CARD_WIDTH - (windowWidth - compassAbsX) + SAFE_MARGIN)
+      }
+    }
+
     setCompassLocation({x: shiftX, y: shiftY})
-  }, [coords.x, coords.y])
+  }, [coords.x, coords.y, windowWidth])
 
   const onEnterCard = () => {
     if (!isTimeoutActive) return
@@ -68,7 +89,6 @@ const Compass = ({
   const onLeaveInnerCompass = () => setIsTimeoutActive(setTimeout(onLeaveCard, TIME_TO_SHOW_CARD))
 
   const [moblilePopUpIsOpen, setMobilePopUpIsOpen] = useState(false)
-  const windowWidth = useWindowWidth()
 
   const openMobilePopUpAction = () => {
     if (!windowWidth || windowWidth > 1280) return
@@ -99,6 +119,7 @@ const Compass = ({
         </PopupWrapper>
       )}
       <div
+        ref={compassRef}
         className={clsx(styles.cardWrapper, className)}
         id={id}
         style={{
