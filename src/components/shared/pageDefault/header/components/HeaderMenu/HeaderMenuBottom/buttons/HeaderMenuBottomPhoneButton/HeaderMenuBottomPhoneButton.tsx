@@ -8,6 +8,7 @@ export default function HeaderMenuBottomPhoneButton({onClick}: {onClick?: () => 
       // href={'tel:+71231234567'}
       activeButton={true}
       border={false}
+      href='#'
       borderColor={'none'}
       buttonFill={'none'}
       buttonElementColor={'white'}
