@@ -6,22 +6,27 @@ import Rubick from '@icon/rubick.svg'
 import Shower from '@icon/shower.svg'
 import Guard from '@icon/guard.svg'
 import { useEffect, useRef, useState } from 'react'
+import { useIsMaxWidth } from '@utils/useIsMobile'
 
 const Design = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const isMobile = useIsMaxWidth(768);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
+
+        //бывает не работает если блок слишком длинный на мобилках, надо уменьшать threshold
         if (entry.isIntersecting) {
           setIsVisible(true)
         }
       },
-      { threshold: 0.5 } // Анимация сработает, когда 30% блока появится в зоне видимости
+      { threshold: isMobile ? 0.05 : 0.5 }
     )
 
     if (sectionRef.current) {
+      console.log('OBSERVER');
       observer.observe(sectionRef.current)
     }
 
@@ -30,7 +35,7 @@ const Design = () => {
         observer.unobserve(sectionRef.current)
       }
     }
-  }, [])
+  }, [isMobile])
 
   return (
     <div className={styles['block-wrapper']} ref={sectionRef}>
